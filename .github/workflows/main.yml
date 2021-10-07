@@ -6,9 +6,9 @@ name: Doxygen Action
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 
   
@@ -28,7 +28,7 @@ jobs:
       uses: mattnotmitt/doxygen-action@v1.1.0
       with:
         # Path to Doxyfile
-        doxyfile-path: "./Doxyfile" # default is ./Doxyfile
+        doxyfile-path: "./documentation/doxyFile" # default is ./Doxyfile
         # Working directory
         working-directory: "." # default is .
     
