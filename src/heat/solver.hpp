@@ -19,56 +19,67 @@ using namespace mfem;
 
 namespace heat{
 
+/**
+ * @brief Space-time solver for the heat equation
+ *
+ * Uses the least-squares FEM.
+ */
 class Solver
 {
 public:
+    //! Constructor with config JSON
     Solver (const nlohmann::json& config);
 
+    //! Constructor with config JSON and test case
     Solver (const nlohmann::json& config,
-                std::shared_ptr<heat::TestCases>& testCase);
+            std::shared_ptr<heat::TestCases>& testCase);
 
+    //! Constructor with config JSON and space-time mesh info
     Solver (const nlohmann::json& config,
-                std::string mesh_dir,
-                const int lx,
-                const int lt,
-                const bool load_init_mesh=false);
+            std::string mesh_dir, const int lx, const int lt,
+            const bool load_init_mesh=false);
 
+    //! Constructor with config JSON, test case and space-time mesh info
     Solver (const nlohmann::json& config,
-                std::shared_ptr<heat::TestCases>& testCase,
-                std::string mesh_dir,
-                const int lx,
-                const int lt,
-                const bool load_init_mesh=false);
+            std::shared_ptr<heat::TestCases>& testCase,
+            std::string mesh_dir, const int lx, const int lt,
+            const bool load_init_mesh=false);
 
+    //! Constructor with config JSON and spatial mesh info
     Solver (const nlohmann::json& config,
-                std::string mesh_dir,
-                const int lx,
-                const bool load_init_mesh=false);
+            std::string mesh_dir, const int lx,
+            const bool load_init_mesh=false);
 
+    //! Default constructor
     ~ Solver ();
 
-    // sets meshes, discretization, observer
-    void set(std::string mesh_dir,
-             const int lx,
-             const int lt=-2,
+    //! Sets auxiliary variables, meshes, discretization and observer
+    void set(std::string mesh_dir, const int lx, const int lt=-2,
              const bool load_init_mesh=false);
 
+    //! Sets mesh related auxiliary variables
     void set(std::string mesh_dir,
              const bool load_init_mesh=false);
+    //! Sets meshes, discretization and observer
     void set(int lx, int lt=-2);
+    //! Sets meshes
     void setMeshes(int lx, int lt=-2);
 
-    // sets perturbation in the test case
+    //! Sets perturbation in the test case
     void setPerturbation(double);
 
-    // used for the full-tensor version
+    //! Initializes and then runs the solver,
+    //! used for the full-tensor version
     std::tuple<int, double, double, Eigen::VectorXd>
     operator()();
 
+    // Initializes and then runs the solver,
     // used for the sparse-grids handler
-    void operator()(std::unique_ptr<BlockVector>&);
+    // void operator()(std::unique_ptr<BlockVector>&);
 
+    //! Runs the solver, assumes the solver has already been initialized
     void run();
+
     double computeObs();
     double computeQoi();
     double computeXtQoi();
@@ -76,76 +87,96 @@ public:
     double getQoi();
     double getXtQoi();
     
+    //! Initializes the solver
     void init ();
 
 private:
+    //! Assembles the right-hand side
     void assembleRhs();
+    //! Assembles the system
     void assembleSystem();
 
 public:
+    //! Solves the linear system resulting from the discretisation
     void solve (BlockVector *W, BlockVector* B) const;
+    //! Releases allocated memory
     void finalize () const;
 
-    // error computation
+    //! Computes the solution error
     Eigen::VectorXd computeError(BlockVector *W) const;
 
-    // solution at end-time
+    //! Evaluates the temperature solution at end time
     std::shared_ptr <GridFunction>
     getTemperatureSolAtEndTime (BlockVector *W) const;
 
+    //! Evaluates the flux solution at end time
     std::shared_ptr <GridFunction>
     getFluxSolAtEndTime (BlockVector *W) const;
 
+    //! Sets the temperature solution at end time
     void setTemperatureSolAtEndTime ();
 
+    //! Sets the flux solution at end time
     void setFluxSolAtEndTime ();
 
-    // for L2-projection
-    void projection(std::unique_ptr<BlockVector>&);
+    //! Initializes and computes the projection,
+    //! Used for the full-tensor version
     std::tuple<int, double, double, Eigen::VectorXd>
     projection();
 
+    // Initializes and computes the projection,
+    // Used for the sparse-tensor version
+    // void projection(std::unique_ptr<BlockVector>&);
+
+    //! Initializes projection
     void initProjection ();
+    //! Assembles projection right-hand side
     void assembleProjectionRhs();
+    //! Assembles the system matrix for projection
     void assembleProjectionSystem();
 
+    //! Returns the temporal mesh
     inline std::shared_ptr<Mesh> getTMesh() const {
         return m_tMesh;
     }
 
+    //! Returns the spatial mesh
     inline std::shared_ptr<Mesh> getXMesh() const {
         return m_xMesh;
     }
 
+    //! Returns the test case
     inline std::shared_ptr<heat::TestCases>
     getTestCase() const {
         return m_testCase;
     }
 
+    //! Returns the discretisation
     inline std::shared_ptr<heat::LsqXtFEM>
     getDiscretisation() const {
         return m_discr;
     }
 
+    //! Returns the observer
     inline std::shared_ptr<heat::Observer>
     getObserver() const {
         return m_observer;
     }
 
+    //! Returns the mesh characteristics
     inline std::pair<double, double>
     getMeshChars() const
     {
-        double ht_min, ht_max, kappat_min, kappat_max;
-        m_tMesh->GetCharacteristics(ht_min, ht_max,
-                                    kappat_min, kappat_max);
+        double htMin, htMax, kappatMin, kappatMax;
+        m_tMesh->GetCharacteristics(htMin, htMax, kappatMin, kappatMax);
 
-        double hx_min, hx_max, kappax_min, kappax_max;
-        m_xMesh->GetCharacteristics(hx_min, hx_max,
-                                    kappax_min, kappax_max);
+        double hxMin, hxMax, kappaxMin, kappaxMax;
+        m_xMesh->GetCharacteristics(hxMin, hxMax, kappaxMin, kappaxMax);
 
-        return {std::move(ht_max), std::move(hx_max)};
+        return {std::move(htMax), std::move(hxMax)};
     }
 
+    //! Returns the total number of degrees of freedom in space-time
     inline int getNdofs() const {
         return std::move(m_W->Size());
     }

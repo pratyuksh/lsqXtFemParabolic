@@ -5,7 +5,9 @@
 
 #include "../src/pardiso/pardiso.hpp"
 
-
+/**
+ * @brief Unit test for the PARDISO solver for a unsymmetric matrix
+ */
 TEST(Pardiso, unsymmSolver)
 {
     // CSR sparse matrix
@@ -61,7 +63,9 @@ TEST(Pardiso, unsymmSolver)
     ASSERT_LE((true_x - x).norm(), TOL);
 }
 
-
+/**
+ * @brief Unit test for the PARDISO solver for a symmetric matrix
+ */
 TEST(Pardiso, symmSolver)
 {
     // CSR sparse matrix

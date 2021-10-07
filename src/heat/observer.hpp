@@ -17,50 +17,92 @@ using namespace mfem;
 
 namespace heat {
 
-// Observer for Heat system
+/**
+ * @brief Observer for the Heat equation
+ *
+ * Provides functions to visualize solutions, compute error
+ * and write output to files.
+ */
 class Observer : public mymfem::BaseObserver
 {
 public:
+    //! Default Constructor
     Observer () : BaseObserver () {}
 
+    //! Constructor with config JSO
+    //! and spatial mesh discretisation level as arguments
     Observer (const nlohmann::json&, int);
 
+    //! Sets the test case and discretisation
     void set (std::shared_ptr<heat::TestCases>& testCase,
               std::shared_ptr<heat::LsqXtFEM>& discr);
     
+    //! Writes the solution to output file
     void dumpSol (std::shared_ptr<GridFunction>&,
-                   std::shared_ptr<GridFunction>&) const;
+                  std::shared_ptr<GridFunction>&) const;
     
-    //! Computes H1 error at a given time t
+    /**
+     * @brief Evaluates L2 and H1 error of temperature at a given time t
+     * @param u temperature solution
+     * @param t
+     * @return L2-error and H1-error of u and reference solution
+     */
     std::tuple <double, double, double, double>
-    evalXH1Error (std::shared_ptr<GridFunction>&,
+    evalXH1Error (std::shared_ptr<GridFunction>& u,
                    double t) const;
 
-    //! Computes L2H1 error
+    /**
+     * @brief Evaluates L2L2 and L2H1 error of temperature
+     * @param u Temperature solution coefficients
+     * @return L2L2-error and L2H1-error of u and reference solution
+     */
     std::tuple <double, double, double, double>
-    evalXtL2H1Error (Vector&) const;
+    evalXtL2H1Error (Vector& u) const;
 
-    //! Computes least-squares error at a given time t
+    /**
+     * @brief Evaluates least-squares error at a given time t
+     * @param u temperature solution
+     * @param dudt time-gradient of temperature solution
+     * @param q heat flux solution
+     * @param t time
+     * @return least-squares error split as PDE and flux error
+     */
     std::tuple <double, double>
-    evalXLsqError (std::shared_ptr<GridFunction>&,
-                    std::shared_ptr<GridFunction>&,
-                    std::shared_ptr<GridFunction>&,
-                    double t) const;
+    evalXLsqError (std::shared_ptr<GridFunction>& u,
+                   std::shared_ptr<GridFunction>& dudt,
+                   std::shared_ptr<GridFunction>& q,
+                   double t) const;
 
-    //! Computes least-squares error
+    /**
+     * @brief Evaluates least-squares error
+     * @param u temperature solution
+     * @param q heat flux solution
+     * @return least-squares error split as PDE and flux error
+     */
     std::tuple <double, double, double>
-    evalXtLsqError (Vector&, Vector&) const;
+    evalXtLsqError (Vector& u, Vector& q) const;
 
-    //! Computes the error in the natural norm
-    //! at a given time t
+    /**
+     * @brief Evaluates error in the natural norm at a given time t
+     * @param u temperature solution
+     * @param dudt time-gradient of temperature solution
+     * @param q heat flux solution
+     * @param t time
+     * @return error in natural norm for discrete and reference solutions
+     */
     std::tuple
     <double, double, double, double, double, double>
-    evalXError (std::shared_ptr<GridFunction>&,
-                 std::shared_ptr<GridFunction>&,
-                 std::shared_ptr<GridFunction>&,
-                 double t) const;
+    evalXError (std::shared_ptr<GridFunction>& u,
+                std::shared_ptr<GridFunction>& dudt,
+                std::shared_ptr<GridFunction>& q,
+                double t) const;
 
-    //! Computes the error in the natural norm
+    /**
+     * @brief Evaluates error in the natural norm
+     * @param u temperature solution
+     * @param q heat flux solution
+     * @return error in natural norm for discrete and reference solutions
+     */
     std::tuple <double, double, double>
     evalXtError (Vector&, Vector&) const;
 

@@ -50,9 +50,9 @@ void heat::QoILFIntegrator
     }
 }
 
-
 // Quantity of interest functional
-void heat::QoIFunctional :: init () const
+void heat::QoIFunctional
+:: init () const
 {
     m_bObs.SetSize(m_fes->GetTrueVSize());
 
@@ -64,14 +64,18 @@ void heat::QoIFunctional :: init () const
     //m_bObs.Print();
 }
 
-double heat::QoIFunctional :: operator()(const GridFunction &u) const
+// Evalautes the QoI for a function passed as an MFEM GridFunction
+double heat::QoIFunctional
+:: operator()(const GridFunction &u) const
 {
     //std::cout << "\n\n";
     //u.Print();
     return std::move(u*m_bObs);
 }
 
-double heat::QoIFunctional :: operator()(const Vector &U) const
+// Evalautes the QoI for a function passed as a vector of coefficients
+double heat::QoIFunctional
+:: operator()(const Vector &U) const
 {
     //std::cout << "\n\n";
     //u.Print();
@@ -79,7 +83,8 @@ double heat::QoIFunctional :: operator()(const Vector &U) const
 }
 
 // Quantity of interest xt functional
-void heat::QoIXtFunctional :: init () const
+void heat::QoIXtFunctional
+:: init () const
 {
     int tDim = m_tFes->GetTrueVSize();
     int xDim = m_xFes->GetTrueVSize();
@@ -134,9 +139,10 @@ void heat::QoIXtFunctional :: init () const
     }
 }
 
-void heat::QoIXtFunctional :: add_vector(const Array<int> &vdofs,
-                                   const Vector& elvec,
-                                   Vector& b) const
+void heat::QoIXtFunctional
+:: add_vector(const Array<int> &vdofs,
+              const Vector& elvec,
+              Vector& b) const
 {
     int ndofs = elvec.Size();
     int tNdofs = vdofs.Size();
@@ -164,7 +170,9 @@ void heat::QoIXtFunctional :: add_vector(const Array<int> &vdofs,
     }
 }
 
-double heat::QoIXtFunctional :: operator()(const Vector &U) const
+// Evaluate the QoI
+double heat::QoIXtFunctional
+:: operator()(const Vector &U) const
 {
     //std::cout << "\n\n";
     //u.Print();

@@ -3,7 +3,9 @@
 #include "../src/core/config.hpp"
 #include "../src/mymfem/utilities.hpp"
 
-
+/**
+ * @brief Unit test for the function to compute upper-triangle
+ */
 TEST(MfemUtil, getUpperTriangle)
 {
     // CSR sparse matrix

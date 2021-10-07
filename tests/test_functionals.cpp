@@ -3,7 +3,9 @@
 #include "../src/core/config.hpp"
 #include "../src/heat/solver.hpp"
 
-
+/**
+ * @brief Unit test for computing the observables for square_test1
+ */
 TEST(Functionals, square_test1)
 {
     std::string config_file
@@ -46,6 +48,9 @@ TEST(Functionals, square_test1)
     ASSERT_LE(std::abs(qoi - true_qoi), TOL);
 }
 
+/**
+ * @brief Unit test for computing the observables for periodic_square_test1
+ */
 TEST(Functionals, periodic_square_test1)
 {
     std::string config_file

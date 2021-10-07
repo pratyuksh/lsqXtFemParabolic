@@ -75,10 +75,10 @@ void heat::Observer
             (m_tVspace, m_xV1space, 1.5);
 }
 
-// Dumps solution
+// Writes the solution to output file
 void heat::Observer
 :: dumpSol (std::shared_ptr<GridFunction>& u,
-             std::shared_ptr<GridFunction>& q) const
+            std::shared_ptr<GridFunction>& q) const
 {
     if (m_boolDumpOut)
     {
@@ -100,10 +100,10 @@ void heat::Observer
     }
 }
 
-// Computes L2 and H1 error for temperature
+// Evaluates L2 and H1 error of temperature at a given time t
 std::tuple <double, double, double, double> heat::Observer
 :: evalXH1Error (std::shared_ptr<GridFunction>& u,
-                  double t) const
+                 double t) const
 {
     double erruL2=0, uEL2=0;
     double erruH1=0, uEH1=0;
@@ -130,7 +130,7 @@ std::tuple <double, double, double, double> heat::Observer
                 std::move(erruH1), std::move(uEH1)};
 }
 
-// Computes L2L2 and L2H1 error for temperature
+// Evaluates L2L2 and L2H1 error of temperature
 std::tuple <double, double, double, double> heat::Observer
 :: evalXtL2H1Error (Vector& u) const
 {
@@ -206,13 +206,12 @@ std::tuple <double, double, double, double> heat::Observer
                 std::move(erruL2H1), std::move(uEL2H1)};
 }
 
-//! Computes least-squares error components
-//! given a time t
+// Evaluates least-squares error at a given time t
 std::tuple <double, double> heat::Observer
 :: evalXLsqError (std::shared_ptr<GridFunction>& u,
-                   std::shared_ptr<GridFunction>& dudt,
-                   std::shared_ptr<GridFunction>& q,
-                   double t) const
+                  std::shared_ptr<GridFunction>& dudt,
+                  std::shared_ptr<GridFunction>& q,
+                  double t) const
 {
     double errPde=0, errFlux=0;
 
@@ -263,7 +262,7 @@ std::tuple <double, double> heat::Observer
     return {std::move(errPde), std::move(errFlux)};
 }
 
-//! Computes least-squares error components
+// Evaluates least-squares error
 std::tuple <double, double, double> heat::Observer
 :: evalXtLsqError (Vector& u, Vector& q) const
 {
@@ -366,14 +365,13 @@ std::tuple <double, double, double> heat::Observer
                 std::move(errIc)};
 }
 
-//! Computes the error in the natural norm
-//! at a given time t
+// Evaluates error in the natural norm at a given time t
 std::tuple <double, double, double, double, double, double>
 heat::Observer
 :: evalXError (std::shared_ptr<GridFunction>& u,
-                std::shared_ptr<GridFunction>& dudt,
-                std::shared_ptr<GridFunction>& q,
-                double t) const
+               std::shared_ptr<GridFunction>& dudt,
+               std::shared_ptr<GridFunction>& q,
+               double t) const
 {
     double erruH1=0, uEH1=0;
     double errqL2=0, qEL2=0;
@@ -445,7 +443,7 @@ heat::Observer
                 std::move(errUDiv), std::move(UEDiv)};
 }
 
-//! Computes the error in the natural norm
+// Evaluates error in the natural norm
 std::tuple <double, double, double> heat::Observer
 :: evalXtError (Vector& u, Vector& q) const
 {
@@ -554,6 +552,7 @@ std::tuple <double, double, double> heat::Observer
     return {std::move(erruL2H1), std::move(errqL2L2),
                 std::move(errUDiv)};
 }
+
 
 // Computes the flux observation functional at end time T
 // given the temperature solution U in space-time

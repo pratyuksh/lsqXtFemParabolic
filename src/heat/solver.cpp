@@ -5,7 +5,7 @@
 #include <chrono>
 
 
-// Constructor
+// Constructor with config JSON
 heat::Solver :: Solver (const nlohmann::json& config)
     : m_config(config)
 {
@@ -32,57 +32,61 @@ heat::Solver :: Solver (const nlohmann::json& config)
     }
 }
 
+// Constructor with config JSON and test case
 heat::Solver :: Solver (const nlohmann::json& config,
-                          std::shared_ptr<heat::TestCases>&
-                          testCase)
+                        std::shared_ptr<heat::TestCases>&
+                        testCase)
     : Solver (config)
 {
     m_testCase = testCase;
 }
 
+// Constructor with config JSON and space-time mesh info
 heat::Solver :: Solver (const nlohmann::json& config,
-                          std::string mesh_dir,
-                          const int lx,
-                          const int lt,
-                          const bool load_init_mesh)
+                        std::string mesh_dir,
+                        const int lx,
+                        const int lt,
+                        const bool load_init_mesh)
     : Solver (config)
 {
     set(mesh_dir, lx, lt, load_init_mesh);
 }
 
+// Constructor with config JSON, test case and space-time mesh info
 heat::Solver :: Solver (const nlohmann::json& config,
-                          std::shared_ptr<heat::TestCases>&
-                          testCase,
-                          std::string mesh_dir,
-                          const int lx,
-                          const int lt,
-                          const bool load_init_mesh)
+                        std::shared_ptr<heat::TestCases>& testCase,
+                        std::string mesh_dir,
+                        const int lx,
+                        const int lt,
+                        const bool load_init_mesh)
     : Solver (config)
 {
     m_testCase = testCase;
     set(mesh_dir, lx, lt, load_init_mesh);
 }
 
+// Constructor with config JSON and spatial mesh info
 heat::Solver :: Solver (const nlohmann::json& config,
-                          std::string mesh_dir,
-                          const int lx,
-                          const bool load_init_mesh)
+                        std::string mesh_dir,
+                        const int lx,
+                        const bool load_init_mesh)
     : Solver (config)
 {
     set(mesh_dir, lx, -2, load_init_mesh);
 }
 
-// Destructor
+// Default constructor
 heat::Solver :: ~ Solver ()
 {
     finalize();
 }
 
-// Sets test case, meshes, discretization, observer
-void heat::Solver :: set (std::string mesh_dir,
-                        const int lx,
-                        const int lt,
-                        const bool load_init_mesh)
+// Sets auxiliary variables, meshes, discretization and observer
+void heat::Solver
+:: set (std::string mesh_dir,
+        const int lx,
+        const int lt,
+        const bool load_init_mesh)
 {
     set(mesh_dir, load_init_mesh);
 #ifdef MYVERBOSE
@@ -91,8 +95,10 @@ void heat::Solver :: set (std::string mesh_dir,
     set(lx, lt);
 }
 
-void heat::Solver :: set (std::string mesh_dir,
-                        const bool load_init_mesh)
+// Sets mesh related auxiliary variables
+void heat::Solver
+:: set (std::string mesh_dir,
+        const bool load_init_mesh)
 {
     m_loadInitMesh = load_init_mesh;
     m_meshDir = mesh_dir;
@@ -110,6 +116,7 @@ void heat::Solver :: set (std::string mesh_dir,
     }
 }
 
+// Sets meshes, discretization and observer
 void heat::Solver :: set(int lx, int lt)
 {
     m_firstPass = true;
@@ -148,7 +155,8 @@ void heat::Solver :: set(int lx, int lt)
 }
 
 // Sets meshes
-void heat::Solver :: setMeshes(int lx, int lt)
+void heat::Solver
+:: setMeshes(int lx, int lt)
 {
     // mesh in space
     m_xMesh.reset();
@@ -198,7 +206,8 @@ void heat::Solver :: setPerturbation(double omega)
     m_testCase->setPerturbation(omega);
 }
 
-// Runs the solver; used for the full-tensor version
+// Initializes and then runs the solver,
+// used for the full-tensor version
 std::tuple<int, double, double, Eigen::VectorXd> heat::Solver
 :: operator() ()
 {
@@ -221,8 +230,9 @@ std::tuple<int, double, double, Eigen::VectorXd> heat::Solver
                 std::move(errSol) };
 }
 
-// Runs the solver; used for the sparse-grids handler
-void heat::Solver
+// Initializes and then runs the solver,
+// used for the sparse-grids handler
+/*void heat::Solver
 :: operator()(std::unique_ptr<BlockVector>& W)
 {
     // MFEM solution variables
@@ -240,9 +250,9 @@ void heat::Solver
     // visualization at end time
     auto u = getTemperatureSolAtEndTime(W.get());
     (*m_observer)(u);
-}
+}*/
 
-// Runs the solver
+// Runs the solver, assumes the solver has already been initialized
 void heat::Solver
 :: run()
 {
@@ -320,14 +330,16 @@ double heat::Solver
 }
 
 // Initializes the solver
-void heat::Solver :: init ()
+void heat::Solver
+:: init ()
 {
     assembleRhs();
     assembleSystem();
 }
 
 // Assembles the right-hand side
-void heat::Solver :: assembleRhs()
+void heat::Solver
+:: assembleRhs()
 {
     if (m_firstPass) {
         (*m_B) = 0.0;
@@ -337,7 +349,8 @@ void heat::Solver :: assembleRhs()
 }
 
 // Assembles the system
-void heat::Solver :: assembleSystem()
+void heat::Solver
+:: assembleSystem()
 {
     m_discr->assembleSystem();
 
@@ -383,9 +396,10 @@ void heat::Solver :: assembleSystem()
     }
 }
 
-// Solves the linear system
-void heat::Solver :: solve (BlockVector *W,
-                          BlockVector *B) const
+// Solves the linear system resulting from the discretisation
+void heat::Solver
+:: solve (BlockVector *W,
+          BlockVector *B) const
 {
     if (m_linearSolver == "pardiso")
     {
@@ -412,8 +426,9 @@ void heat::Solver :: solve (BlockVector *W,
     }
 }
 
-// Releases memory
-void heat::Solver :: finalize() const
+// Releases allocated memory
+void heat::Solver
+:: finalize() const
 {
     if (!m_pardisoFinalized) {
 #ifdef MYVERBOSE
@@ -424,7 +439,7 @@ void heat::Solver :: finalize() const
     }
 }
 
-// Computes the numerical solution error
+// Computes the solution error
 Eigen::VectorXd heat::Solver
 :: computeError(BlockVector *W) const
 {
@@ -475,46 +490,46 @@ Eigen::VectorXd heat::Solver
             errSol(1) = erruL2H1/uEL2H1;
         }
         else if (m_errorType == "lsq") {
-//#ifdef MYVERBOSE
+#ifdef MYVERBOSE
             std::cout << "  Computing space-time "
                          "least-squares error..."
                       << std::endl;
-//#endif
+#endif
             double errPde, errFlux, errIc;
             std::tie (errPde, errFlux, errIc)
                     = m_observer->evalXtLsqError
                     (W->GetBlock(0), W->GetBlock(1));
-//#ifdef MYVERBOSE
+#ifdef MYVERBOSE
             std::cout << "\tLsq Pde error: "
                       << errPde << std::endl;
             std::cout << "\tLsq Flux error: "
                       << errFlux << std::endl;
             std::cout << "\tLsq Ic error: "
                       << errIc << std::endl;
-//#endif
+#endif
             errSol.resize(3);
             errSol(0) = errPde;
             errSol(1) = errFlux;
             errSol(2) = errIc;
         }
         else if (m_errorType == "natural") {
-//#ifdef MYVERBOSE
+#ifdef MYVERBOSE
             std::cout << "  Computing error "
                          "in natural norm..."
                       << std::endl;
-//#endif
+#endif
             double erruL2H1, errqL2L2, errUDiv;
             std::tie (erruL2H1, errqL2L2, errUDiv)
                     = m_observer->evalXtError
                     (W->GetBlock(0), W->GetBlock(1));
-//#ifdef MYVERBOSE
+#ifdef MYVERBOSE
             std::cout << "\tu L2H1 error: "
                       << erruL2H1 << std::endl;
             std::cout << "\tq L2L2 error: "
                       << errqL2L2 << std::endl;
             std::cout << "\tDivergence error: "
                       << errUDiv << std::endl;
-//#endif
+#endif
             errSol.resize(3);
             errSol(0) = erruL2H1;
             errSol(1) = errqL2L2;
@@ -529,7 +544,7 @@ Eigen::VectorXd heat::Solver
     return errSol;
 }
 
-// Evaluates the temperature solution vector at end time T
+// Evaluates the temperature solution at end time
 std::shared_ptr <GridFunction> heat::Solver
 :: getTemperatureSolAtEndTime(BlockVector *W) const
 {
@@ -560,7 +575,7 @@ std::shared_ptr <GridFunction> heat::Solver
     return u;
 }
 
-// Evaluates the flux solution vector at end time T
+// Evaluates the flux solution vector at end time
 std::shared_ptr <GridFunction> heat::Solver
 :: getFluxSolAtEndTime(BlockVector *W) const
 {
@@ -592,21 +607,22 @@ std::shared_ptr <GridFunction> heat::Solver
     return q;
 }
 
-// Sets the temperature solution vector at end time T
+// Sets the temperature solution at end time
 void heat::Solver
 :: setTemperatureSolAtEndTime()
 {
     m_temperature = getTemperatureSolAtEndTime(m_W.get());
 }
 
-// Sets the flux solution vector at end time T
+// Sets the flux solution vector end time
 void heat::Solver
 :: setFluxSolAtEndTime()
 {
     m_flux = getFluxSolAtEndTime(m_W.get());
 }
 
-// Routines for computing L2-projection
+// Initializes and computes the L2-projection
+// Used for the full-tensor version
 std::tuple<int, double, double, Eigen::VectorXd> heat::Solver
 :: projection ()
 {
@@ -630,15 +646,15 @@ std::tuple<int, double, double, Eigen::VectorXd> heat::Solver
     auto errSol = computeError(m_W.get());
 
     // max meshwidth in space and time
-    double ht_max, hx_max;
-    std::tie(ht_max, hx_max) = getMeshChars();
+    double htMax, hxMax;
+    std::tie(htMax, hxMax) = getMeshChars();
 
     return {std::move(getNdofs()),
-                std::move(ht_max), std::move(hx_max),
+                std::move(htMax), std::move(hxMax),
                 std::move(errSol) };
 }
 
-void heat::Solver
+/*void heat::Solver
 :: projection (std::unique_ptr<BlockVector>& W)
 {
     // MFEM solution variables
@@ -652,15 +668,19 @@ void heat::Solver
 
     // compute projection
     solve (W.get(), m_B.get());
-}
+}*/
 
-void heat::Solver :: initProjection()
+// Initializes projection
+void heat::Solver
+:: initProjection()
 {
     assembleProjectionRhs();
     assembleProjectionSystem();
 }
 
-void heat::Solver :: assembleProjectionRhs()
+// Assembles projection right-hand side
+void heat::Solver
+:: assembleProjectionRhs()
 {
     if (m_firstPass) {
         (*m_B) = 0.0;
@@ -669,7 +689,9 @@ void heat::Solver :: assembleProjectionRhs()
     }
 }
 
-void heat::Solver :: assembleProjectionSystem()
+// Assembles the system matrix for projection
+void heat::Solver
+:: assembleProjectionSystem()
 {
     m_discr->assembleProjector();
     m_discr->buildProjectorMatrix();
