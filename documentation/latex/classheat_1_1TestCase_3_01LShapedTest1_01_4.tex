@@ -1,0 +1,353 @@
+\hypertarget{classheat_1_1TestCase_3_01LShapedTest1_01_4}{}\doxysection{heat\+::Test\+Case$<$ L\+Shaped\+Test1 $>$ Class Reference}
+\label{classheat_1_1TestCase_3_01LShapedTest1_01_4}\index{heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}}
+
+
+{\ttfamily \#include $<$test\+\_\+cases.\+hpp$>$}
+
+
+
+Inheritance diagram for heat\+::Test\+Case$<$ L\+Shaped\+Test1 $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{classheat_1_1TestCase_3_01LShapedTest1_01_4__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for heat\+::Test\+Case$<$ L\+Shaped\+Test1 $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{classheat_1_1TestCase_3_01LShapedTest1_01_4__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classheat_1_1TestCase_3_01LShapedTest1_01_4_a2062a62a7164f9bab838fe380fdc0d37}{Test\+Case}} (const nlohmann\+::json \&config)
+\item 
+double \mbox{\hyperlink{classheat_1_1TestCase_3_01LShapedTest1_01_4_af478395ab279da510d06aeea2b10b24c}{temperature\+Sol}} (const Vector \&, const double) const override
+\begin{DoxyCompactList}\small\item\em Temperature solution. \end{DoxyCompactList}\item 
+Vector \mbox{\hyperlink{classheat_1_1TestCase_3_01LShapedTest1_01_4_aa5781fa5fb7e43fbec34658de95c2da8}{heat\+Flux\+Sol}} (const Vector \&, const double) const override
+\begin{DoxyCompactList}\small\item\em Heat flux solution. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classheat_1_1TestCase_3_01LShapedTest1_01_4_ab24addf5b4d76890ffda5bd8bf0b9fe4}{temperature\+Time\+Gradient\+Sol}} (const Vector \&, const double) const override
+\begin{DoxyCompactList}\small\item\em Temperature gradient with respect to time. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classheat_1_1TestCase_3_01LShapedTest1_01_4_ad513ab5b5ae1b49efc2cc8c14826a806}{source}} (const Vector \&, const double) const override
+\begin{DoxyCompactList}\small\item\em source term in the heat equation \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classheat_1_1TestCase_3_01LShapedTest1_01_4_a680f34b258bef2c56c7318ca55f38010}{set\+Bdry\+Dirichlet}} (Array$<$ int $>$ \&) const override
+\begin{DoxyCompactList}\small\item\em Sets the Dirichlet boundary. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classheat_1_1TestCase_3_01LShapedTest1_01_4_a2f8ca7b868a3c728a3aa069ba3a882c6}{medium}} (const Vector \&) const override
+\begin{DoxyCompactList}\small\item\em Defines the scalar material coefficient. \end{DoxyCompactList}\item 
+Dense\+Matrix \mbox{\hyperlink{classheat_1_1TestCase_3_01LShapedTest1_01_4_ae1bc06b0460d315d9e8186df4334e88f}{medium\+Tensor}} (const Vector \&) const override
+\begin{DoxyCompactList}\small\item\em Defines the matrix material coefficient. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classheat_1_1TestCase_3_01LShapedTest1_01_4_a1e3073b446fb3d25f9787a2c60d95dfd}{laplacian}} (const Vector \&x, const double t) const override
+\item 
+double \mbox{\hyperlink{classheat_1_1TestCase_3_01LShapedTest1_01_4_a7dce07a473d310d294f5e33791f61589}{init\+Temperature}} (const Vector \&x) const override
+\begin{DoxyCompactList}\small\item\em Initial temperature. \end{DoxyCompactList}\item 
+Vector \mbox{\hyperlink{classheat_1_1TestCase_3_01LShapedTest1_01_4_a78ea3de8572da82b7d33f444218438ef}{init\+Heat\+Flux}} (const Vector \&x) const override
+\begin{DoxyCompactList}\small\item\em Initial heat flux. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classheat_1_1TestCase_3_01LShapedTest1_01_4_a5b3836a36a18b783a79e88aa860aa85f}{bdry\+Temperature}} (const Vector \&x, const double t) const override
+\begin{DoxyCompactList}\small\item\em Temperature at the boundary of spatial domain. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classheat_1_1TestCase_3_01LShapedTest1_01_4_a504817131639fc311aeb0b019c3f7686}{set\+Perturbation}} (double) const override
+\item 
+void \mbox{\hyperlink{classheat_1_1TestCase_3_01LShapedTest1_01_4_aaf1b439255908297c7ae1bacaeadfcfe}{set\+Perturbations}} (const Vector \&) const override
+\item 
+int \mbox{\hyperlink{classheat_1_1TestCase_3_01LShapedTest1_01_4_aba4302891cbebcfb485be358d7f605e2}{get\+Dim}} () const override
+\begin{DoxyCompactList}\small\item\em Returns the number of spatial dimensions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Template specialization for an L-\/shaped domain, with Test1; Non-\/zero initial conditions; Homogeneous Dirichlet boundary; Non-\/zero source 
+
+Definition at line 475 of file test\+\_\+cases.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classheat_1_1TestCase_3_01LShapedTest1_01_4_a2062a62a7164f9bab838fe380fdc0d37}\label{classheat_1_1TestCase_3_01LShapedTest1_01_4_a2062a62a7164f9bab838fe380fdc0d37}} 
+\index{heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}!TestCase@{TestCase}}
+\index{TestCase@{TestCase}!heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}}
+\doxysubsubsection{\texorpdfstring{TestCase()}{TestCase()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classheat_1_1TestCase}{heat\+::\+Test\+Case}}$<$ \mbox{\hyperlink{test__cases_8hpp_a06fc87d81c62e9abb8790b6e5713c55bab4505e1699147cdff225ea9a8315fee7}{L\+Shaped\+Test1}} $>$\+::\mbox{\hyperlink{classheat_1_1TestCase}{Test\+Case}} (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{config }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Definition at line 479 of file test\+\_\+cases.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classheat_1_1TestCase_3_01LShapedTest1_01_4_a5b3836a36a18b783a79e88aa860aa85f}\label{classheat_1_1TestCase_3_01LShapedTest1_01_4_a5b3836a36a18b783a79e88aa860aa85f}} 
+\index{heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}!bdryTemperature@{bdryTemperature}}
+\index{bdryTemperature@{bdryTemperature}!heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}}
+\doxysubsubsection{\texorpdfstring{bdryTemperature()}{bdryTemperature()}}
+{\footnotesize\ttfamily double \mbox{\hyperlink{classheat_1_1TestCase}{heat\+::\+Test\+Case}}$<$ \mbox{\hyperlink{test__cases_8hpp_a06fc87d81c62e9abb8790b6e5713c55bab4505e1699147cdff225ea9a8315fee7}{L\+Shaped\+Test1}} $>$\+::bdry\+Temperature (\begin{DoxyParamCaption}\item[{const Vector \&}]{,  }\item[{const double}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Temperature at the boundary of spatial domain. 
+
+\begin{DoxyReturn}{Returns}
+value of temperature at a given point on the spatial boundary 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classheat_1_1TestCases_af78151f28925eaea549ddad2ad312ae7}{heat\+::\+Test\+Cases}}.
+
+
+
+Definition at line 526 of file test\+\_\+cases.\+hpp.
+
+\mbox{\Hypertarget{classheat_1_1TestCase_3_01LShapedTest1_01_4_aba4302891cbebcfb485be358d7f605e2}\label{classheat_1_1TestCase_3_01LShapedTest1_01_4_aba4302891cbebcfb485be358d7f605e2}} 
+\index{heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}!getDim@{getDim}}
+\index{getDim@{getDim}!heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}}
+\doxysubsubsection{\texorpdfstring{getDim()}{getDim()}}
+{\footnotesize\ttfamily int \mbox{\hyperlink{classheat_1_1TestCase}{heat\+::\+Test\+Case}}$<$ \mbox{\hyperlink{test__cases_8hpp_a06fc87d81c62e9abb8790b6e5713c55bab4505e1699147cdff225ea9a8315fee7}{L\+Shaped\+Test1}} $>$\+::get\+Dim (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns the number of spatial dimensions. 
+
+
+
+Implements \mbox{\hyperlink{classheat_1_1TestCases_a84dd0eb240d74c05b8e6f0d0e08090f8}{heat\+::\+Test\+Cases}}.
+
+
+
+Definition at line 535 of file test\+\_\+cases.\+hpp.
+
+\mbox{\Hypertarget{classheat_1_1TestCase_3_01LShapedTest1_01_4_aa5781fa5fb7e43fbec34658de95c2da8}\label{classheat_1_1TestCase_3_01LShapedTest1_01_4_aa5781fa5fb7e43fbec34658de95c2da8}} 
+\index{heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}!heatFluxSol@{heatFluxSol}}
+\index{heatFluxSol@{heatFluxSol}!heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}}
+\doxysubsubsection{\texorpdfstring{heatFluxSol()}{heatFluxSol()}}
+{\footnotesize\ttfamily Vector \mbox{\hyperlink{classheat_1_1TestCase}{heat\+::\+Test\+Case}}$<$ \mbox{\hyperlink{test__cases_8hpp_a06fc87d81c62e9abb8790b6e5713c55bab4505e1699147cdff225ea9a8315fee7}{L\+Shaped\+Test1}} $>$\+::heat\+Flux\+Sol (\begin{DoxyParamCaption}\item[{const Vector \&}]{,  }\item[{const double}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Heat flux solution. 
+
+\begin{DoxyReturn}{Returns}
+heat flux value at a given point in space-\/time 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classheat_1_1TestCases_a43b76a89e875dd69c4b4ab169e173123}{heat\+::\+Test\+Cases}}.
+
+
+
+Definition at line 342 of file test\+\_\+cases.\+cpp.
+
+\mbox{\Hypertarget{classheat_1_1TestCase_3_01LShapedTest1_01_4_a78ea3de8572da82b7d33f444218438ef}\label{classheat_1_1TestCase_3_01LShapedTest1_01_4_a78ea3de8572da82b7d33f444218438ef}} 
+\index{heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}!initHeatFlux@{initHeatFlux}}
+\index{initHeatFlux@{initHeatFlux}!heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}}
+\doxysubsubsection{\texorpdfstring{initHeatFlux()}{initHeatFlux()}}
+{\footnotesize\ttfamily Vector \mbox{\hyperlink{classheat_1_1TestCase}{heat\+::\+Test\+Case}}$<$ \mbox{\hyperlink{test__cases_8hpp_a06fc87d81c62e9abb8790b6e5713c55bab4505e1699147cdff225ea9a8315fee7}{L\+Shaped\+Test1}} $>$\+::init\+Heat\+Flux (\begin{DoxyParamCaption}\item[{const Vector \&}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Initial heat flux. 
+
+\begin{DoxyReturn}{Returns}
+value of heat flux vector at a given point in space 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classheat_1_1TestCases_a5b81b467e9d04b2b52b52158ebaf3a3e}{heat\+::\+Test\+Cases}}.
+
+
+
+Definition at line 522 of file test\+\_\+cases.\+hpp.
+
+\mbox{\Hypertarget{classheat_1_1TestCase_3_01LShapedTest1_01_4_a7dce07a473d310d294f5e33791f61589}\label{classheat_1_1TestCase_3_01LShapedTest1_01_4_a7dce07a473d310d294f5e33791f61589}} 
+\index{heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}!initTemperature@{initTemperature}}
+\index{initTemperature@{initTemperature}!heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}}
+\doxysubsubsection{\texorpdfstring{initTemperature()}{initTemperature()}}
+{\footnotesize\ttfamily double \mbox{\hyperlink{classheat_1_1TestCase}{heat\+::\+Test\+Case}}$<$ \mbox{\hyperlink{test__cases_8hpp_a06fc87d81c62e9abb8790b6e5713c55bab4505e1699147cdff225ea9a8315fee7}{L\+Shaped\+Test1}} $>$\+::init\+Temperature (\begin{DoxyParamCaption}\item[{const Vector \&}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Initial temperature. 
+
+\begin{DoxyReturn}{Returns}
+value of initial temperature at a given point in space 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classheat_1_1TestCases_ad51960bc8ae189826c9f2c6dcb2d5aec}{heat\+::\+Test\+Cases}}.
+
+
+
+Definition at line 518 of file test\+\_\+cases.\+hpp.
+
+\mbox{\Hypertarget{classheat_1_1TestCase_3_01LShapedTest1_01_4_a1e3073b446fb3d25f9787a2c60d95dfd}\label{classheat_1_1TestCase_3_01LShapedTest1_01_4_a1e3073b446fb3d25f9787a2c60d95dfd}} 
+\index{heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}!laplacian@{laplacian}}
+\index{laplacian@{laplacian}!heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}}
+\doxysubsubsection{\texorpdfstring{laplacian()}{laplacian()}}
+{\footnotesize\ttfamily double \mbox{\hyperlink{classheat_1_1TestCase}{heat\+::\+Test\+Case}}$<$ \mbox{\hyperlink{test__cases_8hpp_a06fc87d81c62e9abb8790b6e5713c55bab4505e1699147cdff225ea9a8315fee7}{L\+Shaped\+Test1}} $>$\+::laplacian (\begin{DoxyParamCaption}\item[{const Vector \&}]{x,  }\item[{const double}]{t }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classheat_1_1TestCases_af414f31c5d5b1d2e9b9464c5dd04628a}{heat\+::\+Test\+Cases}}.
+
+
+
+Definition at line 513 of file test\+\_\+cases.\+hpp.
+
+\mbox{\Hypertarget{classheat_1_1TestCase_3_01LShapedTest1_01_4_a2f8ca7b868a3c728a3aa069ba3a882c6}\label{classheat_1_1TestCase_3_01LShapedTest1_01_4_a2f8ca7b868a3c728a3aa069ba3a882c6}} 
+\index{heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}!medium@{medium}}
+\index{medium@{medium}!heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}}
+\doxysubsubsection{\texorpdfstring{medium()}{medium()}}
+{\footnotesize\ttfamily double \mbox{\hyperlink{classheat_1_1TestCase}{heat\+::\+Test\+Case}}$<$ \mbox{\hyperlink{test__cases_8hpp_a06fc87d81c62e9abb8790b6e5713c55bab4505e1699147cdff225ea9a8315fee7}{L\+Shaped\+Test1}} $>$\+::medium (\begin{DoxyParamCaption}\item[{const Vector \&}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Defines the scalar material coefficient. 
+
+\begin{DoxyReturn}{Returns}
+material coefficient at a given physical point 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classheat_1_1TestCases_aff60a8ac763f0c49b8108f88fed14c27}{heat\+::\+Test\+Cases}}.
+
+
+
+Definition at line 499 of file test\+\_\+cases.\+hpp.
+
+\mbox{\Hypertarget{classheat_1_1TestCase_3_01LShapedTest1_01_4_ae1bc06b0460d315d9e8186df4334e88f}\label{classheat_1_1TestCase_3_01LShapedTest1_01_4_ae1bc06b0460d315d9e8186df4334e88f}} 
+\index{heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}!mediumTensor@{mediumTensor}}
+\index{mediumTensor@{mediumTensor}!heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}}
+\doxysubsubsection{\texorpdfstring{mediumTensor()}{mediumTensor()}}
+{\footnotesize\ttfamily Dense\+Matrix \mbox{\hyperlink{classheat_1_1TestCase}{heat\+::\+Test\+Case}}$<$ \mbox{\hyperlink{test__cases_8hpp_a06fc87d81c62e9abb8790b6e5713c55bab4505e1699147cdff225ea9a8315fee7}{L\+Shaped\+Test1}} $>$\+::medium\+Tensor (\begin{DoxyParamCaption}\item[{const Vector \&}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Defines the matrix material coefficient. 
+
+\begin{DoxyReturn}{Returns}
+material coefficient at a given physical point 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classheat_1_1TestCases_aad7d473f3fde3f9f8be335199e60e7ab}{heat\+::\+Test\+Cases}}.
+
+
+
+Definition at line 504 of file test\+\_\+cases.\+hpp.
+
+\mbox{\Hypertarget{classheat_1_1TestCase_3_01LShapedTest1_01_4_a680f34b258bef2c56c7318ca55f38010}\label{classheat_1_1TestCase_3_01LShapedTest1_01_4_a680f34b258bef2c56c7318ca55f38010}} 
+\index{heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}!setBdryDirichlet@{setBdryDirichlet}}
+\index{setBdryDirichlet@{setBdryDirichlet}!heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}}
+\doxysubsubsection{\texorpdfstring{setBdryDirichlet()}{setBdryDirichlet()}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{classheat_1_1TestCase}{heat\+::\+Test\+Case}}$<$ \mbox{\hyperlink{test__cases_8hpp_a06fc87d81c62e9abb8790b6e5713c55bab4505e1699147cdff225ea9a8315fee7}{L\+Shaped\+Test1}} $>$\+::set\+Bdry\+Dirichlet (\begin{DoxyParamCaption}\item[{Array$<$ int $>$ \&}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Sets the Dirichlet boundary. 
+
+
+
+Implements \mbox{\hyperlink{classheat_1_1TestCases_a7645962f9c776d2938d009d567ea057e}{heat\+::\+Test\+Cases}}.
+
+
+
+Definition at line 403 of file test\+\_\+cases.\+cpp.
+
+\mbox{\Hypertarget{classheat_1_1TestCase_3_01LShapedTest1_01_4_a504817131639fc311aeb0b019c3f7686}\label{classheat_1_1TestCase_3_01LShapedTest1_01_4_a504817131639fc311aeb0b019c3f7686}} 
+\index{heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}!setPerturbation@{setPerturbation}}
+\index{setPerturbation@{setPerturbation}!heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}}
+\doxysubsubsection{\texorpdfstring{setPerturbation()}{setPerturbation()}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{classheat_1_1TestCase}{heat\+::\+Test\+Case}}$<$ \mbox{\hyperlink{test__cases_8hpp_a06fc87d81c62e9abb8790b6e5713c55bab4505e1699147cdff225ea9a8315fee7}{L\+Shaped\+Test1}} $>$\+::set\+Perturbation (\begin{DoxyParamCaption}\item[{double}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classheat_1_1TestCases_a1b307ecfb9f43dc6608067d69ecad461}{heat\+::\+Test\+Cases}}.
+
+
+
+Definition at line 531 of file test\+\_\+cases.\+hpp.
+
+\mbox{\Hypertarget{classheat_1_1TestCase_3_01LShapedTest1_01_4_aaf1b439255908297c7ae1bacaeadfcfe}\label{classheat_1_1TestCase_3_01LShapedTest1_01_4_aaf1b439255908297c7ae1bacaeadfcfe}} 
+\index{heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}!setPerturbations@{setPerturbations}}
+\index{setPerturbations@{setPerturbations}!heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}}
+\doxysubsubsection{\texorpdfstring{setPerturbations()}{setPerturbations()}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{classheat_1_1TestCase}{heat\+::\+Test\+Case}}$<$ \mbox{\hyperlink{test__cases_8hpp_a06fc87d81c62e9abb8790b6e5713c55bab4505e1699147cdff225ea9a8315fee7}{L\+Shaped\+Test1}} $>$\+::set\+Perturbations (\begin{DoxyParamCaption}\item[{const Vector \&}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classheat_1_1TestCases_afacd62b1ccc5b49aa2ae223c8c153a89}{heat\+::\+Test\+Cases}}.
+
+
+
+Definition at line 533 of file test\+\_\+cases.\+hpp.
+
+\mbox{\Hypertarget{classheat_1_1TestCase_3_01LShapedTest1_01_4_ad513ab5b5ae1b49efc2cc8c14826a806}\label{classheat_1_1TestCase_3_01LShapedTest1_01_4_ad513ab5b5ae1b49efc2cc8c14826a806}} 
+\index{heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}!source@{source}}
+\index{source@{source}!heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}}
+\doxysubsubsection{\texorpdfstring{source()}{source()}}
+{\footnotesize\ttfamily double \mbox{\hyperlink{classheat_1_1TestCase}{heat\+::\+Test\+Case}}$<$ \mbox{\hyperlink{test__cases_8hpp_a06fc87d81c62e9abb8790b6e5713c55bab4505e1699147cdff225ea9a8315fee7}{L\+Shaped\+Test1}} $>$\+::source (\begin{DoxyParamCaption}\item[{const Vector \&}]{,  }\item[{const double}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+source term in the heat equation 
+
+\begin{DoxyReturn}{Returns}
+value of source at a given point in space-\/time 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classheat_1_1TestCases_aedb99ab56fae9469ea9eac75a89a1eab}{heat\+::\+Test\+Cases}}.
+
+
+
+Definition at line 379 of file test\+\_\+cases.\+cpp.
+
+\mbox{\Hypertarget{classheat_1_1TestCase_3_01LShapedTest1_01_4_af478395ab279da510d06aeea2b10b24c}\label{classheat_1_1TestCase_3_01LShapedTest1_01_4_af478395ab279da510d06aeea2b10b24c}} 
+\index{heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}!temperatureSol@{temperatureSol}}
+\index{temperatureSol@{temperatureSol}!heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}}
+\doxysubsubsection{\texorpdfstring{temperatureSol()}{temperatureSol()}}
+{\footnotesize\ttfamily double \mbox{\hyperlink{classheat_1_1TestCase}{heat\+::\+Test\+Case}}$<$ \mbox{\hyperlink{test__cases_8hpp_a06fc87d81c62e9abb8790b6e5713c55bab4505e1699147cdff225ea9a8315fee7}{L\+Shaped\+Test1}} $>$\+::temperature\+Sol (\begin{DoxyParamCaption}\item[{const Vector \&}]{,  }\item[{const double}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Temperature solution. 
+
+\begin{DoxyReturn}{Returns}
+temperature value at a given point in space-\/time 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classheat_1_1TestCases_a0c4d3c60f78aaac086fe2d35e8c3e7bb}{heat\+::\+Test\+Cases}}.
+
+
+
+Definition at line 330 of file test\+\_\+cases.\+cpp.
+
+\mbox{\Hypertarget{classheat_1_1TestCase_3_01LShapedTest1_01_4_ab24addf5b4d76890ffda5bd8bf0b9fe4}\label{classheat_1_1TestCase_3_01LShapedTest1_01_4_ab24addf5b4d76890ffda5bd8bf0b9fe4}} 
+\index{heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}!temperatureTimeGradientSol@{temperatureTimeGradientSol}}
+\index{temperatureTimeGradientSol@{temperatureTimeGradientSol}!heat::TestCase$<$ LShapedTest1 $>$@{heat::TestCase$<$ LShapedTest1 $>$}}
+\doxysubsubsection{\texorpdfstring{temperatureTimeGradientSol()}{temperatureTimeGradientSol()}}
+{\footnotesize\ttfamily double \mbox{\hyperlink{classheat_1_1TestCase}{heat\+::\+Test\+Case}}$<$ \mbox{\hyperlink{test__cases_8hpp_a06fc87d81c62e9abb8790b6e5713c55bab4505e1699147cdff225ea9a8315fee7}{L\+Shaped\+Test1}} $>$\+::temperature\+Time\+Gradient\+Sol (\begin{DoxyParamCaption}\item[{const Vector \&}]{,  }\item[{const double}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Temperature gradient with respect to time. 
+
+\begin{DoxyReturn}{Returns}
+value of temperature time-\/gradient at a given point in space-\/time 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classheat_1_1TestCases_a4bab70aa8647b7619e4a4d0b1184588e}{heat\+::\+Test\+Cases}}.
+
+
+
+Definition at line 367 of file test\+\_\+cases.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{test__cases_8hpp}{test\+\_\+cases.\+hpp}}\item 
+\mbox{\hyperlink{test__cases_8cpp}{test\+\_\+cases.\+cpp}}\end{DoxyCompactItemize}

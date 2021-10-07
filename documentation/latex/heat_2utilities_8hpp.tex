@@ -1,0 +1,50 @@
+\hypertarget{heat_2utilities_8hpp}{}\doxysection{utilities.\+hpp File Reference}
+\label{heat_2utilities_8hpp}\index{utilities.hpp@{utilities.hpp}}
+{\ttfamily \#include \char`\"{}mfem.\+hpp\char`\"{}}\newline
+Include dependency graph for heat/utilities.hpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=146pt]{heat_2utilities_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{heat_2utilities_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{heat_2utilities_8hpp_a7be2192da12d45ad7a79fdbb623d8e42}{build\+X\+Sol\+FG}} (const Vector \&u\+Xt\+Sol, const Vector \&t\+Shape, Array$<$ int $>$ t\+Vdofs, Vector \&u\+Sol)
+\begin{DoxyCompactList}\small\item\em Builds the solution in a space-\/time element. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{heat_2utilities_8hpp_a7be2192da12d45ad7a79fdbb623d8e42}\label{heat_2utilities_8hpp_a7be2192da12d45ad7a79fdbb623d8e42}} 
+\index{heat/utilities.hpp@{heat/utilities.hpp}!buildXSolFG@{buildXSolFG}}
+\index{buildXSolFG@{buildXSolFG}!heat/utilities.hpp@{heat/utilities.hpp}}
+\doxysubsubsection{\texorpdfstring{buildXSolFG()}{buildXSolFG()}}
+{\footnotesize\ttfamily void build\+X\+Sol\+FG (\begin{DoxyParamCaption}\item[{const Vector \&}]{u\+Xt\+Sol,  }\item[{const Vector \&}]{t\+Shape,  }\item[{Array$<$ int $>$}]{t\+Vdofs,  }\item[{Vector \&}]{u\+Sol }\end{DoxyParamCaption})}
+
+
+
+Builds the solution in a space-\/time element. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u\+Xt\+Sol} & coefficients of the discrete space-\/time solution \\
+\hline
+{\em t\+Shape} & FE shape vector in temporal dimension at time t \\
+\hline
+{\em t\+Vdofs} & Indices of the dofs in temporal dimension \\
+\hline
+{\em u\+Sol} & coefficients of the discrete spatial solution at time t \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 7 of file heat/utilities.\+cpp.
+

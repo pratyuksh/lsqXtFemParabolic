@@ -1,0 +1,27 @@
+{
+    "host": "local",
+    
+    "problem_type": "unitSquare_test3",
+    
+    "run": "convergenceFG",
+    
+    "load_init_mesh": true,
+    "init_mesh_level": 0,
+    
+    "end_time": 1,
+    
+    "discretisation_type": "H1H1",
+    
+    "deg": 1,
+    "min_level_t": 1,
+    "min_level_x": 1,
+    "max_level_x": 4,
+    
+    "mesh_dir": "unitSquare",
+    
+    "eval_error": true,
+    "error_type": "natural",
+    
+    "base_out_dir": "../output",
+    "sub_out_dir": "heat/unitSquare_test3"
+}

@@ -1,0 +1,129 @@
+\hypertarget{classheat_1_1QoIFunctional}{}\doxysection{heat\+::Qo\+I\+Functional Class Reference}
+\label{classheat_1_1QoIFunctional}\index{heat::QoIFunctional@{heat::QoIFunctional}}
+
+
+Quantity of interest functional; (x$^\wedge$a, fluxQ)  
+
+
+
+
+{\ttfamily \#include $<$functionals.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classheat_1_1QoIFunctional_a1230675e801e1b0ce53260f478e48ed2}{Qo\+I\+Functional}} (Finite\+Element\+Space $\ast$fes)
+\begin{DoxyCompactList}\small\item\em Constructor with FE space passed as an argument. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classheat_1_1QoIFunctional_af0580b67300a9f4f384e1e2bfa0c3669}{Qo\+I\+Functional}} (Finite\+Element\+Space $\ast$fes, double a)
+\begin{DoxyCompactList}\small\item\em Constructor with FE space and power exponent passed as argument. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classheat_1_1QoIFunctional_a92901223446aae4778ff14c55b93720c}{$\sim$\+Qo\+I\+Functional}} ()
+\begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classheat_1_1QoIFunctional_a3c13c940f8f010feef7bfe135bc26b56}{init}} () const
+\begin{DoxyCompactList}\small\item\em Initializes the integrator. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classheat_1_1QoIFunctional_a3cf41da3cec01c4874598434bedc0649}{operator()}} (const Grid\+Function \&f) const
+\begin{DoxyCompactList}\small\item\em Evalautes the QoI for a function passed as an M\+F\+EM Grid\+Function. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classheat_1_1QoIFunctional_affd171ac085a724874f79e0251c0f4fe}{operator()}} (const Vector \&f) const
+\begin{DoxyCompactList}\small\item\em Evalautes the QoI for a function passed as a vector of coefficients. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Quantity of interest functional; (x$^\wedge$a, fluxQ) 
+
+Definition at line 34 of file functionals.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classheat_1_1QoIFunctional_a1230675e801e1b0ce53260f478e48ed2}\label{classheat_1_1QoIFunctional_a1230675e801e1b0ce53260f478e48ed2}} 
+\index{heat::QoIFunctional@{heat::QoIFunctional}!QoIFunctional@{QoIFunctional}}
+\index{QoIFunctional@{QoIFunctional}!heat::QoIFunctional@{heat::QoIFunctional}}
+\doxysubsubsection{\texorpdfstring{QoIFunctional()}{QoIFunctional()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily heat\+::\+Qo\+I\+Functional\+::\+Qo\+I\+Functional (\begin{DoxyParamCaption}\item[{Finite\+Element\+Space $\ast$}]{fes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor with FE space passed as an argument. 
+
+
+
+Definition at line 38 of file functionals.\+hpp.
+
+\mbox{\Hypertarget{classheat_1_1QoIFunctional_af0580b67300a9f4f384e1e2bfa0c3669}\label{classheat_1_1QoIFunctional_af0580b67300a9f4f384e1e2bfa0c3669}} 
+\index{heat::QoIFunctional@{heat::QoIFunctional}!QoIFunctional@{QoIFunctional}}
+\index{QoIFunctional@{QoIFunctional}!heat::QoIFunctional@{heat::QoIFunctional}}
+\doxysubsubsection{\texorpdfstring{QoIFunctional()}{QoIFunctional()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily heat\+::\+Qo\+I\+Functional\+::\+Qo\+I\+Functional (\begin{DoxyParamCaption}\item[{Finite\+Element\+Space $\ast$}]{fes,  }\item[{double}]{a }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor with FE space and power exponent passed as argument. 
+
+
+
+Definition at line 44 of file functionals.\+hpp.
+
+\mbox{\Hypertarget{classheat_1_1QoIFunctional_a92901223446aae4778ff14c55b93720c}\label{classheat_1_1QoIFunctional_a92901223446aae4778ff14c55b93720c}} 
+\index{heat::QoIFunctional@{heat::QoIFunctional}!````~QoIFunctional@{$\sim$QoIFunctional}}
+\index{````~QoIFunctional@{$\sim$QoIFunctional}!heat::QoIFunctional@{heat::QoIFunctional}}
+\doxysubsubsection{\texorpdfstring{$\sim$QoIFunctional()}{~QoIFunctional()}}
+{\footnotesize\ttfamily heat\+::\+Qo\+I\+Functional\+::$\sim$\+Qo\+I\+Functional (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default destructor. 
+
+
+
+Definition at line 50 of file functionals.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classheat_1_1QoIFunctional_a3c13c940f8f010feef7bfe135bc26b56}\label{classheat_1_1QoIFunctional_a3c13c940f8f010feef7bfe135bc26b56}} 
+\index{heat::QoIFunctional@{heat::QoIFunctional}!init@{init}}
+\index{init@{init}!heat::QoIFunctional@{heat::QoIFunctional}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void heat\+::\+Qo\+I\+Functional\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Initializes the integrator. 
+
+
+
+Definition at line 55 of file functionals.\+cpp.
+
+\mbox{\Hypertarget{classheat_1_1QoIFunctional_a3cf41da3cec01c4874598434bedc0649}\label{classheat_1_1QoIFunctional_a3cf41da3cec01c4874598434bedc0649}} 
+\index{heat::QoIFunctional@{heat::QoIFunctional}!operator()@{operator()}}
+\index{operator()@{operator()}!heat::QoIFunctional@{heat::QoIFunctional}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily double heat\+::\+Qo\+I\+Functional\+::operator() (\begin{DoxyParamCaption}\item[{const Grid\+Function \&}]{f }\end{DoxyParamCaption}) const}
+
+
+
+Evalautes the QoI for a function passed as an M\+F\+EM Grid\+Function. 
+
+
+
+Definition at line 69 of file functionals.\+cpp.
+
+\mbox{\Hypertarget{classheat_1_1QoIFunctional_affd171ac085a724874f79e0251c0f4fe}\label{classheat_1_1QoIFunctional_affd171ac085a724874f79e0251c0f4fe}} 
+\index{heat::QoIFunctional@{heat::QoIFunctional}!operator()@{operator()}}
+\index{operator()@{operator()}!heat::QoIFunctional@{heat::QoIFunctional}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily double heat\+::\+Qo\+I\+Functional\+::operator() (\begin{DoxyParamCaption}\item[{const Vector \&}]{f }\end{DoxyParamCaption}) const}
+
+
+
+Evalautes the QoI for a function passed as a vector of coefficients. 
+
+
+
+Definition at line 78 of file functionals.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{functionals_8hpp}{functionals.\+hpp}}\item 
+\mbox{\hyperlink{functionals_8cpp}{functionals.\+cpp}}\end{DoxyCompactItemize}

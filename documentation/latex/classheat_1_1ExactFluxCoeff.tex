@@ -1,0 +1,104 @@
+\hypertarget{classheat_1_1ExactFluxCoeff}{}\doxysection{heat\+::Exact\+Flux\+Coeff Class Reference}
+\label{classheat_1_1ExactFluxCoeff}\index{heat::ExactFluxCoeff@{heat::ExactFluxCoeff}}
+
+
+Exact heat flux (vector) coefficient.  
+
+
+
+
+{\ttfamily \#include $<$coefficients.\+hpp$>$}
+
+
+
+Inheritance diagram for heat\+::Exact\+Flux\+Coeff\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classheat_1_1ExactFluxCoeff__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for heat\+::Exact\+Flux\+Coeff\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classheat_1_1ExactFluxCoeff__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classheat_1_1ExactFluxCoeff_ac039c90bdf34ac8c1d4ee50bd499c783}{Exact\+Flux\+Coeff}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classheat_1_1TestCases}{Test\+Cases}} $>$ test\+Case)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classheat_1_1ExactFluxCoeff_abca02a9b48c3da1e9dff5c69f00c49b8}{Eval}} (Vector \&, Element\+Transformation \&, const Integration\+Point \&)
+\begin{DoxyCompactList}\small\item\em Evaluates the vector coefficient, time t is deduced by Get\+Time() \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classheat_1_1ExactFluxCoeff_aa4bb2f15b182c08ad935fde0f4c2d8e1}{Eval}} (Vector \&, Element\+Transformation \&, const Integration\+Point \&, double)
+\begin{DoxyCompactList}\small\item\em Evaluates the vector coefficient, time t is passed as an argument. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Exact heat flux (vector) coefficient. 
+
+Definition at line 92 of file coefficients.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classheat_1_1ExactFluxCoeff_ac039c90bdf34ac8c1d4ee50bd499c783}\label{classheat_1_1ExactFluxCoeff_ac039c90bdf34ac8c1d4ee50bd499c783}} 
+\index{heat::ExactFluxCoeff@{heat::ExactFluxCoeff}!ExactFluxCoeff@{ExactFluxCoeff}}
+\index{ExactFluxCoeff@{ExactFluxCoeff}!heat::ExactFluxCoeff@{heat::ExactFluxCoeff}}
+\doxysubsubsection{\texorpdfstring{ExactFluxCoeff()}{ExactFluxCoeff()}}
+{\footnotesize\ttfamily heat\+::\+Exact\+Flux\+Coeff\+::\+Exact\+Flux\+Coeff (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classheat_1_1TestCases}{Test\+Cases}} $>$}]{test\+Case }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em test\+Case} & test case for the heat equation \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 99 of file coefficients.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classheat_1_1ExactFluxCoeff_abca02a9b48c3da1e9dff5c69f00c49b8}\label{classheat_1_1ExactFluxCoeff_abca02a9b48c3da1e9dff5c69f00c49b8}} 
+\index{heat::ExactFluxCoeff@{heat::ExactFluxCoeff}!Eval@{Eval}}
+\index{Eval@{Eval}!heat::ExactFluxCoeff@{heat::ExactFluxCoeff}}
+\doxysubsubsection{\texorpdfstring{Eval()}{Eval()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void heat\+::\+Exact\+Flux\+Coeff\+::\+Eval (\begin{DoxyParamCaption}\item[{Vector \&}]{v,  }\item[{Element\+Transformation \&}]{T,  }\item[{const Integration\+Point \&}]{ip }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Evaluates the vector coefficient, time t is deduced by Get\+Time() 
+
+
+
+Definition at line 59 of file coefficients.\+cpp.
+
+\mbox{\Hypertarget{classheat_1_1ExactFluxCoeff_aa4bb2f15b182c08ad935fde0f4c2d8e1}\label{classheat_1_1ExactFluxCoeff_aa4bb2f15b182c08ad935fde0f4c2d8e1}} 
+\index{heat::ExactFluxCoeff@{heat::ExactFluxCoeff}!Eval@{Eval}}
+\index{Eval@{Eval}!heat::ExactFluxCoeff@{heat::ExactFluxCoeff}}
+\doxysubsubsection{\texorpdfstring{Eval()}{Eval()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void heat\+::\+Exact\+Flux\+Coeff\+::\+Eval (\begin{DoxyParamCaption}\item[{Vector \&}]{v,  }\item[{Element\+Transformation \&}]{T,  }\item[{const Integration\+Point \&}]{ip,  }\item[{double}]{t }\end{DoxyParamCaption})}
+
+
+
+Evaluates the vector coefficient, time t is passed as an argument. 
+
+
+
+Definition at line 70 of file coefficients.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{coefficients_8hpp}{coefficients.\+hpp}}\item 
+\mbox{\hyperlink{coefficients_8cpp}{coefficients.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,4 @@
+<map id="heat::ExactTemperatureTimeGradCoeff" name="heat::ExactTemperatureTimeGradCoeff">
+<area shape="rect" id="node1" title="Exact temperature gradient with respect to time (scalar) coefficient." alt="" coords="5,80,196,121"/>
+<area shape="rect" id="node2" title=" " alt="" coords="58,5,143,32"/>
+</map>

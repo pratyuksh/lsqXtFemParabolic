@@ -1,0 +1,122 @@
+\hypertarget{classheat_1_1ExactTemperatureCoeff}{}\doxysection{heat\+::Exact\+Temperature\+Coeff Class Reference}
+\label{classheat_1_1ExactTemperatureCoeff}\index{heat::ExactTemperatureCoeff@{heat::ExactTemperatureCoeff}}
+
+
+Exact temperature (scalar) coefficient.  
+
+
+
+
+{\ttfamily \#include $<$coefficients.\+hpp$>$}
+
+
+
+Inheritance diagram for heat\+::Exact\+Temperature\+Coeff\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{classheat_1_1ExactTemperatureCoeff__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for heat\+::Exact\+Temperature\+Coeff\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{classheat_1_1ExactTemperatureCoeff__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classheat_1_1ExactTemperatureCoeff_a5602d68acba0efc4b24112ccfa9ddbb2}{Exact\+Temperature\+Coeff}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classheat_1_1TestCases}{Test\+Cases}} $>$ test\+Case)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classheat_1_1ExactTemperatureCoeff_a51046e527091b75935ca4c496a62d883}{Eval}} (Element\+Transformation \&, const Integration\+Point \&)
+\begin{DoxyCompactList}\small\item\em Evaluates the scalar coefficient, time t is deduced by Get\+Time() \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classheat_1_1ExactTemperatureCoeff_ab572daba99a03d9cb24236156a473516}{Eval}} (Element\+Transformation \&, const Integration\+Point \&, double)
+\begin{DoxyCompactList}\small\item\em Evaluates the scalar coefficient, time t is passed as an argument. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classheat_1_1TestCases}{Test\+Cases}} $>$ \mbox{\hyperlink{classheat_1_1ExactTemperatureCoeff_a6dbbb9a575075c54319b5e077982aabc}{m\+\_\+test\+Case}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Exact temperature (scalar) coefficient. 
+
+Definition at line 64 of file coefficients.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classheat_1_1ExactTemperatureCoeff_a5602d68acba0efc4b24112ccfa9ddbb2}\label{classheat_1_1ExactTemperatureCoeff_a5602d68acba0efc4b24112ccfa9ddbb2}} 
+\index{heat::ExactTemperatureCoeff@{heat::ExactTemperatureCoeff}!ExactTemperatureCoeff@{ExactTemperatureCoeff}}
+\index{ExactTemperatureCoeff@{ExactTemperatureCoeff}!heat::ExactTemperatureCoeff@{heat::ExactTemperatureCoeff}}
+\doxysubsubsection{\texorpdfstring{ExactTemperatureCoeff()}{ExactTemperatureCoeff()}}
+{\footnotesize\ttfamily heat\+::\+Exact\+Temperature\+Coeff\+::\+Exact\+Temperature\+Coeff (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classheat_1_1TestCases}{Test\+Cases}} $>$}]{test\+Case }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em test\+Case} & test case for the heat equation \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 71 of file coefficients.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classheat_1_1ExactTemperatureCoeff_a51046e527091b75935ca4c496a62d883}\label{classheat_1_1ExactTemperatureCoeff_a51046e527091b75935ca4c496a62d883}} 
+\index{heat::ExactTemperatureCoeff@{heat::ExactTemperatureCoeff}!Eval@{Eval}}
+\index{Eval@{Eval}!heat::ExactTemperatureCoeff@{heat::ExactTemperatureCoeff}}
+\doxysubsubsection{\texorpdfstring{Eval()}{Eval()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily double heat\+::\+Exact\+Temperature\+Coeff\+::\+Eval (\begin{DoxyParamCaption}\item[{Element\+Transformation \&}]{T,  }\item[{const Integration\+Point \&}]{ip }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Evaluates the scalar coefficient, time t is deduced by Get\+Time() 
+
+
+
+Definition at line 37 of file coefficients.\+cpp.
+
+\mbox{\Hypertarget{classheat_1_1ExactTemperatureCoeff_ab572daba99a03d9cb24236156a473516}\label{classheat_1_1ExactTemperatureCoeff_ab572daba99a03d9cb24236156a473516}} 
+\index{heat::ExactTemperatureCoeff@{heat::ExactTemperatureCoeff}!Eval@{Eval}}
+\index{Eval@{Eval}!heat::ExactTemperatureCoeff@{heat::ExactTemperatureCoeff}}
+\doxysubsubsection{\texorpdfstring{Eval()}{Eval()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily double heat\+::\+Exact\+Temperature\+Coeff\+::\+Eval (\begin{DoxyParamCaption}\item[{Element\+Transformation \&}]{T,  }\item[{const Integration\+Point \&}]{ip,  }\item[{double}]{t }\end{DoxyParamCaption})}
+
+
+
+Evaluates the scalar coefficient, time t is passed as an argument. 
+
+
+
+Definition at line 47 of file coefficients.\+cpp.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classheat_1_1ExactTemperatureCoeff_a6dbbb9a575075c54319b5e077982aabc}\label{classheat_1_1ExactTemperatureCoeff_a6dbbb9a575075c54319b5e077982aabc}} 
+\index{heat::ExactTemperatureCoeff@{heat::ExactTemperatureCoeff}!m\_testCase@{m\_testCase}}
+\index{m\_testCase@{m\_testCase}!heat::ExactTemperatureCoeff@{heat::ExactTemperatureCoeff}}
+\doxysubsubsection{\texorpdfstring{m\_testCase}{m\_testCase}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classheat_1_1TestCases}{Test\+Cases}}$>$ heat\+::\+Exact\+Temperature\+Coeff\+::m\+\_\+test\+Case\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 85 of file coefficients.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{coefficients_8hpp}{coefficients.\+hpp}}\item 
+\mbox{\hyperlink{coefficients_8cpp}{coefficients.\+cpp}}\end{DoxyCompactItemize}

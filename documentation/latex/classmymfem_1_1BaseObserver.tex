@@ -1,0 +1,289 @@
+\hypertarget{classmymfem_1_1BaseObserver}{}\doxysection{mymfem\+::Base\+Observer Class Reference}
+\label{classmymfem_1_1BaseObserver}\index{mymfem::BaseObserver@{mymfem::BaseObserver}}
+
+
+{\ttfamily \#include $<$base\+\_\+observer.\+hpp$>$}
+
+
+
+Inheritance diagram for mymfem\+::Base\+Observer\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=203pt]{classmymfem_1_1BaseObserver__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmymfem_1_1BaseObserver_a3d5c34b388fb8e5bc1090937ae073338}{Base\+Observer}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmymfem_1_1BaseObserver_ae289be510a5bfdd70ef528f6b6f806c6}{Base\+Observer}} (const nlohmann\+::json \&, int)
+\begin{DoxyCompactList}\small\item\em Custom constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmymfem_1_1BaseObserver_a6d230eeaa50217398577b57d3452b150}{operator()}} (Grid\+Function \&u) const
+\begin{DoxyCompactList}\small\item\em Calls the visualize function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmymfem_1_1BaseObserver_a3ee4a87701868a5223a4cfe7e040c5cd}{operator()}} (std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&u) const
+\begin{DoxyCompactList}\small\item\em Calls the visualize function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmymfem_1_1BaseObserver_a72544b73a476e67b7cb04c34930f15c3}{visualize}} (std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&u) const
+\begin{DoxyCompactList}\small\item\em Visualizes the solution. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmymfem_1_1BaseObserver_ab6b0a6bd19651cf788b7415a98d890d3}{visualize}} (Grid\+Function \&) const
+\begin{DoxyCompactList}\small\item\em Visualizes the solution. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmymfem_1_1BaseObserver_a44560a934e6f98ad50d874112a720585}{dump\+Mesh}} (std\+::shared\+\_\+ptr$<$ Mesh $>$ \&) const
+\begin{DoxyCompactList}\small\item\em Writes mesh to file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmymfem_1_1BaseObserver_a076fb293589145451bbce2783b2f42dd}{m\+\_\+precision}} = 8
+\begin{DoxyCompactList}\small\item\em Numerical precision of output data. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classmymfem_1_1BaseObserver_a1ce80fc2b8b7c86d8006e6d9437b8bbb}{m\+\_\+bool\+Visualize}}
+\begin{DoxyCompactList}\small\item\em Boolean flag to control visualize. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classmymfem_1_1BaseObserver_a0a4f379d1327bcb145fca7b6720a1674}{m\+\_\+bool\+Dump\+Out}}
+\begin{DoxyCompactList}\small\item\em Boolean flag to control output write. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classmymfem_1_1BaseObserver_a87630f5aa038fbf3acdab5fa70b3851a}{m\+\_\+output\+Dir}}
+\begin{DoxyCompactList}\small\item\em Name of output directory. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classmymfem_1_1BaseObserver_a81a1ae45a1d3a096ac2f9f533d668286}{m\+\_\+mesh\+Name\+Prefix}}
+\begin{DoxyCompactList}\small\item\em Prefix of output mesh file name. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classmymfem_1_1BaseObserver_a7176c2bebf9d5ab6e2e2dfae14203258}{m\+\_\+mesh\+Name\+Suffix}}
+\begin{DoxyCompactList}\small\item\em Suffix of output mesh file name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides functions to visualize solutions and write output to files. 
+
+Definition at line 15 of file base\+\_\+observer.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classmymfem_1_1BaseObserver_a3d5c34b388fb8e5bc1090937ae073338}\label{classmymfem_1_1BaseObserver_a3d5c34b388fb8e5bc1090937ae073338}} 
+\index{mymfem::BaseObserver@{mymfem::BaseObserver}!BaseObserver@{BaseObserver}}
+\index{BaseObserver@{BaseObserver}!mymfem::BaseObserver@{mymfem::BaseObserver}}
+\doxysubsubsection{\texorpdfstring{BaseObserver()}{BaseObserver()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily mymfem\+::\+Base\+Observer\+::\+Base\+Observer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor. 
+
+
+
+Definition at line 21 of file base\+\_\+observer.\+hpp.
+
+\mbox{\Hypertarget{classmymfem_1_1BaseObserver_ae289be510a5bfdd70ef528f6b6f806c6}\label{classmymfem_1_1BaseObserver_ae289be510a5bfdd70ef528f6b6f806c6}} 
+\index{mymfem::BaseObserver@{mymfem::BaseObserver}!BaseObserver@{BaseObserver}}
+\index{BaseObserver@{BaseObserver}!mymfem::BaseObserver@{mymfem::BaseObserver}}
+\doxysubsubsection{\texorpdfstring{BaseObserver()}{BaseObserver()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily mymfem\+::\+Base\+Observer\+::\+Base\+Observer (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{config,  }\item[{int}]{lx }\end{DoxyParamCaption})}
+
+
+
+Custom constructor. 
+
+Uses config to set class variables.
+
+
+\begin{DoxyParams}{Parameters}
+{\em config} & J\+S\+ON configuration file. \\
+\hline
+{\em lx} & spatial mesh discretisation level. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 11 of file base\+\_\+observer.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classmymfem_1_1BaseObserver_a44560a934e6f98ad50d874112a720585}\label{classmymfem_1_1BaseObserver_a44560a934e6f98ad50d874112a720585}} 
+\index{mymfem::BaseObserver@{mymfem::BaseObserver}!dumpMesh@{dumpMesh}}
+\index{dumpMesh@{dumpMesh}!mymfem::BaseObserver@{mymfem::BaseObserver}}
+\doxysubsubsection{\texorpdfstring{dumpMesh()}{dumpMesh()}}
+{\footnotesize\ttfamily void mymfem\+::\+Base\+Observer\+::dump\+Mesh (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ Mesh $>$ \&}]{mesh }\end{DoxyParamCaption}) const}
+
+
+
+Writes mesh to file. 
+
+Writes the mesh to a file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mesh} & Mesh passed as a shared pointer. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 53 of file base\+\_\+observer.\+cpp.
+
+\mbox{\Hypertarget{classmymfem_1_1BaseObserver_a6d230eeaa50217398577b57d3452b150}\label{classmymfem_1_1BaseObserver_a6d230eeaa50217398577b57d3452b150}} 
+\index{mymfem::BaseObserver@{mymfem::BaseObserver}!operator()@{operator()}}
+\index{operator()@{operator()}!mymfem::BaseObserver@{mymfem::BaseObserver}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void mymfem\+::\+Base\+Observer\+::operator() (\begin{DoxyParamCaption}\item[{Grid\+Function \&}]{u }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calls the visualize function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & scalar grid function, passed by reference. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 34 of file base\+\_\+observer.\+hpp.
+
+\mbox{\Hypertarget{classmymfem_1_1BaseObserver_a3ee4a87701868a5223a4cfe7e040c5cd}\label{classmymfem_1_1BaseObserver_a3ee4a87701868a5223a4cfe7e040c5cd}} 
+\index{mymfem::BaseObserver@{mymfem::BaseObserver}!operator()@{operator()}}
+\index{operator()@{operator()}!mymfem::BaseObserver@{mymfem::BaseObserver}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void mymfem\+::\+Base\+Observer\+::operator() (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&}]{u }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calls the visualize function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & scalar grid function, passed as shared pointer. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 42 of file base\+\_\+observer.\+hpp.
+
+\mbox{\Hypertarget{classmymfem_1_1BaseObserver_ab6b0a6bd19651cf788b7415a98d890d3}\label{classmymfem_1_1BaseObserver_ab6b0a6bd19651cf788b7415a98d890d3}} 
+\index{mymfem::BaseObserver@{mymfem::BaseObserver}!visualize@{visualize}}
+\index{visualize@{visualize}!mymfem::BaseObserver@{mymfem::BaseObserver}}
+\doxysubsubsection{\texorpdfstring{visualize()}{visualize()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void mymfem\+::\+Base\+Observer\+::visualize (\begin{DoxyParamCaption}\item[{Grid\+Function \&}]{u }\end{DoxyParamCaption}) const}
+
+
+
+Visualizes the solution. 
+
+Uses G\+L\+Vis, refer to examples in M\+F\+EM documentation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & scalar grid function, passed by reference. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 27 of file base\+\_\+observer.\+cpp.
+
+\mbox{\Hypertarget{classmymfem_1_1BaseObserver_a72544b73a476e67b7cb04c34930f15c3}\label{classmymfem_1_1BaseObserver_a72544b73a476e67b7cb04c34930f15c3}} 
+\index{mymfem::BaseObserver@{mymfem::BaseObserver}!visualize@{visualize}}
+\index{visualize@{visualize}!mymfem::BaseObserver@{mymfem::BaseObserver}}
+\doxysubsubsection{\texorpdfstring{visualize()}{visualize()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void mymfem\+::\+Base\+Observer\+::visualize (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&}]{u }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Visualizes the solution. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & scalar grid function, passed as shared pointer. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 50 of file base\+\_\+observer.\+hpp.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classmymfem_1_1BaseObserver_a0a4f379d1327bcb145fca7b6720a1674}\label{classmymfem_1_1BaseObserver_a0a4f379d1327bcb145fca7b6720a1674}} 
+\index{mymfem::BaseObserver@{mymfem::BaseObserver}!m\_boolDumpOut@{m\_boolDumpOut}}
+\index{m\_boolDumpOut@{m\_boolDumpOut}!mymfem::BaseObserver@{mymfem::BaseObserver}}
+\doxysubsubsection{\texorpdfstring{m\_boolDumpOut}{m\_boolDumpOut}}
+{\footnotesize\ttfamily bool mymfem\+::\+Base\+Observer\+::m\+\_\+bool\+Dump\+Out\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Boolean flag to control output write. 
+
+
+
+Definition at line 74 of file base\+\_\+observer.\+hpp.
+
+\mbox{\Hypertarget{classmymfem_1_1BaseObserver_a1ce80fc2b8b7c86d8006e6d9437b8bbb}\label{classmymfem_1_1BaseObserver_a1ce80fc2b8b7c86d8006e6d9437b8bbb}} 
+\index{mymfem::BaseObserver@{mymfem::BaseObserver}!m\_boolVisualize@{m\_boolVisualize}}
+\index{m\_boolVisualize@{m\_boolVisualize}!mymfem::BaseObserver@{mymfem::BaseObserver}}
+\doxysubsubsection{\texorpdfstring{m\_boolVisualize}{m\_boolVisualize}}
+{\footnotesize\ttfamily bool mymfem\+::\+Base\+Observer\+::m\+\_\+bool\+Visualize\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [protected]}}
+
+
+
+Boolean flag to control visualize. 
+
+
+
+Definition at line 71 of file base\+\_\+observer.\+hpp.
+
+\mbox{\Hypertarget{classmymfem_1_1BaseObserver_a81a1ae45a1d3a096ac2f9f533d668286}\label{classmymfem_1_1BaseObserver_a81a1ae45a1d3a096ac2f9f533d668286}} 
+\index{mymfem::BaseObserver@{mymfem::BaseObserver}!m\_meshNamePrefix@{m\_meshNamePrefix}}
+\index{m\_meshNamePrefix@{m\_meshNamePrefix}!mymfem::BaseObserver@{mymfem::BaseObserver}}
+\doxysubsubsection{\texorpdfstring{m\_meshNamePrefix}{m\_meshNamePrefix}}
+{\footnotesize\ttfamily std\+::string mymfem\+::\+Base\+Observer\+::m\+\_\+mesh\+Name\+Prefix\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Prefix of output mesh file name. 
+
+
+
+Definition at line 78 of file base\+\_\+observer.\+hpp.
+
+\mbox{\Hypertarget{classmymfem_1_1BaseObserver_a7176c2bebf9d5ab6e2e2dfae14203258}\label{classmymfem_1_1BaseObserver_a7176c2bebf9d5ab6e2e2dfae14203258}} 
+\index{mymfem::BaseObserver@{mymfem::BaseObserver}!m\_meshNameSuffix@{m\_meshNameSuffix}}
+\index{m\_meshNameSuffix@{m\_meshNameSuffix}!mymfem::BaseObserver@{mymfem::BaseObserver}}
+\doxysubsubsection{\texorpdfstring{m\_meshNameSuffix}{m\_meshNameSuffix}}
+{\footnotesize\ttfamily std\+::string mymfem\+::\+Base\+Observer\+::m\+\_\+mesh\+Name\+Suffix\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Suffix of output mesh file name. 
+
+
+
+Definition at line 80 of file base\+\_\+observer.\+hpp.
+
+\mbox{\Hypertarget{classmymfem_1_1BaseObserver_a87630f5aa038fbf3acdab5fa70b3851a}\label{classmymfem_1_1BaseObserver_a87630f5aa038fbf3acdab5fa70b3851a}} 
+\index{mymfem::BaseObserver@{mymfem::BaseObserver}!m\_outputDir@{m\_outputDir}}
+\index{m\_outputDir@{m\_outputDir}!mymfem::BaseObserver@{mymfem::BaseObserver}}
+\doxysubsubsection{\texorpdfstring{m\_outputDir}{m\_outputDir}}
+{\footnotesize\ttfamily std\+::string mymfem\+::\+Base\+Observer\+::m\+\_\+output\+Dir\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [protected]}}
+
+
+
+Name of output directory. 
+
+
+
+Definition at line 76 of file base\+\_\+observer.\+hpp.
+
+\mbox{\Hypertarget{classmymfem_1_1BaseObserver_a076fb293589145451bbce2783b2f42dd}\label{classmymfem_1_1BaseObserver_a076fb293589145451bbce2783b2f42dd}} 
+\index{mymfem::BaseObserver@{mymfem::BaseObserver}!m\_precision@{m\_precision}}
+\index{m\_precision@{m\_precision}!mymfem::BaseObserver@{mymfem::BaseObserver}}
+\doxysubsubsection{\texorpdfstring{m\_precision}{m\_precision}}
+{\footnotesize\ttfamily int mymfem\+::\+Base\+Observer\+::m\+\_\+precision = 8\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Numerical precision of output data. 
+
+
+
+Definition at line 68 of file base\+\_\+observer.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{base__observer_8hpp}{base\+\_\+observer.\+hpp}}\item 
+\mbox{\hyperlink{base__observer_8cpp}{base\+\_\+observer.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,212 @@
+\hypertarget{classHeatTestCases}{}\doxysection{Heat\+Test\+Cases Class Reference}
+\label{classHeatTestCases}\index{HeatTestCases@{HeatTestCases}}
+
+
+{\ttfamily \#include $<$test\+\_\+cases.\+hpp$>$}
+
+
+
+Inheritance diagram for Heat\+Test\+Cases\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classHeatTestCases__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classHeatTestCases_a6016327ea6318db14d7dbf9bb0a8951e}{$\sim$\+Heat\+Test\+Cases}} ()=default
+\item 
+virtual double \mbox{\hyperlink{classHeatTestCases_ab70e8b577201205ad235f2c7b063cc3b}{medium}} (const Vector \&) const =0
+\item 
+virtual Dense\+Matrix \mbox{\hyperlink{classHeatTestCases_a3bda09002ac5df9a9af7ca44d7e96ced}{medium\+\_\+tensor}} (const Vector \&) const =0
+\item 
+virtual double \mbox{\hyperlink{classHeatTestCases_a404f69bd8e435a3b915ab5f6c4ae3c1c}{temperature\+\_\+sol}} (const Vector \&, const double) const =0
+\item 
+virtual Vector \mbox{\hyperlink{classHeatTestCases_a86ebdd2c2daafb631efc541d78814e00}{heat\+Flux\+\_\+sol}} (const Vector \&, const double) const =0
+\item 
+virtual double \mbox{\hyperlink{classHeatTestCases_a6c85cdf3cdfa7bec8064554b068d7673}{temperature\+\_\+time\+Gradient\+\_\+sol}} (const Vector \&, const double) const =0
+\item 
+virtual double \mbox{\hyperlink{classHeatTestCases_a99e3117f81522461411eeb28ede29195}{laplacian}} (const Vector \&, const double) const =0
+\item 
+virtual double \mbox{\hyperlink{classHeatTestCases_aeff337dca6aaa6c0f642ff525c0bd749}{init\+\_\+temperature}} (const Vector \&) const =0
+\item 
+virtual Vector \mbox{\hyperlink{classHeatTestCases_aef3b61f3fe046a7e87ca10cd9547bdb8}{init\+\_\+heat\+Flux}} (const Vector \&) const =0
+\item 
+virtual double \mbox{\hyperlink{classHeatTestCases_a05f131c8c81782c80ced3deaed6e5734}{bdry\+\_\+temperature}} (const Vector \&, const double) const =0
+\item 
+virtual double \mbox{\hyperlink{classHeatTestCases_a57703713cfdc46773c5c4b351c496719}{source}} (const Vector \&, const double) const =0
+\item 
+virtual void \mbox{\hyperlink{classHeatTestCases_af34d42c696d1a2f9595d6ffd5d617604}{set\+\_\+bdry\+\_\+dirichlet}} (Array$<$ int $>$ \&) const =0
+\item 
+virtual void \mbox{\hyperlink{classHeatTestCases_a6a45e33c88973fa35215010e7210af28}{set\+\_\+perturbation}} (double) const =0
+\item 
+virtual void \mbox{\hyperlink{classHeatTestCases_aef6b73c139f0ea753e4fd4a5570d57f9}{set\+\_\+perturbations}} (const Vector \&) const =0
+\item 
+virtual int \mbox{\hyperlink{classHeatTestCases_a5b7c882febce063a847b7f4c828d8eab}{get\+\_\+dim}} () const =0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 22 of file test\+\_\+cases.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classHeatTestCases_a6016327ea6318db14d7dbf9bb0a8951e}\label{classHeatTestCases_a6016327ea6318db14d7dbf9bb0a8951e}} 
+\index{HeatTestCases@{HeatTestCases}!````~HeatTestCases@{$\sim$HeatTestCases}}
+\index{````~HeatTestCases@{$\sim$HeatTestCases}!HeatTestCases@{HeatTestCases}}
+\doxysubsubsection{\texorpdfstring{$\sim$HeatTestCases()}{~HeatTestCases()}}
+{\footnotesize\ttfamily virtual Heat\+Test\+Cases\+::$\sim$\+Heat\+Test\+Cases (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classHeatTestCases_a05f131c8c81782c80ced3deaed6e5734}\label{classHeatTestCases_a05f131c8c81782c80ced3deaed6e5734}} 
+\index{HeatTestCases@{HeatTestCases}!bdry\_temperature@{bdry\_temperature}}
+\index{bdry\_temperature@{bdry\_temperature}!HeatTestCases@{HeatTestCases}}
+\doxysubsubsection{\texorpdfstring{bdry\_temperature()}{bdry\_temperature()}}
+{\footnotesize\ttfamily virtual double Heat\+Test\+Cases\+::bdry\+\_\+temperature (\begin{DoxyParamCaption}\item[{const Vector \&}]{,  }\item[{const double}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test3_01_4_a46ebb8951dc607b34802fc34a60800d6}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test2_01_4_ab867211dcbfff0a4a3e4204c9748214a}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test2 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test1_01_4_a57b92a9adfde2451be08ffc5a1359016}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01GammaShaped__Test1_01_4_a10a72941a48ab0acd50037230003d7e2}{Heat\+Test\+Case$<$ Gamma\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01PeriodicUnitSquare__Test1_01_4_a76098f9187ebb56d3b781fcff90c4eaf}{Heat\+Test\+Case$<$ Periodic\+Unit\+Square\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test4_01_4_ab2b81c5830310b07227bf2fb1bfe2214}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test4 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test3_01_4_a217a30cfc0f1391011ec49f5a1d30d52}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test2_01_4_a1f59cccfe27b18b77d52b142cc847091}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test2 $>$}}, and \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test1_01_4_af07f16fa62a2a134675113ffffc631f9}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test1 $>$}}.
+
+\mbox{\Hypertarget{classHeatTestCases_a5b7c882febce063a847b7f4c828d8eab}\label{classHeatTestCases_a5b7c882febce063a847b7f4c828d8eab}} 
+\index{HeatTestCases@{HeatTestCases}!get\_dim@{get\_dim}}
+\index{get\_dim@{get\_dim}!HeatTestCases@{HeatTestCases}}
+\doxysubsubsection{\texorpdfstring{get\_dim()}{get\_dim()}}
+{\footnotesize\ttfamily virtual int Heat\+Test\+Cases\+::get\+\_\+dim (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test3_01_4_a2a06d285b5374f5289dafd83e8812cf2}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test2_01_4_a108919fae4cfd50a2d27c82fc470649c}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test2 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test1_01_4_a2326b8cba155f03072699a198d530aff}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01GammaShaped__Test1_01_4_a031ec8834623195aa7e0a4d495a79d3e}{Heat\+Test\+Case$<$ Gamma\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01PeriodicUnitSquare__Test1_01_4_a1e98aba1519d79fa3d67d8e37a711e4a}{Heat\+Test\+Case$<$ Periodic\+Unit\+Square\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test4_01_4_ae28458aa6c14424cc0fea2bd0dd23ccb}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test4 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test3_01_4_a122743488a03037efb277843014d8e3a}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test2_01_4_ae26966c69f44b87730abdadc7a0ba5e3}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test2 $>$}}, and \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test1_01_4_ae4df074108d297b6cc12d690e8fd170a}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test1 $>$}}.
+
+\mbox{\Hypertarget{classHeatTestCases_a86ebdd2c2daafb631efc541d78814e00}\label{classHeatTestCases_a86ebdd2c2daafb631efc541d78814e00}} 
+\index{HeatTestCases@{HeatTestCases}!heatFlux\_sol@{heatFlux\_sol}}
+\index{heatFlux\_sol@{heatFlux\_sol}!HeatTestCases@{HeatTestCases}}
+\doxysubsubsection{\texorpdfstring{heatFlux\_sol()}{heatFlux\_sol()}}
+{\footnotesize\ttfamily virtual Vector Heat\+Test\+Cases\+::heat\+Flux\+\_\+sol (\begin{DoxyParamCaption}\item[{const Vector \&}]{,  }\item[{const double}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test3_01_4_a3e7d4bdf6a254b20cdfc57cf1d4630b9}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test2_01_4_a0cc407ed5de779b4e378ecd0856c5b20}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test2 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test1_01_4_a555ac6152d65261f1142d889c06490c9}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01GammaShaped__Test1_01_4_ae0a354ac503b9f8774352636b8704c54}{Heat\+Test\+Case$<$ Gamma\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01PeriodicUnitSquare__Test1_01_4_aaace373131756d3f86959e3dbbf5975a}{Heat\+Test\+Case$<$ Periodic\+Unit\+Square\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test4_01_4_a4e3e9bcee1979cdd95954a523208a987}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test4 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test3_01_4_ac1ac92ae0627ce7531b580d642443884}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test2_01_4_a8becccc850fe1f6e66efaa212a731c5f}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test2 $>$}}, and \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test1_01_4_a68039d10596b9919716f2b2a6dbda17f}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test1 $>$}}.
+
+\mbox{\Hypertarget{classHeatTestCases_aef3b61f3fe046a7e87ca10cd9547bdb8}\label{classHeatTestCases_aef3b61f3fe046a7e87ca10cd9547bdb8}} 
+\index{HeatTestCases@{HeatTestCases}!init\_heatFlux@{init\_heatFlux}}
+\index{init\_heatFlux@{init\_heatFlux}!HeatTestCases@{HeatTestCases}}
+\doxysubsubsection{\texorpdfstring{init\_heatFlux()}{init\_heatFlux()}}
+{\footnotesize\ttfamily virtual Vector Heat\+Test\+Cases\+::init\+\_\+heat\+Flux (\begin{DoxyParamCaption}\item[{const Vector \&}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test3_01_4_a7916a3306618291808288849333960e8}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test2_01_4_a02fa2f87a30a436717cb95d15435b681}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test2 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test1_01_4_aae6510091de63a9a35f04e1f377daf3a}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01GammaShaped__Test1_01_4_a81637c962890f0a19fe7d5661d8a0094}{Heat\+Test\+Case$<$ Gamma\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01PeriodicUnitSquare__Test1_01_4_a6703ece462aab4cb7faec4e334c6aecd}{Heat\+Test\+Case$<$ Periodic\+Unit\+Square\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test4_01_4_a8f97d3beda4c45ee06bbfe36720dbf89}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test4 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test3_01_4_ad8a4294b802686855e03925ccb444c0c}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test2_01_4_a7a6723157e7d611d0357b38dabd2e942}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test2 $>$}}, and \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test1_01_4_a1786d109d9c372fc0e31434d5cea8747}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test1 $>$}}.
+
+\mbox{\Hypertarget{classHeatTestCases_aeff337dca6aaa6c0f642ff525c0bd749}\label{classHeatTestCases_aeff337dca6aaa6c0f642ff525c0bd749}} 
+\index{HeatTestCases@{HeatTestCases}!init\_temperature@{init\_temperature}}
+\index{init\_temperature@{init\_temperature}!HeatTestCases@{HeatTestCases}}
+\doxysubsubsection{\texorpdfstring{init\_temperature()}{init\_temperature()}}
+{\footnotesize\ttfamily virtual double Heat\+Test\+Cases\+::init\+\_\+temperature (\begin{DoxyParamCaption}\item[{const Vector \&}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test3_01_4_a0b43f0286ac53ea5142ffcf77c954593}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test2_01_4_ae3a8eb92d77bf52aab8b65e24c003088}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test2 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test1_01_4_a447d9a6d80745ec7a28d494e3761f8b2}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01GammaShaped__Test1_01_4_a620b4e4cdf50c08205509266c8021705}{Heat\+Test\+Case$<$ Gamma\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01PeriodicUnitSquare__Test1_01_4_a01ed9411cfd842be67a8980f2f8a0d28}{Heat\+Test\+Case$<$ Periodic\+Unit\+Square\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test4_01_4_a4de968bbc6a8ebe13a9168ed92112ab0}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test4 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test3_01_4_a09c6537d50106fa13b5deb4fc6dd75d8}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test2_01_4_a600ab73794d276ea29f6ee8f27c22e86}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test2 $>$}}, and \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test1_01_4_a5152bb3fddd36765dc8f72437c5f92c8}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test1 $>$}}.
+
+\mbox{\Hypertarget{classHeatTestCases_a99e3117f81522461411eeb28ede29195}\label{classHeatTestCases_a99e3117f81522461411eeb28ede29195}} 
+\index{HeatTestCases@{HeatTestCases}!laplacian@{laplacian}}
+\index{laplacian@{laplacian}!HeatTestCases@{HeatTestCases}}
+\doxysubsubsection{\texorpdfstring{laplacian()}{laplacian()}}
+{\footnotesize\ttfamily virtual double Heat\+Test\+Cases\+::laplacian (\begin{DoxyParamCaption}\item[{const Vector \&}]{,  }\item[{const double}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test3_01_4_ac9521fbe15d2393a45a0bc89db01e3df}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test2_01_4_af8e7bcbd88e0e90139b76bc382241f9d}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test2 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test1_01_4_aad3377df7655464622745fbbf863491f}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01GammaShaped__Test1_01_4_a8704ef600b415e98ba9b4921384b7117}{Heat\+Test\+Case$<$ Gamma\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01PeriodicUnitSquare__Test1_01_4_aa0b2773b251da7e21e9fdd618fa12992}{Heat\+Test\+Case$<$ Periodic\+Unit\+Square\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test4_01_4_aca4d13c3463378a0bf9ad0943888e4e7}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test4 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test3_01_4_a69d566596af798a9e7a7a9994662af69}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test2_01_4_ad821b28e0dd2cb85e08ff81ef5980177}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test2 $>$}}, and \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test1_01_4_a9dc3a59a7296f6eb7a97484cf4bc455a}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test1 $>$}}.
+
+\mbox{\Hypertarget{classHeatTestCases_ab70e8b577201205ad235f2c7b063cc3b}\label{classHeatTestCases_ab70e8b577201205ad235f2c7b063cc3b}} 
+\index{HeatTestCases@{HeatTestCases}!medium@{medium}}
+\index{medium@{medium}!HeatTestCases@{HeatTestCases}}
+\doxysubsubsection{\texorpdfstring{medium()}{medium()}}
+{\footnotesize\ttfamily virtual double Heat\+Test\+Cases\+::medium (\begin{DoxyParamCaption}\item[{const Vector \&}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classHeatTestCase_3_01PeriodicUnitSquare__Test1_01_4_ae3bc82f708332ddf80185747f48d7095}{Heat\+Test\+Case$<$ Periodic\+Unit\+Square\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test3_01_4_afbbd4d73a5179b341e911f5e5fe37fd5}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test2_01_4_ad53e9e5ac91bf3b30e76a8a81d4d047c}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test2 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test1_01_4_acc56446a87af83f3e1aabaf4fb2e998d}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01GammaShaped__Test1_01_4_a3c6ac875508bd6722b6f8546c1f1b60b}{Heat\+Test\+Case$<$ Gamma\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test4_01_4_a3b385b500eed5e2f0fd660e76aa61b2d}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test4 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test3_01_4_ac749254ab1204e49799a6c8f486e5c54}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test2_01_4_a843bfc222cc4f398eec4c5f4c4e9a60b}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test2 $>$}}, and \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test1_01_4_abeba45b0cfc6057c457944157af9673a}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test1 $>$}}.
+
+\mbox{\Hypertarget{classHeatTestCases_a3bda09002ac5df9a9af7ca44d7e96ced}\label{classHeatTestCases_a3bda09002ac5df9a9af7ca44d7e96ced}} 
+\index{HeatTestCases@{HeatTestCases}!medium\_tensor@{medium\_tensor}}
+\index{medium\_tensor@{medium\_tensor}!HeatTestCases@{HeatTestCases}}
+\doxysubsubsection{\texorpdfstring{medium\_tensor()}{medium\_tensor()}}
+{\footnotesize\ttfamily virtual Dense\+Matrix Heat\+Test\+Cases\+::medium\+\_\+tensor (\begin{DoxyParamCaption}\item[{const Vector \&}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test3_01_4_ad1519984840660335039a09cc6e6488f}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test2_01_4_a92de52f140e109ff18d089c5cbb2615d}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test2 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test1_01_4_a25c9b8fd2be22ca959dfd2d0264a53d0}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01GammaShaped__Test1_01_4_a2475d865596b69be4f6c04b158a0de14}{Heat\+Test\+Case$<$ Gamma\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01PeriodicUnitSquare__Test1_01_4_a2904e74fef344066b841cdd23639fc05}{Heat\+Test\+Case$<$ Periodic\+Unit\+Square\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test4_01_4_af3986c14245eca5b40612a307e50922e}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test4 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test3_01_4_a6619ffdc16a12f0d01d102f30df5490e}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test2_01_4_ae0e3c94eca49e3ce9b9ab5c80155d22d}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test2 $>$}}, and \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test1_01_4_ac2e4923bf5ef4a0030836cb52887025b}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test1 $>$}}.
+
+\mbox{\Hypertarget{classHeatTestCases_af34d42c696d1a2f9595d6ffd5d617604}\label{classHeatTestCases_af34d42c696d1a2f9595d6ffd5d617604}} 
+\index{HeatTestCases@{HeatTestCases}!set\_bdry\_dirichlet@{set\_bdry\_dirichlet}}
+\index{set\_bdry\_dirichlet@{set\_bdry\_dirichlet}!HeatTestCases@{HeatTestCases}}
+\doxysubsubsection{\texorpdfstring{set\_bdry\_dirichlet()}{set\_bdry\_dirichlet()}}
+{\footnotesize\ttfamily virtual void Heat\+Test\+Cases\+::set\+\_\+bdry\+\_\+dirichlet (\begin{DoxyParamCaption}\item[{Array$<$ int $>$ \&}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test3_01_4_a131d34702495d799382fa0007eda701a}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test2_01_4_a4d854d247519cd048082e3e46ea8301a}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test2 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test1_01_4_aa3ba330dd1721f4631296da8906546fe}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01GammaShaped__Test1_01_4_a9a015380173478b0fcb8091d7fd83355}{Heat\+Test\+Case$<$ Gamma\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01PeriodicUnitSquare__Test1_01_4_a185b0660f643519dabb3a27095bbe133}{Heat\+Test\+Case$<$ Periodic\+Unit\+Square\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test4_01_4_ae9e0fb43402606aa92b568fbc1469c0c}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test4 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test3_01_4_a4fe03cc7c76643d079e42c8059ec1c56}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test2_01_4_a3a8417ea74f15ecf8c6b189e1f6b0005}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test2 $>$}}, and \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test1_01_4_ae5843beb831091cf82154260315f029a}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test1 $>$}}.
+
+\mbox{\Hypertarget{classHeatTestCases_a6a45e33c88973fa35215010e7210af28}\label{classHeatTestCases_a6a45e33c88973fa35215010e7210af28}} 
+\index{HeatTestCases@{HeatTestCases}!set\_perturbation@{set\_perturbation}}
+\index{set\_perturbation@{set\_perturbation}!HeatTestCases@{HeatTestCases}}
+\doxysubsubsection{\texorpdfstring{set\_perturbation()}{set\_perturbation()}}
+{\footnotesize\ttfamily virtual void Heat\+Test\+Cases\+::set\+\_\+perturbation (\begin{DoxyParamCaption}\item[{double}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test3_01_4_a7a794b8ea4001d7c90afb11e722d301e}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test2_01_4_a33b09ce44041781924795477efb48c51}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test2 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test1_01_4_ab14b63f8faa3361da2ff9470c441ca9d}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01GammaShaped__Test1_01_4_a3a410741e9f152254d26d4b8cd019658}{Heat\+Test\+Case$<$ Gamma\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test4_01_4_ab9d8a98d1b198e6b02dfadc0795b1232}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test4 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test2_01_4_a974387f930ddcf390ad10992158147d1}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test2 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01PeriodicUnitSquare__Test1_01_4_a33a2219b40cc8ff0e8baa3e3dbd4c9c8}{Heat\+Test\+Case$<$ Periodic\+Unit\+Square\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test3_01_4_a978a175736001d5eef2d1a2e2e082439}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test3 $>$}}, and \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test1_01_4_acf212ff7dbaad6fd9f2e16aeb6039547}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test1 $>$}}.
+
+\mbox{\Hypertarget{classHeatTestCases_aef6b73c139f0ea753e4fd4a5570d57f9}\label{classHeatTestCases_aef6b73c139f0ea753e4fd4a5570d57f9}} 
+\index{HeatTestCases@{HeatTestCases}!set\_perturbations@{set\_perturbations}}
+\index{set\_perturbations@{set\_perturbations}!HeatTestCases@{HeatTestCases}}
+\doxysubsubsection{\texorpdfstring{set\_perturbations()}{set\_perturbations()}}
+{\footnotesize\ttfamily virtual void Heat\+Test\+Cases\+::set\+\_\+perturbations (\begin{DoxyParamCaption}\item[{const Vector \&}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classHeatTestCase_3_01PeriodicUnitSquare__Test1_01_4_a046f9af6c6f17531e8a137d5df9c10ba}{Heat\+Test\+Case$<$ Periodic\+Unit\+Square\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test3_01_4_acecda7c8ea050cad18a5077394351e33}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test2_01_4_a9973a976f7e55ab6531d87491bc00de3}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test2 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test1_01_4_a6a56bf5cdeb69390c46b9ddf6f037925}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01GammaShaped__Test1_01_4_af0303f904aecaeb28354d992e2347292}{Heat\+Test\+Case$<$ Gamma\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test4_01_4_aac4ff00ad90e2efe810ff2f1a7a6d946}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test4 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test3_01_4_a107f6bcaaccf6f1f5d958fb620de9b02}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test2_01_4_aff2f3987e62f4443aec5b5af37cb7c17}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test2 $>$}}, and \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test1_01_4_a7a8f44e985a99a17484a0c55398b5f2a}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test1 $>$}}.
+
+\mbox{\Hypertarget{classHeatTestCases_a57703713cfdc46773c5c4b351c496719}\label{classHeatTestCases_a57703713cfdc46773c5c4b351c496719}} 
+\index{HeatTestCases@{HeatTestCases}!source@{source}}
+\index{source@{source}!HeatTestCases@{HeatTestCases}}
+\doxysubsubsection{\texorpdfstring{source()}{source()}}
+{\footnotesize\ttfamily virtual double Heat\+Test\+Cases\+::source (\begin{DoxyParamCaption}\item[{const Vector \&}]{,  }\item[{const double}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test3_01_4_a8edf2adfb6106f7237536cbbfe2c29ed}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test2_01_4_a80eed181935bd4023cc9ceb2abbe5d22}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test2 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test1_01_4_af7be117a1ab74b34e4f1e9288d871226}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01GammaShaped__Test1_01_4_ace81c937ba2f636c6877f4762dbbbb45}{Heat\+Test\+Case$<$ Gamma\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01PeriodicUnitSquare__Test1_01_4_a9c05d0cadc987223abfb1ec7a939af3e}{Heat\+Test\+Case$<$ Periodic\+Unit\+Square\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test4_01_4_ae4c109036007764fa23281291153fbff}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test4 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test3_01_4_a559881fcf49579e56394b55bae284e83}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test2_01_4_ac433d3c8796dd8cc19bb13b590b6dbba}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test2 $>$}}, and \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test1_01_4_a39c84e505325e36cce4de9a456d919b7}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test1 $>$}}.
+
+\mbox{\Hypertarget{classHeatTestCases_a404f69bd8e435a3b915ab5f6c4ae3c1c}\label{classHeatTestCases_a404f69bd8e435a3b915ab5f6c4ae3c1c}} 
+\index{HeatTestCases@{HeatTestCases}!temperature\_sol@{temperature\_sol}}
+\index{temperature\_sol@{temperature\_sol}!HeatTestCases@{HeatTestCases}}
+\doxysubsubsection{\texorpdfstring{temperature\_sol()}{temperature\_sol()}}
+{\footnotesize\ttfamily virtual double Heat\+Test\+Cases\+::temperature\+\_\+sol (\begin{DoxyParamCaption}\item[{const Vector \&}]{,  }\item[{const double}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test3_01_4_addef9c5a927f2070ad1232c43086c972}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test2_01_4_a8b751e9e21f064730a8d3da92f10ef4d}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test2 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test1_01_4_a457e4476113fab000cb7d936c4b11df6}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01GammaShaped__Test1_01_4_a670bf366eb89890d5a7add49613e4d12}{Heat\+Test\+Case$<$ Gamma\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01PeriodicUnitSquare__Test1_01_4_ae04126a61683652586be889d28ef97a0}{Heat\+Test\+Case$<$ Periodic\+Unit\+Square\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test4_01_4_a937bd3df1f6f36add740e4fa486d5eb6}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test4 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test3_01_4_a29d926829e03846bcc0c996e63ba3e3c}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test2_01_4_a1101f1066ba5e44e4ce9f7d8e7070929}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test2 $>$}}, and \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test1_01_4_a36ab8ab0f881a42d20398aa884cabd85}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test1 $>$}}.
+
+\mbox{\Hypertarget{classHeatTestCases_a6c85cdf3cdfa7bec8064554b068d7673}\label{classHeatTestCases_a6c85cdf3cdfa7bec8064554b068d7673}} 
+\index{HeatTestCases@{HeatTestCases}!temperature\_timeGradient\_sol@{temperature\_timeGradient\_sol}}
+\index{temperature\_timeGradient\_sol@{temperature\_timeGradient\_sol}!HeatTestCases@{HeatTestCases}}
+\doxysubsubsection{\texorpdfstring{temperature\_timeGradient\_sol()}{temperature\_timeGradient\_sol()}}
+{\footnotesize\ttfamily virtual double Heat\+Test\+Cases\+::temperature\+\_\+time\+Gradient\+\_\+sol (\begin{DoxyParamCaption}\item[{const Vector \&}]{,  }\item[{const double}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test3_01_4_a2a25d9b5e19aab20c7c1797429d45021}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test2_01_4_a7f6d6776447010e399b69f04b899821c}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test2 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01LShaped__Test1_01_4_a953cdc2c3b20f75d9d3b55d0b07b6755}{Heat\+Test\+Case$<$ L\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01GammaShaped__Test1_01_4_af52162c0980643d8613ec80487160382}{Heat\+Test\+Case$<$ Gamma\+Shaped\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01PeriodicUnitSquare__Test1_01_4_af5a7888f182c6d2eb4df9b440ce5adcf}{Heat\+Test\+Case$<$ Periodic\+Unit\+Square\+\_\+\+Test1 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test4_01_4_a1c4a69aa1c4088ef0513f3e06d1b77d0}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test4 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test3_01_4_a58ff775e3f4036361512ccb89f6dea11}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test3 $>$}}, \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test2_01_4_a58b245f71e6d0f47501f9958255b5647}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test2 $>$}}, and \mbox{\hyperlink{classHeatTestCase_3_01UnitSquare__Test1_01_4_a967d615f947a7ff09ff9cbf0ecfb4e81}{Heat\+Test\+Case$<$ Unit\+Square\+\_\+\+Test1 $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{test__cases_8hpp}{test\+\_\+cases.\+hpp}}\end{DoxyCompactItemize}

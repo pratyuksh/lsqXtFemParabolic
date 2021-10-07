@@ -1,0 +1,22 @@
+{
+    "host": "local",
+    
+    "problem_type": "periodic_unitSquare_test1",
+    
+    "run": "runFG",
+    "load_init_mesh": true,
+    "init_mesh_level": 2,
+    
+    "end_time": 1,
+    
+    "deg": 3,
+    "level_t": 5,
+    "level_x": 5,
+    "mesh_dir": "periodic_unitSquare",
+    
+    "eval_error": false,
+    "eval_xt_error": false,
+    
+    "visualization": false,
+    "dump_output": false
+}

@@ -1,0 +1,61 @@
+\hypertarget{mymfem_2utilities_8cpp}{}\doxysection{utilities.\+cpp File Reference}
+\label{mymfem_2utilities_8cpp}\index{utilities.cpp@{utilities.cpp}}
+{\ttfamily \#include \char`\"{}utilities.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+Include dependency graph for mymfem/utilities.cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=250pt]{mymfem_2utilities_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{mymfem_2utilities_8cpp_a7530e7163a7e780dd33978567f76e3db}{clear}} (Sparse\+Matrix $\ast$\&mat)
+\begin{DoxyCompactList}\small\item\em Deletes memory allocated to Sparse\+Matrix mat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mymfem_2utilities_8cpp_a6cb3e869f8e5d7e222eb9a85a2b96e40}{zero\+Fn}} (const Vector \&, Vector \&f)
+\begin{DoxyCompactList}\small\item\em Defines a function f(x) = 0. \end{DoxyCompactList}\item 
+Sparse\+Matrix \& \mbox{\hyperlink{mymfem_2utilities_8cpp_aa3e496f4528337eb8e0b762940e51c4b}{get\+Upper\+Triangle}} (const Sparse\+Matrix \&A)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mymfem_2utilities_8cpp_a7530e7163a7e780dd33978567f76e3db}\label{mymfem_2utilities_8cpp_a7530e7163a7e780dd33978567f76e3db}} 
+\index{mymfem/utilities.cpp@{mymfem/utilities.cpp}!clear@{clear}}
+\index{clear@{clear}!mymfem/utilities.cpp@{mymfem/utilities.cpp}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void clear (\begin{DoxyParamCaption}\item[{Sparse\+Matrix $\ast$\&}]{mat }\end{DoxyParamCaption})}
+
+
+
+Deletes memory allocated to Sparse\+Matrix mat. 
+
+
+
+Definition at line 6 of file mymfem/utilities.\+cpp.
+
+\mbox{\Hypertarget{mymfem_2utilities_8cpp_aa3e496f4528337eb8e0b762940e51c4b}\label{mymfem_2utilities_8cpp_aa3e496f4528337eb8e0b762940e51c4b}} 
+\index{mymfem/utilities.cpp@{mymfem/utilities.cpp}!getUpperTriangle@{getUpperTriangle}}
+\index{getUpperTriangle@{getUpperTriangle}!mymfem/utilities.cpp@{mymfem/utilities.cpp}}
+\doxysubsubsection{\texorpdfstring{getUpperTriangle()}{getUpperTriangle()}}
+{\footnotesize\ttfamily Sparse\+Matrix\& get\+Upper\+Triangle (\begin{DoxyParamCaption}\item[{const Sparse\+Matrix \&}]{A }\end{DoxyParamCaption})}
+
+Returns the upper-\/triangular, including the diagonal, for the input matrix A 
+
+Definition at line 18 of file mymfem/utilities.\+cpp.
+
+\mbox{\Hypertarget{mymfem_2utilities_8cpp_a6cb3e869f8e5d7e222eb9a85a2b96e40}\label{mymfem_2utilities_8cpp_a6cb3e869f8e5d7e222eb9a85a2b96e40}} 
+\index{mymfem/utilities.cpp@{mymfem/utilities.cpp}!zeroFn@{zeroFn}}
+\index{zeroFn@{zeroFn}!mymfem/utilities.cpp@{mymfem/utilities.cpp}}
+\doxysubsubsection{\texorpdfstring{zeroFn()}{zeroFn()}}
+{\footnotesize\ttfamily void zero\+Fn (\begin{DoxyParamCaption}\item[{const Vector \&}]{,  }\item[{Vector \&}]{f }\end{DoxyParamCaption})}
+
+
+
+Defines a function f(x) = 0. 
+
+
+
+Definition at line 12 of file mymfem/utilities.\+cpp.
+

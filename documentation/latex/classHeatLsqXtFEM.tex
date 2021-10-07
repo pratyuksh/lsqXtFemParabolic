@@ -1,0 +1,866 @@
+\hypertarget{classHeatLsqXtFEM}{}\doxysection{Heat\+Lsq\+Xt\+F\+EM Class Reference}
+\label{classHeatLsqXtFEM}\index{HeatLsqXtFEM@{HeatLsqXtFEM}}
+
+
+{\ttfamily \#include $<$discretisation.\+hpp$>$}
+
+
+
+Inheritance diagram for Heat\+Lsq\+Xt\+F\+EM\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{classHeatLsqXtFEM__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classHeatLsqXtFEM_ac6e6b4619e1396c6aebeab4dc615c71e}{Heat\+Lsq\+Xt\+F\+EM}} (const nlohmann\+::json \&, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classHeatTestCases}{Heat\+Test\+Cases}} $>$ \&)
+\item 
+\mbox{\hyperlink{classHeatLsqXtFEM_a30fee57e3b455670880233dbee01a6a7}{$\sim$\+Heat\+Lsq\+Xt\+F\+EM}} ()
+\item 
+virtual void \mbox{\hyperlink{classHeatLsqXtFEM_a22ae2ae1d45ca65e1010ffe846dd3bf3}{set}} (std\+::shared\+\_\+ptr$<$ Mesh $>$ \&, std\+::shared\+\_\+ptr$<$ Mesh $>$ \&)
+\item 
+virtual void \mbox{\hyperlink{classHeatLsqXtFEM_a94692907a29211f0377986aa669960a4}{assemble\+\_\+system\+\_\+medium\+\_\+independent}} ()
+\item 
+virtual void \mbox{\hyperlink{classHeatLsqXtFEM_aef203649ba0c5fd4232d37d6859fbd5c}{assemble\+\_\+system\+\_\+medium\+\_\+dependent}} ()
+\item 
+virtual void \mbox{\hyperlink{classHeatLsqXtFEM_a09b51a9265a90b7262ba012872466511}{assemble\+\_\+projector}} ()
+\item 
+void \mbox{\hyperlink{classHeatLsqXtFEM_ae94699eb957bb0ac33152f1ccc01b735}{reset}} ()
+\item 
+void \mbox{\hyperlink{classHeatLsqXtFEM_ac9d58bfd8c8c5bbc3f18163e7cd33193}{assemble\+\_\+system}} ()
+\item 
+void \mbox{\hyperlink{classHeatLsqXtFEM_a25c83fc475e3bc5e3f2726ba4bc73dfe}{build\+\_\+system\+\_\+op}} ()
+\item 
+void \mbox{\hyperlink{classHeatLsqXtFEM_adaccc99cb8207b727629a300e601dffe}{build\+\_\+system\+\_\+matrix}} ()
+\item 
+void \mbox{\hyperlink{classHeatLsqXtFEM_a0fbacfcf7c010b61d40adef0dc379ff5}{build\+\_\+system\+\_\+matrix\+\_\+up\+Tr}} ()
+\item 
+void \mbox{\hyperlink{classHeatLsqXtFEM_af1a7d8c56b1004ba99552fc1afa61cda}{assemble\+\_\+rhs}} (Block\+Vector $\ast$) const
+\item 
+void \mbox{\hyperlink{classHeatLsqXtFEM_aa81ab6c1f78c4386be4cf1ae0b1e2512}{build\+\_\+projector\+\_\+matrix}} ()
+\item 
+void \mbox{\hyperlink{classHeatLsqXtFEM_aa3c51dc64f0a5a0a271858d292855dd3}{assemble\+\_\+projection\+\_\+rhs}} (Block\+Vector $\ast$) const
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classHeatTestCases}{Heat\+Test\+Cases}} $>$ \mbox{\hyperlink{classHeatLsqXtFEM_aa40d6763aa52789e5aa10807a8026969}{get\+\_\+test\+\_\+case}} () const
+\item 
+Mesh $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_a0d5f8dc672df0a1a39e9d58dd8ce58f9}{get\+\_\+t\+Mesh}} () const
+\item 
+Mesh $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_a8b0527d57eabcf3ada3ec242e2a7b2f6}{get\+\_\+x\+Mesh}} () const
+\item 
+Finite\+Element\+Collection $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_a578a81d144de0bfaf6b053f421f71818}{get\+\_\+t\+Fec}} () const
+\item 
+Array$<$ Finite\+Element\+Collection $\ast$ $>$ \mbox{\hyperlink{classHeatLsqXtFEM_a86d6c043cd407d3d10790b24c19ec817}{get\+\_\+x\+Fecs}} () const
+\item 
+Finite\+Element\+Space $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_ab369a77f87b0a612cf7b99841c167f94}{get\+\_\+t\+Fespace}} () const
+\item 
+Array$<$ Finite\+Element\+Space $\ast$ $>$ \mbox{\hyperlink{classHeatLsqXtFEM_a7eb36f4187afdcdd5dd0c1a6136904d3}{get\+\_\+x\+Fespaces}} () const
+\item 
+Block\+Operator $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_a4698d03d4da9744079a036905f8e3551}{get\+\_\+heat\+\_\+op}} () const
+\item 
+Array$<$ int $>$ \mbox{\hyperlink{classHeatLsqXtFEM_ab40ac81c58464b1a92337326c9ce211e}{get\+\_\+block\+\_\+offsets}} () const
+\item 
+Sparse\+Matrix $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_a4d931c28ae899789afdfcef50d2aaa01}{get\+\_\+heat\+\_\+mat}} () const
+\item 
+Sparse\+Matrix $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_aaf3589116c32eac5b6120e825f8509a9}{get\+\_\+heat\+\_\+projection\+\_\+mat}} () const
+\item 
+void \mbox{\hyperlink{classHeatLsqXtFEM_a44995a2a9262fd2cefcf2c9db0dd2bb6}{print}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classHeatLsqXtFEM_abf5bfa6f64f5b0b7ba03d059bee31a07}{assemble\+\_\+source\+\_\+x\+Div}} (Vector \&, double) const
+\item 
+virtual void \mbox{\hyperlink{classHeatLsqXtFEM_a581fd61142624fe8bf9e3241fce5b976}{assemble\+\_\+x\+Projection\+\_\+rhs}} (Vector \&, Vector \&, double) const
+\item 
+void \mbox{\hyperlink{classHeatLsqXtFEM_a627f505921594c89dbc0312935d2ce6a}{assemble\+\_\+\+I\+Cs}} (Vector \&) const
+\item 
+void \mbox{\hyperlink{classHeatLsqXtFEM_a76ddbe94d16167170a3a64f1a6882919}{assemble\+\_\+\+I\+Cs\+\_\+x\+Projection}} (Vector \&) const
+\item 
+void \mbox{\hyperlink{classHeatLsqXtFEM_ae6d7f52a09a8d50fc5afbc286b13f0ff}{assemble\+\_\+source\+\_\+t\+Grad\+X\+Projection}} (Vector \&) const
+\item 
+void \mbox{\hyperlink{classHeatLsqXtFEM_a48fd52119a4c190bdea2b1df91ec0502}{assemble\+\_\+source\+\_\+x\+Projection}} (Vector \&, double) const
+\item 
+void \mbox{\hyperlink{classHeatLsqXtFEM_a891b443a17b46ed63a1b99f5cd9cb811}{assemble\+\_\+source\+\_\+t\+Projection\+X\+Div}} (Vector \&) const
+\item 
+void \mbox{\hyperlink{classHeatLsqXtFEM_a5ee90676e10aad1b6bd89d7623caacbb}{add\+\_\+vector}} (const Array$<$ int $>$ \&, const Vector \&, Vector \&) const
+\item 
+void \mbox{\hyperlink{classHeatLsqXtFEM_a8ddb06275c7ab7f3bb4b679fb15b19a1}{apply\+\_\+\+B\+Cs}} (Sparse\+Matrix \&) const
+\item 
+void \mbox{\hyperlink{classHeatLsqXtFEM_aeb30ffa9073dbd7ece750729fd508a11}{apply\+\_\+\+B\+Cs}} (Block\+Vector \&) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const nlohmann\+::json \& \mbox{\hyperlink{classHeatLsqXtFEM_a0a5f3a9820acbd548cd404416db3a8d5}{m\+\_\+config}}
+\item 
+int \mbox{\hyperlink{classHeatLsqXtFEM_ae8911809ba41c3b9f07f65cb1630cdd9}{m\+\_\+xndim}}
+\item 
+int \mbox{\hyperlink{classHeatLsqXtFEM_a95a0e152cd43d874ef12f07efb8915e9}{m\+\_\+deg}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classHeatTestCases}{Heat\+Test\+Cases}} $>$ \mbox{\hyperlink{classHeatLsqXtFEM_ad87aadb8f0485e6f3deace61ce16de0a}{m\+\_\+test\+Case}}
+\item 
+Finite\+Element\+Collection $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_adfcc1b52269e75da3ab65f1fceeddbc7}{m\+\_\+t\+Fec}} = nullptr
+\item 
+Finite\+Element\+Space $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_a55057e161c4906ab9816cba4e268173b}{m\+\_\+t\+Fespace}} = nullptr
+\item 
+Array$<$ Finite\+Element\+Collection $\ast$ $>$ \mbox{\hyperlink{classHeatLsqXtFEM_af649e35b097f55610164c333162d959c}{m\+\_\+x\+Fecs}}
+\item 
+Array$<$ Finite\+Element\+Space $\ast$ $>$ \mbox{\hyperlink{classHeatLsqXtFEM_a12ef01626393045d29e0989817cb7232}{m\+\_\+x\+Fespaces}}
+\item 
+Array$<$ int $>$ \mbox{\hyperlink{classHeatLsqXtFEM_af1e3b5bdc492c8a9db4288ef84794670}{m\+\_\+block\+\_\+offsets}}
+\item 
+Sparse\+Matrix $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_a96033fb8aeaf997d79d881f0951a6f9b}{m\+\_\+t\+Mass}} = nullptr
+\item 
+Sparse\+Matrix $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_aa681d19d577957f85e6e6c246da04eca}{m\+\_\+t\+Stiff}} = nullptr
+\item 
+Sparse\+Matrix $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_a02f051974774b8498a182e484dd992a5}{m\+\_\+t\+Grad}} = nullptr
+\item 
+Sparse\+Matrix $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_adf672dd8e7639638369bdb6108d5431b}{m\+\_\+x\+Mass1}} = nullptr
+\item 
+Sparse\+Matrix $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_a8534354ad59b2de62d7e0b0d8b36e70a}{m\+\_\+x\+Mass2}} = nullptr
+\item 
+Sparse\+Matrix $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_a34b04765c0538e1ce5b6814380fc27cf}{m\+\_\+x\+Stiff1}} = nullptr
+\item 
+Sparse\+Matrix $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_af54f5cba756e3de975531b3230a08f70}{m\+\_\+x\+Stiff2}} = nullptr
+\item 
+Sparse\+Matrix $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_ac78307df38f2c305b8985ec686f16787}{m\+\_\+x\+Grad}} = nullptr
+\item 
+Sparse\+Matrix $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_aa90216d15a725169097e42784262da6a}{m\+\_\+x\+Div}} = nullptr
+\item 
+Sparse\+Matrix $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_a5519434f0b3d3c5c7393c4b00059303c}{m\+\_\+block00}} = nullptr
+\item 
+Sparse\+Matrix $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_a94d522e09da9e7b169603880e2630388}{m\+\_\+block01}} = nullptr
+\item 
+Sparse\+Matrix $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_ae28ecf40f68000324fffda4233a680fd}{m\+\_\+block10}} = nullptr
+\item 
+Sparse\+Matrix $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_af5aea2466db2e1d3d58cbe754421ab6c}{m\+\_\+block11}} = nullptr
+\item 
+Block\+Operator $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_a6309ba06624e88be8015c9091dd19411}{m\+\_\+heat\+Op}} = nullptr
+\item 
+Sparse\+Matrix $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_a55939e1dca725bd6be08415d9d394c28}{m\+\_\+heat\+Mat}} = nullptr
+\item 
+Sparse\+Matrix $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_adf42889637aa81a06e74eab49f6c3f84}{m\+\_\+heat\+Proj\+Mat}} = nullptr
+\item 
+Array$<$ int $>$ \mbox{\hyperlink{classHeatLsqXtFEM_a007997c92697f58b6b66a2c0c1521dfb}{m\+\_\+x\+Ess\+\_\+bdr\+\_\+marker}}
+\item 
+Array$<$ int $>$ \mbox{\hyperlink{classHeatLsqXtFEM_ab74374fc8f981f0bbc3967c8b3a9c8c3}{m\+\_\+x\+Ess\+\_\+tdof\+\_\+list}}
+\item 
+Array$<$ int $>$ \mbox{\hyperlink{classHeatLsqXtFEM_ad3fc555b51db946443eb94ecc5a63cbf}{m\+\_\+ess\+\_\+tdof\+\_\+list}}
+\item 
+bool \mbox{\hyperlink{classHeatLsqXtFEM_aa4f163d93a724d993377a495a2535fd4}{m\+\_\+first\+\_\+pass}} = true
+\item 
+Sparse\+Matrix $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_a67c6e9857fb18985bd28de1133b93cfd}{m\+\_\+block00\+\_\+med\+Idp}} = nullptr
+\item 
+Sparse\+Matrix $\ast$ \mbox{\hyperlink{classHeatLsqXtFEM_af23b4ccdd6698165510b89acfed801f5}{m\+\_\+block01\+\_\+med\+Idp}} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 13 of file discretisation.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classHeatLsqXtFEM_ac6e6b4619e1396c6aebeab4dc615c71e}\label{classHeatLsqXtFEM_ac6e6b4619e1396c6aebeab4dc615c71e}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{HeatLsqXtFEM()}{HeatLsqXtFEM()}}
+{\footnotesize\ttfamily Heat\+Lsq\+Xt\+F\+E\+M\+::\+Heat\+Lsq\+Xt\+F\+EM (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{config,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classHeatTestCases}{Heat\+Test\+Cases}} $>$ \&}]{test\+Case }\end{DoxyParamCaption})}
+
+
+
+Definition at line 10 of file discretisation.\+cpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a30fee57e3b455670880233dbee01a6a7}\label{classHeatLsqXtFEM_a30fee57e3b455670880233dbee01a6a7}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!````~HeatLsqXtFEM@{$\sim$HeatLsqXtFEM}}
+\index{````~HeatLsqXtFEM@{$\sim$HeatLsqXtFEM}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{$\sim$HeatLsqXtFEM()}{~HeatLsqXtFEM()}}
+{\footnotesize\ttfamily Heat\+Lsq\+Xt\+F\+E\+M\+::$\sim$\+Heat\+Lsq\+Xt\+F\+EM (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 19 of file discretisation.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classHeatLsqXtFEM_a5ee90676e10aad1b6bd89d7623caacbb}\label{classHeatLsqXtFEM_a5ee90676e10aad1b6bd89d7623caacbb}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!add\_vector@{add\_vector}}
+\index{add\_vector@{add\_vector}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{add\_vector()}{add\_vector()}}
+{\footnotesize\ttfamily void Heat\+Lsq\+Xt\+F\+E\+M\+::add\+\_\+vector (\begin{DoxyParamCaption}\item[{const Array$<$ int $>$ \&}]{vdofs,  }\item[{const Vector \&}]{elvec,  }\item[{Vector \&}]{b }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 307 of file discretisation.\+cpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_aeb30ffa9073dbd7ece750729fd508a11}\label{classHeatLsqXtFEM_aeb30ffa9073dbd7ece750729fd508a11}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!apply\_BCs@{apply\_BCs}}
+\index{apply\_BCs@{apply\_BCs}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{apply\_BCs()}{apply\_BCs()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Heat\+Lsq\+Xt\+F\+E\+M\+::apply\+\_\+\+B\+Cs (\begin{DoxyParamCaption}\item[{Block\+Vector \&}]{B }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 346 of file discretisation.\+cpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a8ddb06275c7ab7f3bb4b679fb15b19a1}\label{classHeatLsqXtFEM_a8ddb06275c7ab7f3bb4b679fb15b19a1}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!apply\_BCs@{apply\_BCs}}
+\index{apply\_BCs@{apply\_BCs}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{apply\_BCs()}{apply\_BCs()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Heat\+Lsq\+Xt\+F\+E\+M\+::apply\+\_\+\+B\+Cs (\begin{DoxyParamCaption}\item[{Sparse\+Matrix \&}]{A }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 338 of file discretisation.\+cpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a627f505921594c89dbc0312935d2ce6a}\label{classHeatLsqXtFEM_a627f505921594c89dbc0312935d2ce6a}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!assemble\_ICs@{assemble\_ICs}}
+\index{assemble\_ICs@{assemble\_ICs}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{assemble\_ICs()}{assemble\_ICs()}}
+{\footnotesize\ttfamily void Heat\+Lsq\+Xt\+F\+E\+M\+::assemble\+\_\+\+I\+Cs (\begin{DoxyParamCaption}\item[{Vector \&}]{b }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 145 of file discretisation.\+cpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a76ddbe94d16167170a3a64f1a6882919}\label{classHeatLsqXtFEM_a76ddbe94d16167170a3a64f1a6882919}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!assemble\_ICs\_xProjection@{assemble\_ICs\_xProjection}}
+\index{assemble\_ICs\_xProjection@{assemble\_ICs\_xProjection}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{assemble\_ICs\_xProjection()}{assemble\_ICs\_xProjection()}}
+{\footnotesize\ttfamily void Heat\+Lsq\+Xt\+F\+E\+M\+::assemble\+\_\+\+I\+Cs\+\_\+x\+Projection (\begin{DoxyParamCaption}\item[{Vector \&}]{b }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 179 of file discretisation.\+cpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_aa3c51dc64f0a5a0a271858d292855dd3}\label{classHeatLsqXtFEM_aa3c51dc64f0a5a0a271858d292855dd3}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!assemble\_projection\_rhs@{assemble\_projection\_rhs}}
+\index{assemble\_projection\_rhs@{assemble\_projection\_rhs}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{assemble\_projection\_rhs()}{assemble\_projection\_rhs()}}
+{\footnotesize\ttfamily void Heat\+Lsq\+Xt\+F\+E\+M\+::assemble\+\_\+projection\+\_\+rhs (\begin{DoxyParamCaption}\item[{Block\+Vector $\ast$}]{B }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 375 of file discretisation.\+cpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a09b51a9265a90b7262ba012872466511}\label{classHeatLsqXtFEM_a09b51a9265a90b7262ba012872466511}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!assemble\_projector@{assemble\_projector}}
+\index{assemble\_projector@{assemble\_projector}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{assemble\_projector()}{assemble\_projector()}}
+{\footnotesize\ttfamily virtual void Heat\+Lsq\+Xt\+F\+E\+M\+::assemble\+\_\+projector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classHeatLsqXtFemH1Hdiv_acae0026ae543a22818727454a5acfc49}{Heat\+Lsq\+Xt\+Fem\+H1\+Hdiv}}, and \mbox{\hyperlink{classHeatLsqXtFemH1H1_a8bada3b73d9ebbbdd9760a6a34501da4}{Heat\+Lsq\+Xt\+Fem\+H1\+H1}}.
+
+
+
+Definition at line 47 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_af1a7d8c56b1004ba99552fc1afa61cda}\label{classHeatLsqXtFEM_af1a7d8c56b1004ba99552fc1afa61cda}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!assemble\_rhs@{assemble\_rhs}}
+\index{assemble\_rhs@{assemble\_rhs}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{assemble\_rhs()}{assemble\_rhs()}}
+{\footnotesize\ttfamily void Heat\+Lsq\+Xt\+F\+E\+M\+::assemble\+\_\+rhs (\begin{DoxyParamCaption}\item[{Block\+Vector $\ast$}]{B }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 132 of file discretisation.\+cpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_ae6d7f52a09a8d50fc5afbc286b13f0ff}\label{classHeatLsqXtFEM_ae6d7f52a09a8d50fc5afbc286b13f0ff}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!assemble\_source\_tGradXProjection@{assemble\_source\_tGradXProjection}}
+\index{assemble\_source\_tGradXProjection@{assemble\_source\_tGradXProjection}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{assemble\_source\_tGradXProjection()}{assemble\_source\_tGradXProjection()}}
+{\footnotesize\ttfamily void Heat\+Lsq\+Xt\+F\+E\+M\+::assemble\+\_\+source\+\_\+t\+Grad\+X\+Projection (\begin{DoxyParamCaption}\item[{Vector \&}]{b }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 191 of file discretisation.\+cpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a891b443a17b46ed63a1b99f5cd9cb811}\label{classHeatLsqXtFEM_a891b443a17b46ed63a1b99f5cd9cb811}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!assemble\_source\_tProjectionXDiv@{assemble\_source\_tProjectionXDiv}}
+\index{assemble\_source\_tProjectionXDiv@{assemble\_source\_tProjectionXDiv}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{assemble\_source\_tProjectionXDiv()}{assemble\_source\_tProjectionXDiv()}}
+{\footnotesize\ttfamily void Heat\+Lsq\+Xt\+F\+E\+M\+::assemble\+\_\+source\+\_\+t\+Projection\+X\+Div (\begin{DoxyParamCaption}\item[{Vector \&}]{b }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 256 of file discretisation.\+cpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_abf5bfa6f64f5b0b7ba03d059bee31a07}\label{classHeatLsqXtFEM_abf5bfa6f64f5b0b7ba03d059bee31a07}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!assemble\_source\_xDiv@{assemble\_source\_xDiv}}
+\index{assemble\_source\_xDiv@{assemble\_source\_xDiv}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{assemble\_source\_xDiv()}{assemble\_source\_xDiv()}}
+{\footnotesize\ttfamily virtual void Heat\+Lsq\+Xt\+F\+E\+M\+::assemble\+\_\+source\+\_\+x\+Div (\begin{DoxyParamCaption}\item[{Vector \&}]{,  }\item[{double}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line 70 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a48fd52119a4c190bdea2b1df91ec0502}\label{classHeatLsqXtFEM_a48fd52119a4c190bdea2b1df91ec0502}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!assemble\_source\_xProjection@{assemble\_source\_xProjection}}
+\index{assemble\_source\_xProjection@{assemble\_source\_xProjection}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{assemble\_source\_xProjection()}{assemble\_source\_xProjection()}}
+{\footnotesize\ttfamily void Heat\+Lsq\+Xt\+F\+E\+M\+::assemble\+\_\+source\+\_\+x\+Projection (\begin{DoxyParamCaption}\item[{Vector \&}]{b,  }\item[{double}]{t }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 243 of file discretisation.\+cpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_ac9d58bfd8c8c5bbc3f18163e7cd33193}\label{classHeatLsqXtFEM_ac9d58bfd8c8c5bbc3f18163e7cd33193}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!assemble\_system@{assemble\_system}}
+\index{assemble\_system@{assemble\_system}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{assemble\_system()}{assemble\_system()}}
+{\footnotesize\ttfamily void Heat\+Lsq\+Xt\+F\+E\+M\+::assemble\+\_\+system (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 63 of file discretisation.\+cpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_aef203649ba0c5fd4232d37d6859fbd5c}\label{classHeatLsqXtFEM_aef203649ba0c5fd4232d37d6859fbd5c}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!assemble\_system\_medium\_dependent@{assemble\_system\_medium\_dependent}}
+\index{assemble\_system\_medium\_dependent@{assemble\_system\_medium\_dependent}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{assemble\_system\_medium\_dependent()}{assemble\_system\_medium\_dependent()}}
+{\footnotesize\ttfamily virtual void Heat\+Lsq\+Xt\+F\+E\+M\+::assemble\+\_\+system\+\_\+medium\+\_\+dependent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classHeatLsqXtFemH1Hdiv_ad481b57bf49de19e69a85d13cbb4d2a9}{Heat\+Lsq\+Xt\+Fem\+H1\+Hdiv}}, and \mbox{\hyperlink{classHeatLsqXtFemH1H1_a63115ceb697476967c3ed285721a94be}{Heat\+Lsq\+Xt\+Fem\+H1\+H1}}.
+
+
+
+Definition at line 38 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a94692907a29211f0377986aa669960a4}\label{classHeatLsqXtFEM_a94692907a29211f0377986aa669960a4}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!assemble\_system\_medium\_independent@{assemble\_system\_medium\_independent}}
+\index{assemble\_system\_medium\_independent@{assemble\_system\_medium\_independent}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{assemble\_system\_medium\_independent()}{assemble\_system\_medium\_independent()}}
+{\footnotesize\ttfamily virtual void Heat\+Lsq\+Xt\+F\+E\+M\+::assemble\+\_\+system\+\_\+medium\+\_\+independent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classHeatLsqXtFemH1Hdiv_a0efd4145197e5dce989672ab233d80f7}{Heat\+Lsq\+Xt\+Fem\+H1\+Hdiv}}, and \mbox{\hyperlink{classHeatLsqXtFemH1H1_a0ab871debabb262d1b973119d06d5a5b}{Heat\+Lsq\+Xt\+Fem\+H1\+H1}}.
+
+
+
+Definition at line 29 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a581fd61142624fe8bf9e3241fce5b976}\label{classHeatLsqXtFEM_a581fd61142624fe8bf9e3241fce5b976}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!assemble\_xProjection\_rhs@{assemble\_xProjection\_rhs}}
+\index{assemble\_xProjection\_rhs@{assemble\_xProjection\_rhs}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{assemble\_xProjection\_rhs()}{assemble\_xProjection\_rhs()}}
+{\footnotesize\ttfamily virtual void Heat\+Lsq\+Xt\+F\+E\+M\+::assemble\+\_\+x\+Projection\+\_\+rhs (\begin{DoxyParamCaption}\item[{Vector \&}]{,  }\item[{Vector \&}]{,  }\item[{double}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line 80 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_aa81ab6c1f78c4386be4cf1ae0b1e2512}\label{classHeatLsqXtFEM_aa81ab6c1f78c4386be4cf1ae0b1e2512}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!build\_projector\_matrix@{build\_projector\_matrix}}
+\index{build\_projector\_matrix@{build\_projector\_matrix}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{build\_projector\_matrix()}{build\_projector\_matrix()}}
+{\footnotesize\ttfamily void Heat\+Lsq\+Xt\+F\+E\+M\+::build\+\_\+projector\+\_\+matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 355 of file discretisation.\+cpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_adaccc99cb8207b727629a300e601dffe}\label{classHeatLsqXtFEM_adaccc99cb8207b727629a300e601dffe}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!build\_system\_matrix@{build\_system\_matrix}}
+\index{build\_system\_matrix@{build\_system\_matrix}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{build\_system\_matrix()}{build\_system\_matrix()}}
+{\footnotesize\ttfamily void Heat\+Lsq\+Xt\+F\+E\+M\+::build\+\_\+system\+\_\+matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 87 of file discretisation.\+cpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a0fbacfcf7c010b61d40adef0dc379ff5}\label{classHeatLsqXtFEM_a0fbacfcf7c010b61d40adef0dc379ff5}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!build\_system\_matrix\_upTr@{build\_system\_matrix\_upTr}}
+\index{build\_system\_matrix\_upTr@{build\_system\_matrix\_upTr}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{build\_system\_matrix\_upTr()}{build\_system\_matrix\_upTr()}}
+{\footnotesize\ttfamily void Heat\+Lsq\+Xt\+F\+E\+M\+::build\+\_\+system\+\_\+matrix\+\_\+up\+Tr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 109 of file discretisation.\+cpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a25c83fc475e3bc5e3f2726ba4bc73dfe}\label{classHeatLsqXtFEM_a25c83fc475e3bc5e3f2726ba4bc73dfe}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!build\_system\_op@{build\_system\_op}}
+\index{build\_system\_op@{build\_system\_op}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{build\_system\_op()}{build\_system\_op()}}
+{\footnotesize\ttfamily void Heat\+Lsq\+Xt\+F\+E\+M\+::build\+\_\+system\+\_\+op (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 73 of file discretisation.\+cpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_ab40ac81c58464b1a92337326c9ce211e}\label{classHeatLsqXtFEM_ab40ac81c58464b1a92337326c9ce211e}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!get\_block\_offsets@{get\_block\_offsets}}
+\index{get\_block\_offsets@{get\_block\_offsets}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{get\_block\_offsets()}{get\_block\_offsets()}}
+{\footnotesize\ttfamily Array$<$int$>$ Heat\+Lsq\+Xt\+F\+E\+M\+::get\+\_\+block\+\_\+offsets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 137 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a4d931c28ae899789afdfcef50d2aaa01}\label{classHeatLsqXtFEM_a4d931c28ae899789afdfcef50d2aaa01}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!get\_heat\_mat@{get\_heat\_mat}}
+\index{get\_heat\_mat@{get\_heat\_mat}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{get\_heat\_mat()}{get\_heat\_mat()}}
+{\footnotesize\ttfamily Sparse\+Matrix$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::get\+\_\+heat\+\_\+mat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 141 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a4698d03d4da9744079a036905f8e3551}\label{classHeatLsqXtFEM_a4698d03d4da9744079a036905f8e3551}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!get\_heat\_op@{get\_heat\_op}}
+\index{get\_heat\_op@{get\_heat\_op}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{get\_heat\_op()}{get\_heat\_op()}}
+{\footnotesize\ttfamily Block\+Operator$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::get\+\_\+heat\+\_\+op (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 133 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_aaf3589116c32eac5b6120e825f8509a9}\label{classHeatLsqXtFEM_aaf3589116c32eac5b6120e825f8509a9}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!get\_heat\_projection\_mat@{get\_heat\_projection\_mat}}
+\index{get\_heat\_projection\_mat@{get\_heat\_projection\_mat}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{get\_heat\_projection\_mat()}{get\_heat\_projection\_mat()}}
+{\footnotesize\ttfamily Sparse\+Matrix$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::get\+\_\+heat\+\_\+projection\+\_\+mat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 145 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_aa40d6763aa52789e5aa10807a8026969}\label{classHeatLsqXtFEM_aa40d6763aa52789e5aa10807a8026969}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!get\_test\_case@{get\_test\_case}}
+\index{get\_test\_case@{get\_test\_case}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{get\_test\_case()}{get\_test\_case()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classHeatTestCases}{Heat\+Test\+Cases}}$>$ Heat\+Lsq\+Xt\+F\+E\+M\+::get\+\_\+test\+\_\+case (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 105 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a578a81d144de0bfaf6b053f421f71818}\label{classHeatLsqXtFEM_a578a81d144de0bfaf6b053f421f71818}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!get\_tFec@{get\_tFec}}
+\index{get\_tFec@{get\_tFec}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{get\_tFec()}{get\_tFec()}}
+{\footnotesize\ttfamily Finite\+Element\+Collection$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::get\+\_\+t\+Fec (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 117 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_ab369a77f87b0a612cf7b99841c167f94}\label{classHeatLsqXtFEM_ab369a77f87b0a612cf7b99841c167f94}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!get\_tFespace@{get\_tFespace}}
+\index{get\_tFespace@{get\_tFespace}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{get\_tFespace()}{get\_tFespace()}}
+{\footnotesize\ttfamily Finite\+Element\+Space$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::get\+\_\+t\+Fespace (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 125 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a0d5f8dc672df0a1a39e9d58dd8ce58f9}\label{classHeatLsqXtFEM_a0d5f8dc672df0a1a39e9d58dd8ce58f9}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!get\_tMesh@{get\_tMesh}}
+\index{get\_tMesh@{get\_tMesh}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{get\_tMesh()}{get\_tMesh()}}
+{\footnotesize\ttfamily Mesh$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::get\+\_\+t\+Mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 109 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a86d6c043cd407d3d10790b24c19ec817}\label{classHeatLsqXtFEM_a86d6c043cd407d3d10790b24c19ec817}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!get\_xFecs@{get\_xFecs}}
+\index{get\_xFecs@{get\_xFecs}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{get\_xFecs()}{get\_xFecs()}}
+{\footnotesize\ttfamily Array$<$Finite\+Element\+Collection$\ast$$>$ Heat\+Lsq\+Xt\+F\+E\+M\+::get\+\_\+x\+Fecs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 121 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a7eb36f4187afdcdd5dd0c1a6136904d3}\label{classHeatLsqXtFEM_a7eb36f4187afdcdd5dd0c1a6136904d3}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!get\_xFespaces@{get\_xFespaces}}
+\index{get\_xFespaces@{get\_xFespaces}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{get\_xFespaces()}{get\_xFespaces()}}
+{\footnotesize\ttfamily Array$<$Finite\+Element\+Space$\ast$$>$ Heat\+Lsq\+Xt\+F\+E\+M\+::get\+\_\+x\+Fespaces (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 129 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a8b0527d57eabcf3ada3ec242e2a7b2f6}\label{classHeatLsqXtFEM_a8b0527d57eabcf3ada3ec242e2a7b2f6}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!get\_xMesh@{get\_xMesh}}
+\index{get\_xMesh@{get\_xMesh}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{get\_xMesh()}{get\_xMesh()}}
+{\footnotesize\ttfamily Mesh$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::get\+\_\+x\+Mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 113 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a44995a2a9262fd2cefcf2c9db0dd2bb6}\label{classHeatLsqXtFEM_a44995a2a9262fd2cefcf2c9db0dd2bb6}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!print@{print}}
+\index{print@{print}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Heat\+Lsq\+Xt\+F\+E\+M\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 149 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_ae94699eb957bb0ac33152f1ccc01b735}\label{classHeatLsqXtFEM_ae94699eb957bb0ac33152f1ccc01b735}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!reset@{reset}}
+\index{reset@{reset}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Heat\+Lsq\+Xt\+F\+E\+M\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 25 of file discretisation.\+cpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a22ae2ae1d45ca65e1010ffe846dd3bf3}\label{classHeatLsqXtFEM_a22ae2ae1d45ca65e1010ffe846dd3bf3}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!set@{set}}
+\index{set@{set}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily virtual void Heat\+Lsq\+Xt\+F\+E\+M\+::set (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ Mesh $>$ \&}]{,  }\item[{std\+::shared\+\_\+ptr$<$ Mesh $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classHeatLsqXtFemH1Hdiv_a6b71ca45232b127e1d570d7ebcd4592d}{Heat\+Lsq\+Xt\+Fem\+H1\+Hdiv}}, and \mbox{\hyperlink{classHeatLsqXtFemH1H1_ae92201f0f5b3c4716207e3cdc7f9f3dd}{Heat\+Lsq\+Xt\+Fem\+H1\+H1}}.
+
+
+
+Definition at line 21 of file discretisation.\+hpp.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classHeatLsqXtFEM_a5519434f0b3d3c5c7393c4b00059303c}\label{classHeatLsqXtFEM_a5519434f0b3d3c5c7393c4b00059303c}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_block00@{m\_block00}}
+\index{m\_block00@{m\_block00}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_block00}{m\_block00}}
+{\footnotesize\ttfamily Sparse\+Matrix$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+block00 = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 178 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a67c6e9857fb18985bd28de1133b93cfd}\label{classHeatLsqXtFEM_a67c6e9857fb18985bd28de1133b93cfd}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_block00\_medIdp@{m\_block00\_medIdp}}
+\index{m\_block00\_medIdp@{m\_block00\_medIdp}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_block00\_medIdp}{m\_block00\_medIdp}}
+{\footnotesize\ttfamily Sparse\+Matrix$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+block00\+\_\+med\+Idp = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 192 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a94d522e09da9e7b169603880e2630388}\label{classHeatLsqXtFEM_a94d522e09da9e7b169603880e2630388}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_block01@{m\_block01}}
+\index{m\_block01@{m\_block01}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_block01}{m\_block01}}
+{\footnotesize\ttfamily Sparse\+Matrix$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+block01 = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 179 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_af23b4ccdd6698165510b89acfed801f5}\label{classHeatLsqXtFEM_af23b4ccdd6698165510b89acfed801f5}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_block01\_medIdp@{m\_block01\_medIdp}}
+\index{m\_block01\_medIdp@{m\_block01\_medIdp}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_block01\_medIdp}{m\_block01\_medIdp}}
+{\footnotesize\ttfamily Sparse\+Matrix$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+block01\+\_\+med\+Idp = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 193 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_ae28ecf40f68000324fffda4233a680fd}\label{classHeatLsqXtFEM_ae28ecf40f68000324fffda4233a680fd}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_block10@{m\_block10}}
+\index{m\_block10@{m\_block10}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_block10}{m\_block10}}
+{\footnotesize\ttfamily Sparse\+Matrix$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+block10 = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 180 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_af5aea2466db2e1d3d58cbe754421ab6c}\label{classHeatLsqXtFEM_af5aea2466db2e1d3d58cbe754421ab6c}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_block11@{m\_block11}}
+\index{m\_block11@{m\_block11}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_block11}{m\_block11}}
+{\footnotesize\ttfamily Sparse\+Matrix$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+block11 = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 181 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_af1e3b5bdc492c8a9db4288ef84794670}\label{classHeatLsqXtFEM_af1e3b5bdc492c8a9db4288ef84794670}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_block\_offsets@{m\_block\_offsets}}
+\index{m\_block\_offsets@{m\_block\_offsets}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_block\_offsets}{m\_block\_offsets}}
+{\footnotesize\ttfamily Array$<$int$>$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+block\+\_\+offsets\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 165 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a0a5f3a9820acbd548cd404416db3a8d5}\label{classHeatLsqXtFEM_a0a5f3a9820acbd548cd404416db3a8d5}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_config@{m\_config}}
+\index{m\_config@{m\_config}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_config}{m\_config}}
+{\footnotesize\ttfamily const nlohmann\+::json\& Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+config\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 155 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a95a0e152cd43d874ef12f07efb8915e9}\label{classHeatLsqXtFEM_a95a0e152cd43d874ef12f07efb8915e9}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_deg@{m\_deg}}
+\index{m\_deg@{m\_deg}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_deg}{m\_deg}}
+{\footnotesize\ttfamily int Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+deg\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 157 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_ad3fc555b51db946443eb94ecc5a63cbf}\label{classHeatLsqXtFEM_ad3fc555b51db946443eb94ecc5a63cbf}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_ess\_tdof\_list@{m\_ess\_tdof\_list}}
+\index{m\_ess\_tdof\_list@{m\_ess\_tdof\_list}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_ess\_tdof\_list}{m\_ess\_tdof\_list}}
+{\footnotesize\ttfamily Array$<$int$>$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+ess\+\_\+tdof\+\_\+list\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 189 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_aa4f163d93a724d993377a495a2535fd4}\label{classHeatLsqXtFEM_aa4f163d93a724d993377a495a2535fd4}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_first\_pass@{m\_first\_pass}}
+\index{m\_first\_pass@{m\_first\_pass}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_first\_pass}{m\_first\_pass}}
+{\footnotesize\ttfamily bool Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+first\+\_\+pass = true\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 191 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a55939e1dca725bd6be08415d9d394c28}\label{classHeatLsqXtFEM_a55939e1dca725bd6be08415d9d394c28}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_heatMat@{m\_heatMat}}
+\index{m\_heatMat@{m\_heatMat}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_heatMat}{m\_heatMat}}
+{\footnotesize\ttfamily Sparse\+Matrix$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+heat\+Mat = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 184 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a6309ba06624e88be8015c9091dd19411}\label{classHeatLsqXtFEM_a6309ba06624e88be8015c9091dd19411}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_heatOp@{m\_heatOp}}
+\index{m\_heatOp@{m\_heatOp}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_heatOp}{m\_heatOp}}
+{\footnotesize\ttfamily Block\+Operator$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+heat\+Op = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 183 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_adf42889637aa81a06e74eab49f6c3f84}\label{classHeatLsqXtFEM_adf42889637aa81a06e74eab49f6c3f84}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_heatProjMat@{m\_heatProjMat}}
+\index{m\_heatProjMat@{m\_heatProjMat}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_heatProjMat}{m\_heatProjMat}}
+{\footnotesize\ttfamily Sparse\+Matrix$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+heat\+Proj\+Mat = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 185 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_ad87aadb8f0485e6f3deace61ce16de0a}\label{classHeatLsqXtFEM_ad87aadb8f0485e6f3deace61ce16de0a}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_testCase@{m\_testCase}}
+\index{m\_testCase@{m\_testCase}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_testCase}{m\_testCase}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classHeatTestCases}{Heat\+Test\+Cases}}$>$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+test\+Case\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 158 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_adfcc1b52269e75da3ab65f1fceeddbc7}\label{classHeatLsqXtFEM_adfcc1b52269e75da3ab65f1fceeddbc7}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_tFec@{m\_tFec}}
+\index{m\_tFec@{m\_tFec}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_tFec}{m\_tFec}}
+{\footnotesize\ttfamily Finite\+Element\+Collection$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+t\+Fec = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 160 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a55057e161c4906ab9816cba4e268173b}\label{classHeatLsqXtFEM_a55057e161c4906ab9816cba4e268173b}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_tFespace@{m\_tFespace}}
+\index{m\_tFespace@{m\_tFespace}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_tFespace}{m\_tFespace}}
+{\footnotesize\ttfamily Finite\+Element\+Space$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+t\+Fespace = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 161 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a02f051974774b8498a182e484dd992a5}\label{classHeatLsqXtFEM_a02f051974774b8498a182e484dd992a5}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_tGrad@{m\_tGrad}}
+\index{m\_tGrad@{m\_tGrad}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_tGrad}{m\_tGrad}}
+{\footnotesize\ttfamily Sparse\+Matrix$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+t\+Grad = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 169 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a96033fb8aeaf997d79d881f0951a6f9b}\label{classHeatLsqXtFEM_a96033fb8aeaf997d79d881f0951a6f9b}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_tMass@{m\_tMass}}
+\index{m\_tMass@{m\_tMass}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_tMass}{m\_tMass}}
+{\footnotesize\ttfamily Sparse\+Matrix$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+t\+Mass = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 167 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_aa681d19d577957f85e6e6c246da04eca}\label{classHeatLsqXtFEM_aa681d19d577957f85e6e6c246da04eca}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_tStiff@{m\_tStiff}}
+\index{m\_tStiff@{m\_tStiff}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_tStiff}{m\_tStiff}}
+{\footnotesize\ttfamily Sparse\+Matrix$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+t\+Stiff = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 168 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_aa90216d15a725169097e42784262da6a}\label{classHeatLsqXtFEM_aa90216d15a725169097e42784262da6a}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_xDiv@{m\_xDiv}}
+\index{m\_xDiv@{m\_xDiv}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_xDiv}{m\_xDiv}}
+{\footnotesize\ttfamily Sparse\+Matrix$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+x\+Div = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 176 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a007997c92697f58b6b66a2c0c1521dfb}\label{classHeatLsqXtFEM_a007997c92697f58b6b66a2c0c1521dfb}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_xEss\_bdr\_marker@{m\_xEss\_bdr\_marker}}
+\index{m\_xEss\_bdr\_marker@{m\_xEss\_bdr\_marker}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_xEss\_bdr\_marker}{m\_xEss\_bdr\_marker}}
+{\footnotesize\ttfamily Array$<$int$>$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+x\+Ess\+\_\+bdr\+\_\+marker\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 187 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_ab74374fc8f981f0bbc3967c8b3a9c8c3}\label{classHeatLsqXtFEM_ab74374fc8f981f0bbc3967c8b3a9c8c3}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_xEss\_tdof\_list@{m\_xEss\_tdof\_list}}
+\index{m\_xEss\_tdof\_list@{m\_xEss\_tdof\_list}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_xEss\_tdof\_list}{m\_xEss\_tdof\_list}}
+{\footnotesize\ttfamily Array$<$int$>$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+x\+Ess\+\_\+tdof\+\_\+list\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 188 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_af649e35b097f55610164c333162d959c}\label{classHeatLsqXtFEM_af649e35b097f55610164c333162d959c}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_xFecs@{m\_xFecs}}
+\index{m\_xFecs@{m\_xFecs}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_xFecs}{m\_xFecs}}
+{\footnotesize\ttfamily Array$<$Finite\+Element\+Collection$\ast$$>$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+x\+Fecs\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 163 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a12ef01626393045d29e0989817cb7232}\label{classHeatLsqXtFEM_a12ef01626393045d29e0989817cb7232}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_xFespaces@{m\_xFespaces}}
+\index{m\_xFespaces@{m\_xFespaces}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_xFespaces}{m\_xFespaces}}
+{\footnotesize\ttfamily Array$<$Finite\+Element\+Space$\ast$$>$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+x\+Fespaces\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 164 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_ac78307df38f2c305b8985ec686f16787}\label{classHeatLsqXtFEM_ac78307df38f2c305b8985ec686f16787}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_xGrad@{m\_xGrad}}
+\index{m\_xGrad@{m\_xGrad}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_xGrad}{m\_xGrad}}
+{\footnotesize\ttfamily Sparse\+Matrix$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+x\+Grad = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 175 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_adf672dd8e7639638369bdb6108d5431b}\label{classHeatLsqXtFEM_adf672dd8e7639638369bdb6108d5431b}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_xMass1@{m\_xMass1}}
+\index{m\_xMass1@{m\_xMass1}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_xMass1}{m\_xMass1}}
+{\footnotesize\ttfamily Sparse\+Matrix$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+x\+Mass1 = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 171 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a8534354ad59b2de62d7e0b0d8b36e70a}\label{classHeatLsqXtFEM_a8534354ad59b2de62d7e0b0d8b36e70a}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_xMass2@{m\_xMass2}}
+\index{m\_xMass2@{m\_xMass2}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_xMass2}{m\_xMass2}}
+{\footnotesize\ttfamily Sparse\+Matrix$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+x\+Mass2 = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 172 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_ae8911809ba41c3b9f07f65cb1630cdd9}\label{classHeatLsqXtFEM_ae8911809ba41c3b9f07f65cb1630cdd9}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_xndim@{m\_xndim}}
+\index{m\_xndim@{m\_xndim}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_xndim}{m\_xndim}}
+{\footnotesize\ttfamily int Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+xndim\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 157 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_a34b04765c0538e1ce5b6814380fc27cf}\label{classHeatLsqXtFEM_a34b04765c0538e1ce5b6814380fc27cf}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_xStiff1@{m\_xStiff1}}
+\index{m\_xStiff1@{m\_xStiff1}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_xStiff1}{m\_xStiff1}}
+{\footnotesize\ttfamily Sparse\+Matrix$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+x\+Stiff1 = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 173 of file discretisation.\+hpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFEM_af54f5cba756e3de975531b3230a08f70}\label{classHeatLsqXtFEM_af54f5cba756e3de975531b3230a08f70}} 
+\index{HeatLsqXtFEM@{HeatLsqXtFEM}!m\_xStiff2@{m\_xStiff2}}
+\index{m\_xStiff2@{m\_xStiff2}!HeatLsqXtFEM@{HeatLsqXtFEM}}
+\doxysubsubsection{\texorpdfstring{m\_xStiff2}{m\_xStiff2}}
+{\footnotesize\ttfamily Sparse\+Matrix$\ast$ Heat\+Lsq\+Xt\+F\+E\+M\+::m\+\_\+x\+Stiff2 = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 174 of file discretisation.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{discretisation_8hpp}{discretisation.\+hpp}}\item 
+\mbox{\hyperlink{discretisation_8cpp}{discretisation.\+cpp}}\end{DoxyCompactItemize}

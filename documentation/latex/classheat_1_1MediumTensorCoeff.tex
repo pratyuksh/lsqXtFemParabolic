@@ -1,0 +1,106 @@
+\hypertarget{classheat_1_1MediumTensorCoeff}{}\doxysection{heat\+::Medium\+Tensor\+Coeff Class Reference}
+\label{classheat_1_1MediumTensorCoeff}\index{heat::MediumTensorCoeff@{heat::MediumTensorCoeff}}
+
+
+Matrix diffusion coefficient in the heat equation.  
+
+
+
+
+{\ttfamily \#include $<$coefficients.\+hpp$>$}
+
+
+
+Inheritance diagram for heat\+::Medium\+Tensor\+Coeff\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{classheat_1_1MediumTensorCoeff__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for heat\+::Medium\+Tensor\+Coeff\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{classheat_1_1MediumTensorCoeff__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classheat_1_1MediumTensorCoeff_af7e840b1b1945760b0b2459a856c0157}{Medium\+Tensor\+Coeff}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classheat_1_1TestCases}{Test\+Cases}} $>$ test\+Case)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classheat_1_1MediumTensorCoeff_aac8b998d5b17413be29e870abd25c270}{Eval}} (Dense\+Matrix \&, Element\+Transformation \&, const Integration\+Point \&)
+\begin{DoxyCompactList}\small\item\em Evaluates the matrix coefficient. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classheat_1_1TestCases}{Test\+Cases}} $>$ \mbox{\hyperlink{classheat_1_1MediumTensorCoeff_a55fed52ee445aa7b371b582dfd1b2884}{m\+\_\+test\+Case}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Matrix diffusion coefficient in the heat equation. 
+
+Definition at line 38 of file coefficients.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classheat_1_1MediumTensorCoeff_af7e840b1b1945760b0b2459a856c0157}\label{classheat_1_1MediumTensorCoeff_af7e840b1b1945760b0b2459a856c0157}} 
+\index{heat::MediumTensorCoeff@{heat::MediumTensorCoeff}!MediumTensorCoeff@{MediumTensorCoeff}}
+\index{MediumTensorCoeff@{MediumTensorCoeff}!heat::MediumTensorCoeff@{heat::MediumTensorCoeff}}
+\doxysubsubsection{\texorpdfstring{MediumTensorCoeff()}{MediumTensorCoeff()}}
+{\footnotesize\ttfamily heat\+::\+Medium\+Tensor\+Coeff\+::\+Medium\+Tensor\+Coeff (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classheat_1_1TestCases}{Test\+Cases}} $>$}]{test\+Case }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em test\+Case} & test case for the heat equation \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 45 of file coefficients.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classheat_1_1MediumTensorCoeff_aac8b998d5b17413be29e870abd25c270}\label{classheat_1_1MediumTensorCoeff_aac8b998d5b17413be29e870abd25c270}} 
+\index{heat::MediumTensorCoeff@{heat::MediumTensorCoeff}!Eval@{Eval}}
+\index{Eval@{Eval}!heat::MediumTensorCoeff@{heat::MediumTensorCoeff}}
+\doxysubsubsection{\texorpdfstring{Eval()}{Eval()}}
+{\footnotesize\ttfamily void heat\+::\+Medium\+Tensor\+Coeff\+::\+Eval (\begin{DoxyParamCaption}\item[{Dense\+Matrix \&}]{M,  }\item[{Element\+Transformation \&}]{T,  }\item[{const Integration\+Point \&}]{ip }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Evaluates the matrix coefficient. 
+
+
+
+Definition at line 21 of file coefficients.\+cpp.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classheat_1_1MediumTensorCoeff_a55fed52ee445aa7b371b582dfd1b2884}\label{classheat_1_1MediumTensorCoeff_a55fed52ee445aa7b371b582dfd1b2884}} 
+\index{heat::MediumTensorCoeff@{heat::MediumTensorCoeff}!m\_testCase@{m\_testCase}}
+\index{m\_testCase@{m\_testCase}!heat::MediumTensorCoeff@{heat::MediumTensorCoeff}}
+\doxysubsubsection{\texorpdfstring{m\_testCase}{m\_testCase}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classheat_1_1TestCases}{Test\+Cases}}$>$ heat\+::\+Medium\+Tensor\+Coeff\+::m\+\_\+test\+Case\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 54 of file coefficients.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{coefficients_8hpp}{coefficients.\+hpp}}\item 
+\mbox{\hyperlink{coefficients_8cpp}{coefficients.\+cpp}}\end{DoxyCompactItemize}

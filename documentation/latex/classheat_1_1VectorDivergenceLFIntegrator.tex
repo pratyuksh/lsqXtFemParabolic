@@ -1,0 +1,83 @@
+\hypertarget{classheat_1_1VectorDivergenceLFIntegrator}{}\doxysection{heat\+::Vector\+Divergence\+L\+F\+Integrator Class Reference}
+\label{classheat_1_1VectorDivergenceLFIntegrator}\index{heat::VectorDivergenceLFIntegrator@{heat::VectorDivergenceLFIntegrator}}
+
+
+Vector Divergence LF Integrator; (f, div(v))  
+
+
+
+
+{\ttfamily \#include $<$assembly.\+hpp$>$}
+
+
+
+Inheritance diagram for heat\+::Vector\+Divergence\+L\+F\+Integrator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{classheat_1_1VectorDivergenceLFIntegrator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for heat\+::Vector\+Divergence\+L\+F\+Integrator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{classheat_1_1VectorDivergenceLFIntegrator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classheat_1_1VectorDivergenceLFIntegrator_a50c7f1d5ffcbe9404b2360764a73e6f6}{Vector\+Divergence\+L\+F\+Integrator}} (Coefficient \&f, double a)
+\begin{DoxyCompactList}\small\item\em Constructor with a coefficient and a scalar passed as arguments. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classheat_1_1VectorDivergenceLFIntegrator_ae9459c20b99e802be5ffd93d31393fcb}{Assemble\+R\+H\+S\+Element\+Vect}} (const Finite\+Element \&, Element\+Transformation \&, Vector \&) override
+\begin{DoxyCompactList}\small\item\em Assembles the Vector linear form integrator on a given spatial mesh element. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Vector Divergence LF Integrator; (f, div(v)) 
+
+Definition at line 267 of file assembly.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classheat_1_1VectorDivergenceLFIntegrator_a50c7f1d5ffcbe9404b2360764a73e6f6}\label{classheat_1_1VectorDivergenceLFIntegrator_a50c7f1d5ffcbe9404b2360764a73e6f6}} 
+\index{heat::VectorDivergenceLFIntegrator@{heat::VectorDivergenceLFIntegrator}!VectorDivergenceLFIntegrator@{VectorDivergenceLFIntegrator}}
+\index{VectorDivergenceLFIntegrator@{VectorDivergenceLFIntegrator}!heat::VectorDivergenceLFIntegrator@{heat::VectorDivergenceLFIntegrator}}
+\doxysubsubsection{\texorpdfstring{VectorDivergenceLFIntegrator()}{VectorDivergenceLFIntegrator()}}
+{\footnotesize\ttfamily heat\+::\+Vector\+Divergence\+L\+F\+Integrator\+::\+Vector\+Divergence\+L\+F\+Integrator (\begin{DoxyParamCaption}\item[{Coefficient \&}]{f,  }\item[{double}]{a }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor with a coefficient and a scalar passed as arguments. 
+
+
+
+Definition at line 272 of file assembly.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classheat_1_1VectorDivergenceLFIntegrator_ae9459c20b99e802be5ffd93d31393fcb}\label{classheat_1_1VectorDivergenceLFIntegrator_ae9459c20b99e802be5ffd93d31393fcb}} 
+\index{heat::VectorDivergenceLFIntegrator@{heat::VectorDivergenceLFIntegrator}!AssembleRHSElementVect@{AssembleRHSElementVect}}
+\index{AssembleRHSElementVect@{AssembleRHSElementVect}!heat::VectorDivergenceLFIntegrator@{heat::VectorDivergenceLFIntegrator}}
+\doxysubsubsection{\texorpdfstring{AssembleRHSElementVect()}{AssembleRHSElementVect()}}
+{\footnotesize\ttfamily void heat\+::\+Vector\+Divergence\+L\+F\+Integrator\+::\+Assemble\+R\+H\+S\+Element\+Vect (\begin{DoxyParamCaption}\item[{const Finite\+Element \&}]{fe,  }\item[{Element\+Transformation \&}]{Trans,  }\item[{Vector \&}]{elvect }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Assembles the Vector linear form integrator on a given spatial mesh element. 
+
+
+
+Definition at line 368 of file assembly.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{assembly_8hpp}{assembly.\+hpp}}\item 
+\mbox{\hyperlink{assembly_8cpp}{assembly.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,104 @@
+\hypertarget{classheat_1_1BdryTemperatureCoeff}{}\doxysection{heat\+::Bdry\+Temperature\+Coeff Class Reference}
+\label{classheat_1_1BdryTemperatureCoeff}\index{heat::BdryTemperatureCoeff@{heat::BdryTemperatureCoeff}}
+
+
+Boundary temperature (scalar) coefficient.  
+
+
+
+
+{\ttfamily \#include $<$coefficients.\+hpp$>$}
+
+
+
+Inheritance diagram for heat\+::Bdry\+Temperature\+Coeff\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classheat_1_1BdryTemperatureCoeff__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for heat\+::Bdry\+Temperature\+Coeff\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classheat_1_1BdryTemperatureCoeff__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classheat_1_1BdryTemperatureCoeff_a2c28da00274abf88b9cb5845fde1c61e}{Bdry\+Temperature\+Coeff}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classheat_1_1TestCases}{Test\+Cases}} $>$ test\+Case)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classheat_1_1BdryTemperatureCoeff_a050c26c8e7dce35e360fa2d1f1dacaff}{Eval}} (Element\+Transformation \&, const Integration\+Point \&)
+\begin{DoxyCompactList}\small\item\em Evaluates the scalar coefficient, time t is deduced by Get\+Time() \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classheat_1_1BdryTemperatureCoeff_a63fe579e7e8d21060cba4a6b8ed5a2fb}{Eval}} (Element\+Transformation \&, const Integration\+Point \&, double)
+\begin{DoxyCompactList}\small\item\em Evaluates the scalar coefficient, time t is passed as an argument. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Boundary temperature (scalar) coefficient. 
+
+Definition at line 205 of file coefficients.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classheat_1_1BdryTemperatureCoeff_a2c28da00274abf88b9cb5845fde1c61e}\label{classheat_1_1BdryTemperatureCoeff_a2c28da00274abf88b9cb5845fde1c61e}} 
+\index{heat::BdryTemperatureCoeff@{heat::BdryTemperatureCoeff}!BdryTemperatureCoeff@{BdryTemperatureCoeff}}
+\index{BdryTemperatureCoeff@{BdryTemperatureCoeff}!heat::BdryTemperatureCoeff@{heat::BdryTemperatureCoeff}}
+\doxysubsubsection{\texorpdfstring{BdryTemperatureCoeff()}{BdryTemperatureCoeff()}}
+{\footnotesize\ttfamily heat\+::\+Bdry\+Temperature\+Coeff\+::\+Bdry\+Temperature\+Coeff (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classheat_1_1TestCases}{Test\+Cases}} $>$}]{test\+Case }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em test\+Case} & test case for the heat equation \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 212 of file coefficients.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classheat_1_1BdryTemperatureCoeff_a050c26c8e7dce35e360fa2d1f1dacaff}\label{classheat_1_1BdryTemperatureCoeff_a050c26c8e7dce35e360fa2d1f1dacaff}} 
+\index{heat::BdryTemperatureCoeff@{heat::BdryTemperatureCoeff}!Eval@{Eval}}
+\index{Eval@{Eval}!heat::BdryTemperatureCoeff@{heat::BdryTemperatureCoeff}}
+\doxysubsubsection{\texorpdfstring{Eval()}{Eval()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily double heat\+::\+Bdry\+Temperature\+Coeff\+::\+Eval (\begin{DoxyParamCaption}\item[{Element\+Transformation \&}]{T,  }\item[{const Integration\+Point \&}]{ip }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Evaluates the scalar coefficient, time t is deduced by Get\+Time() 
+
+
+
+Definition at line 149 of file coefficients.\+cpp.
+
+\mbox{\Hypertarget{classheat_1_1BdryTemperatureCoeff_a63fe579e7e8d21060cba4a6b8ed5a2fb}\label{classheat_1_1BdryTemperatureCoeff_a63fe579e7e8d21060cba4a6b8ed5a2fb}} 
+\index{heat::BdryTemperatureCoeff@{heat::BdryTemperatureCoeff}!Eval@{Eval}}
+\index{Eval@{Eval}!heat::BdryTemperatureCoeff@{heat::BdryTemperatureCoeff}}
+\doxysubsubsection{\texorpdfstring{Eval()}{Eval()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily double heat\+::\+Bdry\+Temperature\+Coeff\+::\+Eval (\begin{DoxyParamCaption}\item[{Element\+Transformation \&}]{T,  }\item[{const Integration\+Point \&}]{ip,  }\item[{double}]{t }\end{DoxyParamCaption})}
+
+
+
+Evaluates the scalar coefficient, time t is passed as an argument. 
+
+
+
+Definition at line 159 of file coefficients.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{coefficients_8hpp}{coefficients.\+hpp}}\item 
+\mbox{\hyperlink{coefficients_8cpp}{coefficients.\+cpp}}\end{DoxyCompactItemize}

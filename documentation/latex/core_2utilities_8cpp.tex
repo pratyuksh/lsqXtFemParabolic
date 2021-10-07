@@ -1,0 +1,61 @@
+\hypertarget{core_2utilities_8cpp}{}\doxysection{utilities.\+cpp File Reference}
+\label{core_2utilities_8cpp}\index{utilities.cpp@{utilities.cpp}}
+{\ttfamily \#include \char`\"{}utilities.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+Include dependency graph for core/utilities.cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2utilities_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{core_2utilities_8cpp_a6802021a89798d83937aa8371b09053d}{write\+Error\+Convergence\+Json\+File}} (std\+::string system\+Type, std\+::string solver\+Type, const nlohmann\+::json \&config, Eigen\+::\+Vector\+Xd \&data\+X1, Eigen\+::\+Vector\+Xi \&data\+X2, Eigen\+::\+Matrix\+Xd \&dataY)
+\begin{DoxyCompactList}\small\item\em Writes convergence behaviour of solution error to json file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{core_2utilities_8cpp_a5157bb33eee9137e735cbbb1788e271a}{write\+Qoi\+Convergence\+Json\+File}} (std\+::string system\+Type, std\+::string solver\+Type, const nlohmann\+::json \&config, Eigen\+::\+Vector\+Xd \&data\+X1, Eigen\+::\+Vector\+Xi \&data\+X2, Eigen\+::\+Vector\+Xd \&data\+Y1, Eigen\+::\+Vector\+Xd \&data\+Y2)
+\begin{DoxyCompactList}\small\item\em Writes convergence behaviour of Quantity of Interest to json file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{core_2utilities_8cpp_acdeab230cff44af755bcf64d872726eb}{write\+Measuredtime\+Json\+File}} (std\+::string system\+Type, std\+::string solver\+Type, const nlohmann\+::json \&config, int lx, int lt, Eigen\+::\+Vector\+Xd \&measured\+Time)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{core_2utilities_8cpp_a6802021a89798d83937aa8371b09053d}\label{core_2utilities_8cpp_a6802021a89798d83937aa8371b09053d}} 
+\index{core/utilities.cpp@{core/utilities.cpp}!writeErrorConvergenceJsonFile@{writeErrorConvergenceJsonFile}}
+\index{writeErrorConvergenceJsonFile@{writeErrorConvergenceJsonFile}!core/utilities.cpp@{core/utilities.cpp}}
+\doxysubsubsection{\texorpdfstring{writeErrorConvergenceJsonFile()}{writeErrorConvergenceJsonFile()}}
+{\footnotesize\ttfamily void write\+Error\+Convergence\+Json\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{system\+Type,  }\item[{std\+::string}]{solver\+Type,  }\item[{const nlohmann\+::json \&}]{config,  }\item[{Eigen\+::\+Vector\+Xd \&}]{data\+X1,  }\item[{Eigen\+::\+Vector\+Xi \&}]{data\+X2,  }\item[{Eigen\+::\+Matrix\+Xd \&}]{dataY }\end{DoxyParamCaption})}
+
+
+
+Writes convergence behaviour of solution error to json file. 
+
+
+
+Definition at line 8 of file core/utilities.\+cpp.
+
+\mbox{\Hypertarget{core_2utilities_8cpp_acdeab230cff44af755bcf64d872726eb}\label{core_2utilities_8cpp_acdeab230cff44af755bcf64d872726eb}} 
+\index{core/utilities.cpp@{core/utilities.cpp}!writeMeasuredtimeJsonFile@{writeMeasuredtimeJsonFile}}
+\index{writeMeasuredtimeJsonFile@{writeMeasuredtimeJsonFile}!core/utilities.cpp@{core/utilities.cpp}}
+\doxysubsubsection{\texorpdfstring{writeMeasuredtimeJsonFile()}{writeMeasuredtimeJsonFile()}}
+{\footnotesize\ttfamily void write\+Measuredtime\+Json\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{system\+Type,  }\item[{std\+::string}]{solver\+Type,  }\item[{const nlohmann\+::json \&}]{config,  }\item[{int}]{lx,  }\item[{int}]{lt,  }\item[{Eigen\+::\+Vector\+Xd \&}]{measured\+Time }\end{DoxyParamCaption})}
+
+
+
+Definition at line 159 of file core/utilities.\+cpp.
+
+\mbox{\Hypertarget{core_2utilities_8cpp_a5157bb33eee9137e735cbbb1788e271a}\label{core_2utilities_8cpp_a5157bb33eee9137e735cbbb1788e271a}} 
+\index{core/utilities.cpp@{core/utilities.cpp}!writeQoiConvergenceJsonFile@{writeQoiConvergenceJsonFile}}
+\index{writeQoiConvergenceJsonFile@{writeQoiConvergenceJsonFile}!core/utilities.cpp@{core/utilities.cpp}}
+\doxysubsubsection{\texorpdfstring{writeQoiConvergenceJsonFile()}{writeQoiConvergenceJsonFile()}}
+{\footnotesize\ttfamily void write\+Qoi\+Convergence\+Json\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{system\+Type,  }\item[{std\+::string}]{solver\+Type,  }\item[{const nlohmann\+::json \&}]{config,  }\item[{Eigen\+::\+Vector\+Xd \&}]{data\+X1,  }\item[{Eigen\+::\+Vector\+Xi \&}]{data\+X2,  }\item[{Eigen\+::\+Vector\+Xd \&}]{data\+Y1,  }\item[{Eigen\+::\+Vector\+Xd \&}]{data\+Y2 }\end{DoxyParamCaption})}
+
+
+
+Writes convergence behaviour of Quantity of Interest to json file. 
+
+
+
+Definition at line 101 of file core/utilities.\+cpp.
+

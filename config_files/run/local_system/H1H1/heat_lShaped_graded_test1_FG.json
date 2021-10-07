@@ -1,0 +1,20 @@
+{
+    "host": "local",
+    
+    "problem_type": "lShaped_test1",
+    
+    "run": "runFG",
+    
+    "end_time": 1,
+    
+    "deg": 1,
+    "level_t": 4,
+    "level_x": 3,
+    "mesh_dir": "lShaped/gr/weight3E-1",
+    
+    "eval_error": true,
+    "eval_xt_error": true,
+    
+    "visualization": false,
+    "dump_output": false
+}

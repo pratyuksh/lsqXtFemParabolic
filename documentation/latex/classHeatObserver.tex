@@ -1,0 +1,247 @@
+\hypertarget{classHeatObserver}{}\doxysection{Heat\+Observer Class Reference}
+\label{classHeatObserver}\index{HeatObserver@{HeatObserver}}
+
+
+{\ttfamily \#include $<$observer.\+hpp$>$}
+
+
+
+Inheritance diagram for Heat\+Observer\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=203pt]{classHeatObserver__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Heat\+Observer\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=203pt]{classHeatObserver__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classHeatObserver_abb801e0fbc35dd19633aee754c522d83}{Heat\+Observer}} ()
+\item 
+\mbox{\hyperlink{classHeatObserver_aa26768492627e264d9c30bf6da0ad13e}{Heat\+Observer}} (const nlohmann\+::json \&, int)
+\item 
+void \mbox{\hyperlink{classHeatObserver_ab0d8866d1f4767590678e524ca045ad0}{set}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classHeatTestCases}{Heat\+Test\+Cases}} $>$ \&test\+Case, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classHeatLsqXtFEM}{Heat\+Lsq\+Xt\+F\+EM}} $>$ \&discr)
+\item 
+void \mbox{\hyperlink{classHeatObserver_a735c319d73083c61efb4679a141c35f3}{dump\+Sol}} (std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&, std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&) const
+\item 
+std\+::tuple$<$ double, double, double, double $>$ \mbox{\hyperlink{classHeatObserver_a6c1554575b090234030e0b133acbd229}{eval\+\_\+x\+H1\+Error}} (std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&, double t) const
+\begin{DoxyCompactList}\small\item\em Computes H1 error at a given time t. \end{DoxyCompactList}\item 
+std\+::tuple$<$ double, double, double, double $>$ \mbox{\hyperlink{classHeatObserver_a4baf9ddca6f9687533b85ceebf34a52c}{eval\+\_\+xt\+L2\+H1\+Error}} (Vector \&) const
+\begin{DoxyCompactList}\small\item\em Computes L2\+H1 error. \end{DoxyCompactList}\item 
+std\+::tuple$<$ double, double $>$ \mbox{\hyperlink{classHeatObserver_a2ee6d25a320accbf8d2e9badd7790216}{eval\+\_\+x\+Lsq\+Error}} (std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&, std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&, std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&, double t) const
+\begin{DoxyCompactList}\small\item\em Computes least-\/squares error at a given time t. \end{DoxyCompactList}\item 
+std\+::tuple$<$ double, double, double $>$ \mbox{\hyperlink{classHeatObserver_a870e2139228104edeaad6de77ec906b2}{eval\+\_\+xt\+Lsq\+Error}} (Vector \&, Vector \&) const
+\begin{DoxyCompactList}\small\item\em Computes least-\/squares error. \end{DoxyCompactList}\item 
+std\+::tuple$<$ double, double, double, double, double, double $>$ \mbox{\hyperlink{classHeatObserver_a732134bde376ed73a17381088d423ce8}{eval\+\_\+x\+Error}} (std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&, std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&, std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&, double t) const
+\item 
+std\+::tuple$<$ double, double, double $>$ \mbox{\hyperlink{classHeatObserver_a644c76fe6610f2d37ab35f436f7f43cf}{eval\+\_\+xt\+Error}} (Vector \&, Vector \&) const
+\begin{DoxyCompactList}\small\item\em Computes the error in the natural norm. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classHeatObserver_ad43232a0143786523e71c5106974a478}{eval\+Obs}} (Vector \&) const
+\item 
+double \mbox{\hyperlink{classHeatObserver_aaa982e7cee496bb7c7d633ef0e3ea1cd}{eval\+Obs}} (std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&) const
+\item 
+double \mbox{\hyperlink{classHeatObserver_ae8fd05bdf36e630d20d94cad2e56d4b0}{eval\+Qoi}} (Vector \&) const
+\item 
+double \mbox{\hyperlink{classHeatObserver_aad50127666ac7c6296a27ba875482d1a}{eval\+Qoi}} (std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&) const
+\item 
+double \mbox{\hyperlink{classHeatObserver_a07103f5709acc04fd7f233f1c637bf22}{eval\+Xt\+Qoi}} (Vector \&) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 19 of file observer.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classHeatObserver_abb801e0fbc35dd19633aee754c522d83}\label{classHeatObserver_abb801e0fbc35dd19633aee754c522d83}} 
+\index{HeatObserver@{HeatObserver}!HeatObserver@{HeatObserver}}
+\index{HeatObserver@{HeatObserver}!HeatObserver@{HeatObserver}}
+\doxysubsubsection{\texorpdfstring{HeatObserver()}{HeatObserver()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Heat\+Observer\+::\+Heat\+Observer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 22 of file observer.\+hpp.
+
+\mbox{\Hypertarget{classHeatObserver_aa26768492627e264d9c30bf6da0ad13e}\label{classHeatObserver_aa26768492627e264d9c30bf6da0ad13e}} 
+\index{HeatObserver@{HeatObserver}!HeatObserver@{HeatObserver}}
+\index{HeatObserver@{HeatObserver}!HeatObserver@{HeatObserver}}
+\doxysubsubsection{\texorpdfstring{HeatObserver()}{HeatObserver()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Heat\+Observer\+::\+Heat\+Observer (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{config,  }\item[{int}]{lx }\end{DoxyParamCaption})}
+
+
+
+Definition at line 20 of file observer.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classHeatObserver_a735c319d73083c61efb4679a141c35f3}\label{classHeatObserver_a735c319d73083c61efb4679a141c35f3}} 
+\index{HeatObserver@{HeatObserver}!dumpSol@{dumpSol}}
+\index{dumpSol@{dumpSol}!HeatObserver@{HeatObserver}}
+\doxysubsubsection{\texorpdfstring{dumpSol()}{dumpSol()}}
+{\footnotesize\ttfamily void Heat\+Observer\+::dump\+Sol (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&}]{u,  }\item[{std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&}]{q }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 80 of file observer.\+cpp.
+
+\mbox{\Hypertarget{classHeatObserver_a732134bde376ed73a17381088d423ce8}\label{classHeatObserver_a732134bde376ed73a17381088d423ce8}} 
+\index{HeatObserver@{HeatObserver}!eval\_xError@{eval\_xError}}
+\index{eval\_xError@{eval\_xError}!HeatObserver@{HeatObserver}}
+\doxysubsubsection{\texorpdfstring{eval\_xError()}{eval\_xError()}}
+{\footnotesize\ttfamily std\+::tuple$<$ double, double, double, double, double, double $>$ Heat\+Observer\+::eval\+\_\+x\+Error (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&}]{u,  }\item[{std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&}]{dudt,  }\item[{std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&}]{q,  }\item[{double}]{t }\end{DoxyParamCaption}) const}
+
+Computes the error in the natural norm at a given time t 
+
+Definition at line 373 of file observer.\+cpp.
+
+\mbox{\Hypertarget{classHeatObserver_a6c1554575b090234030e0b133acbd229}\label{classHeatObserver_a6c1554575b090234030e0b133acbd229}} 
+\index{HeatObserver@{HeatObserver}!eval\_xH1Error@{eval\_xH1Error}}
+\index{eval\_xH1Error@{eval\_xH1Error}!HeatObserver@{HeatObserver}}
+\doxysubsubsection{\texorpdfstring{eval\_xH1Error()}{eval\_xH1Error()}}
+{\footnotesize\ttfamily std\+::tuple$<$ double, double, double, double $>$ Heat\+Observer\+::eval\+\_\+x\+H1\+Error (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&}]{u,  }\item[{double}]{t }\end{DoxyParamCaption}) const}
+
+
+
+Computes H1 error at a given time t. 
+
+
+
+Definition at line 105 of file observer.\+cpp.
+
+\mbox{\Hypertarget{classHeatObserver_a2ee6d25a320accbf8d2e9badd7790216}\label{classHeatObserver_a2ee6d25a320accbf8d2e9badd7790216}} 
+\index{HeatObserver@{HeatObserver}!eval\_xLsqError@{eval\_xLsqError}}
+\index{eval\_xLsqError@{eval\_xLsqError}!HeatObserver@{HeatObserver}}
+\doxysubsubsection{\texorpdfstring{eval\_xLsqError()}{eval\_xLsqError()}}
+{\footnotesize\ttfamily std\+::tuple$<$ double, double $>$ Heat\+Observer\+::eval\+\_\+x\+Lsq\+Error (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&}]{u,  }\item[{std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&}]{dudt,  }\item[{std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&}]{q,  }\item[{double}]{t }\end{DoxyParamCaption}) const}
+
+
+
+Computes least-\/squares error at a given time t. 
+
+Computes least-\/squares error components given a time t 
+
+Definition at line 212 of file observer.\+cpp.
+
+\mbox{\Hypertarget{classHeatObserver_a644c76fe6610f2d37ab35f436f7f43cf}\label{classHeatObserver_a644c76fe6610f2d37ab35f436f7f43cf}} 
+\index{HeatObserver@{HeatObserver}!eval\_xtError@{eval\_xtError}}
+\index{eval\_xtError@{eval\_xtError}!HeatObserver@{HeatObserver}}
+\doxysubsubsection{\texorpdfstring{eval\_xtError()}{eval\_xtError()}}
+{\footnotesize\ttfamily std\+::tuple$<$ double, double, double $>$ Heat\+Observer\+::eval\+\_\+xt\+Error (\begin{DoxyParamCaption}\item[{Vector \&}]{u,  }\item[{Vector \&}]{q }\end{DoxyParamCaption}) const}
+
+
+
+Computes the error in the natural norm. 
+
+
+
+Definition at line 450 of file observer.\+cpp.
+
+\mbox{\Hypertarget{classHeatObserver_a4baf9ddca6f9687533b85ceebf34a52c}\label{classHeatObserver_a4baf9ddca6f9687533b85ceebf34a52c}} 
+\index{HeatObserver@{HeatObserver}!eval\_xtL2H1Error@{eval\_xtL2H1Error}}
+\index{eval\_xtL2H1Error@{eval\_xtL2H1Error}!HeatObserver@{HeatObserver}}
+\doxysubsubsection{\texorpdfstring{eval\_xtL2H1Error()}{eval\_xtL2H1Error()}}
+{\footnotesize\ttfamily std\+::tuple$<$ double, double, double, double $>$ Heat\+Observer\+::eval\+\_\+xt\+L2\+H1\+Error (\begin{DoxyParamCaption}\item[{Vector \&}]{u }\end{DoxyParamCaption}) const}
+
+
+
+Computes L2\+H1 error. 
+
+
+
+Definition at line 135 of file observer.\+cpp.
+
+\mbox{\Hypertarget{classHeatObserver_a870e2139228104edeaad6de77ec906b2}\label{classHeatObserver_a870e2139228104edeaad6de77ec906b2}} 
+\index{HeatObserver@{HeatObserver}!eval\_xtLsqError@{eval\_xtLsqError}}
+\index{eval\_xtLsqError@{eval\_xtLsqError}!HeatObserver@{HeatObserver}}
+\doxysubsubsection{\texorpdfstring{eval\_xtLsqError()}{eval\_xtLsqError()}}
+{\footnotesize\ttfamily std\+::tuple$<$ double, double, double $>$ Heat\+Observer\+::eval\+\_\+xt\+Lsq\+Error (\begin{DoxyParamCaption}\item[{Vector \&}]{u,  }\item[{Vector \&}]{q }\end{DoxyParamCaption}) const}
+
+
+
+Computes least-\/squares error. 
+
+Computes least-\/squares error components. 
+
+Definition at line 268 of file observer.\+cpp.
+
+\mbox{\Hypertarget{classHeatObserver_aaa982e7cee496bb7c7d633ef0e3ea1cd}\label{classHeatObserver_aaa982e7cee496bb7c7d633ef0e3ea1cd}} 
+\index{HeatObserver@{HeatObserver}!evalObs@{evalObs}}
+\index{evalObs@{evalObs}!HeatObserver@{HeatObserver}}
+\doxysubsubsection{\texorpdfstring{evalObs()}{evalObs()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily double Heat\+Observer\+::eval\+Obs (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&}]{u }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 586 of file observer.\+cpp.
+
+\mbox{\Hypertarget{classHeatObserver_ad43232a0143786523e71c5106974a478}\label{classHeatObserver_ad43232a0143786523e71c5106974a478}} 
+\index{HeatObserver@{HeatObserver}!evalObs@{evalObs}}
+\index{evalObs@{evalObs}!HeatObserver@{HeatObserver}}
+\doxysubsubsection{\texorpdfstring{evalObs()}{evalObs()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily double Heat\+Observer\+::eval\+Obs (\begin{DoxyParamCaption}\item[{Vector \&}]{U }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 561 of file observer.\+cpp.
+
+\mbox{\Hypertarget{classHeatObserver_aad50127666ac7c6296a27ba875482d1a}\label{classHeatObserver_aad50127666ac7c6296a27ba875482d1a}} 
+\index{HeatObserver@{HeatObserver}!evalQoi@{evalQoi}}
+\index{evalQoi@{evalQoi}!HeatObserver@{HeatObserver}}
+\doxysubsubsection{\texorpdfstring{evalQoi()}{evalQoi()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily double Heat\+Observer\+::eval\+Qoi (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ Grid\+Function $>$ \&}]{u }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 619 of file observer.\+cpp.
+
+\mbox{\Hypertarget{classHeatObserver_ae8fd05bdf36e630d20d94cad2e56d4b0}\label{classHeatObserver_ae8fd05bdf36e630d20d94cad2e56d4b0}} 
+\index{HeatObserver@{HeatObserver}!evalQoi@{evalQoi}}
+\index{evalQoi@{evalQoi}!HeatObserver@{HeatObserver}}
+\doxysubsubsection{\texorpdfstring{evalQoi()}{evalQoi()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily double Heat\+Observer\+::eval\+Qoi (\begin{DoxyParamCaption}\item[{Vector \&}]{U }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 594 of file observer.\+cpp.
+
+\mbox{\Hypertarget{classHeatObserver_a07103f5709acc04fd7f233f1c637bf22}\label{classHeatObserver_a07103f5709acc04fd7f233f1c637bf22}} 
+\index{HeatObserver@{HeatObserver}!evalXtQoi@{evalXtQoi}}
+\index{evalXtQoi@{evalXtQoi}!HeatObserver@{HeatObserver}}
+\doxysubsubsection{\texorpdfstring{evalXtQoi()}{evalXtQoi()}}
+{\footnotesize\ttfamily double Heat\+Observer\+::eval\+Xt\+Qoi (\begin{DoxyParamCaption}\item[{Vector \&}]{U }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 625 of file observer.\+cpp.
+
+\mbox{\Hypertarget{classHeatObserver_ab0d8866d1f4767590678e524ca045ad0}\label{classHeatObserver_ab0d8866d1f4767590678e524ca045ad0}} 
+\index{HeatObserver@{HeatObserver}!set@{set}}
+\index{set@{set}!HeatObserver@{HeatObserver}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily void Heat\+Observer\+::set (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classHeatTestCases}{Heat\+Test\+Cases}} $>$ \&}]{test\+Case,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classHeatLsqXtFEM}{Heat\+Lsq\+Xt\+F\+EM}} $>$ \&}]{discr }\end{DoxyParamCaption})}
+
+
+
+Definition at line 38 of file observer.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{observer_8hpp}{observer.\+hpp}}\item 
+\mbox{\hyperlink{observer_8cpp}{observer.\+cpp}}\end{DoxyCompactItemize}

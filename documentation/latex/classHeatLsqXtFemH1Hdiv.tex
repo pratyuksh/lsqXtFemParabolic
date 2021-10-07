@@ -1,0 +1,133 @@
+\hypertarget{classHeatLsqXtFemH1Hdiv}{}\doxysection{Heat\+Lsq\+Xt\+Fem\+H1\+Hdiv Class Reference}
+\label{classHeatLsqXtFemH1Hdiv}\index{HeatLsqXtFemH1Hdiv@{HeatLsqXtFemH1Hdiv}}
+
+
+{\ttfamily \#include $<$discretisation.\+hpp$>$}
+
+
+
+Inheritance diagram for Heat\+Lsq\+Xt\+Fem\+H1\+Hdiv\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{classHeatLsqXtFemH1Hdiv__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Heat\+Lsq\+Xt\+Fem\+H1\+Hdiv\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{classHeatLsqXtFemH1Hdiv__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classHeatLsqXtFemH1Hdiv_a3eea8db60dbed3212a69b00bf5079b7e}{Heat\+Lsq\+Xt\+Fem\+H1\+Hdiv}} (const nlohmann\+::json \&config, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classHeatTestCases}{Heat\+Test\+Cases}} $>$ \&test\+Case)
+\item 
+void \mbox{\hyperlink{classHeatLsqXtFemH1Hdiv_a6b71ca45232b127e1d570d7ebcd4592d}{set}} (std\+::shared\+\_\+ptr$<$ Mesh $>$ \&, std\+::shared\+\_\+ptr$<$ Mesh $>$ \&) override
+\item 
+void \mbox{\hyperlink{classHeatLsqXtFemH1Hdiv_a0efd4145197e5dce989672ab233d80f7}{assemble\+\_\+system\+\_\+medium\+\_\+independent}} () override
+\item 
+void \mbox{\hyperlink{classHeatLsqXtFemH1Hdiv_ad481b57bf49de19e69a85d13cbb4d2a9}{assemble\+\_\+system\+\_\+medium\+\_\+dependent}} () override
+\item 
+void \mbox{\hyperlink{classHeatLsqXtFemH1Hdiv_acae0026ae543a22818727454a5acfc49}{assemble\+\_\+projector}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 220 of file discretisation.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classHeatLsqXtFemH1Hdiv_a3eea8db60dbed3212a69b00bf5079b7e}\label{classHeatLsqXtFemH1Hdiv_a3eea8db60dbed3212a69b00bf5079b7e}} 
+\index{HeatLsqXtFemH1Hdiv@{HeatLsqXtFemH1Hdiv}!HeatLsqXtFemH1Hdiv@{HeatLsqXtFemH1Hdiv}}
+\index{HeatLsqXtFemH1Hdiv@{HeatLsqXtFemH1Hdiv}!HeatLsqXtFemH1Hdiv@{HeatLsqXtFemH1Hdiv}}
+\doxysubsubsection{\texorpdfstring{HeatLsqXtFemH1Hdiv()}{HeatLsqXtFemH1Hdiv()}}
+{\footnotesize\ttfamily Heat\+Lsq\+Xt\+Fem\+H1\+Hdiv\+::\+Heat\+Lsq\+Xt\+Fem\+H1\+Hdiv (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{config,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classHeatTestCases}{Heat\+Test\+Cases}} $>$ \&}]{test\+Case }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 223 of file discretisation.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classHeatLsqXtFemH1Hdiv_acae0026ae543a22818727454a5acfc49}\label{classHeatLsqXtFemH1Hdiv_acae0026ae543a22818727454a5acfc49}} 
+\index{HeatLsqXtFemH1Hdiv@{HeatLsqXtFemH1Hdiv}!assemble\_projector@{assemble\_projector}}
+\index{assemble\_projector@{assemble\_projector}!HeatLsqXtFemH1Hdiv@{HeatLsqXtFemH1Hdiv}}
+\doxysubsubsection{\texorpdfstring{assemble\_projector()}{assemble\_projector()}}
+{\footnotesize\ttfamily void Heat\+Lsq\+Xt\+Fem\+H1\+Hdiv\+::assemble\+\_\+projector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+assemble matrices in time
+
+assemble matrices in space
+
+compute blocks
+
+Reimplemented from \mbox{\hyperlink{classHeatLsqXtFEM_a09b51a9265a90b7262ba012872466511}{Heat\+Lsq\+Xt\+F\+EM}}.
+
+
+
+Definition at line 254 of file discretisation\+\_\+\+H1\+Hdiv.\+cpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFemH1Hdiv_ad481b57bf49de19e69a85d13cbb4d2a9}\label{classHeatLsqXtFemH1Hdiv_ad481b57bf49de19e69a85d13cbb4d2a9}} 
+\index{HeatLsqXtFemH1Hdiv@{HeatLsqXtFemH1Hdiv}!assemble\_system\_medium\_dependent@{assemble\_system\_medium\_dependent}}
+\index{assemble\_system\_medium\_dependent@{assemble\_system\_medium\_dependent}!HeatLsqXtFemH1Hdiv@{HeatLsqXtFemH1Hdiv}}
+\doxysubsubsection{\texorpdfstring{assemble\_system\_medium\_dependent()}{assemble\_system\_medium\_dependent()}}
+{\footnotesize\ttfamily void Heat\+Lsq\+Xt\+Fem\+H1\+Hdiv\+::assemble\+\_\+system\+\_\+medium\+\_\+dependent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+assemble matrices in space
+
+compute blocks
+
+Reimplemented from \mbox{\hyperlink{classHeatLsqXtFEM_aef203649ba0c5fd4232d37d6859fbd5c}{Heat\+Lsq\+Xt\+F\+EM}}.
+
+
+
+Definition at line 190 of file discretisation\+\_\+\+H1\+Hdiv.\+cpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFemH1Hdiv_a0efd4145197e5dce989672ab233d80f7}\label{classHeatLsqXtFemH1Hdiv_a0efd4145197e5dce989672ab233d80f7}} 
+\index{HeatLsqXtFemH1Hdiv@{HeatLsqXtFemH1Hdiv}!assemble\_system\_medium\_independent@{assemble\_system\_medium\_independent}}
+\index{assemble\_system\_medium\_independent@{assemble\_system\_medium\_independent}!HeatLsqXtFemH1Hdiv@{HeatLsqXtFemH1Hdiv}}
+\doxysubsubsection{\texorpdfstring{assemble\_system\_medium\_independent()}{assemble\_system\_medium\_independent()}}
+{\footnotesize\ttfamily void Heat\+Lsq\+Xt\+Fem\+H1\+Hdiv\+::assemble\+\_\+system\+\_\+medium\+\_\+independent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+assemble matrices in time
+
+assemble matrices in space
+
+compute blocks
+
+Reimplemented from \mbox{\hyperlink{classHeatLsqXtFEM_a94692907a29211f0377986aa669960a4}{Heat\+Lsq\+Xt\+F\+EM}}.
+
+
+
+Definition at line 86 of file discretisation\+\_\+\+H1\+Hdiv.\+cpp.
+
+\mbox{\Hypertarget{classHeatLsqXtFemH1Hdiv_a6b71ca45232b127e1d570d7ebcd4592d}\label{classHeatLsqXtFemH1Hdiv_a6b71ca45232b127e1d570d7ebcd4592d}} 
+\index{HeatLsqXtFemH1Hdiv@{HeatLsqXtFemH1Hdiv}!set@{set}}
+\index{set@{set}!HeatLsqXtFemH1Hdiv@{HeatLsqXtFemH1Hdiv}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily void Heat\+Lsq\+Xt\+Fem\+H1\+Hdiv\+::set (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ Mesh $>$ \&}]{t\+Mesh,  }\item[{std\+::shared\+\_\+ptr$<$ Mesh $>$ \&}]{x\+Mesh }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Define the two Block\+Structure of the problem.
+
+Reimplemented from \mbox{\hyperlink{classHeatLsqXtFEM_a22ae2ae1d45ca65e1010ffe846dd3bf3}{Heat\+Lsq\+Xt\+F\+EM}}.
+
+
+
+Definition at line 10 of file discretisation\+\_\+\+H1\+Hdiv.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{discretisation_8hpp}{discretisation.\+hpp}}\item 
+\mbox{\hyperlink{discretisation__H1Hdiv_8cpp}{discretisation\+\_\+\+H1\+Hdiv.\+cpp}}\end{DoxyCompactItemize}

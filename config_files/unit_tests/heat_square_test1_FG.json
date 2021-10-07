@@ -1,0 +1,19 @@
+{
+    "host": "local",
+    
+    "problem_type": "unitSquare_test1",
+    
+    "run": "runFG",
+    "end_time": 0.1,
+    
+    "deg": 3,
+    "level_t": 4,
+    "level_x": 4,
+    "mesh_dir": "unitSquare",
+    
+    "eval_error": false,
+    "eval_xt_error": false,
+    
+    "visualization": false,
+    "dump_output": false
+}
