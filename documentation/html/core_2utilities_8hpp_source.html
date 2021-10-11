@@ -86,38 +86,43 @@ $(function() {
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; Eigen::VectorXd &amp;dataX1, Eigen::VectorXi &amp;dataX2,</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; Eigen::MatrixXd &amp;dataY);</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">void</span> <a class="code" href="core_2utilities_8hpp.html#a5157bb33eee9137e735cbbb1788e271a">writeQoiConvergenceJsonFile</a></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">void</span> <a class="code" href="core_2utilities_8hpp.html#a9e5eeb809faf511eec0c1486e333bb53">writeMetricsJsonFile</a></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;(std::string systemType, std::string solverType,</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; <span class="keyword">const</span> nlohmann::json&amp; config,</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; Eigen::VectorXd &amp;dataX1, Eigen::VectorXi &amp;dataX2,</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; Eigen::VectorXd &amp;dataY1, Eigen::VectorXd &amp;dataY2);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; Eigen::VectorXd &amp;hMax, Eigen::VectorXi &amp;ndofs,</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; Eigen::VectorXd &amp;measuredTime, Eigen::VectorXi &amp;memUsage);</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">void</span> <a class="code" href="core_2utilities_8hpp.html#ae01621893a977e2dec6be4600ea0e579">writeMeasuredTimeJsonFile</a></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;(std::string systemType, std::string solverType,</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; <span class="keyword">const</span> nlohmann::json&amp; config,</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; <span class="keywordtype">int</span> lx, <span class="keywordtype">int</span> lt,</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; Eigen::VectorXd &amp;measuredTime);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">void write_mcmc_json_file (std::string systemType,</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">                           std::string solverType,</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">                           const nlohmann::json&amp; config,</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">                           int lx, int lt,</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">                           Eigen::VectorXd &amp;EQoi,</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">                           bool bool_mpi=false);</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">void writeQoiConvergenceJsonFile</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">(std::string systemType, std::string solverType,</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> const nlohmann::json&amp; config,</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> Eigen::VectorXd &amp;dataX1, Eigen::VectorXi &amp;dataX2,</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"> Eigen::VectorXd &amp;dataY1, Eigen::VectorXd &amp;dataY2);</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">void writeMeasuredTimeJsonFile</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">(std::string systemType, std::string solverType,</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"> const nlohmann::json&amp; config,</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"> int lx, int lt,</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"> Eigen::VectorXd &amp;measuredTime);</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">void write_mlmcmc_json_file (std::string systemType,</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">                             std::string solverType,</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">                             const nlohmann::json&amp; config,</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">                             int lx, int lt,</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">                             Eigen::VectorXd &amp;EQoi,</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">                             bool bool_mpi=false);</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#endif // CORE_UTILITIES_HPP</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">void write_mcmc_json_file (std::string systemType,</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">                           std::string solverType,</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">                           const nlohmann::json&amp; config,</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">                           int lx, int lt,</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">                           Eigen::VectorXd &amp;EQoi,</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">                           bool bool_mpi=false);</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">void write_mlmcmc_json_file (std::string systemType,</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">                             std::string solverType,</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">                             const nlohmann::json&amp; config,</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">                             int lx, int lt,</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">                             Eigen::VectorXd &amp;EQoi,</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">                             bool bool_mpi=false);</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif // CORE_UTILITIES_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="acore_2utilities_8hpp_html_a5157bb33eee9137e735cbbb1788e271a"><div class="ttname"><a href="core_2utilities_8hpp.html#a5157bb33eee9137e735cbbb1788e271a">writeQoiConvergenceJsonFile</a></div><div class="ttdeci">void writeQoiConvergenceJsonFile(std::string systemType, std::string solverType, const nlohmann::json &amp;config, Eigen::VectorXd &amp;dataX1, Eigen::VectorXi &amp;dataX2, Eigen::VectorXd &amp;dataY1, Eigen::VectorXd &amp;dataY2)</div><div class="ttdoc">Writes convergence behaviour of Quantity of Interest to json file.</div><div class="ttdef"><b>Definition:</b> <a href="core_2utilities_8cpp_source.html#l00101">core/utilities.cpp:101</a></div></div>
-<div class="ttc" id="acore_2utilities_8hpp_html_ae01621893a977e2dec6be4600ea0e579"><div class="ttname"><a href="core_2utilities_8hpp.html#ae01621893a977e2dec6be4600ea0e579">writeMeasuredTimeJsonFile</a></div><div class="ttdeci">void writeMeasuredTimeJsonFile(std::string systemType, std::string solverType, const nlohmann::json &amp;config, int lx, int lt, Eigen::VectorXd &amp;measuredTime)</div><div class="ttdoc">Writes time measurements to json file.</div></div>
+<div class="ttc" id="acore_2utilities_8hpp_html_a9e5eeb809faf511eec0c1486e333bb53"><div class="ttname"><a href="core_2utilities_8hpp.html#a9e5eeb809faf511eec0c1486e333bb53">writeMetricsJsonFile</a></div><div class="ttdeci">void writeMetricsJsonFile(std::string systemType, std::string solverType, const nlohmann::json &amp;config, Eigen::VectorXd &amp;hMax, Eigen::VectorXi &amp;ndofs, Eigen::VectorXd &amp;measuredTime, Eigen::VectorXi &amp;memUsage)</div><div class="ttdoc">Writes time measurements and memory to json file.</div><div class="ttdef"><b>Definition:</b> <a href="core_2utilities_8cpp_source.html#l00100">core/utilities.cpp:100</a></div></div>
 <div class="ttc" id="acore_2utilities_8hpp_html_a6802021a89798d83937aa8371b09053d"><div class="ttname"><a href="core_2utilities_8hpp.html#a6802021a89798d83937aa8371b09053d">writeErrorConvergenceJsonFile</a></div><div class="ttdeci">void writeErrorConvergenceJsonFile(std::string systemType, std::string solverType, const nlohmann::json &amp;config, Eigen::VectorXd &amp;dataX1, Eigen::VectorXi &amp;dataX2, Eigen::MatrixXd &amp;dataY)</div><div class="ttdoc">Writes convergence behaviour of solution error to json file.</div><div class="ttdef"><b>Definition:</b> <a href="core_2utilities_8cpp_source.html#l00008">core/utilities.cpp:8</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

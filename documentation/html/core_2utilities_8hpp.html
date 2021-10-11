@@ -108,12 +108,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a6802021a89798d83937aa8371b09053d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="core_2utilities_8hpp.html#a6802021a89798d83937aa8371b09053d">writeErrorConvergenceJsonFile</a> (std::string systemType, std::string solverType, const nlohmann::json &amp;config, Eigen::VectorXd &amp;dataX1, Eigen::VectorXi &amp;dataX2, Eigen::MatrixXd &amp;dataY)</td></tr>
 <tr class="memdesc:a6802021a89798d83937aa8371b09053d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes convergence behaviour of solution error to json file.  <a href="core_2utilities_8hpp.html#a6802021a89798d83937aa8371b09053d">More...</a><br /></td></tr>
 <tr class="separator:a6802021a89798d83937aa8371b09053d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5157bb33eee9137e735cbbb1788e271a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="core_2utilities_8hpp.html#a5157bb33eee9137e735cbbb1788e271a">writeQoiConvergenceJsonFile</a> (std::string systemType, std::string solverType, const nlohmann::json &amp;config, Eigen::VectorXd &amp;dataX1, Eigen::VectorXi &amp;dataX2, Eigen::VectorXd &amp;dataY1, Eigen::VectorXd &amp;dataY2)</td></tr>
-<tr class="memdesc:a5157bb33eee9137e735cbbb1788e271a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes convergence behaviour of Quantity of Interest to json file.  <a href="core_2utilities_8hpp.html#a5157bb33eee9137e735cbbb1788e271a">More...</a><br /></td></tr>
-<tr class="separator:a5157bb33eee9137e735cbbb1788e271a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae01621893a977e2dec6be4600ea0e579"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="core_2utilities_8hpp.html#ae01621893a977e2dec6be4600ea0e579">writeMeasuredTimeJsonFile</a> (std::string systemType, std::string solverType, const nlohmann::json &amp;config, int lx, int lt, Eigen::VectorXd &amp;measuredTime)</td></tr>
-<tr class="memdesc:ae01621893a977e2dec6be4600ea0e579"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes time measurements to json file.  <a href="core_2utilities_8hpp.html#ae01621893a977e2dec6be4600ea0e579">More...</a><br /></td></tr>
-<tr class="separator:ae01621893a977e2dec6be4600ea0e579"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e5eeb809faf511eec0c1486e333bb53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="core_2utilities_8hpp.html#a9e5eeb809faf511eec0c1486e333bb53">writeMetricsJsonFile</a> (std::string systemType, std::string solverType, const nlohmann::json &amp;config, Eigen::VectorXd &amp;hMax, Eigen::VectorXi &amp;ndofs, Eigen::VectorXd &amp;measuredTime, Eigen::VectorXi &amp;memUsage)</td></tr>
+<tr class="memdesc:a9e5eeb809faf511eec0c1486e333bb53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes time measurements and memory to json file.  <a href="core_2utilities_8hpp.html#a9e5eeb809faf511eec0c1486e333bb53">More...</a><br /></td></tr>
+<tr class="separator:a9e5eeb809faf511eec0c1486e333bb53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a6802021a89798d83937aa8371b09053d"></a>
@@ -172,68 +169,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae01621893a977e2dec6be4600ea0e579"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae01621893a977e2dec6be4600ea0e579">&#9670;&nbsp;</a></span>writeMeasuredTimeJsonFile()</h2>
+<a id="a9e5eeb809faf511eec0c1486e333bb53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e5eeb809faf511eec0c1486e333bb53">&#9670;&nbsp;</a></span>writeMetricsJsonFile()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void writeMeasuredTimeJsonFile </td>
-          <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>systemType</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>solverType</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const nlohmann::json &amp;&#160;</td>
-          <td class="paramname"><em>config</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>lx</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>lt</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Eigen::VectorXd &amp;&#160;</td>
-          <td class="paramname"><em>measuredTime</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Writes time measurements to json file. </p>
-
-</div>
-</div>
-<a id="a5157bb33eee9137e735cbbb1788e271a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5157bb33eee9137e735cbbb1788e271a">&#9670;&nbsp;</a></span>writeQoiConvergenceJsonFile()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void writeQoiConvergenceJsonFile </td>
+          <td class="memname">void writeMetricsJsonFile </td>
           <td>(</td>
           <td class="paramtype">std::string&#160;</td>
           <td class="paramname"><em>systemType</em>, </td>
@@ -254,25 +197,25 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">Eigen::VectorXd &amp;&#160;</td>
-          <td class="paramname"><em>dataX1</em>, </td>
+          <td class="paramname"><em>hMax</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">Eigen::VectorXi &amp;&#160;</td>
-          <td class="paramname"><em>dataX2</em>, </td>
+          <td class="paramname"><em>ndofs</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">Eigen::VectorXd &amp;&#160;</td>
-          <td class="paramname"><em>dataY1</em>, </td>
+          <td class="paramname"><em>measuredTime</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Eigen::VectorXd &amp;&#160;</td>
-          <td class="paramname"><em>dataY2</em>&#160;</td>
+          <td class="paramtype">Eigen::VectorXi &amp;&#160;</td>
+          <td class="paramname"><em>memUsage</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -282,9 +225,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Writes convergence behaviour of Quantity of Interest to json file. </p>
+<p>Writes time measurements and memory to json file. </p>
 
-<p class="definition">Definition at line <a class="el" href="core_2utilities_8cpp_source.html#l00101">101</a> of file <a class="el" href="core_2utilities_8cpp_source.html">core/utilities.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="core_2utilities_8cpp_source.html#l00100">100</a> of file <a class="el" href="core_2utilities_8cpp_source.html">core/utilities.cpp</a>.</p>
 
 </div>
 </div>

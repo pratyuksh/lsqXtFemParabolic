@@ -37,7 +37,9 @@ void \mbox{\hyperlink{classheat_1_1Solver_a22942e1d8895d22c1a7e7d56803458bb}{set
 std\+::tuple$<$ int, double, double, Eigen\+::\+Vector\+Xd $>$ \mbox{\hyperlink{classheat_1_1Solver_a91f727511dc87f066d9a4b20b29f247f}{operator()}} ()
 \item 
 void \mbox{\hyperlink{classheat_1_1Solver_a305f6a9216b7215d55896649347ffd64}{run}} ()
-\begin{DoxyCompactList}\small\item\em Runs the solver, assumes the solver has already been initialized. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Runs the solver. \end{DoxyCompactList}\item 
+std\+::tuple$<$ int, double, double, double, int $>$ \mbox{\hyperlink{classheat_1_1Solver_ac1447caaf3ab526de706ae58a5190dc0}{measure}} (int num\+Reps=1)
+\begin{DoxyCompactList}\small\item\em Measures the time and memory usage of the linear solve. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{classheat_1_1Solver_aade8ad61c94e5fd4926ff9de7a03f2ff}{compute\+Obs}} ()
 \item 
 double \mbox{\hyperlink{classheat_1_1Solver_ac7f2e0e0a88f6fd8de702bd9c511cc77}{compute\+Qoi}} ()
@@ -52,8 +54,8 @@ double \mbox{\hyperlink{classheat_1_1Solver_ab5c0b5e8cb1c9a0caa3da37e356e87a4}{g
 \item 
 void \mbox{\hyperlink{classheat_1_1Solver_a827f6122c9a123a8ed52c93d0561bd31}{init}} ()
 \begin{DoxyCompactList}\small\item\em Initializes the solver. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classheat_1_1Solver_abc2ccd9a41a745846d38d25e60100555}{solve}} (Block\+Vector $\ast$W, Block\+Vector $\ast$B) const
-\begin{DoxyCompactList}\small\item\em Solves the linear system resulting from the discretisation. \end{DoxyCompactList}\item 
+std\+::pair$<$ double, int $>$ \mbox{\hyperlink{classheat_1_1Solver_a6697bbdc84194a6ef3f3c76a4e6c3dfb}{solve}} (Block\+Vector $\ast$W, Block\+Vector $\ast$B)
+\item 
 void \mbox{\hyperlink{classheat_1_1Solver_a9d01abc6955c58d9c5e2670f6414c65e}{finalize}} () const
 \begin{DoxyCompactList}\small\item\em Releases allocated memory. \end{DoxyCompactList}\item 
 Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classheat_1_1Solver_a2b2f389c6ec9617b0b9cc01f6ceba60e}{compute\+Error}} (Block\+Vector $\ast$W) const
@@ -195,7 +197,7 @@ Assembles projection right-\/hand side.
 
 
 
-Definition at line 683 of file solver.\+cpp.
+Definition at line 716 of file solver.\+cpp.
 
 \mbox{\Hypertarget{classheat_1_1Solver_a1442d0155f3a2dd0bed2d8fef1fbe28c}\label{classheat_1_1Solver_a1442d0155f3a2dd0bed2d8fef1fbe28c}} 
 \index{heat::Solver@{heat::Solver}!assembleProjectionSystem@{assembleProjectionSystem}}
@@ -209,7 +211,7 @@ Assembles the system matrix for projection.
 
 
 
-Definition at line 694 of file solver.\+cpp.
+Definition at line 727 of file solver.\+cpp.
 
 \mbox{\Hypertarget{classheat_1_1Solver_a2b2f389c6ec9617b0b9cc01f6ceba60e}\label{classheat_1_1Solver_a2b2f389c6ec9617b0b9cc01f6ceba60e}} 
 \index{heat::Solver@{heat::Solver}!computeError@{computeError}}
@@ -223,7 +225,7 @@ Computes the solution error.
 
 
 
-Definition at line 444 of file solver.\+cpp.
+Definition at line 477 of file solver.\+cpp.
 
 \mbox{\Hypertarget{classheat_1_1Solver_aade8ad61c94e5fd4926ff9de7a03f2ff}\label{classheat_1_1Solver_aade8ad61c94e5fd4926ff9de7a03f2ff}} 
 \index{heat::Solver@{heat::Solver}!computeObs@{computeObs}}
@@ -233,7 +235,7 @@ Definition at line 444 of file solver.\+cpp.
 
 
 
-Definition at line 279 of file solver.\+cpp.
+Definition at line 314 of file solver.\+cpp.
 
 \mbox{\Hypertarget{classheat_1_1Solver_ac7f2e0e0a88f6fd8de702bd9c511cc77}\label{classheat_1_1Solver_ac7f2e0e0a88f6fd8de702bd9c511cc77}} 
 \index{heat::Solver@{heat::Solver}!computeQoi@{computeQoi}}
@@ -243,7 +245,7 @@ Definition at line 279 of file solver.\+cpp.
 
 
 
-Definition at line 292 of file solver.\+cpp.
+Definition at line 327 of file solver.\+cpp.
 
 \mbox{\Hypertarget{classheat_1_1Solver_a81810c640bcc6b46770fc2fbee6532e0}\label{classheat_1_1Solver_a81810c640bcc6b46770fc2fbee6532e0}} 
 \index{heat::Solver@{heat::Solver}!computeXtQoi@{computeXtQoi}}
@@ -253,7 +255,7 @@ Definition at line 292 of file solver.\+cpp.
 
 
 
-Definition at line 303 of file solver.\+cpp.
+Definition at line 338 of file solver.\+cpp.
 
 \mbox{\Hypertarget{classheat_1_1Solver_a9d01abc6955c58d9c5e2670f6414c65e}\label{classheat_1_1Solver_a9d01abc6955c58d9c5e2670f6414c65e}} 
 \index{heat::Solver@{heat::Solver}!finalize@{finalize}}
@@ -267,7 +269,7 @@ Releases allocated memory.
 
 
 
-Definition at line 431 of file solver.\+cpp.
+Definition at line 464 of file solver.\+cpp.
 
 \mbox{\Hypertarget{classheat_1_1Solver_a4b0f6bb2ffb69dd5be7a21de096996f9}\label{classheat_1_1Solver_a4b0f6bb2ffb69dd5be7a21de096996f9}} 
 \index{heat::Solver@{heat::Solver}!getDiscretisation@{getDiscretisation}}
@@ -281,7 +283,7 @@ Returns the discretisation.
 
 
 
-Definition at line 156 of file solver.\+hpp.
+Definition at line 160 of file solver.\+hpp.
 
 \mbox{\Hypertarget{classheat_1_1Solver_a5d44a9a58fdfe7d6527b210e5901acae}\label{classheat_1_1Solver_a5d44a9a58fdfe7d6527b210e5901acae}} 
 \index{heat::Solver@{heat::Solver}!getFluxSolAtEndTime@{getFluxSolAtEndTime}}
@@ -295,7 +297,7 @@ Evaluates the flux solution at end time.
 
 
 
-Definition at line 580 of file solver.\+cpp.
+Definition at line 613 of file solver.\+cpp.
 
 \mbox{\Hypertarget{classheat_1_1Solver_abe3dcea8e3b564b55ba45b8db1a57928}\label{classheat_1_1Solver_abe3dcea8e3b564b55ba45b8db1a57928}} 
 \index{heat::Solver@{heat::Solver}!getMeshChars@{getMeshChars}}
@@ -309,7 +311,7 @@ Returns the mesh characteristics.
 
 
 
-Definition at line 168 of file solver.\+hpp.
+Definition at line 172 of file solver.\+hpp.
 
 \mbox{\Hypertarget{classheat_1_1Solver_ac45c580d407e6aeea92ef1c93c003718}\label{classheat_1_1Solver_ac45c580d407e6aeea92ef1c93c003718}} 
 \index{heat::Solver@{heat::Solver}!getNdofs@{getNdofs}}
@@ -323,7 +325,7 @@ Returns the total number of degrees of freedom in space-\/time.
 
 
 
-Definition at line 180 of file solver.\+hpp.
+Definition at line 184 of file solver.\+hpp.
 
 \mbox{\Hypertarget{classheat_1_1Solver_af69826717d6d697585345448e618ca20}\label{classheat_1_1Solver_af69826717d6d697585345448e618ca20}} 
 \index{heat::Solver@{heat::Solver}!getObs@{getObs}}
@@ -333,7 +335,7 @@ Definition at line 180 of file solver.\+hpp.
 
 
 
-Definition at line 311 of file solver.\+cpp.
+Definition at line 346 of file solver.\+cpp.
 
 \mbox{\Hypertarget{classheat_1_1Solver_ab90ff725df328926b41ab95e7cdf0fa5}\label{classheat_1_1Solver_ab90ff725df328926b41ab95e7cdf0fa5}} 
 \index{heat::Solver@{heat::Solver}!getObserver@{getObserver}}
@@ -347,7 +349,7 @@ Returns the observer.
 
 
 
-Definition at line 162 of file solver.\+hpp.
+Definition at line 166 of file solver.\+hpp.
 
 \mbox{\Hypertarget{classheat_1_1Solver_a7430900b8ad7b1e51dba41c3cabb946a}\label{classheat_1_1Solver_a7430900b8ad7b1e51dba41c3cabb946a}} 
 \index{heat::Solver@{heat::Solver}!getQoi@{getQoi}}
@@ -357,7 +359,7 @@ Definition at line 162 of file solver.\+hpp.
 
 
 
-Definition at line 319 of file solver.\+cpp.
+Definition at line 354 of file solver.\+cpp.
 
 \mbox{\Hypertarget{classheat_1_1Solver_ad9c56abb737203d0cf4dacb797bc9d30}\label{classheat_1_1Solver_ad9c56abb737203d0cf4dacb797bc9d30}} 
 \index{heat::Solver@{heat::Solver}!getTemperatureSolAtEndTime@{getTemperatureSolAtEndTime}}
@@ -371,7 +373,7 @@ Evaluates the temperature solution at end time.
 
 
 
-Definition at line 549 of file solver.\+cpp.
+Definition at line 582 of file solver.\+cpp.
 
 \mbox{\Hypertarget{classheat_1_1Solver_a0d0075bf3268fa864dec20e93e7fd6ba}\label{classheat_1_1Solver_a0d0075bf3268fa864dec20e93e7fd6ba}} 
 \index{heat::Solver@{heat::Solver}!getTestCase@{getTestCase}}
@@ -385,7 +387,7 @@ Returns the test case.
 
 
 
-Definition at line 150 of file solver.\+hpp.
+Definition at line 154 of file solver.\+hpp.
 
 \mbox{\Hypertarget{classheat_1_1Solver_ab8b0bd6adf8cd58b9229e20c62519d3f}\label{classheat_1_1Solver_ab8b0bd6adf8cd58b9229e20c62519d3f}} 
 \index{heat::Solver@{heat::Solver}!getTMesh@{getTMesh}}
@@ -399,7 +401,7 @@ Returns the temporal mesh.
 
 
 
-Definition at line 139 of file solver.\+hpp.
+Definition at line 143 of file solver.\+hpp.
 
 \mbox{\Hypertarget{classheat_1_1Solver_ae03843a3c4ac105ff1b6d9d08265668a}\label{classheat_1_1Solver_ae03843a3c4ac105ff1b6d9d08265668a}} 
 \index{heat::Solver@{heat::Solver}!getXMesh@{getXMesh}}
@@ -413,7 +415,7 @@ Returns the spatial mesh.
 
 
 
-Definition at line 144 of file solver.\+hpp.
+Definition at line 148 of file solver.\+hpp.
 
 \mbox{\Hypertarget{classheat_1_1Solver_ab5c0b5e8cb1c9a0caa3da37e356e87a4}\label{classheat_1_1Solver_ab5c0b5e8cb1c9a0caa3da37e356e87a4}} 
 \index{heat::Solver@{heat::Solver}!getXtQoi@{getXtQoi}}
@@ -423,7 +425,7 @@ Definition at line 144 of file solver.\+hpp.
 
 
 
-Definition at line 326 of file solver.\+cpp.
+Definition at line 361 of file solver.\+cpp.
 
 \mbox{\Hypertarget{classheat_1_1Solver_a827f6122c9a123a8ed52c93d0561bd31}\label{classheat_1_1Solver_a827f6122c9a123a8ed52c93d0561bd31}} 
 \index{heat::Solver@{heat::Solver}!init@{init}}
@@ -437,7 +439,7 @@ Initializes the solver.
 
 
 
-Definition at line 334 of file solver.\+cpp.
+Definition at line 369 of file solver.\+cpp.
 
 \mbox{\Hypertarget{classheat_1_1Solver_a4582b29fcb492c3e0f6ce7167a3da20a}\label{classheat_1_1Solver_a4582b29fcb492c3e0f6ce7167a3da20a}} 
 \index{heat::Solver@{heat::Solver}!initProjection@{initProjection}}
@@ -451,7 +453,21 @@ Initializes projection.
 
 
 
-Definition at line 675 of file solver.\+cpp.
+Definition at line 708 of file solver.\+cpp.
+
+\mbox{\Hypertarget{classheat_1_1Solver_ac1447caaf3ab526de706ae58a5190dc0}\label{classheat_1_1Solver_ac1447caaf3ab526de706ae58a5190dc0}} 
+\index{heat::Solver@{heat::Solver}!measure@{measure}}
+\index{measure@{measure}!heat::Solver@{heat::Solver}}
+\doxysubsubsection{\texorpdfstring{measure()}{measure()}}
+{\footnotesize\ttfamily std\+::tuple$<$ int, double, double, double, int $>$ heat\+::\+Solver\+::measure (\begin{DoxyParamCaption}\item[{int}]{num\+Reps = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+
+
+Measures the time and memory usage of the linear solve. 
+
+
+
+Definition at line 278 of file solver.\+cpp.
 
 \mbox{\Hypertarget{classheat_1_1Solver_a91f727511dc87f066d9a4b20b29f247f}\label{classheat_1_1Solver_a91f727511dc87f066d9a4b20b29f247f}} 
 \index{heat::Solver@{heat::Solver}!operator()@{operator()}}
@@ -459,7 +475,7 @@ Definition at line 675 of file solver.\+cpp.
 \doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
 {\footnotesize\ttfamily std\+::tuple$<$ int, double, double, Eigen\+::\+Vector\+Xd $>$ heat\+::\+Solver\+::operator() (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Initializes and then runs the solver, used for the full-\/tensor version 
+Runs the solver, computes the solution error, used for the full-\/tensor version 
 
 Definition at line 212 of file solver.\+cpp.
 
@@ -471,7 +487,7 @@ Definition at line 212 of file solver.\+cpp.
 
 Initializes and computes the projection, Used for the full-\/tensor version 
 
-Definition at line 627 of file solver.\+cpp.
+Definition at line 660 of file solver.\+cpp.
 
 \mbox{\Hypertarget{classheat_1_1Solver_a305f6a9216b7215d55896649347ffd64}\label{classheat_1_1Solver_a305f6a9216b7215d55896649347ffd64}} 
 \index{heat::Solver@{heat::Solver}!run@{run}}
@@ -481,7 +497,7 @@ Definition at line 627 of file solver.\+cpp.
 
 
 
-Runs the solver, assumes the solver has already been initialized. 
+Runs the solver. 
 
 
 
@@ -541,7 +557,7 @@ Sets the flux solution at end time.
 
 
 
-Definition at line 619 of file solver.\+cpp.
+Definition at line 652 of file solver.\+cpp.
 
 \mbox{\Hypertarget{classheat_1_1Solver_aca8db125e4f4a74805cf591680eb75da}\label{classheat_1_1Solver_aca8db125e4f4a74805cf591680eb75da}} 
 \index{heat::Solver@{heat::Solver}!setMeshes@{setMeshes}}
@@ -583,21 +599,17 @@ Sets the temperature solution at end time.
 
 
 
-Definition at line 612 of file solver.\+cpp.
+Definition at line 645 of file solver.\+cpp.
 
-\mbox{\Hypertarget{classheat_1_1Solver_abc2ccd9a41a745846d38d25e60100555}\label{classheat_1_1Solver_abc2ccd9a41a745846d38d25e60100555}} 
+\mbox{\Hypertarget{classheat_1_1Solver_a6697bbdc84194a6ef3f3c76a4e6c3dfb}\label{classheat_1_1Solver_a6697bbdc84194a6ef3f3c76a4e6c3dfb}} 
 \index{heat::Solver@{heat::Solver}!solve@{solve}}
 \index{solve@{solve}!heat::Solver@{heat::Solver}}
 \doxysubsubsection{\texorpdfstring{solve()}{solve()}}
-{\footnotesize\ttfamily void heat\+::\+Solver\+::solve (\begin{DoxyParamCaption}\item[{Block\+Vector $\ast$}]{W,  }\item[{Block\+Vector $\ast$}]{B }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily std\+::pair$<$ double, int $>$ heat\+::\+Solver\+::solve (\begin{DoxyParamCaption}\item[{Block\+Vector $\ast$}]{W,  }\item[{Block\+Vector $\ast$}]{B }\end{DoxyParamCaption})}
 
+Solves the linear system resulting from the discretisation Returns the time to solution 
 
-
-Solves the linear system resulting from the discretisation. 
-
-
-
-Definition at line 401 of file solver.\+cpp.
+Definition at line 409 of file solver.\+cpp.
 
 
 

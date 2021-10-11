@@ -25,7 +25,9 @@ void \mbox{\hyperlink{classPardisoSolver_ae75da0d75422343506a041932996a849}{fina
 void \mbox{\hyperlink{classPardisoSolver_a890a0c10e5cd4a28ad0ebe975892cc76}{factorize}} ()
 \begin{DoxyCompactList}\small\item\em Factorize the linear system. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classPardisoSolver_a3ce280043135970d84319d4517e8fe6a}{solve}} (double $\ast$b, double $\ast$x)
-\begin{DoxyCompactList}\small\item\em Solves the linear system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Solves the linear system. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classPardisoSolver_a933b6b2890139c92393f888f80205305}{get\+Memory\+Usage}} ()
+\begin{DoxyCompactList}\small\item\em Returns the total amount of memory used by the Pardiso solver. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -118,6 +120,20 @@ Calls the finalize routines in the P\+A\+R\+D\+I\+SO solver.
 
 
 Definition at line 219 of file pardiso.\+cpp.
+
+\mbox{\Hypertarget{classPardisoSolver_a933b6b2890139c92393f888f80205305}\label{classPardisoSolver_a933b6b2890139c92393f888f80205305}} 
+\index{PardisoSolver@{PardisoSolver}!getMemoryUsage@{getMemoryUsage}}
+\index{getMemoryUsage@{getMemoryUsage}!PardisoSolver@{PardisoSolver}}
+\doxysubsubsection{\texorpdfstring{getMemoryUsage()}{getMemoryUsage()}}
+{\footnotesize\ttfamily int Pardiso\+Solver\+::get\+Memory\+Usage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the total amount of memory used by the Pardiso solver. 
+
+
+
+Definition at line 81 of file pardiso.\+hpp.
 
 \mbox{\Hypertarget{classPardisoSolver_a1a30e065560e275f10839b4e19df2ee5}\label{classPardisoSolver_a1a30e065560e275f10839b4e19df2ee5}} 
 \index{PardisoSolver@{PardisoSolver}!initialize@{initialize}}

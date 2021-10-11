@@ -116,8 +116,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a91f727511dc87f066d9a4b20b29f247f"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; int, double, double, Eigen::VectorXd &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Solver.html#a91f727511dc87f066d9a4b20b29f247f">operator()</a> ()</td></tr>
 <tr class="separator:a91f727511dc87f066d9a4b20b29f247f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a305f6a9216b7215d55896649347ffd64"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Solver.html#a305f6a9216b7215d55896649347ffd64">run</a> ()</td></tr>
-<tr class="memdesc:a305f6a9216b7215d55896649347ffd64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the solver, assumes the solver has already been initialized.  <a href="classheat_1_1Solver.html#a305f6a9216b7215d55896649347ffd64">More...</a><br /></td></tr>
+<tr class="memdesc:a305f6a9216b7215d55896649347ffd64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the solver.  <a href="classheat_1_1Solver.html#a305f6a9216b7215d55896649347ffd64">More...</a><br /></td></tr>
 <tr class="separator:a305f6a9216b7215d55896649347ffd64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1447caaf3ab526de706ae58a5190dc0"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; int, double, double, double, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Solver.html#ac1447caaf3ab526de706ae58a5190dc0">measure</a> (int numReps=1)</td></tr>
+<tr class="memdesc:ac1447caaf3ab526de706ae58a5190dc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Measures the time and memory usage of the linear solve.  <a href="classheat_1_1Solver.html#ac1447caaf3ab526de706ae58a5190dc0">More...</a><br /></td></tr>
+<tr class="separator:ac1447caaf3ab526de706ae58a5190dc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aade8ad61c94e5fd4926ff9de7a03f2ff"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Solver.html#aade8ad61c94e5fd4926ff9de7a03f2ff">computeObs</a> ()</td></tr>
 <tr class="separator:aade8ad61c94e5fd4926ff9de7a03f2ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7f2e0e0a88f6fd8de702bd9c511cc77"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Solver.html#ac7f2e0e0a88f6fd8de702bd9c511cc77">computeQoi</a> ()</td></tr>
@@ -133,9 +136,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a827f6122c9a123a8ed52c93d0561bd31"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Solver.html#a827f6122c9a123a8ed52c93d0561bd31">init</a> ()</td></tr>
 <tr class="memdesc:a827f6122c9a123a8ed52c93d0561bd31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the solver.  <a href="classheat_1_1Solver.html#a827f6122c9a123a8ed52c93d0561bd31">More...</a><br /></td></tr>
 <tr class="separator:a827f6122c9a123a8ed52c93d0561bd31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc2ccd9a41a745846d38d25e60100555"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Solver.html#abc2ccd9a41a745846d38d25e60100555">solve</a> (BlockVector *W, BlockVector *B) const</td></tr>
-<tr class="memdesc:abc2ccd9a41a745846d38d25e60100555"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the linear system resulting from the discretisation.  <a href="classheat_1_1Solver.html#abc2ccd9a41a745846d38d25e60100555">More...</a><br /></td></tr>
-<tr class="separator:abc2ccd9a41a745846d38d25e60100555"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6697bbdc84194a6ef3f3c76a4e6c3dfb"><td class="memItemLeft" align="right" valign="top">std::pair&lt; double, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Solver.html#a6697bbdc84194a6ef3f3c76a4e6c3dfb">solve</a> (BlockVector *W, BlockVector *B)</td></tr>
+<tr class="separator:a6697bbdc84194a6ef3f3c76a4e6c3dfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d01abc6955c58d9c5e2670f6414c65e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Solver.html#a9d01abc6955c58d9c5e2670f6414c65e">finalize</a> () const</td></tr>
 <tr class="memdesc:a9d01abc6955c58d9c5e2670f6414c65e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases allocated memory.  <a href="classheat_1_1Solver.html#a9d01abc6955c58d9c5e2670f6414c65e">More...</a><br /></td></tr>
 <tr class="separator:a9d01abc6955c58d9c5e2670f6414c65e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -434,7 +436,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Assembles projection right-hand side. </p>
 
-<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00683">683</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00716">716</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -455,7 +457,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Assembles the system matrix for projection. </p>
 
-<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00694">694</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00727">727</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -477,7 +479,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Computes the solution error. </p>
 
-<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00444">444</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00477">477</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -496,7 +498,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00279">279</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00314">314</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -515,7 +517,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00292">292</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00327">327</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -534,7 +536,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00303">303</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00338">338</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -555,7 +557,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Releases allocated memory. </p>
 
-<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00431">431</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00464">464</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -584,7 +586,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Returns the discretisation. </p>
 
-<p class="definition">Definition at line <a class="el" href="solver_8hpp_source.html#l00156">156</a> of file <a class="el" href="solver_8hpp_source.html">solver.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solver_8hpp_source.html#l00160">160</a> of file <a class="el" href="solver_8hpp_source.html">solver.hpp</a>.</p>
 
 </div>
 </div>
@@ -606,7 +608,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Evaluates the flux solution at end time. </p>
 
-<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00580">580</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00613">613</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -635,7 +637,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Returns the mesh characteristics. </p>
 
-<p class="definition">Definition at line <a class="el" href="solver_8hpp_source.html#l00168">168</a> of file <a class="el" href="solver_8hpp_source.html">solver.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solver_8hpp_source.html#l00172">172</a> of file <a class="el" href="solver_8hpp_source.html">solver.hpp</a>.</p>
 
 </div>
 </div>
@@ -664,7 +666,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Returns the total number of degrees of freedom in space-time. </p>
 
-<p class="definition">Definition at line <a class="el" href="solver_8hpp_source.html#l00180">180</a> of file <a class="el" href="solver_8hpp_source.html">solver.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solver_8hpp_source.html#l00184">184</a> of file <a class="el" href="solver_8hpp_source.html">solver.hpp</a>.</p>
 
 </div>
 </div>
@@ -683,7 +685,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00311">311</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00346">346</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -712,7 +714,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Returns the observer. </p>
 
-<p class="definition">Definition at line <a class="el" href="solver_8hpp_source.html#l00162">162</a> of file <a class="el" href="solver_8hpp_source.html">solver.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solver_8hpp_source.html#l00166">166</a> of file <a class="el" href="solver_8hpp_source.html">solver.hpp</a>.</p>
 
 </div>
 </div>
@@ -731,7 +733,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00319">319</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00354">354</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -753,7 +755,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Evaluates the temperature solution at end time. </p>
 
-<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00549">549</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00582">582</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -782,7 +784,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Returns the test case. </p>
 
-<p class="definition">Definition at line <a class="el" href="solver_8hpp_source.html#l00150">150</a> of file <a class="el" href="solver_8hpp_source.html">solver.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solver_8hpp_source.html#l00154">154</a> of file <a class="el" href="solver_8hpp_source.html">solver.hpp</a>.</p>
 
 </div>
 </div>
@@ -811,7 +813,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Returns the temporal mesh. </p>
 
-<p class="definition">Definition at line <a class="el" href="solver_8hpp_source.html#l00139">139</a> of file <a class="el" href="solver_8hpp_source.html">solver.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solver_8hpp_source.html#l00143">143</a> of file <a class="el" href="solver_8hpp_source.html">solver.hpp</a>.</p>
 
 </div>
 </div>
@@ -840,7 +842,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Returns the spatial mesh. </p>
 
-<p class="definition">Definition at line <a class="el" href="solver_8hpp_source.html#l00144">144</a> of file <a class="el" href="solver_8hpp_source.html">solver.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solver_8hpp_source.html#l00148">148</a> of file <a class="el" href="solver_8hpp_source.html">solver.hpp</a>.</p>
 
 </div>
 </div>
@@ -859,7 +861,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00326">326</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00361">361</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -880,7 +882,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Initializes the solver. </p>
 
-<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00334">334</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00369">369</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -901,7 +903,29 @@ Public Member Functions</h2></td></tr>
 
 <p>Initializes projection. </p>
 
-<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00675">675</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00708">708</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ac1447caaf3ab526de706ae58a5190dc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1447caaf3ab526de706ae58a5190dc0">&#9670;&nbsp;</a></span>measure()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; int, double, double, double, int &gt; heat::Solver::measure </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>numReps</em> = <code>1</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Measures the time and memory usage of the linear solve. </p>
+
+<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00278">278</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -919,7 +943,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initializes and then runs the solver, used for the full-tensor version </p>
+<p>Runs the solver, computes the solution error, used for the full-tensor version </p>
 
 <p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00212">212</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
 
@@ -941,7 +965,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Initializes and computes the projection, Used for the full-tensor version </p>
 
-<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00627">627</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00660">660</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -960,7 +984,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Runs the solver, assumes the solver has already been initialized. </p>
+<p>Runs the solver. </p>
 
 <p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00257">257</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
 
@@ -1091,7 +1115,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Sets the flux solution at end time. </p>
 
-<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00619">619</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00652">652</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -1166,18 +1190,18 @@ Public Member Functions</h2></td></tr>
 
 <p>Sets the temperature solution at end time. </p>
 
-<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00612">612</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00645">645</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
 
 </div>
 </div>
-<a id="abc2ccd9a41a745846d38d25e60100555"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc2ccd9a41a745846d38d25e60100555">&#9670;&nbsp;</a></span>solve()</h2>
+<a id="a6697bbdc84194a6ef3f3c76a4e6c3dfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6697bbdc84194a6ef3f3c76a4e6c3dfb">&#9670;&nbsp;</a></span>solve()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void heat::Solver::solve </td>
+          <td class="memname">std::pair&lt; double, int &gt; heat::Solver::solve </td>
           <td>(</td>
           <td class="paramtype">BlockVector *&#160;</td>
           <td class="paramname"><em>W</em>, </td>
@@ -1191,14 +1215,13 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td> const</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Solves the linear system resulting from the discretisation Returns the time to solution </p>
 
-<p>Solves the linear system resulting from the discretisation. </p>
-
-<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00401">401</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="solver_8cpp_source.html#l00409">409</a> of file <a class="el" href="solver_8cpp_source.html">solver.cpp</a>.</p>
 
 </div>
 </div>

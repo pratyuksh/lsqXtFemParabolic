@@ -25,10 +25,8 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \item 
 void \mbox{\hyperlink{core_2utilities_8hpp_a6802021a89798d83937aa8371b09053d}{write\+Error\+Convergence\+Json\+File}} (std\+::string system\+Type, std\+::string solver\+Type, const nlohmann\+::json \&config, Eigen\+::\+Vector\+Xd \&data\+X1, Eigen\+::\+Vector\+Xi \&data\+X2, Eigen\+::\+Matrix\+Xd \&dataY)
 \begin{DoxyCompactList}\small\item\em Writes convergence behaviour of solution error to json file. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{core_2utilities_8hpp_a5157bb33eee9137e735cbbb1788e271a}{write\+Qoi\+Convergence\+Json\+File}} (std\+::string system\+Type, std\+::string solver\+Type, const nlohmann\+::json \&config, Eigen\+::\+Vector\+Xd \&data\+X1, Eigen\+::\+Vector\+Xi \&data\+X2, Eigen\+::\+Vector\+Xd \&data\+Y1, Eigen\+::\+Vector\+Xd \&data\+Y2)
-\begin{DoxyCompactList}\small\item\em Writes convergence behaviour of Quantity of Interest to json file. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{core_2utilities_8hpp_ae01621893a977e2dec6be4600ea0e579}{write\+Measured\+Time\+Json\+File}} (std\+::string system\+Type, std\+::string solver\+Type, const nlohmann\+::json \&config, int lx, int lt, Eigen\+::\+Vector\+Xd \&measured\+Time)
-\begin{DoxyCompactList}\small\item\em Writes time measurements to json file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \mbox{\hyperlink{core_2utilities_8hpp_a9e5eeb809faf511eec0c1486e333bb53}{write\+Metrics\+Json\+File}} (std\+::string system\+Type, std\+::string solver\+Type, const nlohmann\+::json \&config, Eigen\+::\+Vector\+Xd \&h\+Max, Eigen\+::\+Vector\+Xi \&ndofs, Eigen\+::\+Vector\+Xd \&measured\+Time, Eigen\+::\+Vector\+Xi \&mem\+Usage)
+\begin{DoxyCompactList}\small\item\em Writes time measurements and memory to json file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -46,27 +44,17 @@ Writes convergence behaviour of solution error to json file.
 
 Definition at line 8 of file core/utilities.\+cpp.
 
-\mbox{\Hypertarget{core_2utilities_8hpp_ae01621893a977e2dec6be4600ea0e579}\label{core_2utilities_8hpp_ae01621893a977e2dec6be4600ea0e579}} 
-\index{core/utilities.hpp@{core/utilities.hpp}!writeMeasuredTimeJsonFile@{writeMeasuredTimeJsonFile}}
-\index{writeMeasuredTimeJsonFile@{writeMeasuredTimeJsonFile}!core/utilities.hpp@{core/utilities.hpp}}
-\doxysubsubsection{\texorpdfstring{writeMeasuredTimeJsonFile()}{writeMeasuredTimeJsonFile()}}
-{\footnotesize\ttfamily void write\+Measured\+Time\+Json\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{system\+Type,  }\item[{std\+::string}]{solver\+Type,  }\item[{const nlohmann\+::json \&}]{config,  }\item[{int}]{lx,  }\item[{int}]{lt,  }\item[{Eigen\+::\+Vector\+Xd \&}]{measured\+Time }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{core_2utilities_8hpp_a9e5eeb809faf511eec0c1486e333bb53}\label{core_2utilities_8hpp_a9e5eeb809faf511eec0c1486e333bb53}} 
+\index{core/utilities.hpp@{core/utilities.hpp}!writeMetricsJsonFile@{writeMetricsJsonFile}}
+\index{writeMetricsJsonFile@{writeMetricsJsonFile}!core/utilities.hpp@{core/utilities.hpp}}
+\doxysubsubsection{\texorpdfstring{writeMetricsJsonFile()}{writeMetricsJsonFile()}}
+{\footnotesize\ttfamily void write\+Metrics\+Json\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{system\+Type,  }\item[{std\+::string}]{solver\+Type,  }\item[{const nlohmann\+::json \&}]{config,  }\item[{Eigen\+::\+Vector\+Xd \&}]{h\+Max,  }\item[{Eigen\+::\+Vector\+Xi \&}]{ndofs,  }\item[{Eigen\+::\+Vector\+Xd \&}]{measured\+Time,  }\item[{Eigen\+::\+Vector\+Xi \&}]{mem\+Usage }\end{DoxyParamCaption})}
 
 
 
-Writes time measurements to json file. 
-
-\mbox{\Hypertarget{core_2utilities_8hpp_a5157bb33eee9137e735cbbb1788e271a}\label{core_2utilities_8hpp_a5157bb33eee9137e735cbbb1788e271a}} 
-\index{core/utilities.hpp@{core/utilities.hpp}!writeQoiConvergenceJsonFile@{writeQoiConvergenceJsonFile}}
-\index{writeQoiConvergenceJsonFile@{writeQoiConvergenceJsonFile}!core/utilities.hpp@{core/utilities.hpp}}
-\doxysubsubsection{\texorpdfstring{writeQoiConvergenceJsonFile()}{writeQoiConvergenceJsonFile()}}
-{\footnotesize\ttfamily void write\+Qoi\+Convergence\+Json\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{system\+Type,  }\item[{std\+::string}]{solver\+Type,  }\item[{const nlohmann\+::json \&}]{config,  }\item[{Eigen\+::\+Vector\+Xd \&}]{data\+X1,  }\item[{Eigen\+::\+Vector\+Xi \&}]{data\+X2,  }\item[{Eigen\+::\+Vector\+Xd \&}]{data\+Y1,  }\item[{Eigen\+::\+Vector\+Xd \&}]{data\+Y2 }\end{DoxyParamCaption})}
+Writes time measurements and memory to json file. 
 
 
 
-Writes convergence behaviour of Quantity of Interest to json file. 
-
-
-
-Definition at line 101 of file core/utilities.\+cpp.
+Definition at line 100 of file core/utilities.\+cpp.
 
