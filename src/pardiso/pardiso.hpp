@@ -77,6 +77,11 @@ public:
      */
     void solve (double *b, double *x);
 
+    //! Returns the total amount of memory used by the Pardiso solver
+    int getMemoryUsage() {
+        return std::max(m_iparm[14], m_iparm[15]+m_iparm[16]);
+    }
+
 private:
     int m_nnodes, m_nprocs;
 

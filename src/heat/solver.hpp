@@ -68,7 +68,7 @@ public:
     //! Sets perturbation in the test case
     void setPerturbation(double);
 
-    //! Initializes and then runs the solver,
+    //! Runs the solver, computes the solution error,
     //! used for the full-tensor version
     std::tuple<int, double, double, Eigen::VectorXd>
     operator()();
@@ -77,8 +77,11 @@ public:
     // used for the sparse-grids handler
     // void operator()(std::unique_ptr<BlockVector>&);
 
-    //! Runs the solver, assumes the solver has already been initialized
+    //! Runs the solver
     void run();
+
+    //! Measures the time and memory usage of the linear solve
+    std::tuple<int, double, double, double, int> measure(int numReps=1);
 
     double computeObs();
     double computeQoi();
@@ -98,7 +101,8 @@ private:
 
 public:
     //! Solves the linear system resulting from the discretisation
-    void solve (BlockVector *W, BlockVector* B) const;
+    //! Returns the time to solution
+    std::pair<double, int> solve (BlockVector *W, BlockVector* B);
     //! Releases allocated memory
     void finalize () const;
 

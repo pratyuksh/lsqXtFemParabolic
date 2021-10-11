@@ -16,6 +16,14 @@ void writeErrorConvergenceJsonFile
  Eigen::VectorXd &dataX1, Eigen::VectorXi &dataX2,
  Eigen::MatrixXd &dataY);
 
+//! Writes time measurements and memory to json file
+void writeMetricsJsonFile
+(std::string systemType, std::string solverType,
+ const nlohmann::json& config,
+ Eigen::VectorXd &hMax, Eigen::VectorXi &ndofs,
+ Eigen::VectorXd &measuredTime, Eigen::VectorXi &memUsage);
+
+/*
 //! Writes convergence behaviour of Quantity of Interest to json file
 void writeQoiConvergenceJsonFile
 (std::string systemType, std::string solverType,
@@ -30,7 +38,6 @@ void writeMeasuredTimeJsonFile
  int lx, int lt,
  Eigen::VectorXd &measuredTime);
 
-/*
 void write_mcmc_json_file (std::string systemType,
                            std::string solverType,
                            const nlohmann::json& config,

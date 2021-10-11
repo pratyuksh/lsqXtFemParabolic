@@ -5,7 +5,7 @@
 
 const std::string localBaseMeshDir
 //("/userdata/prbansal/Documents/projectsOngoing/meshes_MFEM/");
-("/home/pratyuksh/Documents/PostDoc/projects/ongoing/xtLsqFEMParPDEs/meshes/");
+("/home/pratyuksh/Documents/PostDoc/projects/ongoing/lsqXtFemParabolic/meshes/");
 
 const std::string clusterBaseMeshDir
 ("/cluster/home/prbansal/Documents/meshes_MFEM/");

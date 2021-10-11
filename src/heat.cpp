@@ -82,6 +82,60 @@ void convergenceFG (const nlohmann::json& config,
                                    config, h_max, ndofs, errSol);
 }
 
+void measureMetricsFG (const nlohmann::json& config,
+                       std::string baseMeshDir, bool loadInitMesh=false)
+{
+    const int Lt0 = config["min_level_t"];
+    const int Lx0 = config["min_level_x"];
+    const int Lx = config["max_level_x"];
+    std::string subMeshDir = config["mesh_dir"];
+    const std::string meshDir = baseMeshDir+subMeshDir;
+
+    int numReps = 1;
+    if (config.contains("num_reps")) {
+        numReps = config["num_reps"];
+    }
+
+    int num_levels = Lx-Lx0+1;
+    Eigen::VectorXd h_max(num_levels);
+    Eigen::VectorXi ndofs(num_levels);
+    Eigen::VectorXd elapsedTime(num_levels);
+    Eigen::VectorXi memUsage(num_levels);
+
+    heat::Solver *solver = nullptr;
+    double htMax, hxMax;
+    for (int k=0; k<num_levels; k++)
+    {
+        int lt = Lt0+k;
+        int lx = Lx0+k;
+        solver = new heat::Solver(config, meshDir, lx, lt, loadInitMesh);
+
+        std::tie (ndofs(k), htMax, hxMax,
+                  elapsedTime(k), memUsage(k)) = solver->measure(numReps);
+        std::cout << "\nLevels: " << lt << ", "
+                  << lx << std::endl;
+        std::cout << "tMesh size: " << htMax << std::endl;
+        std::cout << "xMesh size: " << hxMax << std::endl;
+        std::cout << "#Dofs: " << ndofs(k) << std::endl;
+        std::cout << "Solve time: " << elapsedTime(k) << " seconds" << std::endl;
+        std::cout << "Memory usage: " << memUsage(k) << " kB\n" << std::endl;
+        delete solver;
+
+        h_max(k) = (hxMax >= htMax ? hxMax : htMax);
+    }
+    std::cout << "\n\n#Dofs: "
+              << ndofs.transpose() << std::endl;
+    std::cout << "\nSolve time (s):\n"
+              << elapsedTime.transpose() << std::endl;
+    std::cout << "\nMemory usage (kB):\n"
+              << memUsage.transpose() << std::endl;
+
+
+    // write time measurement results to json file
+    writeMetricsJsonFile("heat", "FG",
+                         config, h_max, ndofs, elapsedTime, memUsage);
+}
+
 
 int main(int argc, char *argv[])
 {   
@@ -113,6 +167,9 @@ int main(int argc, char *argv[])
     }
     else if (run == "convergenceFG") {
         convergenceFG(config, baseMeshDir, loadInitMesh);
+    }
+    else if (run == "measureFG") {
+        measureMetricsFG(config, baseMeshDir, loadInitMesh);
     }
 
     return 0;

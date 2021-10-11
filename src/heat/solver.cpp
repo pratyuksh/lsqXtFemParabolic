@@ -230,7 +230,7 @@ std::tuple<int, double, double, Eigen::VectorXd> heat::Solver
                 std::move(errSol) };
 }
 
-// Initializes and then runs the solver,
+// Runs the solver, computes the solution error,
 // used for the sparse-grids handler
 /*void heat::Solver
 :: operator()(std::unique_ptr<BlockVector>& W)
@@ -252,7 +252,7 @@ std::tuple<int, double, double, Eigen::VectorXd> heat::Solver
     (*m_observer)(u);
 }*/
 
-// Runs the solver, assumes the solver has already been initialized
+// Runs the solver
 void heat::Solver
 :: run()
 {
@@ -271,6 +271,41 @@ void heat::Solver
 
     // solve
     solve (m_W.get(), m_B.get());
+}
+
+// Measures the time of the solver runs
+std::tuple<int, double, double, double, int> heat::Solver
+:: measure(int numReps)
+{
+    // MFEM solution variables
+    m_W.reset();
+    m_W = std::make_unique<BlockVector>(m_blockOffsets);
+
+    // MFEM rhs variables
+    m_B.reset();
+    m_B = std::make_unique<BlockVector>(m_blockOffsets);
+
+    // build and solve linear system
+    double elapsedTime = 0;
+    int memUsage;
+    for (int i=0; i<numReps; i++) {
+        init ();
+        double elapsedTimeBuf;
+        std::tie(elapsedTimeBuf, memUsage) = solve (m_W.get(), m_B.get());
+        if (numReps > 0) {
+            elapsedTime += elapsedTimeBuf;
+        }
+        finalize();
+    }
+    elapsedTime /= (numReps-1);
+
+    // max meshwidth in space and time
+    double ht_max, hx_max=-1;
+    std::tie(ht_max, hx_max) = getMeshChars();
+
+    return {std::move(getNdofs()),
+                std::move(ht_max), std::move(hx_max),
+                std::move(elapsedTime), std::move(memUsage)};
 }
 
 // Runs the solver
@@ -354,25 +389,44 @@ void heat::Solver
 {
     m_discr->assembleSystem();
 
+    if (m_linearSolver == "pardiso")
+    {
+        //m_discr->build_system_matrix();
+        m_discr->buildSystemMatrixUpTr();
+        m_heatMat = m_discr->getHeatMat();  
+    }
+    else if (m_linearSolver == "cg")
+    {
+        m_discr->buildSystemMatrix();
+        m_heatMat = m_discr->getHeatMat();
+    }
+   // std::cout << "Num rows: " << m_heatMat->NumRows()
+   //           << "\t" << m_heatMat->NumRows() << std::endl;
+}
+
+// Solves the linear system resulting from the discretisation
+std::pair<double, int> heat::Solver
+:: solve (BlockVector *W,
+          BlockVector *B)
+{
     if (!m_pardisoFinalized) {
 #ifdef MYVERBOSE
-        std::cout << "\nRelease old Pardiso memory"
+        std::cout << "\nRelease old Pardiso memory in Solve"
                   << std::endl;
 #endif
         m_pardisoSolver->finalize();
         m_pardisoFinalized = true;
     }
 
+    int memUsage = 0;
+
+    auto start = std::chrono::high_resolution_clock::now();
     if (m_linearSolver == "pardiso")
     {
-        //m_discr->build_system_matrix();
-        m_discr->buildSystemMatrixUpTr();
-        m_heatMat = m_discr->getHeatMat();
-        //auto start = std::chrono::high_resolution_clock::now();
         // set Pardiso solver
         //int mtype = 1; // real structurally symmetric
-        //int mtype = 2; // real symmetric positive definite
-        int mtype = -2; // real symmetric indefinite
+        int mtype = 2; // real symmetric positive definite
+        //int mtype = -2; // real symmetric indefinite
         m_pardisoSolver.reset();
         m_pardisoSolver = std::make_unique<PardisoSolver>(mtype);
         m_pardisoSolver->initialize(m_heatMat->Size(),
@@ -380,37 +434,9 @@ void heat::Solver
                                     m_heatMat->GetJ(),
                                     m_heatMat->GetData());
         m_pardisoSolver->factorize();
-        m_pardisoFinalized = false;
-        /*auto end = std::chrono::high_resolution_clock::now();
-        auto duration = std::chrono::duration_cast
-                <std::chrono::milliseconds>(end - start);
-        double elapsedTime
-                = (static_cast<double>(duration.count()))/1000;
-        std::cout << "Factorization time: " << elapsedTime << std::endl;
-        */
-    }
-    else if (m_linearSolver == "cg")
-    {
-        m_discr->buildSystemMatrix();
-        m_heatMat = m_discr->getHeatMat();
-    }
-}
-
-// Solves the linear system resulting from the discretisation
-void heat::Solver
-:: solve (BlockVector *W,
-          BlockVector *B) const
-{
-    if (m_linearSolver == "pardiso")
-    {
-        //auto start = std::chrono::high_resolution_clock::now();
         m_pardisoSolver->solve(B->GetData(), W->GetData());
-        /*auto end = std::chrono::high_resolution_clock::now();
-        auto duration = std::chrono::duration_cast
-                <std::chrono::milliseconds>(end - start);
-        double elapsedTime
-                = (static_cast<double>(duration.count()))/1000;
-        std::cout << "Solve time: " << elapsedTime << std::endl;*/
+        m_pardisoFinalized = false;
+        memUsage = m_pardisoSolver->getMemoryUsage();
     }
     else if (m_linearSolver == "cg")
     {
@@ -424,6 +450,13 @@ void heat::Solver
         PCG(*m_heatMat, *M, *B, *W, verbose, maxIter, relTol, absTol);
         delete M;
     }
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast
+            <std::chrono::milliseconds>(end - start);
+    double elapsedTime
+            = (static_cast<double>(duration.count()))/1000;
+
+    return {elapsedTime, memUsage};
 }
 
 // Releases allocated memory

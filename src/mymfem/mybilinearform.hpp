@@ -4,8 +4,6 @@
 #include "mfem.hpp"
 using namespace mfem;
 
-#include "../includes.hpp"
-
 
 namespace mymfem {
 

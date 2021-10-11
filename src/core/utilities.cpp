@@ -96,7 +96,59 @@ void writeErrorConvergenceJsonFile
     file.close();
 }
 
+void writeMetricsJsonFile
+(std::string systemType, std::string solverType,
+ const nlohmann::json& config,
+ Eigen::VectorXd &hMax, Eigen::VectorXi &ndofs,
+ Eigen::VectorXd &measuredTime, Eigen::VectorXi &memUsage)
+{
+    std::string problemType = config["problem_type"];
 
+    std::string baseOutDir = "../output";
+    if (config.contains("base_out_dir")) {
+        baseOutDir = config["base_out_dir"];
+    }
+
+    std::string subOutDir = "heat_"+problemType;
+    if (config.contains("sub_out_dir")) {
+        subOutDir = config["sub_out_dir"];
+    }
+
+    std::string outDir = baseOutDir+"/"+subOutDir+"/";
+    fs::create_directories(outDir);
+
+    int deg = config["deg"];
+
+    std::string discrType = "H1Hdiv";
+    if (config.contains("discretisation_type")) {
+        discrType = config["discretisation_type"];
+    }
+
+    std::string outfile;
+    if (systemType == "heat")
+    {
+        outfile = outDir+"metrics_"+solverType
+                +"_"+discrType
+                +"_"+problemType
+                +"_deg"+std::to_string(deg)
+                +".json";
+    }
+
+    auto json = nlohmann::json{};
+    for (unsigned int i=0; i<ndofs.size(); i++) {
+        json["h_max"][i] = hMax(i);
+        json["ndofs"][i] = ndofs(i);
+        json["measured_time"][i] = measuredTime(i);
+        json["memory_usage"][i] = memUsage(i);
+    }
+
+    auto file = std::ofstream(outfile);
+    assert(file.good());
+    file << json.dump(2);
+    file.close();
+}
+
+/*
 void writeQoiConvergenceJsonFile
 (std::string systemType, std::string solverType,
  const nlohmann::json& config,
@@ -153,7 +205,6 @@ void writeQoiConvergenceJsonFile
     file << json.dump(2);
     file.close();
 }
-
 
 void writeMeasuredtimeJsonFile
 (std::string systemType, std::string solverType,
@@ -213,7 +264,7 @@ void writeMeasuredtimeJsonFile
     file.close();
 }
 
-/*
+
 void write_mcmc_json_file (std::string systemType,
                            std::string solverType,
                            const nlohmann::json& config,
