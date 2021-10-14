@@ -17,6 +17,9 @@ void zeroFn(const Vector& x, Vector& f);
 //! for the input matrix A
 SparseMatrix& getUpperTriangle(const SparseMatrix& A);
 
+//! Returns cell center of element i of given mesh
+void getElementCenter(const std::shared_ptr<Mesh>& mesh,
+                      int i, Vector& center);
 
 namespace mymfem {
 
