@@ -32,7 +32,7 @@ void mymfem::BaseObserver :: visualize (GridFunction& u) const
         char vishost[] = "localhost";
         int  visport   = 19916;
         sout.open(vishost, visport);
-        if (!sout)
+        if (!sout.is_open())
         {
             std::cout << "Unable to connect to GLVis server at "
                       << vishost << ':' << visport << std::endl;
@@ -46,6 +46,7 @@ void mymfem::BaseObserver :: visualize (GridFunction& u) const
             sout << "pause\n";
             sout << std::flush;
         }
+        sout.close();
     }
 }
 
