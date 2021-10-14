@@ -127,7 +127,7 @@ void writeMetricsJsonFile
     std::string outfile;
     if (systemType == "heat")
     {
-        outfile = outDir+"metrics_"+solverType
+        outfile = outDir+"metrics"+solverType
                 +"_"+discrType
                 +"_"+problemType
                 +"_deg"+std::to_string(deg)
