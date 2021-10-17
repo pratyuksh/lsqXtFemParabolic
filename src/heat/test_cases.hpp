@@ -23,7 +23,11 @@ namespace heat {
 class TestCases
 {
 public:
-    //! Default constructor
+    //! Constructor with JSON config as argument
+    TestCases(const nlohmann::json& config) :
+        m_config(config) {}
+
+    //! Default destructor
     virtual ~TestCases() = default;
     
     /**
@@ -91,12 +95,25 @@ public:
     //! Sets the Dirichlet boundary
     virtual void setBdryDirichlet(Array<int>&) const = 0;
 
-    virtual void setPerturbation(double) const = 0;
+    void setPerturbation(double w) const {
+        m_rvar = w;
+    }
 
-    virtual void setPerturbations(const Vector&) const = 0;
+    void setPerturbations(const Vector& w) const {
+        m_rvars = w;
+    }
 
     //! Returns the number of spatial dimensions
-    virtual int getDim() const = 0;
+    int getDim() const {
+        return m_dim;
+    }
+
+protected:
+    const nlohmann::json& m_config;
+    int m_dim;
+
+    mutable double m_rvar = 0;
+    mutable Vector m_rvars;
 };
 
 
@@ -118,7 +135,8 @@ class TestCase <UnitSquareTest1>
 {
 public:
     explicit TestCase (const nlohmann::json& config)
-        : m_config(config), m_dim(2) {
+        : TestCases(config) {
+        m_dim = 2;
     }
 
     double temperatureSol(const Vector&,
@@ -156,22 +174,6 @@ public:
                             const double t) const override {
         return temperatureSol(x, t);
     }
-
-    void setPerturbation(double w) const override {
-        m_rvar = w;
-    }
-
-    void setPerturbations(const Vector&) const override {}
-
-    inline int getDim() const override {
-        return m_dim;
-    }
-
-private:
-    const nlohmann::json& m_config;
-    int m_dim;
-
-    mutable double m_rvar = 0;
 };
 
 /**
@@ -186,7 +188,8 @@ class TestCase <UnitSquareTest2>
 {
 public:
     explicit TestCase (const nlohmann::json& config)
-        : m_config(config), m_dim(2) {
+        : TestCases(config) {
+        m_dim = 2;
     }
 
     double temperatureSol(const Vector&,
@@ -234,18 +237,6 @@ public:
                             const double t) const override {
         return temperatureSol(x, t);
     }
-
-    void setPerturbation(double) const override {}
-
-    void setPerturbations(const Vector&) const override {}
-
-    inline int getDim() const override {
-        return m_dim;
-    }
-
-private:
-    const nlohmann::json& m_config;
-    int m_dim;
 };
 
 /**
@@ -260,7 +251,8 @@ class TestCase <UnitSquareTest3>
 {
 public:
     explicit TestCase (const nlohmann::json& config)
-        : m_config(config), m_dim(2) {
+        : TestCases(config) {
+        m_dim = 2;
     }
 
     double medium(const Vector&) const override;
@@ -300,24 +292,8 @@ public:
         return temperatureSol(x, t);
     }
 
-    void setPerturbation(double w) const override {
-        m_rvar = w;
-    }
-
-    void setPerturbations(const Vector&) const override {}
-
-    inline int getDim() const override {
-        return m_dim;
-    }
-
 private:
     double perturb(const Vector&) const;
-
-private:
-    const nlohmann::json& m_config;
-    int m_dim;
-
-    mutable double m_rvar = 0;
 };
 
 /**
@@ -333,7 +309,8 @@ class TestCase <UnitSquareTest4>
 {
 public:
     explicit TestCase (const nlohmann::json& config)
-        : m_config(config), m_dim(2) {
+        : TestCases(config) {
+        m_dim = 2;
     }
 
     DenseMatrix mediumTensor(const Vector&) const override;
@@ -371,23 +348,11 @@ public:
         return temperatureSol(x, t);
     }
 
-    void setPerturbation(double) const override {}
-
-    void setPerturbations(const Vector&) const override {}
-
-    inline int getDim() const override {
-        return m_dim;
-    }
-
     // redundant for this test case
     double medium(const Vector&) const override
     {
         return 1;
     }
-
-private:
-    const nlohmann::json& m_config;
-    int m_dim;
 };
 
 /**
@@ -402,7 +367,8 @@ class TestCase <PeriodicUnitSquareTest1>
 {
 public:
     explicit TestCase (const nlohmann::json& config)
-        : m_config(config), m_dim(2) {
+        : TestCases(config) {
+        m_dim = 2;
     }
 
     double medium(const Vector& x) const override;
@@ -420,14 +386,6 @@ public:
 
     double source(const Vector&,
                   const double) const override;
-
-    void setPerturbation(double w) const override {
-        m_rvar = w;
-    }
-
-    void setPerturbations(const Vector& w) const override {
-        m_rvars = w;
-    }
 
     double laplacian
     (const Vector& x, const double t) const override {
@@ -450,19 +408,8 @@ public:
 
     void setBdryDirichlet(Array<int>&) const override {}
 
-    inline int getDim() const override {
-        return m_dim;
-    }
-
 private:
     double perturb(const Vector&) const;
-
-private:
-    const nlohmann::json& m_config;
-    int m_dim;
-
-    mutable double m_rvar = 0;
-    mutable Vector m_rvars;
 };
 
 /**
@@ -477,7 +424,8 @@ class TestCase <LShapedTest1>
 {
 public:
     explicit TestCase (const nlohmann::json& config)
-        : m_config(config), m_dim(2) {
+        : TestCases(config) {
+        m_dim = 2;
         m_singularCorner.SetSize(m_dim);
         m_singularCorner = 0.0;
     }
@@ -528,21 +476,11 @@ public:
         return temperatureSol(x, t);
     }
 
-    void setPerturbation(double) const override {}
-
-    void setPerturbations(const Vector&) const override {}
-
-    inline int getDim() const override {
-        return m_dim;
-    }
-
 private:
     double radius(const Vector& x) const;
     double polarAngle(const Vector& x) const;
 
-    const nlohmann::json& m_config;
-    int m_dim;
-
+private:
     double m_gamma = 2./3.;
     Vector m_singularCorner;
 };
@@ -559,7 +497,8 @@ class TestCase <LShapedTest2>
 {
 public:
     explicit TestCase (const nlohmann::json& config)
-        : m_config(config), m_dim(2) {
+        : TestCases(config) {
+        m_dim = 2;
         m_singularCorner.SetSize(m_dim);
         m_singularCorner = 0.0;
     }
@@ -610,21 +549,11 @@ public:
         return temperatureSol(x, t);
     }
 
-    void setPerturbation(double) const override {}
-
-    void setPerturbations(const Vector&) const override {}
-
-    inline int getDim() const override {
-        return m_dim;
-    }
-
 private:
     double radius(const Vector& x) const;
     double polarAngle(const Vector& x) const;
 
-    const nlohmann::json& m_config;
-    int m_dim;
-
+private:
     double m_gamma = 2./3.;
     Vector m_singularCorner;
 };
