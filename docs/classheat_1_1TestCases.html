@@ -67,6 +67,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classheat_1_1TestCases-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">heat::TestCases Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
@@ -95,8 +96,11 @@ Inheritance diagram for heat::TestCases:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a10447ae5b38a05fdb10816e72ce34dc8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#a10447ae5b38a05fdb10816e72ce34dc8">TestCases</a> (const nlohmann::json &amp;config)</td></tr>
+<tr class="memdesc:a10447ae5b38a05fdb10816e72ce34dc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with JSON config as argument.  <a href="classheat_1_1TestCases.html#a10447ae5b38a05fdb10816e72ce34dc8">More...</a><br /></td></tr>
+<tr class="separator:a10447ae5b38a05fdb10816e72ce34dc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae92eada8405a18b88a2559a8e3e7d10a"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#ae92eada8405a18b88a2559a8e3e7d10a">~TestCases</a> ()=default</td></tr>
-<tr class="memdesc:ae92eada8405a18b88a2559a8e3e7d10a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="classheat_1_1TestCases.html#ae92eada8405a18b88a2559a8e3e7d10a">More...</a><br /></td></tr>
+<tr class="memdesc:ae92eada8405a18b88a2559a8e3e7d10a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor.  <a href="classheat_1_1TestCases.html#ae92eada8405a18b88a2559a8e3e7d10a">More...</a><br /></td></tr>
 <tr class="separator:ae92eada8405a18b88a2559a8e3e7d10a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff60a8ac763f0c49b8108f88fed14c27"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#aff60a8ac763f0c49b8108f88fed14c27">medium</a> (const Vector &amp;) const =0</td></tr>
 <tr class="memdesc:aff60a8ac763f0c49b8108f88fed14c27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the scalar material coefficient.  <a href="classheat_1_1TestCases.html#aff60a8ac763f0c49b8108f88fed14c27">More...</a><br /></td></tr>
@@ -130,19 +134,60 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7645962f9c776d2938d009d567ea057e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#a7645962f9c776d2938d009d567ea057e">setBdryDirichlet</a> (Array&lt; int &gt; &amp;) const =0</td></tr>
 <tr class="memdesc:a7645962f9c776d2938d009d567ea057e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the Dirichlet boundary.  <a href="classheat_1_1TestCases.html#a7645962f9c776d2938d009d567ea057e">More...</a><br /></td></tr>
 <tr class="separator:a7645962f9c776d2938d009d567ea057e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b307ecfb9f43dc6608067d69ecad461"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#a1b307ecfb9f43dc6608067d69ecad461">setPerturbation</a> (double) const =0</td></tr>
-<tr class="separator:a1b307ecfb9f43dc6608067d69ecad461"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afacd62b1ccc5b49aa2ae223c8c153a89"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#afacd62b1ccc5b49aa2ae223c8c153a89">setPerturbations</a> (const Vector &amp;) const =0</td></tr>
-<tr class="separator:afacd62b1ccc5b49aa2ae223c8c153a89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84dd0eb240d74c05b8e6f0d0e08090f8"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#a84dd0eb240d74c05b8e6f0d0e08090f8">getDim</a> () const =0</td></tr>
-<tr class="memdesc:a84dd0eb240d74c05b8e6f0d0e08090f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of spatial dimensions.  <a href="classheat_1_1TestCases.html#a84dd0eb240d74c05b8e6f0d0e08090f8">More...</a><br /></td></tr>
-<tr class="separator:a84dd0eb240d74c05b8e6f0d0e08090f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad3cf9c60c95cafd50fdb837bc0e8741"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#aad3cf9c60c95cafd50fdb837bc0e8741">setPerturbation</a> (double w) const</td></tr>
+<tr class="separator:aad3cf9c60c95cafd50fdb837bc0e8741"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24ec41fba8b8f0f8c1a6ad7cea06c415"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#a24ec41fba8b8f0f8c1a6ad7cea06c415">setPerturbations</a> (const Vector &amp;w) const</td></tr>
+<tr class="separator:a24ec41fba8b8f0f8c1a6ad7cea06c415"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a761fffcb5e1bcb24af88d0d4ad0da5ab"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#a761fffcb5e1bcb24af88d0d4ad0da5ab">getDim</a> () const</td></tr>
+<tr class="memdesc:a761fffcb5e1bcb24af88d0d4ad0da5ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of spatial dimensions.  <a href="classheat_1_1TestCases.html#a761fffcb5e1bcb24af88d0d4ad0da5ab">More...</a><br /></td></tr>
+<tr class="separator:a761fffcb5e1bcb24af88d0d4ad0da5ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:afdd6c82da39e40c1f6c93d9e5e45440d"><td class="memItemLeft" align="right" valign="top">const nlohmann::json &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#afdd6c82da39e40c1f6c93d9e5e45440d">m_config</a></td></tr>
+<tr class="separator:afdd6c82da39e40c1f6c93d9e5e45440d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93a7c62a6fc0293300b31c0c0e0d803f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#a93a7c62a6fc0293300b31c0c0e0d803f">m_dim</a></td></tr>
+<tr class="separator:a93a7c62a6fc0293300b31c0c0e0d803f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12dcd36602a2e766281af21aecb62cd5"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#a12dcd36602a2e766281af21aecb62cd5">m_rvar</a> = 0</td></tr>
+<tr class="separator:a12dcd36602a2e766281af21aecb62cd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a539018fd7333be805f2e0907beeeb006"><td class="memItemLeft" align="right" valign="top">Vector&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#a539018fd7333be805f2e0907beeeb006">m_rvars</a></td></tr>
+<tr class="separator:a539018fd7333be805f2e0907beeeb006"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Abstract Base class for test cases of the heat equation. </p>
 
 <p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00023">23</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a10447ae5b38a05fdb10816e72ce34dc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10447ae5b38a05fdb10816e72ce34dc8">&#9670;&nbsp;</a></span>TestCases()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">heat::TestCases::TestCases </td>
+          <td>(</td>
+          <td class="paramtype">const nlohmann::json &amp;&#160;</td>
+          <td class="paramname"><em>config</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor with JSON config as argument. </p>
+
+<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00027">27</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
+
+</div>
+</div>
 <a id="ae92eada8405a18b88a2559a8e3e7d10a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae92eada8405a18b88a2559a8e3e7d10a">&#9670;&nbsp;</a></span>~TestCases()</h2>
 
@@ -166,7 +211,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Default constructor. </p>
+<p>Default destructor. </p>
 
 </div>
 </div>
@@ -212,8 +257,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a84dd0eb240d74c05b8e6f0d0e08090f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84dd0eb240d74c05b8e6f0d0e08090f8">&#9670;&nbsp;</a></span>getDim()</h2>
+<a id="a761fffcb5e1bcb24af88d0d4ad0da5ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a761fffcb5e1bcb24af88d0d4ad0da5ab">&#9670;&nbsp;</a></span>getDim()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -222,7 +267,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual int heat::TestCases::getDim </td>
+          <td class="memname">int heat::TestCases::getDim </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -230,14 +275,14 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Returns the number of spatial dimensions. </p>
 
-<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#a7cb0abf41e5ac977288b1d8187bf00ff">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#aba4302891cbebcfb485be358d7f605e2">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#ae1225ca654c67878adec88db3d153123">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#a813d584cc440c282ecb6ab525db7c4b6">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#a42d2c1685f12629cb41ea987df9b1776">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#a8cb8b0c9a1e44c014e3275bf96d39b75">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#a91b501b213766e9dcbe4f2d31b31d31e">heat::TestCase&lt; UnitSquareTest1 &gt;</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00107">107</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
 
 </div>
 </div>
@@ -474,8 +519,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a1b307ecfb9f43dc6608067d69ecad461"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b307ecfb9f43dc6608067d69ecad461">&#9670;&nbsp;</a></span>setPerturbation()</h2>
+<a id="aad3cf9c60c95cafd50fdb837bc0e8741"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad3cf9c60c95cafd50fdb837bc0e8741">&#9670;&nbsp;</a></span>setPerturbation()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -484,26 +529,26 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void heat::TestCases::setPerturbation </td>
+          <td class="memname">void heat::TestCases::setPerturbation </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><em>w</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#a3dcc8729ea5e7a05b42ccafba1c0270c">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#a504817131639fc311aeb0b019c3f7686">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#a52964c6d9dc89551c8dbced4dcbbfd31">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#a365e71d3ae5dcf0cee0a5b7f4995bd1d">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#a3dd8e200b8536a9a12af0deac9af387e">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#a01305a5715d02dd7208f09f262b69ec2">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#a8f48f895c49b83fe9c5a849ff551e96a">heat::TestCase&lt; UnitSquareTest1 &gt;</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00098">98</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
 
 </div>
 </div>
-<a id="afacd62b1ccc5b49aa2ae223c8c153a89"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afacd62b1ccc5b49aa2ae223c8c153a89">&#9670;&nbsp;</a></span>setPerturbations()</h2>
+<a id="a24ec41fba8b8f0f8c1a6ad7cea06c415"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24ec41fba8b8f0f8c1a6ad7cea06c415">&#9670;&nbsp;</a></span>setPerturbations()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -512,21 +557,21 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void heat::TestCases::setPerturbations </td>
+          <td class="memname">void heat::TestCases::setPerturbations </td>
           <td>(</td>
           <td class="paramtype">const Vector &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><em>w</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#a84c78ff0b23ad7b9167a5f2c1f452879">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#aae9c6d494fc9bb3c4af28050f2eaa54e">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#aaf1b439255908297c7ae1bacaeadfcfe">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#af0fd6065f02b8359ebe8a68243cca419">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#aa06564d2aeeb38a15b657c449e88a62e">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#aec59d97c8cac62cc08e54a51c95667ce">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#af7e221e6846408f2d418069759091c44">heat::TestCase&lt; UnitSquareTest1 &gt;</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00102">102</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
 
 </div>
 </div>
@@ -650,6 +695,103 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>value of temperature time-gradient at a given point in space-time </dd></dl>
 
 <p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#a78ac621345db8561e05cb6190dd6fe82">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#ab24addf5b4d76890ffda5bd8bf0b9fe4">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#ad23a0381b1a3e87fbe40059d98d8dbd3">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#ae233dd555cc24718b8f6d4364ebdeebd">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#ac1ce61d95a087d9624a04c7e5be95000">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#acc90fd0d1a10c387b9e55c9afa2ebd0c">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#a119703720260d091eed3387ad625f0e1">heat::TestCase&lt; UnitSquareTest1 &gt;</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="afdd6c82da39e40c1f6c93d9e5e45440d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdd6c82da39e40c1f6c93d9e5e45440d">&#9670;&nbsp;</a></span>m_config</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const nlohmann::json&amp; heat::TestCases::m_config</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00112">112</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a93a7c62a6fc0293300b31c0c0e0d803f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93a7c62a6fc0293300b31c0c0e0d803f">&#9670;&nbsp;</a></span>m_dim</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int heat::TestCases::m_dim</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00113">113</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a12dcd36602a2e766281af21aecb62cd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12dcd36602a2e766281af21aecb62cd5">&#9670;&nbsp;</a></span>m_rvar</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double heat::TestCases::m_rvar = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">mutable</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00115">115</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a539018fd7333be805f2e0907beeeb006"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a539018fd7333be805f2e0907beeeb006">&#9670;&nbsp;</a></span>m_rvars</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector heat::TestCases::m_rvars</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">mutable</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00116">116</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
 
 </div>
 </div>
