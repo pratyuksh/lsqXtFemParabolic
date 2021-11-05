@@ -192,15 +192,22 @@ target_link_libraries(Pardiso PRIVATE linear_algebra)
 ## Heat ##
 ##########
 
-# Heat; serial
+# Heat object
 add_library(HeatObj OBJECT)
 target_link_libraries(HeatObj PRIVATE Core)
 
+# SparseHeat object
+add_library(SparseHeatObj OBJECT)
+target_link_libraries(SparseHeatObj PRIVATE Core)
+
+# Heat, serial
 add_executable(Heat)
 target_link_libraries(Heat PRIVATE Core)
 target_link_libraries(Heat PRIVATE HeatObj)
+target_link_libraries(Heat PRIVATE SparseHeatObj)
 target_link_libraries(Heat PRIVATE MyMfem)
 target_link_libraries(Heat PRIVATE Pardiso)
+
 
 ############
 ## MLMCMC ##
@@ -266,6 +273,7 @@ add_executable(unit_tests)
 
 target_link_libraries(unit_tests PRIVATE Core)
 target_link_libraries(unit_tests PRIVATE HeatObj)
+target_link_libraries(unit_tests PRIVATE SparseHeatObj)
 target_link_libraries(unit_tests PRIVATE MyMfem)
 target_link_libraries(unit_tests PRIVATE Pardiso)
 target_link_libraries(unit_tests PRIVATE GTest)
