@@ -65,13 +65,14 @@ TEST(SparseAssembly, massMatrix)
     auto blockMassMatrix = massBilinearForm->getBlockMatrix();
 
     // check diagonal blocks
+    double tol = 1E-8;
     {
         BilinearForm massBf(fes1.get());
         massBf.AddDomainIntegrator(new MassIntegrator);
         massBf.Assemble();
         auto trueBlockMass00 = massBf.LoseMat();
         trueBlockMass00->Add(-1, blockMassMatrix->GetBlock(0,0));
-        ASSERT_LE(trueBlockMass00->MaxNorm(), 1E-8);
+        ASSERT_LE(trueBlockMass00->MaxNorm(), tol);
     }
     {
         BilinearForm massBf(fes2.get());
@@ -79,7 +80,7 @@ TEST(SparseAssembly, massMatrix)
         massBf.Assemble();
         auto trueBlockMass11 = massBf.LoseMat();
         trueBlockMass11->Add(-1, blockMassMatrix->GetBlock(1,1));
-        ASSERT_LE(trueBlockMass11->MaxNorm(), 1E-8);
+        ASSERT_LE(trueBlockMass11->MaxNorm(), tol);
     }
     {
         BilinearForm massBf(fes3.get());
@@ -87,7 +88,7 @@ TEST(SparseAssembly, massMatrix)
         massBf.Assemble();
         auto trueBlockMass22 = massBf.LoseMat();
         trueBlockMass22->Add(-1, blockMassMatrix->GetBlock(2,2));
-        ASSERT_LE(trueBlockMass22->MaxNorm(), 1E-8);
+        ASSERT_LE(trueBlockMass22->MaxNorm(), tol);
     }
 
     /*for(int i=1; i<blockMassMatrix->NumRowBlocks(); i++) {
@@ -95,12 +96,90 @@ TEST(SparseAssembly, massMatrix)
             blockMassMatrix->GetBlock(i,j).Print();
             std::cout << "\n";
         }
+    }*/
+
+    // check block(1,0)
+    {
+        auto mat = blockMassMatrix->GetBlock(1,0);
+
+        ASSERT_LE(std::abs(mat.Elem(0,0) - 1./12), tol);
+        ASSERT_LE(std::abs(mat.Elem(0,1) - 1./24), tol);
+        ASSERT_LE(std::abs(mat.Elem(0,2) - 1./24), tol);
+
+        ASSERT_LE(std::abs(mat.Elem(1,0) - 1./48), tol);
+        ASSERT_LE(std::abs(mat.Elem(1,1) - 5./96), tol);
+        ASSERT_LE(std::abs(mat.Elem(1,2) - 1./96), tol);
+
+        ASSERT_LE(std::abs(mat.Elem(2,0) - 1./48), tol);
+        ASSERT_LE(std::abs(mat.Elem(2,1) - 1./96), tol);
+        ASSERT_LE(std::abs(mat.Elem(2,2) - 5./96), tol);
+
+        ASSERT_LE(std::abs(mat.Elem(3,0) - 1./24), tol);
+        ASSERT_LE(std::abs(mat.Elem(3,1) - 1./16), tol);
+        ASSERT_LE(std::abs(mat.Elem(3,2) - 1./16), tol);
     }
 
-    for(int i=0; i<blockMassMatrix->NumRowBlocks(); i++) {
-        for (int j=i+1; j<blockMassMatrix->NumColBlocks(); j++) {
-            blockMassMatrix->GetBlock(i,j).Print();
-            std::cout << "\n";
-        }
-    }*/
+    // check block(2,0)
+    {
+        auto mat = blockMassMatrix->GetBlock(2,0);
+
+        ASSERT_LE(std::abs(mat.Elem(0,0) - 13./192), tol);
+        ASSERT_LE(std::abs(mat.Elem(0,1) - 1./48), tol);
+        ASSERT_LE(std::abs(mat.Elem(0,2) - 7./192), tol);
+
+        ASSERT_LE(std::abs(mat.Elem(1,0) - 1./192), tol);
+        ASSERT_LE(std::abs(mat.Elem(1,1) - 1./32), tol);
+        ASSERT_LE(std::abs(mat.Elem(1,2) - 1./192), tol);
+
+        ASSERT_LE(std::abs(mat.Elem(2,0) - 1./48), tol);
+        ASSERT_LE(std::abs(mat.Elem(2,1) - 1./96), tol);
+        ASSERT_LE(std::abs(mat.Elem(2,2) - 5./96), tol);
+
+        ASSERT_LE(std::abs(mat.Elem(3,0) - 1./24), tol);
+        ASSERT_LE(std::abs(mat.Elem(3,1) - 1./16), tol);
+        ASSERT_LE(std::abs(mat.Elem(3,2) - 1./16), tol);
+
+        ASSERT_LE(std::abs(mat.Elem(4,0) - 1./32), tol);
+        ASSERT_LE(std::abs(mat.Elem(4,1) - 1./24), tol);
+        ASSERT_LE(std::abs(mat.Elem(4,2) - 1./96), tol);
+    }
+
+    // check block(2,1)
+    {
+        auto mat = blockMassMatrix->GetBlock(2,1);
+
+        ASSERT_LE(std::abs(mat.Elem(0,0) - 13./192), tol);
+        ASSERT_LE(std::abs(mat.Elem(0,1) - 1./192), tol);
+        ASSERT_LE(std::abs(mat.Elem(0,2) - 1./48), tol);
+        ASSERT_LE(std::abs(mat.Elem(0,3) - 1./32), tol);
+
+        ASSERT_LE(std::abs(mat.Elem(1,0) - 1./192), tol);
+        ASSERT_LE(std::abs(mat.Elem(1,1) - 5./192), tol);
+        ASSERT_LE(std::abs(mat.Elem(1,3) - 1./96), tol);
+
+        ASSERT_LE(std::abs(mat.Elem(2,0) - 1./48), tol);
+        ASSERT_LE(std::abs(mat.Elem(2,2) - 1./24), tol);
+        ASSERT_LE(std::abs(mat.Elem(2,3) - 1./48), tol);
+
+        ASSERT_LE(std::abs(mat.Elem(3,0) - 1./24), tol);
+        ASSERT_LE(std::abs(mat.Elem(3,1) - 1./48), tol);
+        ASSERT_LE(std::abs(mat.Elem(3,2) - 1./48), tol);
+        ASSERT_LE(std::abs(mat.Elem(3,3) - 1./12), tol);
+
+        ASSERT_LE(std::abs(mat.Elem(4,0) - 1./32), tol);
+        ASSERT_LE(std::abs(mat.Elem(4,1) - 1./32), tol);
+        ASSERT_LE(std::abs(mat.Elem(4,3) - 1./48), tol);
+    }
+
+    // check upper-diagonal blocks
+    {
+        for (int n=1; n<3; n++)
+            for (int m=0; m<n; m++)
+            {
+                auto matT = Transpose(blockMassMatrix->GetBlock(n,m));
+                matT->Add(-1, blockMassMatrix->GetBlock(m,n));
+                ASSERT_LE(matT->MaxNorm(), tol);
+                delete matT;
+            }
+    }
 }
