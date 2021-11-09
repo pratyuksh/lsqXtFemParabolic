@@ -38,6 +38,36 @@ public:
      DenseMatrix& elmat) = 0;
 };
 
+/**
+ * @brief BlockMixedBilinearForm class provides functions to
+ * assemble mixed bilinear forms between different mesh levels
+ * in a nested hierarchy of finite element spaces
+ */
+class BlockMixedBilinearFormIntegrator
+{
+public:
+    //! Default destructor
+    virtual ~ BlockMixedBilinearFormIntegrator() = default;
+
+    //! Assembles the integrator over a spatial element
+    virtual void assembleElementMatrix
+    (const FiniteElement &testFe,
+     const FiniteElement &trialFe,
+     ElementTransformation& elTrans,
+     DenseMatrix& elmat) = 0;
+
+    //! Assembles the integrator
+    //! over two nested coarse and fine mesh elements.
+    //! Coarse element is for the trial functions
+    //! and fine element is for the test function
+    virtual void assembleElementMatrix
+    (const FiniteElement &testFeFine,
+     ElementTransformation& testElTransFine,
+     const FiniteElement &trialFeCoarse,
+     ElementTransformation& trialElTransFine,
+     DenseMatrix& elmat) = 0;
+};
+
 }
 
 #endif // MYMFEM_BILINEARFORM_INTEGRATORS_HPP

@@ -21,7 +21,6 @@ mymfem::BlockBilinearForm
     m_blockOffsets.PartialSum();
 }
 
-
 //! Assembles the domain block bilinear form integrators
 void mymfem::BlockBilinearForm
 :: assemble (bool symmetric, int skip_zeros)
@@ -143,7 +142,6 @@ void mymfem::BlockBilinearForm
     }
 }
 
-
 void mymfem::BlockBilinearForm
 :: allocateBlockMatrix()
 {
@@ -155,6 +153,70 @@ void mymfem::BlockBilinearForm
             SparseMatrix *mat
                     = new SparseMatrix(feSpaces[i]->GetTrueVSize(),
                                        feSpaces[j]->GetTrueVSize());
+            m_blockMatrix->SetBlock(i, j, mat);
+        }
+    }
+
+    // owns the allocated memory
+    m_blockMatrix->owns_blocks = true;
+}
+
+
+//! Constructor with nested finite element hierarchy
+//! defines the block offsets of storage matrix
+mymfem::BlockMixedBilinearForm
+:: BlockMixedBilinearForm
+(const std::shared_ptr<NestedFEHierarchy>& trialNestedFEHierarchy,
+ const std::shared_ptr<NestedFEHierarchy>& testNestedFEHierarchy)
+    : m_trialNestedFEHierarchy (trialNestedFEHierarchy),
+      m_testNestedFEHierarchy (testNestedFEHierarchy)
+{
+    m_numLevels = m_testNestedFEHierarchy->getNumLevels();
+    assert(m_numLevels == m_trialNestedFEHierarchy->getNumLevels());
+
+    auto testFeSpaces = m_testNestedFEHierarchy->getFESpaces();
+    auto trialFeSpaces = m_trialNestedFEHierarchy->getFESpaces();
+
+    // define row block offsets from test FE spaces
+    m_rowBlockOffsets.SetSize(m_numLevels+1);
+    m_rowBlockOffsets[0] = 0;
+    for (int i=0; i<m_numLevels; i++) {
+        m_rowBlockOffsets[i+1] = testFeSpaces[i]->GetTrueVSize();
+    }
+    m_rowBlockOffsets.PartialSum();
+
+    // define column block offsets from trial FE spaces
+    m_colBlockOffsets.SetSize(m_numLevels+1);
+    m_colBlockOffsets[0] = 0;
+    for (int i=0; i<m_numLevels; i++) {
+        m_colBlockOffsets[i+1] = trialFeSpaces[i]->GetTrueVSize();
+    }
+    m_colBlockOffsets.PartialSum();
+}
+
+//! Assembles the domain block bilinear form integrators
+void mymfem::BlockMixedBilinearForm
+:: assemble (int skip_zeros)
+{
+    // if not initialized, allocate block matrix
+    if (!m_blockMatrix) {
+        this->allocateBlockMatrix();
+    }
+}
+
+void mymfem::BlockMixedBilinearForm
+:: allocateBlockMatrix()
+{
+    auto testFeSpaces = m_testNestedFEHierarchy->getFESpaces();
+    auto trialFeSpaces = m_trialNestedFEHierarchy->getFESpaces();
+
+    m_blockMatrix = std::make_shared<BlockMatrix>(m_rowBlockOffsets,
+                                                  m_colBlockOffsets);
+    for(int i=0; i<m_numLevels; i++) {
+        for(int j=0; j<m_numLevels; j++) {
+            SparseMatrix *mat
+                    = new SparseMatrix(testFeSpaces[i]->GetTrueVSize(),
+                                       trialFeSpaces[j]->GetTrueVSize());
             m_blockMatrix->SetBlock(i, j, mat);
         }
     }
