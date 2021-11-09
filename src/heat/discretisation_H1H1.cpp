@@ -83,7 +83,7 @@ void heat::LsqXtFemH1H1 :: set(std::shared_ptr<Mesh>& tMesh,
 // Assembles medium-independent system matrices
 void heat::LsqXtFemH1H1 :: assembleSystemMediumIndependent()
 {
-    /* assemble matrices in time */
+    // assemble matrices in time
 
     // tMass form
     BilinearForm *tMass_form = new BilinearForm(m_tFespace);
@@ -110,7 +110,7 @@ void heat::LsqXtFemH1H1 :: assembleSystemMediumIndependent()
     m_tGrad = tGrad_form->LoseMat();
     delete tGrad_form;
 
-    /* assemble matrices in space */
+    // assemble matrices in space
 
     // xMass1 form, xV1space
     BilinearForm *xMass1_form
@@ -158,7 +158,7 @@ void heat::LsqXtFemH1H1 :: assembleSystemMediumIndependent()
     tCanonicalBasis(0) = 1;
     SparseMatrix *tInit = new SparseMatrix(tCanonicalBasis);
 
-    /* compute blocks */
+    // compute blocks
     SparseMatrix *tmpBuf;
 
     // block at row 1, column 1
@@ -187,7 +187,7 @@ void heat::LsqXtFemH1H1 :: assembleSystemMediumIndependent()
 // Assembles medium-dependent system matrices
 void heat::LsqXtFemH1H1 :: assembleSystemMediumDependent()
 {
-    /* assemble matrices in space */
+    // assemble matrices in space
 
     heat::MediumTensorCoeff medCoeff(m_testCase);
 
@@ -212,7 +212,7 @@ void heat::LsqXtFemH1H1 :: assembleSystemMediumDependent()
     m_xGrad = xGrad_form->LoseMat();
     delete xGrad_form;
 
-    /* compute blocks */
+    // compute blocks
     SparseMatrix *tmp1, *tmp2, *tmpBuf;
 
     // block at row 0, column 0
@@ -251,7 +251,7 @@ void heat::LsqXtFemH1H1
 // Assembles matrices for L2-projection
 void heat::LsqXtFemH1H1 :: assembleProjector()
 {
-    /* assemble matrices in time */
+    // assemble matrices in time
 
     // tMass form
     BilinearForm *tMass_form = new BilinearForm(m_tFespace);
@@ -261,7 +261,7 @@ void heat::LsqXtFemH1H1 :: assembleProjector()
     m_tMass = tMass_form->LoseMat();
     delete tMass_form;
 
-    /* assemble matrices in space */
+    // assemble matrices in space
 
     // xMass1 form, xV1space
     BilinearForm *xMass1_form
@@ -282,7 +282,7 @@ void heat::LsqXtFemH1H1 :: assembleProjector()
     m_xMass2 = xMass2_form->LoseMat();
     delete xMass2_form;
 
-    /* compute blocks */
+    // compute blocks
     m_block00 = OuterProduct(*m_tMass, *m_xMass1);
     m_block11 = OuterProduct(*m_tMass, *m_xMass2);
 }

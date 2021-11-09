@@ -13,7 +13,6 @@ class GradientIntegrator
         : public BilinearFormIntegrator
 {
 public:
-    //! Default constructor
     GradientIntegrator() {}
 
     //! Assembles the Gradient integrator on a given temporal mesh element
@@ -41,7 +40,6 @@ class StiffnessIntegrator
         : public BilinearFormIntegrator
 {
 public:
-    //! Default constructor
     StiffnessIntegrator() {}
 
     //! Constructor with material coefficent matrix passed as a pointer
@@ -87,7 +85,6 @@ class VectorFEStiffnessIntegrator
         : public BilinearFormIntegrator
 {
 public:
-    //! Default constructor
     VectorFEStiffnessIntegrator() {}
 
     //! Assembles the VectorFE Stiffness integrator on a given spatial mesh element
@@ -115,7 +112,6 @@ class VectorFEGradientIntegrator
         : public BilinearFormIntegrator
 {
 public:
-    //! Default constructor
     VectorFEGradientIntegrator() {}
 
     //! Constructor with material coefficent matrix passed as a pointer
@@ -186,7 +182,6 @@ class VectorStiffnessIntegrator
         : public BilinearFormIntegrator
 {
 public:
-    //! Default constructor
     VectorStiffnessIntegrator() {}
 
     //! Assembles the Vector Stiffness integrator on a given spatial mesh element
@@ -214,7 +209,6 @@ class VectorGradientIntegrator
         : public BilinearFormIntegrator
 {
 public:
-    //! Default constructor
     VectorGradientIntegrator() {}
 
     //! Constructor with material coefficent matrix passed as a pointer
