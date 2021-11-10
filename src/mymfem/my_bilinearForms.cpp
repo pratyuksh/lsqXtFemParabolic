@@ -33,7 +33,6 @@ void mymfem::BlockBilinearForm
     if (mydbfi.size())
     {
         auto feSpaces = m_nestedFEHierarchy->getFESpaces();
-        auto meshes = m_nestedFEHierarchy->getMeshes();
         auto hierMeshTrans
                 = m_nestedFEHierarchy->getHierarchicalMeshTransformations();
 
@@ -84,7 +83,7 @@ void mymfem::BlockBilinearForm
                             (hierMeshTrans[n], hierMultiLevelMeshTrans);
                 }
 
-                auto& mat = m_blockMatrix->GetBlock(m,n);
+                auto& mat = m_blockMatrix->GetBlock(m, n);
                 for (int i=0; i < fesCoarse->GetNE(); i++)
                 {
                     fesCoarse->GetElementVDofs(i, trialVdofsCoarse);
@@ -123,7 +122,7 @@ void mymfem::BlockBilinearForm
 //                std::cout << "\n\n";
             }
         }
-        m_blockMatrix->Finalize(skip_zeros, true);
+        m_blockMatrix->Finalize(skip_zeros, false);
 
         // upper-triangle blocks
         if (symmetric) {
@@ -201,6 +200,147 @@ void mymfem::BlockMixedBilinearForm
     // if not initialized, allocate block matrix
     if (!m_blockMatrix) {
         this->allocateBlockMatrix();
+    }
+
+    if (mydbfi.size())
+    {
+        // The underlying mesh hierarchy is the same for both test and trial spaces
+        auto hierMeshTrans
+                = m_testNestedFEHierarchy->getHierarchicalMeshTransformations();
+
+        auto testFeSpaces = m_testNestedFEHierarchy->getFESpaces();
+        auto trialFeSpaces = m_trialNestedFEHierarchy->getFESpaces();
+
+        // Diagonal blocks
+        DenseMatrix elmat;
+        Array<int> testVdofs, trialVdofs;
+        ElementTransformation *elTrans = nullptr;
+
+        for (int n=0; n<m_numLevels; n++)
+        {
+            auto& mat = m_blockMatrix->GetBlock(n,n);
+            std::shared_ptr<FiniteElementSpace> testFes(testFeSpaces[n]);
+            std::shared_ptr<FiniteElementSpace> trialFes(trialFeSpaces[n]);
+
+            for (int i = 0; i < testFes -> GetNE(); i++)
+            {
+                testFes->GetElementVDofs(i, testVdofs);
+                trialFes->GetElementVDofs(i, trialVdofs);
+
+                const FiniteElement &testFe = *(testFes->GetFE(i));
+                const FiniteElement &trialFe = *(trialFes->GetFE(i));
+                elTrans = testFes->GetElementTransformation(i);
+                for (int k = 0; k < mydbfi.size(); k++)
+                {
+                    mydbfi[k]->assembleElementMatrix
+                            (testFe, trialFe, *elTrans, elmat);
+                    mat.AddSubMatrix(testVdofs, trialVdofs, elmat, skip_zeros);
+                }
+            }
+        }
+
+        // Lower-triangular and upper-triangular blocks
+        DenseMatrix elmat1, elmat2;
+
+        // auxiliary variables for lower-triangular blocks
+        Array<int> trialVdofsCoarse, testVdofsFine;
+        ElementTransformation *trialElTransCoarse = nullptr;
+        ElementTransformation *testElTransFine = nullptr;
+        std::shared_ptr<FiniteElementSpace> trialFesCoarse, testFesFine;
+
+        // auxiliary variables for upper-triangular blocks
+        Array<int> trialVdofsFine, testVdofsCoarse;
+        ElementTransformation *trialElTransFine = nullptr;
+        ElementTransformation *testElTransCoarse = nullptr;
+        std::shared_ptr<FiniteElementSpace> trialFesFine, testFesCoarse;
+
+        for (int m=1; m<m_numLevels; m++)
+        {
+            auto hierMultiLevelMeshTrans = hierMeshTrans[m-1];
+
+            testFesFine = testFeSpaces[m];
+            trialFesFine = trialFeSpaces[m];
+
+            for (int n=m-1; n>=0; n--)
+            {
+                testFesCoarse = testFeSpaces[n];
+                trialFesCoarse = trialFeSpaces[n];
+
+                // generate hierarchical mesh transformations
+                // across non-successive mesh levels
+                if (n < m-1) {
+                    hierMultiLevelMeshTrans
+                            = buildMultiLevelMeshHierarchy
+                            (hierMeshTrans[n], hierMultiLevelMeshTrans);
+                }
+
+                auto& mat1 = m_blockMatrix->GetBlock(m, n);
+                auto& mat2 = m_blockMatrix->GetBlock(n, m);
+                for (int i=0; i < trialFesCoarse->GetNE(); i++)
+                {
+                    // set variables for computing the matrices in lower-triangular blocks
+                    trialFesCoarse->GetElementVDofs(i, trialVdofsCoarse);
+                    const FiniteElement &trialFECoarse
+                            = *(trialFesCoarse->GetFE(i));
+                    trialElTransCoarse
+                            = trialFesCoarse->GetElementTransformation(i);
+
+                    // set variables for computing the matrices in upper-triangular blocks
+                    testFesCoarse->GetElementVDofs(i, testVdofsCoarse);
+                    const FiniteElement &testFECoarse
+                            = *(testFesCoarse->GetFE(i));
+                    testElTransCoarse
+                            = testFesCoarse->GetElementTransformation(i);
+
+                    auto childElems = (*hierMultiLevelMeshTrans)(i);
+                    for (auto it=childElems.begin();
+                         it!= childElems.end(); it++)
+                    {
+                        int j = *it;
+//                        std::cout << n << "\t" << m << "\t"
+//                                  << i << "\t" << j << std::endl;
+
+                        // set variables for computing the matrices in the lower-triangular blocks
+                        testFesFine->GetElementVDofs(j, testVdofsFine);
+                        const FiniteElement &testFEFine
+                                = *(testFesFine->GetFE(j));
+                        testElTransFine
+                                = testFesFine->GetElementTransformation(j);
+
+                        // set variables for computing the matrices in the upper-triangular blocks
+                        trialFesFine->GetElementVDofs(j, trialVdofsFine);
+                        const FiniteElement &trialFEFine
+                                = *(trialFesFine->GetFE(j));
+                        trialElTransFine
+                                = trialFesFine->GetElementTransformation(j);
+
+                        // call the integrators here
+                        for (int k = 0; k < mydbfi.size(); k++)
+                        {
+                            // compute matrices in the lower-triangular blocks
+                            mydbfi[k]->assembleElementMatrix
+                                    (testFEFine, *testElTransFine,
+                                     trialFECoarse, *trialElTransCoarse,
+                                     elmat1);
+                            mat1.AddSubMatrix(testVdofsFine,
+                                              trialVdofsCoarse,
+                                              elmat1, skip_zeros);
+
+                            // compute matrices in the uppwer-triangular blocks
+                            mydbfi[k]->assembleElementMatrix2
+                                    (testFECoarse, *testElTransCoarse,
+                                     trialFEFine, *trialElTransFine,
+                                     elmat2);
+                            mat2.AddSubMatrix(testVdofsCoarse,
+                                              trialVdofsFine,
+                                              elmat2, skip_zeros);
+                        }
+                    }
+                }
+//                std::cout << "\n\n";
+            }
+        }
+        m_blockMatrix->Finalize(skip_zeros, false);
     }
 }
 

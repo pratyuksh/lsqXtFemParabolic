@@ -16,7 +16,6 @@ class MassIntegrator
         : public mymfem::BlockBilinearFormIntegrator
 {
 public:
-    //! Default constructor
     explicit MassIntegrator() {}
 
     //! Assembles the mass integrator on an element
@@ -81,7 +80,6 @@ class VectorFEMassIntegrator
         : public mymfem::BlockBilinearFormIntegrator
 {
 public:
-    //! Default constructor
     explicit VectorFEMassIntegrator() {}
 
     //! Assembles the vectorFE mass integrator on an element
@@ -104,7 +102,6 @@ class VectorFEStiffnessIntegrator
         : public mymfem::BlockBilinearFormIntegrator
 {
 public:
-    //! Default constructor
     explicit VectorFEStiffnessIntegrator() {}
 
     //! Assembles the vectorFE stiffness integrator on an element
@@ -114,6 +111,80 @@ public:
 
     //! Assembles the vectorFE stiffness integrator between two nested mesh elements
     void assembleElementMatrix
+    (const FiniteElement &, ElementTransformation &,
+     const FiniteElement &, ElementTransformation &,
+     DenseMatrix &) override;
+};
+
+
+/**
+ * @brief VectorFE Gradient Integrator; (grad(u), v)
+ */
+class VectorFEGradientIntegrator
+        : public mymfem::BlockMixedBilinearFormIntegrator
+{
+public:
+    explicit VectorFEGradientIntegrator() {}
+
+    //! Constructor with material coefficent matrix passed as a pointer
+    explicit VectorFEGradientIntegrator(MatrixCoefficient *M)
+        : m_matrixCoeff(M) {}
+
+    //! Constructor with material coefficent matrix passed by reference
+    explicit VectorFEGradientIntegrator(MatrixCoefficient& M)
+        : m_matrixCoeff(&M) {}
+
+    //! Constructor with scalar material coefficient passed as a pointer
+    explicit VectorFEGradientIntegrator(Coefficient *q)
+        : m_scalarCoeff(q) {}
+
+    //! Constructor with scalar material coefficient passed by reference
+    explicit VectorFEGradientIntegrator(Coefficient& q)
+        : m_scalarCoeff(&q) {}
+
+    //! Assembles the mixed scalar-vectorFE gradient integrator on an element
+    void assembleElementMatrix
+    (const FiniteElement &, const FiniteElement &,
+     ElementTransformation &, DenseMatrix &) override;
+
+    //! Assembles the mixed scalar-vectorFE gradient integrator between two nested mesh elements
+    void assembleElementMatrix
+    (const FiniteElement &, ElementTransformation &,
+     const FiniteElement &, ElementTransformation &,
+     DenseMatrix &) override;
+
+    void assembleElementMatrix2
+    (const FiniteElement &, ElementTransformation &,
+     const FiniteElement &, ElementTransformation &,
+     DenseMatrix &) override;
+
+private:
+    MatrixCoefficient *m_matrixCoeff = nullptr;
+    Coefficient *m_scalarCoeff = nullptr;
+};
+
+
+/**
+ * @brief VectorFE Divergence Integrator; (div(u), v)
+ */
+class VectorFEDivergenceIntegrator
+        : public mymfem::BlockMixedBilinearFormIntegrator
+{
+public:
+    explicit VectorFEDivergenceIntegrator() {}
+
+    //! Assembles the mixed scalar-vectorFE divergence integrator on an element
+    void assembleElementMatrix
+    (const FiniteElement &, const FiniteElement &,
+     ElementTransformation &, DenseMatrix &) override;
+
+    //! Assembles the mixed scalar-vectorFE divergence integrator between two nested mesh elements
+    void assembleElementMatrix
+    (const FiniteElement &, ElementTransformation &,
+     const FiniteElement &, ElementTransformation &,
+     DenseMatrix &) override;
+
+    void assembleElementMatrix2
     (const FiniteElement &, ElementTransformation &,
      const FiniteElement &, ElementTransformation &,
      DenseMatrix &) override;

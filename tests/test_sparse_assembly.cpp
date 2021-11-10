@@ -33,15 +33,15 @@ TEST(SparseAssembly, massMatrix)
     ASSERT_EQ(mesh2->GetNE(), 2);
     ASSERT_EQ(mesh3->GetNE(), 3);
 
-    std::shared_ptr<NestedMeshHierarchy> meshHierarchy
+    auto meshHierarchy
             = std::make_shared<NestedMeshHierarchy>();
     meshHierarchy->addMesh(mesh1);
     meshHierarchy->addMesh(mesh2);
     meshHierarchy->addMesh(mesh3);
     meshHierarchy->buildHierarchicalTranformations();
 
-    std::shared_ptr<NestedFEHierarchy> nestedFEHierarchy
-            = std::make_shared<NestedFEHierarchy> (meshHierarchy);
+    auto nestedFEHierarchy
+            = std::make_shared<NestedFEHierarchy>(meshHierarchy);
 
     int dim = mesh1->Dimension();
     FiniteElementCollection *feColl
@@ -54,7 +54,7 @@ TEST(SparseAssembly, massMatrix)
     nestedFEHierarchy->addFESpace(fes2);
     nestedFEHierarchy->addFESpace(fes3);
 
-    std::unique_ptr<BlockBilinearForm> massBilinearForm
+    auto massBilinearForm
             = std::make_unique<BlockBilinearForm>(nestedFEHierarchy);
 
     std::shared_ptr<BlockBilinearFormIntegrator> massIntegator
@@ -63,13 +63,14 @@ TEST(SparseAssembly, massMatrix)
     massBilinearForm->addDomainIntegrator(massIntegator);
     massBilinearForm->assemble();
 
-    auto blockMassMatrix = massBilinearForm->getBlockMatrix();
+    auto blockMassMatrix
+            = massBilinearForm->getBlockMatrix();
 
     // check diagonal blocks
     double tol = 1E-8;
     {
         BilinearForm massBf(fes1.get());
-        massBf.AddDomainIntegrator(new MassIntegrator);
+        massBf.AddDomainIntegrator(new MassIntegrator{});
         massBf.Assemble();
         auto trueBlockMass00 = massBf.LoseMat();
         trueBlockMass00->Add(-1, blockMassMatrix->GetBlock(0,0));
@@ -77,7 +78,7 @@ TEST(SparseAssembly, massMatrix)
     }
     {
         BilinearForm massBf(fes2.get());
-        massBf.AddDomainIntegrator(new MassIntegrator);
+        massBf.AddDomainIntegrator(new MassIntegrator{});
         massBf.Assemble();
         auto trueBlockMass11 = massBf.LoseMat();
         trueBlockMass11->Add(-1, blockMassMatrix->GetBlock(1,1));
@@ -85,7 +86,7 @@ TEST(SparseAssembly, massMatrix)
     }
     {
         BilinearForm massBf(fes3.get());
-        massBf.AddDomainIntegrator(new MassIntegrator);
+        massBf.AddDomainIntegrator(new MassIntegrator{});
         massBf.Assemble();
         auto trueBlockMass22 = massBf.LoseMat();
         trueBlockMass22->Add(-1, blockMassMatrix->GetBlock(2,2));
@@ -183,6 +184,8 @@ TEST(SparseAssembly, massMatrix)
                 delete matT;
             }
     }
+
+    delete feColl;
 }
 
 
@@ -206,15 +209,15 @@ TEST(SparseAssembly, stiffnessMatrix)
     ASSERT_EQ(mesh2->GetNE(), 2);
     ASSERT_EQ(mesh3->GetNE(), 3);
 
-    std::shared_ptr<NestedMeshHierarchy> meshHierarchy
+    auto meshHierarchy
             = std::make_shared<NestedMeshHierarchy>();
     meshHierarchy->addMesh(mesh1);
     meshHierarchy->addMesh(mesh2);
     meshHierarchy->addMesh(mesh3);
     meshHierarchy->buildHierarchicalTranformations();
 
-    std::shared_ptr<NestedFEHierarchy> nestedFEHierarchy
-            = std::make_shared<NestedFEHierarchy> (meshHierarchy);
+    auto nestedFEHierarchy
+            = std::make_shared<NestedFEHierarchy>(meshHierarchy);
 
     int dim = mesh1->Dimension();
     FiniteElementCollection *feColl
@@ -227,7 +230,7 @@ TEST(SparseAssembly, stiffnessMatrix)
     nestedFEHierarchy->addFESpace(fes2);
     nestedFEHierarchy->addFESpace(fes3);
 
-    std::unique_ptr<BlockBilinearForm> stiffnessBilinearForm
+    auto stiffnessBilinearForm
             = std::make_unique<BlockBilinearForm>(nestedFEHierarchy);
 
     std::shared_ptr<BlockBilinearFormIntegrator> stiffnessIntegator
@@ -236,13 +239,14 @@ TEST(SparseAssembly, stiffnessMatrix)
     stiffnessBilinearForm->addDomainIntegrator(stiffnessIntegator);
     stiffnessBilinearForm->assemble();
 
-    auto blockStiffnessMatrix = stiffnessBilinearForm->getBlockMatrix();
+    auto blockStiffnessMatrix
+            = stiffnessBilinearForm->getBlockMatrix();
 
     // check diagonal blocks
     double tol = 1E-8;
     {
         BilinearForm stiffnessBf(fes1.get());
-        stiffnessBf.AddDomainIntegrator(new DiffusionIntegrator);
+        stiffnessBf.AddDomainIntegrator(new DiffusionIntegrator{});
         stiffnessBf.Assemble();
         auto trueBlockStiffness00 = stiffnessBf.LoseMat();
         trueBlockStiffness00->Add(-1, blockStiffnessMatrix->GetBlock(0,0));
@@ -250,7 +254,7 @@ TEST(SparseAssembly, stiffnessMatrix)
     }
     {
         BilinearForm stiffnessBf(fes2.get());
-        stiffnessBf.AddDomainIntegrator(new DiffusionIntegrator);
+        stiffnessBf.AddDomainIntegrator(new DiffusionIntegrator{});
         stiffnessBf.Assemble();
         auto trueBlockStiffness11 = stiffnessBf.LoseMat();
         trueBlockStiffness11->Add(-1, blockStiffnessMatrix->GetBlock(1,1));
@@ -258,7 +262,7 @@ TEST(SparseAssembly, stiffnessMatrix)
     }
     {
         BilinearForm stiffnessBf(fes3.get());
-        stiffnessBf.AddDomainIntegrator(new DiffusionIntegrator);
+        stiffnessBf.AddDomainIntegrator(new DiffusionIntegrator{});
         stiffnessBf.Assemble();
         auto trueBlockStiffness22 = stiffnessBf.LoseMat();
         trueBlockStiffness22->Add(-1, blockStiffnessMatrix->GetBlock(2,2));
@@ -349,6 +353,8 @@ TEST(SparseAssembly, stiffnessMatrix)
                 delete matT;
             }
     }
+
+    delete feColl;
 }
 
 
@@ -372,15 +378,15 @@ TEST(SparseAssembly, vectorFEMassMatrix)
     ASSERT_EQ(mesh2->GetNE(), 2);
     ASSERT_EQ(mesh3->GetNE(), 3);
 
-    std::shared_ptr<NestedMeshHierarchy> meshHierarchy
+    auto meshHierarchy
             = std::make_shared<NestedMeshHierarchy>();
     meshHierarchy->addMesh(mesh1);
     meshHierarchy->addMesh(mesh2);
     meshHierarchy->addMesh(mesh3);
     meshHierarchy->buildHierarchicalTranformations();
 
-    std::shared_ptr<NestedFEHierarchy> nestedFEHierarchy
-            = std::make_shared<NestedFEHierarchy> (meshHierarchy);
+    auto nestedFEHierarchy
+            = std::make_shared<NestedFEHierarchy>(meshHierarchy);
 
     int dim = mesh1->Dimension();
     FiniteElementCollection *feColl
@@ -393,7 +399,7 @@ TEST(SparseAssembly, vectorFEMassMatrix)
     nestedFEHierarchy->addFESpace(fes2);
     nestedFEHierarchy->addFESpace(fes3);
 
-    std::unique_ptr<BlockBilinearForm> massBilinearForm
+    auto massBilinearForm
             = std::make_unique<BlockBilinearForm>(nestedFEHierarchy);
 
     std::shared_ptr<BlockBilinearFormIntegrator> massIntegator
@@ -402,13 +408,14 @@ TEST(SparseAssembly, vectorFEMassMatrix)
     massBilinearForm->addDomainIntegrator(massIntegator);
     massBilinearForm->assemble();
 
-    auto blockMassMatrix = massBilinearForm->getBlockMatrix();
+    auto blockMassMatrix
+            = massBilinearForm->getBlockMatrix();
 
     // check diagonal blocks
     double tol = 1E-8;
     {
         BilinearForm massBf(fes1.get());
-        massBf.AddDomainIntegrator(new VectorFEMassIntegrator);
+        massBf.AddDomainIntegrator(new VectorFEMassIntegrator{});
         massBf.Assemble();
         auto trueBlockMass00 = massBf.LoseMat();
         trueBlockMass00->Add(-1, blockMassMatrix->GetBlock(0,0));
@@ -416,7 +423,7 @@ TEST(SparseAssembly, vectorFEMassMatrix)
     }
     {
         BilinearForm massBf(fes2.get());
-        massBf.AddDomainIntegrator(new VectorFEMassIntegrator);
+        massBf.AddDomainIntegrator(new VectorFEMassIntegrator{});
         massBf.Assemble();
         auto trueBlockMass11 = massBf.LoseMat();
         trueBlockMass11->Add(-1, blockMassMatrix->GetBlock(1,1));
@@ -424,7 +431,7 @@ TEST(SparseAssembly, vectorFEMassMatrix)
     }
     {
         BilinearForm massBf(fes3.get());
-        massBf.AddDomainIntegrator(new VectorFEMassIntegrator);
+        massBf.AddDomainIntegrator(new VectorFEMassIntegrator{});
         massBf.Assemble();
         auto trueBlockMass22 = massBf.LoseMat();
         trueBlockMass22->Add(-1, blockMassMatrix->GetBlock(2,2));
@@ -437,6 +444,8 @@ TEST(SparseAssembly, vectorFEMassMatrix)
             std::cout << "\n";
         }
     }*/
+
+    delete feColl;
 }
 
 
@@ -460,15 +469,15 @@ TEST(SparseAssembly, vectorFEStiffnessMatrix)
     ASSERT_EQ(mesh2->GetNE(), 2);
     ASSERT_EQ(mesh3->GetNE(), 3);
 
-    std::shared_ptr<NestedMeshHierarchy> meshHierarchy
+    auto meshHierarchy
             = std::make_shared<NestedMeshHierarchy>();
     meshHierarchy->addMesh(mesh1);
     meshHierarchy->addMesh(mesh2);
     meshHierarchy->addMesh(mesh3);
     meshHierarchy->buildHierarchicalTranformations();
 
-    std::shared_ptr<NestedFEHierarchy> nestedFEHierarchy
-            = std::make_shared<NestedFEHierarchy> (meshHierarchy);
+    auto nestedFEHierarchy
+            = std::make_shared<NestedFEHierarchy>(meshHierarchy);
 
     int dim = mesh1->Dimension();
     FiniteElementCollection *feColl
@@ -481,7 +490,7 @@ TEST(SparseAssembly, vectorFEStiffnessMatrix)
     nestedFEHierarchy->addFESpace(fes2);
     nestedFEHierarchy->addFESpace(fes3);
 
-    std::unique_ptr<BlockBilinearForm> stiffnessBilinearForm
+    auto stiffnessBilinearForm
             = std::make_unique<BlockBilinearForm>(nestedFEHierarchy);
 
     std::shared_ptr<BlockBilinearFormIntegrator> stiffnessIntegator
@@ -497,7 +506,7 @@ TEST(SparseAssembly, vectorFEStiffnessMatrix)
     {
         BilinearForm stiffnessBf(fes1.get());
         stiffnessBf.AddDomainIntegrator
-                (new heat::VectorFEStiffnessIntegrator);
+                (new heat::VectorFEStiffnessIntegrator{});
         stiffnessBf.Assemble();
         auto trueBlockStiffness00 = stiffnessBf.LoseMat();
         trueBlockStiffness00->
@@ -507,7 +516,7 @@ TEST(SparseAssembly, vectorFEStiffnessMatrix)
     {
         BilinearForm stiffnessBf(fes2.get());
         stiffnessBf.AddDomainIntegrator
-                (new heat::VectorFEStiffnessIntegrator);
+                (new heat::VectorFEStiffnessIntegrator{});
         stiffnessBf.Assemble();
         auto trueBlockStiffness11 = stiffnessBf.LoseMat();
         trueBlockStiffness11->
@@ -517,7 +526,7 @@ TEST(SparseAssembly, vectorFEStiffnessMatrix)
     {
         BilinearForm stiffnessBf(fes3.get());
         stiffnessBf.AddDomainIntegrator
-                (new heat::VectorFEStiffnessIntegrator);
+                (new heat::VectorFEStiffnessIntegrator{});
         stiffnessBf.Assemble();
         auto trueBlockStiffness22 = stiffnessBf.LoseMat();
         trueBlockStiffness22->
@@ -531,4 +540,256 @@ TEST(SparseAssembly, vectorFEStiffnessMatrix)
             std::cout << "\n";
         }
     }*/
+
+    delete feColl;
+}
+
+
+/**
+ * @brief Tests the assembly of sparse VectorFE gradient matrix
+ */
+TEST(SparseAssembly, vectorFEGradientMatrix)
+{
+    std::string input_dir
+            = "../input/sparse_assembly/";
+
+    const std::string meshFile1 = input_dir+"mesh_lx0";
+    const std::string meshFile2 = input_dir+"mesh_lx1";
+    const std::string meshFile3 = input_dir+"mesh_lx2";
+
+    auto mesh1 = std::make_shared<Mesh>(meshFile1.c_str());
+    auto mesh2 = std::make_shared<Mesh>(meshFile2.c_str());
+    auto mesh3 = std::make_shared<Mesh>(meshFile3.c_str());
+
+    ASSERT_EQ(mesh1->GetNE(), 1);
+    ASSERT_EQ(mesh2->GetNE(), 2);
+    ASSERT_EQ(mesh3->GetNE(), 3);
+
+    auto meshHierarchy
+            = std::make_shared<NestedMeshHierarchy>();
+    meshHierarchy->addMesh(mesh1);
+    meshHierarchy->addMesh(mesh2);
+    meshHierarchy->addMesh(mesh3);
+    meshHierarchy->buildHierarchicalTranformations();
+
+    int dim = mesh1->Dimension();
+
+    // Raviart-Thomas spaces
+    FiniteElementCollection *feCollRT
+            = new RT_FECollection(0, dim);
+    auto fes1RT = std::make_shared<FiniteElementSpace>(mesh1.get(),
+                                                       feCollRT);
+    auto fes2RT = std::make_shared<FiniteElementSpace>(mesh2.get(),
+                                                       feCollRT);
+    auto fes3RT = std::make_shared<FiniteElementSpace>(mesh3.get(),
+                                                       feCollRT);
+
+    // H1 spaces
+    FiniteElementCollection *feCollH1
+            = new H1_FECollection(1, dim, BasisType::GaussLobatto);
+    auto fes1H1 = std::make_shared<FiniteElementSpace>(mesh1.get(),
+                                                       feCollH1);
+    auto fes2H1 = std::make_shared<FiniteElementSpace>(mesh2.get(),
+                                                       feCollH1);
+    auto fes3H1 = std::make_shared<FiniteElementSpace>(mesh3.get(),
+                                                       feCollH1);
+
+    // hierarchy of test spaces
+    auto testNestedFEHierarchy
+            = std::make_shared<NestedFEHierarchy>(meshHierarchy);
+    testNestedFEHierarchy->addFESpace(fes1RT);
+    testNestedFEHierarchy->addFESpace(fes2RT);
+    testNestedFEHierarchy->addFESpace(fes3RT);
+
+    // hierarchy of trial spaces
+    auto trialNestedFEHierarchy
+            = std::make_shared<NestedFEHierarchy>(meshHierarchy);
+    trialNestedFEHierarchy->addFESpace(fes1H1);
+    trialNestedFEHierarchy->addFESpace(fes2H1);
+    trialNestedFEHierarchy->addFESpace(fes3H1);
+
+    // assemble gradient mixed bilinear form
+    auto gradientBilinearForm
+            = std::make_unique<mymfem::BlockMixedBilinearForm>
+            (trialNestedFEHierarchy, testNestedFEHierarchy);
+
+    std::shared_ptr<BlockMixedBilinearFormIntegrator> gradientIntegator
+            = std::make_shared<sparseHeat::VectorFEGradientIntegrator>();
+
+    gradientBilinearForm->addDomainIntegrator(gradientIntegator);
+    gradientBilinearForm->assemble();
+
+    auto blockGradientMatrix
+            = gradientBilinearForm->getBlockMatrix();
+
+    // check diagonal blocks
+    double tol = 1E-8;
+    {
+        MixedBilinearForm gradientBf(fes1H1.get(),
+                                     fes1RT.get());
+        gradientBf.AddDomainIntegrator
+                (new heat::VectorFEGradientIntegrator{});
+        gradientBf.Assemble();
+        auto trueBlockGradient00 = gradientBf.LoseMat();
+        trueBlockGradient00->
+                Add(-1, blockGradientMatrix->GetBlock(0,0));
+        ASSERT_LE(trueBlockGradient00->MaxNorm(), tol);
+    }
+    {
+        MixedBilinearForm gradientBf(fes2H1.get(),
+                                     fes2RT.get());
+        gradientBf.AddDomainIntegrator
+                (new heat::VectorFEGradientIntegrator{});
+        gradientBf.Assemble();
+        auto trueBlockGradient11 = gradientBf.LoseMat();
+        trueBlockGradient11->
+                Add(-1, blockGradientMatrix->GetBlock(1,1));
+        ASSERT_LE(trueBlockGradient11->MaxNorm(), tol);
+    }
+    {
+        MixedBilinearForm gradientBf(fes3H1.get(),
+                                     fes3RT.get());
+        gradientBf.AddDomainIntegrator
+                (new heat::VectorFEGradientIntegrator{});
+        gradientBf.Assemble();
+        auto trueBlockGradient22 = gradientBf.LoseMat();
+        trueBlockGradient22->
+                Add(-1, blockGradientMatrix->GetBlock(2,2));
+        ASSERT_LE(trueBlockGradient22->MaxNorm(), tol);
+    }
+
+    for(int i=1; i<blockGradientMatrix->NumRowBlocks(); i++) {
+        for (int j=0; j<i; j++) {
+            blockGradientMatrix->GetBlock(i,j).Print();
+            std::cout << "\n";
+        }
+    }
+
+    delete feCollRT;
+    delete feCollH1;
+}
+
+
+/**
+ * @brief Tests the assembly of sparse VectorFE divergence matrix
+ */
+TEST(SparseAssembly, vectorFEDivergenceMatrix)
+{
+    std::string input_dir
+            = "../input/sparse_assembly/";
+
+    const std::string meshFile1 = input_dir+"mesh_lx0";
+    const std::string meshFile2 = input_dir+"mesh_lx1";
+    const std::string meshFile3 = input_dir+"mesh_lx2";
+
+    auto mesh1 = std::make_shared<Mesh>(meshFile1.c_str());
+    auto mesh2 = std::make_shared<Mesh>(meshFile2.c_str());
+    auto mesh3 = std::make_shared<Mesh>(meshFile3.c_str());
+
+    ASSERT_EQ(mesh1->GetNE(), 1);
+    ASSERT_EQ(mesh2->GetNE(), 2);
+    ASSERT_EQ(mesh3->GetNE(), 3);
+
+    auto meshHierarchy
+            = std::make_shared<NestedMeshHierarchy>();
+    meshHierarchy->addMesh(mesh1);
+    meshHierarchy->addMesh(mesh2);
+    meshHierarchy->addMesh(mesh3);
+    meshHierarchy->buildHierarchicalTranformations();
+
+    int dim = mesh1->Dimension();
+
+    // Raviart-Thomas spaces
+    FiniteElementCollection *feCollRT
+            = new RT_FECollection(0, dim);
+    auto fes1RT = std::make_shared<FiniteElementSpace>(mesh1.get(),
+                                                       feCollRT);
+    auto fes2RT = std::make_shared<FiniteElementSpace>(mesh2.get(),
+                                                       feCollRT);
+    auto fes3RT = std::make_shared<FiniteElementSpace>(mesh3.get(),
+                                                       feCollRT);
+
+    // H1 spaces
+    FiniteElementCollection *feCollH1
+            = new H1_FECollection(1, dim, BasisType::GaussLobatto);
+    auto fes1H1 = std::make_shared<FiniteElementSpace>(mesh1.get(),
+                                                       feCollH1);
+    auto fes2H1 = std::make_shared<FiniteElementSpace>(mesh2.get(),
+                                                       feCollH1);
+    auto fes3H1 = std::make_shared<FiniteElementSpace>(mesh3.get(),
+                                                       feCollH1);
+
+    // hierarchy of test spaces
+    auto testNestedFEHierarchy
+            = std::make_shared<NestedFEHierarchy>(meshHierarchy);
+    testNestedFEHierarchy->addFESpace(fes1H1);
+    testNestedFEHierarchy->addFESpace(fes2H1);
+    testNestedFEHierarchy->addFESpace(fes3H1);
+
+    // hierarchy of trial spaces
+    auto trialNestedFEHierarchy
+            = std::make_shared<NestedFEHierarchy>(meshHierarchy);
+    trialNestedFEHierarchy->addFESpace(fes1RT);
+    trialNestedFEHierarchy->addFESpace(fes2RT);
+    trialNestedFEHierarchy->addFESpace(fes3RT);
+
+    // assemble divergence mixed bilinear form
+    auto divergenceBilinearForm
+            = std::make_unique<mymfem::BlockMixedBilinearForm>
+            (trialNestedFEHierarchy, testNestedFEHierarchy);
+
+    std::shared_ptr<BlockMixedBilinearFormIntegrator> divergenceIntegator
+            = std::make_shared<sparseHeat::VectorFEDivergenceIntegrator>();
+
+    divergenceBilinearForm->addDomainIntegrator(divergenceIntegator);
+    divergenceBilinearForm->assemble();
+
+    auto blockDivergenceMatrix
+            = divergenceBilinearForm->getBlockMatrix();
+
+    // check diagonal blocks
+    double tol = 1E-8;
+    {
+        MixedBilinearForm divergenceBf(fes1RT.get(),
+                                       fes1H1.get());
+        divergenceBf.AddDomainIntegrator
+                (new VectorFEDivergenceIntegrator{});
+        divergenceBf.Assemble();
+        auto trueBlockDivergence00 = divergenceBf.LoseMat();
+        trueBlockDivergence00->
+                Add(-1, blockDivergenceMatrix->GetBlock(0,0));
+        ASSERT_LE(trueBlockDivergence00->MaxNorm(), tol);
+    }
+    {
+        MixedBilinearForm divergenceBf(fes2RT.get(),
+                                       fes2H1.get());
+        divergenceBf.AddDomainIntegrator
+                (new VectorFEDivergenceIntegrator{});
+        divergenceBf.Assemble();
+        auto trueBlockDivergence11 = divergenceBf.LoseMat();
+        trueBlockDivergence11->
+                Add(-1, blockDivergenceMatrix->GetBlock(1,1));
+        ASSERT_LE(trueBlockDivergence11->MaxNorm(), tol);
+    }
+    {
+        MixedBilinearForm divergenceBf(fes3RT.get(),
+                                       fes3H1.get());
+        divergenceBf.AddDomainIntegrator
+                (new VectorFEDivergenceIntegrator{});
+        divergenceBf.Assemble();
+        auto trueBlockDivergence22 = divergenceBf.LoseMat();
+        trueBlockDivergence22->
+                Add(-1, blockDivergenceMatrix->GetBlock(2,2));
+        ASSERT_LE(trueBlockDivergence22->MaxNorm(), tol);
+    }
+
+    for(int i=1; i<blockDivergenceMatrix->NumRowBlocks(); i++) {
+        for (int j=0; j<i; j++) {
+            blockDivergenceMatrix->GetBlock(i,j).Print();
+            std::cout << "\n";
+        }
+    }
+
+    delete feCollRT;
+    delete feCollH1;
 }

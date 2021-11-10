@@ -34,7 +34,7 @@ public:
     (const FiniteElement &testFeFine,
      ElementTransformation& testElTransFine,
      const FiniteElement &trialFeCoarse,
-     ElementTransformation& trialElTransFine,
+     ElementTransformation& trialElTransCoarse,
      DenseMatrix& elmat) = 0;
 };
 
@@ -64,6 +64,17 @@ public:
     (const FiniteElement &testFeFine,
      ElementTransformation& testElTransFine,
      const FiniteElement &trialFeCoarse,
+     ElementTransformation& trialElTransCoarse,
+     DenseMatrix& elmat) = 0;
+
+    //! Assembles the integrator
+    //! over two nested coarse and fine mesh elements.
+    //! Fine element is for the trial functions
+    //! and coarse element is for the test function
+    virtual void assembleElementMatrix2
+    (const FiniteElement &testFeCoarse,
+     ElementTransformation& testElTransCoarse,
+     const FiniteElement &trialFeFine,
      ElementTransformation& trialElTransFine,
      DenseMatrix& elmat) = 0;
 };
