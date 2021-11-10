@@ -1,14 +1,7 @@
 var searchData=
 [
-  ['cmakelists_2etxt_172',['CMakeLists.txt',['../pardiso_2CMakeLists_8txt.html',1,'']]],
-  ['pardiso_173',['PARDISO',['../pardiso_8hpp.html#aa82d971e7a5eeaebc226e1fc5c7b693b',1,'pardiso.hpp']]],
-  ['pardiso_2ecpp_174',['pardiso.cpp',['../pardiso_8cpp.html',1,'']]],
-  ['pardiso_2ehpp_175',['pardiso.hpp',['../pardiso_8hpp.html',1,'']]],
-  ['pardiso_5ferror_176',['PARDISO_ERROR',['../pardiso_8cpp.html#a544d763e468b67f1fb52744ad61bef2f',1,'pardiso.cpp']]],
-  ['pardiso_5fprint_177',['PARDISO_PRINT',['../pardiso_8cpp.html#a4b344e3e2c93a017f9b37a465a402833',1,'pardiso.cpp']]],
-  ['pardisosolver_178',['PardisoSolver',['../classPardisoSolver.html',1,'PardisoSolver'],['../classPardisoSolver.html#a7824240c76709a4d6c58fd19784b47da',1,'PardisoSolver::PardisoSolver(int mtype)'],['../classPardisoSolver.html#a1f3442de7879ddc43618e585b6b8a71c',1,'PardisoSolver::PardisoSolver(const nlohmann::json &amp;config)']]],
-  ['periodicunitsquaretest1_179',['PeriodicUnitSquareTest1',['../test__cases_8hpp.html#a06fc87d81c62e9abb8790b6e5713c55ba6445d2ac48d35aba1f7f5e4156598109',1,'test_cases.hpp']]],
-  ['pointlocator_180',['PointLocator',['../classmymfem_1_1PointLocator.html',1,'mymfem::PointLocator'],['../classmymfem_1_1PointLocator.html#a62cad1bedf5a2a5d2f2255f43b92f4c0',1,'mymfem::PointLocator::PointLocator()']]],
-  ['print_181',['print',['../classheat_1_1LsqXtFEM.html#abbe9568f731c37b5593b43b996c29b7e',1,'heat::LsqXtFEM']]],
-  ['projection_182',['projection',['../classheat_1_1Solver.html#aa79dc75be4fe1fb2844737d5f551befe',1,'heat::Solver']]]
+  ['observer_196',['Observer',['../classheat_1_1Observer.html',1,'heat::Observer'],['../classheat_1_1Observer.html#aeb13b53f5a1869b9f147657d140fca70',1,'heat::Observer::Observer()'],['../classheat_1_1Observer.html#ac328745ad4a4cb4f5b112d6d0376e478',1,'heat::Observer::Observer(const nlohmann::json &amp;, int)']]],
+  ['observer_2ecpp_197',['observer.cpp',['../observer_8cpp.html',1,'']]],
+  ['observer_2ehpp_198',['observer.hpp',['../observer_8hpp.html',1,'']]],
+  ['operator_28_29_199',['operator()',['../classmymfem_1_1BaseObserver.html#a6d230eeaa50217398577b57d3452b150',1,'mymfem::BaseObserver::operator()(GridFunction &amp;u) const'],['../classmymfem_1_1BaseObserver.html#a3ee4a87701868a5223a4cfe7e040c5cd',1,'mymfem::BaseObserver::operator()(std::shared_ptr&lt; GridFunction &gt; &amp;u) const'],['../structHierarchicalMeshTransformationTable.html#adf6c62b392a73f6532d951522567d5cd',1,'HierarchicalMeshTransformationTable::operator()()'],['../classmymfem_1_1PointLocator.html#ab1ec3f3759b0da2a130a173fe50fcae7',1,'mymfem::PointLocator::operator()(const DenseMatrix &amp;X, int &amp;initElId) const'],['../classmymfem_1_1PointLocator.html#aa05eaec38d0e3da767f1f97e380ea08f',1,'mymfem::PointLocator::operator()(const Vector &amp;x, const int initElId) const'],['../classheat_1_1QoIFunctional.html#a3cf41da3cec01c4874598434bedc0649',1,'heat::QoIFunctional::operator()(const GridFunction &amp;f) const'],['../classheat_1_1QoIFunctional.html#affd171ac085a724874f79e0251c0f4fe',1,'heat::QoIFunctional::operator()(const Vector &amp;f) const'],['../classheat_1_1QoIXtFunctional.html#a4fe95d6227c60c78e636175fb98a030b',1,'heat::QoIXtFunctional::operator()()'],['../classheat_1_1Solver.html#a91f727511dc87f066d9a4b20b29f247f',1,'heat::Solver::operator()()']]]
 ];

@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['mediumscalarcoeff_248',['MediumScalarCoeff',['../classheat_1_1MediumScalarCoeff.html',1,'heat']]],
-  ['mediumtensorcoeff_249',['MediumTensorCoeff',['../classheat_1_1MediumTensorCoeff.html',1,'heat']]],
-  ['mybilinearform_250',['MyBilinearForm',['../classmymfem_1_1MyBilinearForm.html',1,'mymfem']]]
+  ['laplaciancoeff_279',['LaplacianCoeff',['../classheat_1_1LaplacianCoeff.html',1,'heat']]],
+  ['lsqxtfem_280',['LsqXtFEM',['../classheat_1_1LsqXtFEM.html',1,'heat']]],
+  ['lsqxtfemh1h1_281',['LsqXtFemH1H1',['../classheat_1_1LsqXtFemH1H1.html',1,'heat']]],
+  ['lsqxtfemh1hdiv_282',['LsqXtFemH1Hdiv',['../classheat_1_1LsqXtFemH1Hdiv.html',1,'heat']]]
 ];

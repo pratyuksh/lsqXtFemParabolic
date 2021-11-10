@@ -1,9 +1,4 @@
 var searchData=
 [
-  ['_7e_20solver_231',['~ Solver',['../classheat_1_1Solver.html#a8233fc1a5e0757690d4f92fb701a834a',1,'heat::Solver']]],
-  ['_7elsqxtfem_232',['~LsqXtFEM',['../classheat_1_1LsqXtFEM.html#a5623ddecee88a79b8c2eecb26c0bb79e',1,'heat::LsqXtFEM']]],
-  ['_7epardisosolver_233',['~PardisoSolver',['../classPardisoSolver.html#a439990b46271ddd3b37c190a3b6561c8',1,'PardisoSolver']]],
-  ['_7eqoifunctional_234',['~QoIFunctional',['../classheat_1_1QoIFunctional.html#a92901223446aae4778ff14c55b93720c',1,'heat::QoIFunctional']]],
-  ['_7eqoixtfunctional_235',['~QoIXtFunctional',['../classheat_1_1QoIXtFunctional.html#a00ea5e08a2c8eb12ae5c65c4aac5e179',1,'heat::QoIXtFunctional']]],
-  ['_7etestcases_236',['~TestCases',['../classheat_1_1TestCases.html#ae92eada8405a18b88a2559a8e3e7d10a',1,'heat::TestCases']]]
+  ['zerofn_258',['zeroFn',['../mymfem_2utilities_8cpp.html#a6cb3e869f8e5d7e222eb9a85a2b96e40',1,'zeroFn(const Vector &amp;, Vector &amp;f):&#160;utilities.cpp'],['../mymfem_2utilities_8hpp.html#a96b72f642a4e9737b19e8f556be2281b',1,'zeroFn(const Vector &amp;x, Vector &amp;f):&#160;utilities.cpp']]]
 ];

@@ -90,16 +90,19 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="mymfem_2utilities_8hpp__dep__incl.png" border="0" usemap="#utilities_8hppdep" alt=""/></div>
 <map name="utilities_8hppdep" id="utilities_8hppdep">
-<area shape="rect" title=" " alt="" coords="558,5,646,32"/>
-<area shape="rect" href="mybilinearform_8cpp.html" title=" " alt="" coords="5,80,137,107"/>
-<area shape="rect" href="mymfem_2utilities_8cpp.html" title=" " alt="" coords="162,80,250,107"/>
-<area shape="rect" href="discretisation_8cpp.html" title=" " alt="" coords="275,80,399,107"/>
-<area shape="rect" href="discretisation__H1H1_8cpp.html" title=" " alt="" coords="423,80,589,107"/>
-<area shape="rect" href="discretisation__H1Hdiv_8cpp.html" title=" " alt="" coords="613,80,786,107"/>
-<area shape="rect" href="observer_8hpp.html" title=" " alt="" coords="861,80,957,107"/>
-<area shape="rect" href="observer_8cpp.html" title=" " alt="" coords="803,155,899,181"/>
-<area shape="rect" href="solver_8hpp.html" title=" " alt="" coords="939,155,1020,181"/>
-<area shape="rect" href="solver_8cpp.html" title=" " alt="" coords="939,229,1020,256"/>
+<area shape="rect" title=" " alt="" coords="699,5,787,32"/>
+<area shape="rect" href="nested__hierarchy_8hpp.html" title=" " alt="" coords="181,80,325,107"/>
+<area shape="rect" href="my__bilinearForms_8cpp.html" title=" " alt="" coords="147,229,297,256"/>
+<area shape="rect" href="mymfem_2utilities_8cpp.html" title=" " alt="" coords="399,80,487,107"/>
+<area shape="rect" href="discretisation_8cpp.html" title=" " alt="" coords="512,80,636,107"/>
+<area shape="rect" href="discretisation__H1H1_8cpp.html" title=" " alt="" coords="661,80,826,107"/>
+<area shape="rect" href="discretisation__H1Hdiv_8cpp.html" title=" " alt="" coords="850,80,1023,107"/>
+<area shape="rect" href="observer_8hpp.html" title=" " alt="" coords="1098,80,1194,107"/>
+<area shape="rect" href="observer_8cpp.html" title=" " alt="" coords="1027,155,1123,181"/>
+<area shape="rect" href="solver_8hpp.html" title=" " alt="" coords="1176,155,1257,181"/>
+<area shape="rect" href="my__bilinearForms_8hpp.html" title=" " alt="" coords="5,155,156,181"/>
+<area shape="rect" href="nested__hierarchy_8cpp.html" title=" " alt="" coords="181,155,325,181"/>
+<area shape="rect" href="solver_8cpp.html" title=" " alt="" coords="1176,229,1257,256"/>
 </map>
 </div>
 </div>
@@ -126,6 +129,9 @@ Functions</h2></td></tr>
 <tr class="separator:a96b72f642a4e9737b19e8f556be2281b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3e496f4528337eb8e0b762940e51c4b"><td class="memItemLeft" align="right" valign="top">SparseMatrix &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mymfem_2utilities_8hpp.html#aa3e496f4528337eb8e0b762940e51c4b">getUpperTriangle</a> (const SparseMatrix &amp;A)</td></tr>
 <tr class="separator:aa3e496f4528337eb8e0b762940e51c4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0514c5bde73859068d68f4d119412689"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mymfem_2utilities_8hpp.html#a0514c5bde73859068d68f4d119412689">getElementCenter</a> (const std::shared_ptr&lt; Mesh &gt; &amp;mesh, int i, Vector &amp;center)</td></tr>
+<tr class="memdesc:a0514c5bde73859068d68f4d119412689"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns cell center of element i of given mesh.  <a href="mymfem_2utilities_8hpp.html#a0514c5bde73859068d68f4d119412689">More...</a><br /></td></tr>
+<tr class="separator:a0514c5bde73859068d68f4d119412689"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a7530e7163a7e780dd33978567f76e3db"></a>
@@ -147,6 +153,44 @@ Functions</h2></td></tr>
 <p>Deletes memory allocated to SparseMatrix mat. </p>
 
 <p class="definition">Definition at line <a class="el" href="mymfem_2utilities_8cpp_source.html#l00006">6</a> of file <a class="el" href="mymfem_2utilities_8cpp_source.html">mymfem/utilities.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a0514c5bde73859068d68f4d119412689"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0514c5bde73859068d68f4d119412689">&#9670;&nbsp;</a></span>getElementCenter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getElementCenter </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; Mesh &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mesh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector &amp;&#160;</td>
+          <td class="paramname"><em>center</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns cell center of element i of given mesh. </p>
+
+<p class="definition">Definition at line <a class="el" href="mymfem_2utilities_8cpp_source.html#l00039">39</a> of file <a class="el" href="mymfem_2utilities_8cpp_source.html">mymfem/utilities.cpp</a>.</p>
 
 </div>
 </div>

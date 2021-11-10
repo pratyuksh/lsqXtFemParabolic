@@ -1,12 +1,6 @@
 var searchData=
 [
-  ['testcase_260',['TestCase',['../classheat_1_1TestCase.html',1,'heat']]],
-  ['testcase_3c_20lshapedtest1_20_3e_261',['TestCase&lt; LShapedTest1 &gt;',['../classheat_1_1TestCase_3_01LShapedTest1_01_4.html',1,'heat']]],
-  ['testcase_3c_20lshapedtest2_20_3e_262',['TestCase&lt; LShapedTest2 &gt;',['../classheat_1_1TestCase_3_01LShapedTest2_01_4.html',1,'heat']]],
-  ['testcase_3c_20periodicunitsquaretest1_20_3e_263',['TestCase&lt; PeriodicUnitSquareTest1 &gt;',['../classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html',1,'heat']]],
-  ['testcase_3c_20unitsquaretest1_20_3e_264',['TestCase&lt; UnitSquareTest1 &gt;',['../classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html',1,'heat']]],
-  ['testcase_3c_20unitsquaretest2_20_3e_265',['TestCase&lt; UnitSquareTest2 &gt;',['../classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html',1,'heat']]],
-  ['testcase_3c_20unitsquaretest3_20_3e_266',['TestCase&lt; UnitSquareTest3 &gt;',['../classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html',1,'heat']]],
-  ['testcase_3c_20unitsquaretest4_20_3e_267',['TestCase&lt; UnitSquareTest4 &gt;',['../classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html',1,'heat']]],
-  ['testcases_268',['TestCases',['../classheat_1_1TestCases.html',1,'heat']]]
+  ['qoifunctional_290',['QoIFunctional',['../classheat_1_1QoIFunctional.html',1,'heat']]],
+  ['qoilfintegrator_291',['QoILFIntegrator',['../classheat_1_1QoILFIntegrator.html',1,'heat']]],
+  ['qoixtfunctional_292',['QoIXtFunctional',['../classheat_1_1QoIXtFunctional.html',1,'heat']]]
 ];
