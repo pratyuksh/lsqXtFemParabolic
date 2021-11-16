@@ -392,7 +392,7 @@ void heat::Solver
     if (m_linearSolver == "pardiso")
     {
         //m_discr->build_system_matrix();
-        m_discr->buildSystemMatrixUpTr();
+        m_discr->buildSystemMatrixUpperTriangle();
         m_heatMat = m_discr->getHeatMat();  
     }
     else if (m_linearSolver == "cg")

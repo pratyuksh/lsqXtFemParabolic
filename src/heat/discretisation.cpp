@@ -106,7 +106,7 @@ void heat::LsqXtFEM :: buildSystemMatrix()
 
 // Builds system matrix from heatOp
 // stores only the upper triangle
-void heat::LsqXtFEM :: buildSystemMatrixUpTr()
+void heat::LsqXtFEM :: buildSystemMatrixUpperTriangle()
 {
     BlockMatrix *heatBlockMat
             = new BlockMatrix(m_block_offsets);

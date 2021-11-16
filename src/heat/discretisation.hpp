@@ -78,7 +78,7 @@ public:
     void buildSystemMatrix();
 
     //! Builds the upper-triangle linear system matrix from the blocks as a monolithic matrix
-    void buildSystemMatrixUpTr();
+    void buildSystemMatrixUpperTriangle();
 
     //! Assembles the target right-hand side
     void assembleRhs(BlockVector *) const;
