@@ -1,9 +1,9 @@
-#include "assembly.hpp"
+#include "spatial_assembly.hpp"
 #include <assert.h>
 
 
 // Mass Integrator
-void sparseHeat::MassIntegrator
+void sparseHeat::SpatialMassIntegrator
 :: assembleElementMatrix (const FiniteElement & fe,
                           ElementTransformation & elTrans,
                           DenseMatrix & elmat)
@@ -31,7 +31,7 @@ void sparseHeat::MassIntegrator
     }
 }
 
-void sparseHeat::MassIntegrator
+void sparseHeat::SpatialMassIntegrator
 :: assembleElementMatrix (const FiniteElement & testFeFine,
                           ElementTransformation & testElTransFine,
                           const FiniteElement & trialFeCoarse,
@@ -72,7 +72,7 @@ void sparseHeat::MassIntegrator
 
 
 // Stiffness Integrator
-void sparseHeat::StiffnessIntegrator
+void sparseHeat::SpatialStiffnessIntegrator
 :: assembleElementMatrix (const FiniteElement & fe,
                           ElementTransformation & elTrans,
                           DenseMatrix & elmat)
@@ -119,7 +119,7 @@ void sparseHeat::StiffnessIntegrator
     }
 }
 
-void sparseHeat::StiffnessIntegrator
+void sparseHeat::SpatialStiffnessIntegrator
 :: assembleElementMatrix (const FiniteElement & testFeFine,
                           ElementTransformation & testElTransFine,
                           const FiniteElement & trialFeCoarse,
@@ -183,7 +183,7 @@ void sparseHeat::StiffnessIntegrator
 
 
 // VectorFE Mass Integrator
-void sparseHeat::VectorFEMassIntegrator
+void sparseHeat::SpatialVectorFEMassIntegrator
 :: assembleElementMatrix (const FiniteElement & fe,
                           ElementTransformation & elTrans,
                           DenseMatrix & elmat)
@@ -212,7 +212,7 @@ void sparseHeat::VectorFEMassIntegrator
     }
 }
 
-void sparseHeat::VectorFEMassIntegrator
+void sparseHeat::SpatialVectorFEMassIntegrator
 :: assembleElementMatrix (const FiniteElement & testFeFine,
                           ElementTransformation & testElTransFine,
                           const FiniteElement & trialFeCoarse,
@@ -254,7 +254,7 @@ void sparseHeat::VectorFEMassIntegrator
 
 
 // VectorFE Stiffness Integrator
-void sparseHeat::VectorFEStiffnessIntegrator
+void sparseHeat::SpatialVectorFEStiffnessIntegrator
 :: assembleElementMatrix (const FiniteElement & fe,
                           ElementTransformation & elTrans,
                           DenseMatrix & elmat)
@@ -282,7 +282,7 @@ void sparseHeat::VectorFEStiffnessIntegrator
     }
 }
 
-void sparseHeat::VectorFEStiffnessIntegrator
+void sparseHeat::SpatialVectorFEStiffnessIntegrator
 :: assembleElementMatrix (const FiniteElement & testFeFine,
                           ElementTransformation & testElTransFine,
                           const FiniteElement & trialFeCoarse,
@@ -325,7 +325,7 @@ void sparseHeat::VectorFEStiffnessIntegrator
 
 
 // VectorFE Gradient Integrator
-void sparseHeat::VectorFEGradientIntegrator
+void sparseHeat::SpatialVectorFEGradientIntegrator
 :: assembleElementMatrix (const FiniteElement & testFe,
                           const FiniteElement & trialFe,
                           ElementTransformation & elTrans,
@@ -376,7 +376,7 @@ void sparseHeat::VectorFEGradientIntegrator
     }
 }
 
-void sparseHeat::VectorFEGradientIntegrator
+void sparseHeat::SpatialVectorFEGradientIntegrator
 :: assembleElementMatrix (const FiniteElement & testFeFine,
                           ElementTransformation & testElTransFine,
                           const FiniteElement & trialFeCoarse,
@@ -436,7 +436,7 @@ void sparseHeat::VectorFEGradientIntegrator
     }
 }
 
-void sparseHeat::VectorFEGradientIntegrator
+void sparseHeat::SpatialVectorFEGradientIntegrator
 :: assembleElementMatrix2 (const FiniteElement & testFeCoarse,
                            ElementTransformation & testElTransCoarse,
                            const FiniteElement & trialFeFine,
@@ -499,7 +499,7 @@ void sparseHeat::VectorFEGradientIntegrator
 
 
 // VectorFE Divergence Integrator
-void sparseHeat::VectorFEDivergenceIntegrator
+void sparseHeat::SpatialVectorFEDivergenceIntegrator
 :: assembleElementMatrix (const FiniteElement & testFe,
                           const FiniteElement & trialFe,
                           ElementTransformation & elTrans,
@@ -532,7 +532,7 @@ void sparseHeat::VectorFEDivergenceIntegrator
     }
 }
 
-void sparseHeat::VectorFEDivergenceIntegrator
+void sparseHeat::SpatialVectorFEDivergenceIntegrator
 :: assembleElementMatrix (const FiniteElement & testFeFine,
                           ElementTransformation & testElTransFine,
                           const FiniteElement & trialFeCoarse,
@@ -573,7 +573,7 @@ void sparseHeat::VectorFEDivergenceIntegrator
     }
 }
 
-void sparseHeat::VectorFEDivergenceIntegrator
+void sparseHeat::SpatialVectorFEDivergenceIntegrator
 :: assembleElementMatrix2 (const FiniteElement & testFeCoarse,
                            ElementTransformation & testElTransCoarse,
                            const FiniteElement & trialFeFine,

@@ -4,11 +4,10 @@
 using namespace mfem;
 
 #include <iostream>
-#include <chrono>
 
 #include "../src/core/config.hpp"
 #include "../src/heat/assembly.hpp"
-#include "../src/sparse_heat/assembly.hpp"
+#include "../src/sparse_heat/spatial_assembly.hpp"
 
 
 using namespace mymfem;
@@ -16,7 +15,7 @@ using namespace mymfem;
 /**
  * @brief Tests the assembly of sparse mass matrix
  */
-TEST(SparseAssembly, massMatrix)
+TEST(SparseSpatialAssembly, massMatrix)
 {
     std::string input_dir
             = "../input/sparse_assembly/";
@@ -58,7 +57,7 @@ TEST(SparseAssembly, massMatrix)
             = std::make_unique<BlockBilinearForm>(nestedFEHierarchy);
 
     std::shared_ptr<BlockBilinearFormIntegrator> massIntegator
-            = std::make_shared<sparseHeat::MassIntegrator>();
+            = std::make_shared<sparseHeat::SpatialMassIntegrator>();
 
     massBilinearForm->addDomainIntegrator(massIntegator);
     massBilinearForm->assemble();
@@ -93,12 +92,12 @@ TEST(SparseAssembly, massMatrix)
         ASSERT_LE(trueBlockMass22->MaxNorm(), tol);
     }
 
-    /*for(int i=1; i<blockMassMatrix->NumRowBlocks(); i++) {
-        for (int j=0; j<i; j++) {
-            blockMassMatrix->GetBlock(i,j).Print();
-            std::cout << "\n";
-        }
-    }*/
+//    for(int i=1; i<blockMassMatrix->NumRowBlocks(); i++) {
+//        for (int j=0; j<i; j++) {
+//            blockMassMatrix->GetBlock(i,j).Print();
+//            std::cout << "\n";
+//        }
+//    }
 
     // check block(1,0)
     {
@@ -192,7 +191,7 @@ TEST(SparseAssembly, massMatrix)
 /**
  * @brief Tests the assembly of sparse stiffness matrix
  */
-TEST(SparseAssembly, stiffnessMatrix)
+TEST(SparseSpatialAssembly, stiffnessMatrix)
 {
     std::string input_dir
             = "../input/sparse_assembly/";
@@ -234,7 +233,7 @@ TEST(SparseAssembly, stiffnessMatrix)
             = std::make_unique<BlockBilinearForm>(nestedFEHierarchy);
 
     std::shared_ptr<BlockBilinearFormIntegrator> stiffnessIntegator
-            = std::make_shared<sparseHeat::StiffnessIntegrator>();
+            = std::make_shared<sparseHeat::SpatialStiffnessIntegrator>();
 
     stiffnessBilinearForm->addDomainIntegrator(stiffnessIntegator);
     stiffnessBilinearForm->assemble();
@@ -269,12 +268,12 @@ TEST(SparseAssembly, stiffnessMatrix)
         ASSERT_LE(trueBlockStiffness22->MaxNorm(), tol);
     }
 
-    /*for(int i=1; i<blockStiffnessMatrix->NumRowBlocks(); i++) {
-        for (int j=0; j<i; j++) {
-            blockStiffnessMatrix->GetBlock(i,j).Print();
-            std::cout << "\n";
-        }
-    }*/
+//    for(int i=1; i<blockStiffnessMatrix->NumRowBlocks(); i++) {
+//        for (int j=0; j<i; j++) {
+//            blockStiffnessMatrix->GetBlock(i,j).Print();
+//            std::cout << "\n";
+//        }
+//    }
 
     // check block(1,0)
     {
@@ -361,7 +360,7 @@ TEST(SparseAssembly, stiffnessMatrix)
 /**
  * @brief Tests the assembly of sparse VectorFE mass matrix
  */
-TEST(SparseAssembly, vectorFEMassMatrix)
+TEST(SparseSpatialAssembly, vectorFEMassMatrix)
 {
     std::string input_dir
             = "../input/sparse_assembly/";
@@ -403,7 +402,7 @@ TEST(SparseAssembly, vectorFEMassMatrix)
             = std::make_unique<BlockBilinearForm>(nestedFEHierarchy);
 
     std::shared_ptr<BlockBilinearFormIntegrator> massIntegator
-            = std::make_shared<sparseHeat::VectorFEMassIntegrator>();
+            = std::make_shared<sparseHeat::SpatialVectorFEMassIntegrator>();
 
     massBilinearForm->addDomainIntegrator(massIntegator);
     massBilinearForm->assemble();
@@ -438,12 +437,12 @@ TEST(SparseAssembly, vectorFEMassMatrix)
         ASSERT_LE(trueBlockMass22->MaxNorm(), tol);
     }
 
-    /*for(int i=1; i<blockMassMatrix->NumRowBlocks(); i++) {
-        for (int j=0; j<i; j++) {
-            blockMassMatrix->GetBlock(i,j).Print();
-            std::cout << "\n";
-        }
-    }*/
+//    for(int i=1; i<blockMassMatrix->NumRowBlocks(); i++) {
+//        for (int j=0; j<i; j++) {
+//            blockMassMatrix->GetBlock(i,j).Print();
+//            std::cout << "\n";
+//        }
+//    }
 
     delete feColl;
 }
@@ -452,7 +451,7 @@ TEST(SparseAssembly, vectorFEMassMatrix)
 /**
  * @brief Tests the assembly of sparse VectorFE stiffness matrix
  */
-TEST(SparseAssembly, vectorFEStiffnessMatrix)
+TEST(SparseSpatialAssembly, vectorFEStiffnessMatrix)
 {
     std::string input_dir
             = "../input/sparse_assembly/";
@@ -494,7 +493,7 @@ TEST(SparseAssembly, vectorFEStiffnessMatrix)
             = std::make_unique<BlockBilinearForm>(nestedFEHierarchy);
 
     std::shared_ptr<BlockBilinearFormIntegrator> stiffnessIntegator
-            = std::make_shared<sparseHeat::VectorFEStiffnessIntegrator>();
+            = std::make_shared<sparseHeat::SpatialVectorFEStiffnessIntegrator>();
 
     stiffnessBilinearForm->addDomainIntegrator(stiffnessIntegator);
     stiffnessBilinearForm->assemble();
@@ -534,12 +533,12 @@ TEST(SparseAssembly, vectorFEStiffnessMatrix)
         ASSERT_LE(trueBlockStiffness22->MaxNorm(), tol);
     }
 
-    /*for(int i=1; i<blockStiffnessMatrix->NumRowBlocks(); i++) {
-        for (int j=0; j<i; j++) {
-            blockStiffnessMatrix->GetBlock(i,j).Print();
-            std::cout << "\n";
-        }
-    }*/
+//    for(int i=1; i<blockStiffnessMatrix->NumRowBlocks(); i++) {
+//        for (int j=0; j<i; j++) {
+//            blockStiffnessMatrix->GetBlock(i,j).Print();
+//            std::cout << "\n";
+//        }
+//    }
 
     delete feColl;
 }
@@ -548,7 +547,7 @@ TEST(SparseAssembly, vectorFEStiffnessMatrix)
 /**
  * @brief Tests the assembly of sparse VectorFE gradient matrix
  */
-TEST(SparseAssembly, vectorFEGradientMatrix)
+TEST(SparseSpatialAssembly, vectorFEGradientMatrix)
 {
     std::string input_dir
             = "../input/sparse_assembly/";
@@ -614,7 +613,7 @@ TEST(SparseAssembly, vectorFEGradientMatrix)
             (trialNestedFEHierarchy, testNestedFEHierarchy);
 
     std::shared_ptr<BlockMixedBilinearFormIntegrator> gradientIntegator
-            = std::make_shared<sparseHeat::VectorFEGradientIntegrator>();
+            = std::make_shared<sparseHeat::SpatialVectorFEGradientIntegrator>();
 
     gradientBilinearForm->addDomainIntegrator(gradientIntegator);
     gradientBilinearForm->assemble();
@@ -673,7 +672,7 @@ TEST(SparseAssembly, vectorFEGradientMatrix)
 /**
  * @brief Tests the assembly of sparse VectorFE divergence matrix
  */
-TEST(SparseAssembly, vectorFEDivergenceMatrix)
+TEST(SparseSpatialAssembly, vectorFEDivergenceMatrix)
 {
     std::string input_dir
             = "../input/sparse_assembly/";
@@ -739,7 +738,7 @@ TEST(SparseAssembly, vectorFEDivergenceMatrix)
             (trialNestedFEHierarchy, testNestedFEHierarchy);
 
     std::shared_ptr<BlockMixedBilinearFormIntegrator> divergenceIntegator
-            = std::make_shared<sparseHeat::VectorFEDivergenceIntegrator>();
+            = std::make_shared<sparseHeat::SpatialVectorFEDivergenceIntegrator>();
 
     divergenceBilinearForm->addDomainIntegrator(divergenceIntegator);
     divergenceBilinearForm->assemble();
