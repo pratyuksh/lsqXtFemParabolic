@@ -1,0 +1,4 @@
+<map id="sparseHeat::VectorFEMassIntegrator" name="sparseHeat::VectorFEMassIntegrator">
+<area shape="rect" id="node1" title="VectorFE Mass Integrator; (u, v)" alt="" coords="7,95,191,136"/>
+<area shape="rect" id="node2" href="$classmymfem_1_1BlockBilinearFormIntegrator.html" title="BlockBilinearForm class provides functions to assemble bilinear forms between different mesh levels i..." alt="" coords="5,5,192,47"/>
+</map>

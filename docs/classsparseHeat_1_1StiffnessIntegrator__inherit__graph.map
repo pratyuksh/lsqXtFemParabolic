@@ -1,0 +1,4 @@
+<map id="sparseHeat::StiffnessIntegrator" name="sparseHeat::StiffnessIntegrator">
+<area shape="rect" id="node1" title="Stiffness Integrator; (Q grad(u), Q grad(v))" alt="" coords="5,95,209,121"/>
+<area shape="rect" id="node2" href="$classmymfem_1_1BlockBilinearFormIntegrator.html" title="BlockBilinearForm class provides functions to assemble bilinear forms between different mesh levels i..." alt="" coords="14,5,201,47"/>
+</map>

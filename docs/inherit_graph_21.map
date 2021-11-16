@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classsparseHeat_1_1TemporalBlockMatrixAssembler.html" title=" " alt="" coords="5,104,188,145"/>
+<area shape="rect" id="node2" href="$classsparseHeat_1_1TemporalCanonicalMatrixAssembler.html" title="Assembler for the temporal canonical matrix." alt="" coords="236,5,444,47"/>
+<area shape="rect" id="node3" href="$classsparseHeat_1_1TemporalGradientMatrixAssembler.html" title="Assembler for the temporal gradient matrix." alt="" coords="241,71,439,112"/>
+<area shape="rect" id="node4" href="$classsparseHeat_1_1TemporalMassMatrixAssembler.html" title="Assembler for the temporal mass matrix." alt="" coords="249,136,431,177"/>
+<area shape="rect" id="node5" href="$classsparseHeat_1_1TemporalStiffnessMatrixAssembler.html" title="Assembler for the temporal stiffness matrix." alt="" coords="239,201,441,243"/>
+</map>
