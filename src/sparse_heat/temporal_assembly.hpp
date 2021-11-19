@@ -63,11 +63,11 @@ protected:
 /**
  * @brief Assembler for the temporal canonical matrix
  */
-class TemporalCanonicalMatrixAssembler
+class TemporalInitialMatrixAssembler
         : public TemporalBlockMatrixAssembler
 {
 public:
-    TemporalCanonicalMatrixAssembler(double T, int minLevel, int maxLevel)
+    TemporalInitialMatrixAssembler(double T, int minLevel, int maxLevel)
         : TemporalBlockMatrixAssembler(T, minLevel, maxLevel) {}
 
     void assemble() override;

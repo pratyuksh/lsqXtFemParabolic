@@ -1,5 +1,7 @@
 #include "temporal_assembly.hpp"
 
+#include "utilities.hpp"
+
 
 sparseHeat::TemporalBlockMatrixAssembler
 :: TemporalBlockMatrixAssembler(double T, int minLevel, int maxLevel)
@@ -35,21 +37,9 @@ void sparseHeat::TemporalBlockMatrixAssembler
 void sparseHeat::TemporalBlockMatrixAssembler
 :: evalBlockSizesAndOffsets()
 {
-    m_blockSizes.SetSize(m_numLevels);
-    m_blockOffsets.SetSize(m_numLevels+1);
-
-    m_blockOffsets[0] = 0;
-    // for the minimum level, the hierarchical basis functions are the
-    // same as the standard basis functions
-    m_blockSizes[0] = 1+static_cast<int>(std::pow(2, m_minLevel));
-    m_blockOffsets[1] = m_blockSizes[0];
-    for (int i=1; i<m_numLevels; i++)
-    {
-        m_blockSizes[i]
-                = static_cast<int>(std::pow(2, m_minLevel+i-1));
-        m_blockOffsets[i+1] = m_blockSizes[i];
-    }
-    m_blockOffsets.PartialSum();
+    m_blockSizes
+            = evalTemporalBlockSizes(m_minLevel, m_maxLevel);
+    m_blockOffsets = evalBlockOffsets(m_blockSizes);
 }
 
 void sparseHeat::TemporalBlockMatrixAssembler
@@ -68,7 +58,7 @@ void sparseHeat::TemporalBlockMatrixAssembler
 }
 
 
-void sparseHeat::TemporalCanonicalMatrixAssembler
+void sparseHeat::TemporalInitialMatrixAssembler
 :: assemble()
 {
     auto& mat = m_blockMatrix->GetBlock(0, 0);
