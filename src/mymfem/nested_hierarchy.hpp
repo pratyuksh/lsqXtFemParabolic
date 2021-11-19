@@ -174,6 +174,18 @@ public:
         return m_nestedMeshHierarchy->getTransformations();
     }
 
+    //! Returns the number of dimensions (size) of the FE spaces
+    Array<int> getNumDims()
+    {
+        int numLevels = this->getNumLevels();
+        Array<int> numDims(numLevels);
+        for (int i=0; i < numLevels; i++) {
+            numDims[i] = m_feSpaces[i]->GetTrueVSize();
+        }
+
+        return numDims;
+    }
+
 private:
     NestedFESpaces m_feSpaces;
     std::shared_ptr<NestedMeshHierarchy> m_nestedMeshHierarchy;
