@@ -1,0 +1,19 @@
+{
+    "host": "local",
+    
+    "problem_type": "unitSquare_test1",
+    
+    "run": "simulation",
+    "end_time": 0.1,
+    
+    "deg": 1,
+    "num_levels": 3,
+    "min_temporal_level": 1,
+    "mesh_dir": "unitSquare",
+    
+    "eval_error": false,
+    "eval_xt_error": false,
+    
+    "visualization": false,
+    "dump_output": false
+}

@@ -18,7 +18,7 @@ using namespace mymfem;
 TEST(NestedMeshHierarchy, singleLevel)
 {
     std::string input_dir
-            = "../input/nested_hierarchy/";
+            = "../tests/input/nested_hierarchy/";
 
     const std::string meshFile1 = input_dir+"mesh_lx0";
     const std::string meshFile2 = input_dir+"mesh_lx1";
@@ -97,7 +97,7 @@ TEST(NestedMeshHierarchy, singleLevel)
 TEST(NestedMeshHierarchy, multiLevel)
 {
     std::string input_dir
-            = "../input/nested_hierarchy/";
+            = "../tests/input/nested_hierarchy/";
 
     const std::string meshFile1 = input_dir+"mesh_lx0";
     const std::string meshFile2 = input_dir+"mesh_lx1";
@@ -167,7 +167,7 @@ TEST(NestedMeshHierarchy, multiLevel)
 TEST(NestedFEHierarchy, build)
 {
     std::string input_dir
-            = "../input/nested_hierarchy/";
+            = "../tests/input/nested_hierarchy/";
 
     const std::string meshFile1 = input_dir+"mesh_lx0";
     const std::string meshFile2 = input_dir+"mesh_lx1";
@@ -204,11 +204,17 @@ TEST(NestedFEHierarchy, build)
     nestedFEHierarchy->addFESpace(fes2);
     nestedFEHierarchy->addFESpace(fes3);
 
-    auto feSpaces = nestedFEHierarchy->getFESpaces();
     auto numLevels = nestedFEHierarchy->getNumLevels();
+    auto feSpaces = nestedFEHierarchy->getFESpaces();
+    auto numFEDims = nestedFEHierarchy->getNumDims();
 
     ASSERT_EQ(numLevels, 3);
+
     ASSERT_EQ(feSpaces[0]->GetMesh(), mesh1.get());
     ASSERT_EQ(feSpaces[1]->GetMesh(), mesh2.get());
     ASSERT_EQ(feSpaces[2]->GetMesh(), mesh3.get());
+
+    ASSERT_EQ(numFEDims[0], mesh1->GetNV());
+    ASSERT_EQ(numFEDims[1], mesh2->GetNV());
+    ASSERT_EQ(numFEDims[2], mesh3->GetNV());
 }

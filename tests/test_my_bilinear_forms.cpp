@@ -19,7 +19,7 @@ using namespace mymfem;
 TEST(MyBilinearForms, BlockBilinearForm)
 {
     std::string input_dir
-            = "../input/nested_hierarchy/";
+            = "../tests/input/nested_hierarchy/";
 
     const std::string meshFile1 = input_dir+"mesh_lx0";
     const std::string meshFile2 = input_dir+"mesh_lx1";
@@ -86,7 +86,7 @@ TEST(MyBilinearForms, BlockBilinearForm)
 TEST(MyBilinearForms, BlockMixedBilinearForm)
 {
     std::string input_dir
-            = "../input/nested_hierarchy/";
+            = "../tests/input/nested_hierarchy/";
 
     const std::string meshFile1 = input_dir+"mesh_lx0";
     const std::string meshFile2 = input_dir+"mesh_lx1";

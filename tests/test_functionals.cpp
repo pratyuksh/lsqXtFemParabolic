@@ -9,7 +9,7 @@
 TEST(Functionals, square_test1)
 {
     std::string config_file
-            = "../config_files/unit_tests/heat_square_test1_FG.json";
+            = "../config_files/unit_tests/heat_square_test1.json";
 
     auto config = getGlobalConfig(config_file);
 
@@ -54,7 +54,7 @@ TEST(Functionals, square_test1)
 TEST(Functionals, periodic_square_test1)
 {
     std::string config_file
-            = "../config_files/unit_tests/heat_periodic_square_test1_FG.json";
+            = "../config_files/unit_tests/heat_periodic_square_test1.json";
 
     auto config = getGlobalConfig(config_file);
 
