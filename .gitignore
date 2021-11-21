@@ -1,0 +1,7 @@
+build-debug/
+build-release/
+bak/
+figures/
+meshes/
+output/
+third_party/
