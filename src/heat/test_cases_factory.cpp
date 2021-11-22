@@ -12,7 +12,11 @@ heat::makeTestCase(const nlohmann::json& config)
     std::cout << "\tFor Heat equation, run case: "
               << problem_type << std::endl;
 #endif
-    if (problem_type == "unitSquare_test1") {
+    if (problem_type == "dummy") {
+        return std::make_shared
+                <heat::TestCase<Dummy>> (config);
+    }
+    else if (problem_type == "unitSquare_test1") {
         return std::make_shared
                 <heat::TestCase<UnitSquareTest1>> (config);
     }

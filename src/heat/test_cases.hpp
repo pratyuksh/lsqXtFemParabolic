@@ -7,7 +7,8 @@
 using namespace mfem;
 
 // Test cases available
-enum {UnitSquareTest1,
+enum {Dummy,
+      UnitSquareTest1,
       UnitSquareTest2,
       UnitSquareTest3,
       UnitSquareTest4,
@@ -105,6 +106,72 @@ public:
  */
 template<int ProblemType>
 class TestCase;
+
+
+/**
+ * Template specialization for a dummy test case;
+ * value 1 everywhere, except boundary;
+ * Homogeneous Dirichlet boundary;
+ * No source/forcing
+ */
+template<>
+class TestCase <Dummy>
+        : public TestCases
+{
+public:
+    explicit TestCase (const nlohmann::json& config)
+        : m_config(config), m_dim(2) {
+    }
+
+    double temperatureSol(const Vector&,
+                           const double) const override;
+
+    Vector heatFluxSol(const Vector&,
+                        const double) const override;
+
+    double temperatureTimeGradientSol
+        (const Vector&, const double) const override;
+
+    double source(const Vector&,
+                  const double) const override;
+
+    void setBdryDirichlet(Array<int>&) const override;
+
+    double medium(const Vector&) const override;
+
+    DenseMatrix mediumTensor(const Vector&) const override;
+
+    double laplacian
+    (const Vector& x, const double t) const override {
+        return temperatureTimeGradientSol(x,t) - source(x, t);
+    }
+
+    double initTemperature(const Vector& x) const override {
+        return temperatureSol(x,0);
+    }
+
+    Vector initHeatFlux(const Vector& x) const override {
+        return heatFluxSol(x,0);
+    }
+
+    double bdryTemperature(const Vector& x,
+                            const double t) const override {
+        return temperatureSol(x, t);
+    }
+
+    void setPerturbation(double) const override {}
+
+    void setPerturbations(const Vector&) const override {}
+
+    inline int getDim() const override {
+        return m_dim;
+    }
+
+private:
+    const nlohmann::json& m_config;
+    int m_dim;
+};
+
 
 /**
  * Template specialization for a unit-square domain, with Test1;

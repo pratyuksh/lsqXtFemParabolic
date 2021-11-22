@@ -1,6 +1,59 @@
 #include "test_cases.hpp"
 
 
+// Dummy
+// Value 1 everywhere, except boundary
+// Homogeneous Dirichlet BCs
+// Zero source
+double heat::TestCase <Dummy>
+:: medium(const Vector&) const
+{
+    return 1;
+}
+
+DenseMatrix heat::TestCase <Dummy>
+:: mediumTensor(const Vector& x) const
+{
+    DenseMatrix med(m_dim);
+    med(0,0) = med(1,1) = 1;
+    med(0,1) = med(1,0) = 0;
+    med *= medium(x);
+    return med;
+}
+
+double heat::TestCase <Dummy>
+:: temperatureSol(const Vector& x, const double t) const
+{
+    return 1;
+}
+
+Vector heat::TestCase <Dummy>
+:: heatFluxSol (const Vector& x, const double t) const
+{
+    Vector q(m_dim);
+    q = 0.;
+    return q;
+}
+
+double heat::TestCase <Dummy>
+:: temperatureTimeGradientSol
+(const Vector& x, const double t) const
+{
+    return 0;
+}
+
+double heat::TestCase <Dummy>
+:: source (const Vector&, const double) const
+{
+    return 0;
+}
+
+inline void heat::TestCase <Dummy>
+:: setBdryDirichlet(Array<int>& bdr_marker) const
+{
+    bdr_marker = 1;
+}
+
 // UnitSquareTest1, Smooth solution
 // Non-zero ICs
 // Homogeneous Dirichlet BCs
