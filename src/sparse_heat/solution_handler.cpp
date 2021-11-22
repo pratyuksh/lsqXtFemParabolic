@@ -11,7 +11,7 @@ sparseHeat::SolutionHandler
 {
     m_numLevels = (maxLevel - minLevel) + 1;
     m_temporalHierarchicalFESizes
-            = evalHierarchicalBlockSizes1D(minLevel, maxLevel);
+            = evalTemporalBlockSizes(minLevel, maxLevel);
     m_spatialFESizesTemperature
             = spatialNestedFEHierarchyTemperature->getNumDims();
     m_spatialFESizesHeatFlux
@@ -20,16 +20,16 @@ sparseHeat::SolutionHandler
     // size of space-time solution vector
     auto tmpBuf1 = evalSpaceTimeBlockSizes(m_spatialFESizesTemperature,
                                            m_temporalHierarchicalFESizes);
-    int sizeTemperatureData = tmpBuf1.Sum();
+    int temperatureDataSize = tmpBuf1.Sum();
 
     auto tmpBuf2 = evalSpaceTimeBlockSizes(m_spatialFESizesHeatFlux,
                                            m_temporalHierarchicalFESizes);
-    int sizeHeatFluxData = tmpBuf2.Sum();
+    int heatFluxDataSize = tmpBuf2.Sum();
 
     Array<int> blockOffsets(3);
     blockOffsets[0] = 0;
-    blockOffsets[1] = sizeTemperatureData;
-    blockOffsets[2] = blockOffsets[1] + sizeHeatFluxData;
+    blockOffsets[1] = temperatureDataSize;
+    blockOffsets[2] = blockOffsets[1] + heatFluxDataSize;
 
     m_data = std::make_shared<BlockVector>(blockOffsets);
 }

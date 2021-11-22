@@ -26,6 +26,10 @@ public:
     //! Default destructor
     virtual ~LsqSparseXtFem ();
 
+    //! Sets nested hierarchies of FE spaces and spatial boundary dofs
+    void setNestedFEHierarchyAndSpatialBoundaryDofs
+    (std::shared_ptr<mymfem::NestedMeshHierarchy>&);
+
     //! Sets nested hierarchies of FE spaces
     void setNestedFEHierarchy
     (std::shared_ptr<mymfem::NestedMeshHierarchy>&);
@@ -35,6 +39,9 @@ public:
 
     virtual void setNestedFEHierarchyForHeatFlux
     (std::shared_ptr<mymfem::NestedMeshHierarchy>&) = 0;
+
+    //! Sets the spatial boundary dofs
+    void setSpatialBoundaryDofs();
 
     //! Assembles the sub-matrices in the discretisation
     void assembleSystemSubMatrices();
@@ -54,34 +61,61 @@ protected:
     virtual void assembleSpatialDivergence() = 0;
 
 public:
+    //! Builds the system matrix
+    void buildSystemMatrix();
+
+private:
     //! Builds the system matrix blocks
     void buildSystemBlocks();
 
-private:
     void buildSystemBlock11();
     void buildSystemBlock22();
     void buildSystemBlock12();
     void buildSystemBlock21();
 
-    inline int getSpatialIndex(int i) {
-        return m_numLevels - i - 1;
-    }
+    inline int getSpatialIndex(int i) const;
 
 public:
-    SparseMatrix* getSystemBlock11() {
-        return m_block11;
+    void assembleRhs(std::shared_ptr<BlockVector>&) const;
+
+private:
+    void assembleICs(Vector& b) const;
+    void assembleSource(Vector& b) const;
+
+public:
+    void applyBCs(SparseMatrix& A) const;
+
+    void applyBCs(BlockVector& B) const;
+
+public:
+    SparseMatrix* getSystemMatrix() const {
+        return m_systemMatrix;
     }
 
-    SparseMatrix* getSystemBlock12() {
-        return m_block12;
+    SparseMatrix* getSystemBlock11() const {
+        return m_systemBlock11;
     }
 
-    SparseMatrix* getSystemBlock21() {
-        return m_block21;
+    SparseMatrix* getSystemBlock12() const {
+        return m_systemBlock12;
     }
 
-    SparseMatrix* getSystemBlock22() {
-        return m_block22;
+    SparseMatrix* getSystemBlock21() const {
+        return m_systemBlock21;
+    }
+
+    SparseMatrix* getSystemBlock22() const {
+        return m_systemBlock22;
+    }
+
+    std::shared_ptr<mymfem::NestedFEHierarchy>
+    getSpatialNestedFEHierarchyForTemperature() const {
+        return m_spatialNestedFEHierarchyTemperature;
+    }
+
+    std::shared_ptr<mymfem::NestedFEHierarchy>
+    getSpatialNestedFEHierarchyForHeatFlux() const {
+        return m_spatialNestedFEHierarchyHeatFlux;
     }
 
 protected:
@@ -98,6 +132,8 @@ protected:
     std::shared_ptr<mymfem::NestedFEHierarchy> m_spatialNestedFEHierarchyTemperature;
     std::shared_ptr<mymfem::NestedFEHierarchy> m_spatialNestedFEHierarchyHeatFlux;
 
+    Array<int> m_essDofs;
+
     std::shared_ptr<BlockMatrix> m_temporalMass;
     std::shared_ptr<BlockMatrix> m_temporalStiffness;
     std::shared_ptr<BlockMatrix> m_temporalGradient;
@@ -108,10 +144,12 @@ protected:
     std::shared_ptr<BlockMatrix> m_spatialGradient;
     std::shared_ptr<BlockMatrix> m_spatialDivergence;
 
-    SparseMatrix* m_block11 = nullptr;
-    SparseMatrix* m_block12 = nullptr;
-    SparseMatrix* m_block21 = nullptr;
-    SparseMatrix* m_block22 = nullptr;
+    SparseMatrix* m_systemBlock11 = nullptr;
+    SparseMatrix* m_systemBlock12 = nullptr;
+    SparseMatrix* m_systemBlock21 = nullptr;
+    SparseMatrix* m_systemBlock22 = nullptr;
+
+    SparseMatrix* m_systemMatrix = nullptr;
 };
 
 

@@ -38,11 +38,36 @@ sparseHeat::LsqSparseXtFem
     m_maxTemporalLevel = m_minTemporalLevel + m_numLevels - 1;
 }
 
-// Destructor
 sparseHeat::LsqSparseXtFem
 :: ~LsqSparseXtFem()
 {
-    // reset();
+    if (m_systemBlock11) {
+        delete m_systemBlock11;
+    }
+
+    if (m_systemBlock12) {
+        delete m_systemBlock12;
+    }
+
+    if (m_systemBlock21) {
+        delete m_systemBlock21;
+    }
+
+    if (m_systemBlock22) {
+        delete m_systemBlock22;
+    }
+
+    if (m_systemMatrix) {
+        delete m_systemMatrix;
+    }
+}
+
+void sparseHeat::LsqSparseXtFem
+:: setNestedFEHierarchyAndSpatialBoundaryDofs
+(std::shared_ptr<mymfem::NestedMeshHierarchy>& spatialNestedMeshHierarchy)
+{
+    setNestedFEHierarchy(spatialNestedMeshHierarchy);
+    setSpatialBoundaryDofs();
 }
 
 void sparseHeat::LsqSparseXtFem
@@ -75,6 +100,53 @@ void sparseHeat::LsqSparseXtFem
         auto xH1Space = std::make_shared<FiniteElementSpace>
                 (meshes[i].get(), xH1Coll);
         m_spatialNestedFEHierarchyTemperature->addFESpace(xH1Space);
+    }
+}
+
+void sparseHeat::LsqSparseXtFem
+:: setSpatialBoundaryDofs()
+{
+    auto xMeshes
+            = m_spatialNestedFEHierarchyTemperature->getMeshes();
+    auto xFeSpaces
+            = m_spatialNestedFEHierarchyTemperature->getFESpaces();
+
+    auto tHierarchicalFESpacesSizes
+            = evalTemporalBlockSizes(m_minTemporalLevel,
+                                     m_maxTemporalLevel);
+    auto xFeSpacesSizes
+            = m_spatialNestedFEHierarchyTemperature->getNumDims();
+    auto sizeBuf = evalSpaceTimeBlockSizes(xFeSpacesSizes,
+                                           tHierarchicalFESpacesSizes);
+    auto offsetsBuf = evalBlockOffsets(sizeBuf);
+
+    for (int m=0; m<m_numLevels; m++)
+    {
+        int i = getSpatialIndex(m);
+        int shift = offsetsBuf[m];
+        if (xMeshes[i]->bdr_attributes.Size())
+        {
+            Array<int> xEssBdrMarker(xMeshes[i]->bdr_attributes.Max());
+            m_testCase->setBdryDirichlet(xEssBdrMarker);
+
+            Array<int> xEssDofs;
+            xFeSpaces[i]->GetEssentialTrueDofs(xEssBdrMarker, xEssDofs);
+
+            int tNumDofs = tHierarchicalFESpacesSizes[m];
+            int xNumDofs = xFeSpacesSizes[i];
+
+            int xNumEssDofs = xEssDofs.Size();
+            Array<int> myEssDofs(xNumEssDofs*tNumDofs);
+            for (int j=0; j<tNumDofs; j++) {
+                for (int k=0; k<xNumEssDofs; k++) {
+                    myEssDofs[k + j*xNumEssDofs]
+                            = xEssDofs[k] + j*xNumDofs + shift;
+                }
+            }
+            m_essDofs.Append(myEssDofs);
+//            myEssDofs.Print();
+//            std::cout << "\n\n";
+        }
     }
 }
 
@@ -167,6 +239,27 @@ void sparseHeat::LsqSparseXtFem
 }
 
 void sparseHeat::LsqSparseXtFem
+:: buildSystemMatrix()
+{
+    buildSystemBlocks();
+
+    Array<int> blockOffsets(3);
+    blockOffsets[0] = 0;
+    blockOffsets[1] = m_systemBlock11->NumRows();
+    blockOffsets[2] = m_systemBlock21->NumRows();
+    blockOffsets.PartialSum();
+
+    BlockMatrix buf(blockOffsets);
+    buf.SetBlock(0, 0, m_systemBlock11);
+    buf.SetBlock(0, 1, m_systemBlock12);
+    buf.SetBlock(1, 0, m_systemBlock21);
+    buf.SetBlock(1, 1, m_systemBlock22);
+
+    m_systemMatrix = buf.CreateMonolithic();
+    applyBCs(*m_systemMatrix);
+}
+
+void sparseHeat::LsqSparseXtFem
 :: buildSystemBlocks()
 {
     buildSystemBlock11();
@@ -189,7 +282,7 @@ void sparseHeat::LsqSparseXtFem
     auto blockOffsets = evalBlockOffsets(blockSizes);
 
     auto buf = std::make_unique<BlockMatrix>(blockOffsets);
-    // block11 = M_t \otimes K_x^{1,1}
+    // block11 = M^t_{\ell1, \ell2} \otimes K^{x;(1,1)}_{L-\ell1, L-\ell2}
     for (int i=0; i<m_numLevels; i++)
     {
         int ii = getSpatialIndex(i);
@@ -202,9 +295,10 @@ void sparseHeat::LsqSparseXtFem
         }
     }
     buf->owns_blocks = true;
-    m_block11 = buf->CreateMonolithic();
+    m_systemBlock11 = buf->CreateMonolithic();
 
-    // block11 += (K_t + E_t) \otimes M_x^{1,1}
+    // block11 += (K^t_{\ell1, \ell2} + E^t_{\ell1, \ell2})
+    //            \otimes M^{x; (1,1)}_{L-\ell1, L-\ell2}
     buf.reset(new BlockMatrix(blockOffsets));
     for (int i=0; i<m_numLevels; i++)
     {
@@ -221,7 +315,7 @@ void sparseHeat::LsqSparseXtFem
     }
     buf->owns_blocks = true;
     auto tmp = buf->CreateMonolithic();
-    m_block11->Add(1., *tmp);
+    m_systemBlock11->Add(1., *tmp);
     delete tmp;
 }
 
@@ -239,7 +333,9 @@ void sparseHeat::LsqSparseXtFem
     auto blockOffsets = evalBlockOffsets(blockSizes);
 
     auto buf = std::make_unique<BlockMatrix>(blockOffsets);
-    // block22 = M_t \otimes (M_x^{2,2} + K_x^{2,2})
+    // block22 = M^t_{\ell1, \ell2}
+    // \otimes (M^{x; (2,2)}_{L-\ell1, L-\ell2}
+    //        + K^{x; (2,2)}_{L-\ell1, L-\ell2})
     for (int i=0; i<m_numLevels; i++)
     {
         int ii = getSpatialIndex(i);
@@ -254,7 +350,7 @@ void sparseHeat::LsqSparseXtFem
         }
     }
     buf->owns_blocks = true;
-    m_block22 = buf->CreateMonolithic();
+    m_systemBlock22 = buf->CreateMonolithic();
 }
 
 void sparseHeat::LsqSparseXtFem
@@ -276,12 +372,13 @@ void sparseHeat::LsqSparseXtFem
     auto rowBlockOffsets = evalBlockOffsets(rowBlockSizes);
     auto colBlockOffsets = evalBlockOffsets(colBlockSizes);
 
-    rowBlockSizes.Print();
-    colBlockSizes.Print();
+//    rowBlockSizes.Print();
+//    colBlockSizes.Print();
 
     auto buf = std::make_unique<BlockMatrix>(rowBlockOffsets,
                                              colBlockOffsets);
-    // block12 = C_t^{\top} \otimes B_x^{1,2}
+    // block12 = (C^t_{\ell1, \ell2})^{\top}
+    //           \otimes B^{x; (1,2)}_{L-\ell1, L-\ell2})
     for (int i=0; i<m_numLevels; i++)
     {
         int ii = getSpatialIndex(i);
@@ -302,9 +399,10 @@ void sparseHeat::LsqSparseXtFem
         }
     }
     buf->owns_blocks = true;
-    m_block12 = buf->CreateMonolithic();
+    m_systemBlock12 = buf->CreateMonolithic();
 
-    // block12 += M_t \otimes C_x^{1,2}
+    // block12 += (M^t_{\ell1, \ell2})^{\top}
+    //           \otimes C^{x; (1,2)}_{L-\ell1, L-\ell2}
     buf.reset(new BlockMatrix(rowBlockOffsets, colBlockOffsets));
     for (int i=0; i<m_numLevels; i++)
     {
@@ -320,14 +418,71 @@ void sparseHeat::LsqSparseXtFem
     }
     buf->owns_blocks = true;
     auto tmp = buf->CreateMonolithic();
-    m_block12->Add(1., *tmp);
+    m_systemBlock12->Add(1., *tmp);
     delete tmp;
 }
 
 void sparseHeat::LsqSparseXtFem
 :: buildSystemBlock21()
 {
-    m_block21 = Transpose(*m_block12);
+    m_systemBlock21 = Transpose(*m_systemBlock12);
+}
+
+int sparseHeat::LsqSparseXtFem
+:: getSpatialIndex(int i) const {
+    return m_numLevels - i - 1;
+}
+
+void sparseHeat::LsqSparseXtFem
+:: assembleRhs(std::shared_ptr<BlockVector>& B) const
+{
+    (*B) = 0.;
+
+    Vector &B0 = B->GetBlock(0);
+    assembleICs(B0);
+
+//    Vector &B1 = B->GetBlock(1);
+//    assembleSource(B1);
+
+    applyBCs(*B);
+}
+
+void sparseHeat::LsqSparseXtFem
+:: assembleICs(Vector& b) const
+{
+    auto xFeSpaces
+            = m_spatialNestedFEHierarchyTemperature->getFESpaces();
+    int coarsestTemporalIndex = 0;
+    int finestSpatialIndex = getSpatialIndex(coarsestTemporalIndex);
+
+    LinearForm icsForm(xFeSpaces[finestSpatialIndex].get());
+    heat::InitialTemperatureCoeff u0(m_testCase);
+    icsForm.AddDomainIntegrator
+            (new DomainLFIntegrator(u0));
+    icsForm.Assemble();
+    Vector buf(icsForm.GetData(),
+               xFeSpaces[finestSpatialIndex]->GetTrueVSize());
+
+    b.SetVector(buf, 0);
+}
+
+void sparseHeat::LsqSparseXtFem
+:: assembleSource(Vector& b) const
+{}
+
+void sparseHeat::LsqSparseXtFem
+:: applyBCs(SparseMatrix &A) const
+{
+    for (int k=0; k<m_essDofs.Size(); k++) {
+        A.EliminateRowCol(m_essDofs[k]);
+    }
+}
+
+void sparseHeat::LsqSparseXtFem
+:: applyBCs(BlockVector &B) const
+{
+    auto& b = B.GetBlock(0);
+    b.SetSubVector(m_essDofs, 0.);
 }
 
 // End of file

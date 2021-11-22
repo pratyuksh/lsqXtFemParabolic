@@ -81,24 +81,30 @@ TEST(SolutionHandler, dataSizes)
     int numLevels = maxLevel - minLevel + 1;
     assert(numLevels == 3);
 
-    auto solutionHandler = std::make_unique<sparseHeat::SolutionHandler>(minLevel, maxLevel,
-                                                                         spatialNestedFEHierarchyTemperature,
-                                                                         spatialNestedFEHierarchyHeatFlux);
+    auto solutionHandler
+            = std::make_unique<sparseHeat::SolutionHandler>
+            (minLevel, maxLevel,
+             spatialNestedFEHierarchyTemperature,
+             spatialNestedFEHierarchyHeatFlux);
 
     auto& temperatureData = solutionHandler->getTemperatureData();
     auto& heatFluxData = solutionHandler->getHeatFluxData();
-    auto temporalHierarchicalFESizes = evalHierarchicalBlockSizes1D(minLevel, maxLevel);
+    auto temporalHierarchicalFESizes
+            = evalTemporalBlockSizes(minLevel, maxLevel);
 
-    int trueTemperatureDataSize = temporalHierarchicalFESizes[0]*fes3H1->GetTrueVSize()
+    int trueTemperatureDataSize
+            = temporalHierarchicalFESizes[0]*fes3H1->GetTrueVSize()
             + temporalHierarchicalFESizes[1]*fes2H1->GetTrueVSize()
             + temporalHierarchicalFESizes[2]*fes1H1->GetTrueVSize();
     ASSERT_EQ(temperatureData.Size(), trueTemperatureDataSize);
 
-    int trueHeatFluxDataSize = temporalHierarchicalFESizes[0]*fes3RT->GetTrueVSize()
+    int trueHeatFluxDataSize
+            = temporalHierarchicalFESizes[0]*fes3RT->GetTrueVSize()
             + temporalHierarchicalFESizes[1]*fes2RT->GetTrueVSize()
             + temporalHierarchicalFESizes[2]*fes1RT->GetTrueVSize();
     ASSERT_EQ(heatFluxData.Size(), trueHeatFluxDataSize);
 
     auto solutionData = solutionHandler->getData();
-    ASSERT_EQ((*solutionData).Size(), trueTemperatureDataSize + trueHeatFluxDataSize);
+    ASSERT_EQ((*solutionData).Size(),
+              trueTemperatureDataSize + trueHeatFluxDataSize);
 }

@@ -26,12 +26,27 @@ public:
         return m_data->GetBlock(0);
     }
 
+    int getTemperatureDataSize() {
+        return (m_data->GetBlock(0)).Size();
+    }
+
     Vector& getHeatFluxData() {
         return m_data->GetBlock(1);
     }
 
+    int getHeatFluxDataSize() {
+        return (m_data->GetBlock(1)).Size();
+    }
+
     std::shared_ptr<BlockVector> getData() const {
         return m_data;
+    }
+
+    Array<int> getDataSize() {
+        Array<int> blockSizes(2);
+        blockSizes[0] = (m_data->GetBlock(0)).Size();
+        blockSizes[1] = (m_data->GetBlock(1)).Size();
+        return blockSizes;
     }
 
 private:
