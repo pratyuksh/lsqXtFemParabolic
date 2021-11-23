@@ -1,4 +1,5 @@
 <map id="assembly.hpp" name="assembly.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,107,32"/>
-<area shape="rect" id="node2" href="$sparse__heat_2assembly_8cpp.html" title=" " alt="" coords="5,80,107,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="103,5,205,32"/>
+<area shape="rect" id="node2" href="$sparse__heat_2discretisation_8cpp.html" title=" " alt="" coords="5,80,129,107"/>
+<area shape="rect" id="node3" href="$sparse__heat_2discretisation__H1Hdiv_8cpp.html" title=" " alt="" coords="154,80,327,107"/>
 </map>

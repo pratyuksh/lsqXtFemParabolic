@@ -223,7 +223,7 @@ $(function() {
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            &amp;m_idum, &amp;m_nrhs, m_iparm, &amp;m_verbose,</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            b, x, &amp;m_error, m_dparm);</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <a class="code" href="pardiso_8cpp.html#a544d763e468b67f1fb52744ad61bef2f">PARDISO_ERROR</a>(m_error, &quot;\nERROR during <a class="code" href="classPardisoSolver.html#a3ce280043135970d84319d4517e8fe6a">solve</a>: &quot;)</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="preprocessor">#ifdef MYVERBOSE</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="preprocessor">#ifndef NDEBUG</span></div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="keywordtype">double</span> normb, normr;</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordtype">double</span> *y = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span> *<span class="keyword">&gt;</span></div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            (calloc(<span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(m_sizeA),</div>

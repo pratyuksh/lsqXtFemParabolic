@@ -102,12 +102,18 @@ $(function() {
 </li>
 <li>m_config
 : <a class="el" href="classheat_1_1LsqXtFEM.html#a8eba36b8022e71e7e8d87030b6c21305">heat::LsqXtFEM</a>
+, <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#a1c4b6b67b46a247a97004984b5783c58">sparseHeat::LsqSparseXtFem</a>
 </li>
 <li>m_deg
 : <a class="el" href="classheat_1_1LsqXtFEM.html#a04bece334cc1289174e362b1dc9e6ecf">heat::LsqXtFEM</a>
+, <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#abf7f3dcf594b7e23d89eeeb5dc257357">sparseHeat::LsqSparseXtFem</a>
 </li>
 <li>m_endTime
-: <a class="el" href="classsparseHeat_1_1TemporalBlockMatrixAssembler.html#adf611bd22a35da0530cd80c9a43833b1">sparseHeat::TemporalBlockMatrixAssembler</a>
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#aa908035c9375c6370b0f762e39790ff6">sparseHeat::LsqSparseXtFem</a>
+, <a class="el" href="classsparseHeat_1_1TemporalBlockMatrixAssembler.html#adf611bd22a35da0530cd80c9a43833b1">sparseHeat::TemporalBlockMatrixAssembler</a>
+</li>
+<li>m_essDofs
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#a6940a34e4cadf92a88888644986e4009">sparseHeat::LsqSparseXtFem</a>
 </li>
 <li>m_essTdofList
 : <a class="el" href="classheat_1_1LsqXtFEM.html#a4239f336c828c0c700c0dcc13bc3f80f">heat::LsqXtFEM</a>
@@ -127,6 +133,9 @@ $(function() {
 <li>m_maxLevel
 : <a class="el" href="classsparseHeat_1_1TemporalBlockMatrixAssembler.html#a9950726e46a5e19e257547c6efd89cde">sparseHeat::TemporalBlockMatrixAssembler</a>
 </li>
+<li>m_maxTemporalLevel
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#af2ac16d51a2c0223413d1a9559f9c100">sparseHeat::LsqSparseXtFem</a>
+</li>
 <li>m_meshNamePrefix
 : <a class="el" href="classmymfem_1_1BaseObserver.html#a81a1ae45a1d3a096ac2f9f533d668286">mymfem::BaseObserver</a>
 </li>
@@ -139,8 +148,12 @@ $(function() {
 <li>m_minLevel
 : <a class="el" href="classsparseHeat_1_1TemporalBlockMatrixAssembler.html#a9712372b6737285fc3b1e54b735f749f">sparseHeat::TemporalBlockMatrixAssembler</a>
 </li>
+<li>m_minTemporalLevel
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#a9afdd264c9928f43fb66e98c999078f4">sparseHeat::LsqSparseXtFem</a>
+</li>
 <li>m_numLevels
-: <a class="el" href="classsparseHeat_1_1TemporalBlockMatrixAssembler.html#ad1e989b1e51d9c63a70993fe0842f130">sparseHeat::TemporalBlockMatrixAssembler</a>
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#a67b7e57ead27064b0502c381e80edf25">sparseHeat::LsqSparseXtFem</a>
+, <a class="el" href="classsparseHeat_1_1TemporalBlockMatrixAssembler.html#ad1e989b1e51d9c63a70993fe0842f130">sparseHeat::TemporalBlockMatrixAssembler</a>
 </li>
 <li>m_numMeshElements
 : <a class="el" href="classsparseHeat_1_1TemporalBlockMatrixAssembler.html#ae6c39caeb3e65c485c01b79c32052738">sparseHeat::TemporalBlockMatrixAssembler</a>
@@ -151,6 +164,57 @@ $(function() {
 <li>m_precision
 : <a class="el" href="classmymfem_1_1BaseObserver.html#a076fb293589145451bbce2783b2f42dd">mymfem::BaseObserver</a>
 </li>
+<li>m_spatialDivergence
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#aa9bcf16ee1106fbe5515750b7669970d">sparseHeat::LsqSparseXtFem</a>
+</li>
+<li>m_spatialGradient
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#aea7e1dd3d1c3b8c71f77a6e21f9539a9">sparseHeat::LsqSparseXtFem</a>
+</li>
+<li>m_spatialMass1
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#a2067c092e197716070ec9883438db8b3">sparseHeat::LsqSparseXtFem</a>
+</li>
+<li>m_spatialMass2
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#a90fbce845078beb569b1c1dea292f648">sparseHeat::LsqSparseXtFem</a>
+</li>
+<li>m_spatialNestedFEHierarchyHeatFlux
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#ade80df34d927ab923e658236a3b91cd3">sparseHeat::LsqSparseXtFem</a>
+</li>
+<li>m_spatialNestedFEHierarchyTemperature
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#ae8bfd9ed2e475f5fe2c476f10830b252">sparseHeat::LsqSparseXtFem</a>
+</li>
+<li>m_spatialStiffness1
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#a8053df5b093e5cde7c91b5f99abda28f">sparseHeat::LsqSparseXtFem</a>
+</li>
+<li>m_spatialStiffness2
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#aa88f10f40cef137c4020622f95c375ec">sparseHeat::LsqSparseXtFem</a>
+</li>
+<li>m_systemBlock11
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#a3b825442e4a34c213bd86a999aeee0a8">sparseHeat::LsqSparseXtFem</a>
+</li>
+<li>m_systemBlock12
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#a4731865059f98545fea21aa20abf1002">sparseHeat::LsqSparseXtFem</a>
+</li>
+<li>m_systemBlock21
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#afd1f7b598b6e19eefb832a7504c23d0f">sparseHeat::LsqSparseXtFem</a>
+</li>
+<li>m_systemBlock22
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#a9ccd14871b1c0abb94aca79509e578fd">sparseHeat::LsqSparseXtFem</a>
+</li>
+<li>m_systemMatrix
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#ab2a3524107a1fc682b8bc03c523e3e2d">sparseHeat::LsqSparseXtFem</a>
+</li>
+<li>m_temporalGradient
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#a8ad249790faf035b81ee7a897c03c71f">sparseHeat::LsqSparseXtFem</a>
+</li>
+<li>m_temporalInitial
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#a0f65982df4152f83637eac786f2ace31">sparseHeat::LsqSparseXtFem</a>
+</li>
+<li>m_temporalMass
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#af6701546baed718bdd2ff0463ebc8ed1">sparseHeat::LsqSparseXtFem</a>
+</li>
+<li>m_temporalStiffness
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#a2bf2f3e9d4afc9945bed9a23c1231aac">sparseHeat::LsqSparseXtFem</a>
+</li>
 <li>m_testCase
 : <a class="el" href="classheat_1_1ExactTemperatureCoeff.html#a6dbbb9a575075c54319b5e077982aabc">heat::ExactTemperatureCoeff</a>
 , <a class="el" href="classheat_1_1ExactTemperatureTimeGradCoeff.html#a794e508a66a8bca9b29d3bcd25ba21b0">heat::ExactTemperatureTimeGradCoeff</a>
@@ -159,6 +223,7 @@ $(function() {
 , <a class="el" href="classheat_1_1LsqXtFEM.html#a1534eda3091387f6f041c9bc4d191ec8">heat::LsqXtFEM</a>
 , <a class="el" href="classheat_1_1MediumScalarCoeff.html#ad1066f25b504dfb16f9893c6de0d1d54">heat::MediumScalarCoeff</a>
 , <a class="el" href="classheat_1_1MediumTensorCoeff.html#a55fed52ee445aa7b371b582dfd1b2884">heat::MediumTensorCoeff</a>
+, <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#a087da9118640989d4a1af4809b154652">sparseHeat::LsqSparseXtFem</a>
 </li>
 <li>m_tFec
 : <a class="el" href="classheat_1_1LsqXtFEM.html#acc8eedabad966510e2369fbee9a00d09">heat::LsqXtFEM</a>
@@ -175,6 +240,9 @@ $(function() {
 <li>m_tStiff
 : <a class="el" href="classheat_1_1LsqXtFEM.html#a0374258c569cb272bc8f96ce8249725b">heat::LsqXtFEM</a>
 </li>
+<li>m_xDim
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#a27a587268e505a9ce2ef44ca5ae35be6">sparseHeat::LsqSparseXtFem</a>
+</li>
 <li>m_xDiv
 : <a class="el" href="classheat_1_1LsqXtFEM.html#a32de6ff24e2d9133c5a9e0272a9ea19c">heat::LsqXtFEM</a>
 </li>
@@ -186,6 +254,7 @@ $(function() {
 </li>
 <li>m_xFecs
 : <a class="el" href="classheat_1_1LsqXtFEM.html#a2474dd852485b18a3b13a38d6071ba74">heat::LsqXtFEM</a>
+, <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#a6eb096e507e40944b04be684003a5b7f">sparseHeat::LsqSparseXtFem</a>
 </li>
 <li>m_xFespaces
 : <a class="el" href="classheat_1_1LsqXtFEM.html#a8504146c4d39b286ea6bce413a32ceae">heat::LsqXtFEM</a>

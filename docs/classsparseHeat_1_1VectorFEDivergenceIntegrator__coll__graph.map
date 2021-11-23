@@ -1,4 +1,0 @@
-<map id="sparseHeat::VectorFEDivergenceIntegrator" name="sparseHeat::VectorFEDivergenceIntegrator">
-<area shape="rect" id="node1" title="VectorFE Divergence Integrator; (div(u), v)" alt="" coords="5,95,224,136"/>
-<area shape="rect" id="node2" href="$classmymfem_1_1BlockMixedBilinearFormIntegrator.html" title="BlockMixedBilinearForm class provides functions to assemble mixed bilinear forms between different me..." alt="" coords="19,5,211,47"/>
-</map>

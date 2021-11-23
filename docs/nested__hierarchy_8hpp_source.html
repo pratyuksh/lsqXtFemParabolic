@@ -205,15 +205,26 @@ $(function() {
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keywordflow">return</span> m_nestedMeshHierarchy-&gt;getTransformations();</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    }</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <a class="code" href="namespacemymfem.html#a9b7683c54d28768304e221bf8baa8ca0">NestedFESpaces</a> m_feSpaces;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    std::shared_ptr&lt;NestedMeshHierarchy&gt; m_nestedMeshHierarchy;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;};</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;}</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="preprocessor">#endif // MYMFEM_NESTED_HIERARCHY_HPP</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="structmymfem_1_1NestedFEHierarchy.html#a76fd4a6266a8a10ca93cf0da92daa16a">  178</a></span>&#160;    Array&lt;int&gt; <a class="code" href="structmymfem_1_1NestedFEHierarchy.html#a76fd4a6266a8a10ca93cf0da92daa16a">getNumDims</a>()</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    {</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <span class="keywordtype">int</span> numLevels = this-&gt;getNumLevels();</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        Array&lt;int&gt; numDims(numLevels);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i &lt; numLevels; i++) {</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            numDims[i] = m_feSpaces[i]-&gt;GetTrueVSize();</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        }</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <span class="keywordflow">return</span> numDims;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    }</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <a class="code" href="namespacemymfem.html#a9b7683c54d28768304e221bf8baa8ca0">NestedFESpaces</a> m_feSpaces;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    std::shared_ptr&lt;NestedMeshHierarchy&gt; m_nestedMeshHierarchy;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;};</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;}</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="preprocessor">#endif // MYMFEM_NESTED_HIERARCHY_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="anamespacemymfem_html_ac23bff0122813996831c377212b2ced2"><div class="ttname"><a href="namespacemymfem.html#ac23bff0122813996831c377212b2ced2">mymfem::NestedMeshes</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; Mesh &gt; &gt; NestedMeshes</div><div class="ttdef"><b>Definition:</b> <a href="nested__hierarchy_8hpp_source.html#l00063">nested_hierarchy.hpp:63</a></div></div>
 <div class="ttc" id="astructmymfem_1_1NestedMeshHierarchy_html_ad7ae123a5b8b97a9b9d5a89adf94600c"><div class="ttname"><a href="structmymfem_1_1NestedMeshHierarchy.html#ad7ae123a5b8b97a9b9d5a89adf94600c">mymfem::NestedMeshHierarchy::getMeshes</a></div><div class="ttdeci">NestedMeshes &amp; getMeshes()</div><div class="ttdoc">Returns the meshes.</div><div class="ttdef"><b>Definition:</b> <a href="nested__hierarchy_8hpp_source.html#l00088">nested_hierarchy.hpp:88</a></div></div>
@@ -233,6 +244,7 @@ $(function() {
 <div class="ttc" id="anamespacemymfem_html_a9b7683c54d28768304e221bf8baa8ca0"><div class="ttname"><a href="namespacemymfem.html#a9b7683c54d28768304e221bf8baa8ca0">mymfem::NestedFESpaces</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; FiniteElementSpace &gt; &gt; NestedFESpaces</div><div class="ttdef"><b>Definition:</b> <a href="nested__hierarchy_8hpp_source.html#l00064">nested_hierarchy.hpp:64</a></div></div>
 <div class="ttc" id="astructHierarchicalMeshTransformationTable_html_a48a4dac46fda0f6ad7bf887b54c4c082"><div class="ttname"><a href="structHierarchicalMeshTransformationTable.html#a48a4dac46fda0f6ad7bf887b54c4c082">HierarchicalMeshTransformationTable::add</a></div><div class="ttdeci">void add(int elIdCoarse, int elIdFine)</div><div class="ttdef"><b>Definition:</b> <a href="nested__hierarchy_8hpp_source.html#l00025">nested_hierarchy.hpp:25</a></div></div>
 <div class="ttc" id="anamespacemymfem_html_a6f120732ba9df7ecde4335fefdffd152"><div class="ttname"><a href="namespacemymfem.html#a6f120732ba9df7ecde4335fefdffd152">mymfem::buildMultiLevelMeshHierarchy</a></div><div class="ttdeci">std::shared_ptr&lt; HierarchicalMeshTransformationTable &gt; buildMultiLevelMeshHierarchy(std::shared_ptr&lt; HierarchicalMeshTransformationTable &gt; &amp;curHierarchy, std::shared_ptr&lt; HierarchicalMeshTransformationTable &gt; &amp;nextHierarchy)</div><div class="ttdef"><b>Definition:</b> <a href="nested__hierarchy_8cpp_source.html#l00110">nested_hierarchy.cpp:110</a></div></div>
+<div class="ttc" id="astructmymfem_1_1NestedFEHierarchy_html_a76fd4a6266a8a10ca93cf0da92daa16a"><div class="ttname"><a href="structmymfem_1_1NestedFEHierarchy.html#a76fd4a6266a8a10ca93cf0da92daa16a">mymfem::NestedFEHierarchy::getNumDims</a></div><div class="ttdeci">Array&lt; int &gt; getNumDims()</div><div class="ttdoc">Returns the number of dimensions (size) of the FE spaces.</div><div class="ttdef"><b>Definition:</b> <a href="nested__hierarchy_8hpp_source.html#l00178">nested_hierarchy.hpp:178</a></div></div>
 <div class="ttc" id="astructmymfem_1_1NestedFEHierarchy_html_a6baad3f4e33ba3afec7fe75f512c82b3"><div class="ttname"><a href="structmymfem_1_1NestedFEHierarchy.html#a6baad3f4e33ba3afec7fe75f512c82b3">mymfem::NestedFEHierarchy::NestedFEHierarchy</a></div><div class="ttdeci">NestedFEHierarchy(std::shared_ptr&lt; NestedMeshHierarchy &gt; &amp;nestedMeshHierarchy)</div><div class="ttdoc">Default constructor.</div><div class="ttdef"><b>Definition:</b> <a href="nested__hierarchy_8hpp_source.html#l00144">nested_hierarchy.hpp:144</a></div></div>
 <div class="ttc" id="anamespacemymfem_html_ad2a8025ee3767841e039a984b1b14453"><div class="ttname"><a href="namespacemymfem.html#ad2a8025ee3767841e039a984b1b14453">mymfem::HierarchicalMeshTransformations</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; HierarchicalMeshTransformationTable &gt; &gt; HierarchicalMeshTransformations</div><div class="ttdef"><b>Definition:</b> <a href="nested__hierarchy_8hpp_source.html#l00066">nested_hierarchy.hpp:66</a></div></div>
 <div class="ttc" id="astructHierarchicalMeshTransformationTable_html_ad864f8764dbda495f719f3dc6d39c057"><div class="ttname"><a href="structHierarchicalMeshTransformationTable.html#ad864f8764dbda495f719f3dc6d39c057">HierarchicalMeshTransformationTable::getNumChildren</a></div><div class="ttdeci">int getNumChildren(int elIdCoarse) const</div><div class="ttdef"><b>Definition:</b> <a href="nested__hierarchy_8hpp_source.html#l00042">nested_hierarchy.hpp:42</a></div></div>

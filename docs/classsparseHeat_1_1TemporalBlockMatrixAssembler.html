@@ -81,10 +81,10 @@ Inheritance diagram for sparseHeat::TemporalBlockMatrixAssembler:</div>
 <div class="center"><img src="classsparseHeat_1_1TemporalBlockMatrixAssembler__inherit__graph.png" border="0" usemap="#sparseHeat_1_1TemporalBlockMatrixAssembler_inherit__map" alt="Inheritance graph"/></div>
 <map name="sparseHeat_1_1TemporalBlockMatrixAssembler_inherit__map" id="sparseHeat_1_1TemporalBlockMatrixAssembler_inherit__map">
 <area shape="rect" title=" " alt="" coords="5,104,188,145"/>
-<area shape="rect" href="classsparseHeat_1_1TemporalCanonicalMatrixAssembler.html" title="Assembler for the temporal canonical matrix." alt="" coords="236,5,444,47"/>
-<area shape="rect" href="classsparseHeat_1_1TemporalGradientMatrixAssembler.html" title="Assembler for the temporal gradient matrix." alt="" coords="241,71,439,112"/>
-<area shape="rect" href="classsparseHeat_1_1TemporalMassMatrixAssembler.html" title="Assembler for the temporal mass matrix." alt="" coords="249,136,431,177"/>
-<area shape="rect" href="classsparseHeat_1_1TemporalStiffnessMatrixAssembler.html" title="Assembler for the temporal stiffness matrix." alt="" coords="239,201,441,243"/>
+<area shape="rect" href="classsparseHeat_1_1TemporalGradientMatrixAssembler.html" title="Assembler for the temporal gradient matrix." alt="" coords="238,5,437,47"/>
+<area shape="rect" href="classsparseHeat_1_1TemporalInitialMatrixAssembler.html" title="Assembler for the temporal canonical matrix." alt="" coords="247,71,428,112"/>
+<area shape="rect" href="classsparseHeat_1_1TemporalMassMatrixAssembler.html" title="Assembler for the temporal mass matrix." alt="" coords="246,136,429,177"/>
+<area shape="rect" href="classsparseHeat_1_1TemporalStiffnessMatrixAssembler.html" title="Assembler for the temporal stiffness matrix." alt="" coords="236,201,439,243"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -175,7 +175,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Constructor with end-time, and minimum and maximum temporal mesh levels passed as arguments </p>
 
-<p class="definition">Definition at line <a class="el" href="temporal__assembly_8cpp_source.html#l00005">5</a> of file <a class="el" href="temporal__assembly_8cpp_source.html">temporal_assembly.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="temporal__assembly_8cpp_source.html#l00007">7</a> of file <a class="el" href="temporal__assembly_8cpp_source.html">temporal_assembly.cpp</a>.</p>
 
 </div>
 </div>
@@ -197,7 +197,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Allocates memory for the block matrix member variable. </p>
 
-<p class="definition">Definition at line <a class="el" href="temporal__assembly_8cpp_source.html#l00056">56</a> of file <a class="el" href="temporal__assembly_8cpp_source.html">temporal_assembly.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="temporal__assembly_8cpp_source.html#l00046">46</a> of file <a class="el" href="temporal__assembly_8cpp_source.html">temporal_assembly.cpp</a>.</p>
 
 </div>
 </div>
@@ -226,7 +226,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Assembles the different blocks of the block-matrix. </p>
 
-<p>Implemented in <a class="el" href="classsparseHeat_1_1TemporalGradientMatrixAssembler.html#aa5850cf385b50b0c0fc4d2533c21e579">sparseHeat::TemporalGradientMatrixAssembler</a>, <a class="el" href="classsparseHeat_1_1TemporalStiffnessMatrixAssembler.html#aec1f6afb598608bfacb1161636470db7">sparseHeat::TemporalStiffnessMatrixAssembler</a>, <a class="el" href="classsparseHeat_1_1TemporalMassMatrixAssembler.html#a47978a1c3c49a401cbb8988dee7e36c0">sparseHeat::TemporalMassMatrixAssembler</a>, and <a class="el" href="classsparseHeat_1_1TemporalCanonicalMatrixAssembler.html#a0375486bb39edb24ac2c61fc7003a487">sparseHeat::TemporalCanonicalMatrixAssembler</a>.</p>
+<p>Implemented in <a class="el" href="classsparseHeat_1_1TemporalGradientMatrixAssembler.html#aa5850cf385b50b0c0fc4d2533c21e579">sparseHeat::TemporalGradientMatrixAssembler</a>, <a class="el" href="classsparseHeat_1_1TemporalStiffnessMatrixAssembler.html#aec1f6afb598608bfacb1161636470db7">sparseHeat::TemporalStiffnessMatrixAssembler</a>, <a class="el" href="classsparseHeat_1_1TemporalMassMatrixAssembler.html#a47978a1c3c49a401cbb8988dee7e36c0">sparseHeat::TemporalMassMatrixAssembler</a>, and <a class="el" href="classsparseHeat_1_1TemporalInitialMatrixAssembler.html#aafd2de0218df0d2a88b37c94f7170b47">sparseHeat::TemporalInitialMatrixAssembler</a>.</p>
 
 </div>
 </div>
@@ -247,7 +247,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Evaluates sizes and offsets of the blocks in the block-matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="temporal__assembly_8cpp_source.html#l00036">36</a> of file <a class="el" href="temporal__assembly_8cpp_source.html">temporal_assembly.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="temporal__assembly_8cpp_source.html#l00038">38</a> of file <a class="el" href="temporal__assembly_8cpp_source.html">temporal_assembly.cpp</a>.</p>
 
 </div>
 </div>
@@ -268,7 +268,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Evaluates characteristics of the different meshes. </p>
 
-<p class="definition">Definition at line <a class="el" href="temporal__assembly_8cpp_source.html#l00022">22</a> of file <a class="el" href="temporal__assembly_8cpp_source.html">temporal_assembly.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="temporal__assembly_8cpp_source.html#l00024">24</a> of file <a class="el" href="temporal__assembly_8cpp_source.html">temporal_assembly.cpp</a>.</p>
 
 </div>
 </div>
@@ -376,7 +376,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Initializes the assembler. </p>
 
-<p class="definition">Definition at line <a class="el" href="temporal__assembly_8cpp_source.html#l00014">14</a> of file <a class="el" href="temporal__assembly_8cpp_source.html">temporal_assembly.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="temporal__assembly_8cpp_source.html#l00016">16</a> of file <a class="el" href="temporal__assembly_8cpp_source.html">temporal_assembly.cpp</a>.</p>
 
 </div>
 </div>
