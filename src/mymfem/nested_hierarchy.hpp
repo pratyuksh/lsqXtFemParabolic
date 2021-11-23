@@ -75,15 +75,19 @@ public:
     //! Default constructor
     NestedMeshHierarchy() {}
 
-    //! Builds the hierarchy transformations
-    //! between all successive meshes
-    void buildHierarchicalTranformations() const;
-
     //! Adds mesh to the hierarchy
     void addMesh(std::shared_ptr<Mesh>& mesh) {
         m_meshes.push_back(mesh);
     }
-    
+
+    void finalize() {
+        buildHierarchicalTranformations();
+    }
+
+    //! Builds the hierarchy transformations
+    //! between all successive meshes
+    void buildHierarchicalTranformations() const;
+
     //! Returns the meshes
     NestedMeshes& getMeshes() {
       return m_meshes;
