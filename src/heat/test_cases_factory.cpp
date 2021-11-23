@@ -8,7 +8,7 @@ heat::makeTestCase(const nlohmann::json& config)
 {
     const std::string problem_type
             = config["problem_type"];
-#ifdef MYVERBOSE
+#ifndef NDEBUG
     std::cout << "\tFor Heat equation, run case: "
               << problem_type << std::endl;
 #endif

@@ -33,7 +33,7 @@ void heat::LsqXtFemH1H1 :: set(std::shared_ptr<Mesh>& tMesh,
     int tdimV = m_tFespace->GetTrueVSize();
     int xdimV1 = xV1space->GetTrueVSize();
     int xdimV2 = xV2space->GetTrueVSize();
-#ifdef MYVERBOSE
+#ifndef NDEBUG
     std::cout << "\n\tNumber of degrees of freedom "
                  "in tV_space: "
          << tdimV << std::endl;
@@ -56,7 +56,7 @@ void heat::LsqXtFemH1H1 :: set(std::shared_ptr<Mesh>& tMesh,
     m_block_offsets[1] = xdimV1*tdimV;
     m_block_offsets[2] = xdimV2*tdimV;
     m_block_offsets.PartialSum();
-#ifdef MYVERBOSE
+#ifndef NDEBUG
     std::cout << "\tBlock offsets:" << "\t"
               << m_block_offsets[0] << "\t"
               << m_block_offsets[1] << "\t"

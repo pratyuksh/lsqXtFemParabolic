@@ -154,7 +154,7 @@ void PardisoSolver :: solve(double *b, double *x)
             &m_idum, &m_nrhs, m_iparm, &m_verbose,
             b, x, &m_error, m_dparm);
     PARDISO_ERROR(m_error, "\nERROR during solve: ")
-#ifdef MYVERBOSE
+#ifndef NDEBUG
     double normb, normr;
     double *y = static_cast<double *>
             (calloc(static_cast<size_t>(m_sizeA),

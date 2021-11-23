@@ -33,7 +33,7 @@ if (($ENV{USER} MATCHES "pratyuksh"))
     
     if (CMAKE_BUILD_TYPE STREQUAL "Debug") # Debug mode
         message ("CXX_DEBUG flags debug:\t" ${CMAKE_CXX_FLAGS_DEBUG})
-        add_compile_definitions(MYVERBOSE)
+        # add_compile_definitions(MYVERBOSE)
     endif (CMAKE_BUILD_TYPE STREQUAL "Debug")
 
     if (CMAKE_BUILD_TYPE STREQUAL "Release") # Release mode
@@ -90,7 +90,7 @@ elseif (($ENV{USER} MATCHES "prbansal"))
     
     if (CMAKE_BUILD_TYPE STREQUAL "Debug") # Debug mode
         message ("CXX_DEBUG flags debug:\t" ${CMAKE_CXX_FLAGS_DEBUG})
-        add_compile_definitions(MYVERBOSE)
+        # add_compile_definitions(MYVERBOSE)
     endif (CMAKE_BUILD_TYPE STREQUAL "Debug")
 
     if (CMAKE_BUILD_TYPE STREQUAL "Release") # Release mode
