@@ -37,7 +37,7 @@ TEST(SparseSpatialAssembly, massMatrix)
     meshHierarchy->addMesh(mesh1);
     meshHierarchy->addMesh(mesh2);
     meshHierarchy->addMesh(mesh3);
-    meshHierarchy->buildHierarchicalTranformations();
+    meshHierarchy->finalize();
 
     auto nestedFEHierarchy
             = std::make_shared<NestedFEHierarchy>(meshHierarchy);
@@ -213,7 +213,7 @@ TEST(SparseSpatialAssembly, stiffnessMatrix)
     meshHierarchy->addMesh(mesh1);
     meshHierarchy->addMesh(mesh2);
     meshHierarchy->addMesh(mesh3);
-    meshHierarchy->buildHierarchicalTranformations();
+    meshHierarchy->finalize();
 
     auto nestedFEHierarchy
             = std::make_shared<NestedFEHierarchy>(meshHierarchy);
@@ -382,7 +382,7 @@ TEST(SparseSpatialAssembly, vectorFEMassMatrix)
     meshHierarchy->addMesh(mesh1);
     meshHierarchy->addMesh(mesh2);
     meshHierarchy->addMesh(mesh3);
-    meshHierarchy->buildHierarchicalTranformations();
+    meshHierarchy->finalize();
 
     auto nestedFEHierarchy
             = std::make_shared<NestedFEHierarchy>(meshHierarchy);
@@ -473,7 +473,7 @@ TEST(SparseSpatialAssembly, vectorFEStiffnessMatrix)
     meshHierarchy->addMesh(mesh1);
     meshHierarchy->addMesh(mesh2);
     meshHierarchy->addMesh(mesh3);
-    meshHierarchy->buildHierarchicalTranformations();
+    meshHierarchy->finalize();
 
     auto nestedFEHierarchy
             = std::make_shared<NestedFEHierarchy>(meshHierarchy);
@@ -569,7 +569,7 @@ TEST(SparseSpatialAssembly, vectorFEGradientMatrix)
     meshHierarchy->addMesh(mesh1);
     meshHierarchy->addMesh(mesh2);
     meshHierarchy->addMesh(mesh3);
-    meshHierarchy->buildHierarchicalTranformations();
+    meshHierarchy->finalize();
 
     int dim = mesh1->Dimension();
 
@@ -694,7 +694,7 @@ TEST(SparseSpatialAssembly, vectorFEDivergenceMatrix)
     meshHierarchy->addMesh(mesh1);
     meshHierarchy->addMesh(mesh2);
     meshHierarchy->addMesh(mesh3);
-    meshHierarchy->buildHierarchicalTranformations();
+    meshHierarchy->finalize();
 
     int dim = mesh1->Dimension();
 

@@ -4,6 +4,23 @@
 #include "../heat/coefficients.hpp"
 
 
+sparseHeat::LsqSparseXtFemH1Hdiv
+:: LsqSparseXtFemH1Hdiv
+(const nlohmann::json & config,
+ std::shared_ptr<heat::TestCases> & testCase)
+    : LsqSparseXtFem(config, testCase)
+{}
+
+sparseHeat::LsqSparseXtFemH1Hdiv
+:: LsqSparseXtFemH1Hdiv
+(const nlohmann::json & config,
+ std::shared_ptr<heat::TestCases> & testCase,
+ std::shared_ptr<mymfem::NestedMeshHierarchy> & spatialMeshHierachy)
+    : LsqSparseXtFemH1Hdiv(config, testCase)
+{
+    setNestedFEHierarchyAndSpatialBoundaryDofs(spatialMeshHierachy);
+}
+
 void sparseHeat::LsqSparseXtFemH1Hdiv
 :: setNestedFEHierarchyForHeatFlux
 (std::shared_ptr<mymfem::NestedMeshHierarchy>& spatialNestedMeshHierarchy)

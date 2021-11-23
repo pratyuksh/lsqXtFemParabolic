@@ -17,7 +17,7 @@ TEST(SparseDiscretisation, buildH1Hdiv)
 {
     // config and test case
     std::string configFile
-            = "../config_files/unit_tests/sparseHeat_square_test1.json";
+            = "../config_files/unit_tests/sparseHeat_dummy.json";
     auto config = getGlobalConfig(configFile);
     auto testCase = heat::makeTestCase(config);
 
@@ -42,7 +42,7 @@ TEST(SparseDiscretisation, buildH1Hdiv)
     spatialMeshHierarchy->addMesh(spatialMesh1);
     spatialMeshHierarchy->addMesh(spatialMesh2);
     spatialMeshHierarchy->addMesh(spatialMesh3);
-    spatialMeshHierarchy->buildHierarchicalTranformations();
+    spatialMeshHierarchy->finalize();
 
     // temporal hierarchy info
     int minTemporalLevel = 1;

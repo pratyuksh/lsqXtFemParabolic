@@ -10,5 +10,5 @@ target_sources(unit_tests
   PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/test_sparse_temporal_assembly.cpp
   PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/test_sparse_solution_handler.cpp  
   PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/test_sparse_discretisation.cpp
-  
+  PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/test_sparse_solver.cpp
 )

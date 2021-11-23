@@ -5,5 +5,6 @@ target_sources(SparseHeatObj
   PRIVATE ${CMAKE_CURRENT_LIST_DIR}/discretisation.cpp
   PRIVATE ${CMAKE_CURRENT_LIST_DIR}/discretisation_H1Hdiv.cpp
   PRIVATE ${CMAKE_CURRENT_LIST_DIR}/observer.cpp
+  PRIVATE ${CMAKE_CURRENT_LIST_DIR}/solver.cpp
   PRIVATE ${CMAKE_CURRENT_LIST_DIR}/utilities.cpp
 )

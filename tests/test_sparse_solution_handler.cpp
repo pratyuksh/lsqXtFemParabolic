@@ -38,7 +38,7 @@ TEST(SolutionHandler, dataSizes)
     meshHierarchy->addMesh(mesh1);
     meshHierarchy->addMesh(mesh2);
     meshHierarchy->addMesh(mesh3);
-    meshHierarchy->buildHierarchicalTranformations();
+    meshHierarchy->finalize();
 
     int dim = mesh1->Dimension();
     

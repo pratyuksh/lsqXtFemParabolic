@@ -39,6 +39,16 @@ sparseHeat::LsqSparseXtFem
 }
 
 sparseHeat::LsqSparseXtFem
+:: LsqSparseXtFem
+(const nlohmann::json & config,
+ std::shared_ptr<heat::TestCases> & testCase,
+ std::shared_ptr<mymfem::NestedMeshHierarchy> & spatialMeshHierachy)
+    : LsqSparseXtFem(config, testCase)
+{
+    setNestedFEHierarchyAndSpatialBoundaryDofs(spatialMeshHierachy);
+}
+
+sparseHeat::LsqSparseXtFem
 :: ~LsqSparseXtFem()
 {
     if (m_systemBlock11) {

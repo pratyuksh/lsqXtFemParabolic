@@ -38,7 +38,7 @@ TEST(MyBilinearForms, BlockBilinearForm)
     meshHierarchy->addMesh(mesh1);
     meshHierarchy->addMesh(mesh2);
     meshHierarchy->addMesh(mesh3);
-    meshHierarchy->buildHierarchicalTranformations();
+    meshHierarchy->finalize();
 
     std::shared_ptr<NestedFEHierarchy> nestedFEHierarchy
             = std::make_shared<NestedFEHierarchy> (meshHierarchy);
@@ -105,7 +105,7 @@ TEST(MyBilinearForms, BlockMixedBilinearForm)
     meshHierarchy->addMesh(mesh1);
     meshHierarchy->addMesh(mesh2);
     meshHierarchy->addMesh(mesh3);
-    meshHierarchy->buildHierarchicalTranformations();
+    meshHierarchy->finalize();
 
     int dim = mesh1->Dimension();
 
