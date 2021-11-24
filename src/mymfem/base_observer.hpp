@@ -23,6 +23,12 @@ public:
     /**
      * @brief Custom constructor.
      * @param config JSON configuration file.
+     */
+    BaseObserver (const nlohmann::json&);
+
+    /**
+     * @brief Custom constructor.
+     * @param config JSON configuration file.
      * @param lx spatial mesh discretisation level.
      */
     BaseObserver (const nlohmann::json&, int);

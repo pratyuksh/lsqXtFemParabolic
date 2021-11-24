@@ -132,7 +132,7 @@ void sparseHeat::Solver
 void sparseHeat::Solver
 :: setObserver()
 {
-    m_observer = std::make_shared<sparseHeat::Observer>();
+    m_observer = std::make_shared<sparseHeat::Observer>(m_config);
 }
 
 // Runs the solver and computes the error
@@ -142,9 +142,7 @@ sparseHeat::Solver
 {
     run();
 
-//    auto solutionError = evalError();
-    Eigen::VectorXd solutionError(2);
-    solutionError.setZero();
+    auto solutionError = evalError();
 
     visualizeSolutionAtEndTime();
 

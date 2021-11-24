@@ -19,6 +19,9 @@ class Observer : public mymfem::BaseObserver
 {
 public:
     Observer () : BaseObserver () {}
+
+    Observer (const nlohmann::json& config)
+              : BaseObserver (config) {}
 };
 
 }

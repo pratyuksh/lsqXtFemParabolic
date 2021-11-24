@@ -14,7 +14,8 @@ TEST(SparseSolver, buildComponentsAndRun)
 {
     // config and test case
     std::string configFile
-            = "../config_files/unit_tests/sparse_solver/sparseHeat_square_test1.json";
+            = "../config_files/unit_tests/"
+              "sparse_solver/sparseHeat_square_test1.json";
     auto config = getGlobalConfig(configFile);
     auto testCase = heat::makeTestCase(config);
 
