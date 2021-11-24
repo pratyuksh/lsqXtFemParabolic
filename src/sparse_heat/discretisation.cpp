@@ -291,25 +291,9 @@ void sparseHeat::LsqSparseXtFem
                                               temporalBlockSizes);
     auto blockOffsets = evalBlockOffsets(blockSizes);
 
-    auto buf = std::make_unique<BlockMatrix>(blockOffsets);
-    // block11 = M^t_{\ell1, \ell2} \otimes K^{x;(1,1)}_{L-\ell1, L-\ell2}
-    for (int i=0; i<m_numLevels; i++)
-    {
-        int ii = getSpatialIndex(i);
-        for (int j=0; j<m_numLevels; j++)
-        {
-            int jj = getSpatialIndex(j);
-            auto mat = OuterProduct(m_temporalMass->GetBlock(i, j),
-                                    m_spatialStiffness1->GetBlock(ii, jj));
-            buf->SetBlock(i, j, mat);
-        }
-    }
-    buf->owns_blocks = true;
-    m_systemBlock11 = buf->CreateMonolithic();
-
-    // block11 += (K^t_{\ell1, \ell2} + E^t_{\ell1, \ell2})
+    // tmp1 = (K^t_{\ell1, \ell2} + E^t_{\ell1, \ell2})
     //            \otimes M^{x; (1,1)}_{L-\ell1, L-\ell2}
-    buf.reset(new BlockMatrix(blockOffsets));
+    auto buf = std::make_unique<BlockMatrix>(blockOffsets);
     for (int i=0; i<m_numLevels; i++)
     {
         int ii = getSpatialIndex(i);
@@ -324,9 +308,28 @@ void sparseHeat::LsqSparseXtFem
         }
     }
     buf->owns_blocks = true;
-    auto tmp = buf->CreateMonolithic();
-    m_systemBlock11->Add(1., *tmp);
-    delete tmp;
+    auto tmp1 = buf->CreateMonolithic();
+
+    // tmp2 = M^t_{\ell1, \ell2} \otimes K^{x;(1,1)}_{L-\ell1, L-\ell2}
+    buf.reset(new BlockMatrix(blockOffsets));
+    for (int i=0; i<m_numLevels; i++)
+    {
+        int ii = getSpatialIndex(i);
+        for (int j=0; j<m_numLevels; j++)
+        {
+            int jj = getSpatialIndex(j);
+            auto mat = OuterProduct(m_temporalMass->GetBlock(i, j),
+                                    m_spatialStiffness1->GetBlock(ii, jj));
+            buf->SetBlock(i, j, mat);
+        }
+    }
+    buf->owns_blocks = true;
+    auto tmp2 = buf->CreateMonolithic();
+
+    m_systemBlock11 = Add(*tmp1, *tmp2);
+
+    delete tmp1;
+    delete tmp2;
 }
 
 void sparseHeat::LsqSparseXtFem
@@ -382,12 +385,9 @@ void sparseHeat::LsqSparseXtFem
     auto rowBlockOffsets = evalBlockOffsets(rowBlockSizes);
     auto colBlockOffsets = evalBlockOffsets(colBlockSizes);
 
-//    rowBlockSizes.Print();
-//    colBlockSizes.Print();
-
     auto buf = std::make_unique<BlockMatrix>(rowBlockOffsets,
                                              colBlockOffsets);
-    // block12 = (C^t_{\ell1, \ell2})^{\top}
+    // tmp1 = (C^t_{\ell1, \ell2})^{\top}
     //           \otimes B^{x; (1,2)}_{L-\ell1, L-\ell2})
     for (int i=0; i<m_numLevels; i++)
     {
@@ -409,9 +409,9 @@ void sparseHeat::LsqSparseXtFem
         }
     }
     buf->owns_blocks = true;
-    m_systemBlock12 = buf->CreateMonolithic();
+    auto tmp1 = buf->CreateMonolithic();
 
-    // block12 += (M^t_{\ell1, \ell2})^{\top}
+    // tmp2 = (M^t_{\ell1, \ell2})^{\top}
     //           \otimes C^{x; (1,2)}_{L-\ell1, L-\ell2}
     buf.reset(new BlockMatrix(rowBlockOffsets, colBlockOffsets));
     for (int i=0; i<m_numLevels; i++)
@@ -427,9 +427,12 @@ void sparseHeat::LsqSparseXtFem
         }
     }
     buf->owns_blocks = true;
-    auto tmp = buf->CreateMonolithic();
-    m_systemBlock12->Add(1., *tmp);
-    delete tmp;
+    auto tmp2 = buf->CreateMonolithic();
+
+    m_systemBlock12 = Add(-1., *tmp1, -1., *tmp2);
+
+    delete tmp1;
+    delete tmp2;
 }
 
 void sparseHeat::LsqSparseXtFem
@@ -446,13 +449,11 @@ int sparseHeat::LsqSparseXtFem
 void sparseHeat::LsqSparseXtFem
 :: assembleRhs(std::shared_ptr<BlockVector>& B) const
 {
-    (*B) = 0.;
-
     Vector &B0 = B->GetBlock(0);
     assembleICs(B0);
 
-//    Vector &B1 = B->GetBlock(1);
-//    assembleSource(B1);
+    Vector &B1 = B->GetBlock(1);
+    assembleSource(B1);
 
     applyBCs(*B);
 }

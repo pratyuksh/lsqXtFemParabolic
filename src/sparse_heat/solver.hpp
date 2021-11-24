@@ -59,10 +59,13 @@ public:
     void solve();
     void solve(const Vector&, Vector&);
     void setPardisoSolver();
+    void finalizePardisoSolver();
 
     //! Computes error
     Eigen::VectorXd evalError();
     Eigen::VectorXd evalError(BlockVector&);
+
+    void visualizeSolutionAtEndTime();
 
 private:
     double getMeshwidthOfFinestSpatialMesh();
@@ -121,16 +124,16 @@ private:
     std::shared_ptr<mymfem::NestedMeshHierarchy> m_spatialMeshHierarchy;
 
     std::shared_ptr<sparseHeat::LsqSparseXtFem> m_disc;
-//    std::shared_ptr<heat::Observer> m_observer;
+    std::shared_ptr<sparseHeat::Observer> m_observer;
 
     std::unique_ptr<sparseHeat::SolutionHandler> m_solutionHandler;
     std::shared_ptr <BlockVector> m_rhs;
 
-    BlockOperator *m_systemOp = nullptr;
     SparseMatrix *m_systemMat = nullptr;
+//    BlockOperator *m_systemOp = nullptr;
 
-    std::shared_ptr <GridFunction> m_temperature;
-    std::shared_ptr <GridFunction> m_flux;
+    std::shared_ptr <GridFunction> m_temperatureAtEndTime;
+    std::shared_ptr <GridFunction> m_heatFluxAtEndTime;
 
 #ifdef PARDISO_HPP
     std::unique_ptr<PardisoSolver> m_pardisoSolver;

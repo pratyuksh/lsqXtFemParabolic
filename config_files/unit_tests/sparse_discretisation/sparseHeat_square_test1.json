@@ -1,0 +1,14 @@
+{
+    "host": "local",
+    
+    "problem_type": "unitSquare_test1",
+    
+    "run": "simulation",
+    "end_time": 0.1,
+    
+    "deg": 1,
+    "num_levels": 1,
+    "min_spatial_level": 1,
+    "min_temporal_level": 1,
+    "mesh_elem_type": "tri"
+}

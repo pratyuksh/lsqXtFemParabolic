@@ -25,6 +25,7 @@ sparseHeat::Solver
     setConfigParams();
     setMeshHierarchy();
     setDiscretisation();
+    setObserver();
 }
 
 sparseHeat::Solver
@@ -37,9 +38,9 @@ void sparseHeat::Solver
     m_endTime = m_config["end_time"];
 
     m_meshElemType = "tri";
-    if (m_config.contains("mesh_elem_type")) {
-        m_meshElemType = m_config["mesh_elem_type"];
-    }
+//    if (m_config.contains("mesh_elem_type")) {
+//        m_meshElemType = m_config["mesh_elem_type"];
+//    }
 
     m_discType = "H1Hdiv";
     if (m_config.contains("discretisation_type")) {
@@ -76,8 +77,10 @@ void sparseHeat::Solver
 #ifndef NDEBUG
         std::cout << "  Initial mesh file: "
                   << meshFile << std::endl;
-        std::cout << "  Number of refinement levels: "
-                  << m_numLevels-1 << std::endl;
+        std::cout << "  Minimum refinement level: "
+                  << m_minSpatialLevel << std::endl;
+        std::cout << "  Maximum refinement level: "
+                  << m_minSpatialLevel + m_numLevels-1 << std::endl;
 #endif
         // add coarsest spatial mesh to hierarchy
         auto xMesh = std::make_shared<Mesh>(meshFile.c_str());
@@ -129,7 +132,7 @@ void sparseHeat::Solver
 void sparseHeat::Solver
 :: setObserver()
 {
-    // TODO
+    m_observer = std::make_shared<sparseHeat::Observer>();
 }
 
 // Runs the solver and computes the error
@@ -143,6 +146,8 @@ sparseHeat::Solver
     Eigen::VectorXd solutionError(2);
     solutionError.setZero();
 
+    visualizeSolutionAtEndTime();
+
     double htMax = m_endTime/std::pow(2, m_maxTemporalLevel);
     double hxMax = getMeshwidthOfFinestSpatialMesh();
 
@@ -155,8 +160,8 @@ void sparseHeat::Solver
 {
     initialize ();
     assembleSystem();
-//    assembleRhs();
-//    solve();
+    assembleRhs();
+    solve();
 }
 
 void sparseHeat::Solver
@@ -185,16 +190,15 @@ void sparseHeat::Solver
 :: assembleSystem()
 {
     m_disc->assembleSystemSubMatrices();
-//    m_disc->buildSystemMatrix();
 
-//    if (m_linearSolver == "pardiso")
-//    {
-//        m_disc->buildSystemMatrix();
-//        m_systemMat = m_disc->getSystemMatrix();
-//    }
-//    else if (m_linearSolver == "cg") {
-//        // TODO
-//    }
+    if (m_linearSolver == "pardiso")
+    {
+        m_disc->buildSystemMatrix();
+        m_systemMat = m_disc->getSystemMatrix();
+    }
+    else if (m_linearSolver == "cg") {
+        // TODO
+    }
 }
 
 void sparseHeat::Solver
@@ -225,6 +229,7 @@ void sparseHeat::Solver
     if (m_linearSolver == "pardiso")
     {
         setPardisoSolver();
+        m_systemMat->SortColumnIndices();
         m_pardisoSolver->initialize(m_systemMat->Size(),
                                     m_systemMat->GetI(),
                                     m_systemMat->GetJ(),
@@ -232,10 +237,26 @@ void sparseHeat::Solver
         m_pardisoSolver->factorize();
         m_pardisoSolver->solve(rhs.GetData(), u.GetData());
 //        memoryUsage = m_pardisoSolver->getMemoryUsage();
+        finalizePardisoSolver();
     }
     else if (m_linearSolver == "cg") {
         // TODO
     }
+}
+
+void sparseHeat::Solver
+:: setPardisoSolver()
+{
+    int mtype = 1; // real structurally symmetric
+//        int mtype = 2; // real symmetric positive definite
+//        int mtype = -2; // real symmetric indefinite
+    m_pardisoSolver
+            = std::make_unique<PardisoSolver>(mtype);
+}
+
+void sparseHeat::Solver
+:: finalizePardisoSolver() {
+    m_pardisoSolver->finalize();
 }
 
 Eigen::VectorXd sparseHeat::Solver
@@ -257,13 +278,19 @@ Eigen::VectorXd sparseHeat::Solver
 }
 
 void sparseHeat::Solver
-:: setPardisoSolver()
+:: visualizeSolutionAtEndTime()
 {
-    int mtype = 1; // real structurally symmetric
-//        int mtype = 2; // real symmetric positive definite
-//        int mtype = -2; // real symmetric indefinite
-    m_pardisoSolver
-            = std::make_unique<PardisoSolver>(mtype);
+    auto spatialFESpacesForTemperature
+            = m_disc->getSpatialNestedFEHierarchyForTemperature()
+            ->getFESpaces();
+    auto temperatureDataAtEndTime
+            = m_solutionHandler->getTemperatureDataAtEndTime();
+
+    m_temperatureAtEndTime
+            = std::make_shared<GridFunction>
+            (spatialFESpacesForTemperature[m_numLevels-1].get(),
+            temperatureDataAtEndTime.GetData());
+    m_observer->visualize(m_temperatureAtEndTime);
 }
 
 double sparseHeat::Solver

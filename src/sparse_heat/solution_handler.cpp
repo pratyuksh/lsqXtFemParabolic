@@ -32,6 +32,7 @@ sparseHeat::SolutionHandler
     blockOffsets[2] = blockOffsets[1] + heatFluxDataSize;
 
     m_data = std::make_shared<BlockVector>(blockOffsets);
+    (*m_data) = 0.;
 }
 
 Vector sparseHeat::SolutionHandler
@@ -42,9 +43,12 @@ Vector sparseHeat::SolutionHandler
      int sizeTemporalCoarsest = m_temporalHierarchicalFESizes[0];
      int sizeSpatialFinest = m_spatialFESizesTemperature[m_numLevels-1];
 
-     Vector temperatureAtEndTime(temperatureData.GetData()
-                                 + (sizeTemporalCoarsest-1)*sizeSpatialFinest,
+     int shift = (sizeTemporalCoarsest-1)*sizeSpatialFinest;
+     Vector temperatureAtEndTime(temperatureData.GetData() + shift,
                                  sizeSpatialFinest);
+//     std::cout << sizeTemporalCoarsest << "\t"
+//               << sizeSpatialFinest << "\t"
+//               << shift << std::endl;
 
      return temperatureAtEndTime;
 }
@@ -57,9 +61,9 @@ Vector sparseHeat::SolutionHandler
      int sizeTemporalCoarsest = m_temporalHierarchicalFESizes[0];
      int sizeSpatialFinest = m_spatialFESizesHeatFlux[m_numLevels-1];
 
-     Vector heatFluxAtEndTime(heatFluxData.GetData()
-                                 + (sizeTemporalCoarsest-1)*sizeSpatialFinest,
-                                 sizeSpatialFinest);
+     int shift = (sizeTemporalCoarsest-1)*sizeSpatialFinest;
+     Vector heatFluxAtEndTime(heatFluxData.GetData() + shift,
+                              sizeSpatialFinest);
 
      return heatFluxAtEndTime;
 }
