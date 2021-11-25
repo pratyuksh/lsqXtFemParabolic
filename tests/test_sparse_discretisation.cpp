@@ -111,11 +111,11 @@ TEST(SparseDiscretisation, buildH1Hdiv)
 }
 
 /**
- * @brief Tests the least-squares sparse space-time H1-Hdiv discretisation
+ * @brief Tests the least-squares sparse space-time H1-Hdiv discretisation with unitSquare_test1
  *
- * Compares the sparse and full discretisations for a single level.
+ * Compares the sparse and full discretisations for a single level, with test case unitSquare_test1
  */
-TEST(SparseDiscretisation, singleLevelH1Hdiv)
+TEST(SparseDiscretisation, singleLevelH1HdivUnitSquareTest1)
 {
     // config files for full and sparse versions
     std::string heatConfigFile
@@ -124,6 +124,125 @@ TEST(SparseDiscretisation, singleLevelH1Hdiv)
     std::string sparseHeatConfigFile
             = "../config_files/unit_tests/"
               "sparse_discretisation/sparseHeat_square_test1.json";
+    auto heatConfig = getGlobalConfig(heatConfigFile);
+    auto sparseHeatConfig = getGlobalConfig(sparseHeatConfigFile);
+
+    auto testCase = heat::makeTestCase(heatConfig);
+
+    int deg = heatConfig["deg"];
+    ASSERT_EQ(deg, 1);
+
+    int numLevels = 1;
+    int spatialLevel = heatConfig["spatial_level"];
+    int temporalLevel = heatConfig["temporal_level"];
+    ASSERT_EQ(numLevels, sparseHeatConfig["num_levels"]);
+    ASSERT_EQ(spatialLevel, sparseHeatConfig["min_spatial_level"]);
+    ASSERT_EQ(temporalLevel, sparseHeatConfig["min_temporal_level"]);
+
+    // spatial mesh hierarchy
+    std::string inputDir
+            = "../tests/input/sparse_discretisation/";
+    const std::string spatialMeshFile = inputDir+"mesh_l0.mesh";
+    auto spatialMesh
+            = std::make_shared<Mesh>(spatialMeshFile.c_str());
+    for (int m=0; m<spatialLevel; m++) {
+        spatialMesh->UniformRefinement();
+    }
+    auto spatialMeshHierarchy
+            = std::make_shared<mymfem::NestedMeshHierarchy>();
+    spatialMeshHierarchy->addMesh(spatialMesh);
+    spatialMeshHierarchy->finalize();
+
+    // temporal mesh
+    double endTime = heatConfig["end_time"];
+    int Nt = static_cast<int>(std::pow(2, temporalLevel));
+    auto temporalMesh = std::make_shared<Mesh>(Nt, endTime);
+
+    // sparse system assembly
+    std::unique_ptr<sparseHeat::LsqSparseXtFem> sparseXtDisc
+            = std::make_unique<sparseHeat::LsqSparseXtFemH1Hdiv>
+            (sparseHeatConfig, testCase, spatialMeshHierarchy);
+    sparseXtDisc->assembleSystemSubMatrices();
+    sparseXtDisc->buildSystemMatrix();
+    auto systemBlock11 = sparseXtDisc->getSystemBlock11();
+    auto systemBlock12 = sparseXtDisc->getSystemBlock12();
+    auto systemBlock21 = sparseXtDisc->getSystemBlock21();
+    auto systemBlock22 = sparseXtDisc->getSystemBlock22();
+    auto systemMat = sparseXtDisc->getSystemMatrix();
+
+    // sparse rhs assembly
+    auto spatialNestedFEHierarchyForTemperature
+            = sparseXtDisc->getSpatialNestedFEHierarchyForTemperature();
+    auto spatialNestedFEHierarchyForHeatFlux
+            = sparseXtDisc->getSpatialNestedFEHierarchyForHeatFlux();
+
+    auto solutionHandler
+            = std::make_unique<sparseHeat::SolutionHandler>
+            (temporalLevel, temporalLevel,
+             spatialNestedFEHierarchyForTemperature,
+             spatialNestedFEHierarchyForHeatFlux);
+
+    auto dataSize = solutionHandler->getDataSize();
+    auto dataOffsets = evalBlockOffsets(dataSize);
+    auto rhs = std::make_shared<BlockVector>(dataOffsets);
+    *rhs = 0.;
+    sparseXtDisc->assembleRhs(rhs);
+
+    // full system assembly
+    std::unique_ptr<heat::LsqXtFEM> fullXtDisc
+            = std::make_unique<heat::LsqXtFemH1Hdiv>
+            (heatConfig, testCase);
+    fullXtDisc->set(temporalMesh, spatialMesh);
+    fullXtDisc->assembleSystem();
+    fullXtDisc->buildSystemMatrix();
+    auto trueSystemBlock11 = fullXtDisc->getSystemBlock11();
+    auto trueSystemBlock12 = fullXtDisc->getSystemBlock12();
+    auto trueSystemBlock21 = fullXtDisc->getSystemBlock21();
+    auto trueSystemBlock22 = fullXtDisc->getSystemBlock22();
+    auto trueSystemMat = fullXtDisc->getHeatMat();
+
+    // full rhs assembly
+    auto trueRhs = std::make_shared<BlockVector>(dataOffsets);
+    *trueRhs = 0.;
+    fullXtDisc->assembleRhs(trueRhs.get());
+
+    // check
+    double tol = 1E-8;
+
+    trueSystemBlock11->Add(-1, *systemBlock11);
+    ASSERT_LE(trueSystemBlock11->MaxNorm(), tol);
+
+    trueSystemBlock12->Add(-1, *systemBlock12);
+    ASSERT_LE(trueSystemBlock12->MaxNorm(), tol);
+
+    trueSystemBlock21->Add(-1, *systemBlock21);
+    ASSERT_LE(trueSystemBlock21->MaxNorm(), tol);
+
+    trueSystemBlock22->Add(-1, *systemBlock22);
+    ASSERT_LE(trueSystemBlock22->MaxNorm(), tol);
+
+    trueSystemMat->Add(-1, *systemMat);
+    ASSERT_LE(trueSystemMat->MaxNorm(), tol);
+
+    trueRhs->Add(-1, *rhs);
+    ASSERT_LE(trueRhs->Normlinf(), tol);
+}
+
+
+/**
+ * @brief Tests the least-squares sparse space-time H1-Hdiv discretisation with unitSquare_test3
+ *
+ * Compares the sparse and full discretisations for a single level, with test case unitSquare_test3
+ */
+TEST(SparseDiscretisation, singleLevelH1HdivUnitSquareTest3)
+{
+    // config files for full and sparse versions
+    std::string heatConfigFile
+            = "../config_files/unit_tests/"
+              "sparse_discretisation/heat_square_test3.json";
+    std::string sparseHeatConfigFile
+            = "../config_files/unit_tests/"
+              "sparse_discretisation/sparseHeat_square_test3.json";
     auto heatConfig = getGlobalConfig(heatConfigFile);
     auto sparseHeatConfig = getGlobalConfig(sparseHeatConfigFile);
 

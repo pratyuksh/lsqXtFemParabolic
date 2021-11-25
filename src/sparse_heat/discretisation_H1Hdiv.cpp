@@ -2,6 +2,7 @@
 
 #include "assembly.hpp"
 #include "../heat/coefficients.hpp"
+#include "../heat/assembly.hpp"
 
 
 sparseHeat::LsqSparseXtFemH1Hdiv
@@ -108,6 +109,21 @@ void sparseHeat::LsqSparseXtFemH1Hdiv
             (spatialVectorFEDivergenceIntegator);
     spatialVectorFEDivergenceBilinearForm->assemble();
     m_spatialDivergence = spatialVectorFEDivergenceBilinearForm->getBlockMatrix();
+}
+
+void sparseHeat::LsqSparseXtFemH1Hdiv
+:: assembleSourceWithSpatialDivergenceOfHeatFluxBasisAtGivenTime
+(double t,
+ const std::shared_ptr<FiniteElementSpace>& spatialFes,
+ Vector& b) const
+{
+    LinearForm sourceForm(spatialFes.get());
+    heat::SourceCoeff sourceCoeff(m_testCase);
+    sourceCoeff.SetTime(t);
+    sourceForm.AddDomainIntegrator
+            (new heat::VectorFEDivergenceLFIntegrator(sourceCoeff, -1));
+    sourceForm.Assemble();
+    b = sourceForm.GetData();
 }
 
 // End of file

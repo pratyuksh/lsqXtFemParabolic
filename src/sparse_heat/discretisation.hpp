@@ -86,7 +86,21 @@ public:
 
 private:
     void assembleICs(Vector& b) const;
-    void assembleSource(Vector& b) const;
+
+    void assembleSource(std::shared_ptr<BlockVector>& B) const;
+    void assembleSourceWithTemporalGradientOfTemperatureBasis(Vector& b) const;
+    void assembleSourceWithTemporalGradientOfTemperatureBasisAtGivenTime
+    (double t,
+     const std::shared_ptr<FiniteElementSpace>&,
+     Vector&) const;
+
+    void assembleSourceWithSpatialDivergenceOfHeatFluxBasis(Vector& b) const;
+
+protected:
+    virtual void assembleSourceWithSpatialDivergenceOfHeatFluxBasisAtGivenTime
+    (double t,
+     const std::shared_ptr<FiniteElementSpace>&,
+     Vector&) const = 0;
 
 public:
     void applyBCs(SparseMatrix& A) const;
@@ -182,6 +196,12 @@ public:
     void assembleSpatialStiffnessForHeatFlux() override;
     void assembleSpatialGradient() override;
     void assembleSpatialDivergence() override;
+
+private:
+    void assembleSourceWithSpatialDivergenceOfHeatFluxBasisAtGivenTime
+    (double t,
+     const std::shared_ptr<FiniteElementSpace>&,
+     Vector&) const override;
 };
 
 }

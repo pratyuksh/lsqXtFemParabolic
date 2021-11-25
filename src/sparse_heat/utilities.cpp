@@ -65,3 +65,11 @@ Array<int> evalSpaceTimeBlockSizes(Array<int>& spatialBlockSizes,
 
     return spaceTimeBlockSizes;
 }
+
+double evalLeftHalfOfHatBasis(double z, double z0, double h) {
+    return (z - z0)/h;
+}
+
+double evalRightHalfOfHatBasis(double z, double z0, double h) {
+    return 1. - (z - z0)/h;
+}

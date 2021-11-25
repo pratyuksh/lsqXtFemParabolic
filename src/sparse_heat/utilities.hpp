@@ -15,5 +15,8 @@ mfem::Array<int> evalHierarchicalBlockSizes1D (int minLevel, int maxLevel);
 mfem::Array<int> evalSpaceTimeBlockSizes (mfem::Array<int>& spatialBlockSizes,
                                           mfem::Array<int>& temporalBlockSizes);
 
+double evalLeftHalfOfHatBasis(double z, double z0, double h);
+
+double evalRightHalfOfHatBasis(double z, double z0, double h);
 
 #endif

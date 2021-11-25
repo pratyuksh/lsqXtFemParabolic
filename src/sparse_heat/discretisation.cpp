@@ -16,7 +16,7 @@ sparseHeat::LsqSparseXtFem
         m_deg = config["deg"];
         if (m_deg > 1) {
             std::cerr << "The sparse implementation has only been implemented "
-                         "for polynomial degree 1" << std::endl;
+                         "for polynomial degree 1." << std::endl;
             abort();
         }
     }
@@ -452,8 +452,7 @@ void sparseHeat::LsqSparseXtFem
     Vector &B0 = B->GetBlock(0);
     assembleICs(B0);
 
-    Vector &B1 = B->GetBlock(1);
-    assembleSource(B1);
+    assembleSource(B);
 
     applyBCs(*B);
 }
@@ -478,8 +477,236 @@ void sparseHeat::LsqSparseXtFem
 }
 
 void sparseHeat::LsqSparseXtFem
-:: assembleSource(Vector& b) const
-{}
+:: assembleSource(std::shared_ptr<BlockVector>& B) const
+{
+    assembleSourceWithTemporalGradientOfTemperatureBasis(B->GetBlock(0));
+    assembleSourceWithSpatialDivergenceOfHeatFluxBasis(B->GetBlock(1));
+}
+
+void sparseHeat::LsqSparseXtFem
+:: assembleSourceWithTemporalGradientOfTemperatureBasis(Vector& b) const
+{
+    auto spatialFes = m_spatialNestedFEHierarchyTemperature->getFESpaces();
+
+    // auxiliary variables
+    Vector buf;
+    int shift = 0;
+
+    // temporal integration rule
+    int order = 4;
+    const IntegrationRule *ir
+            = &IntRules.Get(Geometry::SEGMENT, order);
+
+    auto affineTransform = [](double zLeft, double zRight, double eta) {
+      return (1 - eta) * zLeft + eta * zRight;
+    };
+
+    // coarsest temporal + finest spatial level
+    // standard FE basis at the coarsest temporal level
+    {
+        int numTemporalMeshElements
+                = static_cast<int>(std::pow(2, m_minTemporalLevel));
+        double ht = m_endTime / numTemporalMeshElements;
+
+        int spatialId = getSpatialIndex(0);
+        auto curSpatialFes = spatialFes[spatialId];
+        int curSpatialFesDim = curSpatialFes->GetTrueVSize();
+
+        buf.SetSize(curSpatialFesDim);
+        for (int n=0; n<numTemporalMeshElements; n++)
+        {
+            double tLeft = n*ht;
+            double tRight = (n+1)*ht;
+
+            Vector tmp1(b.GetData() + n*curSpatialFesDim + shift,
+                        curSpatialFesDim);
+            Vector tmp2(b.GetData() + (n+1)*curSpatialFesDim + shift,
+                        curSpatialFesDim);
+
+            for (int i=0; i<ir->GetNPoints(); i++)
+            {
+                const IntegrationPoint &ip = ir->IntPoint(i);
+                double t = affineTransform(tLeft, tRight, ip.x);
+
+                assembleSourceWithTemporalGradientOfTemperatureBasisAtGivenTime
+                        (t, curSpatialFes, buf);
+
+                // tmp1 += weight * temporalGradient1 * ht * ft
+                // temporalGradient1 * ht = -1
+                tmp1.Add(-ip.weight, buf);
+
+                // tmp2 += weight * temporalGradient2 * ht * ft
+                // temporalGradient2 * ht = +1
+                tmp2.Add(+ip.weight, buf);
+
+//                std::cout << n << "\t"
+//                          << tLeft << "\t"
+//                          << tRight << "\t"
+//                          << i << "\t"
+//                          << t << std::endl;
+            }
+        }
+        shift += (numTemporalMeshElements+1)*curSpatialFesDim;
+    }
+
+    // hierarchical temporal basis for the remaining levels
+    for (int m=1; m<m_numLevels; m++)
+    {
+        int numTemporalMeshElements
+                = static_cast<int>(std::pow(2, m_minTemporalLevel + m));
+        double ht = m_endTime / numTemporalMeshElements;
+
+        int spatialId = getSpatialIndex(m);
+        auto curSpatialFes = spatialFes[spatialId];
+        int curSpatialFesDim = curSpatialFes->GetTrueVSize();
+
+        buf.SetSize(curSpatialFesDim);
+        for (int n=0; n<numTemporalMeshElements; n++)
+        {
+            double tLeft = n*ht;
+            double tRight = (n+1)*ht;
+
+            int nn = n/2;
+            Vector tmp(b.GetData() + nn*curSpatialFesDim + shift, curSpatialFesDim);
+
+            for (int i=0; i<ir->GetNPoints(); i++)
+            {
+                const IntegrationPoint &ip = ir->IntPoint(i);
+                double t = affineTransform(tLeft, tRight, ip.x);
+
+                assembleSourceWithTemporalGradientOfTemperatureBasisAtGivenTime
+                        (t, curSpatialFes, buf);
+
+                if (n%2 == 0) {
+                    // tmp += weight * temporalGradient * ht * f(t)
+                    // temporalGradient * h = +1
+                    tmp.Add(+ip.weight, buf);
+                }
+                else {
+                    // tmp += weight * temporalGradient * ht * ft
+                    // temporalGradient * h = -1
+                    tmp.Add(-ip.weight, buf);
+                }
+            }
+        }
+        shift += (numTemporalMeshElements/2)*curSpatialFesDim;
+    }
+}
+
+void sparseHeat::LsqSparseXtFem
+:: assembleSourceWithTemporalGradientOfTemperatureBasisAtGivenTime
+(double t,
+ const std::shared_ptr<FiniteElementSpace>& spatialFes,
+ Vector& b) const
+{
+    LinearForm sourceForm(spatialFes.get());
+    heat::SourceCoeff sourceCoeff(m_testCase);
+    sourceCoeff.SetTime(t);
+    sourceForm.AddDomainIntegrator
+            (new DomainLFIntegrator(sourceCoeff, 2, 4));
+    sourceForm.Assemble();
+    b = sourceForm.GetData();
+}
+
+void sparseHeat::LsqSparseXtFem
+:: assembleSourceWithSpatialDivergenceOfHeatFluxBasis(Vector& b) const
+{
+    auto spatialFes = m_spatialNestedFEHierarchyHeatFlux->getFESpaces();
+
+    // auxiliary variables
+    Vector buf;
+    int shift = 0;
+
+    // temporal integration rule
+    int order = 4;
+    const IntegrationRule *ir
+            = &IntRules.Get(Geometry::SEGMENT, order);
+
+    auto affineTransform = [](double zLeft, double zRight, double eta) {
+      return (1 - eta) * zLeft + eta * zRight;
+    };
+
+    // coarsest temporal + finest spatial level
+    // standard FE basis at the coarsest temporal level
+    {
+        int numTemporalMeshElements
+                = static_cast<int>(std::pow(2, m_minTemporalLevel));
+        double ht = m_endTime / numTemporalMeshElements;
+
+        int spatialId = getSpatialIndex(0);
+        auto curSpatialFes = spatialFes[spatialId];
+        int curSpatialFesDim = curSpatialFes->GetTrueVSize();
+
+        buf.SetSize(curSpatialFesDim);
+        for (int n=0; n<numTemporalMeshElements; n++)
+        {
+            double tLeft = n*ht;
+            double tRight = (n+1)*ht;
+
+            Vector tmp1(b.GetData() + n*curSpatialFesDim + shift,
+                        curSpatialFesDim);
+            Vector tmp2(b.GetData() + (n+1)*curSpatialFesDim + shift,
+                        curSpatialFesDim);
+
+            for (int i=0; i<ir->GetNPoints(); i++)
+            {
+                const IntegrationPoint &ip = ir->IntPoint(i);
+                double t = affineTransform(tLeft, tRight, ip.x);
+
+                assembleSourceWithSpatialDivergenceOfHeatFluxBasisAtGivenTime
+                        (t, curSpatialFes, buf);
+
+                // tmp1 += weight * temporalBasisVal1 * ht * ft
+                tmp1.Add(ip.weight * evalRightHalfOfHatBasis(t, tLeft, ht) * ht, buf);
+
+                // tmp2 += weight * temporalBasisVal2 * ht * ft
+                tmp2.Add(+ip.weight * evalLeftHalfOfHatBasis(t, tLeft, ht) * ht, buf);
+            }
+        }
+        shift += (numTemporalMeshElements+1)*curSpatialFesDim;
+    }
+
+    // hierarchical temporal basis for the remaining levels
+    for (int m=1; m<m_numLevels; m++)
+    {
+        int numTemporalMeshElements
+                = static_cast<int>(std::pow(2, m_minTemporalLevel + m));
+        double ht = m_endTime / numTemporalMeshElements;
+
+        int spatialId = getSpatialIndex(m);
+        auto curSpatialFes = spatialFes[spatialId];
+        int curSpatialFesDim = curSpatialFes->GetTrueVSize();
+
+        buf.SetSize(curSpatialFesDim);
+        for (int n=0; n<numTemporalMeshElements; n++)
+        {
+            double tLeft = n*ht;
+            double tRight = (n+1)*ht;
+
+            int nn = n/2;
+            Vector tmp(b.GetData() + nn*curSpatialFesDim + shift, curSpatialFesDim);
+
+            for (int i=0; i<ir->GetNPoints(); i++)
+            {
+                const IntegrationPoint &ip = ir->IntPoint(i);
+                double t = affineTransform(tLeft, tRight, ip.x);
+
+                assembleSourceWithSpatialDivergenceOfHeatFluxBasisAtGivenTime
+                        (t, curSpatialFes, buf);
+
+                if (n%2 == 0) {
+                    // tmp += weight * temporalBasisVal * ht * f(t)
+                    tmp.Add(ip.weight * evalLeftHalfOfHatBasis(t, tLeft, ht) * ht, buf);
+                }
+                else {
+                    // tmp += weight * temporalGradient * ht * ft
+                    tmp.Add(ip.weight * evalRightHalfOfHatBasis(t, tLeft, ht) * ht, buf);
+                }
+            }
+        }
+        shift += (numTemporalMeshElements/2)*curSpatialFesDim;
+    }
+}
 
 void sparseHeat::LsqSparseXtFem
 :: applyBCs(SparseMatrix &A) const

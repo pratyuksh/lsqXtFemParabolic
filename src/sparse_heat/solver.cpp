@@ -289,6 +289,18 @@ void sparseHeat::Solver
             (spatialFESpacesForTemperature[m_numLevels-1].get(),
             temperatureDataAtEndTime.GetData());
     m_observer->visualize(m_temperatureAtEndTime);
+
+    auto spatialFESpacesForHeatFlux
+            = m_disc->getSpatialNestedFEHierarchyForHeatFlux()
+            ->getFESpaces();
+    auto heatFluxDataAtEndTime
+            = m_solutionHandler->getHeatFluxDataAtEndTime();
+
+    m_heatFluxAtEndTime
+            = std::make_shared<GridFunction>
+            (spatialFESpacesForHeatFlux[m_numLevels-1].get(),
+            heatFluxDataAtEndTime.GetData());
+    m_observer->visualize(m_heatFluxAtEndTime);
 }
 
 double sparseHeat::Solver
