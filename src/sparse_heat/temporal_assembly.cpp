@@ -2,6 +2,8 @@
 
 #include "utilities.hpp"
 
+using namespace mfem;
+
 
 sparseHeat::TemporalBlockMatrixAssembler
 :: TemporalBlockMatrixAssembler(double T, int minLevel, int maxLevel)

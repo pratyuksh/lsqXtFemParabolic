@@ -2,7 +2,6 @@
 #define SPARSE_HEAT_TEMPORAL_ASSEMBLY_HPP
 
 #include "mfem.hpp"
-using namespace mfem;
 
 #include <memory>
 
@@ -32,17 +31,17 @@ public:
     void allocateBlockMatrix();
 
     //! Returns the block sizes
-    Array<int> getBlockSizes() {
+    mfem::Array<int> getBlockSizes() {
         return m_blockSizes;
     }
 
     //! Returns the block offsets
-    Array<int> getBlockOffsets() {
+    mfem::Array<int> getBlockOffsets() {
         return m_blockOffsets;
     }
 
     //! Returns the block-matrix
-    std::shared_ptr<BlockMatrix> getBlockMatrix() {
+    std::shared_ptr<mfem::BlockMatrix> getBlockMatrix() {
          return m_blockMatrix;
     }
      
@@ -50,13 +49,13 @@ protected:
     double m_endTime;
     int m_numLevels, m_minLevel, m_maxLevel;
 
-    Array<int> m_numMeshElements;
-    Array<double> m_meshSizes;
+    mfem::Array<int> m_numMeshElements;
+    mfem::Array<double> m_meshSizes;
 
-    Array<int> m_blockSizes;
-    Array<int> m_blockOffsets;
+    mfem::Array<int> m_blockSizes;
+    mfem::Array<int> m_blockOffsets;
 
-    std::shared_ptr<BlockMatrix> m_blockMatrix;
+    std::shared_ptr<mfem::BlockMatrix> m_blockMatrix;
 };
 
 

@@ -1,6 +1,8 @@
 #include "spatial_assembly.hpp"
 #include <assert.h>
 
+using namespace mfem;
+
 
 // Mass Integrator
 void sparseHeat::SpatialMassIntegrator

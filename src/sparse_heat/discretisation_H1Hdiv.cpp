@@ -4,6 +4,8 @@
 #include "../heat/coefficients.hpp"
 #include "../heat/assembly.hpp"
 
+using namespace mfem;
+
 
 sparseHeat::LsqSparseXtFemH1Hdiv
 :: LsqSparseXtFemH1Hdiv

@@ -66,10 +66,54 @@ Array<int> evalSpaceTimeBlockSizes(Array<int>& spatialBlockSizes,
     return spaceTimeBlockSizes;
 }
 
+
+mfem::Array<double> evalTemporalMeshSizes (double endTime,
+                                           int minTemporalLevel,
+                                           int numLevels)
+{
+     mfem::Array<double> temporalMeshSizes(numLevels);
+
+    temporalMeshSizes[0] = endTime / std::pow(2, minTemporalLevel);
+    for (int m=1; m<numLevels; m++) {
+        temporalMeshSizes[m] = temporalMeshSizes[m-1] / 2;
+    }
+
+    return temporalMeshSizes;
+}
+
+void evalTemporalElIds(int finestTemporalElId,
+                       Array<int> &temporalElIds)
+{
+    int numLevels = temporalElIds.Size();
+
+    temporalElIds[numLevels-1] = finestTemporalElId;
+    for (int m=numLevels-2; m>=0; m--) {
+        temporalElIds[m] = temporalElIds[m+1] / 2;
+    }
+}
+
+void evalTemporalElLeftEdgeCoords
+(const Array<double> &temporalMeshSizes,
+ const Array<int> &temporalElIds,
+ Array<double> &temporalElLeftEdgeCoords)
+{
+    int numLevels = temporalMeshSizes.Size();
+
+    for (int m=0; m<numLevels; m++) {
+        temporalElLeftEdgeCoords[m]
+                = temporalElIds[m] * temporalMeshSizes[m];
+    }
+}
+
+
 double evalLeftHalfOfHatBasis(double z, double z0, double h) {
     return (z - z0)/h;
 }
 
 double evalRightHalfOfHatBasis(double z, double z0, double h) {
     return 1. - (z - z0)/h;
+}
+
+double affineTransform(double zLeft, double zRight, double eta) {
+    return (1 - eta) * zLeft + eta * zRight;
 }

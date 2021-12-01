@@ -2,7 +2,6 @@
 #define SPARSE_HEAT_SOLUTION_HANDLER_HPP
 
 #include "mfem.hpp"
-using namespace mfem;
 
 #include "../mymfem/nested_hierarchy.hpp"
 
@@ -15,14 +14,20 @@ class SolutionHandler
 public:
     SolutionHandler
     (int minLevel, int maxLevel,
-     std::shared_ptr<mymfem::NestedFEHierarchy>& spatialNestedFEHierarchyTemperature,
-     std::shared_ptr<mymfem::NestedFEHierarchy>& spatialNestedFEHierarchyHeatFlux);
+     std::shared_ptr<mymfem::NestedFEHierarchy>&
+     spatialNestedFEHierarchyTemperature,
+     std::shared_ptr<mymfem::NestedFEHierarchy>&
+     spatialNestedFEHierarchyHeatFlux);
 
-    Vector getTemperatureDataAtEndTime();
+    mfem::Vector getTemperatureDataAtEndTime() const;
 
-    Vector getHeatFluxDataAtEndTime();
+    mfem::Vector getHeatFluxDataAtEndTime() const;
 
-    Vector& getTemperatureData() {
+    const mfem::Vector& getTemperatureData() const {
+        return m_data->GetBlock(0);
+    }
+
+    mfem::Vector& getTemperatureData() {
         return m_data->GetBlock(0);
     }
 
@@ -30,7 +35,11 @@ public:
         return (m_data->GetBlock(0)).Size();
     }
 
-    Vector& getHeatFluxData() {
+    const mfem::Vector& getHeatFluxData() const {
+        return m_data->GetBlock(1);
+    }
+
+    mfem::Vector& getHeatFluxData() {
         return m_data->GetBlock(1);
     }
 
@@ -38,24 +47,24 @@ public:
         return (m_data->GetBlock(1)).Size();
     }
 
-    std::shared_ptr<BlockVector> getData() const {
+    std::shared_ptr<mfem::BlockVector> getData() const {
         return m_data;
     }
 
-    Array<int> getDataSize() {
-        Array<int> blockSizes(2);
+    mfem::Array<int> getDataSize() {
+        mfem::Array<int> blockSizes(2);
         blockSizes[0] = (m_data->GetBlock(0)).Size();
         blockSizes[1] = (m_data->GetBlock(1)).Size();
         return blockSizes;
     }
 
 private:
-    std::shared_ptr<BlockVector> m_data;
+    std::shared_ptr<mfem::BlockVector> m_data;
 
     int m_numLevels;
-    Array<int> m_temporalHierarchicalFESizes;
-    Array<int> m_spatialFESizesTemperature;
-    Array<int> m_spatialFESizesHeatFlux;
+    mfem::Array<int> m_temporalHierarchicalFESizes;
+    mfem::Array<int> m_spatialFESizesTemperature;
+    mfem::Array<int> m_spatialFESizesHeatFlux;
 };
 
 }

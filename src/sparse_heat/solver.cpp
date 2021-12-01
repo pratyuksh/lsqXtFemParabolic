@@ -3,6 +3,8 @@
 #include <iostream>
 #include "utilities.hpp"
 
+using namespace mfem;
+
 
 sparseHeat::Solver
 :: Solver (const nlohmann::json& config,
@@ -25,7 +27,6 @@ sparseHeat::Solver
     setConfigParams();
     setMeshHierarchy();
     setDiscretisation();
-    setObserver();
 }
 
 sparseHeat::Solver
@@ -50,16 +51,6 @@ void sparseHeat::Solver
     m_linearSolver = "pardiso";
     if (m_config.contains("linear_solver")) {
         m_linearSolver = m_config["linear_solver"];
-    }
-
-    m_boolError = false;
-    if (m_config.contains("eval_error")) {
-        m_boolError = m_config["eval_error"];
-    }
-
-    m_errorType = "H1";
-    if (m_config.contains("error_type")) {
-        m_errorType = m_config["error_type"];
     }
 }
 
@@ -129,29 +120,6 @@ void sparseHeat::Solver
     }
 }
 
-void sparseHeat::Solver
-:: setObserver()
-{
-    m_observer = std::make_shared<sparseHeat::Observer>(m_config);
-}
-
-// Runs the solver and computes the error
-std::tuple<int, double, double, Eigen::VectorXd>
-sparseHeat::Solver
-:: operator() ()
-{
-    run();
-
-    auto solutionError = evalError();
-
-    visualizeSolutionAtEndTime();
-
-    double htMax = m_endTime/std::pow(2, m_maxTemporalLevel);
-    double hxMax = getMeshwidthOfFinestSpatialMesh();
-
-    return {getNumDofs(), htMax, hxMax, solutionError};
-}
-
 // Runs the solver
 void sparseHeat::Solver
 :: run()
@@ -173,7 +141,7 @@ void sparseHeat::Solver
 
     // solution data handler
     m_solutionHandler
-            = std::make_unique<sparseHeat::SolutionHandler>
+            = std::make_shared<sparseHeat::SolutionHandler>
             (m_minTemporalLevel, m_maxTemporalLevel,
              spatialNestedFEHierarchyForTemperature,
              spatialNestedFEHierarchyForHeatFlux);
@@ -257,50 +225,9 @@ void sparseHeat::Solver
     m_pardisoSolver->finalize();
 }
 
-Eigen::VectorXd sparseHeat::Solver
-:: evalError()
-{
-    auto U = m_solutionHandler->getData();
-    return evalError(*U);
-}
-
-Eigen::VectorXd sparseHeat::Solver
-:: evalError(BlockVector& U)
-{
-    Eigen::VectorXd errorBuf(2);
-    errorBuf.setZero();
-
-    // TODO: call error computation from observer
-
-    return errorBuf;
-}
-
-void sparseHeat::Solver
-:: visualizeSolutionAtEndTime()
-{
-    auto spatialFESpacesForTemperature
-            = m_disc->getSpatialNestedFEHierarchyForTemperature()
-            ->getFESpaces();
-    auto temperatureDataAtEndTime
-            = m_solutionHandler->getTemperatureDataAtEndTime();
-
-    m_temperatureAtEndTime
-            = std::make_shared<GridFunction>
-            (spatialFESpacesForTemperature[m_numLevels-1].get(),
-            temperatureDataAtEndTime.GetData());
-    m_observer->visualize(m_temperatureAtEndTime);
-
-    auto spatialFESpacesForHeatFlux
-            = m_disc->getSpatialNestedFEHierarchyForHeatFlux()
-            ->getFESpaces();
-    auto heatFluxDataAtEndTime
-            = m_solutionHandler->getHeatFluxDataAtEndTime();
-
-    m_heatFluxAtEndTime
-            = std::make_shared<GridFunction>
-            (spatialFESpacesForHeatFlux[m_numLevels-1].get(),
-            heatFluxDataAtEndTime.GetData());
-    m_observer->visualize(m_heatFluxAtEndTime);
+double sparseHeat::Solver
+:: getMeshwidthOfFinestTemporalMesh() {
+    return (m_endTime/std::pow(2, m_maxTemporalLevel));
 }
 
 double sparseHeat::Solver

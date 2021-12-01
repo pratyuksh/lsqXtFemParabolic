@@ -2,7 +2,6 @@
 #define SPARSE_HEAT_SPATIAL_ASSEMBLY_HPP
 
 #include "mfem.hpp"
-using namespace mfem;
 
 #include "../mymfem/my_bilinearForms.hpp"
 
@@ -20,14 +19,14 @@ public:
 
     //! Assembles the mass integrator on an element
     void assembleElementMatrix
-    (const FiniteElement &, ElementTransformation &,
-     DenseMatrix &) override;
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override;
 
     //! Assembles the mass integrator between two nested mesh elements
     void assembleElementMatrix
-    (const FiniteElement &, ElementTransformation &,
-     const FiniteElement &, ElementTransformation &,
-     DenseMatrix &) override;
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override;
 };
 
 
@@ -41,35 +40,35 @@ public:
     explicit SpatialStiffnessIntegrator() {}
 
     //! Constructor with material coefficent matrix passed as a pointer
-    explicit SpatialStiffnessIntegrator(MatrixCoefficient *M)
+    explicit SpatialStiffnessIntegrator(mfem::MatrixCoefficient *M)
         : m_matrixCoeff(M) {}
 
     //! Constructor with material coefficent matrix passed by reference
-    explicit SpatialStiffnessIntegrator(MatrixCoefficient& M)
+    explicit SpatialStiffnessIntegrator(mfem::MatrixCoefficient& M)
         : m_matrixCoeff(&M) {}
 
     //! Constructor with scalar material coefficient passed as a pointer
-    explicit SpatialStiffnessIntegrator(Coefficient *q)
+    explicit SpatialStiffnessIntegrator(mfem::Coefficient *q)
         : m_scalarCoeff(q) {}
 
     //! Constructor with scalar material coefficient passed by reference
-    explicit SpatialStiffnessIntegrator(Coefficient& q)
+    explicit SpatialStiffnessIntegrator(mfem::Coefficient& q)
         : m_scalarCoeff(&q) {}
 
     //! Assembles the stiffness integrator on an element
     void assembleElementMatrix
-    (const FiniteElement &, ElementTransformation &,
-     DenseMatrix &) override;
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override;
 
     //! Assembles the stiffness integrator between two nested mesh elements
     void assembleElementMatrix
-    (const FiniteElement &, ElementTransformation &,
-     const FiniteElement &, ElementTransformation &,
-     DenseMatrix &) override;
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override;
 
 private:
-    MatrixCoefficient *m_matrixCoeff = nullptr;
-    Coefficient *m_scalarCoeff = nullptr;
+    mfem::MatrixCoefficient *m_matrixCoeff = nullptr;
+    mfem::Coefficient *m_scalarCoeff = nullptr;
 };
 
 
@@ -84,14 +83,14 @@ public:
 
     //! Assembles the vectorFE mass integrator on an element
     void assembleElementMatrix
-    (const FiniteElement &, ElementTransformation &,
-     DenseMatrix &) override;
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override;
 
     //! Assembles the vectorFE mass integrator between two nested mesh elements
     void assembleElementMatrix
-    (const FiniteElement &, ElementTransformation &,
-     const FiniteElement &, ElementTransformation &,
-     DenseMatrix &) override;
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override;
 };
 
 
@@ -106,14 +105,14 @@ public:
 
     //! Assembles the vectorFE stiffness integrator on an element
     void assembleElementMatrix
-    (const FiniteElement &, ElementTransformation &,
-     DenseMatrix &) override;
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override;
 
     //! Assembles the vectorFE stiffness integrator between two nested mesh elements
     void assembleElementMatrix
-    (const FiniteElement &, ElementTransformation &,
-     const FiniteElement &, ElementTransformation &,
-     DenseMatrix &) override;
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override;
 };
 
 
@@ -127,40 +126,40 @@ public:
     explicit SpatialVectorFEGradientIntegrator() {}
 
     //! Constructor with material coefficent matrix passed as a pointer
-    explicit SpatialVectorFEGradientIntegrator(MatrixCoefficient *M)
+    explicit SpatialVectorFEGradientIntegrator(mfem::MatrixCoefficient *M)
         : m_matrixCoeff(M) {}
 
     //! Constructor with material coefficent matrix passed by reference
-    explicit SpatialVectorFEGradientIntegrator(MatrixCoefficient& M)
+    explicit SpatialVectorFEGradientIntegrator(mfem::MatrixCoefficient& M)
         : m_matrixCoeff(&M) {}
 
     //! Constructor with scalar material coefficient passed as a pointer
-    explicit SpatialVectorFEGradientIntegrator(Coefficient *q)
+    explicit SpatialVectorFEGradientIntegrator(mfem::Coefficient *q)
         : m_scalarCoeff(q) {}
 
     //! Constructor with scalar material coefficient passed by reference
-    explicit SpatialVectorFEGradientIntegrator(Coefficient& q)
+    explicit SpatialVectorFEGradientIntegrator(mfem::Coefficient& q)
         : m_scalarCoeff(&q) {}
 
     //! Assembles the mixed scalar-vectorFE gradient integrator on an element
     void assembleElementMatrix
-    (const FiniteElement &, const FiniteElement &,
-     ElementTransformation &, DenseMatrix &) override;
+    (const mfem::FiniteElement &, const mfem::FiniteElement &,
+     mfem::ElementTransformation &, mfem::DenseMatrix &) override;
 
     //! Assembles the mixed scalar-vectorFE gradient integrator between two nested mesh elements
     void assembleElementMatrix
-    (const FiniteElement &, ElementTransformation &,
-     const FiniteElement &, ElementTransformation &,
-     DenseMatrix &) override;
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override;
 
     void assembleElementMatrix2
-    (const FiniteElement &, ElementTransformation &,
-     const FiniteElement &, ElementTransformation &,
-     DenseMatrix &) override;
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override;
 
 private:
-    MatrixCoefficient *m_matrixCoeff = nullptr;
-    Coefficient *m_scalarCoeff = nullptr;
+    mfem::MatrixCoefficient *m_matrixCoeff = nullptr;
+    mfem::Coefficient *m_scalarCoeff = nullptr;
 };
 
 
@@ -175,19 +174,19 @@ public:
 
     //! Assembles the mixed scalar-vectorFE divergence integrator on an element
     void assembleElementMatrix
-    (const FiniteElement &, const FiniteElement &,
-     ElementTransformation &, DenseMatrix &) override;
+    (const mfem::FiniteElement &, const mfem::FiniteElement &,
+     mfem::ElementTransformation &, mfem::DenseMatrix &) override;
 
     //! Assembles the mixed scalar-vectorFE divergence integrator between two nested mesh elements
     void assembleElementMatrix
-    (const FiniteElement &, ElementTransformation &,
-     const FiniteElement &, ElementTransformation &,
-     DenseMatrix &) override;
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override;
 
     void assembleElementMatrix2
-    (const FiniteElement &, ElementTransformation &,
-     const FiniteElement &, ElementTransformation &,
-     DenseMatrix &) override;
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override;
 };
 
 }

@@ -2,7 +2,6 @@
 #define SPARSE_HEAT_DISCRETISATION_HPP
 
 #include "mfem.hpp"
-using namespace mfem;
 
 #include <iostream>
 
@@ -82,49 +81,49 @@ private:
     inline int getSpatialIndex(int i) const;
 
 public:
-    void assembleRhs(std::shared_ptr<BlockVector>&) const;
+    void assembleRhs(std::shared_ptr<mfem::BlockVector>&) const;
 
 private:
-    void assembleICs(Vector& b) const;
+    void assembleICs(mfem::Vector& b) const;
 
-    void assembleSource(std::shared_ptr<BlockVector>& B) const;
-    void assembleSourceWithTemporalGradientOfTemperatureBasis(Vector& b) const;
+    void assembleSource(std::shared_ptr<mfem::BlockVector>& B) const;
+    void assembleSourceWithTemporalGradientOfTemperatureBasis(mfem::Vector& b) const;
     void assembleSourceWithTemporalGradientOfTemperatureBasisAtGivenTime
     (double t,
-     const std::shared_ptr<FiniteElementSpace>&,
-     Vector&) const;
+     const std::shared_ptr<mfem::FiniteElementSpace>&,
+     mfem::Vector&) const;
 
-    void assembleSourceWithSpatialDivergenceOfHeatFluxBasis(Vector& b) const;
+    void assembleSourceWithSpatialDivergenceOfHeatFluxBasis(mfem::Vector& b) const;
 
 protected:
     virtual void assembleSourceWithSpatialDivergenceOfHeatFluxBasisAtGivenTime
     (double t,
-     const std::shared_ptr<FiniteElementSpace>&,
-     Vector&) const = 0;
+     const std::shared_ptr<mfem::FiniteElementSpace>&,
+     mfem::Vector&) const = 0;
 
 public:
-    void applyBCs(SparseMatrix& A) const;
+    void applyBCs(mfem::SparseMatrix& A) const;
 
-    void applyBCs(BlockVector& B) const;
+    void applyBCs(mfem::BlockVector& B) const;
 
 public:
-    SparseMatrix* getSystemMatrix() const {
+    mfem::SparseMatrix* getSystemMatrix() const {
         return m_systemMatrix;
     }
 
-    SparseMatrix* getSystemBlock11() const {
+    mfem::SparseMatrix* getSystemBlock11() const {
         return m_systemBlock11;
     }
 
-    SparseMatrix* getSystemBlock12() const {
+    mfem::SparseMatrix* getSystemBlock12() const {
         return m_systemBlock12;
     }
 
-    SparseMatrix* getSystemBlock21() const {
+    mfem::SparseMatrix* getSystemBlock21() const {
         return m_systemBlock21;
     }
 
-    SparseMatrix* getSystemBlock22() const {
+    mfem::SparseMatrix* getSystemBlock22() const {
         return m_systemBlock22;
     }
 
@@ -148,28 +147,28 @@ protected:
     int m_minTemporalLevel, m_maxTemporalLevel, m_numLevels;
 
     int m_xDim;
-    Array<FiniteElementCollection*> m_xFecs;
+    mfem::Array<mfem::FiniteElementCollection*> m_xFecs;
     std::shared_ptr<mymfem::NestedFEHierarchy> m_spatialNestedFEHierarchyTemperature;
     std::shared_ptr<mymfem::NestedFEHierarchy> m_spatialNestedFEHierarchyHeatFlux;
 
-    Array<int> m_essDofs;
+    mfem::Array<int> m_essDofs;
 
-    std::shared_ptr<BlockMatrix> m_temporalMass;
-    std::shared_ptr<BlockMatrix> m_temporalStiffness;
-    std::shared_ptr<BlockMatrix> m_temporalGradient;
-    std::shared_ptr<BlockMatrix> m_temporalInitial;
+    std::shared_ptr<mfem::BlockMatrix> m_temporalMass;
+    std::shared_ptr<mfem::BlockMatrix> m_temporalStiffness;
+    std::shared_ptr<mfem::BlockMatrix> m_temporalGradient;
+    std::shared_ptr<mfem::BlockMatrix> m_temporalInitial;
 
-    std::shared_ptr<BlockMatrix> m_spatialMass1, m_spatialMass2;
-    std::shared_ptr<BlockMatrix> m_spatialStiffness1, m_spatialStiffness2;
-    std::shared_ptr<BlockMatrix> m_spatialGradient;
-    std::shared_ptr<BlockMatrix> m_spatialDivergence;
+    std::shared_ptr<mfem::BlockMatrix> m_spatialMass1, m_spatialMass2;
+    std::shared_ptr<mfem::BlockMatrix> m_spatialStiffness1, m_spatialStiffness2;
+    std::shared_ptr<mfem::BlockMatrix> m_spatialGradient;
+    std::shared_ptr<mfem::BlockMatrix> m_spatialDivergence;
 
-    SparseMatrix* m_systemBlock11 = nullptr;
-    SparseMatrix* m_systemBlock12 = nullptr;
-    SparseMatrix* m_systemBlock21 = nullptr;
-    SparseMatrix* m_systemBlock22 = nullptr;
+    mfem::SparseMatrix* m_systemBlock11 = nullptr;
+    mfem::SparseMatrix* m_systemBlock12 = nullptr;
+    mfem::SparseMatrix* m_systemBlock21 = nullptr;
+    mfem::SparseMatrix* m_systemBlock22 = nullptr;
 
-    SparseMatrix* m_systemMatrix = nullptr;
+    mfem::SparseMatrix* m_systemMatrix = nullptr;
 };
 
 
@@ -200,8 +199,8 @@ public:
 private:
     void assembleSourceWithSpatialDivergenceOfHeatFluxBasisAtGivenTime
     (double t,
-     const std::shared_ptr<FiniteElementSpace>&,
-     Vector&) const override;
+     const std::shared_ptr<mfem::FiniteElementSpace>&,
+     mfem::Vector&) const override;
 };
 
 }

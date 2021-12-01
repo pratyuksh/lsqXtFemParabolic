@@ -2,6 +2,8 @@
 
 #include "utilities.hpp"
 
+using namespace mfem;
+
 
 sparseHeat::SolutionHandler
 :: SolutionHandler
@@ -36,7 +38,7 @@ sparseHeat::SolutionHandler
 }
 
 Vector sparseHeat::SolutionHandler
-:: getTemperatureDataAtEndTime()
+:: getTemperatureDataAtEndTime() const
 {
      auto temperatureData = getTemperatureData();
 
@@ -54,7 +56,7 @@ Vector sparseHeat::SolutionHandler
 }
 
 Vector sparseHeat::SolutionHandler
-:: getHeatFluxDataAtEndTime()
+:: getHeatFluxDataAtEndTime() const
 {
      auto heatFluxData = getHeatFluxData();
 

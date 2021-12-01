@@ -4,6 +4,8 @@
 #include "utilities.hpp"
 #include "../heat/coefficients.hpp"
 
+using namespace mfem;
+
 
 sparseHeat::LsqSparseXtFem
 :: LsqSparseXtFem (const nlohmann::json& config,
@@ -497,10 +499,6 @@ void sparseHeat::LsqSparseXtFem
     const IntegrationRule *ir
             = &IntRules.Get(Geometry::SEGMENT, order);
 
-    auto affineTransform = [](double zLeft, double zRight, double eta) {
-      return (1 - eta) * zLeft + eta * zRight;
-    };
-
     // coarsest temporal + finest spatial level
     // standard FE basis at the coarsest temporal level
     {
@@ -621,10 +619,6 @@ void sparseHeat::LsqSparseXtFem
     int order = 4;
     const IntegrationRule *ir
             = &IntRules.Get(Geometry::SEGMENT, order);
-
-    auto affineTransform = [](double zLeft, double zRight, double eta) {
-      return (1 - eta) * zLeft + eta * zRight;
-    };
 
     // coarsest temporal + finest spatial level
     // standard FE basis at the coarsest temporal level

@@ -2,9 +2,6 @@
 #define SPRASE_HEAT_SOLVER_HPP
 
 #include "mfem.hpp"
-using namespace mfem;
-
-#include <Eigen/Core>
 
 #include "../core/config.hpp"
 #include "../pardiso/pardiso.hpp"
@@ -13,7 +10,6 @@ using namespace mfem;
 #include "../heat/coefficients.hpp"
 #include "solution_handler.hpp"
 #include "discretisation.hpp"
-#include "observer.hpp"
 
 
 namespace sparseHeat{
@@ -42,12 +38,6 @@ public:
 
     void setDiscretisation();
 
-    void setObserver();
-
-    //! Runs the solver and computes the solution error
-    std::tuple<int, double, double, Eigen::VectorXd>
-    operator()();
-
     //! Initializes, assembles and then solves
     void run();
 
@@ -57,17 +47,13 @@ public:
     void assembleRhs();
 
     void solve();
-    void solve(const Vector&, Vector&);
+    void solve(const mfem::Vector&, mfem::Vector&);
     void setPardisoSolver();
     void finalizePardisoSolver();
 
-    //! Computes error
-    Eigen::VectorXd evalError();
-    Eigen::VectorXd evalError(BlockVector&);
+public:
+    double getMeshwidthOfFinestTemporalMesh();
 
-    void visualizeSolutionAtEndTime();
-
-private:
     double getMeshwidthOfFinestSpatialMesh();
 
     int getNumDofs() {
@@ -75,30 +61,17 @@ private:
     }
 
 public:
-    std::shared_ptr<sparseHeat::LsqSparseXtFem> getDiscretisation(){
+    std::shared_ptr<heat::TestCases> getTestCase() const {
+        return m_testCase;
+    }
+
+    std::shared_ptr<sparseHeat::LsqSparseXtFem> getDiscretisation() const {
         return m_disc;
     }
 
-    /*
-    //! Releases allocated memory
-    void finalize () const;
-
-    //! Computes the solution error
-    Eigen::VectorXd computeError(BlockVector *W) const;
-
-    //! Evaluates the temperature solution at end time
-    std::shared_ptr <GridFunction>
-    getTemperatureSolAtEndTime (BlockVector *W) const;
-
-    //! Evaluates the flux solution at end time
-    std::shared_ptr <GridFunction>
-    getFluxSolAtEndTime (BlockVector *W) const;
-
-    //! Sets the temperature solution at end time
-    void setTemperatureSolAtEndTime ();
-
-    //! Sets the flux solution at end time
-    void setFluxSolAtEndTime ();*/
+    std::shared_ptr<sparseHeat::SolutionHandler> getSolutionHandler() const {
+        return m_solutionHandler;
+    }
 
 private:
     const nlohmann::json& m_config;
@@ -116,24 +89,20 @@ private:
     std::string m_discType;
     std::string m_linearSolver;
 
-    bool m_boolError;
-    std::string m_errorType;
-
     double m_endTime;
 
     std::shared_ptr<mymfem::NestedMeshHierarchy> m_spatialMeshHierarchy;
 
     std::shared_ptr<sparseHeat::LsqSparseXtFem> m_disc;
-    std::shared_ptr<sparseHeat::Observer> m_observer;
 
-    std::unique_ptr<sparseHeat::SolutionHandler> m_solutionHandler;
-    std::shared_ptr <BlockVector> m_rhs;
+    std::shared_ptr<sparseHeat::SolutionHandler> m_solutionHandler;
+    std::shared_ptr <mfem::BlockVector> m_rhs;
 
-    SparseMatrix *m_systemMat = nullptr;
-//    BlockOperator *m_systemOp = nullptr;
+    mfem::SparseMatrix *m_systemMat = nullptr;
+//    mfem::BlockOperator *m_systemOp = nullptr;
 
-    std::shared_ptr <GridFunction> m_temperatureAtEndTime;
-    std::shared_ptr <GridFunction> m_heatFluxAtEndTime;
+    std::shared_ptr <mfem::GridFunction> m_temperatureAtEndTime;
+    std::shared_ptr <mfem::GridFunction> m_heatFluxAtEndTime;
 
 #ifdef PARDISO_HPP
     std::unique_ptr<PardisoSolver> m_pardisoSolver;
