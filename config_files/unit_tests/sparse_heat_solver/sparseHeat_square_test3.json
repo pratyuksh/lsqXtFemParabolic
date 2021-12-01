@@ -7,7 +7,7 @@
     "end_time": 0.5,
     
     "deg": 1,
-    "num_levels": 4,
+    "num_levels": 3,
     "min_spatial_level": 1,
     "min_temporal_level": 1,
     

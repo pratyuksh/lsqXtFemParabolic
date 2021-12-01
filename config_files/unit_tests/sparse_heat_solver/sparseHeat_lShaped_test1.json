@@ -1,0 +1,16 @@
+{
+    "host": "local",
+    
+    "problem_type": "lShaped_test1",
+    
+    "run": "simulation",
+    "end_time": 1,
+    
+    "deg": 1,
+    "num_levels": 3,
+    "min_spatial_level": 1,
+    "min_temporal_level": 1,
+    "load_init_mesh": true,
+    
+    "visualization": true
+}
