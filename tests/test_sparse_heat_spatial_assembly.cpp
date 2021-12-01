@@ -18,7 +18,7 @@ using namespace mymfem;
 TEST(SparseSpatialAssembly, massMatrix)
 {
     std::string input_dir
-            = "../tests/input/sparse_assembly/";
+            = "../tests/input/sparse_heat_assembly/";
 
     const std::string meshFile1 = input_dir+"mesh_lx0";
     const std::string meshFile2 = input_dir+"mesh_lx1";
@@ -194,7 +194,7 @@ TEST(SparseSpatialAssembly, massMatrix)
 TEST(SparseSpatialAssembly, stiffnessMatrix)
 {
     std::string input_dir
-            = "../tests/input/sparse_assembly/";
+            = "../tests/input/sparse_heat_assembly/";
 
     const std::string meshFile1 = input_dir+"mesh_lx0";
     const std::string meshFile2 = input_dir+"mesh_lx1";
@@ -363,7 +363,7 @@ TEST(SparseSpatialAssembly, stiffnessMatrix)
 TEST(SparseSpatialAssembly, vectorFEMassMatrix)
 {
     std::string input_dir
-            = "../tests/input/sparse_assembly/";
+            = "../tests/input/sparse_heat_assembly/";
 
     const std::string meshFile1 = input_dir+"mesh_lx0";
     const std::string meshFile2 = input_dir+"mesh_lx1";
@@ -454,7 +454,7 @@ TEST(SparseSpatialAssembly, vectorFEMassMatrix)
 TEST(SparseSpatialAssembly, vectorFEStiffnessMatrix)
 {
     std::string input_dir
-            = "../tests/input/sparse_assembly/";
+            = "../tests/input/sparse_heat_assembly/";
 
     const std::string meshFile1 = input_dir+"mesh_lx0";
     const std::string meshFile2 = input_dir+"mesh_lx1";
@@ -550,7 +550,7 @@ TEST(SparseSpatialAssembly, vectorFEStiffnessMatrix)
 TEST(SparseSpatialAssembly, vectorFEGradientMatrix)
 {
     std::string input_dir
-            = "../tests/input/sparse_assembly/";
+            = "../tests/input/sparse_heat_assembly/";
 
     const std::string meshFile1 = input_dir+"mesh_lx0";
     const std::string meshFile2 = input_dir+"mesh_lx1";
@@ -675,7 +675,7 @@ TEST(SparseSpatialAssembly, vectorFEGradientMatrix)
 TEST(SparseSpatialAssembly, vectorFEDivergenceMatrix)
 {
     std::string input_dir
-            = "../tests/input/sparse_assembly/";
+            = "../tests/input/sparse_heat_assembly/";
 
     const std::string meshFile1 = input_dir+"mesh_lx0";
     const std::string meshFile2 = input_dir+"mesh_lx1";

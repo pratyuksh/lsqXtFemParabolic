@@ -3,6 +3,8 @@
 #include "../src/core/config.hpp"
 #include "../src/heat/solver.hpp"
 
+using namespace mfem;
+
 /**
  * @brief Unit test for computing the observables for square_test1
  */

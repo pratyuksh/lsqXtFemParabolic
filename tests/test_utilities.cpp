@@ -3,6 +3,9 @@
 #include "../src/core/config.hpp"
 #include "../src/mymfem/utilities.hpp"
 
+using namespace mfem;
+
+
 /**
  * @brief Unit test for the function to compute upper-triangle
  */

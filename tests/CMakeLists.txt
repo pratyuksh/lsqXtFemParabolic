@@ -6,9 +6,10 @@ target_sources(unit_tests
   PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/test_functionals.cpp
   PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/test_nested_hierarchy.cpp
   PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/test_my_bilinear_forms.cpp
-  PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/test_sparse_spatial_assembly.cpp  
-  PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/test_sparse_temporal_assembly.cpp
-  PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/test_sparse_solution_handler.cpp  
-  PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/test_sparse_discretisation.cpp
-  PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/test_sparse_solver.cpp
+  PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/test_sparse_heat_spatial_assembly.cpp  
+  PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/test_sparse_heat_temporal_assembly.cpp
+  PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/test_sparse_heat_solution_handler.cpp  
+  PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/test_sparse_heat_discretisation.cpp
+  PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/test_sparse_heat_solver.cpp
+  PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/test_sparse_heat_error_evaluator.cpp
 )

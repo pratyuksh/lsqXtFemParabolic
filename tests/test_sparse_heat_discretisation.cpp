@@ -18,7 +18,7 @@ TEST(SparseDiscretisation, buildH1Hdiv)
 {
     // config and test case
     std::string configFile
-            = "../config_files/unit_tests/sparse_discretisation/sparseHeat_dummy.json";
+            = "../config_files/unit_tests/sparse_heat_discretisation/sparseHeat_dummy.json";
     auto config = getGlobalConfig(configFile);
     auto testCase = heat::makeTestCase(config);
 
@@ -27,7 +27,7 @@ TEST(SparseDiscretisation, buildH1Hdiv)
 
     // spatial mesh hierarchy
     std::string input_dir
-            = "../tests/input/sparse_assembly/";
+            = "../tests/input/sparse_heat_assembly/";
     const std::string spatialMeshFile1 = input_dir+"mesh_lx0";
     const std::string spatialMeshFile2 = input_dir+"mesh_lx1";
     const std::string spatialMeshFile3 = input_dir+"mesh_lx2";
@@ -120,10 +120,10 @@ TEST(SparseDiscretisation, singleLevelH1HdivUnitSquareTest1)
     // config files for full and sparse versions
     std::string heatConfigFile
             = "../config_files/unit_tests/"
-              "sparse_discretisation/heat_square_test1.json";
+              "sparse_heat_discretisation/heat_square_test1.json";
     std::string sparseHeatConfigFile
             = "../config_files/unit_tests/"
-              "sparse_discretisation/sparseHeat_square_test1.json";
+              "sparse_heat_discretisation/sparseHeat_square_test1.json";
     auto heatConfig = getGlobalConfig(heatConfigFile);
     auto sparseHeatConfig = getGlobalConfig(sparseHeatConfigFile);
 
@@ -141,7 +141,7 @@ TEST(SparseDiscretisation, singleLevelH1HdivUnitSquareTest1)
 
     // spatial mesh hierarchy
     std::string inputDir
-            = "../tests/input/sparse_discretisation/";
+            = "../tests/input/sparse_heat_discretisation/";
     const std::string spatialMeshFile = inputDir+"mesh_l0.mesh";
     auto spatialMesh
             = std::make_shared<Mesh>(spatialMeshFile.c_str());
@@ -239,10 +239,10 @@ TEST(SparseDiscretisation, singleLevelH1HdivUnitSquareTest3)
     // config files for full and sparse versions
     std::string heatConfigFile
             = "../config_files/unit_tests/"
-              "sparse_discretisation/heat_square_test3.json";
+              "sparse_heat_discretisation/heat_square_test3.json";
     std::string sparseHeatConfigFile
             = "../config_files/unit_tests/"
-              "sparse_discretisation/sparseHeat_square_test3.json";
+              "sparse_heat_discretisation/sparseHeat_square_test3.json";
     auto heatConfig = getGlobalConfig(heatConfigFile);
     auto sparseHeatConfig = getGlobalConfig(sparseHeatConfigFile);
 
@@ -260,7 +260,7 @@ TEST(SparseDiscretisation, singleLevelH1HdivUnitSquareTest3)
 
     // spatial mesh hierarchy
     std::string inputDir
-            = "../tests/input/sparse_discretisation/";
+            = "../tests/input/sparse_heat_discretisation/";
     const std::string spatialMeshFile = inputDir+"mesh_l0.mesh";
     auto spatialMesh
             = std::make_shared<Mesh>(spatialMeshFile.c_str());
