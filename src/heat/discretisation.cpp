@@ -5,6 +5,8 @@
 
 #include <fstream>
 
+using namespace mfem;
+
 
 // Constructor
 heat::LsqXtFEM :: LsqXtFEM (const nlohmann::json& config,
@@ -130,7 +132,7 @@ void heat::LsqXtFEM :: buildSystemMatrixUpperTriangle()
 
 // Assembles rhs
 void heat::LsqXtFEM :: assembleRhs(BlockVector* B) const
-{
+{    
     Vector &B0 = B->GetBlock(0);
     assembleICs(B0);
     assembleSourceTGradXProjection(B0);

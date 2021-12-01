@@ -1,6 +1,8 @@
 #include "functionals.hpp"
 #include <assert.h>
 
+using namespace mfem;
+
 
 // Quantity of interest LF Integrator
 void heat::QoILFIntegrator

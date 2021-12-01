@@ -2,7 +2,6 @@
 #define HEAT_FUNCTIONALS_HPP
 
 #include "mfem.hpp"
-using namespace mfem;
 
 namespace heat {
 
@@ -10,16 +9,16 @@ namespace heat {
  * @brief Quantity of interest LF Integrator; (x^a, fluxQ)
  */
 class QoILFIntegrator
-        : public LinearFormIntegrator
+        : public mfem::LinearFormIntegrator
 {
 public:
     //! Constructor with power exponent provided as argument
     QoILFIntegrator(double a) : m_pow(a) {}
 
     //! Assembles the integrator on a mesh element
-    void AssembleRHSElementVect (const FiniteElement &,
-                                 ElementTransformation &,
-                                 Vector &) override;
+    void AssembleRHSElementVect (const mfem::FiniteElement &,
+                                 mfem::ElementTransformation &,
+                                 mfem::Vector &) override;
 
 private:
     double m_pow;
@@ -35,13 +34,13 @@ class QoIFunctional
 {
 public:
     //! Constructor with FE space passed as an argument
-    QoIFunctional(FiniteElementSpace *fes)
+    QoIFunctional(mfem::FiniteElementSpace *fes)
         : m_fes(fes) {
         init();
     }
 
     //! Constructor with FE space and power exponent passed as argument
-    QoIFunctional(FiniteElementSpace *fes, double a)
+    QoIFunctional(mfem::FiniteElementSpace *fes, double a)
         : m_pow(a), m_fes(fes) {
         init();
     }
@@ -53,15 +52,15 @@ public:
     void init() const;
 
     //! Evalautes the QoI for a function passed as an MFEM GridFunction
-    double operator()(const GridFunction& f) const;
+    double operator()(const mfem::GridFunction& f) const;
 
     //! Evalautes the QoI for a function passed as a vector of coefficients
-    double operator()(const Vector& f) const;
+    double operator()(const mfem::Vector& f) const;
 
 private:
     double m_pow = 1;
-    FiniteElementSpace *m_fes = nullptr;
-    mutable Vector m_bObs;
+    mfem::FiniteElementSpace *m_fes = nullptr;
+    mutable mfem::Vector m_bObs;
 };
 
 /**
@@ -71,14 +70,16 @@ class QoIXtFunctional
 {
 public:
     //! Constructor with space-time FE spaces passed as arguments
-    QoIXtFunctional(FiniteElementSpace *tFes, FiniteElementSpace *xFes)
+    QoIXtFunctional(mfem::FiniteElementSpace *tFes,
+                    mfem::FiniteElementSpace *xFes)
         : m_tFes(tFes), m_xFes(xFes) {
         init();
     }
 
     //! Constructor with space-time FE spaces
     //! and power exponent passed as arguments
-    QoIXtFunctional(FiniteElementSpace *tFes, FiniteElementSpace *xFes,
+    QoIXtFunctional(mfem::FiniteElementSpace *tFes,
+                    mfem::FiniteElementSpace *xFes,
                     double a)
         : m_pow(a), m_tFes(tFes), m_xFes(xFes) {
         init();
@@ -91,17 +92,17 @@ public:
     void init() const;
 
     //! Evaluate the QoI
-    double operator()(const Vector& f) const;
+    double operator()(const mfem::Vector& f) const;
 
 private:
-    void add_vector(const Array<int> &vdofs,
-                    const Vector& elvec,
-                    Vector& b) const;
+    void add_vector(const mfem::Array<int> &vdofs,
+                    const mfem::Vector& elvec,
+                    mfem::Vector& b) const;
 
     double m_pow = 1;
-    FiniteElementSpace *m_tFes = nullptr;
-    FiniteElementSpace *m_xFes = nullptr;
-    mutable Vector m_bObs;
+    mfem::FiniteElementSpace *m_tFes = nullptr;
+    mfem::FiniteElementSpace *m_xFes = nullptr;
+    mutable mfem::Vector m_bObs;
 };
 
 }

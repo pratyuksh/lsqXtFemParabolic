@@ -1,6 +1,8 @@
 #include "my_bilinearForms.hpp"
 #include "utilities.hpp"
 
+using namespace mfem;
+
 
 //! Constructor with nested finite element hierarchy
 //! defines the block offsets of storage matrix
@@ -53,7 +55,7 @@ void mymfem::BlockBilinearForm
 
                 const FiniteElement &fe = *(fes->GetFE(i));
                 elTrans = fes->GetElementTransformation(i);
-                for (int k = 0; k < mydbfi.size(); k++)
+                for (int k = 0; k < static_cast<int>(mydbfi.size()); k++)
                 {
                     mydbfi[k]->assembleElementMatrix
                             (fe, *elTrans, elmat);
@@ -107,7 +109,7 @@ void mymfem::BlockBilinearForm
                                 = fesFine->GetElementTransformation(j);
 
                         // call the integrators here
-                        for (int k = 0; k < mydbfi.size(); k++)
+                        for (int k = 0; k < static_cast<int>(mydbfi.size()); k++)
                         {
                             mydbfi[k]->assembleElementMatrix
                                     (testFEFine, *testElTransFine,
@@ -230,7 +232,7 @@ void mymfem::BlockMixedBilinearForm
                 const FiniteElement &testFe = *(testFes->GetFE(i));
                 const FiniteElement &trialFe = *(trialFes->GetFE(i));
                 elTrans = testFes->GetElementTransformation(i);
-                for (int k = 0; k < mydbfi.size(); k++)
+                for (int k = 0; k < static_cast<int>(mydbfi.size()); k++)
                 {
                     mydbfi[k]->assembleElementMatrix
                             (testFe, trialFe, *elTrans, elmat);
@@ -315,7 +317,7 @@ void mymfem::BlockMixedBilinearForm
                                 = trialFesFine->GetElementTransformation(j);
 
                         // call the integrators here
-                        for (int k = 0; k < mydbfi.size(); k++)
+                        for (int k = 0; k < static_cast<int>(mydbfi.size()); k++)
                         {
                             // compute matrices in the lower-triangular blocks
                             mydbfi[k]->assembleElementMatrix

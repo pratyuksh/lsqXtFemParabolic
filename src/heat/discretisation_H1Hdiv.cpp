@@ -3,10 +3,13 @@
 #include "assembly.hpp"
 #include "../mymfem/utilities.hpp"
 
+using namespace mfem;
+
 
 // Sets the FE space and boundary conditions
-void heat::LsqXtFemH1Hdiv :: set(std::shared_ptr<Mesh>& tMesh,
-                                 std::shared_ptr<Mesh>& xMesh)
+void heat::LsqXtFemH1Hdiv
+:: set(std::shared_ptr<Mesh>& tMesh,
+       std::shared_ptr<Mesh>& xMesh)
 {
     // reset initialized variables
     reset();

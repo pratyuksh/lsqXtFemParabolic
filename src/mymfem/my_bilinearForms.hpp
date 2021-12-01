@@ -2,7 +2,6 @@
 #define MYMFEM_BILINEARFORMS_HPP
 
 #include "mfem.hpp"
-using namespace mfem;
 
 #include "nested_hierarchy.hpp"
 #include "my_bilinearForm_integrators.hpp"
@@ -43,12 +42,12 @@ public:
     void allocateBlockMatrix();
 
     //! Returns the block offsets
-    Array<int> getBlockOffsets() {
+    mfem::Array<int> getBlockOffsets() {
         return m_blockOffsets;
     }
 
     //! Returns the block matrix
-    std::shared_ptr<BlockMatrix> getBlockMatrix() {
+    std::shared_ptr<mfem::BlockMatrix> getBlockMatrix() {
         return m_blockMatrix;
     }
 
@@ -56,10 +55,10 @@ private:
     const std::shared_ptr<NestedFEHierarchy> m_nestedFEHierarchy;
 
     int m_numLevels;
-    Array<int> m_blockOffsets;
+    mfem::Array<int> m_blockOffsets;
 
     //! Block Matrix, sparse
-    std::shared_ptr<BlockMatrix> m_blockMatrix;
+    std::shared_ptr<mfem::BlockMatrix> m_blockMatrix;
 
     //! domain block bilinear form integrators
     std::vector<std::shared_ptr<BlockBilinearFormIntegrator>> mydbfi;
@@ -101,17 +100,17 @@ public:
     void allocateBlockMatrix();
 
     //! Returns the row block offsets
-    Array<int> getRowBlockOffsets() {
+    mfem::Array<int> getRowBlockOffsets() {
         return m_rowBlockOffsets;
     }
 
     //! Returns the column block offsets
-    Array<int> getColBlockOffsets() {
+    mfem::Array<int> getColBlockOffsets() {
         return m_colBlockOffsets;
     }
 
     //! Returns the block matrix
-    std::shared_ptr<BlockMatrix> getBlockMatrix() {
+    std::shared_ptr<mfem::BlockMatrix> getBlockMatrix() {
         return m_blockMatrix;
     }
 
@@ -120,10 +119,10 @@ private:
     const std::shared_ptr<NestedFEHierarchy> m_testNestedFEHierarchy;
 
     int m_numLevels;
-    Array<int> m_rowBlockOffsets, m_colBlockOffsets;
+    mfem::Array<int> m_rowBlockOffsets, m_colBlockOffsets;
 
     //! Block Matrix, sparse
-    std::shared_ptr<BlockMatrix> m_blockMatrix;
+    std::shared_ptr<mfem::BlockMatrix> m_blockMatrix;
 
     //! domain block bilinear form integrators
     std::vector<std::shared_ptr<BlockMixedBilinearFormIntegrator>> mydbfi;

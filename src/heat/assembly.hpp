@@ -2,7 +2,7 @@
 #define HEAT_ASSEMBLY_HPP
 
 #include "mfem.hpp"
-using namespace mfem;
+
 
 namespace heat {
 
@@ -10,26 +10,26 @@ namespace heat {
  * @brief Gradient Integrator in time; (du/dt, v)
  */
 class GradientIntegrator
-        : public BilinearFormIntegrator
+        : public mfem::BilinearFormIntegrator
 {
 public:
     GradientIntegrator() {}
 
     //! Assembles the Gradient integrator on a given temporal mesh element
     void AssembleElementMatrix
-    (const FiniteElement &, ElementTransformation &,
-     DenseMatrix &) override;
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override;
 
     void AssembleElementMatrix2
-    (const FiniteElement &,
-     const FiniteElement &,
-     ElementTransformation &, DenseMatrix &)
+    (const mfem::FiniteElement &,
+     const mfem::FiniteElement &,
+     mfem::ElementTransformation &, mfem::DenseMatrix &)
     override {}
 
 private:
 #ifndef MFEM_THREAD_SAFE
-    Vector shape;
-    DenseMatrix dshape;
+    mfem::Vector shape;
+    mfem::DenseMatrix dshape;
 #endif
 };
 
@@ -37,43 +37,43 @@ private:
  * @brief Stiffness Integrator in space; (Q grad(u), Q grad(v))
  */
 class StiffnessIntegrator
-        : public BilinearFormIntegrator
+        : public mfem::BilinearFormIntegrator
 {
 public:
     StiffnessIntegrator() {}
 
     //! Constructor with material coefficent matrix passed as a pointer
-    StiffnessIntegrator(MatrixCoefficient *M_)
+    StiffnessIntegrator(mfem::MatrixCoefficient *M_)
         : M(M_) {}
 
     //! Constructor with material coefficent matrix passed by reference
-    StiffnessIntegrator(MatrixCoefficient& M_)
+    StiffnessIntegrator(mfem::MatrixCoefficient& M_)
         : M(&M_) {}
 
     //! Constructor with scalar material coefficient passed as a pointer
-    StiffnessIntegrator(Coefficient *q_)
+    StiffnessIntegrator(mfem::Coefficient *q_)
         : q(q_) {}
 
     //! Constructor with scalar material coefficient passed by reference
-    StiffnessIntegrator(Coefficient& q_)
+    StiffnessIntegrator(mfem::Coefficient& q_)
         : q(&q_) {}
 
     //! Assembles the Stiffness integrator on a given spatial mesh element
     void AssembleElementMatrix
-    (const FiniteElement &, ElementTransformation &,
-     DenseMatrix &) override;
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override;
 
     void AssembleElementMatrix2
-    (const FiniteElement &,
-     const FiniteElement &,
-     ElementTransformation &, DenseMatrix &)
+    (const mfem::FiniteElement &,
+     const mfem::FiniteElement &,
+     mfem::ElementTransformation &, mfem::DenseMatrix &)
     override {}
 
 private:
-    MatrixCoefficient *M = nullptr;
-    Coefficient *q = nullptr;
+    mfem::MatrixCoefficient *M = nullptr;
+    mfem::Coefficient *q = nullptr;
 #ifndef MFEM_THREAD_SAFE
-    DenseMatrix dshape;
+    mfem::DenseMatrix dshape;
 #endif
 };
 
@@ -82,25 +82,25 @@ private:
  * Uses, for example, Raviart-Thomas spaces.
  */
 class VectorFEStiffnessIntegrator
-        : public BilinearFormIntegrator
+        : public mfem::BilinearFormIntegrator
 {
 public:
     VectorFEStiffnessIntegrator() {}
 
     //! Assembles the VectorFE Stiffness integrator on a given spatial mesh element
     void AssembleElementMatrix
-    (const FiniteElement &, ElementTransformation &,
-     DenseMatrix &) override;
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override;
 
     void AssembleElementMatrix2
-    (const FiniteElement &,
-     const FiniteElement &,
-     ElementTransformation &, DenseMatrix &)
+    (const mfem::FiniteElement &,
+     const mfem::FiniteElement &,
+     mfem::ElementTransformation &, mfem::DenseMatrix &)
     override {}
 
 private:
 #ifndef MFEM_THREAD_SAFE
-    Vector divshape;
+    mfem::Vector divshape;
 #endif
 };
 
@@ -109,44 +109,44 @@ private:
  * Uses, for example, Raviart-Thomas spaces.
  */
 class VectorFEGradientIntegrator
-        : public BilinearFormIntegrator
+        : public mfem::BilinearFormIntegrator
 {
 public:
     VectorFEGradientIntegrator() {}
 
     //! Constructor with material coefficent matrix passed as a pointer
-    VectorFEGradientIntegrator(MatrixCoefficient *M_)
+    VectorFEGradientIntegrator(mfem::MatrixCoefficient *M_)
         : M(M_) {}
 
     //! Constructor with material coefficent matrix passed by reference
-    VectorFEGradientIntegrator(MatrixCoefficient& M_)
+    VectorFEGradientIntegrator(mfem::MatrixCoefficient& M_)
         : M(&M_) {}
 
     //! Constructor with material coefficent scalar passed as a pointer
-    VectorFEGradientIntegrator(Coefficient *q_)
+    VectorFEGradientIntegrator(mfem::Coefficient *q_)
         : q(q_) {}
 
     //! Constructor with material coefficent scalar passed by reference
-    VectorFEGradientIntegrator(Coefficient& q_)
+    VectorFEGradientIntegrator(mfem::Coefficient& q_)
         : q(&q_) {}
 
     void AssembleElementMatrix
-    (const FiniteElement &, ElementTransformation &,
-     DenseMatrix &) override {}
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override {}
 
     //! Assembles the VectorFE Gradient integrator on a given spatial mesh element
     //! The test and trial funtions are different
     void AssembleElementMatrix2
-    (const FiniteElement &,
-     const FiniteElement &,
-     ElementTransformation &, DenseMatrix &)
+    (const mfem::FiniteElement &,
+     const mfem::FiniteElement &,
+     mfem::ElementTransformation &, mfem::DenseMatrix &)
     override;
 
 private:
-    MatrixCoefficient *M = nullptr;
-    Coefficient *q = nullptr;
+    mfem::MatrixCoefficient *M = nullptr;
+    mfem::Coefficient *q = nullptr;
 #ifndef MFEM_THREAD_SAFE
-    DenseMatrix gradshape, vshape;
+    mfem::DenseMatrix gradshape, vshape;
 #endif
 };
 
@@ -155,128 +155,128 @@ private:
  * Uses, for example, Raviart-Thomas spaces.
  */
 class VectorFEDivergenceLFIntegrator
-        : public LinearFormIntegrator
+        : public mfem::LinearFormIntegrator
 {
 public:
     //! Constructor with a coefficient and a scalar passed as arguments
-    VectorFEDivergenceLFIntegrator(Coefficient& f, double a)
+    VectorFEDivergenceLFIntegrator(mfem::Coefficient& f, double a)
         : F(f), m_coeff(a) {}
 
     //! Assembles the VectorFE linear form integrator on a given spatial mesh element
-    void AssembleRHSElementVect (const FiniteElement &,
-                                 ElementTransformation &,
-                                 Vector &) override;
+    void AssembleRHSElementVect (const mfem::FiniteElement &,
+                                 mfem::ElementTransformation &,
+                                 mfem::Vector &) override;
 
 private:
-    Coefficient &F;
+    mfem::Coefficient &F;
     double m_coeff;
 #ifndef MFEM_THREAD_SAFE
-    Vector divshape;
+    mfem::Vector divshape;
 #endif
 };
 
 /**
- * @brief Vector Stiffness Integrator; (div(u), div(v))
+ * @brief mfem::Vector Stiffness Integrator; (div(u), div(v))
  */
 class VectorStiffnessIntegrator
-        : public BilinearFormIntegrator
+        : public mfem::BilinearFormIntegrator
 {
 public:
     VectorStiffnessIntegrator() {}
 
-    //! Assembles the Vector Stiffness integrator on a given spatial mesh element
+    //! Assembles the mfem::Vector Stiffness integrator on a given spatial mesh element
     void AssembleElementMatrix
-    (const FiniteElement &, ElementTransformation &,
-     DenseMatrix &) override;
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override;
 
     void AssembleElementMatrix2
-    (const FiniteElement &,
-     const FiniteElement &,
-     ElementTransformation &, DenseMatrix &)
+    (const mfem::FiniteElement &,
+     const mfem::FiniteElement &,
+     mfem::ElementTransformation &, mfem::DenseMatrix &)
     override {}
 
 private:
 #ifndef MFEM_THREAD_SAFE
-    Vector divshape;
-    DenseMatrix dshape;
+    mfem::Vector divshape;
+    mfem::DenseMatrix dshape;
 #endif
 };
 
 /**
- * @brief Vector Gradient Integrator; (grad(u), v)
+ * @brief mfem::Vector Gradient Integrator; (grad(u), v)
  */
 class VectorGradientIntegrator
-        : public BilinearFormIntegrator
+        : public mfem::BilinearFormIntegrator
 {
 public:
     VectorGradientIntegrator() {}
 
     //! Constructor with material coefficent matrix passed as a pointer
-    VectorGradientIntegrator(MatrixCoefficient *M_)
+    VectorGradientIntegrator(mfem::MatrixCoefficient *M_)
         : M(M_) {}
 
     //! Constructor with material coefficent matrix passed by reference
-    VectorGradientIntegrator(MatrixCoefficient& M_)
+    VectorGradientIntegrator(mfem::MatrixCoefficient& M_)
         : M(&M_) {}
 
     //! Constructor with material coefficent scalar passed as a pointer
-    VectorGradientIntegrator(Coefficient *q_)
+    VectorGradientIntegrator(mfem::Coefficient *q_)
         : q(q_) {}
 
     //! Constructor with material coefficent scalar passed by reference
-    VectorGradientIntegrator(Coefficient& q_)
+    VectorGradientIntegrator(mfem::Coefficient& q_)
         : q(&q_) {}
 
     void AssembleElementMatrix
-    (const FiniteElement &, ElementTransformation &,
-     DenseMatrix &) override {}
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override {}
 
     //! Assembles the VectorFE Gradient integrator on a given spatial mesh element
     //! The test and trial funtions are different
     void AssembleElementMatrix2
-    (const FiniteElement &,
-     const FiniteElement &,
-     ElementTransformation &, DenseMatrix &)
+    (const mfem::FiniteElement &,
+     const mfem::FiniteElement &,
+     mfem::ElementTransformation &, mfem::DenseMatrix &)
     override;
 
 private:
     void AssembleBlock(const int dim,
                        const int test_ndofs,
                        const int trial_ndofs,
-                       const Vector& shape,
-                       const DenseMatrix& dshape,
-                       DenseMatrix& outMat) const;
+                       const mfem::Vector& shape,
+                       const mfem::DenseMatrix& dshape,
+                       mfem::DenseMatrix& outMat) const;
 
-    MatrixCoefficient *M = nullptr;
-    Coefficient *q = nullptr;
+    mfem::MatrixCoefficient *M = nullptr;
+    mfem::Coefficient *q = nullptr;
 #ifndef MFEM_THREAD_SAFE
-    Vector shape;
-    DenseMatrix dshape;
+    mfem::Vector shape;
+    mfem::DenseMatrix dshape;
 #endif
 };
 
 /**
- * @brief Vector Divergence LF Integrator; (f, div(v))
+ * @brief mfem::Vector Divergence LF Integrator; (f, div(v))
  */
 class VectorDivergenceLFIntegrator
-        : public LinearFormIntegrator
+        : public mfem::LinearFormIntegrator
 {
 public:
     //! Constructor with a coefficient and a scalar passed as arguments
-    VectorDivergenceLFIntegrator(Coefficient& f, double a)
+    VectorDivergenceLFIntegrator(mfem::Coefficient& f, double a)
         : F(f), m_coeff(a) {}
 
-    //! Assembles the Vector linear form integrator on a given spatial mesh element
-    void AssembleRHSElementVect (const FiniteElement &,
-                                 ElementTransformation &,
-                                 Vector &) override;
+    //! Assembles the mfem::Vector linear form integrator on a given spatial mesh element
+    void AssembleRHSElementVect (const mfem::FiniteElement &,
+                                 mfem::ElementTransformation &,
+                                 mfem::Vector &) override;
 
 private:
-    Coefficient &F;
+    mfem::Coefficient &F;
     double m_coeff;
 #ifndef MFEM_THREAD_SAFE
-    Vector divshape;
-    DenseMatrix dshape;
+    mfem::Vector divshape;
+    mfem::DenseMatrix dshape;
 #endif
 };
 

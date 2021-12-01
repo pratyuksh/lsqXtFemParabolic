@@ -1,6 +1,8 @@
 #include "assembly.hpp"
 #include <assert.h>
 
+using namespace mfem;
+
 
 // Gradient Integrator in time, dim = 1
 void heat::GradientIntegrator

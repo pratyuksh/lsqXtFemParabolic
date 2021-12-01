@@ -2,7 +2,6 @@
 #define BASE_OBSERVER_HPP
 
 #include "mfem.hpp"
-using namespace mfem;
 
 #include "../core/config.hpp"
 
@@ -37,7 +36,7 @@ public:
      * @brief  Calls the visualize function.
      * @param u scalar grid function, passed by reference.
      */
-    void operator () (GridFunction& u) const {
+    void operator () (mfem::GridFunction& u) const {
         visualize(u);
     }
 
@@ -45,7 +44,7 @@ public:
      * @brief Calls the visualize function.
      * @param u scalar grid function, passed as shared pointer.
      */
-    void operator() (std::shared_ptr<GridFunction>& u) const {
+    void operator() (std::shared_ptr<mfem::GridFunction>& u) const {
         visualize(u);
     }
 
@@ -53,7 +52,7 @@ public:
      * @brief Visualizes the solution.
      * @param u scalar grid function, passed as shared pointer.
      */
-    void visualize (std::shared_ptr<GridFunction>& u) const{
+    void visualize (std::shared_ptr<mfem::GridFunction>& u) const{
         visualize(*u);
     }
 
@@ -61,13 +60,13 @@ public:
      * @brief Visualizes the solution.
      * @param u scalar grid function, passed by reference.
      */
-    void visualize (GridFunction&) const;
+    void visualize (mfem::GridFunction&) const;
 
     /**
      * @brief Writes mesh to file.
      * @param mesh Mesh passed as a shared pointer.
      */
-    void dumpMesh (std::shared_ptr<Mesh>&) const;
+    void dumpMesh (std::shared_ptr<mfem::Mesh>&) const;
     
 protected:
     //! Numerical precision of output data.

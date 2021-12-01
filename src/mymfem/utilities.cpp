@@ -1,6 +1,8 @@
 #include "utilities.hpp"
 #include <assert.h>
 
+using namespace mfem;
+
 
 // free matrix memory and set pointer to null
 void clear (SparseMatrix* &mat) {

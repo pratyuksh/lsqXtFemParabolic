@@ -1,5 +1,6 @@
 #include "test_cases.hpp"
 
+using namespace mfem;
 
 // Dummy
 // Value 1 everywhere, except boundary
@@ -48,7 +49,7 @@ double heat::TestCase <Dummy>
     return 0;
 }
 
-inline void heat::TestCase <Dummy>
+void heat::TestCase <Dummy>
 :: setBdryDirichlet(Array<int>& bdr_marker) const
 {
     bdr_marker = 1;
@@ -113,7 +114,7 @@ double heat::TestCase <UnitSquareTest1>
     return f;
 }
 
-inline void heat::TestCase <UnitSquareTest1>
+void heat::TestCase <UnitSquareTest1>
 :: setBdryDirichlet(Array<int>& bdr_marker) const
 {
     bdr_marker = 1;
@@ -158,7 +159,7 @@ double heat::TestCase <UnitSquareTest2>
     return f;
 }
 
-inline void heat::TestCase <UnitSquareTest2>
+void heat::TestCase <UnitSquareTest2>
 :: setBdryDirichlet(Array<int>& bdr_marker) const
 {
     bdr_marker = 1;
@@ -219,7 +220,7 @@ double heat::TestCase <UnitSquareTest3>
     return f;
 }
 
-inline void heat::TestCase <UnitSquareTest3>
+void heat::TestCase <UnitSquareTest3>
 :: setBdryDirichlet(Array<int>& bdr_marker) const
 {
     bdr_marker = 1;
@@ -288,7 +289,7 @@ double heat::TestCase <UnitSquareTest4>
     return f1+f2;
 }
 
-inline void heat::TestCase <UnitSquareTest4>
+void heat::TestCase <UnitSquareTest4>
 :: setBdryDirichlet(Array<int>& bdr_marker) const
 {
     bdr_marker = 1;
@@ -364,14 +365,14 @@ double heat::TestCase <PeriodicUnitSquareTest1>
 // Non-zero ICs
 // Homogeneous Dirichlet BCs
 // Non-zero source
-inline double heat::TestCase <LShapedTest1>
+double heat::TestCase <LShapedTest1>
 :: radius(const Vector& x) const
 {
     double r = x.DistanceTo(m_singularCorner);
     return r;
 }
 
-inline double heat::TestCase <LShapedTest1>
+double heat::TestCase <LShapedTest1>
 :: polarAngle(const Vector& x) const
 {
     double theta = std::atan2(-x[0],x[1])
@@ -452,7 +453,7 @@ double heat::TestCase <LShapedTest1>
     return f;
 }
 
-inline void heat::TestCase <LShapedTest1>
+void heat::TestCase <LShapedTest1>
 :: setBdryDirichlet(Array<int>& bdr_marker) const
 {
     bdr_marker = 1;
@@ -462,14 +463,14 @@ inline void heat::TestCase <LShapedTest1>
 // Zero ICs
 // Homogeneous Dirichlet BCs
 // Non-zero source
-inline double heat::TestCase <LShapedTest2>
+double heat::TestCase <LShapedTest2>
 :: radius(const Vector& x) const
 {
     double r = x.DistanceTo(m_singularCorner);
     return r;
 }
 
-inline double heat::TestCase <LShapedTest2>
+double heat::TestCase <LShapedTest2>
 :: polarAngle(const Vector& x) const
 {
     double theta = std::atan2(-x[0],x[1])
@@ -550,7 +551,7 @@ double heat::TestCase <LShapedTest2>
     return f;
 }
 
-inline void heat::TestCase <LShapedTest2>
+void heat::TestCase <LShapedTest2>
 :: setBdryDirichlet(Array<int>& bdr_marker) const
 {
     bdr_marker = 1;

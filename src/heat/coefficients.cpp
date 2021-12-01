@@ -1,5 +1,7 @@
 #include "coefficients.hpp"
 
+using namespace mfem;
+
 
 //-----------------------//
 //  Medium Coefficients  //

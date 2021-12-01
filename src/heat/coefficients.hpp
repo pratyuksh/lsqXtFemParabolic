@@ -13,7 +13,8 @@ namespace heat {
 /**
  * @brief Scalar diffusion coefficient in the heat equation
  */
-class MediumScalarCoeff : public Coefficient
+class MediumScalarCoeff
+        : public mfem::Coefficient
 {
 public:
     /**
@@ -24,8 +25,8 @@ public:
         : m_testCase (testCase) {}
 
     //! Evaluates the scalar coefficient
-    virtual double Eval(ElementTransformation &,
-                        const IntegrationPoint &);
+    virtual double Eval(mfem::ElementTransformation &,
+                        const mfem::IntegrationPoint &);
 
 protected:
     std::shared_ptr<TestCases> m_testCase;
@@ -35,7 +36,8 @@ protected:
 /**
  * @brief Matrix diffusion coefficient in the heat equation
  */
-class MediumTensorCoeff : public MatrixCoefficient
+class MediumTensorCoeff
+        : public mfem::MatrixCoefficient
 {
 public:
     /**
@@ -47,8 +49,8 @@ public:
           m_testCase (testCase) {}
 
     //! Evaluates the matrix coefficient
-    virtual void Eval(DenseMatrix &, ElementTransformation &,
-                      const IntegrationPoint &);
+    virtual void Eval(mfem::DenseMatrix &, mfem::ElementTransformation &,
+                      const mfem::IntegrationPoint &);
 
 protected:
     std::shared_ptr<TestCases> m_testCase;
@@ -61,7 +63,8 @@ protected:
 /**
  * @brief Exact temperature (scalar) coefficient
  */
-class ExactTemperatureCoeff : public Coefficient
+class ExactTemperatureCoeff
+        : public mfem::Coefficient
 {
 public:
     /**
@@ -73,12 +76,12 @@ public:
         : m_testCase (testCase) {}
     
     //! Evaluates the scalar coefficient, time t is deduced by GetTime()
-    virtual double Eval(ElementTransformation &,
-                        const IntegrationPoint &);
+    virtual double Eval(mfem::ElementTransformation &,
+                        const mfem::IntegrationPoint &);
     
     //! Evaluates the scalar coefficient, time t is passed as an argument
-    double Eval(ElementTransformation &,
-                const IntegrationPoint &,
+    double Eval(mfem::ElementTransformation &,
+                const mfem::IntegrationPoint &,
                 double);
     
 protected:
@@ -89,7 +92,8 @@ protected:
 /**
  * @brief Exact heat flux (vector) coefficient
  */
-class ExactFluxCoeff : public VectorCoefficient
+class ExactFluxCoeff
+        : public mfem::VectorCoefficient
 {
 public:
     /**
@@ -98,16 +102,16 @@ public:
      */
     ExactFluxCoeff (std::shared_ptr
                         <TestCases> testCase)
-        : VectorCoefficient (testCase->getDim()),
+        : mfem::VectorCoefficient (testCase->getDim()),
           m_testCase (testCase) {}
 
     //! Evaluates the vector coefficient, time t is deduced by GetTime()
-    virtual void Eval(Vector&, ElementTransformation&,
-                      const IntegrationPoint&);
+    virtual void Eval(mfem::Vector&, mfem::ElementTransformation&,
+                      const mfem::IntegrationPoint&);
     
     //! Evaluates the vector coefficient, time t is passed as an argument
-    void Eval(Vector&, ElementTransformation&,
-              const IntegrationPoint&, double);
+    void Eval(mfem::Vector&, mfem::ElementTransformation&,
+              const mfem::IntegrationPoint&, double);
     
 private:
     std::shared_ptr<TestCases> m_testCase;
@@ -116,7 +120,8 @@ private:
 /**
  * @brief Exact temperature gradient with respect to time (scalar) coefficient
  */
-class ExactTemperatureTimeGradCoeff : public Coefficient
+class ExactTemperatureTimeGradCoeff
+        : public mfem::Coefficient
 {
 public:
     /**
@@ -128,12 +133,12 @@ public:
         : m_testCase (testCase) {}
 
     //! Evaluates the scalar coefficient, time t is deduced by GetTime()
-    virtual double Eval(ElementTransformation &,
-                        const IntegrationPoint &);
+    virtual double Eval(mfem::ElementTransformation &,
+                        const mfem::IntegrationPoint &);
 
     //! Evaluates the scalar coefficient, time t is passed as an argument
-    double Eval(ElementTransformation &,
-                const IntegrationPoint &,
+    double Eval(mfem::ElementTransformation &,
+                const mfem::IntegrationPoint &,
                 double);
 
 protected:
@@ -143,7 +148,8 @@ protected:
 /**
  * @brief Laplacian (scalar) coefficient
  */
-class LaplacianCoeff : public Coefficient
+class LaplacianCoeff
+        : public mfem::Coefficient
 {
 public:
     /**
@@ -155,12 +161,12 @@ public:
         : m_testCase (testCase) {}
 
     //! Evaluates the scalar coefficient, time t is deduced by GetTime()
-    virtual double Eval(ElementTransformation &,
-                        const IntegrationPoint &);
+    virtual double Eval(mfem::ElementTransformation &,
+                        const mfem::IntegrationPoint &);
 
     //! Evaluates the scalar coefficient, time t is passed as an argument
-    double Eval(ElementTransformation &,
-                const IntegrationPoint &,
+    double Eval(mfem::ElementTransformation &,
+                const mfem::IntegrationPoint &,
                 double);
 
 protected:
@@ -175,7 +181,8 @@ protected:
 /**
  * @brief Initial temperature (scalar) coefficient
  */
-class InitialTemperatureCoeff : public Coefficient
+class InitialTemperatureCoeff
+        : public mfem::Coefficient
 {
 public:
     /**
@@ -187,8 +194,8 @@ public:
         : m_testCase (testCase) {}
 
     //! Evaluates the scalar coefficient
-    virtual double Eval(ElementTransformation &,
-                        const IntegrationPoint &);
+    virtual double Eval(mfem::ElementTransformation &,
+                        const mfem::IntegrationPoint &);
 
 protected:
     std::shared_ptr<TestCases> m_testCase;
@@ -196,13 +203,14 @@ protected:
 
 
 //------------------------------------//
-//  Boundary Temperature Coefficient  //
+//  Boundary Temperature mfem::Coefficient  //
 //------------------------------------//
 
 /**
  * @brief Boundary temperature (scalar) coefficient
  */
-class BdryTemperatureCoeff : public Coefficient
+class BdryTemperatureCoeff
+        : public mfem::Coefficient
 {
 public:
     /**
@@ -214,12 +222,12 @@ public:
         : m_testCase (testCase) {}
 
     //! Evaluates the scalar coefficient, time t is deduced by GetTime()
-    virtual double Eval(ElementTransformation &,
-                        const IntegrationPoint &);
+    virtual double Eval(mfem::ElementTransformation &,
+                        const mfem::IntegrationPoint &);
 
     //! Evaluates the scalar coefficient, time t is passed as an argument
-    double Eval(ElementTransformation &,
-                const IntegrationPoint &,
+    double Eval(mfem::ElementTransformation &,
+                const mfem::IntegrationPoint &,
                 double);
 
 private:
@@ -234,7 +242,8 @@ private:
 /**
  * @brief Source (scalar) coefficient in the heat equation
  */
-class SourceCoeff : public Coefficient
+class SourceCoeff
+        : public mfem::Coefficient
 {
 public:
     /**
@@ -246,12 +255,12 @@ public:
         : m_testCase (testCase) {}
 
     //! Evaluates the scalar coefficient, time t is deduced by GetTime()
-    virtual double Eval(ElementTransformation &,
-                        const IntegrationPoint &);
+    virtual double Eval(mfem::ElementTransformation &,
+                        const mfem::IntegrationPoint &);
 
     //! Evaluates the scalar coefficient, time t is passed as an argument
-    double Eval(ElementTransformation &,
-                const IntegrationPoint &,
+    double Eval(mfem::ElementTransformation &,
+                const mfem::IntegrationPoint &,
                 double);
 
 private:

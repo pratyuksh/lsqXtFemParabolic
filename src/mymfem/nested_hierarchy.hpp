@@ -2,7 +2,6 @@
 #define MYMFEM_NESTED_HIERARCHY_HPP
 
 #include "mfem.hpp"
-using namespace mfem;
 
 #include <vector>
 #include <set>
@@ -14,54 +13,73 @@ using namespace mfem;
 typedef struct HierarchicalMeshTransformationTable
 {
 public:
-    //! Constructor with number of coarse mesh elements
-    HierarchicalMeshTransformationTable(int numElsCoarse)
-        : m_numRows(numElsCoarse) {
-        m_data.resize(m_numRows);
+    //! Constructor with number of parent mesh elements
+    HierarchicalMeshTransformationTable(int numParentEls)
+        : m_numParents(numParentEls) {
+        m_data.resize(m_numParents);
     }
 
-    //! Adds an element in the fine mesh to the hierarchy of an element
-    //! in the coarse mesh
-    void add (int elIdCoarse, int elIdFine) {
-        m_data[elIdCoarse].insert(elIdFine);
+    //! Adds a child element to the hierarchy of a parent element
+    void add (int parentElId, int childElId) {
+        m_data[parentElId].insert(childElId);
     }
    
-    //! Returns the child indices for the coarse mesh element with
-    //! index elIdCoarse
-    std::set<int>& operator() (int elIdCoarse) {
-        return m_data[elIdCoarse];
+    //! Returns the child indices for the parent element with
+    //! index parentElId
+    std::set<int>& operator() (int parentElId) {
+        return m_data[parentElId];
     }
 
-    //! Returns the number of rows
-    int getNumRows() const {
-        return m_numRows;
+    //! Returns the number of parent elements
+    int getNumParents() const {
+        return m_numParents;
     }
 
-    //! Returns the number of children for the coarse mesh element with
-    //! index elIdCoarse
-    int getNumChildren(int elIdCoarse) const {
-        return m_data[elIdCoarse].size();
+    //! Returns the number of children for the parent element with
+    //! index parentElId
+    int getNumChildren(int parentElId) const {
+        return m_data[parentElId].size();
     }
 
-   void print() {
-       for (int i=0; i<m_numRows; i++) {
-           for (auto it=m_data[i].begin(); it!= m_data[i].end(); it++) {
-               std::cout << *it << "\t";
-           }
-           std::cout << "\n";
-       }
-   }
+    //! Returns the index of the parent element for a given child element
+    int getParentId(int childId)
+    {
+        for (int i=0; i<m_numParents; i++) {
+          if (m_data[i].find(childId) != m_data[i].end()) {
+              return i;
+          }
+        }
+#ifndef NDEBUG
+        std::cout << "Child element with id " << childId
+                  << " not found in the hierarchical "
+                     "mesh transformation table!\n";
+#endif
+        return -1;
+    }
+
+    void print() {
+        for (int i=0; i<m_numParents; i++) {
+            for (auto it=m_data[i].begin(); it!= m_data[i].end(); it++) {
+                std::cout << *it << "\t";
+            }
+            std::cout << "\n";
+        }
+    }
 
 private:
-   int m_numRows; // number of coarse mesh elements
+   int m_numParents; // number of parent mesh elements
    std::vector<std::set<int>> m_data; // stores the mesh hierarchy
 } HierarchicalMeshTransformationTable;
 
 
 namespace mymfem
 {
-typedef std::vector<std::shared_ptr<Mesh>> NestedMeshes;
-typedef std::vector<std::shared_ptr<FiniteElementSpace>> NestedFESpaces;
+typedef std::vector<std::shared_ptr<mfem::Mesh>>
+NestedMeshes;
+
+typedef std::vector<std::shared_ptr<mfem::FiniteElementSpace>>
+NestedFESpaces;
+
 typedef std::vector<std::shared_ptr<HierarchicalMeshTransformationTable>>
 HierarchicalMeshTransformations;
 
@@ -76,7 +94,7 @@ public:
     NestedMeshHierarchy() {}
 
     //! Adds mesh to the hierarchy
-    void addMesh(std::shared_ptr<Mesh>& mesh) {
+    void addMesh(std::shared_ptr<mfem::Mesh>& mesh) {
         m_meshes.push_back(mesh);
     }
 
@@ -150,7 +168,7 @@ public:
       : m_nestedMeshHierarchy(nestedMeshHierarchy) {}
 
     //! Adds FE space to the hierarchy
-    void addFESpace(std::shared_ptr<FiniteElementSpace>& fes) {
+    void addFESpace(std::shared_ptr<mfem::FiniteElementSpace>& fes) {
         m_feSpaces.push_back(fes);
         
         int n = m_feSpaces.size();
@@ -168,6 +186,11 @@ public:
         return m_feSpaces;
     }
 
+    //! Returns the nested mesh hierarchy
+    std::shared_ptr<NestedMeshHierarchy> getNestedMeshHierarchy() const {
+        return m_nestedMeshHierarchy;
+    }
+
     //! Returns the nested meshes
     NestedMeshes getMeshes() {
         return m_nestedMeshHierarchy->getMeshes();
@@ -179,10 +202,10 @@ public:
     }
 
     //! Returns the number of dimensions (size) of the FE spaces
-    Array<int> getNumDims()
+    mfem::Array<int> getNumDims()
     {
         int numLevels = this->getNumLevels();
-        Array<int> numDims(numLevels);
+        mfem::Array<int> numDims(numLevels);
         for (int i=0; i < numLevels; i++) {
             numDims[i] = m_feSpaces[i]->GetTrueVSize();
         }

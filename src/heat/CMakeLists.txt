@@ -1,4 +1,4 @@
-target_sources(HeatObj
+target_sources(LibHeat
   PRIVATE ${CMAKE_CURRENT_LIST_DIR}/test_cases.cpp
   PRIVATE ${CMAKE_CURRENT_LIST_DIR}/test_cases_factory.cpp
   PRIVATE ${CMAKE_CURRENT_LIST_DIR}/coefficients.cpp
@@ -9,6 +9,5 @@ target_sources(HeatObj
   PRIVATE ${CMAKE_CURRENT_LIST_DIR}/discretisation_H1Hdiv.cpp
   PRIVATE ${CMAKE_CURRENT_LIST_DIR}/observer.cpp
   PRIVATE ${CMAKE_CURRENT_LIST_DIR}/solver.cpp
-  # PRIVATE ${CMAKE_CURRENT_LIST_DIR}/sparse_grids_handler.cpp
   PRIVATE ${CMAKE_CURRENT_LIST_DIR}/functionals.cpp
 )

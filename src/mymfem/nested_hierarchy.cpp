@@ -1,5 +1,7 @@
 #include "nested_hierarchy.hpp"
 
+using namespace mfem;
+
 
 void mymfem::NestedMeshHierarchy
 :: buildHierarchicalTranformations() const
@@ -57,7 +59,7 @@ std::shared_ptr<HierarchicalMeshTransformationTable>
 mymfem::buildMultiLevelMeshHierarchy
 (mymfem::HierarchicalMeshTransformations& hierMeshTrans)
 {
-    int numCoarseEls = hierMeshTrans[0]->getNumRows();
+    int numCoarseEls = hierMeshTrans[0]->getNumParents();
     auto multiLevelHierMeshTrans = std::make_shared
             <HierarchicalMeshTransformationTable>(numCoarseEls);
 
@@ -110,7 +112,7 @@ mymfem::buildMultiLevelMeshHierarchy
 (std::shared_ptr<HierarchicalMeshTransformationTable>& curHierarchy,
  std::shared_ptr<HierarchicalMeshTransformationTable>& nextHierarchy)
 {
-    int numCurEls = curHierarchy->getNumRows();
+    int numCurEls = curHierarchy->getNumParents();
     auto multiLevelHierarchy = std::make_shared
             <HierarchicalMeshTransformationTable>(numCurEls);
 

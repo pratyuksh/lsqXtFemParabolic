@@ -2,7 +2,6 @@
 #define HEAT_DISCRETISATION_HPP
 
 #include "mfem.hpp"
-using namespace mfem;
 
 #include <iostream>
 
@@ -25,8 +24,8 @@ public:
     ~LsqXtFEM ();
     
     //! Sets the FE space and boundary conditions
-    virtual void set(std::shared_ptr<Mesh>&,
-                     std::shared_ptr<Mesh>&) {
+    virtual void set(std::shared_ptr<mfem::Mesh>&,
+                     std::shared_ptr<mfem::Mesh>&) {
         std::cout << "Function 'set' not implemented "
                      "for the class HeatLsqXtFEM!"
                   << std::endl;
@@ -71,28 +70,31 @@ public:
     //! Assembles the blocks of the linear system matrix
     void assembleSystem();
 
-    //! Builds the linear system matrix from the blocks as an MFEM operator
+    //! Builds the linear system matrix from the blocks
+    //! as an MFEM operator
     void buildSystemOp();
 
-    //! Builds the linear system matrix from the blocks as a monolithic matrix
+    //! Builds the linear system matrix from the blocks
+    //! as a monolithic matrix
     void buildSystemMatrix();
 
-    //! Builds the upper-triangle linear system matrix from the blocks as a monolithic matrix
+    //! Builds the upper-triangle linear system matrix
+    //! from the blocks as a monolithic matrix
     void buildSystemMatrixUpperTriangle();
 
     //! Assembles the target right-hand side
-    void assembleRhs(BlockVector *) const;
+    void assembleRhs(mfem::BlockVector *) const;
 
     // for L2-projection
     //! Builds the L2-projection matrix
     void buildProjectorMatrix();
 
     //! Assembles the target right-hand side for L2-projection
-    void assembleProjectionRhs(BlockVector *) const;
+    void assembleProjectionRhs(mfem::BlockVector *) const;
 
 protected:
 
-    virtual void assembleSourceXDiv(Vector&, double) const
+    virtual void assembleSourceXDiv(mfem::Vector&, double) const
     {
         std::cout << "Function "
                      "'assemble_source_xDiv' "
@@ -102,7 +104,7 @@ protected:
         abort();
     }
 
-    virtual void assembleXProjectionRhs(Vector&, Vector&,
+    virtual void assembleXProjectionRhs(mfem::Vector&, mfem::Vector&,
                                           double) const {
         std::cout << "Function "
                      "'assemble_xProjection_rhs' "
@@ -113,83 +115,99 @@ protected:
     }
 
     //! Assembles the initial conditions
-    void assembleICs(Vector&) const;
+    void assembleICs(mfem::Vector&) const;
 
-    void assembleICsXProjection(Vector&) const;
+    void assembleICsXProjection(mfem::Vector&) const;
 
-    void assembleSourceTGradXProjection(Vector&) const;
-    void assembleSourceXProjection(Vector&, double) const;
-    void assembleSourceTProjectionXDiv(Vector&) const;
+    void assembleSourceTGradXProjection(mfem::Vector&) const;
+    void assembleSourceXProjection(mfem::Vector&, double) const;
+    void assembleSourceTProjectionXDiv(mfem::Vector&) const;
 
-    void addVector(const Array<int> &, const Vector&, Vector&) const;
+    void addVector(const mfem::Array<int> &, const mfem::Vector&, mfem::Vector&) const;
 
     //! Applies boundary conditions on a matrix
-    void applyBCs(SparseMatrix&) const;
+    void applyBCs(mfem::SparseMatrix&) const;
 
     //! Applies boundary conditions on a vector
-    void applyBCs(BlockVector&) const;
+    void applyBCs(mfem::BlockVector&) const;
 
 public:
     //! Returns the test case
-    inline std::shared_ptr<heat::TestCases> getTestCase() const {
+    std::shared_ptr<heat::TestCases> getTestCase() const {
         return m_testCase;
     }
     
     //! Returns the temporal mesh
-    inline Mesh* getTMesh() const {
+    mfem::Mesh* getTMesh() const {
         return m_tFespace->GetMesh();
     }
     
     //! Returns the spatial mesh
-    inline Mesh* getXMesh() const {
+    mfem::Mesh* getXMesh() const {
         return m_xFespaces[0]->GetMesh();
     }
 
     //! Returns the temporal FE collection
-    inline FiniteElementCollection* getTFec() const {
+    mfem::FiniteElementCollection* getTFec() const {
         return m_tFec;
     }
 
     //! Return the spatial FE collections
-    inline Array<FiniteElementCollection*> getXFecs() const {
+    mfem::Array<mfem::FiniteElementCollection*> getXFecs() const {
         return m_xFecs;
     }
     
     //! Returns the temporal FE space
-    inline FiniteElementSpace* getTFespace() const {
+    mfem::FiniteElementSpace* getTFespace() const {
         return m_tFespace;
     }
     
     //! Returns the spatial FE spaces
-    inline Array<FiniteElementSpace*> getXFespaces() const {
+    mfem::Array<mfem::FiniteElementSpace*> getXFespaces() const {
         return m_xFespaces;
     }
 
     //! Returns the system operator
-    inline BlockOperator* getHeatOp() const {
+    mfem::BlockOperator* getHeatOp() const {
         return m_heatOp;
     }
 
     //! Returns the block offsets in the system operator,
     //! which has a block-structure
-    inline Array<int> getBlockOffsets() const {
+    mfem::Array<int> getBlockOffsets() const {
         return m_block_offsets;
     }
 
     //! Returns the monolithic system matrix
-    inline SparseMatrix* getHeatMat() const {
+    mfem::SparseMatrix* getHeatMat() const {
         return m_heatMat;
     }
 
     //! Returns the projection matrix
-    inline SparseMatrix* getHeatProjectionMat() const {
+    mfem::SparseMatrix* getHeatProjectionMat() const {
         return m_heatProjMat;
     }
     
     //! Prints some info
-    inline void print() const {
+    void print() const {
         std::cout << "Degree in x and t: "
                   << m_deg << std::endl;
+    }
+
+    mfem::SparseMatrix* getSystemBlock11() const {
+        return m_block00;
+    }
+
+    mfem::SparseMatrix* getSystemBlock12() const {
+        return m_block01;
+    }
+
+    mfem::SparseMatrix* getSystemBlock21() const {
+        return m_block10;
+    }
+
+    mfem::SparseMatrix* getSystemBlock22() const {
+        return m_block11;
     }
 
 protected:
@@ -198,40 +216,40 @@ protected:
     int m_xndim, m_deg;
     std::shared_ptr<heat::TestCases> m_testCase;
     
-    FiniteElementCollection* m_tFec = nullptr;
-    FiniteElementSpace* m_tFespace = nullptr;
+    mfem::FiniteElementCollection* m_tFec = nullptr;
+    mfem::FiniteElementSpace* m_tFespace = nullptr;
     
-    Array<FiniteElementCollection*> m_xFecs;
-    Array<FiniteElementSpace*> m_xFespaces;
-    Array<int> m_block_offsets;
+    mfem::Array<mfem::FiniteElementCollection*> m_xFecs;
+    mfem::Array<mfem::FiniteElementSpace*> m_xFespaces;
+    mfem::Array<int> m_block_offsets;
     
-    SparseMatrix *m_tMass = nullptr;
-    SparseMatrix *m_tStiff = nullptr;
-    SparseMatrix *m_tGrad = nullptr;
+    mfem::SparseMatrix *m_tMass = nullptr;
+    mfem::SparseMatrix *m_tStiff = nullptr;
+    mfem::SparseMatrix *m_tGrad = nullptr;
 
-    SparseMatrix *m_xMass1 = nullptr;
-    SparseMatrix *m_xMass2 = nullptr;
-    SparseMatrix *m_xStiff1 = nullptr;
-    SparseMatrix *m_xStiff2 = nullptr;
-    SparseMatrix *m_xGrad = nullptr;
-    SparseMatrix *m_xDiv = nullptr;
+    mfem::SparseMatrix *m_xMass1 = nullptr;
+    mfem::SparseMatrix *m_xMass2 = nullptr;
+    mfem::SparseMatrix *m_xStiff1 = nullptr;
+    mfem::SparseMatrix *m_xStiff2 = nullptr;
+    mfem::SparseMatrix *m_xGrad = nullptr;
+    mfem::SparseMatrix *m_xDiv = nullptr;
 
-    SparseMatrix *m_block00 = nullptr;
-    SparseMatrix *m_block01 = nullptr;
-    SparseMatrix *m_block10 = nullptr;
-    SparseMatrix *m_block11 = nullptr;
+    mfem::SparseMatrix *m_block00 = nullptr;
+    mfem::SparseMatrix *m_block01 = nullptr;
+    mfem::SparseMatrix *m_block10 = nullptr;
+    mfem::SparseMatrix *m_block11 = nullptr;
 
-    BlockOperator *m_heatOp = nullptr;
-    SparseMatrix *m_heatMat = nullptr;
-    SparseMatrix *m_heatProjMat = nullptr;
+    mfem::BlockOperator *m_heatOp = nullptr;
+    mfem::SparseMatrix *m_heatMat = nullptr;
+    mfem::SparseMatrix *m_heatProjMat = nullptr;
     
-    Array<int> m_xEssBdrMarker;
-    Array<int> m_xEssTdofList;
-    Array<int> m_essTdofList;
+    mfem::Array<int> m_xEssBdrMarker;
+    mfem::Array<int> m_xEssTdofList;
+    mfem::Array<int> m_essTdofList;
 
     bool m_firstPass = true;
-    SparseMatrix *m_block00MedIdp = nullptr;
-    SparseMatrix *m_block01MedIdp = nullptr;
+    mfem::SparseMatrix *m_block00MedIdp = nullptr;
+    mfem::SparseMatrix *m_block01MedIdp = nullptr;
 };
 
 /**
@@ -245,8 +263,8 @@ public:
                   std::shared_ptr<heat::TestCases>& testCase)
         : LsqXtFEM(config, testCase) {}
 
-    void set(std::shared_ptr<Mesh>&,
-             std::shared_ptr<Mesh>&) override;
+    void set(std::shared_ptr<mfem::Mesh>&,
+             std::shared_ptr<mfem::Mesh>&) override;
 
     void assembleSystemMediumIndependent() override;
     void assembleSystemMediumDependent() override;
@@ -254,8 +272,9 @@ public:
     void assembleProjector() override;
 
 private:
-    void assembleSourceXDiv(Vector&, double) const override;
-    void assembleXProjectionRhs(Vector&, Vector&, double) const override;
+    void assembleSourceXDiv(mfem::Vector&, double) const override;
+    void assembleXProjectionRhs(mfem::Vector&,
+                                mfem::Vector&, double) const override;
 };
 
 /**
@@ -269,8 +288,8 @@ public:
                         std::shared_ptr<heat::TestCases>& testCase)
         : LsqXtFEM(config, testCase) {}
 
-    void set(std::shared_ptr<Mesh>&,
-             std::shared_ptr<Mesh>&) override;
+    void set(std::shared_ptr<mfem::Mesh>&,
+             std::shared_ptr<mfem::Mesh>&) override;
 
     void assembleSystemMediumIndependent() override;
     void assembleSystemMediumDependent() override;
@@ -278,8 +297,8 @@ public:
     void assembleProjector() override;
 
 private:
-    void assembleSourceXDiv(Vector&, double) const override;
-    void assembleXProjectionRhs(Vector&, Vector&,
+    void assembleSourceXDiv(mfem::Vector&, double) const override;
+    void assembleXProjectionRhs(mfem::Vector&, mfem::Vector&,
                                   double) const override;
 };
 

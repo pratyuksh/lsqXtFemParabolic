@@ -12,6 +12,7 @@
 
 #include <omp.h>
 
+using namespace mfem;
 namespace fs = std::filesystem;
 
 

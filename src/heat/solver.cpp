@@ -4,6 +4,8 @@
 #include <iostream>
 #include <chrono>
 
+using namespace mfem;
+
 
 // Constructor with config JSON
 heat::Solver :: Solver (const nlohmann::json& config)

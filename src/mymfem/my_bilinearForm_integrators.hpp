@@ -2,7 +2,6 @@
 #define MYMFEM_BILINEARFORM_INTEGRATORS_HPP
 
 #include "mfem.hpp"
-using namespace mfem;
 
 #include <fmt/format.h>
 
@@ -22,20 +21,20 @@ public:
 
     //! Assembles the integrator over a spatial element
     virtual void assembleElementMatrix
-    (const FiniteElement &fe,
-     ElementTransformation& elTrans,
-     DenseMatrix& elmat) = 0;
+    (const mfem::FiniteElement &fe,
+     mfem::ElementTransformation& elTrans,
+     mfem::DenseMatrix& elmat) = 0;
 
     //! Assembles the integrator
     //! over two nested coarse and fine mesh elements.
     //! Coarse element is for the trial functions
     //! and fine element is for the test function
     virtual void assembleElementMatrix
-    (const FiniteElement &testFeFine,
-     ElementTransformation& testElTransFine,
-     const FiniteElement &trialFeCoarse,
-     ElementTransformation& trialElTransCoarse,
-     DenseMatrix& elmat) = 0;
+    (const mfem::FiniteElement &testFeFine,
+     mfem::ElementTransformation& testElTransFine,
+     const mfem::FiniteElement &trialFeCoarse,
+     mfem::ElementTransformation& trialElTransCoarse,
+     mfem::DenseMatrix& elmat) = 0;
 };
 
 /**
@@ -51,32 +50,32 @@ public:
 
     //! Assembles the integrator over a spatial element
     virtual void assembleElementMatrix
-    (const FiniteElement &testFe,
-     const FiniteElement &trialFe,
-     ElementTransformation& elTrans,
-     DenseMatrix& elmat) = 0;
+    (const mfem::FiniteElement &testFe,
+     const mfem::FiniteElement &trialFe,
+     mfem::ElementTransformation& elTrans,
+     mfem::DenseMatrix& elmat) = 0;
 
     //! Assembles the integrator
     //! over two nested coarse and fine mesh elements.
     //! Coarse element is for the trial functions
     //! and fine element is for the test function
     virtual void assembleElementMatrix
-    (const FiniteElement &testFeFine,
-     ElementTransformation& testElTransFine,
-     const FiniteElement &trialFeCoarse,
-     ElementTransformation& trialElTransCoarse,
-     DenseMatrix& elmat) = 0;
+    (const mfem::FiniteElement &testFeFine,
+     mfem::ElementTransformation& testElTransFine,
+     const mfem::FiniteElement &trialFeCoarse,
+     mfem::ElementTransformation& trialElTransCoarse,
+     mfem::DenseMatrix& elmat) = 0;
 
     //! Assembles the integrator
     //! over two nested coarse and fine mesh elements.
     //! Fine element is for the trial functions
     //! and coarse element is for the test function
     virtual void assembleElementMatrix2
-    (const FiniteElement &testFeCoarse,
-     ElementTransformation& testElTransCoarse,
-     const FiniteElement &trialFeFine,
-     ElementTransformation& trialElTransFine,
-     DenseMatrix& elmat) = 0;
+    (const mfem::FiniteElement &testFeCoarse,
+     mfem::ElementTransformation& testElTransCoarse,
+     const mfem::FiniteElement &trialFeFine,
+     mfem::ElementTransformation& trialElTransFine,
+     mfem::DenseMatrix& elmat) = 0;
 };
 
 }

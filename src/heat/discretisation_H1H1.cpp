@@ -3,6 +3,8 @@
 #include "assembly.hpp"
 #include "../mymfem/utilities.hpp"
 
+using namespace mfem;
+
 
 // Sets the FE space and boundary conditions
 void heat::LsqXtFemH1H1 :: set(std::shared_ptr<Mesh>& tMesh,

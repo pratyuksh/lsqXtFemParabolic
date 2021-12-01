@@ -4,8 +4,6 @@
 #include "../core/config.hpp"
 #include "mfem.hpp"
 
-using namespace mfem;
-
 // Test cases available
 enum {Dummy,
       UnitSquareTest1,
@@ -31,73 +29,78 @@ public:
      * @brief Defines the scalar material coefficient
      * @return material coefficient at a given physical point
      */
-    virtual double medium(const Vector&) const = 0;
+    virtual double medium(const mfem::Vector&) const = 0;
 
     /**
      * @brief Defines the matrix material coefficient
      * @return material coefficient at a given physical point
      */
-    virtual DenseMatrix mediumTensor(const Vector&) const = 0;
+    virtual mfem::DenseMatrix mediumTensor(const mfem::Vector&) const = 0;
 
     /**
      * @brief Temperature solution
      * @return temperature value at a given point in space-time
      */
-    virtual double temperatureSol(const Vector&,
+    virtual double temperatureSol(const mfem::Vector&,
                                   const double) const = 0;
 
     /**
      * @brief Heat flux solution
      * @return heat flux value at a given point in space-time
      */
-    virtual Vector heatFluxSol(const Vector&,
-                               const double) const = 0;
+    virtual mfem::Vector heatFluxSol(const mfem::Vector&,
+                                     const double) const = 0;
 
     /**
      * @brief Temperature gradient with respect to time
      * @return value of temperature time-gradient at a given point in space-time
      */
-    virtual double temperatureTimeGradientSol (const Vector&,
+    virtual double temperatureTimeGradientSol (const mfem::Vector&,
                                                const double) const = 0;
 
     virtual double laplacian
-    (const Vector&, const double) const = 0;
+    (const mfem::Vector&, const double) const = 0;
     
     /**
      * @brief Initial temperature
      * @return value of initial temperature at a given point in space
      */
-    virtual double initTemperature(const Vector&) const = 0;
+    virtual double initTemperature(const mfem::Vector&) const = 0;
 
     /**
      * @brief Initial heat flux
      * @return value of heat flux vector at a given point in space
      */
-    virtual Vector initHeatFlux(const Vector&) const = 0;
+    virtual mfem::Vector initHeatFlux(const mfem::Vector&) const = 0;
     
     /**
      * @brief Temperature at the boundary of spatial domain
      * @return value of temperature at a given point on the spatial boundary
      */
-    virtual double bdryTemperature(const Vector&,
+    virtual double bdryTemperature(const mfem::Vector&,
                                    const double) const = 0;
 
     /**
      * @brief source term in the heat equation
      * @return value of source at a given point in space-time
      */
-    virtual double source(const Vector&,
+    virtual double source(const mfem::Vector&,
                           const double) const = 0;
     
     //! Sets the Dirichlet boundary
-    virtual void setBdryDirichlet(Array<int>&) const = 0;
+    virtual void setBdryDirichlet(mfem::Array<int>&) const = 0;
 
     virtual void setPerturbation(double) const = 0;
 
-    virtual void setPerturbations(const Vector&) const = 0;
+    virtual void setPerturbations(const mfem::Vector&) const = 0;
 
     //! Returns the number of spatial dimensions
-    virtual int getDim() const = 0;
+    int getDim() const {
+        return m_dim;
+    }
+
+protected:
+    int m_dim;
 };
 
 
@@ -120,56 +123,52 @@ class TestCase <Dummy>
 {
 public:
     explicit TestCase (const nlohmann::json& config)
-        : m_config(config), m_dim(2) {
+        : m_config(config) {
+        m_dim = 2;
     }
 
-    double temperatureSol(const Vector&,
-                           const double) const override;
+    double temperatureSol(const mfem::Vector&,
+                          const double) const override;
 
-    Vector heatFluxSol(const Vector&,
-                        const double) const override;
+    mfem::Vector heatFluxSol(const mfem::Vector&,
+                             const double) const override;
 
     double temperatureTimeGradientSol
-        (const Vector&, const double) const override;
+        (const mfem::Vector&, const double) const override;
 
-    double source(const Vector&,
+    double source(const mfem::Vector&,
                   const double) const override;
 
-    void setBdryDirichlet(Array<int>&) const override;
+    void setBdryDirichlet(mfem::Array<int>&) const override;
 
-    double medium(const Vector&) const override;
+    double medium(const mfem::Vector&) const override;
 
-    DenseMatrix mediumTensor(const Vector&) const override;
+    mfem::DenseMatrix mediumTensor(const mfem::Vector&) const override;
 
     double laplacian
-    (const Vector& x, const double t) const override {
+    (const mfem::Vector& x, const double t) const override {
         return temperatureTimeGradientSol(x,t) - source(x, t);
     }
 
-    double initTemperature(const Vector& x) const override {
+    double initTemperature(const mfem::Vector& x) const override {
         return temperatureSol(x,0);
     }
 
-    Vector initHeatFlux(const Vector& x) const override {
+    mfem::Vector initHeatFlux(const mfem::Vector& x) const override {
         return heatFluxSol(x,0);
     }
 
-    double bdryTemperature(const Vector& x,
+    double bdryTemperature(const mfem::Vector& x,
                             const double t) const override {
         return temperatureSol(x, t);
     }
 
     void setPerturbation(double) const override {}
 
-    void setPerturbations(const Vector&) const override {}
-
-    inline int getDim() const override {
-        return m_dim;
-    }
+    void setPerturbations(const mfem::Vector&) const override {}
 
 private:
     const nlohmann::json& m_config;
-    int m_dim;
 };
 
 
@@ -185,42 +184,43 @@ class TestCase <UnitSquareTest1>
 {
 public:
     explicit TestCase (const nlohmann::json& config)
-        : m_config(config), m_dim(2) {
+        : m_config(config) {
+        m_dim = 2;
     }
 
-    double temperatureSol(const Vector&,
-                           const double) const override;
+    double temperatureSol(const mfem::Vector&,
+                          const double) const override;
 
-    Vector heatFluxSol(const Vector&,
-                        const double) const override;
+    mfem::Vector heatFluxSol(const mfem::Vector&,
+                             const double) const override;
 
     double temperatureTimeGradientSol
-        (const Vector&, const double) const override;
+        (const mfem::Vector&, const double) const override;
 
-    double source(const Vector&,
+    double source(const mfem::Vector&,
                   const double) const override;
 
-    void setBdryDirichlet(Array<int>&) const override;
+    void setBdryDirichlet(mfem::Array<int>&) const override;
 
-    double medium(const Vector&) const override;
+    double medium(const mfem::Vector&) const override;
 
-    DenseMatrix mediumTensor(const Vector&) const override;
+    mfem::DenseMatrix mediumTensor(const mfem::Vector&) const override;
 
     double laplacian
-    (const Vector& x, const double t) const override {
+    (const mfem::Vector& x, const double t) const override {
         return temperatureTimeGradientSol(x,t) - source(x, t);
     }
 
-    double initTemperature(const Vector& x) const override {
+    double initTemperature(const mfem::Vector& x) const override {
         return temperatureSol(x,0);
     }
 
-    Vector initHeatFlux(const Vector& x) const override {
+    mfem::Vector initHeatFlux(const mfem::Vector& x) const override {
         return heatFluxSol(x,0);
     }
 
-    double bdryTemperature(const Vector& x,
-                            const double t) const override {
+    double bdryTemperature(const mfem::Vector& x,
+                           const double t) const override {
         return temperatureSol(x, t);
     }
 
@@ -228,16 +228,10 @@ public:
         m_rvar = w;
     }
 
-    void setPerturbations(const Vector&) const override {}
-
-    inline int getDim() const override {
-        return m_dim;
-    }
+    void setPerturbations(const mfem::Vector&) const override {}
 
 private:
     const nlohmann::json& m_config;
-    int m_dim;
-
     mutable double m_rvar = 0;
 };
 
@@ -253,66 +247,61 @@ class TestCase <UnitSquareTest2>
 {
 public:
     explicit TestCase (const nlohmann::json& config)
-        : m_config(config), m_dim(2) {
+        : m_config(config) {
+        m_dim = 2;
     }
 
-    double temperatureSol(const Vector&,
-                           const double) const override;
+    double temperatureSol(const mfem::Vector&,
+                          const double) const override;
 
-    Vector heatFluxSol(const Vector&,
-                        const double) const override;
+    mfem::Vector heatFluxSol(const mfem::Vector&,
+                             const double) const override;
 
     double temperatureTimeGradientSol
-        (const Vector&, const double) const override;
+        (const mfem::Vector&, const double) const override;
 
-    double source(const Vector&,
+    double source(const mfem::Vector&,
                   const double) const override;
 
-    void setBdryDirichlet(Array<int>&) const override;
+    void setBdryDirichlet(mfem::Array<int>&) const override;
 
-    double medium(const Vector&) const override
-    {
+    double medium(const mfem::Vector&) const override {
         return 1;
     }
 
-    DenseMatrix mediumTensor(const Vector&) const override
+    mfem::DenseMatrix mediumTensor(const mfem::Vector&) const override
     {
-        DenseMatrix med(m_dim);
+        mfem::DenseMatrix med(m_dim);
         med(0,0) = med(1,1) = 1;
         med(0,1) = med(1,0) = 0;
         return med;
     }
 
     double laplacian
-    (const Vector& x, const double t) const override {
+    (const mfem::Vector& x, const double t) const override {
         return temperatureTimeGradientSol(x,t)
                 - source(x, t);
     }
 
-    double initTemperature(const Vector& x) const override {
+    double initTemperature(const mfem::Vector& x) const override {
         return temperatureSol(x,0);
     }
 
-    Vector initHeatFlux(const Vector& x) const override {
+    mfem::Vector initHeatFlux(const mfem::Vector& x) const override {
         return heatFluxSol(x,0);
     }
 
-    double bdryTemperature(const Vector& x,
-                            const double t) const override {
+    double bdryTemperature(const mfem::Vector& x,
+                           const double t) const override {
         return temperatureSol(x, t);
     }
 
     void setPerturbation(double) const override {}
 
-    void setPerturbations(const Vector&) const override {}
-
-    inline int getDim() const override {
-        return m_dim;
-    }
+    void setPerturbations(const mfem::Vector&) const override {}
 
 private:
     const nlohmann::json& m_config;
-    int m_dim;
 };
 
 /**
@@ -327,43 +316,44 @@ class TestCase <UnitSquareTest3>
 {
 public:
     explicit TestCase (const nlohmann::json& config)
-        : m_config(config), m_dim(2) {
+        : m_config(config) {
+        m_dim = 2;
     }
 
-    double medium(const Vector&) const override;
+    double medium(const mfem::Vector&) const override;
 
-    DenseMatrix mediumTensor(const Vector&) const override;
+    mfem::DenseMatrix mediumTensor(const mfem::Vector&) const override;
 
-    double temperatureSol(const Vector&,
-                           const double) const override;
+    double temperatureSol(const mfem::Vector&,
+                          const double) const override;
 
-    Vector heatFluxSol(const Vector&,
-                        const double) const override;
+    mfem::Vector heatFluxSol(const mfem::Vector&,
+                             const double) const override;
 
     double temperatureTimeGradientSol
-        (const Vector&, const double) const override;
+        (const mfem::Vector&, const double) const override;
 
-    double source(const Vector&,
+    double source(const mfem::Vector&,
                   const double) const override;
 
-    void setBdryDirichlet(Array<int>&) const override;
+    void setBdryDirichlet(mfem::Array<int>&) const override;
 
     double laplacian
-    (const Vector& x, const double t) const override {
+    (const mfem::Vector& x, const double t) const override {
         return temperatureTimeGradientSol(x,t)
                 - source(x, t);
     }
 
-    double initTemperature(const Vector& x) const override {
+    double initTemperature(const mfem::Vector& x) const override {
         return temperatureSol(x,0);
     }
 
-    Vector initHeatFlux(const Vector& x) const override {
+    mfem::Vector initHeatFlux(const mfem::Vector& x) const override {
         return heatFluxSol(x,0);
     }
 
-    double bdryTemperature(const Vector& x,
-                            const double t) const override {
+    double bdryTemperature(const mfem::Vector& x,
+                           const double t) const override {
         return temperatureSol(x, t);
     }
 
@@ -371,19 +361,13 @@ public:
         m_rvar = w;
     }
 
-    void setPerturbations(const Vector&) const override {}
-
-    inline int getDim() const override {
-        return m_dim;
-    }
+    void setPerturbations(const mfem::Vector&) const override {}
 
 private:
-    double perturb(const Vector&) const;
+    double perturb(const mfem::Vector&) const;
 
 private:
     const nlohmann::json& m_config;
-    int m_dim;
-
     mutable double m_rvar = 0;
 };
 
@@ -400,61 +384,56 @@ class TestCase <UnitSquareTest4>
 {
 public:
     explicit TestCase (const nlohmann::json& config)
-        : m_config(config), m_dim(2) {
+        : m_config(config) {
+        m_dim = 2;
     }
 
-    DenseMatrix mediumTensor(const Vector&) const override;
+    mfem::DenseMatrix mediumTensor(const mfem::Vector&) const override;
 
-    double temperatureSol(const Vector&,
-                           const double) const override;
+    double temperatureSol(const mfem::Vector&,
+                          const double) const override;
 
-    Vector heatFluxSol(const Vector&,
-                        const double) const override;
+    mfem::Vector heatFluxSol(const mfem::Vector&,
+                             const double) const override;
 
     double temperatureTimeGradientSol
-        (const Vector&, const double) const override;
+        (const mfem::Vector&, const double) const override;
 
-    double source(const Vector&,
+    double source(const mfem::Vector&,
                   const double) const override;
 
-    void setBdryDirichlet(Array<int>&) const override;
+    void setBdryDirichlet(mfem::Array<int>&) const override;
 
     double laplacian
-    (const Vector& x, const double t) const override {
+    (const mfem::Vector& x, const double t) const override {
         return temperatureTimeGradientSol(x,t)
                 - source(x, t);
     }
 
-    double initTemperature(const Vector& x) const override {
+    double initTemperature(const mfem::Vector& x) const override {
         return temperatureSol(x,0);
     }
 
-    Vector initHeatFlux(const Vector& x) const override {
+    mfem::Vector initHeatFlux(const mfem::Vector& x) const override {
         return heatFluxSol(x,0);
     }
 
-    double bdryTemperature(const Vector& x,
-                            const double t) const override {
+    double bdryTemperature(const mfem::Vector& x,
+                           const double t) const override {
         return temperatureSol(x, t);
     }
 
     void setPerturbation(double) const override {}
 
-    void setPerturbations(const Vector&) const override {}
-
-    inline int getDim() const override {
-        return m_dim;
-    }
+    void setPerturbations(const mfem::Vector&) const override {}
 
     // redundant for this test case
-    double medium(const Vector&) const override
-    {
+    double medium(const mfem::Vector&) const override {
         return 1;
     }
 
 private:
     const nlohmann::json& m_config;
-    int m_dim;
 };
 
 /**
@@ -469,67 +448,63 @@ class TestCase <PeriodicUnitSquareTest1>
 {
 public:
     explicit TestCase (const nlohmann::json& config)
-        : m_config(config), m_dim(2) {
+        : m_config(config) {
+        m_dim = 2;
     }
 
-    double medium(const Vector& x) const override;
+    double medium(const mfem::Vector& x) const override;
 
-    DenseMatrix mediumTensor(const Vector&) const override;
+    mfem::DenseMatrix mediumTensor(const mfem::Vector&) const override;
 
-    double temperatureSol(const Vector&,
-                           const double) const override;
+    double temperatureSol(const mfem::Vector&,
+                          const double) const override;
 
-    Vector heatFluxSol(const Vector&,
-                        const double) const override;
+    mfem::Vector heatFluxSol(const mfem::Vector&,
+                             const double) const override;
 
     double temperatureTimeGradientSol
-        (const Vector&, const double) const override;
+        (const mfem::Vector&, const double) const override;
 
-    double source(const Vector&,
+    double source(const mfem::Vector&,
                   const double) const override;
 
     void setPerturbation(double w) const override {
         m_rvar = w;
     }
 
-    void setPerturbations(const Vector& w) const override {
+    void setPerturbations(const mfem::Vector& w) const override {
         m_rvars = w;
     }
 
     double laplacian
-    (const Vector& x, const double t) const override {
+    (const mfem::Vector& x, const double t) const override {
         return temperatureTimeGradientSol(x,t)
                 - source(x, t);
     }
 
-    double initTemperature(const Vector& x) const override {
+    double initTemperature(const mfem::Vector& x) const override {
         return temperatureSol(x,0);
     }
 
-    Vector initHeatFlux(const Vector& x) const override {
+    mfem::Vector initHeatFlux(const mfem::Vector& x) const override {
         return heatFluxSol(x,0);
     }
 
-    double bdryTemperature(const Vector& x,
-                            const double t) const override {
+    double bdryTemperature(const mfem::Vector& x,
+                           const double t) const override {
         return temperatureSol(x, t);
     }
 
-    void setBdryDirichlet(Array<int>&) const override {}
-
-    inline int getDim() const override {
-        return m_dim;
-    }
+    void setBdryDirichlet(mfem::Array<int>&) const override {}
 
 private:
-    double perturb(const Vector&) const;
+    double perturb(const mfem::Vector&) const;
 
 private:
     const nlohmann::json& m_config;
-    int m_dim;
 
     mutable double m_rvar = 0;
-    mutable Vector m_rvars;
+    mutable mfem::Vector m_rvars;
 };
 
 /**
@@ -544,74 +519,70 @@ class TestCase <LShapedTest1>
 {
 public:
     explicit TestCase (const nlohmann::json& config)
-        : m_config(config), m_dim(2) {
+        : m_config(config) {
+        m_dim = 2;
         m_singularCorner.SetSize(m_dim);
         m_singularCorner = 0.0;
     }
 
-    double temperatureSol(const Vector&,
-                           const double) const override;
+    double temperatureSol(const mfem::Vector&,
+                          const double) const override;
 
-    Vector heatFluxSol(const Vector&,
-                        const double) const override;
+    mfem::Vector heatFluxSol(const mfem::Vector&,
+                             const double) const override;
 
     double temperatureTimeGradientSol
-        (const Vector&, const double) const override;
+        (const mfem::Vector&, const double) const override;
 
-    double source(const Vector&,
+    double source(const mfem::Vector&,
                   const double) const override;
 
-    void setBdryDirichlet(Array<int>&) const override;
+    void setBdryDirichlet(mfem::Array<int>&) const override;
 
-    double medium(const Vector&) const override
-    {
+    double medium(const mfem::Vector&) const override {
         return 1;
     }
 
-    DenseMatrix mediumTensor(const Vector&) const override
+    mfem::DenseMatrix mediumTensor(const mfem::Vector&) const override
     {
-        DenseMatrix med(m_dim);
+        mfem::DenseMatrix med(m_dim);
         med(0,0) = med(1,1) = 1;
         med(0,1) = med(1,0) = 0;
         return med;
     }
 
     double laplacian
-    (const Vector& x, const double t) const override {
+    (const mfem::Vector& x, const double t) const override {
         return temperatureTimeGradientSol(x,t)
                 - source(x, t);
     }
 
-    double initTemperature(const Vector& x) const override {
+    double initTemperature(const mfem::Vector& x) const override {
         return temperatureSol(x,0);
     }
 
-    Vector initHeatFlux(const Vector& x) const override {
+    mfem::Vector initHeatFlux(const mfem::Vector& x) const override {
         return heatFluxSol(x,0);
     }
 
-    double bdryTemperature(const Vector& x,
-                            const double t) const override {
+    double bdryTemperature(const mfem::Vector& x,
+                           const double t) const override {
         return temperatureSol(x, t);
     }
 
     void setPerturbation(double) const override {}
 
-    void setPerturbations(const Vector&) const override {}
-
-    inline int getDim() const override {
-        return m_dim;
-    }
+    void setPerturbations(const mfem::Vector&) const override {}
 
 private:
-    double radius(const Vector& x) const;
-    double polarAngle(const Vector& x) const;
+    double radius(const mfem::Vector& x) const;
+    double polarAngle(const mfem::Vector& x) const;
 
+private:
     const nlohmann::json& m_config;
-    int m_dim;
 
     double m_gamma = 2./3.;
-    Vector m_singularCorner;
+    mfem::Vector m_singularCorner;
 };
 
 /**
@@ -626,74 +597,70 @@ class TestCase <LShapedTest2>
 {
 public:
     explicit TestCase (const nlohmann::json& config)
-        : m_config(config), m_dim(2) {
+        : m_config(config) {
+        m_dim = 2;
         m_singularCorner.SetSize(m_dim);
         m_singularCorner = 0.0;
     }
 
-    double temperatureSol(const Vector&,
-                           const double) const override;
+    double temperatureSol(const mfem::Vector&,
+                          const double) const override;
 
-    Vector heatFluxSol(const Vector&,
-                        const double) const override;
+    mfem::Vector heatFluxSol(const mfem::Vector&,
+                             const double) const override;
 
     double temperatureTimeGradientSol
-        (const Vector&, const double) const override;
+        (const mfem::Vector&, const double) const override;
 
-    double source(const Vector&,
+    double source(const mfem::Vector&,
                   const double) const override;
 
-    void setBdryDirichlet(Array<int>&) const override;
+    void setBdryDirichlet(mfem::Array<int>&) const override;
 
-    double medium(const Vector&) const override
-    {
+    double medium(const mfem::Vector&) const override {
         return 1;
     }
 
-    DenseMatrix mediumTensor(const Vector&) const override
+    mfem::DenseMatrix mediumTensor(const mfem::Vector&) const override
     {
-        DenseMatrix med(m_dim);
+        mfem::DenseMatrix med(m_dim);
         med(0,0) = med(1,1) = 1;
         med(0,1) = med(1,0) = 0;
         return med;
     }
 
     double laplacian
-    (const Vector& x, const double t) const override {
+    (const mfem::Vector& x, const double t) const override {
         return temperatureTimeGradientSol(x,t)
                 - source(x, t);
     }
 
-    double initTemperature(const Vector& x) const override {
+    double initTemperature(const mfem::Vector& x) const override {
         return temperatureSol(x,0);
     }
 
-    Vector initHeatFlux(const Vector& x) const override {
+    mfem::Vector initHeatFlux(const mfem::Vector& x) const override {
         return heatFluxSol(x,0);
     }
 
-    double bdryTemperature(const Vector& x,
-                            const double t) const override {
+    double bdryTemperature(const mfem::Vector& x,
+                           const double t) const override {
         return temperatureSol(x, t);
     }
 
     void setPerturbation(double) const override {}
 
-    void setPerturbations(const Vector&) const override {}
-
-    inline int getDim() const override {
-        return m_dim;
-    }
+    void setPerturbations(const mfem::Vector&) const override {}
 
 private:
-    double radius(const Vector& x) const;
-    double polarAngle(const Vector& x) const;
+    double radius(const mfem::Vector& x) const;
+    double polarAngle(const mfem::Vector& x) const;
 
+private:
     const nlohmann::json& m_config;
-    int m_dim;
 
     double m_gamma = 2./3.;
-    Vector m_singularCorner;
+    mfem::Vector m_singularCorner;
 };
 
 }

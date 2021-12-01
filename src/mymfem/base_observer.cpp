@@ -4,6 +4,7 @@
 #include <iostream>
 #include <filesystem>
 
+using namespace mfem;
 namespace fs = std::filesystem;
 
 
