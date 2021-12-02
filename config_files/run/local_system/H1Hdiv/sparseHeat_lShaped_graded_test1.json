@@ -1,0 +1,18 @@
+{
+    "host": "local",
+    
+    "problem_type": "lShaped_test1",
+    
+    "run": "simulation",
+    "end_time": 1,
+    
+    "deg": 1,
+    "num_levels": 5,
+    "min_spatial_level": 1,
+    "min_temporal_level": 2,
+    
+    "mesh_dir": "lShaped/gr/weight3E-1",
+    
+    "eval_error": true,
+    "error_type": "natural"
+}

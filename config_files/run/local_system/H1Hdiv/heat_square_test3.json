@@ -1,0 +1,29 @@
+{
+    "host": "local",
+    
+    "problem_type": "unitSquare_test3",
+    
+    "run": "runFG",
+    
+    "load_init_mesh": true,
+    "init_mesh_level": 0,
+    
+    "end_time": 1,
+    
+    "discretisation_type": "H1Hdiv",
+    
+    "deg": 1,
+    "level_t": 2,
+    "level_x": 2,
+    
+    "mesh_dir": "unitSquare",
+    
+    "eval_error": true,
+    "error_type": "natural",
+    
+    "visualization": false,
+    "dump_output": false,
+    
+    "base_out_dir": "../output",
+    "sub_out_dir": "heat/unitSquare_test2"
+}
