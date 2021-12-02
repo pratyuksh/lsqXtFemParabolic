@@ -113,7 +113,9 @@ void sparseHeat::Solver
 {
     if (m_discType == "H1Hdiv") {
         m_disc = std::make_shared<sparseHeat::LsqSparseXtFemH1Hdiv>
-                (m_config, m_testCase, m_spatialMeshHierarchy);
+                (m_config, m_testCase,
+                 m_numLevels, m_minTemporalLevel,
+                 m_spatialMeshHierarchy);
     }
     else if (m_discType == "H1H1") {
         // TODO

@@ -10,16 +10,20 @@ using namespace mfem;
 sparseHeat::LsqSparseXtFemH1Hdiv
 :: LsqSparseXtFemH1Hdiv
 (const nlohmann::json & config,
- std::shared_ptr<heat::TestCases> & testCase)
-    : LsqSparseXtFem(config, testCase)
+ std::shared_ptr<heat::TestCases> & testCase,
+ const int numLevels,
+ const int minTemporalLevel)
+    : LsqSparseXtFem(config, testCase, numLevels, minTemporalLevel)
 {}
 
 sparseHeat::LsqSparseXtFemH1Hdiv
 :: LsqSparseXtFemH1Hdiv
 (const nlohmann::json & config,
  std::shared_ptr<heat::TestCases> & testCase,
+ const int numLevels,
+ const int minTemporalLevel,
  std::shared_ptr<mymfem::NestedMeshHierarchy> & spatialMeshHierachy)
-    : LsqSparseXtFemH1Hdiv(config, testCase)
+    : LsqSparseXtFemH1Hdiv(config, testCase, numLevels, minTemporalLevel)
 {
     setNestedFEHierarchyAndSpatialBoundaryDofs(spatialMeshHierachy);
 }

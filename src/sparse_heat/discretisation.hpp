@@ -20,12 +20,16 @@ class LsqSparseXtFem
 public:
     //! Constructor with config and test case as arguments
     LsqSparseXtFem (const nlohmann::json&,
-                    std::shared_ptr<heat::TestCases>&);
+                    std::shared_ptr<heat::TestCases>&,
+                    const int numLevels,
+                    const int minTemporalLevel);
 
     //! Constructor with config, test case
     //! and mesh hierarchy as arguments
     LsqSparseXtFem (const nlohmann::json&,
                     std::shared_ptr<heat::TestCases>&,
+                    const int numLevels,
+                    const int minTemporalLevel,
                     std::shared_ptr<mymfem::NestedMeshHierarchy>&);
 
     //! Default destructor
@@ -181,11 +185,15 @@ class LsqSparseXtFemH1Hdiv : public LsqSparseXtFem
 {
 public:
     LsqSparseXtFemH1Hdiv (const nlohmann::json& config,
-                          std::shared_ptr<heat::TestCases>& testCase);
+                          std::shared_ptr<heat::TestCases>& testCase,
+                          const int numLevels,
+                          const int minTemporalLevel);
 
     LsqSparseXtFemH1Hdiv
     (const nlohmann::json& config,
      std::shared_ptr<heat::TestCases>& testCase,
+     const int numLevels,
+     const int minTemporalLevel,
      std::shared_ptr<mymfem::NestedMeshHierarchy>& spatialMeshHierarchy);
 
     void setNestedFEHierarchyForHeatFlux

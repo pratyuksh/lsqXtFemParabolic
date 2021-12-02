@@ -202,16 +202,7 @@ public:
     }
 
     //! Returns the number of dimensions (size) of the FE spaces
-    mfem::Array<int> getNumDims()
-    {
-        int numLevels = this->getNumLevels();
-        mfem::Array<int> numDims(numLevels);
-        for (int i=0; i < numLevels; i++) {
-            numDims[i] = m_feSpaces[i]->GetTrueVSize();
-        }
-
-        return numDims;
-    }
+    mfem::Array<int> getNumDims();
 
 private:
     NestedFESpaces m_feSpaces;

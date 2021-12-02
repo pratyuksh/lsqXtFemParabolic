@@ -44,6 +44,7 @@ void runOneSimulation (const nlohmann::json config,
     if (config.contains("num_levels")) {
         numLevels = config["num_levels"];
     }
+
     int minSpatialLevel = 1;
     if (config.contains("min_spatial_level")) {
         minSpatialLevel = config["min_spatial_level"];
@@ -77,6 +78,74 @@ void runOneSimulation (const nlohmann::json config,
     std::cout << "#Dofs: " << numDofs << std::endl;
 }
 
+
+void runMultipleSimulationsToTestConvergence (const nlohmann::json config,
+                                              std::string baseMeshDir,
+                                              bool loadInitMesh=false)
+{
+    int deg = config["deg"];
+    assert(deg == 1);
+
+    auto testCase = heat::makeTestCase(config);
+
+    std::string subMeshDir = config["mesh_dir"];
+    const std::string meshDir = baseMeshDir+subMeshDir;
+
+    int minNumLevels = 1;
+    if (config.contains("min_num_levels")) {
+        minNumLevels = config["min_num_levels"];
+    }
+
+    int maxNumLevels = 1;
+    if (config.contains("max_num_levels")) {
+        maxNumLevels = config["max_num_levels"];
+    }
+
+    int minSpatialLevel = 1;
+    if (config.contains("min_spatial_level")) {
+        minSpatialLevel = config["min_spatial_level"];
+    }
+
+    int minTemporalLevel = 1;
+    if (config.contains("min_temporal_level")) {
+        minTemporalLevel = config["min_temporal_level"];
+    }
+
+    Array<int> numDofs(maxNumLevels-minNumLevels+1);
+    Array<double> htMax(numDofs.Size());
+    Array<double> hxMax(numDofs.Size());
+    Array<Vector> solutionError(numDofs.Size());
+
+    int count = 0;
+    for (int numLevels = minNumLevels;
+         numLevels <= maxNumLevels; numLevels++)
+    {
+        sparseHeat::Solver solver(config,
+                                  testCase,
+                                  meshDir,
+                                  numLevels,
+                                  minSpatialLevel,
+                                  minTemporalLevel,
+                                  loadInitMesh);
+
+        sparseHeat::Observer observer(config, numLevels, minTemporalLevel);
+
+        std::tie(numDofs[count], htMax[count], hxMax[count], solutionError[count])
+                = runSolver(solver, observer);
+
+        count++;
+    }
+
+    std::cout << "\nTemporal mesh sizes: "; htMax.Print();
+    std::cout << "Spatial mesh sizes: "; hxMax.Print();
+    std::cout << "#Dofs: "; numDofs.Print();
+    std::cout << "Solution errors:\n";
+    for (int i=0; i<maxNumLevels-minNumLevels+1; i++) {
+        solutionError[i].Print();
+    }
+}
+
+
 int main(int argc, char *argv[])
 {   
     // Read config json
@@ -108,7 +177,9 @@ int main(int argc, char *argv[])
                          loadInitMesh);
     }
     else if (run == "convergence") {
-        // runMultipleSimulationsToTestConvergence(config, baseMeshDir, loadInitMesh);
+        runMultipleSimulationsToTestConvergence(std::move(config),
+                                                std::move(baseMeshDir),
+                                                loadInitMesh);
     }
 
     return 0;

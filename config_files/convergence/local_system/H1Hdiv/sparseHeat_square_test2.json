@@ -1,0 +1,25 @@
+{
+    "host": "local",
+    
+    "problem_type": "unitSquare_test2",
+    
+    "run": "convergence",
+    "end_time": 1,
+    
+    "discretisation_type": "H1Hdiv",
+    
+    "deg": 1,
+    
+    "min_num_levels": 2,
+    "max_num_levels": 5,
+    
+    "min_spatial_level": 1,
+    "min_temporal_level": 1,
+    
+    "load_init_mesh": true,
+    "init_mesh_level": 0,
+    "mesh_dir": "unitSquare",
+    
+    "eval_error": true,
+    "error_type": "natural"
+}

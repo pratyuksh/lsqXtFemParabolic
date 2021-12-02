@@ -9,9 +9,13 @@ using namespace mfem;
 
 sparseHeat::LsqSparseXtFem
 :: LsqSparseXtFem (const nlohmann::json& config,
-                   std::shared_ptr<heat::TestCases>& testCase)
+                   std::shared_ptr<heat::TestCases>& testCase,
+                   const int numLevels,
+                   const int minTemporalLevel)
     : m_config (config),
-      m_testCase(testCase)
+      m_testCase(testCase),
+      m_numLevels (numLevels),
+      m_minTemporalLevel (minTemporalLevel)
 {
     m_deg = 1;
     if (config.contains("deg")) {
@@ -28,15 +32,6 @@ sparseHeat::LsqSparseXtFem
         m_endTime = config["end_time"];
     }
 
-    m_minTemporalLevel = 1;
-    if (config.contains("min_temporal_level")) {
-        m_minTemporalLevel = config["min_temporal_level"];
-    }
-
-    m_numLevels = 1;
-    if (config.contains("num_levels")) {
-        m_numLevels = config["num_levels"];
-    }
     m_maxTemporalLevel = m_minTemporalLevel + m_numLevels - 1;
 }
 
@@ -44,8 +39,10 @@ sparseHeat::LsqSparseXtFem
 :: LsqSparseXtFem
 (const nlohmann::json & config,
  std::shared_ptr<heat::TestCases> & testCase,
+ const int numLevels,
+ const int minTemporalLevel,
  std::shared_ptr<mymfem::NestedMeshHierarchy> & spatialMeshHierachy)
-    : LsqSparseXtFem(config, testCase)
+    : LsqSparseXtFem(config, testCase, numLevels, minTemporalLevel)
 {
     setNestedFEHierarchyAndSpatialBoundaryDofs(spatialMeshHierachy);
 }

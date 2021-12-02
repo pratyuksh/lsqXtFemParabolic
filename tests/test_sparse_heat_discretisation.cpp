@@ -62,7 +62,7 @@ TEST(SparseDiscretisation, buildH1Hdiv)
     // discretisation
     std::unique_ptr<sparseHeat::LsqSparseXtFem> xtDisc
             = std::make_unique<sparseHeat::LsqSparseXtFemH1Hdiv>
-            (config, testCase);
+            (config, testCase, numLevels, minTemporalLevel);
     xtDisc->setNestedFEHierarchyAndSpatialBoundaryDofs
             (spatialMeshHierarchy);
 
@@ -161,7 +161,9 @@ TEST(SparseDiscretisation, singleLevelH1HdivUnitSquareTest1)
     // sparse system assembly
     std::unique_ptr<sparseHeat::LsqSparseXtFem> sparseXtDisc
             = std::make_unique<sparseHeat::LsqSparseXtFemH1Hdiv>
-            (sparseHeatConfig, testCase, spatialMeshHierarchy);
+            (sparseHeatConfig, testCase,
+             numLevels, temporalLevel,
+             spatialMeshHierarchy);
     sparseXtDisc->assembleSystemSubMatrices();
     sparseXtDisc->buildSystemMatrix();
     auto systemBlock11 = sparseXtDisc->getSystemBlock11();
@@ -280,7 +282,9 @@ TEST(SparseDiscretisation, singleLevelH1HdivUnitSquareTest3)
     // sparse system assembly
     std::unique_ptr<sparseHeat::LsqSparseXtFem> sparseXtDisc
             = std::make_unique<sparseHeat::LsqSparseXtFemH1Hdiv>
-            (sparseHeatConfig, testCase, spatialMeshHierarchy);
+            (sparseHeatConfig, testCase,
+             numLevels, temporalLevel,
+             spatialMeshHierarchy);
     sparseXtDisc->assembleSystemSubMatrices();
     sparseXtDisc->buildSystemMatrix();
     auto systemBlock11 = sparseXtDisc->getSystemBlock11();
