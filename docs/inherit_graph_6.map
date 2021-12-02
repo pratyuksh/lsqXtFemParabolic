@@ -1,6 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
 <area shape="rect" id="node1" title=" " alt="" coords="5,56,148,83"/>
 <area shape="rect" id="node2" href="$classheat_1_1QoILFIntegrator.html" title="Quantity of interest LF Integrator; (x^a, fluxQ)" alt="" coords="237,5,384,32"/>
-<area shape="rect" id="node3" href="$classheat_1_1VectorDivergenceLFIntegrator.html" title="Vector Divergence LF Integrator; (f, div(v))" alt="" coords="196,56,425,83"/>
+<area shape="rect" id="node3" href="$classheat_1_1VectorDivergenceLFIntegrator.html" title="mfem::Vector Divergence LF Integrator; (f, div(v))" alt="" coords="196,56,425,83"/>
 <area shape="rect" id="node4" href="$classheat_1_1VectorFEDivergenceLFIntegrator.html" title="VectorFE Divergence LF Integrator; (f, div(v)) Uses, for example, Raviart&#45;Thomas spaces." alt="" coords="223,107,399,149"/>
 </map>

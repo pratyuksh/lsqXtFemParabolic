@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['exactfluxcoeff_385',['ExactFluxCoeff',['../classheat_1_1ExactFluxCoeff.html',1,'heat']]],
-  ['exacttemperaturecoeff_386',['ExactTemperatureCoeff',['../classheat_1_1ExactTemperatureCoeff.html',1,'heat']]],
-  ['exacttemperaturetimegradcoeff_387',['ExactTemperatureTimeGradCoeff',['../classheat_1_1ExactTemperatureTimeGradCoeff.html',1,'heat']]]
+  ['exactheatfluxcoeff_417',['ExactHeatFluxCoeff',['../classheat_1_1ExactHeatFluxCoeff.html',1,'heat']]],
+  ['exacttemperaturecoeff_418',['ExactTemperatureCoeff',['../classheat_1_1ExactTemperatureCoeff.html',1,'heat']]],
+  ['exacttemperaturespatialgradcoeff_419',['ExactTemperatureSpatialGradCoeff',['../classheat_1_1ExactTemperatureSpatialGradCoeff.html',1,'heat']]],
+  ['exacttemperaturetemporalgradcoeff_420',['ExactTemperatureTemporalGradCoeff',['../classheat_1_1ExactTemperatureTemporalGradCoeff.html',1,'heat']]]
 ];

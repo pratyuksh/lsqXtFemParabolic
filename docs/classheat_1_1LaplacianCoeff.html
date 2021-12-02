@@ -102,12 +102,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9e3ae7afb22c90173e36965481f40a84"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LaplacianCoeff.html#a9e3ae7afb22c90173e36965481f40a84">LaplacianCoeff</a> (std::shared_ptr&lt; <a class="el" href="classheat_1_1TestCases.html">TestCases</a> &gt; testCase)</td></tr>
 <tr class="memdesc:a9e3ae7afb22c90173e36965481f40a84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classheat_1_1LaplacianCoeff.html#a9e3ae7afb22c90173e36965481f40a84">More...</a><br /></td></tr>
 <tr class="separator:a9e3ae7afb22c90173e36965481f40a84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a5cc20d4a7e9cd13f1040654f73877f"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LaplacianCoeff.html#a8a5cc20d4a7e9cd13f1040654f73877f">Eval</a> (ElementTransformation &amp;, const IntegrationPoint &amp;)</td></tr>
-<tr class="memdesc:a8a5cc20d4a7e9cd13f1040654f73877f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates the scalar coefficient, time t is deduced by GetTime()  <a href="classheat_1_1LaplacianCoeff.html#a8a5cc20d4a7e9cd13f1040654f73877f">More...</a><br /></td></tr>
-<tr class="separator:a8a5cc20d4a7e9cd13f1040654f73877f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9738783d19e3fdafbea59748701ad1a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LaplacianCoeff.html#ab9738783d19e3fdafbea59748701ad1a">Eval</a> (ElementTransformation &amp;, const IntegrationPoint &amp;, double)</td></tr>
-<tr class="memdesc:ab9738783d19e3fdafbea59748701ad1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates the scalar coefficient, time t is passed as an argument.  <a href="classheat_1_1LaplacianCoeff.html#ab9738783d19e3fdafbea59748701ad1a">More...</a><br /></td></tr>
-<tr class="separator:ab9738783d19e3fdafbea59748701ad1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f401689152a10f5015cafb76020ba08"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LaplacianCoeff.html#a7f401689152a10f5015cafb76020ba08">Eval</a> (mfem::ElementTransformation &amp;, const mfem::IntegrationPoint &amp;)</td></tr>
+<tr class="memdesc:a7f401689152a10f5015cafb76020ba08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates the scalar coefficient, time t is deduced by GetTime()  <a href="classheat_1_1LaplacianCoeff.html#a7f401689152a10f5015cafb76020ba08">More...</a><br /></td></tr>
+<tr class="separator:a7f401689152a10f5015cafb76020ba08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfdb015df7c513ff51bb89bbb3c5b2ec"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LaplacianCoeff.html#adfdb015df7c513ff51bb89bbb3c5b2ec">Eval</a> (mfem::ElementTransformation &amp;, const mfem::IntegrationPoint &amp;, double)</td></tr>
+<tr class="memdesc:adfdb015df7c513ff51bb89bbb3c5b2ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates the scalar coefficient, time t is passed as an argument.  <a href="classheat_1_1LaplacianCoeff.html#adfdb015df7c513ff51bb89bbb3c5b2ec">More...</a><br /></td></tr>
+<tr class="separator:adfdb015df7c513ff51bb89bbb3c5b2ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -117,7 +117,7 @@ Protected Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Laplacian (scalar) coefficient. </p>
 
-<p class="definition">Definition at line <a class="el" href="coefficients_8hpp_source.html#l00146">146</a> of file <a class="el" href="coefficients_8hpp_source.html">coefficients.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="coefficients_8hpp_source.html#l00177">177</a> of file <a class="el" href="coefficients_8hpp_source.html">coefficients.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9e3ae7afb22c90173e36965481f40a84"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9e3ae7afb22c90173e36965481f40a84">&#9670;&nbsp;</a></span>LaplacianCoeff()</h2>
@@ -151,13 +151,13 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="coefficients_8hpp_source.html#l00154">154</a> of file <a class="el" href="coefficients_8hpp_source.html">coefficients.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="coefficients_8hpp_source.html#l00185">185</a> of file <a class="el" href="coefficients_8hpp_source.html">coefficients.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a8a5cc20d4a7e9cd13f1040654f73877f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a5cc20d4a7e9cd13f1040654f73877f">&#9670;&nbsp;</a></span>Eval() <span class="overload">[1/2]</span></h2>
+<a id="a7f401689152a10f5015cafb76020ba08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f401689152a10f5015cafb76020ba08">&#9670;&nbsp;</a></span>Eval() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -166,16 +166,16 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">double heat::LaplacianCoeff::Eval </td>
+          <td class="memname">virtual double heat::LaplacianCoeff::Eval </td>
           <td>(</td>
-          <td class="paramtype">ElementTransformation &amp;&#160;</td>
-          <td class="paramname"><em>T</em>, </td>
+          <td class="paramtype">mfem::ElementTransformation &amp;&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const IntegrationPoint &amp;&#160;</td>
-          <td class="paramname"><em>ip</em>&#160;</td>
+          <td class="paramtype">const mfem::IntegrationPoint &amp;&#160;</td>
+          <td class="paramname">&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -192,12 +192,10 @@ Protected Attributes</h2></td></tr>
 
 <p>Evaluates the scalar coefficient, time t is deduced by GetTime() </p>
 
-<p class="definition">Definition at line <a class="el" href="coefficients_8cpp_source.html#l00107">107</a> of file <a class="el" href="coefficients_8cpp_source.html">coefficients.cpp</a>.</p>
-
 </div>
 </div>
-<a id="ab9738783d19e3fdafbea59748701ad1a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab9738783d19e3fdafbea59748701ad1a">&#9670;&nbsp;</a></span>Eval() <span class="overload">[2/2]</span></h2>
+<a id="adfdb015df7c513ff51bb89bbb3c5b2ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfdb015df7c513ff51bb89bbb3c5b2ec">&#9670;&nbsp;</a></span>Eval() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -205,20 +203,20 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">double heat::LaplacianCoeff::Eval </td>
           <td>(</td>
-          <td class="paramtype">ElementTransformation &amp;&#160;</td>
-          <td class="paramname"><em>T</em>, </td>
+          <td class="paramtype">mfem::ElementTransformation &amp;&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const IntegrationPoint &amp;&#160;</td>
-          <td class="paramname"><em>ip</em>, </td>
+          <td class="paramtype">const mfem::IntegrationPoint &amp;&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>t</em>&#160;</td>
+          <td class="paramname">&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -229,8 +227,6 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Evaluates the scalar coefficient, time t is passed as an argument. </p>
-
-<p class="definition">Definition at line <a class="el" href="coefficients_8cpp_source.html#l00117">117</a> of file <a class="el" href="coefficients_8cpp_source.html">coefficients.cpp</a>.</p>
 
 </div>
 </div>
@@ -255,13 +251,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="coefficients_8hpp_source.html#l00167">167</a> of file <a class="el" href="coefficients_8hpp_source.html">coefficients.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="coefficients_8hpp_source.html#l00198">198</a> of file <a class="el" href="coefficients_8hpp_source.html">coefficients.hpp</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="coefficients_8hpp_source.html">coefficients.hpp</a></li>
-<li><a class="el" href="coefficients_8cpp_source.html">coefficients.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

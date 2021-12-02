@@ -73,27 +73,31 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0734841a9bc0c7ec3e543f08c33165ac"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHierarchicalMeshTransformationTable.html#a0734841a9bc0c7ec3e543f08c33165ac">HierarchicalMeshTransformationTable</a> (int numElsCoarse)</td></tr>
-<tr class="memdesc:a0734841a9bc0c7ec3e543f08c33165ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with number of coarse mesh elements.  <a href="structHierarchicalMeshTransformationTable.html#a0734841a9bc0c7ec3e543f08c33165ac">More...</a><br /></td></tr>
-<tr class="separator:a0734841a9bc0c7ec3e543f08c33165ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48a4dac46fda0f6ad7bf887b54c4c082"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHierarchicalMeshTransformationTable.html#a48a4dac46fda0f6ad7bf887b54c4c082">add</a> (int elIdCoarse, int elIdFine)</td></tr>
-<tr class="separator:a48a4dac46fda0f6ad7bf887b54c4c082"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf6c62b392a73f6532d951522567d5cd"><td class="memItemLeft" align="right" valign="top">std::set&lt; int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHierarchicalMeshTransformationTable.html#adf6c62b392a73f6532d951522567d5cd">operator()</a> (int elIdCoarse)</td></tr>
-<tr class="separator:adf6c62b392a73f6532d951522567d5cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa09beee4f76ac1fb3d4998120cecf62f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHierarchicalMeshTransformationTable.html#aa09beee4f76ac1fb3d4998120cecf62f">getNumRows</a> () const</td></tr>
-<tr class="memdesc:aa09beee4f76ac1fb3d4998120cecf62f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of rows.  <a href="structHierarchicalMeshTransformationTable.html#aa09beee4f76ac1fb3d4998120cecf62f">More...</a><br /></td></tr>
-<tr class="separator:aa09beee4f76ac1fb3d4998120cecf62f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad864f8764dbda495f719f3dc6d39c057"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHierarchicalMeshTransformationTable.html#ad864f8764dbda495f719f3dc6d39c057">getNumChildren</a> (int elIdCoarse) const</td></tr>
-<tr class="separator:ad864f8764dbda495f719f3dc6d39c057"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7a616cc66026b0afe6698a53739fe39"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHierarchicalMeshTransformationTable.html#aa7a616cc66026b0afe6698a53739fe39">HierarchicalMeshTransformationTable</a> (int numParentEls)</td></tr>
+<tr class="memdesc:aa7a616cc66026b0afe6698a53739fe39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with number of parent mesh elements.  <a href="structHierarchicalMeshTransformationTable.html#aa7a616cc66026b0afe6698a53739fe39">More...</a><br /></td></tr>
+<tr class="separator:aa7a616cc66026b0afe6698a53739fe39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a686bf4357d100977532109e11eb3ed30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHierarchicalMeshTransformationTable.html#a686bf4357d100977532109e11eb3ed30">add</a> (int parentElId, int childElId)</td></tr>
+<tr class="memdesc:a686bf4357d100977532109e11eb3ed30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a child element to the hierarchy of a parent element.  <a href="structHierarchicalMeshTransformationTable.html#a686bf4357d100977532109e11eb3ed30">More...</a><br /></td></tr>
+<tr class="separator:a686bf4357d100977532109e11eb3ed30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57f5c06e1ffef1cd90090c08f973fff0"><td class="memItemLeft" align="right" valign="top">std::set&lt; int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHierarchicalMeshTransformationTable.html#a57f5c06e1ffef1cd90090c08f973fff0">operator()</a> (int parentElId)</td></tr>
+<tr class="separator:a57f5c06e1ffef1cd90090c08f973fff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a318f09362ba3c3a94146d2152631e4a7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHierarchicalMeshTransformationTable.html#a318f09362ba3c3a94146d2152631e4a7">getNumParents</a> () const</td></tr>
+<tr class="memdesc:a318f09362ba3c3a94146d2152631e4a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of parent elements.  <a href="structHierarchicalMeshTransformationTable.html#a318f09362ba3c3a94146d2152631e4a7">More...</a><br /></td></tr>
+<tr class="separator:a318f09362ba3c3a94146d2152631e4a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ec7e7eb55366e67874ce2171b7a22c0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHierarchicalMeshTransformationTable.html#a3ec7e7eb55366e67874ce2171b7a22c0">getNumChildren</a> (int parentElId) const</td></tr>
+<tr class="separator:a3ec7e7eb55366e67874ce2171b7a22c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4c8ebc382fcd0dbe9ba8b71ed6fb380"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHierarchicalMeshTransformationTable.html#aa4c8ebc382fcd0dbe9ba8b71ed6fb380">getParentId</a> (int childId)</td></tr>
+<tr class="memdesc:aa4c8ebc382fcd0dbe9ba8b71ed6fb380"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the index of the parent element for a given child element.  <a href="structHierarchicalMeshTransformationTable.html#aa4c8ebc382fcd0dbe9ba8b71ed6fb380">More...</a><br /></td></tr>
+<tr class="separator:aa4c8ebc382fcd0dbe9ba8b71ed6fb380"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78354173f91a55bb1cf35c936ec8bfac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHierarchicalMeshTransformationTable.html#a78354173f91a55bb1cf35c936ec8bfac">print</a> ()</td></tr>
 <tr class="separator:a78354173f91a55bb1cf35c936ec8bfac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="nested__hierarchy_8hpp_source.html#l00014">14</a> of file <a class="el" href="nested__hierarchy_8hpp_source.html">nested_hierarchy.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nested__hierarchy_8hpp_source.html#l00013">13</a> of file <a class="el" href="nested__hierarchy_8hpp_source.html">nested_hierarchy.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a0734841a9bc0c7ec3e543f08c33165ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0734841a9bc0c7ec3e543f08c33165ac">&#9670;&nbsp;</a></span>HierarchicalMeshTransformationTable()</h2>
+<a id="aa7a616cc66026b0afe6698a53739fe39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7a616cc66026b0afe6698a53739fe39">&#9670;&nbsp;</a></span>HierarchicalMeshTransformationTable()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -105,7 +109,7 @@ Public Member Functions</h2></td></tr>
           <td class="memname">HierarchicalMeshTransformationTable::HierarchicalMeshTransformationTable </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>numElsCoarse</em></td><td>)</td>
+          <td class="paramname"><em>numParentEls</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -116,15 +120,15 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Constructor with number of coarse mesh elements. </p>
+<p>Constructor with number of parent mesh elements. </p>
 
-<p class="definition">Definition at line <a class="el" href="nested__hierarchy_8hpp_source.html#l00018">18</a> of file <a class="el" href="nested__hierarchy_8hpp_source.html">nested_hierarchy.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nested__hierarchy_8hpp_source.html#l00017">17</a> of file <a class="el" href="nested__hierarchy_8hpp_source.html">nested_hierarchy.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a48a4dac46fda0f6ad7bf887b54c4c082"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a48a4dac46fda0f6ad7bf887b54c4c082">&#9670;&nbsp;</a></span>add()</h2>
+<a id="a686bf4357d100977532109e11eb3ed30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a686bf4357d100977532109e11eb3ed30">&#9670;&nbsp;</a></span>add()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -136,13 +140,13 @@ Public Member Functions</h2></td></tr>
           <td class="memname">void HierarchicalMeshTransformationTable::add </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>elIdCoarse</em>, </td>
+          <td class="paramname"><em>parentElId</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>elIdFine</em>&#160;</td>
+          <td class="paramname"><em>childElId</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -156,14 +160,15 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Adds an element in the fine mesh to the hierarchy of an element in the coarse mesh </p>
 
-<p class="definition">Definition at line <a class="el" href="nested__hierarchy_8hpp_source.html#l00025">25</a> of file <a class="el" href="nested__hierarchy_8hpp_source.html">nested_hierarchy.hpp</a>.</p>
+<p>Adds a child element to the hierarchy of a parent element. </p>
+
+<p class="definition">Definition at line <a class="el" href="nested__hierarchy_8hpp_source.html#l00023">23</a> of file <a class="el" href="nested__hierarchy_8hpp_source.html">nested_hierarchy.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ad864f8764dbda495f719f3dc6d39c057"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad864f8764dbda495f719f3dc6d39c057">&#9670;&nbsp;</a></span>getNumChildren()</h2>
+<a id="a3ec7e7eb55366e67874ce2171b7a22c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ec7e7eb55366e67874ce2171b7a22c0">&#9670;&nbsp;</a></span>getNumChildren()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -175,7 +180,7 @@ Public Member Functions</h2></td></tr>
           <td class="memname">int HierarchicalMeshTransformationTable::getNumChildren </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>elIdCoarse</em></td><td>)</td>
+          <td class="paramname"><em>parentElId</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -185,14 +190,14 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the number of children for the coarse mesh element with index elIdCoarse </p>
+<p>Returns the number of children for the parent element with index parentElId </p>
 
-<p class="definition">Definition at line <a class="el" href="nested__hierarchy_8hpp_source.html#l00042">42</a> of file <a class="el" href="nested__hierarchy_8hpp_source.html">nested_hierarchy.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nested__hierarchy_8hpp_source.html#l00040">40</a> of file <a class="el" href="nested__hierarchy_8hpp_source.html">nested_hierarchy.hpp</a>.</p>
 
 </div>
 </div>
-<a id="aa09beee4f76ac1fb3d4998120cecf62f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa09beee4f76ac1fb3d4998120cecf62f">&#9670;&nbsp;</a></span>getNumRows()</h2>
+<a id="a318f09362ba3c3a94146d2152631e4a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a318f09362ba3c3a94146d2152631e4a7">&#9670;&nbsp;</a></span>getNumParents()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -201,7 +206,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int HierarchicalMeshTransformationTable::getNumRows </td>
+          <td class="memname">int HierarchicalMeshTransformationTable::getNumParents </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -214,14 +219,44 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the number of rows. </p>
+<p>Returns the number of parent elements. </p>
 
-<p class="definition">Definition at line <a class="el" href="nested__hierarchy_8hpp_source.html#l00036">36</a> of file <a class="el" href="nested__hierarchy_8hpp_source.html">nested_hierarchy.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nested__hierarchy_8hpp_source.html#l00034">34</a> of file <a class="el" href="nested__hierarchy_8hpp_source.html">nested_hierarchy.hpp</a>.</p>
 
 </div>
 </div>
-<a id="adf6c62b392a73f6532d951522567d5cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adf6c62b392a73f6532d951522567d5cd">&#9670;&nbsp;</a></span>operator()()</h2>
+<a id="aa4c8ebc382fcd0dbe9ba8b71ed6fb380"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4c8ebc382fcd0dbe9ba8b71ed6fb380">&#9670;&nbsp;</a></span>getParentId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int HierarchicalMeshTransformationTable::getParentId </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>childId</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the index of the parent element for a given child element. </p>
+
+<p class="definition">Definition at line <a class="el" href="nested__hierarchy_8hpp_source.html#l00045">45</a> of file <a class="el" href="nested__hierarchy_8hpp_source.html">nested_hierarchy.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a57f5c06e1ffef1cd90090c08f973fff0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57f5c06e1ffef1cd90090c08f973fff0">&#9670;&nbsp;</a></span>operator()()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -233,7 +268,7 @@ Public Member Functions</h2></td></tr>
           <td class="memname">std::set&lt;int&gt;&amp; HierarchicalMeshTransformationTable::operator() </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>elIdCoarse</em></td><td>)</td>
+          <td class="paramname"><em>parentElId</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -243,9 +278,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the child indices for the coarse mesh element with index elIdCoarse </p>
+<p>Returns the child indices for the parent element with index parentElId </p>
 
-<p class="definition">Definition at line <a class="el" href="nested__hierarchy_8hpp_source.html#l00031">31</a> of file <a class="el" href="nested__hierarchy_8hpp_source.html">nested_hierarchy.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nested__hierarchy_8hpp_source.html#l00029">29</a> of file <a class="el" href="nested__hierarchy_8hpp_source.html">nested_hierarchy.hpp</a>.</p>
 
 </div>
 </div>
@@ -272,7 +307,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="nested__hierarchy_8hpp_source.html#l00046">46</a> of file <a class="el" href="nested__hierarchy_8hpp_source.html">nested_hierarchy.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nested__hierarchy_8hpp_source.html#l00060">60</a> of file <a class="el" href="nested__hierarchy_8hpp_source.html">nested_hierarchy.hpp</a>.</p>
 
 </div>
 </div>

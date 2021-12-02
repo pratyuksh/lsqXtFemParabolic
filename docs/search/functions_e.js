@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['qoifunctional_664',['QoIFunctional',['../classheat_1_1QoIFunctional.html#a1230675e801e1b0ce53260f478e48ed2',1,'heat::QoIFunctional::QoIFunctional(FiniteElementSpace *fes)'],['../classheat_1_1QoIFunctional.html#af0580b67300a9f4f384e1e2bfa0c3669',1,'heat::QoIFunctional::QoIFunctional(FiniteElementSpace *fes, double a)']]],
-  ['qoilfintegrator_665',['QoILFIntegrator',['../classheat_1_1QoILFIntegrator.html#a413c3d440f66c36b50a84aa0e4f71fad',1,'heat::QoILFIntegrator']]],
-  ['qoixtfunctional_666',['QoIXtFunctional',['../classheat_1_1QoIXtFunctional.html#aaa14029402115c477c0735fa82ea151f',1,'heat::QoIXtFunctional::QoIXtFunctional(FiniteElementSpace *tFes, FiniteElementSpace *xFes)'],['../classheat_1_1QoIXtFunctional.html#ac3bf0104462a8214450c3d8cc87e8129',1,'heat::QoIXtFunctional::QoIXtFunctional(FiniteElementSpace *tFes, FiniteElementSpace *xFes, double a)']]]
+  ['qoifunctional_719',['QoIFunctional',['../classheat_1_1QoIFunctional.html#aa537ad9ae0c90ea36973bf1058e087f1',1,'heat::QoIFunctional::QoIFunctional(mfem::FiniteElementSpace *fes)'],['../classheat_1_1QoIFunctional.html#a5159810df567052d0e18a265b1f80c81',1,'heat::QoIFunctional::QoIFunctional(mfem::FiniteElementSpace *fes, double a)']]],
+  ['qoilfintegrator_720',['QoILFIntegrator',['../classheat_1_1QoILFIntegrator.html#a413c3d440f66c36b50a84aa0e4f71fad',1,'heat::QoILFIntegrator']]],
+  ['qoixtfunctional_721',['QoIXtFunctional',['../classheat_1_1QoIXtFunctional.html#a5ebdd2a08560b9bde94f95c2d4f57689',1,'heat::QoIXtFunctional::QoIXtFunctional(mfem::FiniteElementSpace *tFes, mfem::FiniteElementSpace *xFes)'],['../classheat_1_1QoIXtFunctional.html#aba873f36c1af621834902c45f0371973',1,'heat::QoIXtFunctional::QoIXtFunctional(mfem::FiniteElementSpace *tFes, mfem::FiniteElementSpace *xFes, double a)']]]
 ];

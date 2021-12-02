@@ -73,131 +73,133 @@ $(function() {
 <div class="line"><a name="l00002"></a><span class="lineno"><a class="line" href="sparse__heat_2solver_8hpp.html#a07b6ab031450e8b3ab9b2b503cf2af13">    2</a></span>&#160;<span class="preprocessor">#define SPRASE_HEAT_SOLVER_HPP</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;mfem.hpp&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">using namespace </span>mfem;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;Eigen/Core&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../core/config.hpp&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../pardiso/pardiso.hpp&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;../core/config.hpp&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;../pardiso/pardiso.hpp&quot;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;../heat/test_cases_factory.hpp&quot;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;../heat/coefficients.hpp&quot;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="solution__handler_8hpp.html">solution_handler.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="sparse__heat_2discretisation_8hpp.html">discretisation.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="sparse__heat_2observer_8hpp.html">observer.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacesparseHeat.html">sparseHeat</a>{</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classsparseHeat_1_1Solver.html">   24</a></span>&#160;<span class="keyword">class </span><a class="code" href="classsparseHeat_1_1Solver.html">Solver</a></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="classsparseHeat_1_1Solver.html">Solver</a> (<span class="keyword">const</span> nlohmann::json&amp; config,</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            std::shared_ptr&lt;heat::TestCases&gt;&amp; testCase,</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            std::string meshDir,</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">int</span> minSpatialLevel,</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">int</span> minTemporalLevel,</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">int</span> numLevels,</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">bool</span> loadInitMesh=<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    ~<a class="code" href="classsparseHeat_1_1Solver.html"> Solver</a> ();</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;../heat/test_cases_factory.hpp&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;../heat/coefficients.hpp&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="solution__handler_8hpp.html">solution_handler.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="sparse__heat_2discretisation_8hpp.html">discretisation.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacesparseHeat.html">sparseHeat</a>{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classsparseHeat_1_1Solver.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="classsparseHeat_1_1Solver.html">Solver</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classsparseHeat_1_1Solver.html#a39a95620341cf0d5ffe4dbfd95396653">Solver</a> (<span class="keyword">const</span> nlohmann::json&amp; config,</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            std::shared_ptr&lt;heat::TestCases&gt;&amp; testCase,</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            std::string meshDir,</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">int</span> numLevels,</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">int</span> minSpatialLevel,</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">int</span> minTemporalLevel,</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">bool</span> loadInitMesh=<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classsparseHeat_1_1Solver.html#a6bcfa6d522c40da50e4b4f55805b0922">~ Solver</a> ();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classsparseHeat_1_1Solver.html#aaddf3d5a20a803f6c6d9b815d7e4f9eb">setConfigParams</a>();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classsparseHeat_1_1Solver.html#ab0d076a25697433d628cff8a7425432d">setMeshHierarchy</a>();</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> setConfigParams();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classsparseHeat_1_1Solver.html#a583cfd82592d0a0c4d2f6a325a000f1b">setDiscretisation</a>();</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> setMeshHierarchy();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> setDiscretisation();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> setObserver();</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    std::tuple&lt;int, double, double, Eigen::VectorXd&gt;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    operator()();</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> run();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classsparseHeat_1_1Solver.html#af45f3d201c37f68fb544fd7bd87c4757">run</a>();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classsparseHeat_1_1Solver.html#a89a5fee7e309312eab39056f1fa40625">initialize</a>();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classsparseHeat_1_1Solver.html#a2f1f4850d64f18bab77feb7f5cece11b">assembleSystem</a>();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classsparseHeat_1_1Solver.html#afc6497d5bc3e04462027b582788b6b3a">assembleRhs</a>();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classsparseHeat_1_1Solver.html#a374ae9db13a4caa1d44170dd7e90c72a">solve</a>();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classsparseHeat_1_1Solver.html#a374ae9db13a4caa1d44170dd7e90c72a">solve</a>(<span class="keyword">const</span> mfem::Vector&amp;, mfem::Vector&amp;);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classsparseHeat_1_1Solver.html#a04881e00a5f1e9dc25435122bac7c0ac">setPardisoSolver</a>();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classsparseHeat_1_1Solver.html#a9a5918d2162e9b2bd883872be5df2fc8">finalizePardisoSolver</a>();</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> initialize();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> assembleSystem();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> assembleRhs();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classsparseHeat_1_1Solver.html#a1e759cb4e3cb6dda505ca2093925b284">getMeshwidthOfFinestTemporalMesh</a>();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classsparseHeat_1_1Solver.html#a3130942e382d7f7e97d4511184d3735f">getMeshwidthOfFinestSpatialMesh</a>();</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> solve();</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span> solve(<span class="keyword">const</span> Vector&amp;, Vector&amp;);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> setPardisoSolver();</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classsparseHeat_1_1Solver.html#a9f2af4cc5b995da185745a4a1ddcb5cf">   59</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classsparseHeat_1_1Solver.html#a9f2af4cc5b995da185745a4a1ddcb5cf">getNumDofs</a>() {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">return</span> m_solutionHandler-&gt;getDataSize().Sum();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    Eigen::VectorXd evalError();</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    Eigen::VectorXd evalError(BlockVector&amp;);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">double</span> getMeshwidthOfFinestSpatialMesh();</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">int</span> getNumDofs() {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">return</span> m_solutionHandler-&gt;getDataSize().Sum();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">/*</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">    void finalize () const;</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">    Eigen::VectorXd computeError(BlockVector *W) const;</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">    std::shared_ptr &lt;GridFunction&gt;</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">    getTemperatureSolAtEndTime (BlockVector *W) const;</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">    std::shared_ptr &lt;GridFunction&gt;</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">    getFluxSolAtEndTime (BlockVector *W) const;</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">    void setTemperatureSolAtEndTime ();</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">    void setFluxSolAtEndTime ();*/</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keyword">const</span> nlohmann::json&amp; m_config;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classsparseHeat_1_1Solver.html#a6a14f50c03eff9741add0a1b86360772">   64</a></span>&#160;    std::shared_ptr&lt;heat::TestCases&gt; <a class="code" href="classsparseHeat_1_1Solver.html#a6a14f50c03eff9741add0a1b86360772">getTestCase</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">return</span> m_testCase;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classsparseHeat_1_1Solver.html#a55b534878618c47b1c866c27348e524a">   68</a></span>&#160;    std::shared_ptr&lt;sparseHeat::LsqSparseXtFem&gt; <a class="code" href="classsparseHeat_1_1Solver.html#a55b534878618c47b1c866c27348e524a">getDiscretisation</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">return</span> m_disc;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="classsparseHeat_1_1Solver.html#ad19f494d0e5e2f026f37690b37f412e2">   72</a></span>&#160;    std::shared_ptr&lt;sparseHeat::SolutionHandler&gt; <a class="code" href="classsparseHeat_1_1Solver.html#ad19f494d0e5e2f026f37690b37f412e2">getSolutionHandler</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">return</span> m_solutionHandler;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">const</span> nlohmann::json&amp; m_config;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    std::shared_ptr&lt;heat::TestCases&gt; m_testCase;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    std::string m_meshDir;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    std::string m_meshElemType;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">int</span> m_numLevels;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">int</span> m_minSpatialLevel;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">int</span> m_minTemporalLevel, m_maxTemporalLevel;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">bool</span> m_loadInitMesh;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    std::string m_discType;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    std::string m_linearSolver;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">double</span> m_endTime;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    std::shared_ptr&lt;mymfem::NestedMeshHierarchy&gt; m_spatialMeshHierarchy;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    std::shared_ptr&lt;sparseHeat::LsqSparseXtFem&gt; m_disc;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    std::shared_ptr&lt;heat::TestCases&gt; m_testCase;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    std::string m_meshDir;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    std::string m_meshElemType;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">int</span> m_numLevels;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">int</span> m_minSpatialLevel;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">int</span> m_minTemporalLevel, m_maxTemporalLevel;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">bool</span> m_loadInitMesh;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    std::string m_discType;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    std::string m_linearSolver;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">bool</span> m_boolError;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    std::string m_errorType;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    std::shared_ptr&lt;sparseHeat::SolutionHandler&gt; m_solutionHandler;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    std::shared_ptr &lt;mfem::BlockVector&gt; m_rhs;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    mfem::SparseMatrix *m_systemMat = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">//    mfem::BlockOperator *m_systemOp = nullptr;</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    std::shared_ptr &lt;mfem::GridFunction&gt; m_temperatureAtEndTime;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    std::shared_ptr &lt;mfem::GridFunction&gt; m_heatFluxAtEndTime;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#ifdef PARDISO_HPP</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    std::unique_ptr&lt;PardisoSolver&gt; m_pardisoSolver;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;};</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;}</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordtype">double</span> m_endTime;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    std::shared_ptr&lt;mymfem::NestedMeshHierarchy&gt; m_spatialMeshHierarchy;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    std::shared_ptr&lt;sparseHeat::LsqSparseXtFem&gt; m_disc;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">//    std::shared_ptr&lt;heat::Observer&gt; m_observer;</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    std::unique_ptr&lt;sparseHeat::SolutionHandler&gt; m_solutionHandler;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    std::shared_ptr &lt;BlockVector&gt; m_rhs;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    BlockOperator *m_systemOp = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    SparseMatrix *m_systemMat = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    std::shared_ptr &lt;GridFunction&gt; m_temperature;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    std::shared_ptr &lt;GridFunction&gt; m_flux;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="preprocessor">#ifdef PARDISO_HPP</span></div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    std::unique_ptr&lt;PardisoSolver&gt; m_pardisoSolver;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;};</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;}</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor">#endif // SPARSE_HEAT_SOLVER_HPP</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#endif // SPARSE_HEAT_SOLVER_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="asparse__heat_2observer_8hpp_html"><div class="ttname"><a href="sparse__heat_2observer_8hpp.html">observer.hpp</a></div></div>
+<div class="ttc" id="aclasssparseHeat_1_1Solver_html_a55b534878618c47b1c866c27348e524a"><div class="ttname"><a href="classsparseHeat_1_1Solver.html#a55b534878618c47b1c866c27348e524a">sparseHeat::Solver::getDiscretisation</a></div><div class="ttdeci">std::shared_ptr&lt; sparseHeat::LsqSparseXtFem &gt; getDiscretisation() const</div><div class="ttdef"><b>Definition:</b> <a href="sparse__heat_2solver_8hpp_source.html#l00068">sparse_heat/solver.hpp:68</a></div></div>
+<div class="ttc" id="aclasssparseHeat_1_1Solver_html_ab0d076a25697433d628cff8a7425432d"><div class="ttname"><a href="classsparseHeat_1_1Solver.html#ab0d076a25697433d628cff8a7425432d">sparseHeat::Solver::setMeshHierarchy</a></div><div class="ttdeci">void setMeshHierarchy()</div><div class="ttdef"><b>Definition:</b> <a href="sparse__heat_2solver_8cpp_source.html#l00058">sparse_heat/solver.cpp:58</a></div></div>
+<div class="ttc" id="aclasssparseHeat_1_1Solver_html_a04881e00a5f1e9dc25435122bac7c0ac"><div class="ttname"><a href="classsparseHeat_1_1Solver.html#a04881e00a5f1e9dc25435122bac7c0ac">sparseHeat::Solver::setPardisoSolver</a></div><div class="ttdeci">void setPardisoSolver()</div><div class="ttdef"><b>Definition:</b> <a href="sparse__heat_2solver_8cpp_source.html#l00214">sparse_heat/solver.cpp:214</a></div></div>
+<div class="ttc" id="aclasssparseHeat_1_1Solver_html_a6a14f50c03eff9741add0a1b86360772"><div class="ttname"><a href="classsparseHeat_1_1Solver.html#a6a14f50c03eff9741add0a1b86360772">sparseHeat::Solver::getTestCase</a></div><div class="ttdeci">std::shared_ptr&lt; heat::TestCases &gt; getTestCase() const</div><div class="ttdef"><b>Definition:</b> <a href="sparse__heat_2solver_8hpp_source.html#l00064">sparse_heat/solver.hpp:64</a></div></div>
+<div class="ttc" id="aclasssparseHeat_1_1Solver_html_afc6497d5bc3e04462027b582788b6b3a"><div class="ttname"><a href="classsparseHeat_1_1Solver.html#afc6497d5bc3e04462027b582788b6b3a">sparseHeat::Solver::assembleRhs</a></div><div class="ttdeci">void assembleRhs()</div><div class="ttdef"><b>Definition:</b> <a href="sparse__heat_2solver_8cpp_source.html#l00171">sparse_heat/solver.cpp:171</a></div></div>
+<div class="ttc" id="aclasssparseHeat_1_1Solver_html_aaddf3d5a20a803f6c6d9b815d7e4f9eb"><div class="ttname"><a href="classsparseHeat_1_1Solver.html#aaddf3d5a20a803f6c6d9b815d7e4f9eb">sparseHeat::Solver::setConfigParams</a></div><div class="ttdeci">void setConfigParams()</div><div class="ttdef"><b>Definition:</b> <a href="sparse__heat_2solver_8cpp_source.html#l00037">sparse_heat/solver.cpp:37</a></div></div>
+<div class="ttc" id="aclasssparseHeat_1_1Solver_html_a9f2af4cc5b995da185745a4a1ddcb5cf"><div class="ttname"><a href="classsparseHeat_1_1Solver.html#a9f2af4cc5b995da185745a4a1ddcb5cf">sparseHeat::Solver::getNumDofs</a></div><div class="ttdeci">int getNumDofs()</div><div class="ttdef"><b>Definition:</b> <a href="sparse__heat_2solver_8hpp_source.html#l00059">sparse_heat/solver.hpp:59</a></div></div>
+<div class="ttc" id="aclasssparseHeat_1_1Solver_html_ad19f494d0e5e2f026f37690b37f412e2"><div class="ttname"><a href="classsparseHeat_1_1Solver.html#ad19f494d0e5e2f026f37690b37f412e2">sparseHeat::Solver::getSolutionHandler</a></div><div class="ttdeci">std::shared_ptr&lt; sparseHeat::SolutionHandler &gt; getSolutionHandler() const</div><div class="ttdef"><b>Definition:</b> <a href="sparse__heat_2solver_8hpp_source.html#l00072">sparse_heat/solver.hpp:72</a></div></div>
 <div class="ttc" id="asparse__heat_2discretisation_8hpp_html"><div class="ttname"><a href="sparse__heat_2discretisation_8hpp.html">discretisation.hpp</a></div></div>
+<div class="ttc" id="aclasssparseHeat_1_1Solver_html_a6bcfa6d522c40da50e4b4f55805b0922"><div class="ttname"><a href="classsparseHeat_1_1Solver.html#a6bcfa6d522c40da50e4b4f55805b0922">sparseHeat::Solver::~ Solver</a></div><div class="ttdeci">~ Solver()</div><div class="ttdoc">Default constructor.</div></div>
 <div class="ttc" id="asolution__handler_8hpp_html"><div class="ttname"><a href="solution__handler_8hpp.html">solution_handler.hpp</a></div></div>
-<div class="ttc" id="aclasssparseHeat_1_1Solver_html"><div class="ttname"><a href="classsparseHeat_1_1Solver.html">sparseHeat::Solver</a></div><div class="ttdoc">Least-sqares sparse space-time FEM solver for the heat equation.</div><div class="ttdef"><b>Definition:</b> <a href="sparse__heat_2solver_8hpp_source.html#l00024">sparse_heat/solver.hpp:24</a></div></div>
-<div class="ttc" id="anamespacesparseHeat_html"><div class="ttname"><a href="namespacesparseHeat.html">sparseHeat</a></div><div class="ttdef"><b>Definition:</b> <a href="sparse__heat_2discretisation_8hpp_source.html#l00014">sparse_heat/discretisation.hpp:14</a></div></div>
+<div class="ttc" id="aclasssparseHeat_1_1Solver_html_a374ae9db13a4caa1d44170dd7e90c72a"><div class="ttname"><a href="classsparseHeat_1_1Solver.html#a374ae9db13a4caa1d44170dd7e90c72a">sparseHeat::Solver::solve</a></div><div class="ttdeci">void solve()</div><div class="ttdef"><b>Definition:</b> <a href="sparse__heat_2solver_8cpp_source.html#l00178">sparse_heat/solver.cpp:178</a></div></div>
+<div class="ttc" id="aclasssparseHeat_1_1Solver_html_a39a95620341cf0d5ffe4dbfd95396653"><div class="ttname"><a href="classsparseHeat_1_1Solver.html#a39a95620341cf0d5ffe4dbfd95396653">sparseHeat::Solver::Solver</a></div><div class="ttdeci">Solver(const nlohmann::json &amp;config, std::shared_ptr&lt; heat::TestCases &gt; &amp;testCase, std::string meshDir, const int numLevels, const int minSpatialLevel, const int minTemporalLevel, const bool loadInitMesh=false)</div><div class="ttdoc">Constructor with config JSON, test case and space-time mesh info.</div><div class="ttdef"><b>Definition:</b> <a href="sparse__heat_2solver_8cpp_source.html#l00010">sparse_heat/solver.cpp:10</a></div></div>
+<div class="ttc" id="aclasssparseHeat_1_1Solver_html_a3130942e382d7f7e97d4511184d3735f"><div class="ttname"><a href="classsparseHeat_1_1Solver.html#a3130942e382d7f7e97d4511184d3735f">sparseHeat::Solver::getMeshwidthOfFinestSpatialMesh</a></div><div class="ttdeci">double getMeshwidthOfFinestSpatialMesh()</div><div class="ttdef"><b>Definition:</b> <a href="sparse__heat_2solver_8cpp_source.html#l00234">sparse_heat/solver.cpp:234</a></div></div>
+<div class="ttc" id="aclasssparseHeat_1_1Solver_html_a9a5918d2162e9b2bd883872be5df2fc8"><div class="ttname"><a href="classsparseHeat_1_1Solver.html#a9a5918d2162e9b2bd883872be5df2fc8">sparseHeat::Solver::finalizePardisoSolver</a></div><div class="ttdeci">void finalizePardisoSolver()</div><div class="ttdef"><b>Definition:</b> <a href="sparse__heat_2solver_8cpp_source.html#l00224">sparse_heat/solver.cpp:224</a></div></div>
+<div class="ttc" id="aclasssparseHeat_1_1Solver_html_a89a5fee7e309312eab39056f1fa40625"><div class="ttname"><a href="classsparseHeat_1_1Solver.html#a89a5fee7e309312eab39056f1fa40625">sparseHeat::Solver::initialize</a></div><div class="ttdeci">void initialize()</div><div class="ttdef"><b>Definition:</b> <a href="sparse__heat_2solver_8cpp_source.html#l00134">sparse_heat/solver.cpp:134</a></div></div>
+<div class="ttc" id="aclasssparseHeat_1_1Solver_html"><div class="ttname"><a href="classsparseHeat_1_1Solver.html">sparseHeat::Solver</a></div><div class="ttdoc">Least-sqares sparse space-time FEM solver for the heat equation.</div><div class="ttdef"><b>Definition:</b> <a href="sparse__heat_2solver_8hpp_source.html#l00020">sparse_heat/solver.hpp:20</a></div></div>
+<div class="ttc" id="anamespacesparseHeat_html"><div class="ttname"><a href="namespacesparseHeat.html">sparseHeat</a></div><div class="ttdef"><b>Definition:</b> <a href="sparse__heat_2discretisation_8hpp_source.html#l00013">sparse_heat/discretisation.hpp:13</a></div></div>
+<div class="ttc" id="aclasssparseHeat_1_1Solver_html_a1e759cb4e3cb6dda505ca2093925b284"><div class="ttname"><a href="classsparseHeat_1_1Solver.html#a1e759cb4e3cb6dda505ca2093925b284">sparseHeat::Solver::getMeshwidthOfFinestTemporalMesh</a></div><div class="ttdeci">double getMeshwidthOfFinestTemporalMesh()</div><div class="ttdef"><b>Definition:</b> <a href="sparse__heat_2solver_8cpp_source.html#l00229">sparse_heat/solver.cpp:229</a></div></div>
+<div class="ttc" id="aclasssparseHeat_1_1Solver_html_a583cfd82592d0a0c4d2f6a325a000f1b"><div class="ttname"><a href="classsparseHeat_1_1Solver.html#a583cfd82592d0a0c4d2f6a325a000f1b">sparseHeat::Solver::setDiscretisation</a></div><div class="ttdeci">void setDiscretisation()</div><div class="ttdef"><b>Definition:</b> <a href="sparse__heat_2solver_8cpp_source.html#l00112">sparse_heat/solver.cpp:112</a></div></div>
+<div class="ttc" id="aclasssparseHeat_1_1Solver_html_a2f1f4850d64f18bab77feb7f5cece11b"><div class="ttname"><a href="classsparseHeat_1_1Solver.html#a2f1f4850d64f18bab77feb7f5cece11b">sparseHeat::Solver::assembleSystem</a></div><div class="ttdeci">void assembleSystem()</div><div class="ttdef"><b>Definition:</b> <a href="sparse__heat_2solver_8cpp_source.html#l00156">sparse_heat/solver.cpp:156</a></div></div>
+<div class="ttc" id="aclasssparseHeat_1_1Solver_html_af45f3d201c37f68fb544fd7bd87c4757"><div class="ttname"><a href="classsparseHeat_1_1Solver.html#af45f3d201c37f68fb544fd7bd87c4757">sparseHeat::Solver::run</a></div><div class="ttdeci">void run()</div><div class="ttdoc">Initializes, assembles and then solves.</div><div class="ttdef"><b>Definition:</b> <a href="sparse__heat_2solver_8cpp_source.html#l00125">sparse_heat/solver.cpp:125</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

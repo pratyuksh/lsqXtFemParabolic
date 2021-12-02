@@ -95,16 +95,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8830347d1c00d824297c5100fb52d4cf"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmymfem_1_1BlockBilinearFormIntegrator.html#a8830347d1c00d824297c5100fb52d4cf">~ BlockBilinearFormIntegrator</a> ()=default</td></tr>
 <tr class="memdesc:a8830347d1c00d824297c5100fb52d4cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor.  <a href="classmymfem_1_1BlockBilinearFormIntegrator.html#a8830347d1c00d824297c5100fb52d4cf">More...</a><br /></td></tr>
 <tr class="separator:a8830347d1c00d824297c5100fb52d4cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac5fbf9b60f3c6f5f634f96afbce165e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmymfem_1_1BlockBilinearFormIntegrator.html#aac5fbf9b60f3c6f5f634f96afbce165e">assembleElementMatrix</a> (const FiniteElement &amp;fe, ElementTransformation &amp;elTrans, DenseMatrix &amp;elmat)=0</td></tr>
-<tr class="memdesc:aac5fbf9b60f3c6f5f634f96afbce165e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the integrator over a spatial element.  <a href="classmymfem_1_1BlockBilinearFormIntegrator.html#aac5fbf9b60f3c6f5f634f96afbce165e">More...</a><br /></td></tr>
-<tr class="separator:aac5fbf9b60f3c6f5f634f96afbce165e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affc703120b004b954e61754aae7ef43b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmymfem_1_1BlockBilinearFormIntegrator.html#affc703120b004b954e61754aae7ef43b">assembleElementMatrix</a> (const FiniteElement &amp;testFeFine, ElementTransformation &amp;testElTransFine, const FiniteElement &amp;trialFeCoarse, ElementTransformation &amp;trialElTransCoarse, DenseMatrix &amp;elmat)=0</td></tr>
-<tr class="separator:affc703120b004b954e61754aae7ef43b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c294eec654e01d7c79135c302199dbc"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmymfem_1_1BlockBilinearFormIntegrator.html#a7c294eec654e01d7c79135c302199dbc">assembleElementMatrix</a> (const mfem::FiniteElement &amp;fe, mfem::ElementTransformation &amp;elTrans, mfem::DenseMatrix &amp;elmat)=0</td></tr>
+<tr class="memdesc:a7c294eec654e01d7c79135c302199dbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the integrator over a spatial element.  <a href="classmymfem_1_1BlockBilinearFormIntegrator.html#a7c294eec654e01d7c79135c302199dbc">More...</a><br /></td></tr>
+<tr class="separator:a7c294eec654e01d7c79135c302199dbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fb308ce4af6854f4233c4aa79f46cd0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmymfem_1_1BlockBilinearFormIntegrator.html#a3fb308ce4af6854f4233c4aa79f46cd0">assembleElementMatrix</a> (const mfem::FiniteElement &amp;testFeFine, mfem::ElementTransformation &amp;testElTransFine, const mfem::FiniteElement &amp;trialFeCoarse, mfem::ElementTransformation &amp;trialElTransCoarse, mfem::DenseMatrix &amp;elmat)=0</td></tr>
+<tr class="separator:a3fb308ce4af6854f4233c4aa79f46cd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classmymfem_1_1BlockBilinearForm.html" title="BlockBilinearForm class provides functions to assemble bilinear forms between different mesh levels i...">BlockBilinearForm</a> class provides functions to assemble bilinear forms between different mesh levels in a nested hierarchy of finite element spaces. </p>
 
-<p class="definition">Definition at line <a class="el" href="my__bilinearForm__integrators_8hpp_source.html#l00017">17</a> of file <a class="el" href="my__bilinearForm__integrators_8hpp_source.html">my_bilinearForm_integrators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="my__bilinearForm__integrators_8hpp_source.html#l00016">16</a> of file <a class="el" href="my__bilinearForm__integrators_8hpp_source.html">my_bilinearForm_integrators.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8830347d1c00d824297c5100fb52d4cf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8830347d1c00d824297c5100fb52d4cf">&#9670;&nbsp;</a></span>~ BlockBilinearFormIntegrator()</h2>
@@ -134,8 +134,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aac5fbf9b60f3c6f5f634f96afbce165e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aac5fbf9b60f3c6f5f634f96afbce165e">&#9670;&nbsp;</a></span>assembleElementMatrix() <span class="overload">[1/2]</span></h2>
+<a id="a7c294eec654e01d7c79135c302199dbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c294eec654e01d7c79135c302199dbc">&#9670;&nbsp;</a></span>assembleElementMatrix() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -146,19 +146,19 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual void mymfem::BlockBilinearFormIntegrator::assembleElementMatrix </td>
           <td>(</td>
-          <td class="paramtype">const FiniteElement &amp;&#160;</td>
+          <td class="paramtype">const mfem::FiniteElement &amp;&#160;</td>
           <td class="paramname"><em>fe</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">ElementTransformation &amp;&#160;</td>
+          <td class="paramtype">mfem::ElementTransformation &amp;&#160;</td>
           <td class="paramname"><em>elTrans</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">DenseMatrix &amp;&#160;</td>
+          <td class="paramtype">mfem::DenseMatrix &amp;&#160;</td>
           <td class="paramname"><em>elmat</em>&#160;</td>
         </tr>
         <tr>
@@ -176,12 +176,12 @@ Public Member Functions</h2></td></tr>
 
 <p>Assembles the integrator over a spatial element. </p>
 
-<p>Implemented in <a class="el" href="classsparseHeat_1_1SpatialVectorFEStiffnessIntegrator.html#ad0832f5099b92d4b8a21226a5c88b4ae">sparseHeat::SpatialVectorFEStiffnessIntegrator</a>, <a class="el" href="classsparseHeat_1_1SpatialVectorFEMassIntegrator.html#a0138f474a1b68aa41b4f9724054492fe">sparseHeat::SpatialVectorFEMassIntegrator</a>, <a class="el" href="classsparseHeat_1_1SpatialStiffnessIntegrator.html#aa044f8e7cf948a74bffc4eda4a11120d">sparseHeat::SpatialStiffnessIntegrator</a>, and <a class="el" href="classsparseHeat_1_1SpatialMassIntegrator.html#a7b71856f44a6b4063f9e60d26a60db6f">sparseHeat::SpatialMassIntegrator</a>.</p>
+<p>Implemented in <a class="el" href="classsparseHeat_1_1SpatialVectorFEStiffnessIntegrator.html#ac7b72bd5def0459c6d3d3df606bf74d7">sparseHeat::SpatialVectorFEStiffnessIntegrator</a>, <a class="el" href="classsparseHeat_1_1SpatialVectorFEMassIntegrator.html#a3535f941bdc667df0c43b0bd5def0e41">sparseHeat::SpatialVectorFEMassIntegrator</a>, <a class="el" href="classsparseHeat_1_1SpatialStiffnessIntegrator.html#a1cb12ff42946c67307418b912316e810">sparseHeat::SpatialStiffnessIntegrator</a>, and <a class="el" href="classsparseHeat_1_1SpatialMassIntegrator.html#a65af3d0feca07655e709121c02a6eb63">sparseHeat::SpatialMassIntegrator</a>.</p>
 
 </div>
 </div>
-<a id="affc703120b004b954e61754aae7ef43b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#affc703120b004b954e61754aae7ef43b">&#9670;&nbsp;</a></span>assembleElementMatrix() <span class="overload">[2/2]</span></h2>
+<a id="a3fb308ce4af6854f4233c4aa79f46cd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fb308ce4af6854f4233c4aa79f46cd0">&#9670;&nbsp;</a></span>assembleElementMatrix() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -192,31 +192,31 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual void mymfem::BlockBilinearFormIntegrator::assembleElementMatrix </td>
           <td>(</td>
-          <td class="paramtype">const FiniteElement &amp;&#160;</td>
+          <td class="paramtype">const mfem::FiniteElement &amp;&#160;</td>
           <td class="paramname"><em>testFeFine</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">ElementTransformation &amp;&#160;</td>
+          <td class="paramtype">mfem::ElementTransformation &amp;&#160;</td>
           <td class="paramname"><em>testElTransFine</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const FiniteElement &amp;&#160;</td>
+          <td class="paramtype">const mfem::FiniteElement &amp;&#160;</td>
           <td class="paramname"><em>trialFeCoarse</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">ElementTransformation &amp;&#160;</td>
+          <td class="paramtype">mfem::ElementTransformation &amp;&#160;</td>
           <td class="paramname"><em>trialElTransCoarse</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">DenseMatrix &amp;&#160;</td>
+          <td class="paramtype">mfem::DenseMatrix &amp;&#160;</td>
           <td class="paramname"><em>elmat</em>&#160;</td>
         </tr>
         <tr>
@@ -233,7 +233,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Assembles the integrator over two nested coarse and fine mesh elements. Coarse element is for the trial functions and fine element is for the test function </p>
 
-<p>Implemented in <a class="el" href="classsparseHeat_1_1SpatialVectorFEStiffnessIntegrator.html#a58b86bbba48893c0dc62c52cb4bd27da">sparseHeat::SpatialVectorFEStiffnessIntegrator</a>, <a class="el" href="classsparseHeat_1_1SpatialVectorFEMassIntegrator.html#a457777e56ed6fdd20b6ef2ab67344662">sparseHeat::SpatialVectorFEMassIntegrator</a>, <a class="el" href="classsparseHeat_1_1SpatialStiffnessIntegrator.html#a4150c7a5d6bdb33470f70b0ba6462578">sparseHeat::SpatialStiffnessIntegrator</a>, and <a class="el" href="classsparseHeat_1_1SpatialMassIntegrator.html#a78c941e249c7ffb8a0d7085e2b1d4ce7">sparseHeat::SpatialMassIntegrator</a>.</p>
+<p>Implemented in <a class="el" href="classsparseHeat_1_1SpatialVectorFEStiffnessIntegrator.html#a393aea79a280596cde2b112b6b050408">sparseHeat::SpatialVectorFEStiffnessIntegrator</a>, <a class="el" href="classsparseHeat_1_1SpatialVectorFEMassIntegrator.html#ad80ee0da2a84b50b778c07eace3896b0">sparseHeat::SpatialVectorFEMassIntegrator</a>, <a class="el" href="classsparseHeat_1_1SpatialStiffnessIntegrator.html#afc8ef25fc9b2bfc1018c96cee4801d9d">sparseHeat::SpatialStiffnessIntegrator</a>, and <a class="el" href="classsparseHeat_1_1SpatialMassIntegrator.html#a4bb5eb9a46d76a328593148a9817060c">sparseHeat::SpatialMassIntegrator</a>.</p>
 
 </div>
 </div>

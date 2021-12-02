@@ -1,4 +1,4 @@
 <map id="heat::VectorStiffnessIntegrator" name="heat::VectorStiffnessIntegrator">
-<area shape="rect" id="node1" title="Vector Stiffness Integrator; (div(u), div(v))" alt="" coords="5,80,205,107"/>
+<area shape="rect" id="node1" title="mfem::Vector Stiffness Integrator; (div(u), div(v))" alt="" coords="5,80,205,107"/>
 <area shape="rect" id="node2" title=" " alt="" coords="30,5,181,32"/>
 </map>

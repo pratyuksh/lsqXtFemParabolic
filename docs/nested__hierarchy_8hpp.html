@@ -97,20 +97,24 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="nested__hierarchy_8hpp__dep__incl.png" border="0" usemap="#nested__hierarchy_8hppdep" alt=""/></div>
 <map name="nested__hierarchy_8hppdep" id="nested__hierarchy_8hppdep">
-<area shape="rect" title=" " alt="" coords="421,5,565,32"/>
+<area shape="rect" title=" " alt="" coords="606,5,750,32"/>
 <area shape="rect" href="my__bilinearForms_8hpp.html" title=" " alt="" coords="179,80,329,107"/>
-<area shape="rect" href="nested__hierarchy_8cpp.html" title=" " alt="" coords="666,80,810,107"/>
-<area shape="rect" href="sparse__heat_2discretisation_8hpp.html" title=" " alt="" coords="353,80,477,107"/>
-<area shape="rect" href="solution__handler_8hpp.html" title=" " alt="" coords="501,80,641,107"/>
+<area shape="rect" href="nested__hierarchy_8cpp.html" title=" " alt="" coords="973,80,1117,107"/>
+<area shape="rect" href="sparse__heat_2discretisation_8hpp.html" title=" " alt="" coords="407,80,531,107"/>
+<area shape="rect" href="sparse__heat_2observer_8hpp.html" title=" " alt="" coords="723,155,819,181"/>
+<area shape="rect" href="solution__handler_8hpp.html" title=" " alt="" coords="555,80,695,107"/>
+<area shape="rect" href="spatial__error__evaluator_8hpp.html" title=" " alt="" coords="771,80,948,107"/>
 <area shape="rect" href="my__bilinearForms_8cpp.html" title=" " alt="" coords="5,155,156,181"/>
 <area shape="rect" href="spatial__assembly_8hpp.html" title=" " alt="" coords="181,155,327,181"/>
 <area shape="rect" href="sparse__heat_2assembly_8hpp.html" title=" " alt="" coords="215,229,317,256"/>
 <area shape="rect" href="spatial__assembly_8cpp.html" title=" " alt="" coords="45,229,191,256"/>
-<area shape="rect" href="sparse__heat_2discretisation_8cpp.html" title=" " alt="" coords="192,304,316,331"/>
-<area shape="rect" href="sparse__heat_2discretisation__H1Hdiv_8cpp.html" title=" " alt="" coords="341,304,514,331"/>
+<area shape="rect" href="sparse__heat_2discretisation_8cpp.html" title=" " alt="" coords="365,304,489,331"/>
+<area shape="rect" href="sparse__heat_2discretisation__H1Hdiv_8cpp.html" title=" " alt="" coords="167,304,341,331"/>
 <area shape="rect" href="sparse__heat_2solver_8hpp.html" title=" " alt="" coords="453,155,535,181"/>
+<area shape="rect" href="sparse__heat_2observer_8cpp.html" title=" " alt="" coords="766,229,862,256"/>
 <area shape="rect" href="sparse__heat_2solver_8cpp.html" title=" " alt="" coords="453,229,535,256"/>
 <area shape="rect" href="solution__handler_8cpp.html" title=" " alt="" coords="559,155,699,181"/>
+<area shape="rect" href="spatial__error__evaluator_8cpp.html" title=" " alt="" coords="895,155,1072,181"/>
 </map>
 </div>
 </div>
@@ -136,10 +140,10 @@ Namespaces</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:a98e572c4dc0429b375d5d955c2e853cc"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structHierarchicalMeshTransformationTable.html">HierarchicalMeshTransformationTable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nested__hierarchy_8hpp.html#a98e572c4dc0429b375d5d955c2e853cc">HierarchicalMeshTransformationTable</a></td></tr>
 <tr class="separator:a98e572c4dc0429b375d5d955c2e853cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac23bff0122813996831c377212b2ced2"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; std::shared_ptr&lt; Mesh &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemymfem.html#ac23bff0122813996831c377212b2ced2">mymfem::NestedMeshes</a></td></tr>
-<tr class="separator:ac23bff0122813996831c377212b2ced2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b7683c54d28768304e221bf8baa8ca0"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; std::shared_ptr&lt; FiniteElementSpace &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemymfem.html#a9b7683c54d28768304e221bf8baa8ca0">mymfem::NestedFESpaces</a></td></tr>
-<tr class="separator:a9b7683c54d28768304e221bf8baa8ca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a155bc170f3b9c16f0288fe01b059b3de"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; std::shared_ptr&lt; mfem::Mesh &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemymfem.html#a155bc170f3b9c16f0288fe01b059b3de">mymfem::NestedMeshes</a></td></tr>
+<tr class="separator:a155bc170f3b9c16f0288fe01b059b3de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96ba6f0fedfea859305e3659782f95b9"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; std::shared_ptr&lt; mfem::FiniteElementSpace &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemymfem.html#a96ba6f0fedfea859305e3659782f95b9">mymfem::NestedFESpaces</a></td></tr>
+<tr class="separator:a96ba6f0fedfea859305e3659782f95b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2a8025ee3767841e039a984b1b14453"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; std::shared_ptr&lt; <a class="el" href="structHierarchicalMeshTransformationTable.html">HierarchicalMeshTransformationTable</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemymfem.html#ad2a8025ee3767841e039a984b1b14453">mymfem::HierarchicalMeshTransformations</a></td></tr>
 <tr class="separator:ad2a8025ee3767841e039a984b1b14453"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">

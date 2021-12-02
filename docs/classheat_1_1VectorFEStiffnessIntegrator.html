@@ -100,11 +100,11 @@ Collaboration diagram for heat::VectorFEStiffnessIntegrator:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa493aeff44ecc0dcaa9d2d5ec2abf36d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1VectorFEStiffnessIntegrator.html#aa493aeff44ecc0dcaa9d2d5ec2abf36d">VectorFEStiffnessIntegrator</a> ()</td></tr>
 <tr class="separator:aa493aeff44ecc0dcaa9d2d5ec2abf36d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73a91299e4ff55d1a9006bf13170de83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1VectorFEStiffnessIntegrator.html#a73a91299e4ff55d1a9006bf13170de83">AssembleElementMatrix</a> (const FiniteElement &amp;, ElementTransformation &amp;, DenseMatrix &amp;) override</td></tr>
-<tr class="memdesc:a73a91299e4ff55d1a9006bf13170de83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the VectorFE Stiffness integrator on a given spatial mesh element.  <a href="classheat_1_1VectorFEStiffnessIntegrator.html#a73a91299e4ff55d1a9006bf13170de83">More...</a><br /></td></tr>
-<tr class="separator:a73a91299e4ff55d1a9006bf13170de83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b79e094fb1b6cfb4852c6b88f243bf2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1VectorFEStiffnessIntegrator.html#a7b79e094fb1b6cfb4852c6b88f243bf2">AssembleElementMatrix2</a> (const FiniteElement &amp;, const FiniteElement &amp;, ElementTransformation &amp;, DenseMatrix &amp;) override</td></tr>
-<tr class="separator:a7b79e094fb1b6cfb4852c6b88f243bf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d89bce860fe571c40f087de046123e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1VectorFEStiffnessIntegrator.html#a6d89bce860fe571c40f087de046123e9">AssembleElementMatrix</a> (const mfem::FiniteElement &amp;, mfem::ElementTransformation &amp;, mfem::DenseMatrix &amp;) override</td></tr>
+<tr class="memdesc:a6d89bce860fe571c40f087de046123e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the VectorFE Stiffness integrator on a given spatial mesh element.  <a href="classheat_1_1VectorFEStiffnessIntegrator.html#a6d89bce860fe571c40f087de046123e9">More...</a><br /></td></tr>
+<tr class="separator:a6d89bce860fe571c40f087de046123e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa6a4c48a731d4f4436dc95b7158c496"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1VectorFEStiffnessIntegrator.html#aaa6a4c48a731d4f4436dc95b7158c496">AssembleElementMatrix2</a> (const mfem::FiniteElement &amp;, const mfem::FiniteElement &amp;, mfem::ElementTransformation &amp;, mfem::DenseMatrix &amp;) override</td></tr>
+<tr class="separator:aaa6a4c48a731d4f4436dc95b7158c496"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>VectorFE Stiffness Integrator; (div(u), div(v)) Uses, for example, Raviart-Thomas spaces. </p>
@@ -139,8 +139,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a73a91299e4ff55d1a9006bf13170de83"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a73a91299e4ff55d1a9006bf13170de83">&#9670;&nbsp;</a></span>AssembleElementMatrix()</h2>
+<a id="a6d89bce860fe571c40f087de046123e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d89bce860fe571c40f087de046123e9">&#9670;&nbsp;</a></span>AssembleElementMatrix()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -151,20 +151,20 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void heat::VectorFEStiffnessIntegrator::AssembleElementMatrix </td>
           <td>(</td>
-          <td class="paramtype">const FiniteElement &amp;&#160;</td>
-          <td class="paramname"><em>fe</em>, </td>
+          <td class="paramtype">const mfem::FiniteElement &amp;&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">ElementTransformation &amp;&#160;</td>
-          <td class="paramname"><em>Trans</em>, </td>
+          <td class="paramtype">mfem::ElementTransformation &amp;&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">DenseMatrix &amp;&#160;</td>
-          <td class="paramname"><em>elmat</em>&#160;</td>
+          <td class="paramtype">mfem::DenseMatrix &amp;&#160;</td>
+          <td class="paramname">&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -181,12 +181,12 @@ Public Member Functions</h2></td></tr>
 
 <p>Assembles the VectorFE Stiffness integrator on a given spatial mesh element. </p>
 
-<p class="definition">Definition at line <a class="el" href="assembly_8cpp_source.html#l00110">110</a> of file <a class="el" href="assembly_8cpp_source.html">assembly.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="assembly_8cpp_source.html#l00112">112</a> of file <a class="el" href="assembly_8cpp_source.html">assembly.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a7b79e094fb1b6cfb4852c6b88f243bf2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7b79e094fb1b6cfb4852c6b88f243bf2">&#9670;&nbsp;</a></span>AssembleElementMatrix2()</h2>
+<a id="aaa6a4c48a731d4f4436dc95b7158c496"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa6a4c48a731d4f4436dc95b7158c496">&#9670;&nbsp;</a></span>AssembleElementMatrix2()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -197,25 +197,25 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void heat::VectorFEStiffnessIntegrator::AssembleElementMatrix2 </td>
           <td>(</td>
-          <td class="paramtype">const FiniteElement &amp;&#160;</td>
+          <td class="paramtype">const mfem::FiniteElement &amp;&#160;</td>
           <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const FiniteElement &amp;&#160;</td>
+          <td class="paramtype">const mfem::FiniteElement &amp;&#160;</td>
           <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">ElementTransformation &amp;&#160;</td>
+          <td class="paramtype">mfem::ElementTransformation &amp;&#160;</td>
           <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">DenseMatrix &amp;&#160;</td>
+          <td class="paramtype">mfem::DenseMatrix &amp;&#160;</td>
           <td class="paramname">&#160;</td>
         </tr>
         <tr>

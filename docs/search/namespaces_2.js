@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sparseheat_440',['sparseHeat',['../namespacesparseHeat.html',1,'']]]
+  ['sparseheat_475',['sparseHeat',['../namespacesparseHeat.html',1,'']]]
 ];

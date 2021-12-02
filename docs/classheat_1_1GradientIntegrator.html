@@ -100,11 +100,11 @@ Collaboration diagram for heat::GradientIntegrator:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a625bb0f296f5853a07b5a4cb421c5c92"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1GradientIntegrator.html#a625bb0f296f5853a07b5a4cb421c5c92">GradientIntegrator</a> ()</td></tr>
 <tr class="separator:a625bb0f296f5853a07b5a4cb421c5c92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad52955b4d2f0188bf085e3d8a9fd644a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1GradientIntegrator.html#ad52955b4d2f0188bf085e3d8a9fd644a">AssembleElementMatrix</a> (const FiniteElement &amp;, ElementTransformation &amp;, DenseMatrix &amp;) override</td></tr>
-<tr class="memdesc:ad52955b4d2f0188bf085e3d8a9fd644a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the Gradient integrator on a given temporal mesh element.  <a href="classheat_1_1GradientIntegrator.html#ad52955b4d2f0188bf085e3d8a9fd644a">More...</a><br /></td></tr>
-<tr class="separator:ad52955b4d2f0188bf085e3d8a9fd644a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4738442bbf3119ea6a443bd61ab1bb5c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1GradientIntegrator.html#a4738442bbf3119ea6a443bd61ab1bb5c">AssembleElementMatrix2</a> (const FiniteElement &amp;, const FiniteElement &amp;, ElementTransformation &amp;, DenseMatrix &amp;) override</td></tr>
-<tr class="separator:a4738442bbf3119ea6a443bd61ab1bb5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3245c2ef5e4ebba3032f72608ec02b30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1GradientIntegrator.html#a3245c2ef5e4ebba3032f72608ec02b30">AssembleElementMatrix</a> (const mfem::FiniteElement &amp;, mfem::ElementTransformation &amp;, mfem::DenseMatrix &amp;) override</td></tr>
+<tr class="memdesc:a3245c2ef5e4ebba3032f72608ec02b30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the Gradient integrator on a given temporal mesh element.  <a href="classheat_1_1GradientIntegrator.html#a3245c2ef5e4ebba3032f72608ec02b30">More...</a><br /></td></tr>
+<tr class="separator:a3245c2ef5e4ebba3032f72608ec02b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98c6c954538bca072edda29d471b868b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1GradientIntegrator.html#a98c6c954538bca072edda29d471b868b">AssembleElementMatrix2</a> (const mfem::FiniteElement &amp;, const mfem::FiniteElement &amp;, mfem::ElementTransformation &amp;, mfem::DenseMatrix &amp;) override</td></tr>
+<tr class="separator:a98c6c954538bca072edda29d471b868b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Gradient Integrator in time; (du/dt, v) </p>
@@ -139,8 +139,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ad52955b4d2f0188bf085e3d8a9fd644a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad52955b4d2f0188bf085e3d8a9fd644a">&#9670;&nbsp;</a></span>AssembleElementMatrix()</h2>
+<a id="a3245c2ef5e4ebba3032f72608ec02b30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3245c2ef5e4ebba3032f72608ec02b30">&#9670;&nbsp;</a></span>AssembleElementMatrix()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -151,20 +151,20 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void heat::GradientIntegrator::AssembleElementMatrix </td>
           <td>(</td>
-          <td class="paramtype">const FiniteElement &amp;&#160;</td>
-          <td class="paramname"><em>fe</em>, </td>
+          <td class="paramtype">const mfem::FiniteElement &amp;&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">ElementTransformation &amp;&#160;</td>
-          <td class="paramname"><em>Trans</em>, </td>
+          <td class="paramtype">mfem::ElementTransformation &amp;&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">DenseMatrix &amp;&#160;</td>
-          <td class="paramname"><em>elmat</em>&#160;</td>
+          <td class="paramtype">mfem::DenseMatrix &amp;&#160;</td>
+          <td class="paramname">&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -181,12 +181,12 @@ Public Member Functions</h2></td></tr>
 
 <p>Assembles the Gradient integrator on a given temporal mesh element. </p>
 
-<p class="definition">Definition at line <a class="el" href="assembly_8cpp_source.html#l00007">7</a> of file <a class="el" href="assembly_8cpp_source.html">assembly.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="assembly_8cpp_source.html#l00009">9</a> of file <a class="el" href="assembly_8cpp_source.html">assembly.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a4738442bbf3119ea6a443bd61ab1bb5c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4738442bbf3119ea6a443bd61ab1bb5c">&#9670;&nbsp;</a></span>AssembleElementMatrix2()</h2>
+<a id="a98c6c954538bca072edda29d471b868b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98c6c954538bca072edda29d471b868b">&#9670;&nbsp;</a></span>AssembleElementMatrix2()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -197,25 +197,25 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void heat::GradientIntegrator::AssembleElementMatrix2 </td>
           <td>(</td>
-          <td class="paramtype">const FiniteElement &amp;&#160;</td>
+          <td class="paramtype">const mfem::FiniteElement &amp;&#160;</td>
           <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const FiniteElement &amp;&#160;</td>
+          <td class="paramtype">const mfem::FiniteElement &amp;&#160;</td>
           <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">ElementTransformation &amp;&#160;</td>
+          <td class="paramtype">mfem::ElementTransformation &amp;&#160;</td>
           <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">DenseMatrix &amp;&#160;</td>
+          <td class="paramtype">mfem::DenseMatrix &amp;&#160;</td>
           <td class="paramname">&#160;</td>
         </tr>
         <tr>

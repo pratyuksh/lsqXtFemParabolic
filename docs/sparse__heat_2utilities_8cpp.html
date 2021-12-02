@@ -97,8 +97,56 @@ Functions</h2></td></tr>
 <tr class="separator:a949bb2771aa19d26584371d953c5b6b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52e8b0cc7250fd68cc8c39da9616c48e"><td class="memItemLeft" align="right" valign="top">Array&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sparse__heat_2utilities_8cpp.html#a52e8b0cc7250fd68cc8c39da9616c48e">evalSpaceTimeBlockSizes</a> (Array&lt; int &gt; &amp;spatialBlockSizes, Array&lt; int &gt; &amp;temporalBlockSizes)</td></tr>
 <tr class="separator:a52e8b0cc7250fd68cc8c39da9616c48e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae805bd364128b3b40872ba0b2beba6a"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sparse__heat_2utilities_8cpp.html#aae805bd364128b3b40872ba0b2beba6a">evalTemporalMeshSizes</a> (double endTime, int minTemporalLevel, int numLevels)</td></tr>
+<tr class="separator:aae805bd364128b3b40872ba0b2beba6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac216ecd9091e34f2cd71763b942fbc8f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sparse__heat_2utilities_8cpp.html#ac216ecd9091e34f2cd71763b942fbc8f">evalTemporalElIds</a> (int finestTemporalElId, Array&lt; int &gt; &amp;temporalElIds)</td></tr>
+<tr class="separator:ac216ecd9091e34f2cd71763b942fbc8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af833e8225a7fc09bd1ae620ee92dd077"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sparse__heat_2utilities_8cpp.html#af833e8225a7fc09bd1ae620ee92dd077">evalTemporalElLeftEdgeCoords</a> (const Array&lt; double &gt; &amp;temporalMeshSizes, const Array&lt; int &gt; &amp;temporalElIds, Array&lt; double &gt; &amp;temporalElLeftEdgeCoords)</td></tr>
+<tr class="separator:af833e8225a7fc09bd1ae620ee92dd077"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7b64fa500ab7ab35f8cacf58a4f1c4a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sparse__heat_2utilities_8cpp.html#ae7b64fa500ab7ab35f8cacf58a4f1c4a">evalLeftHalfOfHatBasis</a> (double z, double z0, double h)</td></tr>
+<tr class="separator:ae7b64fa500ab7ab35f8cacf58a4f1c4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e3450fc27f637017cfd63c318a1fa92"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sparse__heat_2utilities_8cpp.html#a2e3450fc27f637017cfd63c318a1fa92">evalRightHalfOfHatBasis</a> (double z, double z0, double h)</td></tr>
+<tr class="separator:a2e3450fc27f637017cfd63c318a1fa92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a915c07ee50aee235bb9e7a2b63fc674a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sparse__heat_2utilities_8cpp.html#a915c07ee50aee235bb9e7a2b63fc674a">affineTransform</a> (double zLeft, double zRight, double eta)</td></tr>
+<tr class="separator:a915c07ee50aee235bb9e7a2b63fc674a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a915c07ee50aee235bb9e7a2b63fc674a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a915c07ee50aee235bb9e7a2b63fc674a">&#9670;&nbsp;</a></span>affineTransform()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double affineTransform </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>zLeft</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>zRight</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>eta</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sparse__heat_2utilities_8cpp_source.html#l00117">117</a> of file <a class="el" href="sparse__heat_2utilities_8cpp_source.html">sparse_heat/utilities.cpp</a>.</p>
+
+</div>
+</div>
 <a id="a08b7bda01a8a8aff2e76a09b84ef511d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a08b7bda01a8a8aff2e76a09b84ef511d">&#9670;&nbsp;</a></span>evalBlockOffsets()</h2>
 
@@ -146,6 +194,78 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="sparse__heat_2utilities_8cpp_source.html#l00038">38</a> of file <a class="el" href="sparse__heat_2utilities_8cpp_source.html">sparse_heat/utilities.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ae7b64fa500ab7ab35f8cacf58a4f1c4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7b64fa500ab7ab35f8cacf58a4f1c4a">&#9670;&nbsp;</a></span>evalLeftHalfOfHatBasis()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double evalLeftHalfOfHatBasis </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>z0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>h</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sparse__heat_2utilities_8cpp_source.html#l00109">109</a> of file <a class="el" href="sparse__heat_2utilities_8cpp_source.html">sparse_heat/utilities.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a2e3450fc27f637017cfd63c318a1fa92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e3450fc27f637017cfd63c318a1fa92">&#9670;&nbsp;</a></span>evalRightHalfOfHatBasis()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double evalRightHalfOfHatBasis </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>z0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>h</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sparse__heat_2utilities_8cpp_source.html#l00113">113</a> of file <a class="el" href="sparse__heat_2utilities_8cpp_source.html">sparse_heat/utilities.cpp</a>.</p>
 
 </div>
 </div>
@@ -236,6 +356,108 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="sparse__heat_2utilities_8cpp_source.html#l00033">33</a> of file <a class="el" href="sparse__heat_2utilities_8cpp_source.html">sparse_heat/utilities.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ac216ecd9091e34f2cd71763b942fbc8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac216ecd9091e34f2cd71763b942fbc8f">&#9670;&nbsp;</a></span>evalTemporalElIds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void evalTemporalElIds </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>finestTemporalElId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Array&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>temporalElIds</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sparse__heat_2utilities_8cpp_source.html#l00084">84</a> of file <a class="el" href="sparse__heat_2utilities_8cpp_source.html">sparse_heat/utilities.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af833e8225a7fc09bd1ae620ee92dd077"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af833e8225a7fc09bd1ae620ee92dd077">&#9670;&nbsp;</a></span>evalTemporalElLeftEdgeCoords()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void evalTemporalElLeftEdgeCoords </td>
+          <td>(</td>
+          <td class="paramtype">const Array&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>temporalMeshSizes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Array&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>temporalElIds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Array&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>temporalElLeftEdgeCoords</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sparse__heat_2utilities_8cpp_source.html#l00096">96</a> of file <a class="el" href="sparse__heat_2utilities_8cpp_source.html">sparse_heat/utilities.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aae805bd364128b3b40872ba0b2beba6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae805bd364128b3b40872ba0b2beba6a">&#9670;&nbsp;</a></span>evalTemporalMeshSizes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">mfem::Array&lt;double&gt; evalTemporalMeshSizes </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>endTime</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>minTemporalLevel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>numLevels</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sparse__heat_2utilities_8cpp_source.html#l00070">70</a> of file <a class="el" href="sparse__heat_2utilities_8cpp_source.html">sparse_heat/utilities.cpp</a>.</p>
 
 </div>
 </div>
