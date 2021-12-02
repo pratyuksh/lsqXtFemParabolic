@@ -27,14 +27,14 @@ runSolverAndEvalError(sparseHeat::Solver& solver,
 }
 
 /**
- * @brief Tests the error evaluator in the observer for unitSquare_test1
+ * @brief Tests the error evaluator in the observer for unitSquare_test3
  */
-TEST(SparseHeatObserver, evalErrorUnitSquareTest1)
+TEST(SparseHeatObserver, evalErrorUnitSquareTest3)
 {
     // config and test case
     std::string configFile
             = "../config_files/unit_tests/"
-              "sparse_heat_observer/sparseHeat_square_test1.json";
+              "sparse_heat_observer/sparseHeat_square_test3.json";
     auto config = getGlobalConfig(configFile);
     auto testCase = heat::makeTestCase(config);
 
@@ -74,7 +74,11 @@ TEST(SparseHeatObserver, evalErrorUnitSquareTest1)
     std::tie(numDofs, htMax, hxMax, solutionError)
             = runSolverAndEvalError(solver, observer);
 
-    std::cout << "Solution error:\n";
+    std::cout << htMax << "\t"
+              << hxMax << "\t"
+              << numDofs << std::endl;
+
+    std::cout << "\nSolution error:\n";
     solutionError.Print();
 }
 

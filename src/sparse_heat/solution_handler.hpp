@@ -31,7 +31,7 @@ public:
         return m_data->GetBlock(0);
     }
 
-    int getTemperatureDataSize() {
+    int getTemperatureDataSize() const {
         return (m_data->GetBlock(0)).Size();
     }
 
@@ -43,7 +43,7 @@ public:
         return m_data->GetBlock(1);
     }
 
-    int getHeatFluxDataSize() {
+    int getHeatFluxDataSize() const {
         return (m_data->GetBlock(1)).Size();
     }
 
@@ -51,7 +51,7 @@ public:
         return m_data;
     }
 
-    mfem::Array<int> getDataSize() {
+    mfem::Array<int> getDataSize() const {
         mfem::Array<int> blockSizes(2);
         blockSizes[0] = (m_data->GetBlock(0)).Size();
         blockSizes[1] = (m_data->GetBlock(1)).Size();

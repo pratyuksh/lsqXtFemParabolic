@@ -58,30 +58,33 @@ void sparseHeat::Observer
 
     if (m_boolEvalError)
     {
-        m_materialCoeff = std::make_unique<heat::MediumTensorCoeff>
+        m_materialCoeff = std::make_shared<heat::MediumTensorCoeff>
                 (m_testCase);
 
         m_exactTemperatureCoeff
-                = std::make_unique<heat::ExactTemperatureCoeff>(m_testCase);
+                = std::make_shared<heat::ExactTemperatureCoeff>(m_testCase);
         m_exactHeatFluxCoeff
-                = std::make_unique<heat::ExactFluxCoeff>(m_testCase);
+                = std::make_shared<heat::ExactHeatFluxCoeff>(m_testCase);
 
+        m_exactSpatialGradientOfTemperatureCoeff
+                = std::make_shared<heat::ExactTemperatureSpatialGradCoeff>
+                (m_testCase);
         m_exactTemporalGradientOfTemperatureCoeff
-                = std::make_unique<heat::ExactTemperatureTimeGradCoeff>
+                = std::make_shared<heat::ExactTemperatureTemporalGradCoeff>
                 (m_testCase);
 
-        m_exactTemperature
-                = std::make_shared<GridFunction>
-                (m_spatialFinestFESpaceForTemperature.get());
-        m_exactHeatFlux
-                = std::make_shared<GridFunction>
-                (m_spatialFinestFESpaceForHeatFlux.get());
+        m_sourceCoeff = std::make_shared<heat::SourceCoeff>(m_testCase);
 
-        m_spatialErrorOfGradientOfTemperature
-                    = std::make_unique<SpatialErrorOfGradientOfTemperature>
+        m_spatialErrorOfSolutionInNaturalNorm
+                    = std::make_unique<SpatialErrorOfSolutionInNaturalNorm>
                     (m_spatialMeshHierarchy);
+        m_spatialErrorOfSolutionInNaturalNorm
+                ->setCoefficients(m_exactTemperatureCoeff,
+                                  m_exactHeatFluxCoeff,
+                                  m_exactSpatialGradientOfTemperatureCoeff,
+                                  m_exactTemporalGradientOfTemperatureCoeff,
+                                  m_sourceCoeff);
     }
-
 }
 
 void sparseHeat::Observer
@@ -118,19 +121,24 @@ Vector sparseHeat::Observer
 {
     Vector solutionError;
 
-    evalErrorInNaturalNorm(solutionHandler);
+    if (m_errorType == "natural") {
+        solutionError = evalErrorInNaturalNorm(solutionHandler);
+    }
 
     return solutionError;
 }
 
-void sparseHeat::Observer
+mfem::Vector sparseHeat::Observer
 :: evalErrorInNaturalNorm(const SolutionHandler & solutionHandler) const
 {
-    double temperatureErrorNormL2H1 = 0;
-    double exactTemperatureNormL2H1 = 0;
+    Vector solutionError(3);
+
+    Vector temperatureRelErrorNormL2H1(2);
+    Vector heatFluxRelErrorNormL2L2(2);
+    Vector solDivergenceRelErrorNormL2L2(2);
 
     // temporal integration rule
-    int order = 4;
+    int order = 3;
     const IntegrationRule *ir
             = &IntRules.Get(Geometry::SEGMENT, order);
 
@@ -138,7 +146,6 @@ void sparseHeat::Observer
             = evalTemporalMeshSizes(m_endTime,
                                     m_minTemporalLevel,
                                     m_numLevels);
-
     Array<int> temporalFesDims
             = evalTemporalBlockSizes(m_minTemporalLevel,
                                      m_maxTemporalLevel);
@@ -148,19 +155,19 @@ void sparseHeat::Observer
     Array<double> temporalElLeftEdgeCoords(m_numLevels);
 
     Array<double> temporalBasisVals(m_numLevels+1);
+    Array<double> temporalBasisGradientVals(m_numLevels+1);
+    Array<std::shared_ptr<GridFunction>> spatialTemperatures(m_numLevels+1);
+    Array<std::shared_ptr<GridFunction>> spatialHeatFluxes(m_numLevels+1);
 
-    Array<std::shared_ptr<GridFunction>> spatialTemperature(m_numLevels+1);
-    Array<std::shared_ptr<GridFunction>> spatialHeatFlux(m_numLevels+1);
+    int numElsTemporalFinestMesh
+            = static_cast<int>(std::pow(2, m_maxTemporalLevel));
+    double finestTemporalMeshSize = temporalMeshSizes[m_numLevels-1];
+//    std::cout << "\nNumber of temporal elements on finest level: "
+//              << numElsTemporalFinestMesh << std::endl;
 
-    int numElsTemporalFinestMesh = temporalMeshSizes[m_numLevels-1];
-
-    // buffer variables
-    Array<double> bufTemperatureErrorNormL2H1(numElsTemporalFinestMesh);
-    bufTemperatureErrorNormL2H1 = 0.;
-
-    Array<double> bufExactTemperatureNormL2H1(numElsTemporalFinestMesh);
-    bufExactTemperatureNormL2H1 = 0.;
-
+    temperatureRelErrorNormL2H1 = 0.;
+    heatFluxRelErrorNormL2L2 = 0.;
+    solDivergenceRelErrorNormL2L2 = 0.;
     for (int n=0; n<numElsTemporalFinestMesh; n++)
     {
         // find current temporal element id for all temporal mesh levels
@@ -173,35 +180,60 @@ void sparseHeat::Observer
 
         collectSpatialGridFunctionsForTemperature
                 (solutionHandler, temporalFesDims, temporalElIds,
-                 spatialTemperature);
+                 spatialTemperatures);
         collectSpatialGridFunctionsForHeatFlux
                 (solutionHandler, temporalFesDims, temporalElIds,
-                 spatialHeatFlux);
+                 spatialHeatFluxes);
 
         double tFinestLeft = temporalElLeftEdgeCoords[m_numLevels-1];
         double tFinestRight = tFinestLeft + temporalMeshSizes[m_numLevels-1];
 
+//        std::cout << "\n" << tFinestLeft << "\t"
+//                  << tFinestRight << "\n\n";
+
+        Vector localTemperatureRelErrorNormH1;
+        Vector localHeatFluxRelErrorNormL2;
+        Vector localSolDivergenceRelErrorNormL2;
         for (int i=0; i<ir->GetNPoints(); i++)
         {
             const IntegrationPoint &ip = ir->IntPoint(i);
             double t = affineTransform(tFinestLeft, tFinestRight, ip.x);
 
-            m_exactTemperatureCoeff->SetTime(t);
-            m_exactTemperature
-                    ->ProjectCoefficient(*m_exactTemperatureCoeff);
-
             evalTemporalBasisVals(temporalMeshSizes,
                                   temporalElIds,
                                   temporalElLeftEdgeCoords,
                                   t, temporalBasisVals);
+            evalTemporalBasisGradientVals(temporalMeshSizes,
+                                          temporalElIds,
+                                          temporalElLeftEdgeCoords,
+                                          t, temporalBasisGradientVals);
 
-            double tmpVal
-                    = m_spatialErrorOfGradientOfTemperature
-                    ->eval(m_exactTemperature,
-                           temporalBasisVals,
-                           spatialTemperature);
+            std::tie (localTemperatureRelErrorNormH1,
+                      localHeatFluxRelErrorNormL2,
+                      localSolDivergenceRelErrorNormL2)
+                    = m_spatialErrorOfSolutionInNaturalNorm
+                    ->eval(t, temporalBasisVals, temporalBasisGradientVals,
+                           spatialTemperatures, spatialHeatFluxes);
+
+            temperatureRelErrorNormL2H1
+                    .Add(ip.weight*finestTemporalMeshSize,
+                         localTemperatureRelErrorNormH1);
+            heatFluxRelErrorNormL2L2
+                    .Add(ip.weight*finestTemporalMeshSize,
+                         localHeatFluxRelErrorNormL2);
+            solDivergenceRelErrorNormL2L2
+                    .Add(ip.weight*finestTemporalMeshSize,
+                         localSolDivergenceRelErrorNormL2);
         }
     }
+    solutionError(0) = std::sqrt(temperatureRelErrorNormL2H1(0))
+            / std::sqrt(temperatureRelErrorNormL2H1(1));
+    solutionError(1) = std::sqrt(heatFluxRelErrorNormL2L2(0))
+            / std::sqrt(heatFluxRelErrorNormL2L2(1));
+    solutionError(2) = std::sqrt(solDivergenceRelErrorNormL2L2(0))
+            / std::sqrt(solDivergenceRelErrorNormL2L2(1));
+
+    return solutionError;
 }
 
 void sparseHeat::Observer
@@ -221,23 +253,51 @@ void sparseHeat::Observer
 
         temporalBasisVals[1]
                 = evalLeftHalfOfHatBasis
-                (t, temporalElLeftEdgeCoords[1],
-                 temporalMeshSizes[1]);
+                (t, temporalElLeftEdgeCoords[0],
+                 temporalMeshSizes[0]);
     }
+//    std::cout << temporalBasisVals[0] << "\t"
+//              << temporalBasisVals[1] << std::endl;
     // remaining temporal levels have hierarchical basis functions
-    for (int m=2; m<m_numLevels+1; m++)
+    for (int m=1; m<m_numLevels; m++)
     {
         if (temporalElIds[m]%2 == 0) {
-            temporalBasisVals[m]
+            temporalBasisVals[m+1]
                     = evalLeftHalfOfHatBasis
                     (t, temporalElLeftEdgeCoords[m],
                      temporalMeshSizes[m]);
         }
         else {
-            temporalBasisVals[m]
+            temporalBasisVals[m+1]
                     = evalRightHalfOfHatBasis
                     (t, temporalElLeftEdgeCoords[m],
                      temporalMeshSizes[m]);
+        }
+//        std::cout << temporalBasisVals[m+1] << std::endl;
+    }
+}
+
+void sparseHeat::Observer
+:: evalTemporalBasisGradientVals
+(const mfem::Array<double> &temporalMeshSizes,
+ const mfem::Array<int> &temporalElIds,
+ const mfem::Array<double> &temporalElLeftEdgeCoords,
+ double t,
+ mfem::Array<double> &temporalBasisGradientVals) const
+{
+    // coarsest temporal level has standard FE basis functions
+    {
+        temporalBasisGradientVals[0] = -1./temporalMeshSizes[0];
+        temporalBasisGradientVals[1] = +1./temporalMeshSizes[0];
+    }
+    // remaining temporal levels have hierarchical basis functions
+    for (int m=1; m<m_numLevels; m++)
+    {
+        if (temporalElIds[m]%2 == 0) {
+            temporalBasisGradientVals[m+1] = +1./temporalMeshSizes[m];
+        }
+        else {
+            temporalBasisGradientVals[m+1] = -1./temporalMeshSizes[m];
         }
     }
 }
@@ -304,4 +364,52 @@ void sparseHeat::Observer
  const Array<int>& temporalFesDims,
  const Array<int>& temporalElIds,
  Array<std::shared_ptr<GridFunction>>& spatialHeatFlux) const
-{}
+{
+    auto solutionData = solutionHandler.getData();
+
+    int shift = solutionHandler.getTemperatureDataSize();
+
+    // coarsest temporal level has standard FE hat basis functions
+    // so there are two grid functions at the finest spatial mesh level
+    {
+        const int m = 0;
+
+        int i = temporalElIds[m];
+        int spatialId = m_numLevels - m - 1;
+
+        auto spatialFes
+                = m_spatialNestedFESpacesForHeatFlux[spatialId];
+        int spatialFesDim
+                = spatialFes->GetTrueVSize();
+
+        spatialHeatFlux[m]
+                = std::make_shared<GridFunction>
+                (spatialFes.get(),
+                 solutionData->GetData() + i*spatialFesDim + shift);
+
+        spatialHeatFlux[m+1]
+                = std::make_shared<GridFunction>
+                (spatialFes.get(),
+                 solutionData->GetData() + (i+1)*spatialFesDim + shift);
+
+        shift += temporalFesDims[m] * spatialFesDim;
+    }
+    // remaining levels
+    for (int m=1; m<m_numLevels; m++)
+    {
+        int i = temporalElIds[m]/2;
+        int spatialId = m_numLevels - m - 1;
+
+        auto spatialFes
+                = m_spatialNestedFESpacesForHeatFlux[spatialId];
+        int spatialFesDim
+                = spatialFes->GetTrueVSize();
+
+        spatialHeatFlux[m+1]
+                = std::make_shared<GridFunction>
+                (spatialFes.get(),
+                 solutionData->GetData() + i*spatialFesDim + shift);
+
+        shift += temporalFesDims[m] * spatialFesDim;
+    }
+}

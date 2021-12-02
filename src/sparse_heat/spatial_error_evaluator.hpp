@@ -13,29 +13,60 @@ class SpatialErrorOfSolution
 public:
     SpatialErrorOfSolution
     (std::shared_ptr<mymfem::NestedMeshHierarchy>& spatialMeshHierarchy) :
-    m_spatialMeshHierarchy (spatialMeshHierarchy) {}
+    m_spatialMeshHierarchy (spatialMeshHierarchy) {
+        m_numLevels = m_spatialMeshHierarchy->getNumMeshes();
+    }
 
-    virtual double eval
-    (std::shared_ptr<mfem::GridFunction>&,
-     mfem::Array<double>&,
-     mfem::Array<std::shared_ptr<mfem::GridFunction>>&) const = 0;
+    void setCoefficients(std::shared_ptr<mfem::Coefficient> &,
+                         std::shared_ptr<mfem::VectorCoefficient> &,
+                         std::shared_ptr<mfem::VectorCoefficient> &,
+                         std::shared_ptr<mfem::Coefficient> &,
+                         std::shared_ptr<mfem::Coefficient> &);
 
 protected:
+    void setCurrentTimeForCoefficients(double) const;
+
+    void initializeSpatialParentElementIds
+    (int k, mfem::Array<int>& elIds) const;
+
+    void getSpatialParentElementIds
+    (int k, mfem::Array<int>& elIds) const;
+
+public:
+    virtual std::tuple<mfem::Vector, mfem::Vector, mfem::Vector>
+    eval (double, mfem::Array<double>&, mfem::Array<double>&,
+          mfem::Array<std::shared_ptr<mfem::GridFunction>>&,
+          mfem::Array<std::shared_ptr<mfem::GridFunction>>&) const = 0;
+
+protected:
+    int m_numLevels;
     std::shared_ptr<mymfem::NestedMeshHierarchy> m_spatialMeshHierarchy;
+
+    mutable std::shared_ptr<mfem::Coefficient> m_exactTemperatureCoeff;
+    mutable std::shared_ptr<mfem::VectorCoefficient> m_exactHeatFluxCoeff;
+
+    mutable std::shared_ptr<mfem::VectorCoefficient>
+    m_exactSpatialGradientOfTemperatureCoeff;
+    mutable std::shared_ptr<mfem::Coefficient>
+    m_exactTemporalGradientOfTemperatureCoeff;
+
+    mutable std::shared_ptr<mfem::Coefficient> m_sourceCoeff;
 };
 
 
-class SpatialErrorOfGradientOfTemperature : public SpatialErrorOfSolution
+class SpatialErrorOfSolutionInNaturalNorm
+        : public SpatialErrorOfSolution
 {
 public:
-    SpatialErrorOfGradientOfTemperature
+    SpatialErrorOfSolutionInNaturalNorm
     (std::shared_ptr<mymfem::NestedMeshHierarchy>& spatialMeshHierarchy) :
     SpatialErrorOfSolution(spatialMeshHierarchy) {}
 
-    double eval
-    (std::shared_ptr<mfem::GridFunction>&,
-     mfem::Array<double>&,
-     mfem::Array<std::shared_ptr<mfem::GridFunction>>&) const override;
+    std::tuple<mfem::Vector, mfem::Vector, mfem::Vector>
+    eval (double, mfem::Array<double>&, mfem::Array<double>&,
+          mfem::Array<std::shared_ptr<mfem::GridFunction>>&,
+          mfem::Array<std::shared_ptr<mfem::GridFunction>>&)
+    const override;
 };
 
 }

@@ -30,18 +30,18 @@ public:
 
     //! Sets the test case and discretisation
     void set (std::shared_ptr<heat::TestCases>&,
-              std::shared_ptr<sparseHeat::LsqSparseXtFem>&);
+              std::shared_ptr<LsqSparseXtFem>&);
 
-    void visualizeSolutionAtEndTime(const sparseHeat::SolutionHandler&);
+    void visualizeSolutionAtEndTime(const SolutionHandler&);
 
-    mfem::Vector evalError(const sparseHeat::SolutionHandler&);
+    mfem::Vector evalError(const SolutionHandler&);
 
     /**
      * @brief Evaluates error in the natural norm
      * @param solution handler
      * @return discrete solution error in natural norm
      */
-    void evalErrorInNaturalNorm (const SolutionHandler&) const;
+    mfem::Vector evalErrorInNaturalNorm (const SolutionHandler&) const;
 
 private:
     void evalTemporalBasisVals
@@ -49,6 +49,12 @@ private:
      const mfem::Array<int> &temporalElIds,
      const mfem::Array<double> &temporalElLeftEdgeCoords,
      double t, mfem::Array<double> &temporalBasisVals) const;
+
+    void evalTemporalBasisGradientVals
+    (const mfem::Array<double> &temporalMeshSizes,
+     const mfem::Array<int> &temporalElIds,
+     const mfem::Array<double> &temporalElLeftEdgeCoords,
+     double t, mfem::Array<double> &temporalBasisGradientVals) const;
 
     void collectSpatialGridFunctionsForTemperature
     (const SolutionHandler&,
@@ -72,7 +78,7 @@ private:
     std::string m_errorType;
 
     std::shared_ptr<heat::TestCases> m_testCase;
-    std::shared_ptr<sparseHeat::LsqSparseXtFem> m_disc;
+    std::shared_ptr<LsqSparseXtFem> m_disc;
 
     std::shared_ptr<mymfem::NestedMeshHierarchy> m_spatialMeshHierarchy;
 
@@ -82,19 +88,20 @@ private:
     std::shared_ptr<mfem::FiniteElementSpace> m_spatialFinestFESpaceForTemperature;
     std::shared_ptr<mfem::FiniteElementSpace> m_spatialFinestFESpaceForHeatFlux;
 
-    mutable std::unique_ptr<mfem::MatrixCoefficient> m_materialCoeff;
+    mutable std::shared_ptr<mfem::MatrixCoefficient> m_materialCoeff;
 
-    mutable std::unique_ptr<mfem::Coefficient> m_exactTemperatureCoeff;
-    mutable std::unique_ptr<mfem::VectorCoefficient> m_exactHeatFluxCoeff;
+    mutable std::shared_ptr<mfem::Coefficient> m_exactTemperatureCoeff;
+    mutable std::shared_ptr<mfem::VectorCoefficient> m_exactHeatFluxCoeff;
 
-    mutable std::unique_ptr<mfem::Coefficient>
+    mutable std::shared_ptr<mfem::VectorCoefficient>
+    m_exactSpatialGradientOfTemperatureCoeff;
+    mutable std::shared_ptr<mfem::Coefficient>
     m_exactTemporalGradientOfTemperatureCoeff;
 
-    mutable std::shared_ptr<mfem::GridFunction> m_exactTemperature;
-    mutable std::shared_ptr<mfem::GridFunction> m_exactHeatFlux;
+    mutable std::shared_ptr<mfem::Coefficient> m_sourceCoeff;
 
     mutable std::unique_ptr<SpatialErrorOfSolution>
-    m_spatialErrorOfGradientOfTemperature;
+    m_spatialErrorOfSolutionInNaturalNorm;
 };
 
 }

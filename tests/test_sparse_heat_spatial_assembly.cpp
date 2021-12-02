@@ -657,12 +657,12 @@ TEST(SparseSpatialAssembly, vectorFEGradientMatrix)
         ASSERT_LE(trueBlockGradient22->MaxNorm(), tol);
     }
 
-    for(int i=1; i<blockGradientMatrix->NumRowBlocks(); i++) {
-        for (int j=0; j<i; j++) {
-            blockGradientMatrix->GetBlock(i,j).Print();
-            std::cout << "\n";
-        }
-    }
+//    for(int i=1; i<blockGradientMatrix->NumRowBlocks(); i++) {
+//        for (int j=0; j<i; j++) {
+//            blockGradientMatrix->GetBlock(i,j).Print();
+//            std::cout << "\n";
+//        }
+//    }
 
     delete feCollRT;
     delete feCollH1;
@@ -782,12 +782,12 @@ TEST(SparseSpatialAssembly, vectorFEDivergenceMatrix)
         ASSERT_LE(trueBlockDivergence22->MaxNorm(), tol);
     }
 
-    for(int i=1; i<blockDivergenceMatrix->NumRowBlocks(); i++) {
-        for (int j=0; j<i; j++) {
-            blockDivergenceMatrix->GetBlock(i,j).Print();
-            std::cout << "\n";
-        }
-    }
+//    for(int i=1; i<blockDivergenceMatrix->NumRowBlocks(); i++) {
+//        for (int j=0; j<i; j++) {
+//            blockDivergenceMatrix->GetBlock(i,j).Print();
+//            std::cout << "\n";
+//        }
+//    }
 
     delete feCollRT;
     delete feCollH1;
