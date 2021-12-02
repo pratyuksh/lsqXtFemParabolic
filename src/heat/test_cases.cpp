@@ -7,22 +7,6 @@ using namespace mfem;
 // Homogeneous Dirichlet BCs
 // Zero source
 double heat::TestCase <Dummy>
-:: medium(const Vector&) const
-{
-    return 1;
-}
-
-DenseMatrix heat::TestCase <Dummy>
-:: mediumTensor(const Vector& x) const
-{
-    DenseMatrix med(m_dim);
-    med(0,0) = med(1,1) = 1;
-    med(0,1) = med(1,0) = 0;
-    med *= medium(x);
-    return med;
-}
-
-double heat::TestCase <Dummy>
 :: temperatureSol(const Vector& x, const double t) const
 {
     return 1;
@@ -36,8 +20,16 @@ Vector heat::TestCase <Dummy>
     return q;
 }
 
+Vector heat::TestCase <Dummy>
+:: temperatureSpatialGradientSol (const Vector& x, const double t) const
+{
+    Vector gradu(m_dim);
+    gradu = 0.;
+    return gradu;
+}
+
 double heat::TestCase <Dummy>
-:: temperatureTimeGradientSol
+:: temperatureTemporalGradientSol
 (const Vector& x, const double t) const
 {
     return 0;
@@ -88,16 +80,22 @@ double heat::TestCase <UnitSquareTest1>
 Vector heat::TestCase <UnitSquareTest1>
 :: heatFluxSol (const Vector& x, const double t) const
 {
+    return this->temperatureSpatialGradientSol(x, t);
+}
+
+Vector heat::TestCase <UnitSquareTest1>
+:: temperatureSpatialGradientSol (const Vector& x, const double t) const
+{
     double coeff = medium(x);
-    Vector q(m_dim);
-    q(0) = M_PI*cos(M_PI*x(0))*sin(M_PI*x(1));
-    q(1) = M_PI*sin(M_PI*x(0))*cos(M_PI*x(1));
-    q *= exp(-2*M_PI*M_PI*coeff*t);
-    return q;
+    Vector dudx(m_dim);
+    dudx(0) = M_PI*cos(M_PI*x(0))*sin(M_PI*x(1));
+    dudx(1) = M_PI*sin(M_PI*x(0))*cos(M_PI*x(1));
+    dudx *= exp(-2*M_PI*M_PI*coeff*t);
+    return dudx;
 }
 
 double heat::TestCase <UnitSquareTest1>
-:: temperatureTimeGradientSol
+:: temperatureTemporalGradientSol
 (const Vector& x, const double t) const
 {
     double coeff = medium(x);
@@ -135,15 +133,21 @@ double heat::TestCase <UnitSquareTest2>
 Vector heat::TestCase <UnitSquareTest2>
 :: heatFluxSol (const Vector& x, const double t) const
 {
-    Vector q(m_dim);
-    q(0) = M_PI*cos(M_PI*x(0))*sin(M_PI*x(1));
-    q(1) = M_PI*sin(M_PI*x(0))*cos(M_PI*x(1));
-    q *= cos(M_PI*t);
-    return q;
+    return temperatureSpatialGradientSol(x, t);
+}
+
+Vector heat::TestCase <UnitSquareTest2>
+:: temperatureSpatialGradientSol (const Vector& x, const double t) const
+{
+    Vector dudx(m_dim);
+    dudx(0) = M_PI*cos(M_PI*x(0))*sin(M_PI*x(1));
+    dudx(1) = M_PI*sin(M_PI*x(0))*cos(M_PI*x(1));
+    dudx *= cos(M_PI*t);
+    return dudx;
 }
 
 double heat::TestCase <UnitSquareTest2>
-:: temperatureTimeGradientSol
+:: temperatureTemporalGradientSol
 (const Vector& x, const double t) const
 {
     double dudt = sin(M_PI*x(0))*sin(M_PI*x(1))
@@ -196,15 +200,21 @@ double heat::TestCase <UnitSquareTest3>
 Vector heat::TestCase <UnitSquareTest3>
 :: heatFluxSol (const Vector& x, const double t) const
 {
-    Vector q(m_dim);
-    q(0) = M_PI*cos(M_PI*x(0))*sin(M_PI*x(1));
-    q(1) = M_PI*sin(M_PI*x(0))*cos(M_PI*x(1));
-    q *= sin(M_PI*t);
-    return q;
+    return temperatureSpatialGradientSol(x, t);
+}
+
+Vector heat::TestCase <UnitSquareTest3>
+:: temperatureSpatialGradientSol (const Vector& x, const double t) const
+{
+    Vector dudx(m_dim);
+    dudx(0) = M_PI*cos(M_PI*x(0))*sin(M_PI*x(1));
+    dudx(1) = M_PI*sin(M_PI*x(0))*cos(M_PI*x(1));
+    dudx *= sin(M_PI*t);
+    return dudx;
 }
 
 double heat::TestCase <UnitSquareTest3>
-:: temperatureTimeGradientSol
+:: temperatureTemporalGradientSol
 (const Vector& x, const double t) const
 {
     double dudt = sin(M_PI*x(0))*sin(M_PI*x(1))
@@ -259,18 +269,25 @@ double heat::TestCase <UnitSquareTest4>
 Vector heat::TestCase <UnitSquareTest4>
 :: heatFluxSol (const Vector& x, const double t) const
 {
-    Vector q(m_dim), qBuf(m_dim);
-    qBuf(0) = M_PI*cos(M_PI*x(0))*sin(M_PI*x(1));
-    qBuf(1) = M_PI*sin(M_PI*x(0))*cos(M_PI*x(1));
-    qBuf *= sin(M_PI*t);
+    Vector q(m_dim);
+    auto tmp = temperatureSpatialGradientSol(x, t);
     auto medMat = mediumTensor(x);
-    medMat.Mult(qBuf, q);
-
+    medMat.Mult(tmp, q);
     return q;
 }
 
+Vector heat::TestCase <UnitSquareTest4>
+:: temperatureSpatialGradientSol (const Vector& x, const double t) const
+{
+    Vector dudx(m_dim);
+    dudx(0) = M_PI*cos(M_PI*x(0))*sin(M_PI*x(1));
+    dudx(1) = M_PI*sin(M_PI*x(0))*cos(M_PI*x(1));
+    dudx *= sin(M_PI*t);
+    return dudx;
+}
+
 double heat::TestCase <UnitSquareTest4>
-:: temperatureTimeGradientSol
+:: temperatureTemporalGradientSol
 (const Vector& x, const double t) const
 {
     double dudt = sin(M_PI*x(0))*sin(M_PI*x(1))
@@ -325,19 +342,27 @@ double heat::TestCase <PeriodicUnitSquareTest1>
 Vector heat::TestCase <PeriodicUnitSquareTest1>
 :: heatFluxSol (const Vector& x, const double t) const
 {
-    Vector q(m_dim), qBuf(m_dim);
-    double alpha = 4*M_PI*M_PI;
-    double ut = (1 - exp(-alpha*t))/alpha;
-    qBuf(0) = 400*M_PI*cos(2*M_PI*x(0));
-    qBuf(1) = 400*M_PI*cos(2*M_PI*x(1));
-    qBuf *= ut;
+    Vector q(m_dim);
+    auto tmp = temperatureSpatialGradientSol(x, t);
     auto medMat = mediumTensor(x);
-    medMat.Mult(qBuf, q);
+    medMat.Mult(tmp, q);
     return q;
 }
 
+Vector heat::TestCase <PeriodicUnitSquareTest1>
+:: temperatureSpatialGradientSol (const Vector& x, const double t) const
+{
+    Vector dudx(m_dim);
+    double alpha = 4*M_PI*M_PI;
+    double ut = (1 - exp(-alpha*t))/alpha;
+    dudx(0) = 400*M_PI*cos(2*M_PI*x(0));
+    dudx(1) = 400*M_PI*cos(2*M_PI*x(1));
+    dudx *= ut;
+    return dudx;
+}
+
 double heat::TestCase <PeriodicUnitSquareTest1>
-:: temperatureTimeGradientSol
+:: temperatureTemporalGradientSol
 (const Vector& x, const double t) const
 {
     double alpha = 4*M_PI*M_PI;
@@ -395,29 +420,35 @@ double heat::TestCase <LShapedTest1>
 Vector heat::TestCase <LShapedTest1>
 :: heatFluxSol (const Vector& x, const double t) const
 {
+    return temperatureSpatialGradientSol(x, t);
+}
+
+Vector heat::TestCase <LShapedTest1>
+:: temperatureSpatialGradientSol (const Vector& x, const double t) const
+{
     double r = radius(x);
     double theta = polarAngle(x);
 
-    Vector q(m_dim);
+    Vector dudx(m_dim);
     double coeff = m_gamma-1;
 
-    q(0) = -m_gamma*pow(r, coeff)*cos(coeff*theta)
+    dudx(0) = -m_gamma*pow(r, coeff)*cos(coeff*theta)
             *(1 - x[0]*x[0]);
-    q(0) += pow(r, m_gamma)*sin(m_gamma*theta)*(- 2*x[0]);
-    q(0) *= (1. - x[1]*x[1]);
+    dudx(0) += pow(r, m_gamma)*sin(m_gamma*theta)*(- 2*x[0]);
+    dudx(0) *= (1. - x[1]*x[1]);
 
-    q(1) = m_gamma*pow(r, coeff)*sin(coeff*theta)
+    dudx(1) = m_gamma*pow(r, coeff)*sin(coeff*theta)
             *(1 - x[1]*x[1]);
-    q(1) += pow(r, m_gamma)*sin(m_gamma*theta)*(- 2*x[1]);
-    q(1) *= (1 - x[0]*x[0]);
+    dudx(1) += pow(r, m_gamma)*sin(m_gamma*theta)*(- 2*x[1]);
+    dudx(1) *= (1 - x[0]*x[0]);
 
-    q *= cos(M_PI*t);
+    dudx *= cos(M_PI*t);
 
-    return q;
+    return dudx;
 }
 
 double heat::TestCase <LShapedTest1>
-:: temperatureTimeGradientSol
+:: temperatureTemporalGradientSol
 (const Vector& x, const double t) const
 {
     double r = radius(x);
@@ -493,29 +524,35 @@ double heat::TestCase <LShapedTest2>
 Vector heat::TestCase <LShapedTest2>
 :: heatFluxSol (const Vector& x, const double t) const
 {
+    return temperatureSpatialGradientSol(x, t);
+}
+
+Vector heat::TestCase <LShapedTest2>
+:: temperatureSpatialGradientSol (const Vector& x, const double t) const
+{
     double r = radius(x);
     double theta = polarAngle(x);
 
-    Vector q(m_dim);
+    Vector dudx(m_dim);
     double coeff = m_gamma-1;
 
-    q(0) = -m_gamma*pow(r, coeff)*cos(coeff*theta)
+    dudx(0) = -m_gamma*pow(r, coeff)*cos(coeff*theta)
             *(1 - x[0]*x[0]);
-    q(0) += pow(r, m_gamma)*sin(m_gamma*theta)*(- 2*x[0]);
-    q(0) *= (1 - x[1]*x[1]);
+    dudx(0) += pow(r, m_gamma)*sin(m_gamma*theta)*(- 2*x[0]);
+    dudx(0) *= (1 - x[1]*x[1]);
 
-    q(1) = m_gamma*pow(r, coeff)*sin(coeff*theta)
+    dudx(1) = m_gamma*pow(r, coeff)*sin(coeff*theta)
             *(1 - x[1]*x[1]);
-    q(1) += pow(r, m_gamma)*sin(m_gamma*theta)*(- 2*x[1]);
-    q(1) *= (1 - x[0]*x[0]);
+    dudx(1) += pow(r, m_gamma)*sin(m_gamma*theta)*(- 2*x[1]);
+    dudx(1) *= (1 - x[0]*x[0]);
 
-    q *= sin(M_PI*t);
+    dudx *= sin(M_PI*t);
 
-    return q;
+    return dudx;
 }
 
 double heat::TestCase <LShapedTest2>
-:: temperatureTimeGradientSol
+:: temperatureTemporalGradientSol
 (const Vector& x, const double t) const
 {
     double r = radius(x);

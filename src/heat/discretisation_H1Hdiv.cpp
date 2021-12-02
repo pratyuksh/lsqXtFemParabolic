@@ -303,7 +303,7 @@ void heat::LsqXtFemH1Hdiv
     b1 = uSol_form.GetData();
 
     LinearForm qSol_form(m_xFespaces[1]);
-    heat::ExactFluxCoeff qCoeff(m_testCase);
+    heat::ExactHeatFluxCoeff qCoeff(m_testCase);
     qCoeff.SetTime(t);
     qSol_form.AddDomainIntegrator
             (new VectorFEDomainLFIntegrator(qCoeff));

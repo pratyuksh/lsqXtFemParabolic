@@ -71,8 +71,7 @@ public:
      * @brief Constructor
      * @param testCase test case for the heat equation
      */
-    ExactTemperatureCoeff(std::shared_ptr
-                              <TestCases> testCase)
+    ExactTemperatureCoeff(std::shared_ptr<TestCases> testCase)
         : m_testCase (testCase) {}
     
     //! Evaluates the scalar coefficient, time t is deduced by GetTime()
@@ -92,7 +91,7 @@ protected:
 /**
  * @brief Exact heat flux (vector) coefficient
  */
-class ExactFluxCoeff
+class ExactHeatFluxCoeff
         : public mfem::VectorCoefficient
 {
 public:
@@ -100,8 +99,7 @@ public:
      * @brief Constructor
      * @param testCase test case for the heat equation
      */
-    ExactFluxCoeff (std::shared_ptr
-                        <TestCases> testCase)
+    ExactHeatFluxCoeff (std::shared_ptr<TestCases> testCase)
         : mfem::VectorCoefficient (testCase->getDim()),
           m_testCase (testCase) {}
 
@@ -118,9 +116,37 @@ private:
 };
 
 /**
+ * @brief Exact temperature spatial gradient (vector) coefficient
+ */
+class ExactTemperatureSpatialGradCoeff
+        : public mfem::VectorCoefficient
+{
+public:
+    /**
+     * @brief Constructor
+     * @param testCase test case for the heat equation
+     */
+    ExactTemperatureSpatialGradCoeff
+    (std::shared_ptr<TestCases> testCase)
+        : mfem::VectorCoefficient (testCase->getDim()),
+          m_testCase (testCase) {}
+
+    //! Evaluates the vector coefficient, time t is deduced by GetTime()
+    virtual void Eval(mfem::Vector&, mfem::ElementTransformation&,
+                      const mfem::IntegrationPoint&);
+
+    //! Evaluates the vector coefficient, time t is passed as an argument
+    void Eval(mfem::Vector&, mfem::ElementTransformation&,
+              const mfem::IntegrationPoint&, double);
+
+private:
+    std::shared_ptr<TestCases> m_testCase;
+};
+
+/**
  * @brief Exact temperature gradient with respect to time (scalar) coefficient
  */
-class ExactTemperatureTimeGradCoeff
+class ExactTemperatureTemporalGradCoeff
         : public mfem::Coefficient
 {
 public:
@@ -128,7 +154,7 @@ public:
      * @brief Constructor
      * @param testCase test case for the heat equation
      */
-    ExactTemperatureTimeGradCoeff
+    ExactTemperatureTemporalGradCoeff
     (std::shared_ptr<TestCases> testCase)
         : m_testCase (testCase) {}
 
@@ -156,8 +182,7 @@ public:
      * @brief Constructor
      * @param testCase test case for the heat equation
      */
-    LaplacianCoeff
-    (std::shared_ptr<TestCases> testCase)
+    LaplacianCoeff(std::shared_ptr<TestCases> testCase)
         : m_testCase (testCase) {}
 
     //! Evaluates the scalar coefficient, time t is deduced by GetTime()
@@ -189,8 +214,7 @@ public:
      * @brief Constructor
      * @param testCase test case for the heat equation
      */
-    InitialTemperatureCoeff(std::shared_ptr
-                              <TestCases> testCase)
+    InitialTemperatureCoeff(std::shared_ptr<TestCases> testCase)
         : m_testCase (testCase) {}
 
     //! Evaluates the scalar coefficient
@@ -203,7 +227,7 @@ protected:
 
 
 //------------------------------------//
-//  Boundary Temperature mfem::Coefficient  //
+//  Boundary Temperature Coefficient  //
 //------------------------------------//
 
 /**
@@ -217,8 +241,7 @@ public:
      * @brief Constructor
      * @param testCase test case for the heat equation
      */
-    BdryTemperatureCoeff (std::shared_ptr
-                              <TestCases> testCase)
+    BdryTemperatureCoeff (std::shared_ptr<TestCases> testCase)
         : m_testCase (testCase) {}
 
     //! Evaluates the scalar coefficient, time t is deduced by GetTime()
@@ -250,8 +273,7 @@ public:
      * @brief Constructor
      * @param testCase test case for the heat equation
      */
-    SourceCoeff (std::shared_ptr
-                     <TestCases> testCase)
+    SourceCoeff (std::shared_ptr<TestCases> testCase)
         : m_testCase (testCase) {}
 
     //! Evaluates the scalar coefficient, time t is deduced by GetTime()

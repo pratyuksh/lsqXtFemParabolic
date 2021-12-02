@@ -51,13 +51,19 @@ void heat::Observer
     {
         m_medCoeff = std::make_unique<heat::MediumTensorCoeff>
                 (m_testCase);
+
         m_uECoeff = std::make_unique
                 <heat::ExactTemperatureCoeff>(m_testCase);
-        m_qECoeff = std::make_unique<heat::ExactFluxCoeff>
+        m_qECoeff = std::make_unique<heat::ExactHeatFluxCoeff>
+                (m_testCase);
+
+        m_dudxECoeff = std::make_unique
+                <heat::ExactTemperatureSpatialGradCoeff>
                 (m_testCase);
         m_dudtECoeff = std::make_unique
-                <heat::ExactTemperatureTimeGradCoeff>
+                <heat::ExactTemperatureTemporalGradCoeff>
                 (m_testCase);
+
         m_sourceCoeff = std::make_unique<heat::SourceCoeff>
                 (m_testCase);
         //m_laplacianCoeff = std::make_unique
@@ -381,6 +387,7 @@ heat::Observer
     auto xMesh = u->FESpace()->GetMesh();
     m_uECoeff->SetTime(t);
     m_qECoeff->SetTime(t);
+    m_dudxECoeff->SetTime(t);
     m_dudtECoeff->SetTime(t);
     m_sourceCoeff->SetTime(t);
 
@@ -393,12 +400,15 @@ heat::Observer
     uEH1 = m_uE->ComputeH1Error(&zero, &zeroVec, &one,
                                 1.0, 1);
     erruH1 = u->ComputeH1Error(m_uECoeff.get(),
-                               m_qECoeff.get(),
+                               m_dudxECoeff.get(),
                                &one, 1.0, 1);
 
+    m_qE->ProjectCoefficient(*m_qECoeff);
+    qEL2 = m_qE->ComputeL2Error(zeroVec);
+    errqL2 = q->ComputeL2Error(*m_qECoeff);
+
     // loop over all elements of the space mesh,
-    DenseMatrix graduxSol, fluxSol;
-    DenseMatrix medTensor;
+//    DenseMatrix fluxSol;
     const FiniteElement *fe = nullptr;
     ElementTransformation *trans= nullptr;
     for (int i=0; i<xMesh->GetNE(); i++)
@@ -409,8 +419,7 @@ heat::Observer
                 = &IntRules.Get(fe->GetGeomType(), order);
 
         trans = m_xV1space->GetElementTransformation(i);
-        u->GetGradients(*trans, *ir, graduxSol);
-        q->GetVectorValues(*trans, *ir, fluxSol);
+//        q->GetVectorValues(*trans, *ir, fluxSol);
 
         Vector errqL2Local;
         int numPoints = ir->GetNPoints();
@@ -421,11 +430,11 @@ heat::Observer
             double w = ip.weight*trans->Weight();
 
             // L2-error q
-            m_qECoeff->Eval(errqL2Local, *trans, ip);
-            Vector tmp(fluxSol.GetColumn(j), m_xndim);
-            qEL2 += w*(errqL2Local*errqL2Local);
-            errqL2Local.Add(-1, tmp);
-            errqL2 += w*(errqL2Local*errqL2Local);
+//            m_qECoeff->Eval(errqL2Local, *trans, ip);
+//            Vector tmp(fluxSol.GetColumn(j), m_xndim);
+//            qEL2 += w*(errqL2Local*errqL2Local);
+//            errqL2Local.Add(-1, tmp);
+//            errqL2 += w*(errqL2Local*errqL2Local);
 
             // divergence error
             double errUDivLocal
@@ -436,8 +445,11 @@ heat::Observer
             errUDiv += w*(errUDivLocal*errUDivLocal);
         }
     }
-    errqL2 = std::sqrt(errqL2);   qEL2 = std::sqrt(qEL2);
+//    errqL2 = std::sqrt(errqL2);   qEL2 = std::sqrt(qEL2);
     errUDiv = std::sqrt(errUDiv); UEDiv = std::sqrt(UEDiv);
+
+//    std::cout << t << "\t" << erruH1 << "\t" << uEH1 << std::endl;
+//    std::cout << t << "\t" << errqL2 << "\t" << qEL2 << std::endl;
 
     return {std::move(erruH1), std::move(uEH1),
                 std::move(errqL2), std::move(qEL2),
@@ -540,6 +552,7 @@ std::tuple <double, double, double> heat::Observer
     }
     erruL2H1 = std::sqrt(bufErruL2H1.sum());
     uEL2H1 = std::sqrt(bufuEL2H1.sum());
+//    std::cout << erruL2H1 << "\t" << uEL2H1 << std::endl;
     erruL2H1 /= uEL2H1;
 
     errqL2L2 = std::sqrt(bufErrqL2L2.sum());

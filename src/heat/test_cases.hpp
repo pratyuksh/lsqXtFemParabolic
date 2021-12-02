@@ -53,10 +53,19 @@ public:
 
     /**
      * @brief Temperature gradient with respect to time
-     * @return value of temperature time-gradient at a given point in space-time
+     * @return value of temperature time-gradient
+     * at a given point in space-time
      */
-    virtual double temperatureTimeGradientSol (const mfem::Vector&,
-                                               const double) const = 0;
+    virtual mfem::Vector temperatureSpatialGradientSol
+    (const mfem::Vector&, const double) const = 0;
+
+    /**
+     * @brief Temperature gradient with respect to time
+     * @return value of temperature time-gradient
+     * at a given point in space-time
+     */
+    virtual double temperatureTemporalGradientSol
+    (const mfem::Vector&, const double) const = 0;
 
     virtual double laplacian
     (const mfem::Vector&, const double) const = 0;
@@ -75,7 +84,8 @@ public:
     
     /**
      * @brief Temperature at the boundary of spatial domain
-     * @return value of temperature at a given point on the spatial boundary
+     * @return value of temperature at a given point
+     * on the spatial boundary
      */
     virtual double bdryTemperature(const mfem::Vector&,
                                    const double) const = 0;
@@ -133,7 +143,10 @@ public:
     mfem::Vector heatFluxSol(const mfem::Vector&,
                              const double) const override;
 
-    double temperatureTimeGradientSol
+    mfem::Vector temperatureSpatialGradientSol
+    (const mfem::Vector&, const double) const override;
+
+    double temperatureTemporalGradientSol
         (const mfem::Vector&, const double) const override;
 
     double source(const mfem::Vector&,
@@ -141,13 +154,22 @@ public:
 
     void setBdryDirichlet(mfem::Array<int>&) const override;
 
-    double medium(const mfem::Vector&) const override;
+    double medium(const mfem::Vector&) const override {
+        return 1;
+    }
 
-    mfem::DenseMatrix mediumTensor(const mfem::Vector&) const override;
+    mfem::DenseMatrix mediumTensor(const mfem::Vector& x) const override
+    {
+        mfem::DenseMatrix med(m_dim);
+        med(0,0) = med(1,1) = 1;
+        med(0,1) = med(1,0) = 0;
+        med *= medium(x);
+        return med;
+    }
 
     double laplacian
     (const mfem::Vector& x, const double t) const override {
-        return temperatureTimeGradientSol(x,t) - source(x, t);
+        return temperatureTemporalGradientSol(x,t) - source(x, t);
     }
 
     double initTemperature(const mfem::Vector& x) const override {
@@ -194,7 +216,10 @@ public:
     mfem::Vector heatFluxSol(const mfem::Vector&,
                              const double) const override;
 
-    double temperatureTimeGradientSol
+    mfem::Vector temperatureSpatialGradientSol
+    (const mfem::Vector&, const double) const override;
+
+    double temperatureTemporalGradientSol
         (const mfem::Vector&, const double) const override;
 
     double source(const mfem::Vector&,
@@ -208,7 +233,7 @@ public:
 
     double laplacian
     (const mfem::Vector& x, const double t) const override {
-        return temperatureTimeGradientSol(x,t) - source(x, t);
+        return temperatureTemporalGradientSol(x,t) - source(x, t);
     }
 
     double initTemperature(const mfem::Vector& x) const override {
@@ -257,7 +282,10 @@ public:
     mfem::Vector heatFluxSol(const mfem::Vector&,
                              const double) const override;
 
-    double temperatureTimeGradientSol
+    mfem::Vector temperatureSpatialGradientSol
+    (const mfem::Vector&, const double) const override;
+
+    double temperatureTemporalGradientSol
         (const mfem::Vector&, const double) const override;
 
     double source(const mfem::Vector&,
@@ -279,7 +307,7 @@ public:
 
     double laplacian
     (const mfem::Vector& x, const double t) const override {
-        return temperatureTimeGradientSol(x,t)
+        return temperatureTemporalGradientSol(x,t)
                 - source(x, t);
     }
 
@@ -330,7 +358,10 @@ public:
     mfem::Vector heatFluxSol(const mfem::Vector&,
                              const double) const override;
 
-    double temperatureTimeGradientSol
+    mfem::Vector temperatureSpatialGradientSol
+    (const mfem::Vector&, const double) const override;
+
+    double temperatureTemporalGradientSol
         (const mfem::Vector&, const double) const override;
 
     double source(const mfem::Vector&,
@@ -340,7 +371,7 @@ public:
 
     double laplacian
     (const mfem::Vector& x, const double t) const override {
-        return temperatureTimeGradientSol(x,t)
+        return temperatureTemporalGradientSol(x,t)
                 - source(x, t);
     }
 
@@ -396,7 +427,10 @@ public:
     mfem::Vector heatFluxSol(const mfem::Vector&,
                              const double) const override;
 
-    double temperatureTimeGradientSol
+    mfem::Vector temperatureSpatialGradientSol
+    (const mfem::Vector&, const double) const override;
+
+    double temperatureTemporalGradientSol
         (const mfem::Vector&, const double) const override;
 
     double source(const mfem::Vector&,
@@ -406,7 +440,7 @@ public:
 
     double laplacian
     (const mfem::Vector& x, const double t) const override {
-        return temperatureTimeGradientSol(x,t)
+        return temperatureTemporalGradientSol(x,t)
                 - source(x, t);
     }
 
@@ -462,7 +496,10 @@ public:
     mfem::Vector heatFluxSol(const mfem::Vector&,
                              const double) const override;
 
-    double temperatureTimeGradientSol
+    mfem::Vector temperatureSpatialGradientSol
+    (const mfem::Vector&, const double) const override;
+
+    double temperatureTemporalGradientSol
         (const mfem::Vector&, const double) const override;
 
     double source(const mfem::Vector&,
@@ -478,7 +515,7 @@ public:
 
     double laplacian
     (const mfem::Vector& x, const double t) const override {
-        return temperatureTimeGradientSol(x,t)
+        return temperatureTemporalGradientSol(x,t)
                 - source(x, t);
     }
 
@@ -531,7 +568,10 @@ public:
     mfem::Vector heatFluxSol(const mfem::Vector&,
                              const double) const override;
 
-    double temperatureTimeGradientSol
+    mfem::Vector temperatureSpatialGradientSol
+    (const mfem::Vector&, const double) const override;
+
+    double temperatureTemporalGradientSol
         (const mfem::Vector&, const double) const override;
 
     double source(const mfem::Vector&,
@@ -553,7 +593,7 @@ public:
 
     double laplacian
     (const mfem::Vector& x, const double t) const override {
-        return temperatureTimeGradientSol(x,t)
+        return temperatureTemporalGradientSol(x,t)
                 - source(x, t);
     }
 
@@ -609,7 +649,10 @@ public:
     mfem::Vector heatFluxSol(const mfem::Vector&,
                              const double) const override;
 
-    double temperatureTimeGradientSol
+    mfem::Vector temperatureSpatialGradientSol
+    (const mfem::Vector&, const double) const override;
+
+    double temperatureTemporalGradientSol
         (const mfem::Vector&, const double) const override;
 
     double source(const mfem::Vector&,
@@ -631,7 +674,7 @@ public:
 
     double laplacian
     (const mfem::Vector& x, const double t) const override {
-        return temperatureTimeGradientSol(x,t)
+        return temperatureTemporalGradientSol(x,t)
                 - source(x, t);
     }
 

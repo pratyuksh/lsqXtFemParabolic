@@ -122,13 +122,16 @@ private:
     std::shared_ptr<heat::TestCases> m_testCase;
     std::shared_ptr<heat::LsqXtFEM> m_discr;
 
+    mutable std::unique_ptr<heat::MediumTensorCoeff> m_medCoeff;
+
+    mutable std::unique_ptr<heat::ExactTemperatureCoeff> m_uECoeff;
+    mutable std::unique_ptr<heat::ExactHeatFluxCoeff> m_qECoeff;
+
     mutable std::unique_ptr
-    <heat::MediumTensorCoeff> m_medCoeff;
+    <heat::ExactTemperatureSpatialGradCoeff> m_dudxECoeff;
     mutable std::unique_ptr
-    <heat::ExactTemperatureCoeff> m_uECoeff;
-    mutable std::unique_ptr<heat::ExactFluxCoeff> m_qECoeff;
-    mutable std::unique_ptr
-    <heat::ExactTemperatureTimeGradCoeff> m_dudtECoeff;
+    <heat::ExactTemperatureTemporalGradCoeff> m_dudtECoeff;
+
     mutable std::unique_ptr<heat::SourceCoeff> m_sourceCoeff;
     //mutable std::unique_ptr
     //<heat::LaplacianCoeff> m_laplacianCoeff;

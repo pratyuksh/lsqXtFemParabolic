@@ -57,7 +57,7 @@ double heat::ExactTemperatureCoeff
 }
 
 // Heat exact flux coefficient
-void heat::ExactFluxCoeff
+void heat::ExactHeatFluxCoeff
 :: Eval (Vector& v,
          ElementTransformation& T,
          const IntegrationPoint& ip)
@@ -68,7 +68,7 @@ void heat::ExactFluxCoeff
     v = m_testCase->heatFluxSol(transip, GetTime());
 }
 
-void heat::ExactFluxCoeff
+void heat::ExactHeatFluxCoeff
 :: Eval (Vector& v,
          ElementTransformation& T,
          const IntegrationPoint& ip,
@@ -80,19 +80,43 @@ void heat::ExactFluxCoeff
     v = m_testCase->heatFluxSol(transip, t);
 }
 
+// Heat exact temperature spatial gradient coefficient
+void heat::ExactTemperatureSpatialGradCoeff
+:: Eval (Vector& v,
+         ElementTransformation& T,
+         const IntegrationPoint& ip)
+{
+    double x[3];
+    Vector transip(x, 3);
+    T.Transform(ip, transip);
+    v = m_testCase->temperatureSpatialGradientSol(transip, GetTime());
+}
+
+void heat::ExactTemperatureSpatialGradCoeff
+:: Eval (Vector& v,
+         ElementTransformation& T,
+         const IntegrationPoint& ip,
+         double t)
+{
+    double x[3];
+    Vector transip(x, 3);
+    T.Transform(ip, transip);
+    v = m_testCase->temperatureSpatialGradientSol(transip, t);
+}
+
 // Heat exact temperature time-gradient coefficient
-double heat::ExactTemperatureTimeGradCoeff
+double heat::ExactTemperatureTemporalGradCoeff
 :: Eval (ElementTransformation& T,
          const IntegrationPoint& ip)
 {
     double x[3];
     Vector transip(x, 3);
     T.Transform(ip, transip);
-    return (m_testCase->temperatureTimeGradientSol
+    return (m_testCase->temperatureTemporalGradientSol
             (transip, GetTime()));
 }
 
-double heat::ExactTemperatureTimeGradCoeff
+double heat::ExactTemperatureTemporalGradCoeff
 :: Eval (ElementTransformation& T,
          const IntegrationPoint& ip,
          double t)
@@ -100,7 +124,7 @@ double heat::ExactTemperatureTimeGradCoeff
     double x[3];
     Vector transip(x, 3);
     T.Transform(ip, transip);
-    return (m_testCase->temperatureTimeGradientSol
+    return (m_testCase->temperatureTemporalGradientSol
             (transip, t));
 }
 
