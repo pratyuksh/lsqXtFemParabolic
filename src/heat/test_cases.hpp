@@ -109,7 +109,7 @@ public:
         m_rvar = w;
     }
 
-    void setPerturbations(const Vector& w) const {
+    void setPerturbations(const mfem::Vector& w) const {
         m_rvars = w;
     }
 
@@ -123,7 +123,7 @@ protected:
     int m_dim;
 
     mutable double m_rvar = 0;
-    mutable Vector m_rvars;
+    mutable mfem::Vector m_rvars;
 };
 
 
@@ -146,7 +146,7 @@ class TestCase <Dummy>
 {
 public:
     explicit TestCase (const nlohmann::json& config)
-        : m_config(config) {
+        : TestCases(config) {
         m_dim = 2;
     }
 
@@ -197,13 +197,6 @@ public:
                             const double t) const override {
         return temperatureSol(x, t);
     }
-
-    void setPerturbation(double) const override {}
-
-    void setPerturbations(const mfem::Vector&) const override {}
-
-private:
-    const nlohmann::json& m_config;
 };
 
 
@@ -219,11 +212,7 @@ class TestCase <UnitSquareTest1>
 {
 public:
     explicit TestCase (const nlohmann::json& config)
-<<<<<<< HEAD
         : TestCases(config) {
-=======
-        : m_config(config) {
->>>>>>> sparse-dev
         m_dim = 2;
     }
 
@@ -265,19 +254,6 @@ public:
                            const double t) const override {
         return temperatureSol(x, t);
     }
-<<<<<<< HEAD
-=======
-
-    void setPerturbation(double w) const override {
-        m_rvar = w;
-    }
-
-    void setPerturbations(const mfem::Vector&) const override {}
-
-private:
-    const nlohmann::json& m_config;
-    mutable double m_rvar = 0;
->>>>>>> sparse-dev
 };
 
 /**
@@ -292,11 +268,7 @@ class TestCase <UnitSquareTest2>
 {
 public:
     explicit TestCase (const nlohmann::json& config)
-<<<<<<< HEAD
         : TestCases(config) {
-=======
-        : m_config(config) {
->>>>>>> sparse-dev
         m_dim = 2;
     }
 
@@ -347,16 +319,6 @@ public:
                            const double t) const override {
         return temperatureSol(x, t);
     }
-<<<<<<< HEAD
-=======
-
-    void setPerturbation(double) const override {}
-
-    void setPerturbations(const mfem::Vector&) const override {}
-
-private:
-    const nlohmann::json& m_config;
->>>>>>> sparse-dev
 };
 
 /**
@@ -371,11 +333,7 @@ class TestCase <UnitSquareTest3>
 {
 public:
     explicit TestCase (const nlohmann::json& config)
-<<<<<<< HEAD
         : TestCases(config) {
-=======
-        : m_config(config) {
->>>>>>> sparse-dev
         m_dim = 2;
     }
 
@@ -419,23 +377,8 @@ public:
         return temperatureSol(x, t);
     }
 
-<<<<<<< HEAD
-private:
-    double perturb(const Vector&) const;
-=======
-    void setPerturbation(double w) const override {
-        m_rvar = w;
-    }
-
-    void setPerturbations(const mfem::Vector&) const override {}
-
 private:
     double perturb(const mfem::Vector&) const;
-
-private:
-    const nlohmann::json& m_config;
-    mutable double m_rvar = 0;
->>>>>>> sparse-dev
 };
 
 /**
@@ -451,11 +394,7 @@ class TestCase <UnitSquareTest4>
 {
 public:
     explicit TestCase (const nlohmann::json& config)
-<<<<<<< HEAD
         : TestCases(config) {
-=======
-        : m_config(config) {
->>>>>>> sparse-dev
         m_dim = 2;
     }
 
@@ -497,23 +436,10 @@ public:
         return temperatureSol(x, t);
     }
 
-<<<<<<< HEAD
-=======
-    void setPerturbation(double) const override {}
-
-    void setPerturbations(const mfem::Vector&) const override {}
-
->>>>>>> sparse-dev
     // redundant for this test case
     double medium(const mfem::Vector&) const override {
         return 1;
     }
-<<<<<<< HEAD
-=======
-
-private:
-    const nlohmann::json& m_config;
->>>>>>> sparse-dev
 };
 
 /**
@@ -528,11 +454,7 @@ class TestCase <PeriodicUnitSquareTest1>
 {
 public:
     explicit TestCase (const nlohmann::json& config)
-<<<<<<< HEAD
         : TestCases(config) {
-=======
-        : m_config(config) {
->>>>>>> sparse-dev
         m_dim = 2;
     }
 
@@ -555,17 +477,6 @@ public:
     double source(const mfem::Vector&,
                   const double) const override;
 
-<<<<<<< HEAD
-=======
-    void setPerturbation(double w) const override {
-        m_rvar = w;
-    }
-
-    void setPerturbations(const mfem::Vector& w) const override {
-        m_rvars = w;
-    }
-
->>>>>>> sparse-dev
     double laplacian
     (const mfem::Vector& x, const double t) const override {
         return temperatureTemporalGradientSol(x,t)
@@ -585,23 +496,10 @@ public:
         return temperatureSol(x, t);
     }
 
-<<<<<<< HEAD
-    void setBdryDirichlet(Array<int>&) const override {}
-
-private:
-    double perturb(const Vector&) const;
-=======
     void setBdryDirichlet(mfem::Array<int>&) const override {}
 
 private:
     double perturb(const mfem::Vector&) const;
-
-private:
-    const nlohmann::json& m_config;
-
-    mutable double m_rvar = 0;
-    mutable mfem::Vector m_rvars;
->>>>>>> sparse-dev
 };
 
 /**
@@ -616,11 +514,7 @@ class TestCase <LShapedTest1>
 {
 public:
     explicit TestCase (const nlohmann::json& config)
-<<<<<<< HEAD
         : TestCases(config) {
-=======
-        : m_config(config) {
->>>>>>> sparse-dev
         m_dim = 2;
         m_singularCorner.SetSize(m_dim);
         m_singularCorner = 0.0;
@@ -674,23 +568,11 @@ public:
         return temperatureSol(x, t);
     }
 
-<<<<<<< HEAD
-=======
-    void setPerturbation(double) const override {}
-
-    void setPerturbations(const mfem::Vector&) const override {}
-
->>>>>>> sparse-dev
 private:
     double radius(const mfem::Vector& x) const;
     double polarAngle(const mfem::Vector& x) const;
 
 private:
-<<<<<<< HEAD
-=======
-    const nlohmann::json& m_config;
-
->>>>>>> sparse-dev
     double m_gamma = 2./3.;
     mfem::Vector m_singularCorner;
 };
@@ -707,11 +589,7 @@ class TestCase <LShapedTest2>
 {
 public:
     explicit TestCase (const nlohmann::json& config)
-<<<<<<< HEAD
         : TestCases(config) {
-=======
-        : m_config(config) {
->>>>>>> sparse-dev
         m_dim = 2;
         m_singularCorner.SetSize(m_dim);
         m_singularCorner = 0.0;
@@ -765,23 +643,11 @@ public:
         return temperatureSol(x, t);
     }
 
-<<<<<<< HEAD
-=======
-    void setPerturbation(double) const override {}
-
-    void setPerturbations(const mfem::Vector&) const override {}
-
->>>>>>> sparse-dev
 private:
     double radius(const mfem::Vector& x) const;
     double polarAngle(const mfem::Vector& x) const;
 
 private:
-<<<<<<< HEAD
-=======
-    const nlohmann::json& m_config;
-
->>>>>>> sparse-dev
     double m_gamma = 2./3.;
     mfem::Vector m_singularCorner;
 };
@@ -798,7 +664,7 @@ class TestCase <LShapedTest3>
 {
 public:
     explicit TestCase (const nlohmann::json& config)
-        : m_config(config) {
+        : TestCases(config) {
         m_dim = 2;
     }
 
@@ -849,13 +715,6 @@ public:
                            const double t) const override {
         return temperatureSol(x, t);
     }
-
-    void setPerturbation(double) const override {}
-
-    void setPerturbations(const mfem::Vector&) const override {}
-
-private:
-    const nlohmann::json& m_config;
 };
 
 }
