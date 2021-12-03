@@ -1,19 +1,20 @@
 #include "spatial_assembly.hpp"
-#include <assert.h>
 
 using namespace mfem;
 
 
-// Mass Integrator
-void sparseHeat::SpatialMassIntegrator
+// Vector Mass Integrator
+void sparseHeat::SpatialVectorMassIntegrator
 :: assembleElementMatrix (const FiniteElement & fe,
                           ElementTransformation & elTrans,
                           DenseMatrix & elmat)
 {
+    int dim = fe.GetDim();
     int ndofs = fe.GetDof();
 
     Vector shape(ndofs);
-    elmat.SetSize(ndofs, ndofs);
+    DenseMatrix partialElmat(ndofs, ndofs);
+    elmat.SetSize(dim*ndofs, dim*ndofs);
 
     // set integration rule
     int order = 2*fe.GetOrder();
@@ -29,11 +30,16 @@ void sparseHeat::SpatialMassIntegrator
         fe.CalcShape(ip, shape);
 
         double weight = ip.weight*elTrans.Weight();
-        AddMult_a_VVt(weight, shape, elmat);
+        MultVVt(shape, partialElmat);
+        partialElmat *= weight;
+
+        for (int k = 0; k < dim; k++) {
+            elmat.AddMatrix(partialElmat, ndofs*k, ndofs*k);
+        }
     }
 }
 
-void sparseHeat::SpatialMassIntegrator
+void sparseHeat::SpatialVectorMassIntegrator
 :: assembleElementMatrix (const FiniteElement & testFeFine,
                           ElementTransformation & testElTransFine,
                           const FiniteElement & trialFeCoarse,
@@ -47,7 +53,9 @@ void sparseHeat::SpatialMassIntegrator
     Vector trialShapeCoarse(trialNdofsCoarse);
     Vector testShapeFine(testNdofsFine);
     Vector coords(dim);
-    elmat.SetSize(testNdofsFine, trialNdofsCoarse);
+
+    DenseMatrix partialElmat(testNdofsFine, trialNdofsCoarse);
+    elmat.SetSize(dim*testNdofsFine, dim*trialNdofsCoarse);
 
     // set integration rule
     int order = testFeFine.GetOrder() + trialFeCoarse.GetOrder();
@@ -68,60 +76,53 @@ void sparseHeat::SpatialMassIntegrator
         trialFeCoarse.CalcShape(ipCoarse, trialShapeCoarse);
 
         double weight = ipFine.weight*testElTransFine.Weight();
-        AddMult_a_VWt(weight, testShapeFine, trialShapeCoarse, elmat);
+
+        MultVWt(testShapeFine, trialShapeCoarse, partialElmat);
+        partialElmat *= weight;
+
+        for (int k = 0; k < dim; k++) {
+            elmat.AddMatrix(partialElmat,
+                            testNdofsFine*k, trialNdofsCoarse*k);
+        }
     }
 }
 
 
-// Stiffness Integrator
-void sparseHeat::SpatialStiffnessIntegrator
+// Vector Stiffness Integrator
+void sparseHeat::SpatialVectorStiffnessIntegrator
 :: assembleElementMatrix (const FiniteElement & fe,
                           ElementTransformation & elTrans,
                           DenseMatrix & elmat)
 {
-    int dim = fe.GetDim();
+    int dim  = fe.GetDim();
     int ndofs = fe.GetDof();
 
+    Vector divshape(dim*ndofs);
     DenseMatrix dshape(ndofs, dim);
-    elmat.SetSize(ndofs, ndofs);
+
+    elmat.SetSize(dim*ndofs, dim*ndofs);
 
     // set integration rule
-    int order = 2*fe.GetOrder()+2;
+    int order = 2*fe.GetOrder()-2;
     const IntegrationRule *ir
             = &IntRules.Get(fe.GetGeomType(), order);
 
     // evaluate integral
     elmat = 0.0;
-    DenseMatrix tmpMat(ndofs);
     for (int i = 0; i < ir->GetNPoints(); i++)
     {
         const IntegrationPoint &ip = ir->IntPoint(i);
         elTrans.SetIntPoint(&ip);
-        fe.CalcPhysDShape(elTrans, dshape);
+
+        fe.CalcPhysDShape (elTrans, dshape);
+        dshape.GradToDiv (divshape);
 
         double weight = ip.weight*elTrans.Weight();
-
-        if (m_matrixCoeff) {
-            DenseMatrix matM(dim);
-            DenseMatrix buf(ndofs, dim);
-            m_matrixCoeff->Eval(matM, elTrans, ip);
-            MultABt(dshape, matM, buf);
-            MultAAt(buf, tmpMat);
-        }
-        else {
-            MultAAt(dshape, tmpMat);
-        }
-
-        if (m_scalarCoeff) {
-            double val = m_scalarCoeff->Eval(elTrans, ip);
-            weight *= val*val;
-        }
-
-        elmat.Add(weight, tmpMat);
+        AddMult_a_VVt(weight, divshape, elmat);
     }
 }
 
-void sparseHeat::SpatialStiffnessIntegrator
+void sparseHeat::SpatialVectorStiffnessIntegrator
 :: assembleElementMatrix (const FiniteElement & testFeFine,
                           ElementTransformation & testElTransFine,
                           const FiniteElement & trialFeCoarse,
@@ -132,55 +133,36 @@ void sparseHeat::SpatialStiffnessIntegrator
     int testNdofsFine = testFeFine.GetDof();
     int trialNdofsCoarse = trialFeCoarse.GetDof();
 
+    Vector trialDivshapeCoarse(dim*trialNdofsCoarse);
     DenseMatrix trialDshapeCoarse(trialNdofsCoarse, dim);
-    DenseMatrix testDshapeFine(testNdofsFine, dim);
-    Vector coords(dim);
 
-    elmat.SetSize(testNdofsFine, trialNdofsCoarse);
-    elmat = 0.0;
+    Vector testDivshapeFine(testNdofsFine);
+    DenseMatrix testDshapeFine(testNdofsFine, dim);
+
+    Vector coords(dim);
+    elmat.SetSize(dim*testNdofsFine, dim*trialNdofsCoarse);
 
     // set integration rule
-    int order = testFeFine.GetOrder() + trialFeCoarse.GetOrder() + 2;
+    int order = testFeFine.GetOrder() + trialFeCoarse.GetOrder() - 2;
     const IntegrationRule *irFine
             = &IntRules.Get(testFeFine.GetGeomType(), order);
 
     // evaluate integral on the fine element
-    DenseMatrix tmpMat(testNdofsFine, trialNdofsCoarse);
     elmat = 0.0;
     for (int i = 0; i < irFine->GetNPoints(); i++)
     {
         const IntegrationPoint &ipFine = irFine->IntPoint(i);
         testElTransFine.SetIntPoint(&ipFine);
-        testFeFine.CalcPhysDShape(testElTransFine, testDshapeFine);
+        testFeFine.CalcPhysDShape (testElTransFine, testDshapeFine);
+        testDshapeFine.GradToDiv (testDivshapeFine);
 
         IntegrationPoint ipCoarse;
         testElTransFine.Transform(ipFine, coords);
         trialElTransCoarse.TransformBack(coords, ipCoarse);
-        trialElTransCoarse.SetIntPoint(&ipCoarse);
-        trialFeCoarse.CalcPhysDShape(trialElTransCoarse, trialDshapeCoarse);
+        trialFeCoarse.CalcPhysDShape (trialElTransCoarse, trialDshapeCoarse);
+        trialDshapeCoarse.GradToDiv (trialDivshapeCoarse);
 
         double weight = ipFine.weight*testElTransFine.Weight();
-
-        if (m_matrixCoeff) {
-            DenseMatrix matM(dim);
-            DenseMatrix bufFine(testNdofsFine, dim);
-            DenseMatrix bufCoarse(trialNdofsCoarse, dim);
-            m_matrixCoeff->Eval(matM, testElTransFine, ipFine);
-            MultABt(testDshapeFine, matM, bufFine);
-            MultABt(trialDshapeCoarse, matM, bufCoarse);
-            MultABt(bufFine, bufCoarse, tmpMat);
-        }
-        else {
-            MultABt(testDshapeFine, trialDshapeCoarse, tmpMat);
-        }
-
-        if (m_scalarCoeff) {
-            double val = m_scalarCoeff->Eval(testElTransFine, ipFine);
-            weight *= val*val;
-        }
-
-        elmat.Add(weight, tmpMat);
+        AddMult_a_VWt(weight, testDivshapeFine, trialDivshapeCoarse, elmat);
     }
 }
-
-// End of file

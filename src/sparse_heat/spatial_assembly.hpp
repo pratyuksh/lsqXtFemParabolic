@@ -189,6 +189,50 @@ public:
      mfem::DenseMatrix &) override;
 };
 
+
+/**
+ * @brief Vector Mass Integrator; (u, v)
+ */
+class SpatialVectorMassIntegrator
+        : public mymfem::BlockBilinearFormIntegrator
+{
+public:
+    explicit SpatialVectorMassIntegrator() {}
+
+    //! Assembles the vector mass integrator on an element
+    void assembleElementMatrix
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override;
+
+    //! Assembles the vector mass integrator between two nested mesh elements
+    void assembleElementMatrix
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override;
+};
+
+
+/**
+ * @brief Vector Stiffness Integrator; (div(u), div(v))
+ */
+class SpatialVectorStiffnessIntegrator
+        : public mymfem::BlockBilinearFormIntegrator
+{
+public:
+    explicit SpatialVectorStiffnessIntegrator() {}
+
+    //! Assembles the vectorFE stiffness integrator on an element
+    void assembleElementMatrix
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override;
+
+    //! Assembles the vectorFE stiffness integrator between two nested mesh elements
+    void assembleElementMatrix
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override;
+};
+
 }
 
 #endif // SPARSE_HEAT_ASSEMBLY_HPP

@@ -211,6 +211,42 @@ private:
      mfem::Vector&) const override;
 };
 
+
+/**
+ * @brief Least-squares sparse space-time FEM for the heat equation,
+ * with H1 discretisation in time and
+ * H1 discretisation in space
+ */
+class LsqSparseXtFemH1H1 : public LsqSparseXtFem
+{
+public:
+    LsqSparseXtFemH1H1 (const nlohmann::json& config,
+                        std::shared_ptr<heat::TestCases>& testCase,
+                        const int numLevels,
+                        const int minTemporalLevel);
+
+    LsqSparseXtFemH1H1
+    (const nlohmann::json& config,
+     std::shared_ptr<heat::TestCases>& testCase,
+     const int numLevels,
+     const int minTemporalLevel,
+     std::shared_ptr<mymfem::NestedMeshHierarchy>& spatialMeshHierarchy);
+
+    void setNestedFEHierarchyForHeatFlux
+    (std::shared_ptr<mymfem::NestedMeshHierarchy>&) override;
+
+    void assembleSpatialMassForHeatFlux() override;
+    void assembleSpatialStiffnessForHeatFlux() override;
+    void assembleSpatialGradient() override;
+    void assembleSpatialDivergence() override;
+
+private:
+    void assembleSourceWithSpatialDivergenceOfHeatFluxBasisAtGivenTime
+    (double t,
+     const std::shared_ptr<mfem::FiniteElementSpace>&,
+     mfem::Vector&) const override;
+};
+
 }
 
 #endif // SPARSE_HEAT_DISCRETISATION_HPP
