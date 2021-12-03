@@ -19,7 +19,7 @@
     "mesh_dir": "unitSquare",
     
     "eval_error": true,
-    "error_type": "natural",
+    "error_type": "lsq",
     
     "visualization": false,
     "dump_output": false,

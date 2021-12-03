@@ -1,7 +1,7 @@
 {
     "host": "local",
     
-    "problem_type": "unit_square_test1",
+    "problem_type": "unitSquare_test1",
     
     "run": "runFG",
     
@@ -16,7 +16,7 @@
     "level_t": 4,
     "level_x": 4,
     
-    "mesh_dir": "unit_square",
+    "mesh_dir": "unitSquare",
     
     "eval_error": true,
     "error_type": "lsq",
@@ -25,5 +25,5 @@
     "dump_output": false,
     
     "base_out_dir": "../output",
-    "sub_out_dir": "heat/unit_square_test1"
+    "sub_out_dir": "heat/unitSquare_test1"
 }

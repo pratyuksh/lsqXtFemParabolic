@@ -6,7 +6,7 @@
     "run": "simulation",
     "end_time": 1,
     
-    "discretisation_type": "H1Hdiv",
+    "discretisation_type": "H1H1",
     
     "deg": 1,
     "num_levels": 3,
@@ -18,7 +18,7 @@
     "mesh_dir": "unitSquare",
     
     "eval_error": true,
-    "error_type": "lsq",
+    "error_type": "natural",
     
-    "visualization": false
+    "visualization": true
 }
