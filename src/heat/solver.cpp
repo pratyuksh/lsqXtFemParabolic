@@ -4,6 +4,8 @@
 #include <iostream>
 #include <chrono>
 
+using namespace mfem;
+
 
 // Constructor with config JSON
 heat::Solver :: Solver (const nlohmann::json& config)
@@ -89,7 +91,7 @@ void heat::Solver
         const bool load_init_mesh)
 {
     set(mesh_dir, load_init_mesh);
-#ifdef MYVERBOSE
+#ifndef NDEBUG
     std::cout << "\nRun Heat solver ..." << std::endl;
 #endif
     set(lx, lt);
@@ -166,7 +168,7 @@ void heat::Solver
                         = m_meshDir+"/"+m_meshElemType
                 +"_mesh_l"
                 +std::to_string(m_lx0)+".mesh";
-#ifdef MYVERBOSE
+#ifndef NDEBUG
         std::cout << "  Initial mesh file: " << mesh_file << std::endl;
         std::cout << "  Number of uniform refinements: "
                   << num_refinements << std::endl;
@@ -179,7 +181,7 @@ void heat::Solver
     else {
         const std::string mesh_file =
                 m_meshDir+"/mesh_l"+std::to_string(lx)+".mesh";
-#ifdef MYVERBOSE
+#ifndef NDEBUG
         std::cout << "  Mesh file: "
                   << mesh_file << std::endl;
 #endif
@@ -392,7 +394,7 @@ void heat::Solver
     if (m_linearSolver == "pardiso")
     {
         //m_discr->build_system_matrix();
-        m_discr->buildSystemMatrixUpTr();
+        m_discr->buildSystemMatrixUpperTriangle();
         m_heatMat = m_discr->getHeatMat();  
     }
     else if (m_linearSolver == "cg")
@@ -410,7 +412,7 @@ std::pair<double, int> heat::Solver
           BlockVector *B)
 {
     if (!m_pardisoFinalized) {
-#ifdef MYVERBOSE
+#ifndef NDEBUG
         std::cout << "\nRelease old Pardiso memory in Solve"
                   << std::endl;
 #endif
@@ -464,7 +466,7 @@ void heat::Solver
 :: finalize() const
 {
     if (!m_pardisoFinalized) {
-#ifdef MYVERBOSE
+#ifndef NDEBUG
         std::cout << "\nRelease Pardiso Memory" << std::endl;
 #endif
         m_pardisoSolver->finalize();
@@ -482,7 +484,7 @@ Eigen::VectorXd heat::Solver
     if (m_boolError)
     {
         if (m_errorType=="H1") {
-#ifdef MYVERBOSE
+#ifndef NDEBUG
             std::cout << "  Computing H1 error "
                          "at end time..."
                       << std::endl;
@@ -492,7 +494,7 @@ Eigen::VectorXd heat::Solver
             double erruL2, uEL2, erruH1, uEH1;
             std::tie (erruL2, uEL2, erruH1, uEH1)
                     = m_observer->evalXH1Error(u, m_endTime);
-#ifdef MYVERBOSE
+#ifndef NDEBUG
             std::cout << "\ttemperature L2 error: "
                       << erruL2 << "\t" << uEL2 << std::endl;
             std::cout << "\ttemperature H1 error: "
@@ -502,7 +504,7 @@ Eigen::VectorXd heat::Solver
             errSol(1) = erruH1/uEH1;
         }
         else if (m_errorType == "L2H1") {
-#ifdef MYVERBOSE
+#ifndef NDEBUG
             std::cout << "  Computing L2H1 "
                          "space-time error..."
                       << std::endl;
@@ -511,7 +513,7 @@ Eigen::VectorXd heat::Solver
             std::tie (erruL2L2, uEL2L2, erruL2H1, uEL2H1)
                     = m_observer->evalXtL2H1Error
                     (W->GetBlock(0));
-#ifdef MYVERBOSE
+#ifndef NDEBUG
             std::cout << "\ttemperature L2L2 error: "
                       << erruL2L2 << "\t"
                       << uEL2L2 << std::endl;
@@ -523,7 +525,7 @@ Eigen::VectorXd heat::Solver
             errSol(1) = erruL2H1/uEL2H1;
         }
         else if (m_errorType == "lsq") {
-#ifdef MYVERBOSE
+#ifndef NDEBUG
             std::cout << "  Computing space-time "
                          "least-squares error..."
                       << std::endl;
@@ -532,7 +534,7 @@ Eigen::VectorXd heat::Solver
             std::tie (errPde, errFlux, errIc)
                     = m_observer->evalXtLsqError
                     (W->GetBlock(0), W->GetBlock(1));
-#ifdef MYVERBOSE
+#ifndef NDEBUG
             std::cout << "\tLsq Pde error: "
                       << errPde << std::endl;
             std::cout << "\tLsq Flux error: "
@@ -546,7 +548,7 @@ Eigen::VectorXd heat::Solver
             errSol(2) = errIc;
         }
         else if (m_errorType == "natural") {
-#ifdef MYVERBOSE
+#ifndef NDEBUG
             std::cout << "  Computing error "
                          "in natural norm..."
                       << std::endl;
@@ -555,7 +557,7 @@ Eigen::VectorXd heat::Solver
             std::tie (erruL2H1, errqL2L2, errUDiv)
                     = m_observer->evalXtError
                     (W->GetBlock(0), W->GetBlock(1));
-#ifdef MYVERBOSE
+#ifndef NDEBUG
             std::cout << "\tu L2H1 error: "
                       << erruL2H1 << std::endl;
             std::cout << "\tq L2L2 error: "

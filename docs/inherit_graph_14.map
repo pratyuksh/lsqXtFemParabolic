@@ -1,3 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classPardisoSolver.html" title="Provides the function wrappers to use PARDISO solver, available directly or from intel MKL library." alt="" coords="5,5,108,32"/>
+<area shape="rect" id="node1" href="$classmymfem_1_1BlockMixedBilinearFormIntegrator.html" title="BlockMixedBilinearForm class provides functions to assemble mixed bilinear forms between different me..." alt="" coords="5,104,197,145"/>
+<area shape="rect" id="node2" href="$classsparseHeat_1_1SpatialVectorDivergenceIntegrator.html" title="Vector Divergence Integrator; (div(u), v)" alt="" coords="245,5,420,47"/>
+<area shape="rect" id="node3" href="$classsparseHeat_1_1SpatialVectorFEDivergenceIntegrator.html" title="VectorFE Divergence Integrator; (div(u), v)" alt="" coords="245,71,420,112"/>
+<area shape="rect" id="node4" href="$classsparseHeat_1_1SpatialVectorFEGradientIntegrator.html" title="VectorFE Gradient Integrator; (grad(u), v)" alt="" coords="245,136,420,177"/>
+<area shape="rect" id="node5" href="$classsparseHeat_1_1SpatialVectorGradientIntegrator.html" title="Vector Gradient Integrator; (grad(u), v)" alt="" coords="245,201,420,243"/>
 </map>

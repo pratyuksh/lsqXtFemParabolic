@@ -76,7 +76,7 @@ $(function() {
 <p>Stiffness Integrator in space; (Q grad(u), Q grad(v))  
  <a href="classheat_1_1StiffnessIntegrator.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="assembly_8hpp_source.html">assembly.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="heat_2assembly_8hpp_source.html">assembly.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for heat::StiffnessIntegrator:</div>
 <div class="dyncontent">
@@ -99,30 +99,29 @@ Collaboration diagram for heat::StiffnessIntegrator:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0afcad3cd5f27b22491cd2d418f10f10"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1StiffnessIntegrator.html#a0afcad3cd5f27b22491cd2d418f10f10">StiffnessIntegrator</a> ()</td></tr>
-<tr class="memdesc:a0afcad3cd5f27b22491cd2d418f10f10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="classheat_1_1StiffnessIntegrator.html#a0afcad3cd5f27b22491cd2d418f10f10">More...</a><br /></td></tr>
 <tr class="separator:a0afcad3cd5f27b22491cd2d418f10f10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae23ce7a9bf0cd4809451e82f8327794d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1StiffnessIntegrator.html#ae23ce7a9bf0cd4809451e82f8327794d">StiffnessIntegrator</a> (MatrixCoefficient *M_)</td></tr>
-<tr class="memdesc:ae23ce7a9bf0cd4809451e82f8327794d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with material coefficent matrix passed as a pointer.  <a href="classheat_1_1StiffnessIntegrator.html#ae23ce7a9bf0cd4809451e82f8327794d">More...</a><br /></td></tr>
-<tr class="separator:ae23ce7a9bf0cd4809451e82f8327794d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fa4281db2e517dbe2529b01947b05da"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1StiffnessIntegrator.html#a4fa4281db2e517dbe2529b01947b05da">StiffnessIntegrator</a> (MatrixCoefficient &amp;M_)</td></tr>
-<tr class="memdesc:a4fa4281db2e517dbe2529b01947b05da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with material coefficent matrix passed by reference.  <a href="classheat_1_1StiffnessIntegrator.html#a4fa4281db2e517dbe2529b01947b05da">More...</a><br /></td></tr>
-<tr class="separator:a4fa4281db2e517dbe2529b01947b05da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae800959be7919cd0acd3caa84ad763c9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1StiffnessIntegrator.html#ae800959be7919cd0acd3caa84ad763c9">StiffnessIntegrator</a> (Coefficient *q_)</td></tr>
-<tr class="memdesc:ae800959be7919cd0acd3caa84ad763c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with scalar material coefficient passed as a pointer.  <a href="classheat_1_1StiffnessIntegrator.html#ae800959be7919cd0acd3caa84ad763c9">More...</a><br /></td></tr>
-<tr class="separator:ae800959be7919cd0acd3caa84ad763c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abff50078a2a62317d7d1b30d6aafc9aa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1StiffnessIntegrator.html#abff50078a2a62317d7d1b30d6aafc9aa">StiffnessIntegrator</a> (Coefficient &amp;q_)</td></tr>
-<tr class="memdesc:abff50078a2a62317d7d1b30d6aafc9aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with scalar material coefficient passed by reference.  <a href="classheat_1_1StiffnessIntegrator.html#abff50078a2a62317d7d1b30d6aafc9aa">More...</a><br /></td></tr>
-<tr class="separator:abff50078a2a62317d7d1b30d6aafc9aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81580199b31b3c882a852f7af0ced38b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1StiffnessIntegrator.html#a81580199b31b3c882a852f7af0ced38b">AssembleElementMatrix</a> (const FiniteElement &amp;, ElementTransformation &amp;, DenseMatrix &amp;) override</td></tr>
-<tr class="memdesc:a81580199b31b3c882a852f7af0ced38b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the Stiffness integrator on a given spatial mesh element.  <a href="classheat_1_1StiffnessIntegrator.html#a81580199b31b3c882a852f7af0ced38b">More...</a><br /></td></tr>
-<tr class="separator:a81580199b31b3c882a852f7af0ced38b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c7678096f28c199f763d6d155e101a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1StiffnessIntegrator.html#a5c7678096f28c199f763d6d155e101a2">AssembleElementMatrix2</a> (const FiniteElement &amp;, const FiniteElement &amp;, ElementTransformation &amp;, DenseMatrix &amp;) override</td></tr>
-<tr class="separator:a5c7678096f28c199f763d6d155e101a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0acdc43625662cc511705ee2498774f4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1StiffnessIntegrator.html#a0acdc43625662cc511705ee2498774f4">StiffnessIntegrator</a> (mfem::MatrixCoefficient *M_)</td></tr>
+<tr class="memdesc:a0acdc43625662cc511705ee2498774f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with material coefficent matrix passed as a pointer.  <a href="classheat_1_1StiffnessIntegrator.html#a0acdc43625662cc511705ee2498774f4">More...</a><br /></td></tr>
+<tr class="separator:a0acdc43625662cc511705ee2498774f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37b22211a5541f367657c9cff142dad0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1StiffnessIntegrator.html#a37b22211a5541f367657c9cff142dad0">StiffnessIntegrator</a> (mfem::MatrixCoefficient &amp;M_)</td></tr>
+<tr class="memdesc:a37b22211a5541f367657c9cff142dad0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with material coefficent matrix passed by reference.  <a href="classheat_1_1StiffnessIntegrator.html#a37b22211a5541f367657c9cff142dad0">More...</a><br /></td></tr>
+<tr class="separator:a37b22211a5541f367657c9cff142dad0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31b931649416a5ff11067822f8806d77"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1StiffnessIntegrator.html#a31b931649416a5ff11067822f8806d77">StiffnessIntegrator</a> (mfem::Coefficient *q_)</td></tr>
+<tr class="memdesc:a31b931649416a5ff11067822f8806d77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with scalar material coefficient passed as a pointer.  <a href="classheat_1_1StiffnessIntegrator.html#a31b931649416a5ff11067822f8806d77">More...</a><br /></td></tr>
+<tr class="separator:a31b931649416a5ff11067822f8806d77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a371d2611c0920ec2af4bd302c401213e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1StiffnessIntegrator.html#a371d2611c0920ec2af4bd302c401213e">StiffnessIntegrator</a> (mfem::Coefficient &amp;q_)</td></tr>
+<tr class="memdesc:a371d2611c0920ec2af4bd302c401213e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with scalar material coefficient passed by reference.  <a href="classheat_1_1StiffnessIntegrator.html#a371d2611c0920ec2af4bd302c401213e">More...</a><br /></td></tr>
+<tr class="separator:a371d2611c0920ec2af4bd302c401213e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a766c052c0b0f615944c11d7f08ad0490"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1StiffnessIntegrator.html#a766c052c0b0f615944c11d7f08ad0490">AssembleElementMatrix</a> (const mfem::FiniteElement &amp;, mfem::ElementTransformation &amp;, mfem::DenseMatrix &amp;) override</td></tr>
+<tr class="memdesc:a766c052c0b0f615944c11d7f08ad0490"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the Stiffness integrator on a given spatial mesh element.  <a href="classheat_1_1StiffnessIntegrator.html#a766c052c0b0f615944c11d7f08ad0490">More...</a><br /></td></tr>
+<tr class="separator:a766c052c0b0f615944c11d7f08ad0490"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3eb358c1645e1285966483eb49d57cfb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1StiffnessIntegrator.html#a3eb358c1645e1285966483eb49d57cfb">AssembleElementMatrix2</a> (const mfem::FiniteElement &amp;, const mfem::FiniteElement &amp;, mfem::ElementTransformation &amp;, mfem::DenseMatrix &amp;) override</td></tr>
+<tr class="separator:a3eb358c1645e1285966483eb49d57cfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Stiffness Integrator in space; (Q grad(u), Q grad(v)) </p>
 
-<p class="definition">Definition at line <a class="el" href="assembly_8hpp_source.html#l00040">40</a> of file <a class="el" href="assembly_8hpp_source.html">assembly.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2assembly_8hpp_source.html#l00039">39</a> of file <a class="el" href="heat_2assembly_8hpp_source.html">heat/assembly.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0afcad3cd5f27b22491cd2d418f10f10"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0afcad3cd5f27b22491cd2d418f10f10">&#9670;&nbsp;</a></span>StiffnessIntegrator() <span class="overload">[1/5]</span></h2>
@@ -147,14 +146,12 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Default constructor. </p>
-
-<p class="definition">Definition at line <a class="el" href="assembly_8hpp_source.html#l00045">45</a> of file <a class="el" href="assembly_8hpp_source.html">assembly.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2assembly_8hpp_source.html#l00043">43</a> of file <a class="el" href="heat_2assembly_8hpp_source.html">heat/assembly.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ae23ce7a9bf0cd4809451e82f8327794d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae23ce7a9bf0cd4809451e82f8327794d">&#9670;&nbsp;</a></span>StiffnessIntegrator() <span class="overload">[2/5]</span></h2>
+<a id="a0acdc43625662cc511705ee2498774f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0acdc43625662cc511705ee2498774f4">&#9670;&nbsp;</a></span>StiffnessIntegrator() <span class="overload">[2/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -165,7 +162,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">heat::StiffnessIntegrator::StiffnessIntegrator </td>
           <td>(</td>
-          <td class="paramtype">MatrixCoefficient *&#160;</td>
+          <td class="paramtype">mfem::MatrixCoefficient *&#160;</td>
           <td class="paramname"><em>M_</em></td><td>)</td>
           <td></td>
         </tr>
@@ -179,12 +176,12 @@ Public Member Functions</h2></td></tr>
 
 <p>Constructor with material coefficent matrix passed as a pointer. </p>
 
-<p class="definition">Definition at line <a class="el" href="assembly_8hpp_source.html#l00048">48</a> of file <a class="el" href="assembly_8hpp_source.html">assembly.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2assembly_8hpp_source.html#l00046">46</a> of file <a class="el" href="heat_2assembly_8hpp_source.html">heat/assembly.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a4fa4281db2e517dbe2529b01947b05da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4fa4281db2e517dbe2529b01947b05da">&#9670;&nbsp;</a></span>StiffnessIntegrator() <span class="overload">[3/5]</span></h2>
+<a id="a37b22211a5541f367657c9cff142dad0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37b22211a5541f367657c9cff142dad0">&#9670;&nbsp;</a></span>StiffnessIntegrator() <span class="overload">[3/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -195,7 +192,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">heat::StiffnessIntegrator::StiffnessIntegrator </td>
           <td>(</td>
-          <td class="paramtype">MatrixCoefficient &amp;&#160;</td>
+          <td class="paramtype">mfem::MatrixCoefficient &amp;&#160;</td>
           <td class="paramname"><em>M_</em></td><td>)</td>
           <td></td>
         </tr>
@@ -209,12 +206,12 @@ Public Member Functions</h2></td></tr>
 
 <p>Constructor with material coefficent matrix passed by reference. </p>
 
-<p class="definition">Definition at line <a class="el" href="assembly_8hpp_source.html#l00052">52</a> of file <a class="el" href="assembly_8hpp_source.html">assembly.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2assembly_8hpp_source.html#l00050">50</a> of file <a class="el" href="heat_2assembly_8hpp_source.html">heat/assembly.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ae800959be7919cd0acd3caa84ad763c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae800959be7919cd0acd3caa84ad763c9">&#9670;&nbsp;</a></span>StiffnessIntegrator() <span class="overload">[4/5]</span></h2>
+<a id="a31b931649416a5ff11067822f8806d77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31b931649416a5ff11067822f8806d77">&#9670;&nbsp;</a></span>StiffnessIntegrator() <span class="overload">[4/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -225,7 +222,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">heat::StiffnessIntegrator::StiffnessIntegrator </td>
           <td>(</td>
-          <td class="paramtype">Coefficient *&#160;</td>
+          <td class="paramtype">mfem::Coefficient *&#160;</td>
           <td class="paramname"><em>q_</em></td><td>)</td>
           <td></td>
         </tr>
@@ -239,12 +236,12 @@ Public Member Functions</h2></td></tr>
 
 <p>Constructor with scalar material coefficient passed as a pointer. </p>
 
-<p class="definition">Definition at line <a class="el" href="assembly_8hpp_source.html#l00056">56</a> of file <a class="el" href="assembly_8hpp_source.html">assembly.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2assembly_8hpp_source.html#l00054">54</a> of file <a class="el" href="heat_2assembly_8hpp_source.html">heat/assembly.hpp</a>.</p>
 
 </div>
 </div>
-<a id="abff50078a2a62317d7d1b30d6aafc9aa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abff50078a2a62317d7d1b30d6aafc9aa">&#9670;&nbsp;</a></span>StiffnessIntegrator() <span class="overload">[5/5]</span></h2>
+<a id="a371d2611c0920ec2af4bd302c401213e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a371d2611c0920ec2af4bd302c401213e">&#9670;&nbsp;</a></span>StiffnessIntegrator() <span class="overload">[5/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -255,7 +252,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">heat::StiffnessIntegrator::StiffnessIntegrator </td>
           <td>(</td>
-          <td class="paramtype">Coefficient &amp;&#160;</td>
+          <td class="paramtype">mfem::Coefficient &amp;&#160;</td>
           <td class="paramname"><em>q_</em></td><td>)</td>
           <td></td>
         </tr>
@@ -269,13 +266,13 @@ Public Member Functions</h2></td></tr>
 
 <p>Constructor with scalar material coefficient passed by reference. </p>
 
-<p class="definition">Definition at line <a class="el" href="assembly_8hpp_source.html#l00060">60</a> of file <a class="el" href="assembly_8hpp_source.html">assembly.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2assembly_8hpp_source.html#l00058">58</a> of file <a class="el" href="heat_2assembly_8hpp_source.html">heat/assembly.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a81580199b31b3c882a852f7af0ced38b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a81580199b31b3c882a852f7af0ced38b">&#9670;&nbsp;</a></span>AssembleElementMatrix()</h2>
+<a id="a766c052c0b0f615944c11d7f08ad0490"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a766c052c0b0f615944c11d7f08ad0490">&#9670;&nbsp;</a></span>AssembleElementMatrix()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -286,20 +283,20 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void heat::StiffnessIntegrator::AssembleElementMatrix </td>
           <td>(</td>
-          <td class="paramtype">const FiniteElement &amp;&#160;</td>
-          <td class="paramname"><em>fe</em>, </td>
+          <td class="paramtype">const mfem::FiniteElement &amp;&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">ElementTransformation &amp;&#160;</td>
-          <td class="paramname"><em>Trans</em>, </td>
+          <td class="paramtype">mfem::ElementTransformation &amp;&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">DenseMatrix &amp;&#160;</td>
-          <td class="paramname"><em>elmat</em>&#160;</td>
+          <td class="paramtype">mfem::DenseMatrix &amp;&#160;</td>
+          <td class="paramname">&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -316,12 +313,12 @@ Public Member Functions</h2></td></tr>
 
 <p>Assembles the Stiffness integrator on a given spatial mesh element. </p>
 
-<p class="definition">Definition at line <a class="el" href="assembly_8cpp_source.html#l00055">55</a> of file <a class="el" href="assembly_8cpp_source.html">assembly.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="assembly_8cpp_source.html#l00057">57</a> of file <a class="el" href="assembly_8cpp_source.html">assembly.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a5c7678096f28c199f763d6d155e101a2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c7678096f28c199f763d6d155e101a2">&#9670;&nbsp;</a></span>AssembleElementMatrix2()</h2>
+<a id="a3eb358c1645e1285966483eb49d57cfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3eb358c1645e1285966483eb49d57cfb">&#9670;&nbsp;</a></span>AssembleElementMatrix2()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -332,25 +329,25 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void heat::StiffnessIntegrator::AssembleElementMatrix2 </td>
           <td>(</td>
-          <td class="paramtype">const FiniteElement &amp;&#160;</td>
+          <td class="paramtype">const mfem::FiniteElement &amp;&#160;</td>
           <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const FiniteElement &amp;&#160;</td>
+          <td class="paramtype">const mfem::FiniteElement &amp;&#160;</td>
           <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">ElementTransformation &amp;&#160;</td>
+          <td class="paramtype">mfem::ElementTransformation &amp;&#160;</td>
           <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">DenseMatrix &amp;&#160;</td>
+          <td class="paramtype">mfem::DenseMatrix &amp;&#160;</td>
           <td class="paramname">&#160;</td>
         </tr>
         <tr>
@@ -366,12 +363,12 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="assembly_8hpp_source.html#l00069">69</a> of file <a class="el" href="assembly_8hpp_source.html">assembly.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2assembly_8hpp_source.html#l00067">67</a> of file <a class="el" href="heat_2assembly_8hpp_source.html">heat/assembly.hpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="assembly_8hpp_source.html">assembly.hpp</a></li>
+<li><a class="el" href="heat_2assembly_8hpp_source.html">heat/assembly.hpp</a></li>
 <li><a class="el" href="assembly_8cpp_source.html">assembly.cpp</a></li>
 </ul>
 </div><!-- contents -->

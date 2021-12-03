@@ -1,0 +1,24 @@
+{
+    "host": "local",
+    
+    "problem_type": "lShaped_test2",
+    
+    "run": "convergenceFG",
+    
+    "end_time": 1,
+    
+    "discretisation_type": "H1Hd1",
+    
+    "deg": 1,
+    "min_level_t": 2,
+    "min_level_x": 1,
+    "max_level_x": 4,
+    
+    "mesh_dir": "lShaped/br/deg1",
+    
+    "eval_error": true,
+    "error_type": "lsq",
+    
+    "base_out_dir": "../output",
+    "sub_out_dir": "heat/lShaped_test2/br"
+}

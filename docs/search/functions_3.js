@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['dumpmesh_349',['dumpMesh',['../classmymfem_1_1BaseObserver.html#a44560a934e6f98ad50d874112a720585',1,'mymfem::BaseObserver']]],
-  ['dumpsol_350',['dumpSol',['../classheat_1_1Observer.html#a364093899d398073d34bfb6209cf6dd5',1,'heat::Observer']]]
+  ['dumpmesh_578',['dumpMesh',['../classmymfem_1_1BaseObserver.html#a1d0d4e393fd46e558103244192edb5a8',1,'mymfem::BaseObserver']]],
+  ['dumpsol_579',['dumpSol',['../classheat_1_1Observer.html#a296c8ae38ee6bd18d9e2fc7c23fbae2c',1,'heat::Observer']]]
 ];

@@ -2,7 +2,6 @@
 #define HEAT_SOLVER_HPP
 
 #include "mfem.hpp"
-using namespace mfem;
 
 #include <Eigen/Core>
 
@@ -75,7 +74,7 @@ public:
 
     // Initializes and then runs the solver,
     // used for the sparse-grids handler
-    // void operator()(std::unique_ptr<BlockVector>&);
+    // void operator()(std::unique_ptr<mfem::BlockVector>&);
 
     //! Runs the solver
     void run();
@@ -102,20 +101,22 @@ private:
 public:
     //! Solves the linear system resulting from the discretisation
     //! Returns the time to solution
-    std::pair<double, int> solve (BlockVector *W, BlockVector* B);
+    std::pair<double, int> solve (mfem::BlockVector *W,
+                                  mfem::BlockVector* B);
+
     //! Releases allocated memory
     void finalize () const;
 
     //! Computes the solution error
-    Eigen::VectorXd computeError(BlockVector *W) const;
+    Eigen::VectorXd computeError(mfem::BlockVector *W) const;
 
     //! Evaluates the temperature solution at end time
-    std::shared_ptr <GridFunction>
-    getTemperatureSolAtEndTime (BlockVector *W) const;
+    std::shared_ptr <mfem::GridFunction>
+    getTemperatureSolAtEndTime (mfem::BlockVector *W) const;
 
     //! Evaluates the flux solution at end time
-    std::shared_ptr <GridFunction>
-    getFluxSolAtEndTime (BlockVector *W) const;
+    std::shared_ptr <mfem::GridFunction>
+    getFluxSolAtEndTime (mfem::BlockVector *W) const;
 
     //! Sets the temperature solution at end time
     void setTemperatureSolAtEndTime ();
@@ -130,7 +131,7 @@ public:
 
     // Initializes and computes the projection,
     // Used for the sparse-tensor version
-    // void projection(std::unique_ptr<BlockVector>&);
+    // void projection(std::unique_ptr<mfem::BlockVector>&);
 
     //! Initializes projection
     void initProjection ();
@@ -140,35 +141,35 @@ public:
     void assembleProjectionSystem();
 
     //! Returns the temporal mesh
-    inline std::shared_ptr<Mesh> getTMesh() const {
+    std::shared_ptr<mfem::Mesh> getTMesh() const {
         return m_tMesh;
     }
 
     //! Returns the spatial mesh
-    inline std::shared_ptr<Mesh> getXMesh() const {
+    std::shared_ptr<mfem::Mesh> getXMesh() const {
         return m_xMesh;
     }
 
     //! Returns the test case
-    inline std::shared_ptr<heat::TestCases>
+    std::shared_ptr<heat::TestCases>
     getTestCase() const {
         return m_testCase;
     }
 
     //! Returns the discretisation
-    inline std::shared_ptr<heat::LsqXtFEM>
+    std::shared_ptr<heat::LsqXtFEM>
     getDiscretisation() const {
         return m_discr;
     }
 
     //! Returns the observer
-    inline std::shared_ptr<heat::Observer>
+    std::shared_ptr<heat::Observer>
     getObserver() const {
         return m_observer;
     }
 
     //! Returns the mesh characteristics
-    inline std::pair<double, double>
+    std::pair<double, double>
     getMeshChars() const
     {
         double htMin, htMax, kappatMin, kappatMax;
@@ -181,7 +182,7 @@ public:
     }
 
     //! Returns the total number of degrees of freedom in space-time
-    inline int getNdofs() const {
+    int getNdofs() const {
         return std::move(m_W->Size());
     }
 
@@ -193,8 +194,8 @@ private:
     std::string m_linearSolver;
     
     double m_endTime;
-    std::shared_ptr<Mesh> m_tMesh;
-    std::shared_ptr<Mesh> m_xMesh;
+    std::shared_ptr<mfem::Mesh> m_tMesh;
+    std::shared_ptr<mfem::Mesh> m_xMesh;
     bool m_loadInitMesh;
     int m_lx0;
     
@@ -205,18 +206,18 @@ private:
     bool m_boolError;
     std::string m_errorType;
     
-    Array<int> m_blockOffsets;
+    mfem::Array<int> m_blockOffsets;
 
-    BlockOperator *m_heatOp = nullptr;
-    SparseMatrix *m_heatMat = nullptr;
-    SparseMatrix *m_heatProjMat = nullptr;
+    mfem::BlockOperator *m_heatOp = nullptr;
+    mfem::SparseMatrix *m_heatMat = nullptr;
+    mfem::SparseMatrix *m_heatProjMat = nullptr;
 
-    std::unique_ptr <BlockVector> m_W;
-    std::unique_ptr <BlockVector> m_B;
+    std::unique_ptr <mfem::BlockVector> m_W;
+    std::unique_ptr <mfem::BlockVector> m_B;
     bool m_firstPass = true;
 
-    std::shared_ptr <GridFunction> m_temperature;
-    std::shared_ptr <GridFunction> m_flux;
+    std::shared_ptr <mfem::GridFunction> m_temperature;
+    std::shared_ptr <mfem::GridFunction> m_flux;
 
 #ifdef PARDISO_HPP
     std::unique_ptr<PardisoSolver> m_pardisoSolver;

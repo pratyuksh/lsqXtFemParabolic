@@ -5,6 +5,8 @@
 
 #include <fstream>
 
+using namespace mfem;
+
 
 // Constructor
 heat::LsqXtFEM :: LsqXtFEM (const nlohmann::json& config,
@@ -106,7 +108,7 @@ void heat::LsqXtFEM :: buildSystemMatrix()
 
 // Builds system matrix from heatOp
 // stores only the upper triangle
-void heat::LsqXtFEM :: buildSystemMatrixUpTr()
+void heat::LsqXtFEM :: buildSystemMatrixUpperTriangle()
 {
     BlockMatrix *heatBlockMat
             = new BlockMatrix(m_block_offsets);
@@ -130,7 +132,7 @@ void heat::LsqXtFEM :: buildSystemMatrixUpTr()
 
 // Assembles rhs
 void heat::LsqXtFEM :: assembleRhs(BlockVector* B) const
-{
+{    
     Vector &B0 = B->GetBlock(0);
     assembleICs(B0);
     assembleSourceTGradXProjection(B0);

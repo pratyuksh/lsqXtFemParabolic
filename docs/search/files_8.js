@@ -1,6 +1,23 @@
 var searchData=
 [
-  ['cmakelists_2etxt_307',['CMakeLists.txt',['../pardiso_2CMakeLists_8txt.html',1,'']]],
-  ['pardiso_2ecpp_308',['pardiso.cpp',['../pardiso_8cpp.html',1,'']]],
-  ['pardiso_2ehpp_309',['pardiso.hpp',['../pardiso_8hpp.html',1,'']]]
+  ['assembly_2ehpp_496',['assembly.hpp',['../sparse__heat_2assembly_8hpp.html',1,'']]],
+  ['cmakelists_2etxt_497',['CMakeLists.txt',['../sparse__heat_2CMakeLists_8txt.html',1,'']]],
+  ['discretisation_2ecpp_498',['discretisation.cpp',['../sparse__heat_2discretisation_8cpp.html',1,'']]],
+  ['discretisation_2ehpp_499',['discretisation.hpp',['../sparse__heat_2discretisation_8hpp.html',1,'']]],
+  ['discretisation_5fh1h1_2ecpp_500',['discretisation_H1H1.cpp',['../sparse__heat_2discretisation__H1H1_8cpp.html',1,'']]],
+  ['discretisation_5fh1hdiv_2ecpp_501',['discretisation_H1Hdiv.cpp',['../sparse__heat_2discretisation__H1Hdiv_8cpp.html',1,'']]],
+  ['observer_2ecpp_502',['observer.cpp',['../sparse__heat_2observer_8cpp.html',1,'']]],
+  ['observer_2ehpp_503',['observer.hpp',['../sparse__heat_2observer_8hpp.html',1,'']]],
+  ['solution_5fhandler_2ecpp_504',['solution_handler.cpp',['../solution__handler_8cpp.html',1,'']]],
+  ['solution_5fhandler_2ehpp_505',['solution_handler.hpp',['../solution__handler_8hpp.html',1,'']]],
+  ['solver_2ecpp_506',['solver.cpp',['../sparse__heat_2solver_8cpp.html',1,'']]],
+  ['solver_2ehpp_507',['solver.hpp',['../sparse__heat_2solver_8hpp.html',1,'']]],
+  ['spatial_5fassembly_2ecpp_508',['spatial_assembly.cpp',['../spatial__assembly_8cpp.html',1,'']]],
+  ['spatial_5fassembly_2ehpp_509',['spatial_assembly.hpp',['../spatial__assembly_8hpp.html',1,'']]],
+  ['spatial_5fassembly_5fh1h1_2ecpp_510',['spatial_assembly_H1H1.cpp',['../spatial__assembly__H1H1_8cpp.html',1,'']]],
+  ['spatial_5fassembly_5fh1hdiv_2ecpp_511',['spatial_assembly_H1Hdiv.cpp',['../spatial__assembly__H1Hdiv_8cpp.html',1,'']]],
+  ['spatial_5ferror_5fevaluator_2ecpp_512',['spatial_error_evaluator.cpp',['../spatial__error__evaluator_8cpp.html',1,'']]],
+  ['spatial_5ferror_5fevaluator_2ehpp_513',['spatial_error_evaluator.hpp',['../spatial__error__evaluator_8hpp.html',1,'']]],
+  ['utilities_2ecpp_514',['utilities.cpp',['../sparse__heat_2utilities_8cpp.html',1,'']]],
+  ['utilities_2ehpp_515',['utilities.hpp',['../sparse__heat_2utilities_8hpp.html',1,'']]]
 ];

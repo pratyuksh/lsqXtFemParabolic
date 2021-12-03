@@ -1,6 +1,8 @@
 #include "assembly.hpp"
 #include <assert.h>
 
+using namespace mfem;
+
 
 // Gradient Integrator in time, dim = 1
 void heat::GradientIntegrator
@@ -99,7 +101,7 @@ void heat::StiffnessIntegrator
             w *= val*val;
         }
 
-        elmat.Add(w,tmpMat);
+        elmat.Add(w, tmpMat);
     }
 }
 
@@ -136,12 +138,6 @@ void heat::VectorFEStiffnessIntegrator
         double w = ip.weight*Trans.Weight();
 
         AddMult_a_VVt(w, divshape, elmat);
-
-        /*for (int l=0; l<ndofs; l++) {
-            for (int k=0; k<ndofs; k++) {
-                elmat(k,l) += w*divshape(k)*divshape(l);
-            }
-        }*/
     }
 }
 
@@ -200,7 +196,7 @@ void heat::VectorFEGradientIntegrator
             double val = q->Eval(Trans, ip);
             w *= val;
         }
-        elmat.Add(w,tmpMat);
+        elmat.Add(w, tmpMat);
     }
 }
 
@@ -238,10 +234,6 @@ void heat::VectorFEDivergenceLFIntegrator
         w *= F.Eval(Trans, ip);
 
         elvect.Add(w, divshape);
-
-        /*for (int k=0; k<ndofs; k++) {
-            elvect(k) += w*divshape(k);
-        }*/
     }
     elvect *= m_coeff;
 }
@@ -341,11 +333,10 @@ void heat::VectorGradientIntegrator
             double val = q->Eval(Trans, ip);
             w *= val;
         }
-        elmat.Add(w,tmpMat);
+        elmat.Add(w, tmpMat);
     }
 }
 
-// Vector Gradient Integrator
 void heat::VectorGradientIntegrator
 :: AssembleBlock(const int dim,
                  const int test_ndofs,
@@ -362,6 +353,7 @@ void heat::VectorGradientIntegrator
                         = shape(i)*dshape(j,k);
             }
 }
+
 
 // Vector Divergence LF Integrator
 void heat::VectorDivergenceLFIntegrator

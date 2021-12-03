@@ -4,11 +4,13 @@
 #include <iostream>
 #include <filesystem>
 
+using namespace mfem;
 namespace fs = std::filesystem;
 
 
 //! Uses config to set class variables.
-mymfem::BaseObserver :: BaseObserver (const nlohmann::json& config, int lx)
+mymfem::BaseObserver
+:: BaseObserver (const nlohmann::json& config)
 {
     m_boolVisualize = false;
     if (config.contains("visualization")) {
@@ -19,12 +21,18 @@ mymfem::BaseObserver :: BaseObserver (const nlohmann::json& config, int lx)
     if (config.contains("dump_output")) {
         m_boolDumpOut = config["dump_output"];
     }
+}
 
+mymfem::BaseObserver
+:: BaseObserver (const nlohmann::json& config, int lx)
+    : BaseObserver(config)
+{
     m_meshNameSuffix = "_lx"+std::to_string(lx);
 }
 
 //! Uses GLVis, refer to examples in MFEM documentation.
-void mymfem::BaseObserver :: visualize (GridFunction& u) const
+void mymfem::BaseObserver
+:: visualize (GridFunction& u) const
 {
     socketstream sout;
     if (m_boolVisualize)
@@ -42,7 +50,8 @@ void mymfem::BaseObserver :: visualize (GridFunction& u) const
         else
         {
             sout.precision(m_precision);
-            sout << "solution\n" << *(u.FESpace()->GetMesh()) << u;
+            sout << "solution\n"
+                 << *(u.FESpace()->GetMesh()) << u;
             sout << "pause\n";
             sout << std::flush;
         }
@@ -51,11 +60,13 @@ void mymfem::BaseObserver :: visualize (GridFunction& u) const
 }
 
 //! Writes the mesh to a file.
-void mymfem::BaseObserver :: dumpMesh (std::shared_ptr<Mesh>& mesh) const
+void mymfem::BaseObserver
+:: dumpMesh (std::shared_ptr<Mesh>& mesh) const
 {
     if (m_boolDumpOut)
     {
-        std::string meshName = m_outputDir+"mesh"+m_meshNameSuffix;
+        std::string meshName
+                = m_outputDir+"mesh"+m_meshNameSuffix;
         std::cout << meshName << std::endl;
 
         std::ofstream meshOfs(meshName.c_str());

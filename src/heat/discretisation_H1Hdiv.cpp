@@ -3,10 +3,13 @@
 #include "assembly.hpp"
 #include "../mymfem/utilities.hpp"
 
+using namespace mfem;
+
 
 // Sets the FE space and boundary conditions
-void heat::LsqXtFemH1Hdiv :: set(std::shared_ptr<Mesh>& tMesh,
-                               std::shared_ptr<Mesh>& xMesh)
+void heat::LsqXtFemH1Hdiv
+:: set(std::shared_ptr<Mesh>& tMesh,
+       std::shared_ptr<Mesh>& xMesh)
 {
     // reset initialized variables
     reset();
@@ -32,7 +35,7 @@ void heat::LsqXtFemH1Hdiv :: set(std::shared_ptr<Mesh>& tMesh,
     int tdimV = m_tFespace->GetTrueVSize();
     int xdimV = xV_space->GetTrueVSize();
     int xdimR = xR_space->GetTrueVSize();
-#ifdef MYVERBOSE
+#ifndef NDEBUG
     std::cout << "\n\tNumber of degrees of freedom "
                  "in tV_space: "
          << tdimV << std::endl;
@@ -49,13 +52,13 @@ void heat::LsqXtFemH1Hdiv :: set(std::shared_ptr<Mesh>& tMesh,
     m_xFespaces.Append(xV_space);
     m_xFespaces.Append(xR_space);
 
-    /* Define the two BlockStructure of the problem */
+    // Define the two BlockStructure of the problem
     m_block_offsets.SetSize(3);
     m_block_offsets[0] = 0;
     m_block_offsets[1] = xdimV*tdimV;
     m_block_offsets[2] = xdimR*tdimV;
     m_block_offsets.PartialSum();
-#ifdef MYVERBOSE
+#ifndef NDEBUG
     std::cout << "\tBlock offsets:" << "\t"
               << m_block_offsets[0] << "\t"
               << m_block_offsets[1] << "\t"
@@ -83,7 +86,7 @@ void heat::LsqXtFemH1Hdiv :: set(std::shared_ptr<Mesh>& tMesh,
 void heat::LsqXtFemH1Hdiv
 :: assembleSystemMediumIndependent()
 {
-    /* assemble matrices in time */
+    // assemble matrices in time
 
     // tMass form
     BilinearForm *tMass_form = new BilinearForm(m_tFespace);
@@ -110,7 +113,7 @@ void heat::LsqXtFemH1Hdiv
     m_tGrad = tGrad_form->LoseMat();
     delete tGrad_form;
 
-    /* assemble matrices in space */
+    // assemble matrices in space
 
     // xMass1 form, xV_space
     BilinearForm *xMass1_form
@@ -158,7 +161,7 @@ void heat::LsqXtFemH1Hdiv
     tCanonicalBasis(0) = 1;
     SparseMatrix *tInit = new SparseMatrix(tCanonicalBasis);
 
-    /* compute blocks */
+    // compute blocks
     SparseMatrix *tmpBuf;
 
     // block at row 1, column 1
@@ -187,7 +190,7 @@ void heat::LsqXtFemH1Hdiv
 // Assembles medium-dependent system matrices
 void heat::LsqXtFemH1Hdiv :: assembleSystemMediumDependent()
 {
-    /* assemble matrices in space */
+    // assemble matrices in space
 
     heat::MediumTensorCoeff medCoeff(m_testCase);
 
@@ -212,7 +215,7 @@ void heat::LsqXtFemH1Hdiv :: assembleSystemMediumDependent()
     m_xGrad = xGrad_form->LoseMat();
     delete xGrad_form;
 
-    /* compute blocks */
+    // compute blocks
     SparseMatrix *tmp1, *tmp2, *tmpBuf;
 
     // block at row 0, column 0
@@ -251,7 +254,7 @@ void heat::LsqXtFemH1Hdiv
 // Assembles matrices for L2-projection
 void heat::LsqXtFemH1Hdiv :: assembleProjector()
 {
-    /* assemble matrices in time */
+    // assemble matrices in time
 
     // tMass form
     BilinearForm *tMass_form = new BilinearForm(m_tFespace);
@@ -261,7 +264,7 @@ void heat::LsqXtFemH1Hdiv :: assembleProjector()
     m_tMass = tMass_form->LoseMat();
     delete tMass_form;
 
-    /* assemble matrices in space */
+    // assemble matrices in space
 
     // xMass1 form, xV_space
     BilinearForm *xMass1_form
@@ -282,7 +285,7 @@ void heat::LsqXtFemH1Hdiv :: assembleProjector()
     m_xMass2 = xMass2_form->LoseMat();
     delete xMass2_form;
 
-    /* compute blocks */
+    //compute blocks
     m_block00 = OuterProduct(*m_tMass, *m_xMass1);
     m_block11 = OuterProduct(*m_tMass, *m_xMass2);
 }
@@ -300,7 +303,7 @@ void heat::LsqXtFemH1Hdiv
     b1 = uSol_form.GetData();
 
     LinearForm qSol_form(m_xFespaces[1]);
-    heat::ExactFluxCoeff qCoeff(m_testCase);
+    heat::ExactHeatFluxCoeff qCoeff(m_testCase);
     qCoeff.SetTime(t);
     qSol_form.AddDomainIntegrator
             (new VectorFEDomainLFIntegrator(qCoeff));

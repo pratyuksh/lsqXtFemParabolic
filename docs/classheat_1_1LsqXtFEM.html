@@ -78,7 +78,7 @@ $(function() {
 <p>Base class for Least-squares space-time FE discretisation of the heat equation.  
  <a href="classheat_1_1LsqXtFEM.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="heat_2discretisation_8hpp_source.html">discretisation.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for heat::LsqXtFEM:</div>
 <div class="dyncontent">
@@ -92,15 +92,15 @@ Inheritance diagram for heat::LsqXtFEM:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae9a6fd387867f18a214a0bdbd63b9f09"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ae9a6fd387867f18a214a0bdbd63b9f09">LsqXtFEM</a> (const nlohmann::json &amp;, std::shared_ptr&lt; <a class="el" href="classheat_1_1TestCases.html">heat::TestCases</a> &gt; &amp;)</td></tr>
+<tr class="memitem:ae9a6fd387867f18a214a0bdbd63b9f09"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ae9a6fd387867f18a214a0bdbd63b9f09">LsqXtFEM</a> (const nlohmann::json &amp;, std::shared_ptr&lt; heat::TestCases &gt; &amp;)</td></tr>
 <tr class="memdesc:ae9a6fd387867f18a214a0bdbd63b9f09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with config and test case as arguments.  <a href="classheat_1_1LsqXtFEM.html#ae9a6fd387867f18a214a0bdbd63b9f09">More...</a><br /></td></tr>
 <tr class="separator:ae9a6fd387867f18a214a0bdbd63b9f09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5623ddecee88a79b8c2eecb26c0bb79e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a5623ddecee88a79b8c2eecb26c0bb79e">~LsqXtFEM</a> ()</td></tr>
 <tr class="memdesc:a5623ddecee88a79b8c2eecb26c0bb79e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor.  <a href="classheat_1_1LsqXtFEM.html#a5623ddecee88a79b8c2eecb26c0bb79e">More...</a><br /></td></tr>
 <tr class="separator:a5623ddecee88a79b8c2eecb26c0bb79e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd953421a7b11f20e16c5aae62f8cfd0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#abd953421a7b11f20e16c5aae62f8cfd0">set</a> (std::shared_ptr&lt; Mesh &gt; &amp;, std::shared_ptr&lt; Mesh &gt; &amp;)</td></tr>
-<tr class="memdesc:abd953421a7b11f20e16c5aae62f8cfd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the FE space and boundary conditions.  <a href="classheat_1_1LsqXtFEM.html#abd953421a7b11f20e16c5aae62f8cfd0">More...</a><br /></td></tr>
-<tr class="separator:abd953421a7b11f20e16c5aae62f8cfd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec4caae035ced62e2e382832573b7af2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#aec4caae035ced62e2e382832573b7af2">set</a> (std::shared_ptr&lt; mfem::Mesh &gt; &amp;, std::shared_ptr&lt; mfem::Mesh &gt; &amp;)</td></tr>
+<tr class="memdesc:aec4caae035ced62e2e382832573b7af2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the FE space and boundary conditions.  <a href="classheat_1_1LsqXtFEM.html#aec4caae035ced62e2e382832573b7af2">More...</a><br /></td></tr>
+<tr class="separator:aec4caae035ced62e2e382832573b7af2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73ae25ec842334bacea37a158a6f1459"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a73ae25ec842334bacea37a158a6f1459">assembleSystemMediumIndependent</a> ()</td></tr>
 <tr class="separator:a73ae25ec842334bacea37a158a6f1459"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a129121e4a21173bf31de7c9637209486"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a129121e4a21173bf31de7c9637209486">assembleSystemMediumDependent</a> ()</td></tr>
@@ -115,84 +115,89 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a5aca416f0c692587cda8b60bc1a6a872"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the blocks of the linear system matrix.  <a href="classheat_1_1LsqXtFEM.html#a5aca416f0c692587cda8b60bc1a6a872">More...</a><br /></td></tr>
 <tr class="separator:a5aca416f0c692587cda8b60bc1a6a872"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac36d3e4e84ae6a5f37c95ffb2508189f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ac36d3e4e84ae6a5f37c95ffb2508189f">buildSystemOp</a> ()</td></tr>
-<tr class="memdesc:ac36d3e4e84ae6a5f37c95ffb2508189f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds the linear system matrix from the blocks as an MFEM operator.  <a href="classheat_1_1LsqXtFEM.html#ac36d3e4e84ae6a5f37c95ffb2508189f">More...</a><br /></td></tr>
 <tr class="separator:ac36d3e4e84ae6a5f37c95ffb2508189f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a245cb10b43cc04d8855acd2304256863"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a245cb10b43cc04d8855acd2304256863">buildSystemMatrix</a> ()</td></tr>
-<tr class="memdesc:a245cb10b43cc04d8855acd2304256863"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds the linear system matrix from the blocks as a monolithic matrix.  <a href="classheat_1_1LsqXtFEM.html#a245cb10b43cc04d8855acd2304256863">More...</a><br /></td></tr>
 <tr class="separator:a245cb10b43cc04d8855acd2304256863"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1d66887b23e4f4f34471f5fc043b5f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ad1d66887b23e4f4f34471f5fc043b5f8">buildSystemMatrixUpTr</a> ()</td></tr>
-<tr class="memdesc:ad1d66887b23e4f4f34471f5fc043b5f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds the upper-triangle linear system matrix from the blocks as a monolithic matrix.  <a href="classheat_1_1LsqXtFEM.html#ad1d66887b23e4f4f34471f5fc043b5f8">More...</a><br /></td></tr>
-<tr class="separator:ad1d66887b23e4f4f34471f5fc043b5f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62cdb6089d640a0daa7c9dc5230b9562"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a62cdb6089d640a0daa7c9dc5230b9562">assembleRhs</a> (BlockVector *) const</td></tr>
-<tr class="memdesc:a62cdb6089d640a0daa7c9dc5230b9562"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the target right-hand side.  <a href="classheat_1_1LsqXtFEM.html#a62cdb6089d640a0daa7c9dc5230b9562">More...</a><br /></td></tr>
-<tr class="separator:a62cdb6089d640a0daa7c9dc5230b9562"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f7872927eab528c0253c34a93113d5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a0f7872927eab528c0253c34a93113d5b">buildSystemMatrixUpperTriangle</a> ()</td></tr>
+<tr class="separator:a0f7872927eab528c0253c34a93113d5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a871b4c1043dafd0d7aa08d57d95e79df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a871b4c1043dafd0d7aa08d57d95e79df">assembleRhs</a> (mfem::BlockVector *) const</td></tr>
+<tr class="memdesc:a871b4c1043dafd0d7aa08d57d95e79df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the target right-hand side.  <a href="classheat_1_1LsqXtFEM.html#a871b4c1043dafd0d7aa08d57d95e79df">More...</a><br /></td></tr>
+<tr class="separator:a871b4c1043dafd0d7aa08d57d95e79df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3646af2689a2681f5d701678bd34f7a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a3646af2689a2681f5d701678bd34f7a0">buildProjectorMatrix</a> ()</td></tr>
 <tr class="memdesc:a3646af2689a2681f5d701678bd34f7a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds the L2-projection matrix.  <a href="classheat_1_1LsqXtFEM.html#a3646af2689a2681f5d701678bd34f7a0">More...</a><br /></td></tr>
 <tr class="separator:a3646af2689a2681f5d701678bd34f7a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f14d93d0516b4642f3c34effeda889c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a9f14d93d0516b4642f3c34effeda889c">assembleProjectionRhs</a> (BlockVector *) const</td></tr>
-<tr class="memdesc:a9f14d93d0516b4642f3c34effeda889c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the target right-hand side for L2-projection.  <a href="classheat_1_1LsqXtFEM.html#a9f14d93d0516b4642f3c34effeda889c">More...</a><br /></td></tr>
-<tr class="separator:a9f14d93d0516b4642f3c34effeda889c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5bb9d4cff496eb919faf021a79dcef7a"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classheat_1_1TestCases.html">heat::TestCases</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a5bb9d4cff496eb919faf021a79dcef7a">getTestCase</a> () const</td></tr>
+<tr class="memitem:a4726640ad89ec68c147340bc449c9b10"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a4726640ad89ec68c147340bc449c9b10">assembleProjectionRhs</a> (mfem::BlockVector *) const</td></tr>
+<tr class="memdesc:a4726640ad89ec68c147340bc449c9b10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the target right-hand side for L2-projection.  <a href="classheat_1_1LsqXtFEM.html#a4726640ad89ec68c147340bc449c9b10">More...</a><br /></td></tr>
+<tr class="separator:a4726640ad89ec68c147340bc449c9b10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bb9d4cff496eb919faf021a79dcef7a"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; heat::TestCases &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a5bb9d4cff496eb919faf021a79dcef7a">getTestCase</a> () const</td></tr>
 <tr class="memdesc:a5bb9d4cff496eb919faf021a79dcef7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the test case.  <a href="classheat_1_1LsqXtFEM.html#a5bb9d4cff496eb919faf021a79dcef7a">More...</a><br /></td></tr>
 <tr class="separator:a5bb9d4cff496eb919faf021a79dcef7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6c66dd30305e77d0aa78b22aa7830f1"><td class="memItemLeft" align="right" valign="top">Mesh *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ad6c66dd30305e77d0aa78b22aa7830f1">getTMesh</a> () const</td></tr>
-<tr class="memdesc:ad6c66dd30305e77d0aa78b22aa7830f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the temporal mesh.  <a href="classheat_1_1LsqXtFEM.html#ad6c66dd30305e77d0aa78b22aa7830f1">More...</a><br /></td></tr>
-<tr class="separator:ad6c66dd30305e77d0aa78b22aa7830f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5c5bca3aed48e2b1f782432a2e9f83e"><td class="memItemLeft" align="right" valign="top">Mesh *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ac5c5bca3aed48e2b1f782432a2e9f83e">getXMesh</a> () const</td></tr>
-<tr class="memdesc:ac5c5bca3aed48e2b1f782432a2e9f83e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the spatial mesh.  <a href="classheat_1_1LsqXtFEM.html#ac5c5bca3aed48e2b1f782432a2e9f83e">More...</a><br /></td></tr>
-<tr class="separator:ac5c5bca3aed48e2b1f782432a2e9f83e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6d06530408c8d9a75d76a794c7531a6"><td class="memItemLeft" align="right" valign="top">FiniteElementCollection *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ae6d06530408c8d9a75d76a794c7531a6">getTFec</a> () const</td></tr>
-<tr class="memdesc:ae6d06530408c8d9a75d76a794c7531a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the temporal FE collection.  <a href="classheat_1_1LsqXtFEM.html#ae6d06530408c8d9a75d76a794c7531a6">More...</a><br /></td></tr>
-<tr class="separator:ae6d06530408c8d9a75d76a794c7531a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a992930fa28ceef914afca31899005a6a"><td class="memItemLeft" align="right" valign="top">Array&lt; FiniteElementCollection * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a992930fa28ceef914afca31899005a6a">getXFecs</a> () const</td></tr>
-<tr class="memdesc:a992930fa28ceef914afca31899005a6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the spatial FE collections.  <a href="classheat_1_1LsqXtFEM.html#a992930fa28ceef914afca31899005a6a">More...</a><br /></td></tr>
-<tr class="separator:a992930fa28ceef914afca31899005a6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a551eaea53edb308b3ef22cfaf73db049"><td class="memItemLeft" align="right" valign="top">FiniteElementSpace *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a551eaea53edb308b3ef22cfaf73db049">getTFespace</a> () const</td></tr>
-<tr class="memdesc:a551eaea53edb308b3ef22cfaf73db049"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the temporal FE space.  <a href="classheat_1_1LsqXtFEM.html#a551eaea53edb308b3ef22cfaf73db049">More...</a><br /></td></tr>
-<tr class="separator:a551eaea53edb308b3ef22cfaf73db049"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c246816c583cb1f21b23f1376c9ceed"><td class="memItemLeft" align="right" valign="top">Array&lt; FiniteElementSpace * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a6c246816c583cb1f21b23f1376c9ceed">getXFespaces</a> () const</td></tr>
-<tr class="memdesc:a6c246816c583cb1f21b23f1376c9ceed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the spatial FE spaces.  <a href="classheat_1_1LsqXtFEM.html#a6c246816c583cb1f21b23f1376c9ceed">More...</a><br /></td></tr>
-<tr class="separator:a6c246816c583cb1f21b23f1376c9ceed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5bb4942ecc229957988986b089e3c319"><td class="memItemLeft" align="right" valign="top">BlockOperator *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a5bb4942ecc229957988986b089e3c319">getHeatOp</a> () const</td></tr>
-<tr class="memdesc:a5bb4942ecc229957988986b089e3c319"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the system operator.  <a href="classheat_1_1LsqXtFEM.html#a5bb4942ecc229957988986b089e3c319">More...</a><br /></td></tr>
-<tr class="separator:a5bb4942ecc229957988986b089e3c319"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0361e95d6afca29a5feaee8b9810eed"><td class="memItemLeft" align="right" valign="top">Array&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ac0361e95d6afca29a5feaee8b9810eed">getBlockOffsets</a> () const</td></tr>
-<tr class="separator:ac0361e95d6afca29a5feaee8b9810eed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a303a1d06ba81e8cb97a1348fe335eee1"><td class="memItemLeft" align="right" valign="top">SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a303a1d06ba81e8cb97a1348fe335eee1">getHeatMat</a> () const</td></tr>
-<tr class="memdesc:a303a1d06ba81e8cb97a1348fe335eee1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the monolithic system matrix.  <a href="classheat_1_1LsqXtFEM.html#a303a1d06ba81e8cb97a1348fe335eee1">More...</a><br /></td></tr>
-<tr class="separator:a303a1d06ba81e8cb97a1348fe335eee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac57138c910d78ac398e639419a70d7b0"><td class="memItemLeft" align="right" valign="top">SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ac57138c910d78ac398e639419a70d7b0">getHeatProjectionMat</a> () const</td></tr>
-<tr class="memdesc:ac57138c910d78ac398e639419a70d7b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the projection matrix.  <a href="classheat_1_1LsqXtFEM.html#ac57138c910d78ac398e639419a70d7b0">More...</a><br /></td></tr>
-<tr class="separator:ac57138c910d78ac398e639419a70d7b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a070bb0bbd60ef80b94ea876105770424"><td class="memItemLeft" align="right" valign="top">mfem::Mesh *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a070bb0bbd60ef80b94ea876105770424">getTMesh</a> () const</td></tr>
+<tr class="memdesc:a070bb0bbd60ef80b94ea876105770424"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the temporal mesh.  <a href="classheat_1_1LsqXtFEM.html#a070bb0bbd60ef80b94ea876105770424">More...</a><br /></td></tr>
+<tr class="separator:a070bb0bbd60ef80b94ea876105770424"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e004ef1eeed97bba0cc362977e87062"><td class="memItemLeft" align="right" valign="top">mfem::Mesh *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a8e004ef1eeed97bba0cc362977e87062">getXMesh</a> () const</td></tr>
+<tr class="memdesc:a8e004ef1eeed97bba0cc362977e87062"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the spatial mesh.  <a href="classheat_1_1LsqXtFEM.html#a8e004ef1eeed97bba0cc362977e87062">More...</a><br /></td></tr>
+<tr class="separator:a8e004ef1eeed97bba0cc362977e87062"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21cf638d7301448f7822e5d1d8ae12a3"><td class="memItemLeft" align="right" valign="top">mfem::FiniteElementCollection *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a21cf638d7301448f7822e5d1d8ae12a3">getTFec</a> () const</td></tr>
+<tr class="memdesc:a21cf638d7301448f7822e5d1d8ae12a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the temporal FE collection.  <a href="classheat_1_1LsqXtFEM.html#a21cf638d7301448f7822e5d1d8ae12a3">More...</a><br /></td></tr>
+<tr class="separator:a21cf638d7301448f7822e5d1d8ae12a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e5e296292dd2ebc2626341c5b293acd"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; mfem::FiniteElementCollection * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a4e5e296292dd2ebc2626341c5b293acd">getXFecs</a> () const</td></tr>
+<tr class="memdesc:a4e5e296292dd2ebc2626341c5b293acd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the spatial FE collections.  <a href="classheat_1_1LsqXtFEM.html#a4e5e296292dd2ebc2626341c5b293acd">More...</a><br /></td></tr>
+<tr class="separator:a4e5e296292dd2ebc2626341c5b293acd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fab4e9e4b8607253aadde38180ce04d"><td class="memItemLeft" align="right" valign="top">mfem::FiniteElementSpace *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a5fab4e9e4b8607253aadde38180ce04d">getTFespace</a> () const</td></tr>
+<tr class="memdesc:a5fab4e9e4b8607253aadde38180ce04d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the temporal FE space.  <a href="classheat_1_1LsqXtFEM.html#a5fab4e9e4b8607253aadde38180ce04d">More...</a><br /></td></tr>
+<tr class="separator:a5fab4e9e4b8607253aadde38180ce04d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac290ce542953b1671e0ee1f29ff275bf"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; mfem::FiniteElementSpace * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ac290ce542953b1671e0ee1f29ff275bf">getXFespaces</a> () const</td></tr>
+<tr class="memdesc:ac290ce542953b1671e0ee1f29ff275bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the spatial FE spaces.  <a href="classheat_1_1LsqXtFEM.html#ac290ce542953b1671e0ee1f29ff275bf">More...</a><br /></td></tr>
+<tr class="separator:ac290ce542953b1671e0ee1f29ff275bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a096be78e5756323519e79717a70d141f"><td class="memItemLeft" align="right" valign="top">mfem::BlockOperator *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a096be78e5756323519e79717a70d141f">getHeatOp</a> () const</td></tr>
+<tr class="memdesc:a096be78e5756323519e79717a70d141f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the system operator.  <a href="classheat_1_1LsqXtFEM.html#a096be78e5756323519e79717a70d141f">More...</a><br /></td></tr>
+<tr class="separator:a096be78e5756323519e79717a70d141f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8781641cb8f30335cb05f4307927f62f"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a8781641cb8f30335cb05f4307927f62f">getBlockOffsets</a> () const</td></tr>
+<tr class="separator:a8781641cb8f30335cb05f4307927f62f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1eefce18cdbf833e09d44aa4767559ac"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a1eefce18cdbf833e09d44aa4767559ac">getHeatMat</a> () const</td></tr>
+<tr class="memdesc:a1eefce18cdbf833e09d44aa4767559ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the monolithic system matrix.  <a href="classheat_1_1LsqXtFEM.html#a1eefce18cdbf833e09d44aa4767559ac">More...</a><br /></td></tr>
+<tr class="separator:a1eefce18cdbf833e09d44aa4767559ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac28efd66cac7149783e0e00cb716d5e3"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ac28efd66cac7149783e0e00cb716d5e3">getHeatProjectionMat</a> () const</td></tr>
+<tr class="memdesc:ac28efd66cac7149783e0e00cb716d5e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the projection matrix.  <a href="classheat_1_1LsqXtFEM.html#ac28efd66cac7149783e0e00cb716d5e3">More...</a><br /></td></tr>
+<tr class="separator:ac28efd66cac7149783e0e00cb716d5e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abbe9568f731c37b5593b43b996c29b7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#abbe9568f731c37b5593b43b996c29b7e">print</a> () const</td></tr>
 <tr class="memdesc:abbe9568f731c37b5593b43b996c29b7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints some info.  <a href="classheat_1_1LsqXtFEM.html#abbe9568f731c37b5593b43b996c29b7e">More...</a><br /></td></tr>
 <tr class="separator:abbe9568f731c37b5593b43b996c29b7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a584dbc588c0673d11b497ae59e1c4645"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a584dbc588c0673d11b497ae59e1c4645">getSystemBlock11</a> () const</td></tr>
+<tr class="separator:a584dbc588c0673d11b497ae59e1c4645"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25f7851312e272baa236362c7fcea7c1"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a25f7851312e272baa236362c7fcea7c1">getSystemBlock12</a> () const</td></tr>
+<tr class="separator:a25f7851312e272baa236362c7fcea7c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7379d9df1324e807172ed4a59090cdb7"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a7379d9df1324e807172ed4a59090cdb7">getSystemBlock21</a> () const</td></tr>
+<tr class="separator:a7379d9df1324e807172ed4a59090cdb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29383640fd293ddc987c576e491f232d"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a29383640fd293ddc987c576e491f232d">getSystemBlock22</a> () const</td></tr>
+<tr class="separator:a29383640fd293ddc987c576e491f232d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a703cea473fab3bb9189937c023271143"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a703cea473fab3bb9189937c023271143">assembleSourceXDiv</a> (Vector &amp;, double) const</td></tr>
-<tr class="separator:a703cea473fab3bb9189937c023271143"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f987cb226d71a4ef707cce2b4f15380"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a7f987cb226d71a4ef707cce2b4f15380">assembleXProjectionRhs</a> (Vector &amp;, Vector &amp;, double) const</td></tr>
-<tr class="separator:a7f987cb226d71a4ef707cce2b4f15380"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f7b4f27c19129462a0db5f66f530887"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a5f7b4f27c19129462a0db5f66f530887">assembleICs</a> (Vector &amp;) const</td></tr>
-<tr class="memdesc:a5f7b4f27c19129462a0db5f66f530887"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the initial conditions.  <a href="classheat_1_1LsqXtFEM.html#a5f7b4f27c19129462a0db5f66f530887">More...</a><br /></td></tr>
-<tr class="separator:a5f7b4f27c19129462a0db5f66f530887"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39f2ecac66bcf09c896271bd9e16b1e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a39f2ecac66bcf09c896271bd9e16b1e8">assembleICsXProjection</a> (Vector &amp;) const</td></tr>
-<tr class="separator:a39f2ecac66bcf09c896271bd9e16b1e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ffa32bf8f31c783d43c2e8297df9b94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a0ffa32bf8f31c783d43c2e8297df9b94">assembleSourceTGradXProjection</a> (Vector &amp;) const</td></tr>
-<tr class="separator:a0ffa32bf8f31c783d43c2e8297df9b94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12aeaa37b1235aa6f0accb19f4fc141a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a12aeaa37b1235aa6f0accb19f4fc141a">assembleSourceXProjection</a> (Vector &amp;, double) const</td></tr>
-<tr class="separator:a12aeaa37b1235aa6f0accb19f4fc141a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21ec0a99be5ba6396553bc4692123bdf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a21ec0a99be5ba6396553bc4692123bdf">assembleSourceTProjectionXDiv</a> (Vector &amp;) const</td></tr>
-<tr class="separator:a21ec0a99be5ba6396553bc4692123bdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a407dda4a9e4bd10843a554bfe04edc29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a407dda4a9e4bd10843a554bfe04edc29">addVector</a> (const Array&lt; int &gt; &amp;, const Vector &amp;, Vector &amp;) const</td></tr>
-<tr class="separator:a407dda4a9e4bd10843a554bfe04edc29"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f173753470f813b5cd7c2c5d08c2f52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a9f173753470f813b5cd7c2c5d08c2f52">applyBCs</a> (SparseMatrix &amp;) const</td></tr>
-<tr class="memdesc:a9f173753470f813b5cd7c2c5d08c2f52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies boundary conditions on a matrix.  <a href="classheat_1_1LsqXtFEM.html#a9f173753470f813b5cd7c2c5d08c2f52">More...</a><br /></td></tr>
-<tr class="separator:a9f173753470f813b5cd7c2c5d08c2f52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a341afaa3c4bca6fe65cafd0600dbbe2c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a341afaa3c4bca6fe65cafd0600dbbe2c">applyBCs</a> (BlockVector &amp;) const</td></tr>
-<tr class="memdesc:a341afaa3c4bca6fe65cafd0600dbbe2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies boundary conditions on a vector.  <a href="classheat_1_1LsqXtFEM.html#a341afaa3c4bca6fe65cafd0600dbbe2c">More...</a><br /></td></tr>
-<tr class="separator:a341afaa3c4bca6fe65cafd0600dbbe2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb0aeee7f4d4fff1a8ec600b4db262a5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#aeb0aeee7f4d4fff1a8ec600b4db262a5">assembleSourceXDiv</a> (mfem::Vector &amp;, double) const</td></tr>
+<tr class="separator:aeb0aeee7f4d4fff1a8ec600b4db262a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea543575a8413a75205fd6b692e99b56"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#aea543575a8413a75205fd6b692e99b56">assembleXProjectionRhs</a> (mfem::Vector &amp;, mfem::Vector &amp;, double) const</td></tr>
+<tr class="separator:aea543575a8413a75205fd6b692e99b56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefb3fdf337d92837b2351854ded6deb6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#aefb3fdf337d92837b2351854ded6deb6">assembleICs</a> (mfem::Vector &amp;) const</td></tr>
+<tr class="memdesc:aefb3fdf337d92837b2351854ded6deb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the initial conditions.  <a href="classheat_1_1LsqXtFEM.html#aefb3fdf337d92837b2351854ded6deb6">More...</a><br /></td></tr>
+<tr class="separator:aefb3fdf337d92837b2351854ded6deb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3c499884011ffead7b0f6ba5e35d57c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#af3c499884011ffead7b0f6ba5e35d57c">assembleICsXProjection</a> (mfem::Vector &amp;) const</td></tr>
+<tr class="separator:af3c499884011ffead7b0f6ba5e35d57c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e45a4ccf64a88f4866b766800222db8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a6e45a4ccf64a88f4866b766800222db8">assembleSourceTGradXProjection</a> (mfem::Vector &amp;) const</td></tr>
+<tr class="separator:a6e45a4ccf64a88f4866b766800222db8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e7f549728df289380e7ad682cf330ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a7e7f549728df289380e7ad682cf330ad">assembleSourceXProjection</a> (mfem::Vector &amp;, double) const</td></tr>
+<tr class="separator:a7e7f549728df289380e7ad682cf330ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af28c6d85e1e58b6dfcd4252d2e414852"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#af28c6d85e1e58b6dfcd4252d2e414852">assembleSourceTProjectionXDiv</a> (mfem::Vector &amp;) const</td></tr>
+<tr class="separator:af28c6d85e1e58b6dfcd4252d2e414852"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7181fa9c2d465f8922e5595f4fbc4365"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a7181fa9c2d465f8922e5595f4fbc4365">addVector</a> (const mfem::Array&lt; int &gt; &amp;, const mfem::Vector &amp;, mfem::Vector &amp;) const</td></tr>
+<tr class="separator:a7181fa9c2d465f8922e5595f4fbc4365"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7ff3b50f34523e7ca56bc9c189a5066"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ad7ff3b50f34523e7ca56bc9c189a5066">applyBCs</a> (mfem::SparseMatrix &amp;) const</td></tr>
+<tr class="memdesc:ad7ff3b50f34523e7ca56bc9c189a5066"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies boundary conditions on a matrix.  <a href="classheat_1_1LsqXtFEM.html#ad7ff3b50f34523e7ca56bc9c189a5066">More...</a><br /></td></tr>
+<tr class="separator:ad7ff3b50f34523e7ca56bc9c189a5066"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61e64a85483d6088275d2727e215c379"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a61e64a85483d6088275d2727e215c379">applyBCs</a> (mfem::BlockVector &amp;) const</td></tr>
+<tr class="memdesc:a61e64a85483d6088275d2727e215c379"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies boundary conditions on a vector.  <a href="classheat_1_1LsqXtFEM.html#a61e64a85483d6088275d2727e215c379">More...</a><br /></td></tr>
+<tr class="separator:a61e64a85483d6088275d2727e215c379"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -202,67 +207,67 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:afb4197ca853db89fd4cef45746773a17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04bece334cc1289174e362b1dc9e6ecf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a04bece334cc1289174e362b1dc9e6ecf">m_deg</a></td></tr>
 <tr class="separator:a04bece334cc1289174e362b1dc9e6ecf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1534eda3091387f6f041c9bc4d191ec8"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classheat_1_1TestCases.html">heat::TestCases</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a1534eda3091387f6f041c9bc4d191ec8">m_testCase</a></td></tr>
+<tr class="memitem:a1534eda3091387f6f041c9bc4d191ec8"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; heat::TestCases &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a1534eda3091387f6f041c9bc4d191ec8">m_testCase</a></td></tr>
 <tr class="separator:a1534eda3091387f6f041c9bc4d191ec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc8eedabad966510e2369fbee9a00d09"><td class="memItemLeft" align="right" valign="top">FiniteElementCollection *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#acc8eedabad966510e2369fbee9a00d09">m_tFec</a> = nullptr</td></tr>
-<tr class="separator:acc8eedabad966510e2369fbee9a00d09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6579569b5f71600a82c060fd5315233"><td class="memItemLeft" align="right" valign="top">FiniteElementSpace *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ac6579569b5f71600a82c060fd5315233">m_tFespace</a> = nullptr</td></tr>
-<tr class="separator:ac6579569b5f71600a82c060fd5315233"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2474dd852485b18a3b13a38d6071ba74"><td class="memItemLeft" align="right" valign="top">Array&lt; FiniteElementCollection * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a2474dd852485b18a3b13a38d6071ba74">m_xFecs</a></td></tr>
-<tr class="separator:a2474dd852485b18a3b13a38d6071ba74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8504146c4d39b286ea6bce413a32ceae"><td class="memItemLeft" align="right" valign="top">Array&lt; FiniteElementSpace * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a8504146c4d39b286ea6bce413a32ceae">m_xFespaces</a></td></tr>
-<tr class="separator:a8504146c4d39b286ea6bce413a32ceae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a240f9e69a4d4031cfe02e40e57140c2d"><td class="memItemLeft" align="right" valign="top">Array&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a240f9e69a4d4031cfe02e40e57140c2d">m_block_offsets</a></td></tr>
-<tr class="separator:a240f9e69a4d4031cfe02e40e57140c2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bb1fe56d153255be07b10d3ea37fa3c"><td class="memItemLeft" align="right" valign="top">SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a0bb1fe56d153255be07b10d3ea37fa3c">m_tMass</a> = nullptr</td></tr>
-<tr class="separator:a0bb1fe56d153255be07b10d3ea37fa3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0374258c569cb272bc8f96ce8249725b"><td class="memItemLeft" align="right" valign="top">SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a0374258c569cb272bc8f96ce8249725b">m_tStiff</a> = nullptr</td></tr>
-<tr class="separator:a0374258c569cb272bc8f96ce8249725b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af40c2ce025c954c65f7ff6f623f24cd4"><td class="memItemLeft" align="right" valign="top">SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#af40c2ce025c954c65f7ff6f623f24cd4">m_tGrad</a> = nullptr</td></tr>
-<tr class="separator:af40c2ce025c954c65f7ff6f623f24cd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f7f1fb44e1468e5323dca082e5e876b"><td class="memItemLeft" align="right" valign="top">SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a6f7f1fb44e1468e5323dca082e5e876b">m_xMass1</a> = nullptr</td></tr>
-<tr class="separator:a6f7f1fb44e1468e5323dca082e5e876b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a363e9a7ae5e5d96a74a7488bb5617c0e"><td class="memItemLeft" align="right" valign="top">SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a363e9a7ae5e5d96a74a7488bb5617c0e">m_xMass2</a> = nullptr</td></tr>
-<tr class="separator:a363e9a7ae5e5d96a74a7488bb5617c0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9771ccef7ff6c31443e15fde5da1c880"><td class="memItemLeft" align="right" valign="top">SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a9771ccef7ff6c31443e15fde5da1c880">m_xStiff1</a> = nullptr</td></tr>
-<tr class="separator:a9771ccef7ff6c31443e15fde5da1c880"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22a1ba70c9967c606b3129a6e72fa66a"><td class="memItemLeft" align="right" valign="top">SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a22a1ba70c9967c606b3129a6e72fa66a">m_xStiff2</a> = nullptr</td></tr>
-<tr class="separator:a22a1ba70c9967c606b3129a6e72fa66a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4bffc664263333132db2280c7f28e6a8"><td class="memItemLeft" align="right" valign="top">SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a4bffc664263333132db2280c7f28e6a8">m_xGrad</a> = nullptr</td></tr>
-<tr class="separator:a4bffc664263333132db2280c7f28e6a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32de6ff24e2d9133c5a9e0272a9ea19c"><td class="memItemLeft" align="right" valign="top">SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a32de6ff24e2d9133c5a9e0272a9ea19c">m_xDiv</a> = nullptr</td></tr>
-<tr class="separator:a32de6ff24e2d9133c5a9e0272a9ea19c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5a35669ea29a9216a18ae416a283e77"><td class="memItemLeft" align="right" valign="top">SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#af5a35669ea29a9216a18ae416a283e77">m_block00</a> = nullptr</td></tr>
-<tr class="separator:af5a35669ea29a9216a18ae416a283e77"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aefcb4ecc6f0e1c5de608e6655331e8c3"><td class="memItemLeft" align="right" valign="top">SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#aefcb4ecc6f0e1c5de608e6655331e8c3">m_block01</a> = nullptr</td></tr>
-<tr class="separator:aefcb4ecc6f0e1c5de608e6655331e8c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a910ded831a25d54841bd1e08fba12f3c"><td class="memItemLeft" align="right" valign="top">SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a910ded831a25d54841bd1e08fba12f3c">m_block10</a> = nullptr</td></tr>
-<tr class="separator:a910ded831a25d54841bd1e08fba12f3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02369269e3f54061f19eadfe2f281f83"><td class="memItemLeft" align="right" valign="top">SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a02369269e3f54061f19eadfe2f281f83">m_block11</a> = nullptr</td></tr>
-<tr class="separator:a02369269e3f54061f19eadfe2f281f83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75fbd34f7e3faeff1df5197a44373b6d"><td class="memItemLeft" align="right" valign="top">BlockOperator *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a75fbd34f7e3faeff1df5197a44373b6d">m_heatOp</a> = nullptr</td></tr>
-<tr class="separator:a75fbd34f7e3faeff1df5197a44373b6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acbc862b40bc42d008ed401b1861550e4"><td class="memItemLeft" align="right" valign="top">SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#acbc862b40bc42d008ed401b1861550e4">m_heatMat</a> = nullptr</td></tr>
-<tr class="separator:acbc862b40bc42d008ed401b1861550e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f9004ae32a0055ac8b324206700da6b"><td class="memItemLeft" align="right" valign="top">SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a7f9004ae32a0055ac8b324206700da6b">m_heatProjMat</a> = nullptr</td></tr>
-<tr class="separator:a7f9004ae32a0055ac8b324206700da6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace478adb4c0b1c11c090a8c998d30827"><td class="memItemLeft" align="right" valign="top">Array&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ace478adb4c0b1c11c090a8c998d30827">m_xEssBdrMarker</a></td></tr>
-<tr class="separator:ace478adb4c0b1c11c090a8c998d30827"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad47c7294af0f5dc6de0e830a4783c79e"><td class="memItemLeft" align="right" valign="top">Array&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ad47c7294af0f5dc6de0e830a4783c79e">m_xEssTdofList</a></td></tr>
-<tr class="separator:ad47c7294af0f5dc6de0e830a4783c79e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4239f336c828c0c700c0dcc13bc3f80f"><td class="memItemLeft" align="right" valign="top">Array&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a4239f336c828c0c700c0dcc13bc3f80f">m_essTdofList</a></td></tr>
-<tr class="separator:a4239f336c828c0c700c0dcc13bc3f80f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad20cea1944d1ed12f06b9bd1032b9272"><td class="memItemLeft" align="right" valign="top">mfem::FiniteElementCollection *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ad20cea1944d1ed12f06b9bd1032b9272">m_tFec</a> = nullptr</td></tr>
+<tr class="separator:ad20cea1944d1ed12f06b9bd1032b9272"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a864316f70a2e736bd3c947c7558f722d"><td class="memItemLeft" align="right" valign="top">mfem::FiniteElementSpace *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a864316f70a2e736bd3c947c7558f722d">m_tFespace</a> = nullptr</td></tr>
+<tr class="separator:a864316f70a2e736bd3c947c7558f722d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af29acf2314ff6cda45527dd4af3ec200"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; mfem::FiniteElementCollection * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#af29acf2314ff6cda45527dd4af3ec200">m_xFecs</a></td></tr>
+<tr class="separator:af29acf2314ff6cda45527dd4af3ec200"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f7beea238995d58ae80649ab65396ab"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; mfem::FiniteElementSpace * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a7f7beea238995d58ae80649ab65396ab">m_xFespaces</a></td></tr>
+<tr class="separator:a7f7beea238995d58ae80649ab65396ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad429370bde285a4dff5d3a51681b4cf1"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ad429370bde285a4dff5d3a51681b4cf1">m_block_offsets</a></td></tr>
+<tr class="separator:ad429370bde285a4dff5d3a51681b4cf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01493b5dab178326a158e35a08d1c02a"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a01493b5dab178326a158e35a08d1c02a">m_tMass</a> = nullptr</td></tr>
+<tr class="separator:a01493b5dab178326a158e35a08d1c02a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc4804399a25b04228b5aba1484edcf8"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#acc4804399a25b04228b5aba1484edcf8">m_tStiff</a> = nullptr</td></tr>
+<tr class="separator:acc4804399a25b04228b5aba1484edcf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7441b6d3271f38f62e043239b358e04c"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a7441b6d3271f38f62e043239b358e04c">m_tGrad</a> = nullptr</td></tr>
+<tr class="separator:a7441b6d3271f38f62e043239b358e04c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43d546489ad443d82450cd4bbaa30a42"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a43d546489ad443d82450cd4bbaa30a42">m_xMass1</a> = nullptr</td></tr>
+<tr class="separator:a43d546489ad443d82450cd4bbaa30a42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a907eb5ae8d6212842d81bc37868dae2c"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a907eb5ae8d6212842d81bc37868dae2c">m_xMass2</a> = nullptr</td></tr>
+<tr class="separator:a907eb5ae8d6212842d81bc37868dae2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf56419f1612abb344e728e1e8c2f99f"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#adf56419f1612abb344e728e1e8c2f99f">m_xStiff1</a> = nullptr</td></tr>
+<tr class="separator:adf56419f1612abb344e728e1e8c2f99f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afba9a83b1c90a417222573f5916692bf"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#afba9a83b1c90a417222573f5916692bf">m_xStiff2</a> = nullptr</td></tr>
+<tr class="separator:afba9a83b1c90a417222573f5916692bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a8e6c2bc7d978c045f401cc9dc43d2b"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a7a8e6c2bc7d978c045f401cc9dc43d2b">m_xGrad</a> = nullptr</td></tr>
+<tr class="separator:a7a8e6c2bc7d978c045f401cc9dc43d2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ad609199338187ad529997febd3ac64"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a4ad609199338187ad529997febd3ac64">m_xDiv</a> = nullptr</td></tr>
+<tr class="separator:a4ad609199338187ad529997febd3ac64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8032e61454ea34d2167b90dc3ea75295"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a8032e61454ea34d2167b90dc3ea75295">m_block00</a> = nullptr</td></tr>
+<tr class="separator:a8032e61454ea34d2167b90dc3ea75295"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3e1e2636b47bfceac018178f1f0eb77"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ad3e1e2636b47bfceac018178f1f0eb77">m_block01</a> = nullptr</td></tr>
+<tr class="separator:ad3e1e2636b47bfceac018178f1f0eb77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e9f6c6311f107302846c954e2986b08"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a0e9f6c6311f107302846c954e2986b08">m_block10</a> = nullptr</td></tr>
+<tr class="separator:a0e9f6c6311f107302846c954e2986b08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15a9dccdd38467cd0fc5e6cb4211b2b1"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a15a9dccdd38467cd0fc5e6cb4211b2b1">m_block11</a> = nullptr</td></tr>
+<tr class="separator:a15a9dccdd38467cd0fc5e6cb4211b2b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14120a913addd9a8217074fe6eb8e609"><td class="memItemLeft" align="right" valign="top">mfem::BlockOperator *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a14120a913addd9a8217074fe6eb8e609">m_heatOp</a> = nullptr</td></tr>
+<tr class="separator:a14120a913addd9a8217074fe6eb8e609"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2542cb6ded13eaf3bae2ce952f61287d"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a2542cb6ded13eaf3bae2ce952f61287d">m_heatMat</a> = nullptr</td></tr>
+<tr class="separator:a2542cb6ded13eaf3bae2ce952f61287d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bf7086e8b9c8493d3c579c7b09d6877"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a4bf7086e8b9c8493d3c579c7b09d6877">m_heatProjMat</a> = nullptr</td></tr>
+<tr class="separator:a4bf7086e8b9c8493d3c579c7b09d6877"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace66dae234490ade663677e77b7a7d09"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ace66dae234490ade663677e77b7a7d09">m_xEssBdrMarker</a></td></tr>
+<tr class="separator:ace66dae234490ade663677e77b7a7d09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf9c1f45782ae9d40cb634bd0c7889b2"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#acf9c1f45782ae9d40cb634bd0c7889b2">m_xEssTdofList</a></td></tr>
+<tr class="separator:acf9c1f45782ae9d40cb634bd0c7889b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab3cb253f4ba5d3741f2822fd9eb7f88"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#aab3cb253f4ba5d3741f2822fd9eb7f88">m_essTdofList</a></td></tr>
+<tr class="separator:aab3cb253f4ba5d3741f2822fd9eb7f88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a470e465fe1686f45cbdd3322ad4abc86"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a470e465fe1686f45cbdd3322ad4abc86">m_firstPass</a> = true</td></tr>
 <tr class="separator:a470e465fe1686f45cbdd3322ad4abc86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c421fa18fb5ea0a23a8acf4cabaff9d"><td class="memItemLeft" align="right" valign="top">SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a9c421fa18fb5ea0a23a8acf4cabaff9d">m_block00MedIdp</a> = nullptr</td></tr>
-<tr class="separator:a9c421fa18fb5ea0a23a8acf4cabaff9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a2cff7489afcd9f70dc5036fb1a12f1"><td class="memItemLeft" align="right" valign="top">SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a4a2cff7489afcd9f70dc5036fb1a12f1">m_block01MedIdp</a> = nullptr</td></tr>
-<tr class="separator:a4a2cff7489afcd9f70dc5036fb1a12f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a535aea9ddf991d23c324f28a2a376432"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a535aea9ddf991d23c324f28a2a376432">m_block00MedIdp</a> = nullptr</td></tr>
+<tr class="separator:a535aea9ddf991d23c324f28a2a376432"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1747857ba186d9e719b9b312fd74471f"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a1747857ba186d9e719b9b312fd74471f">m_block01MedIdp</a> = nullptr</td></tr>
+<tr class="separator:a1747857ba186d9e719b9b312fd74471f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base class for Least-squares space-time FE discretisation of the heat equation. </p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00018">18</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00017">17</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae9a6fd387867f18a214a0bdbd63b9f09"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae9a6fd387867f18a214a0bdbd63b9f09">&#9670;&nbsp;</a></span>LsqXtFEM()</h2>
@@ -279,7 +284,7 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classheat_1_1TestCases.html">heat::TestCases</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">std::shared_ptr&lt; heat::TestCases &gt; &amp;&#160;</td>
           <td class="paramname"><em>testCase</em>&#160;</td>
         </tr>
         <tr>
@@ -292,7 +297,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Constructor with config and test case as arguments. </p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8cpp_source.html#l00010">10</a> of file <a class="el" href="discretisation_8cpp_source.html">discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00012">12</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -313,13 +318,13 @@ Protected Attributes</h2></td></tr>
 
 <p>Default destructor. </p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8cpp_source.html#l00019">19</a> of file <a class="el" href="discretisation_8cpp_source.html">discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00021">21</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a407dda4a9e4bd10843a554bfe04edc29"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a407dda4a9e4bd10843a554bfe04edc29">&#9670;&nbsp;</a></span>addVector()</h2>
+<a id="a7181fa9c2d465f8922e5595f4fbc4365"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7181fa9c2d465f8922e5595f4fbc4365">&#9670;&nbsp;</a></span>addVector()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -330,20 +335,20 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">void heat::LsqXtFEM::addVector </td>
           <td>(</td>
-          <td class="paramtype">const Array&lt; int &gt; &amp;&#160;</td>
-          <td class="paramname"><em>vdofs</em>, </td>
+          <td class="paramtype">const mfem::Array&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const Vector &amp;&#160;</td>
-          <td class="paramname"><em>elvec</em>, </td>
+          <td class="paramtype">const mfem::Vector &amp;&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Vector &amp;&#160;</td>
-          <td class="paramname"><em>b</em>&#160;</td>
+          <td class="paramtype">mfem::Vector &amp;&#160;</td>
+          <td class="paramname">&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -358,12 +363,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8cpp_source.html#l00308">308</a> of file <a class="el" href="discretisation_8cpp_source.html">discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00310">310</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a341afaa3c4bca6fe65cafd0600dbbe2c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a341afaa3c4bca6fe65cafd0600dbbe2c">&#9670;&nbsp;</a></span>applyBCs() <span class="overload">[1/2]</span></h2>
+<a id="a61e64a85483d6088275d2727e215c379"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61e64a85483d6088275d2727e215c379">&#9670;&nbsp;</a></span>applyBCs() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -374,8 +379,8 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">void heat::LsqXtFEM::applyBCs </td>
           <td>(</td>
-          <td class="paramtype">BlockVector &amp;&#160;</td>
-          <td class="paramname"><em>B</em></td><td>)</td>
+          <td class="paramtype">mfem::BlockVector &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -388,12 +393,10 @@ Protected Attributes</h2></td></tr>
 
 <p>Applies boundary conditions on a vector. </p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8cpp_source.html#l00346">346</a> of file <a class="el" href="discretisation_8cpp_source.html">discretisation.cpp</a>.</p>
-
 </div>
 </div>
-<a id="a9f173753470f813b5cd7c2c5d08c2f52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9f173753470f813b5cd7c2c5d08c2f52">&#9670;&nbsp;</a></span>applyBCs() <span class="overload">[2/2]</span></h2>
+<a id="ad7ff3b50f34523e7ca56bc9c189a5066"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7ff3b50f34523e7ca56bc9c189a5066">&#9670;&nbsp;</a></span>applyBCs() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -404,8 +407,8 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">void heat::LsqXtFEM::applyBCs </td>
           <td>(</td>
-          <td class="paramtype">SparseMatrix &amp;&#160;</td>
-          <td class="paramname"><em>A</em></td><td>)</td>
+          <td class="paramtype">mfem::SparseMatrix &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -418,12 +421,10 @@ Protected Attributes</h2></td></tr>
 
 <p>Applies boundary conditions on a matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8cpp_source.html#l00338">338</a> of file <a class="el" href="discretisation_8cpp_source.html">discretisation.cpp</a>.</p>
-
 </div>
 </div>
-<a id="a5f7b4f27c19129462a0db5f66f530887"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5f7b4f27c19129462a0db5f66f530887">&#9670;&nbsp;</a></span>assembleICs()</h2>
+<a id="aefb3fdf337d92837b2351854ded6deb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefb3fdf337d92837b2351854ded6deb6">&#9670;&nbsp;</a></span>assembleICs()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -434,8 +435,8 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">void heat::LsqXtFEM::assembleICs </td>
           <td>(</td>
-          <td class="paramtype">Vector &amp;&#160;</td>
-          <td class="paramname"><em>b</em></td><td>)</td>
+          <td class="paramtype">mfem::Vector &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -448,12 +449,12 @@ Protected Attributes</h2></td></tr>
 
 <p>Assembles the initial conditions. </p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8cpp_source.html#l00145">145</a> of file <a class="el" href="discretisation_8cpp_source.html">discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00147">147</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a39f2ecac66bcf09c896271bd9e16b1e8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a39f2ecac66bcf09c896271bd9e16b1e8">&#9670;&nbsp;</a></span>assembleICsXProjection()</h2>
+<a id="af3c499884011ffead7b0f6ba5e35d57c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3c499884011ffead7b0f6ba5e35d57c">&#9670;&nbsp;</a></span>assembleICsXProjection()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -464,8 +465,8 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">void heat::LsqXtFEM::assembleICsXProjection </td>
           <td>(</td>
-          <td class="paramtype">Vector &amp;&#160;</td>
-          <td class="paramname"><em>b</em></td><td>)</td>
+          <td class="paramtype">mfem::Vector &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -476,12 +477,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8cpp_source.html#l00179">179</a> of file <a class="el" href="discretisation_8cpp_source.html">discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00181">181</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a9f14d93d0516b4642f3c34effeda889c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9f14d93d0516b4642f3c34effeda889c">&#9670;&nbsp;</a></span>assembleProjectionRhs()</h2>
+<a id="a4726640ad89ec68c147340bc449c9b10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4726640ad89ec68c147340bc449c9b10">&#9670;&nbsp;</a></span>assembleProjectionRhs()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -489,8 +490,8 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">void heat::LsqXtFEM::assembleProjectionRhs </td>
           <td>(</td>
-          <td class="paramtype">BlockVector *&#160;</td>
-          <td class="paramname"><em>B</em></td><td>)</td>
+          <td class="paramtype">mfem::BlockVector *&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -498,7 +499,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Assembles the target right-hand side for L2-projection. </p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8cpp_source.html#l00375">375</a> of file <a class="el" href="discretisation_8cpp_source.html">discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00377">377</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -529,12 +530,12 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classheat_1_1LsqXtFemH1Hdiv.html#ab3fe31953ba511446e565dc9b0622ece">heat::LsqXtFemH1Hdiv</a>, and <a class="el" href="classheat_1_1LsqXtFemH1H1.html#a07d4bf1b31407710785c11e2af2993ef">heat::LsqXtFemH1H1</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00059">59</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00058">58</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a62cdb6089d640a0daa7c9dc5230b9562"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a62cdb6089d640a0daa7c9dc5230b9562">&#9670;&nbsp;</a></span>assembleRhs()</h2>
+<a id="a871b4c1043dafd0d7aa08d57d95e79df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a871b4c1043dafd0d7aa08d57d95e79df">&#9670;&nbsp;</a></span>assembleRhs()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -542,8 +543,8 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">void heat::LsqXtFEM::assembleRhs </td>
           <td>(</td>
-          <td class="paramtype">BlockVector *&#160;</td>
-          <td class="paramname"><em>B</em></td><td>)</td>
+          <td class="paramtype">mfem::BlockVector *&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -551,12 +552,12 @@ Protected Attributes</h2></td></tr>
 
 <p>Assembles the target right-hand side. </p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8cpp_source.html#l00132">132</a> of file <a class="el" href="discretisation_8cpp_source.html">discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00134">134</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a0ffa32bf8f31c783d43c2e8297df9b94"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ffa32bf8f31c783d43c2e8297df9b94">&#9670;&nbsp;</a></span>assembleSourceTGradXProjection()</h2>
+<a id="a6e45a4ccf64a88f4866b766800222db8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e45a4ccf64a88f4866b766800222db8">&#9670;&nbsp;</a></span>assembleSourceTGradXProjection()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -567,8 +568,8 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">void heat::LsqXtFEM::assembleSourceTGradXProjection </td>
           <td>(</td>
-          <td class="paramtype">Vector &amp;&#160;</td>
-          <td class="paramname"><em>b</em></td><td>)</td>
+          <td class="paramtype">mfem::Vector &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -579,12 +580,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8cpp_source.html#l00191">191</a> of file <a class="el" href="discretisation_8cpp_source.html">discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00193">193</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a21ec0a99be5ba6396553bc4692123bdf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a21ec0a99be5ba6396553bc4692123bdf">&#9670;&nbsp;</a></span>assembleSourceTProjectionXDiv()</h2>
+<a id="af28c6d85e1e58b6dfcd4252d2e414852"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af28c6d85e1e58b6dfcd4252d2e414852">&#9670;&nbsp;</a></span>assembleSourceTProjectionXDiv()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -595,8 +596,8 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">void heat::LsqXtFEM::assembleSourceTProjectionXDiv </td>
           <td>(</td>
-          <td class="paramtype">Vector &amp;&#160;</td>
-          <td class="paramname"><em>b</em></td><td>)</td>
+          <td class="paramtype">mfem::Vector &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -607,12 +608,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8cpp_source.html#l00256">256</a> of file <a class="el" href="discretisation_8cpp_source.html">discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00258">258</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a703cea473fab3bb9189937c023271143"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a703cea473fab3bb9189937c023271143">&#9670;&nbsp;</a></span>assembleSourceXDiv()</h2>
+<a id="aeb0aeee7f4d4fff1a8ec600b4db262a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb0aeee7f4d4fff1a8ec600b4db262a5">&#9670;&nbsp;</a></span>assembleSourceXDiv()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -623,7 +624,7 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">virtual void heat::LsqXtFEM::assembleSourceXDiv </td>
           <td>(</td>
-          <td class="paramtype">Vector &amp;&#160;</td>
+          <td class="paramtype">mfem::Vector &amp;&#160;</td>
           <td class="paramname">, </td>
         </tr>
         <tr>
@@ -645,12 +646,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00095">95</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00097">97</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a12aeaa37b1235aa6f0accb19f4fc141a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12aeaa37b1235aa6f0accb19f4fc141a">&#9670;&nbsp;</a></span>assembleSourceXProjection()</h2>
+<a id="a7e7f549728df289380e7ad682cf330ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e7f549728df289380e7ad682cf330ad">&#9670;&nbsp;</a></span>assembleSourceXProjection()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -661,14 +662,14 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">void heat::LsqXtFEM::assembleSourceXProjection </td>
           <td>(</td>
-          <td class="paramtype">Vector &amp;&#160;</td>
-          <td class="paramname"><em>b</em>, </td>
+          <td class="paramtype">mfem::Vector &amp;&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>t</em>&#160;</td>
+          <td class="paramname">&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -683,7 +684,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8cpp_source.html#l00243">243</a> of file <a class="el" href="discretisation_8cpp_source.html">discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00245">245</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -704,7 +705,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Assembles the blocks of the linear system matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8cpp_source.html#l00063">63</a> of file <a class="el" href="discretisation_8cpp_source.html">discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00065">65</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -734,7 +735,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classheat_1_1LsqXtFemH1Hdiv.html#a93a546bc409086e896b61a9c1e6b38a3">heat::LsqXtFemH1Hdiv</a>, and <a class="el" href="classheat_1_1LsqXtFemH1H1.html#a0a7ccae076c5b2cb0c2b4a64e079ae1e">heat::LsqXtFemH1H1</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00049">49</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00048">48</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -764,12 +765,12 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classheat_1_1LsqXtFemH1Hdiv.html#aa648d970183b971de9f0fccfed905872">heat::LsqXtFemH1Hdiv</a>, and <a class="el" href="classheat_1_1LsqXtFemH1H1.html#afee510f4b88bcb0e3f5adf5f6b36f92b">heat::LsqXtFemH1H1</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00038">38</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00037">37</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a7f987cb226d71a4ef707cce2b4f15380"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7f987cb226d71a4ef707cce2b4f15380">&#9670;&nbsp;</a></span>assembleXProjectionRhs()</h2>
+<a id="aea543575a8413a75205fd6b692e99b56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea543575a8413a75205fd6b692e99b56">&#9670;&nbsp;</a></span>assembleXProjectionRhs()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -780,13 +781,13 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">virtual void heat::LsqXtFEM::assembleXProjectionRhs </td>
           <td>(</td>
-          <td class="paramtype">Vector &amp;&#160;</td>
+          <td class="paramtype">mfem::Vector &amp;&#160;</td>
           <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Vector &amp;&#160;</td>
+          <td class="paramtype">mfem::Vector &amp;&#160;</td>
           <td class="paramname">, </td>
         </tr>
         <tr>
@@ -808,7 +809,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00105">105</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00107">107</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -829,7 +830,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Builds the L2-projection matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8cpp_source.html#l00355">355</a> of file <a class="el" href="discretisation_8cpp_source.html">discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00357">357</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -847,31 +848,29 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Builds the linear system matrix from the blocks as a monolithic matrix </p>
 
-<p>Builds the linear system matrix from the blocks as a monolithic matrix. </p>
-
-<p class="definition">Definition at line <a class="el" href="discretisation_8cpp_source.html#l00087">87</a> of file <a class="el" href="discretisation_8cpp_source.html">discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00089">89</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
-<a id="ad1d66887b23e4f4f34471f5fc043b5f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad1d66887b23e4f4f34471f5fc043b5f8">&#9670;&nbsp;</a></span>buildSystemMatrixUpTr()</h2>
+<a id="a0f7872927eab528c0253c34a93113d5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f7872927eab528c0253c34a93113d5b">&#9670;&nbsp;</a></span>buildSystemMatrixUpperTriangle()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void heat::LsqXtFEM::buildSystemMatrixUpTr </td>
+          <td class="memname">void heat::LsqXtFEM::buildSystemMatrixUpperTriangle </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Builds the upper-triangle linear system matrix from the blocks as a monolithic matrix </p>
 
-<p>Builds the upper-triangle linear system matrix from the blocks as a monolithic matrix. </p>
-
-<p class="definition">Definition at line <a class="el" href="discretisation_8cpp_source.html#l00109">109</a> of file <a class="el" href="discretisation_8cpp_source.html">discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00111">111</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -889,15 +888,14 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Builds the linear system matrix from the blocks as an MFEM operator </p>
 
-<p>Builds the linear system matrix from the blocks as an MFEM operator. </p>
-
-<p class="definition">Definition at line <a class="el" href="discretisation_8cpp_source.html#l00073">73</a> of file <a class="el" href="discretisation_8cpp_source.html">discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00075">75</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
-<a id="ac0361e95d6afca29a5feaee8b9810eed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0361e95d6afca29a5feaee8b9810eed">&#9670;&nbsp;</a></span>getBlockOffsets()</h2>
+<a id="a8781641cb8f30335cb05f4307927f62f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8781641cb8f30335cb05f4307927f62f">&#9670;&nbsp;</a></span>getBlockOffsets()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -906,7 +904,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Array&lt;int&gt; heat::LsqXtFEM::getBlockOffsets </td>
+          <td class="memname">mfem::Array&lt;int&gt; heat::LsqXtFEM::getBlockOffsets </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -920,12 +918,12 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Returns the block offsets in the system operator, which has a block-structure </p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00175">175</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00177">177</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a303a1d06ba81e8cb97a1348fe335eee1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a303a1d06ba81e8cb97a1348fe335eee1">&#9670;&nbsp;</a></span>getHeatMat()</h2>
+<a id="a1eefce18cdbf833e09d44aa4767559ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1eefce18cdbf833e09d44aa4767559ac">&#9670;&nbsp;</a></span>getHeatMat()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -934,7 +932,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SparseMatrix* heat::LsqXtFEM::getHeatMat </td>
+          <td class="memname">mfem::SparseMatrix* heat::LsqXtFEM::getHeatMat </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -949,12 +947,12 @@ Protected Attributes</h2></td></tr>
 
 <p>Returns the monolithic system matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00180">180</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00182">182</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a5bb4942ecc229957988986b089e3c319"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5bb4942ecc229957988986b089e3c319">&#9670;&nbsp;</a></span>getHeatOp()</h2>
+<a id="a096be78e5756323519e79717a70d141f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a096be78e5756323519e79717a70d141f">&#9670;&nbsp;</a></span>getHeatOp()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -963,7 +961,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">BlockOperator* heat::LsqXtFEM::getHeatOp </td>
+          <td class="memname">mfem::BlockOperator* heat::LsqXtFEM::getHeatOp </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -978,12 +976,12 @@ Protected Attributes</h2></td></tr>
 
 <p>Returns the system operator. </p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00169">169</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00171">171</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ac57138c910d78ac398e639419a70d7b0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac57138c910d78ac398e639419a70d7b0">&#9670;&nbsp;</a></span>getHeatProjectionMat()</h2>
+<a id="ac28efd66cac7149783e0e00cb716d5e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac28efd66cac7149783e0e00cb716d5e3">&#9670;&nbsp;</a></span>getHeatProjectionMat()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -992,7 +990,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SparseMatrix* heat::LsqXtFEM::getHeatProjectionMat </td>
+          <td class="memname">mfem::SparseMatrix* heat::LsqXtFEM::getHeatProjectionMat </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1007,7 +1005,115 @@ Protected Attributes</h2></td></tr>
 
 <p>Returns the projection matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00185">185</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00187">187</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a584dbc588c0673d11b497ae59e1c4645"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a584dbc588c0673d11b497ae59e1c4645">&#9670;&nbsp;</a></span>getSystemBlock11()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mfem::SparseMatrix* heat::LsqXtFEM::getSystemBlock11 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00197">197</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a25f7851312e272baa236362c7fcea7c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25f7851312e272baa236362c7fcea7c1">&#9670;&nbsp;</a></span>getSystemBlock12()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mfem::SparseMatrix* heat::LsqXtFEM::getSystemBlock12 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00201">201</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a7379d9df1324e807172ed4a59090cdb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7379d9df1324e807172ed4a59090cdb7">&#9670;&nbsp;</a></span>getSystemBlock21()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mfem::SparseMatrix* heat::LsqXtFEM::getSystemBlock21 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00205">205</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a29383640fd293ddc987c576e491f232d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29383640fd293ddc987c576e491f232d">&#9670;&nbsp;</a></span>getSystemBlock22()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mfem::SparseMatrix* heat::LsqXtFEM::getSystemBlock22 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00209">209</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -1021,7 +1127,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="classheat_1_1TestCases.html">heat::TestCases</a>&gt; heat::LsqXtFEM::getTestCase </td>
+          <td class="memname">std::shared_ptr&lt;heat::TestCases&gt; heat::LsqXtFEM::getTestCase </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1036,12 +1142,12 @@ Protected Attributes</h2></td></tr>
 
 <p>Returns the test case. </p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00134">134</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00136">136</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ae6d06530408c8d9a75d76a794c7531a6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6d06530408c8d9a75d76a794c7531a6">&#9670;&nbsp;</a></span>getTFec()</h2>
+<a id="a21cf638d7301448f7822e5d1d8ae12a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21cf638d7301448f7822e5d1d8ae12a3">&#9670;&nbsp;</a></span>getTFec()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1050,7 +1156,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">FiniteElementCollection* heat::LsqXtFEM::getTFec </td>
+          <td class="memname">mfem::FiniteElementCollection* heat::LsqXtFEM::getTFec </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1065,12 +1171,12 @@ Protected Attributes</h2></td></tr>
 
 <p>Returns the temporal FE collection. </p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00149">149</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00151">151</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a551eaea53edb308b3ef22cfaf73db049"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a551eaea53edb308b3ef22cfaf73db049">&#9670;&nbsp;</a></span>getTFespace()</h2>
+<a id="a5fab4e9e4b8607253aadde38180ce04d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fab4e9e4b8607253aadde38180ce04d">&#9670;&nbsp;</a></span>getTFespace()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1079,7 +1185,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">FiniteElementSpace* heat::LsqXtFEM::getTFespace </td>
+          <td class="memname">mfem::FiniteElementSpace* heat::LsqXtFEM::getTFespace </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1094,12 +1200,12 @@ Protected Attributes</h2></td></tr>
 
 <p>Returns the temporal FE space. </p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00159">159</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00161">161</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ad6c66dd30305e77d0aa78b22aa7830f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6c66dd30305e77d0aa78b22aa7830f1">&#9670;&nbsp;</a></span>getTMesh()</h2>
+<a id="a070bb0bbd60ef80b94ea876105770424"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a070bb0bbd60ef80b94ea876105770424">&#9670;&nbsp;</a></span>getTMesh()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1108,7 +1214,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Mesh* heat::LsqXtFEM::getTMesh </td>
+          <td class="memname">mfem::Mesh* heat::LsqXtFEM::getTMesh </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1123,12 +1229,12 @@ Protected Attributes</h2></td></tr>
 
 <p>Returns the temporal mesh. </p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00139">139</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00141">141</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a992930fa28ceef914afca31899005a6a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a992930fa28ceef914afca31899005a6a">&#9670;&nbsp;</a></span>getXFecs()</h2>
+<a id="a4e5e296292dd2ebc2626341c5b293acd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e5e296292dd2ebc2626341c5b293acd">&#9670;&nbsp;</a></span>getXFecs()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1137,7 +1243,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Array&lt;FiniteElementCollection*&gt; heat::LsqXtFEM::getXFecs </td>
+          <td class="memname">mfem::Array&lt;mfem::FiniteElementCollection*&gt; heat::LsqXtFEM::getXFecs </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1152,12 +1258,12 @@ Protected Attributes</h2></td></tr>
 
 <p>Return the spatial FE collections. </p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00154">154</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00156">156</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a6c246816c583cb1f21b23f1376c9ceed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6c246816c583cb1f21b23f1376c9ceed">&#9670;&nbsp;</a></span>getXFespaces()</h2>
+<a id="ac290ce542953b1671e0ee1f29ff275bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac290ce542953b1671e0ee1f29ff275bf">&#9670;&nbsp;</a></span>getXFespaces()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1166,7 +1272,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Array&lt;FiniteElementSpace*&gt; heat::LsqXtFEM::getXFespaces </td>
+          <td class="memname">mfem::Array&lt;mfem::FiniteElementSpace*&gt; heat::LsqXtFEM::getXFespaces </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1181,12 +1287,12 @@ Protected Attributes</h2></td></tr>
 
 <p>Returns the spatial FE spaces. </p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00164">164</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00166">166</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ac5c5bca3aed48e2b1f782432a2e9f83e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5c5bca3aed48e2b1f782432a2e9f83e">&#9670;&nbsp;</a></span>getXMesh()</h2>
+<a id="a8e004ef1eeed97bba0cc362977e87062"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e004ef1eeed97bba0cc362977e87062">&#9670;&nbsp;</a></span>getXMesh()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1195,7 +1301,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Mesh* heat::LsqXtFEM::getXMesh </td>
+          <td class="memname">mfem::Mesh* heat::LsqXtFEM::getXMesh </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1210,7 +1316,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Returns the spatial mesh. </p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00144">144</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00146">146</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -1239,7 +1345,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Prints some info. </p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00190">190</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00192">192</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -1260,12 +1366,12 @@ Protected Attributes</h2></td></tr>
 
 <p>Releases all the memory allocated by this class. </p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8cpp_source.html#l00025">25</a> of file <a class="el" href="discretisation_8cpp_source.html">discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00027">27</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
-<a id="abd953421a7b11f20e16c5aae62f8cfd0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd953421a7b11f20e16c5aae62f8cfd0">&#9670;&nbsp;</a></span>set()</h2>
+<a id="aec4caae035ced62e2e382832573b7af2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec4caae035ced62e2e382832573b7af2">&#9670;&nbsp;</a></span>set()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1276,13 +1382,13 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">virtual void heat::LsqXtFEM::set </td>
           <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; Mesh &gt; &amp;&#160;</td>
+          <td class="paramtype">std::shared_ptr&lt; mfem::Mesh &gt; &amp;&#160;</td>
           <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::shared_ptr&lt; Mesh &gt; &amp;&#160;</td>
+          <td class="paramtype">std::shared_ptr&lt; mfem::Mesh &gt; &amp;&#160;</td>
           <td class="paramname">&#160;</td>
         </tr>
         <tr>
@@ -1300,15 +1406,15 @@ Protected Attributes</h2></td></tr>
 
 <p>Sets the FE space and boundary conditions. </p>
 
-<p>Reimplemented in <a class="el" href="classheat_1_1LsqXtFemH1Hdiv.html#a177db7500205767088f5ad5b42aa90c9">heat::LsqXtFemH1Hdiv</a>, and <a class="el" href="classheat_1_1LsqXtFemH1H1.html#a4425437000a6c98455f34ff216ab4eb7">heat::LsqXtFemH1H1</a>.</p>
+<p>Reimplemented in <a class="el" href="classheat_1_1LsqXtFemH1Hdiv.html#af70abc8e10cf4333c85c7b624f27e1f0">heat::LsqXtFemH1Hdiv</a>, and <a class="el" href="classheat_1_1LsqXtFemH1H1.html#a083cccfdf6cf588391da9a6d233c690f">heat::LsqXtFemH1H1</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00028">28</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00027">27</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="af5a35669ea29a9216a18ae416a283e77"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af5a35669ea29a9216a18ae416a283e77">&#9670;&nbsp;</a></span>m_block00</h2>
+<a id="a8032e61454ea34d2167b90dc3ea75295"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8032e61454ea34d2167b90dc3ea75295">&#9670;&nbsp;</a></span>m_block00</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1317,7 +1423,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SparseMatrix* heat::LsqXtFEM::m_block00 = nullptr</td>
+          <td class="memname">mfem::SparseMatrix* heat::LsqXtFEM::m_block00 = nullptr</td>
         </tr>
       </table>
   </td>
@@ -1327,12 +1433,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00219">219</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00237">237</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a9c421fa18fb5ea0a23a8acf4cabaff9d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c421fa18fb5ea0a23a8acf4cabaff9d">&#9670;&nbsp;</a></span>m_block00MedIdp</h2>
+<a id="a535aea9ddf991d23c324f28a2a376432"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a535aea9ddf991d23c324f28a2a376432">&#9670;&nbsp;</a></span>m_block00MedIdp</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1341,7 +1447,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SparseMatrix* heat::LsqXtFEM::m_block00MedIdp = nullptr</td>
+          <td class="memname">mfem::SparseMatrix* heat::LsqXtFEM::m_block00MedIdp = nullptr</td>
         </tr>
       </table>
   </td>
@@ -1351,12 +1457,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00233">233</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00251">251</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="aefcb4ecc6f0e1c5de608e6655331e8c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aefcb4ecc6f0e1c5de608e6655331e8c3">&#9670;&nbsp;</a></span>m_block01</h2>
+<a id="ad3e1e2636b47bfceac018178f1f0eb77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3e1e2636b47bfceac018178f1f0eb77">&#9670;&nbsp;</a></span>m_block01</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1365,7 +1471,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SparseMatrix* heat::LsqXtFEM::m_block01 = nullptr</td>
+          <td class="memname">mfem::SparseMatrix* heat::LsqXtFEM::m_block01 = nullptr</td>
         </tr>
       </table>
   </td>
@@ -1375,12 +1481,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00220">220</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00238">238</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a4a2cff7489afcd9f70dc5036fb1a12f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4a2cff7489afcd9f70dc5036fb1a12f1">&#9670;&nbsp;</a></span>m_block01MedIdp</h2>
+<a id="a1747857ba186d9e719b9b312fd74471f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1747857ba186d9e719b9b312fd74471f">&#9670;&nbsp;</a></span>m_block01MedIdp</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1389,7 +1495,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SparseMatrix* heat::LsqXtFEM::m_block01MedIdp = nullptr</td>
+          <td class="memname">mfem::SparseMatrix* heat::LsqXtFEM::m_block01MedIdp = nullptr</td>
         </tr>
       </table>
   </td>
@@ -1399,12 +1505,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00234">234</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00252">252</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a910ded831a25d54841bd1e08fba12f3c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a910ded831a25d54841bd1e08fba12f3c">&#9670;&nbsp;</a></span>m_block10</h2>
+<a id="a0e9f6c6311f107302846c954e2986b08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e9f6c6311f107302846c954e2986b08">&#9670;&nbsp;</a></span>m_block10</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1413,7 +1519,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SparseMatrix* heat::LsqXtFEM::m_block10 = nullptr</td>
+          <td class="memname">mfem::SparseMatrix* heat::LsqXtFEM::m_block10 = nullptr</td>
         </tr>
       </table>
   </td>
@@ -1423,12 +1529,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00221">221</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00239">239</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a02369269e3f54061f19eadfe2f281f83"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02369269e3f54061f19eadfe2f281f83">&#9670;&nbsp;</a></span>m_block11</h2>
+<a id="a15a9dccdd38467cd0fc5e6cb4211b2b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15a9dccdd38467cd0fc5e6cb4211b2b1">&#9670;&nbsp;</a></span>m_block11</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1437,7 +1543,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SparseMatrix* heat::LsqXtFEM::m_block11 = nullptr</td>
+          <td class="memname">mfem::SparseMatrix* heat::LsqXtFEM::m_block11 = nullptr</td>
         </tr>
       </table>
   </td>
@@ -1447,12 +1553,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00222">222</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00240">240</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a240f9e69a4d4031cfe02e40e57140c2d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a240f9e69a4d4031cfe02e40e57140c2d">&#9670;&nbsp;</a></span>m_block_offsets</h2>
+<a id="ad429370bde285a4dff5d3a51681b4cf1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad429370bde285a4dff5d3a51681b4cf1">&#9670;&nbsp;</a></span>m_block_offsets</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1461,7 +1567,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Array&lt;int&gt; heat::LsqXtFEM::m_block_offsets</td>
+          <td class="memname">mfem::Array&lt;int&gt; heat::LsqXtFEM::m_block_offsets</td>
         </tr>
       </table>
   </td>
@@ -1471,7 +1577,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00206">206</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00224">224</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -1495,7 +1601,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00196">196</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00214">214</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -1519,12 +1625,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00198">198</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00216">216</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a4239f336c828c0c700c0dcc13bc3f80f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4239f336c828c0c700c0dcc13bc3f80f">&#9670;&nbsp;</a></span>m_essTdofList</h2>
+<a id="aab3cb253f4ba5d3741f2822fd9eb7f88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab3cb253f4ba5d3741f2822fd9eb7f88">&#9670;&nbsp;</a></span>m_essTdofList</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1533,7 +1639,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Array&lt;int&gt; heat::LsqXtFEM::m_essTdofList</td>
+          <td class="memname">mfem::Array&lt;int&gt; heat::LsqXtFEM::m_essTdofList</td>
         </tr>
       </table>
   </td>
@@ -1543,7 +1649,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00230">230</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00248">248</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -1567,12 +1673,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00232">232</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00250">250</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="acbc862b40bc42d008ed401b1861550e4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acbc862b40bc42d008ed401b1861550e4">&#9670;&nbsp;</a></span>m_heatMat</h2>
+<a id="a2542cb6ded13eaf3bae2ce952f61287d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2542cb6ded13eaf3bae2ce952f61287d">&#9670;&nbsp;</a></span>m_heatMat</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1581,7 +1687,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SparseMatrix* heat::LsqXtFEM::m_heatMat = nullptr</td>
+          <td class="memname">mfem::SparseMatrix* heat::LsqXtFEM::m_heatMat = nullptr</td>
         </tr>
       </table>
   </td>
@@ -1591,12 +1697,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00225">225</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00243">243</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a75fbd34f7e3faeff1df5197a44373b6d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a75fbd34f7e3faeff1df5197a44373b6d">&#9670;&nbsp;</a></span>m_heatOp</h2>
+<a id="a14120a913addd9a8217074fe6eb8e609"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14120a913addd9a8217074fe6eb8e609">&#9670;&nbsp;</a></span>m_heatOp</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1605,7 +1711,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">BlockOperator* heat::LsqXtFEM::m_heatOp = nullptr</td>
+          <td class="memname">mfem::BlockOperator* heat::LsqXtFEM::m_heatOp = nullptr</td>
         </tr>
       </table>
   </td>
@@ -1615,12 +1721,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00224">224</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00242">242</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a7f9004ae32a0055ac8b324206700da6b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7f9004ae32a0055ac8b324206700da6b">&#9670;&nbsp;</a></span>m_heatProjMat</h2>
+<a id="a4bf7086e8b9c8493d3c579c7b09d6877"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bf7086e8b9c8493d3c579c7b09d6877">&#9670;&nbsp;</a></span>m_heatProjMat</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1629,7 +1735,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SparseMatrix* heat::LsqXtFEM::m_heatProjMat = nullptr</td>
+          <td class="memname">mfem::SparseMatrix* heat::LsqXtFEM::m_heatProjMat = nullptr</td>
         </tr>
       </table>
   </td>
@@ -1639,7 +1745,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00226">226</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00244">244</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -1653,7 +1759,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="classheat_1_1TestCases.html">heat::TestCases</a>&gt; heat::LsqXtFEM::m_testCase</td>
+          <td class="memname">std::shared_ptr&lt;heat::TestCases&gt; heat::LsqXtFEM::m_testCase</td>
         </tr>
       </table>
   </td>
@@ -1663,12 +1769,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00199">199</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00217">217</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="acc8eedabad966510e2369fbee9a00d09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acc8eedabad966510e2369fbee9a00d09">&#9670;&nbsp;</a></span>m_tFec</h2>
+<a id="ad20cea1944d1ed12f06b9bd1032b9272"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad20cea1944d1ed12f06b9bd1032b9272">&#9670;&nbsp;</a></span>m_tFec</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1677,7 +1783,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">FiniteElementCollection* heat::LsqXtFEM::m_tFec = nullptr</td>
+          <td class="memname">mfem::FiniteElementCollection* heat::LsqXtFEM::m_tFec = nullptr</td>
         </tr>
       </table>
   </td>
@@ -1687,12 +1793,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00201">201</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00219">219</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ac6579569b5f71600a82c060fd5315233"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac6579569b5f71600a82c060fd5315233">&#9670;&nbsp;</a></span>m_tFespace</h2>
+<a id="a864316f70a2e736bd3c947c7558f722d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a864316f70a2e736bd3c947c7558f722d">&#9670;&nbsp;</a></span>m_tFespace</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1701,7 +1807,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">FiniteElementSpace* heat::LsqXtFEM::m_tFespace = nullptr</td>
+          <td class="memname">mfem::FiniteElementSpace* heat::LsqXtFEM::m_tFespace = nullptr</td>
         </tr>
       </table>
   </td>
@@ -1711,12 +1817,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00202">202</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00220">220</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="af40c2ce025c954c65f7ff6f623f24cd4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af40c2ce025c954c65f7ff6f623f24cd4">&#9670;&nbsp;</a></span>m_tGrad</h2>
+<a id="a7441b6d3271f38f62e043239b358e04c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7441b6d3271f38f62e043239b358e04c">&#9670;&nbsp;</a></span>m_tGrad</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1725,7 +1831,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SparseMatrix* heat::LsqXtFEM::m_tGrad = nullptr</td>
+          <td class="memname">mfem::SparseMatrix* heat::LsqXtFEM::m_tGrad = nullptr</td>
         </tr>
       </table>
   </td>
@@ -1735,12 +1841,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00210">210</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00228">228</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a0bb1fe56d153255be07b10d3ea37fa3c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0bb1fe56d153255be07b10d3ea37fa3c">&#9670;&nbsp;</a></span>m_tMass</h2>
+<a id="a01493b5dab178326a158e35a08d1c02a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01493b5dab178326a158e35a08d1c02a">&#9670;&nbsp;</a></span>m_tMass</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1749,7 +1855,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SparseMatrix* heat::LsqXtFEM::m_tMass = nullptr</td>
+          <td class="memname">mfem::SparseMatrix* heat::LsqXtFEM::m_tMass = nullptr</td>
         </tr>
       </table>
   </td>
@@ -1759,12 +1865,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00208">208</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00226">226</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a0374258c569cb272bc8f96ce8249725b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0374258c569cb272bc8f96ce8249725b">&#9670;&nbsp;</a></span>m_tStiff</h2>
+<a id="acc4804399a25b04228b5aba1484edcf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc4804399a25b04228b5aba1484edcf8">&#9670;&nbsp;</a></span>m_tStiff</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1773,7 +1879,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SparseMatrix* heat::LsqXtFEM::m_tStiff = nullptr</td>
+          <td class="memname">mfem::SparseMatrix* heat::LsqXtFEM::m_tStiff = nullptr</td>
         </tr>
       </table>
   </td>
@@ -1783,12 +1889,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00209">209</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00227">227</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a32de6ff24e2d9133c5a9e0272a9ea19c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a32de6ff24e2d9133c5a9e0272a9ea19c">&#9670;&nbsp;</a></span>m_xDiv</h2>
+<a id="a4ad609199338187ad529997febd3ac64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ad609199338187ad529997febd3ac64">&#9670;&nbsp;</a></span>m_xDiv</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1797,7 +1903,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SparseMatrix* heat::LsqXtFEM::m_xDiv = nullptr</td>
+          <td class="memname">mfem::SparseMatrix* heat::LsqXtFEM::m_xDiv = nullptr</td>
         </tr>
       </table>
   </td>
@@ -1807,12 +1913,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00217">217</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00235">235</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ace478adb4c0b1c11c090a8c998d30827"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace478adb4c0b1c11c090a8c998d30827">&#9670;&nbsp;</a></span>m_xEssBdrMarker</h2>
+<a id="ace66dae234490ade663677e77b7a7d09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace66dae234490ade663677e77b7a7d09">&#9670;&nbsp;</a></span>m_xEssBdrMarker</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1821,7 +1927,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Array&lt;int&gt; heat::LsqXtFEM::m_xEssBdrMarker</td>
+          <td class="memname">mfem::Array&lt;int&gt; heat::LsqXtFEM::m_xEssBdrMarker</td>
         </tr>
       </table>
   </td>
@@ -1831,12 +1937,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00228">228</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00246">246</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ad47c7294af0f5dc6de0e830a4783c79e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad47c7294af0f5dc6de0e830a4783c79e">&#9670;&nbsp;</a></span>m_xEssTdofList</h2>
+<a id="acf9c1f45782ae9d40cb634bd0c7889b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf9c1f45782ae9d40cb634bd0c7889b2">&#9670;&nbsp;</a></span>m_xEssTdofList</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1845,7 +1951,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Array&lt;int&gt; heat::LsqXtFEM::m_xEssTdofList</td>
+          <td class="memname">mfem::Array&lt;int&gt; heat::LsqXtFEM::m_xEssTdofList</td>
         </tr>
       </table>
   </td>
@@ -1855,12 +1961,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00229">229</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00247">247</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a2474dd852485b18a3b13a38d6071ba74"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2474dd852485b18a3b13a38d6071ba74">&#9670;&nbsp;</a></span>m_xFecs</h2>
+<a id="af29acf2314ff6cda45527dd4af3ec200"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af29acf2314ff6cda45527dd4af3ec200">&#9670;&nbsp;</a></span>m_xFecs</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1869,7 +1975,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Array&lt;FiniteElementCollection*&gt; heat::LsqXtFEM::m_xFecs</td>
+          <td class="memname">mfem::Array&lt;mfem::FiniteElementCollection*&gt; heat::LsqXtFEM::m_xFecs</td>
         </tr>
       </table>
   </td>
@@ -1879,12 +1985,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00204">204</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00222">222</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a8504146c4d39b286ea6bce413a32ceae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8504146c4d39b286ea6bce413a32ceae">&#9670;&nbsp;</a></span>m_xFespaces</h2>
+<a id="a7f7beea238995d58ae80649ab65396ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f7beea238995d58ae80649ab65396ab">&#9670;&nbsp;</a></span>m_xFespaces</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1893,7 +1999,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Array&lt;FiniteElementSpace*&gt; heat::LsqXtFEM::m_xFespaces</td>
+          <td class="memname">mfem::Array&lt;mfem::FiniteElementSpace*&gt; heat::LsqXtFEM::m_xFespaces</td>
         </tr>
       </table>
   </td>
@@ -1903,12 +2009,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00205">205</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00223">223</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a4bffc664263333132db2280c7f28e6a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4bffc664263333132db2280c7f28e6a8">&#9670;&nbsp;</a></span>m_xGrad</h2>
+<a id="a7a8e6c2bc7d978c045f401cc9dc43d2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a8e6c2bc7d978c045f401cc9dc43d2b">&#9670;&nbsp;</a></span>m_xGrad</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1917,7 +2023,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SparseMatrix* heat::LsqXtFEM::m_xGrad = nullptr</td>
+          <td class="memname">mfem::SparseMatrix* heat::LsqXtFEM::m_xGrad = nullptr</td>
         </tr>
       </table>
   </td>
@@ -1927,12 +2033,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00216">216</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00234">234</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a6f7f1fb44e1468e5323dca082e5e876b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f7f1fb44e1468e5323dca082e5e876b">&#9670;&nbsp;</a></span>m_xMass1</h2>
+<a id="a43d546489ad443d82450cd4bbaa30a42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43d546489ad443d82450cd4bbaa30a42">&#9670;&nbsp;</a></span>m_xMass1</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1941,7 +2047,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SparseMatrix* heat::LsqXtFEM::m_xMass1 = nullptr</td>
+          <td class="memname">mfem::SparseMatrix* heat::LsqXtFEM::m_xMass1 = nullptr</td>
         </tr>
       </table>
   </td>
@@ -1951,12 +2057,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00212">212</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00230">230</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a363e9a7ae5e5d96a74a7488bb5617c0e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a363e9a7ae5e5d96a74a7488bb5617c0e">&#9670;&nbsp;</a></span>m_xMass2</h2>
+<a id="a907eb5ae8d6212842d81bc37868dae2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a907eb5ae8d6212842d81bc37868dae2c">&#9670;&nbsp;</a></span>m_xMass2</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1965,7 +2071,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SparseMatrix* heat::LsqXtFEM::m_xMass2 = nullptr</td>
+          <td class="memname">mfem::SparseMatrix* heat::LsqXtFEM::m_xMass2 = nullptr</td>
         </tr>
       </table>
   </td>
@@ -1975,7 +2081,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00213">213</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00231">231</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -1999,12 +2105,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00198">198</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00216">216</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a9771ccef7ff6c31443e15fde5da1c880"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9771ccef7ff6c31443e15fde5da1c880">&#9670;&nbsp;</a></span>m_xStiff1</h2>
+<a id="adf56419f1612abb344e728e1e8c2f99f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf56419f1612abb344e728e1e8c2f99f">&#9670;&nbsp;</a></span>m_xStiff1</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2013,7 +2119,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SparseMatrix* heat::LsqXtFEM::m_xStiff1 = nullptr</td>
+          <td class="memname">mfem::SparseMatrix* heat::LsqXtFEM::m_xStiff1 = nullptr</td>
         </tr>
       </table>
   </td>
@@ -2023,12 +2129,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00214">214</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00232">232</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a22a1ba70c9967c606b3129a6e72fa66a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a22a1ba70c9967c606b3129a6e72fa66a">&#9670;&nbsp;</a></span>m_xStiff2</h2>
+<a id="afba9a83b1c90a417222573f5916692bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afba9a83b1c90a417222573f5916692bf">&#9670;&nbsp;</a></span>m_xStiff2</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2037,7 +2143,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SparseMatrix* heat::LsqXtFEM::m_xStiff2 = nullptr</td>
+          <td class="memname">mfem::SparseMatrix* heat::LsqXtFEM::m_xStiff2 = nullptr</td>
         </tr>
       </table>
   </td>
@@ -2047,13 +2153,13 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="discretisation_8hpp_source.html#l00215">215</a> of file <a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00233">233</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="discretisation_8hpp_source.html">discretisation.hpp</a></li>
-<li><a class="el" href="discretisation_8cpp_source.html">discretisation.cpp</a></li>
+<li><a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a></li>
+<li><a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

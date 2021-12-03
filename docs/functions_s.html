@@ -65,21 +65,24 @@ $(function() {
 
 <h3><a id="index_s"></a>- s -</h3><ul>
 <li>set()
-: <a class="el" href="classheat_1_1LsqXtFEM.html#abd953421a7b11f20e16c5aae62f8cfd0">heat::LsqXtFEM</a>
-, <a class="el" href="classheat_1_1LsqXtFemH1H1.html#a4425437000a6c98455f34ff216ab4eb7">heat::LsqXtFemH1H1</a>
-, <a class="el" href="classheat_1_1LsqXtFemH1Hdiv.html#a177db7500205767088f5ad5b42aa90c9">heat::LsqXtFemH1Hdiv</a>
+: <a class="el" href="classheat_1_1LsqXtFEM.html#aec4caae035ced62e2e382832573b7af2">heat::LsqXtFEM</a>
+, <a class="el" href="classheat_1_1LsqXtFemH1H1.html#a083cccfdf6cf588391da9a6d233c690f">heat::LsqXtFemH1H1</a>
+, <a class="el" href="classheat_1_1LsqXtFemH1Hdiv.html#af70abc8e10cf4333c85c7b624f27e1f0">heat::LsqXtFemH1Hdiv</a>
 , <a class="el" href="classheat_1_1Observer.html#a94dbe5f7ccd86a87e009678f3800aaac">heat::Observer</a>
 , <a class="el" href="classheat_1_1Solver.html#a4fc66c2025eb9abf1f32d99e2e799f37">heat::Solver</a>
+, <a class="el" href="classsparseHeat_1_1Observer.html#aa50c3fea989217a405cade8e5ead9652">sparseHeat::Observer</a>
 </li>
-<li>setBdryDirichlet()
-: <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#a680f34b258bef2c56c7318ca55f38010">heat::TestCase&lt; LShapedTest1 &gt;</a>
-, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#a71153372e217cdae592dc3e1c427df06">heat::TestCase&lt; LShapedTest2 &gt;</a>
-, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#a7a70bec07f5858205d3eab68b72503bf">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>
-, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#ac2b59dd32f4e6623ba8b5d8f4ebd2154">heat::TestCase&lt; UnitSquareTest1 &gt;</a>
-, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#a8cafa39a232988ad2bd27913e6471447">heat::TestCase&lt; UnitSquareTest2 &gt;</a>
-, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#ac859bf204ddebddaa76f762d1077ac01">heat::TestCase&lt; UnitSquareTest3 &gt;</a>
-, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#a868298d1368d68dc16bcb07b65468a94">heat::TestCase&lt; UnitSquareTest4 &gt;</a>
-, <a class="el" href="classheat_1_1TestCases.html#a7645962f9c776d2938d009d567ea057e">heat::TestCases</a>
+<li>setCoefficients()
+: <a class="el" href="classsparseHeat_1_1SpatialErrorOfSolution.html#afce495da638ea48daf881df2c6bab115">sparseHeat::SpatialErrorOfSolution</a>
+</li>
+<li>setConfigParams()
+: <a class="el" href="classsparseHeat_1_1Solver.html#aaddf3d5a20a803f6c6d9b815d7e4f9eb">sparseHeat::Solver</a>
+</li>
+<li>setCurrentTimeForCoefficients()
+: <a class="el" href="classsparseHeat_1_1SpatialErrorOfSolution.html#a858506ef70077f460ef2f4fa8986ee5f">sparseHeat::SpatialErrorOfSolution</a>
+</li>
+<li>setDiscretisation()
+: <a class="el" href="classsparseHeat_1_1Solver.html#a583cfd82592d0a0c4d2f6a325a000f1b">sparseHeat::Solver</a>
 </li>
 <li>setFluxSolAtEndTime()
 : <a class="el" href="classheat_1_1Solver.html#a30e4c9f7c188f55a685970fff10fcd72">heat::Solver</a>
@@ -87,38 +90,91 @@ $(function() {
 <li>setMeshes()
 : <a class="el" href="classheat_1_1Solver.html#aca8db125e4f4a74805cf591680eb75da">heat::Solver</a>
 </li>
+<li>setMeshHierarchy()
+: <a class="el" href="classsparseHeat_1_1Solver.html#ab0d076a25697433d628cff8a7425432d">sparseHeat::Solver</a>
+</li>
+<li>setNestedFEHierarchy()
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#af598c0afb150163c924f3a1b18a6d7ae">sparseHeat::LsqSparseXtFem</a>
+</li>
+<li>setNestedFEHierarchyAndSpatialBoundaryDofs()
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#af9953da43b0534c15b7f002470079d08">sparseHeat::LsqSparseXtFem</a>
+</li>
+<li>setNestedFEHierarchyForHeatFlux()
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#ad3066b3cd1689ddac255322cf6211b6d">sparseHeat::LsqSparseXtFem</a>
+, <a class="el" href="classsparseHeat_1_1LsqSparseXtFemH1H1.html#a41c5ebf562bb83055ed394f8a24e94d1">sparseHeat::LsqSparseXtFemH1H1</a>
+, <a class="el" href="classsparseHeat_1_1LsqSparseXtFemH1Hdiv.html#a68788560cf1cf1eb35810d77e5daebaf">sparseHeat::LsqSparseXtFemH1Hdiv</a>
+</li>
+<li>setNestedFEHierarchyForTemperature()
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#a6d3879c530c72be346d194a14e1cea72">sparseHeat::LsqSparseXtFem</a>
+</li>
+<li>setPardisoSolver()
+: <a class="el" href="classsparseHeat_1_1Solver.html#a04881e00a5f1e9dc25435122bac7c0ac">sparseHeat::Solver</a>
+</li>
 <li>setPerturbation()
 : <a class="el" href="classheat_1_1Solver.html#a22942e1d8895d22c1a7e7d56803458bb">heat::Solver</a>
-, <a class="el" href="classheat_1_1TestCases.html#aad3cf9c60c95cafd50fdb837bc0e8741">heat::TestCases</a>
 </li>
-<li>setPerturbations()
-: <a class="el" href="classheat_1_1TestCases.html#a24ec41fba8b8f0f8c1a6ad7cea06c415">heat::TestCases</a>
+<li>setSpatialBoundaryDofs()
+: <a class="el" href="classsparseHeat_1_1LsqSparseXtFem.html#abd1d455f704fd12f32235a481ffe7e6b">sparseHeat::LsqSparseXtFem</a>
 </li>
 <li>setTemperatureSolAtEndTime()
 : <a class="el" href="classheat_1_1Solver.html#ab67926fc746b574a9e8df15f540c72d1">heat::Solver</a>
 </li>
+<li>SolutionHandler()
+: <a class="el" href="classsparseHeat_1_1SolutionHandler.html#aaff4d31281b80d5aa16dcaf452930c21">sparseHeat::SolutionHandler</a>
+</li>
 <li>solve()
-: <a class="el" href="classheat_1_1Solver.html#a6697bbdc84194a6ef3f3c76a4e6c3dfb">heat::Solver</a>
+: <a class="el" href="classheat_1_1Solver.html#acee9e6e4895d54d09adb229d515be552">heat::Solver</a>
 , <a class="el" href="classPardisoSolver.html#a3ce280043135970d84319d4517e8fe6a">PardisoSolver</a>
+, <a class="el" href="classsparseHeat_1_1Solver.html#a374ae9db13a4caa1d44170dd7e90c72a">sparseHeat::Solver</a>
 </li>
 <li>Solver()
-: <a class="el" href="classheat_1_1Solver.html#a5032979e223ed04c7311c5aa67c8554b">heat::Solver</a>
-</li>
-<li>source()
-: <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#ad513ab5b5ae1b49efc2cc8c14826a806">heat::TestCase&lt; LShapedTest1 &gt;</a>
-, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#a5515320f2f7bdcd1bb6a966d7c0879c4">heat::TestCase&lt; LShapedTest2 &gt;</a>
-, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#adbe35073c3d2d7686048f9a0b83d86d6">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>
-, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#a52684e80b96f03bde561da9da436929d">heat::TestCase&lt; UnitSquareTest1 &gt;</a>
-, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#ae2b9fa0a9c7326c468850d0a79100f58">heat::TestCase&lt; UnitSquareTest2 &gt;</a>
-, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#a7d73caa7d870e94ea59d162d4add025c">heat::TestCase&lt; UnitSquareTest3 &gt;</a>
-, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#a5ae37815150c8d3e104376f32184a05f">heat::TestCase&lt; UnitSquareTest4 &gt;</a>
-, <a class="el" href="classheat_1_1TestCases.html#aedb99ab56fae9469ea9eac75a89a1eab">heat::TestCases</a>
+: <a class="el" href="classheat_1_1Solver.html#a791f73f1b97bd5460eb250d4b7da5f5f">heat::Solver</a>
+, <a class="el" href="classsparseHeat_1_1Solver.html#a39a95620341cf0d5ffe4dbfd95396653">sparseHeat::Solver</a>
 </li>
 <li>SourceCoeff()
 : <a class="el" href="classheat_1_1SourceCoeff.html#a9d599b573cd819cf4ac60ed63267f422">heat::SourceCoeff</a>
 </li>
+<li>SpatialErrorOfSolution()
+: <a class="el" href="classsparseHeat_1_1SpatialErrorOfSolution.html#a1e7eb46251c051c80746a3b2f95f9685">sparseHeat::SpatialErrorOfSolution</a>
+</li>
+<li>SpatialErrorOfSolutionInLeastSquaresNorm()
+: <a class="el" href="classsparseHeat_1_1SpatialErrorOfSolutionInLeastSquaresNorm.html#a7c818c2332763dd396f1f2fdb87be4f6">sparseHeat::SpatialErrorOfSolutionInLeastSquaresNorm</a>
+</li>
+<li>SpatialErrorOfSolutionInNaturalNorm()
+: <a class="el" href="classsparseHeat_1_1SpatialErrorOfSolutionInNaturalNorm.html#a051dd56e1709e170a011f9ab2939eea6">sparseHeat::SpatialErrorOfSolutionInNaturalNorm</a>
+</li>
+<li>SpatialMassIntegrator()
+: <a class="el" href="classsparseHeat_1_1SpatialMassIntegrator.html#abe9114efc0207c8f0fbc5355ff218571">sparseHeat::SpatialMassIntegrator</a>
+</li>
+<li>SpatialStiffnessIntegrator()
+: <a class="el" href="classsparseHeat_1_1SpatialStiffnessIntegrator.html#ab67738303ab59d225e3f84951ceb8884">sparseHeat::SpatialStiffnessIntegrator</a>
+</li>
+<li>SpatialVectorDivergenceIntegrator()
+: <a class="el" href="classsparseHeat_1_1SpatialVectorDivergenceIntegrator.html#a9b28ba7e3d9217484c261f0a97dbced9">sparseHeat::SpatialVectorDivergenceIntegrator</a>
+</li>
+<li>SpatialVectorFEDivergenceIntegrator()
+: <a class="el" href="classsparseHeat_1_1SpatialVectorFEDivergenceIntegrator.html#a70ae14d1bbe67eca8e3c1fb33411ba14">sparseHeat::SpatialVectorFEDivergenceIntegrator</a>
+</li>
+<li>SpatialVectorFEGradientIntegrator()
+: <a class="el" href="classsparseHeat_1_1SpatialVectorFEGradientIntegrator.html#a623925afd1d50ac6b44ddbbe15236083">sparseHeat::SpatialVectorFEGradientIntegrator</a>
+</li>
+<li>SpatialVectorFEMassIntegrator()
+: <a class="el" href="classsparseHeat_1_1SpatialVectorFEMassIntegrator.html#a921b84c5603bf3d260f8982aba7ab362">sparseHeat::SpatialVectorFEMassIntegrator</a>
+</li>
+<li>SpatialVectorFEStiffnessIntegrator()
+: <a class="el" href="classsparseHeat_1_1SpatialVectorFEStiffnessIntegrator.html#a8a7dd77d74ccec354821a1a68542acae">sparseHeat::SpatialVectorFEStiffnessIntegrator</a>
+</li>
+<li>SpatialVectorGradientIntegrator()
+: <a class="el" href="classsparseHeat_1_1SpatialVectorGradientIntegrator.html#a6bea98bf366452e349668e1ffce74eeb">sparseHeat::SpatialVectorGradientIntegrator</a>
+</li>
+<li>SpatialVectorMassIntegrator()
+: <a class="el" href="classsparseHeat_1_1SpatialVectorMassIntegrator.html#a760b336bc34fa1f7cdb5f9a76083e268">sparseHeat::SpatialVectorMassIntegrator</a>
+</li>
+<li>SpatialVectorStiffnessIntegrator()
+: <a class="el" href="classsparseHeat_1_1SpatialVectorStiffnessIntegrator.html#a7523a2cb00d4f1f01c73dd346edd8cc9">sparseHeat::SpatialVectorStiffnessIntegrator</a>
+</li>
 <li>StiffnessIntegrator()
-: <a class="el" href="classheat_1_1StiffnessIntegrator.html#a4fa4281db2e517dbe2529b01947b05da">heat::StiffnessIntegrator</a>
+: <a class="el" href="classheat_1_1StiffnessIntegrator.html#a0acdc43625662cc511705ee2498774f4">heat::StiffnessIntegrator</a>
 </li>
 </ul>
 </div><!-- contents -->

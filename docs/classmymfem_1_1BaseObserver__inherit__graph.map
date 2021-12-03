@@ -1,4 +1,5 @@
 <map id="mymfem::BaseObserver" name="mymfem::BaseObserver">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,169,32"/>
-<area shape="rect" id="node2" href="$classheat_1_1Observer.html" title="Observer for the Heat equation." alt="" coords="33,80,141,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="53,5,217,32"/>
+<area shape="rect" id="node2" href="$classheat_1_1Observer.html" title="Observer for the Heat equation." alt="" coords="5,80,113,107"/>
+<area shape="rect" id="node3" href="$classsparseHeat_1_1Observer.html" title="Observer for the Sparse solver for the Heat equation." alt="" coords="137,80,288,107"/>
 </map>

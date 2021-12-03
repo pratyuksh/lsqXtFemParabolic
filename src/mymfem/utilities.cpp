@@ -1,6 +1,8 @@
 #include "utilities.hpp"
 #include <assert.h>
 
+using namespace mfem;
+
 
 // free matrix memory and set pointer to null
 void clear (SparseMatrix* &mat) {
@@ -34,6 +36,17 @@ SparseMatrix& getUpperTriangle(const SparseMatrix& A)
 
     return *UA;
 }
+
+// Returns cell center of element i of given mesh
+void getElementCenter(const std::shared_ptr<Mesh>& mesh,
+                      int i, Vector& center)
+{
+    int geom = mesh->GetElementBaseGeometry(i);
+    ElementTransformation *trans
+            = mesh->GetElementTransformation(i);
+    trans->Transform(Geometries.GetCenter(geom), center);
+}
+
 
 
 using namespace mymfem;

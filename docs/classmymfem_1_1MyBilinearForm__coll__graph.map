@@ -1,4 +1,0 @@
-<map id="mymfem::MyBilinearForm" name="mymfem::MyBilinearForm">
-<area shape="rect" id="node1" title="MyBilinearForm class customizes the BilinearForm class provided by MFEM with additional functions." alt="" coords="5,80,177,107"/>
-<area shape="rect" id="node2" title=" " alt="" coords="44,5,139,32"/>
-</map>

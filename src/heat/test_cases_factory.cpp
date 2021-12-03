@@ -8,11 +8,15 @@ heat::makeTestCase(const nlohmann::json& config)
 {
     const std::string problem_type
             = config["problem_type"];
-#ifdef MYVERBOSE
+#ifndef NDEBUG
     std::cout << "\tFor Heat equation, run case: "
               << problem_type << std::endl;
 #endif
-    if (problem_type == "unitSquare_test1") {
+    if (problem_type == "dummy") {
+        return std::make_shared
+                <heat::TestCase<Dummy>> (config);
+    }
+    else if (problem_type == "unitSquare_test1") {
         return std::make_shared
                 <heat::TestCase<UnitSquareTest1>> (config);
     }
@@ -39,6 +43,10 @@ heat::makeTestCase(const nlohmann::json& config)
     else if (problem_type == "lShaped_test2") {
         return std::make_shared
                 <heat::TestCase<LShapedTest2>> (config);
+    }
+    else if (problem_type == "lShaped_test3") {
+        return std::make_shared
+                <heat::TestCase<LShapedTest3>> (config);
     }
 
     throw std::runtime_error(fmt::format(

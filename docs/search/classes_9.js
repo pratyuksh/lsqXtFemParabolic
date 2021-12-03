@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['solver_260',['Solver',['../classheat_1_1Solver.html',1,'heat']]],
-  ['sourcecoeff_261',['SourceCoeff',['../classheat_1_1SourceCoeff.html',1,'heat']]],
-  ['stiffnessintegrator_262',['StiffnessIntegrator',['../classheat_1_1StiffnessIntegrator.html',1,'heat']]]
+  ['pardisosolver_424',['PardisoSolver',['../classPardisoSolver.html',1,'']]],
+  ['pointlocator_425',['PointLocator',['../classmymfem_1_1PointLocator.html',1,'mymfem']]]
 ];

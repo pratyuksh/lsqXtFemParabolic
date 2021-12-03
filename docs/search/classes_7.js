@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['pardisosolver_255',['PardisoSolver',['../classPardisoSolver.html',1,'']]],
-  ['pointlocator_256',['PointLocator',['../classmymfem_1_1PointLocator.html',1,'mymfem']]]
+  ['nestedfehierarchy_421',['NestedFEHierarchy',['../structmymfem_1_1NestedFEHierarchy.html',1,'mymfem']]],
+  ['nestedmeshhierarchy_422',['NestedMeshHierarchy',['../structmymfem_1_1NestedMeshHierarchy.html',1,'mymfem']]]
 ];

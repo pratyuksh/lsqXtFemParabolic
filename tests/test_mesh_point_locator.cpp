@@ -24,7 +24,7 @@ using namespace mymfem;
 TEST(MfemUtil, pointLocator1)
 {
     std::string input_dir
-            = "../input/gammaShapedBr/";
+            = "../tests/input/gammaShapedBr/";
 
     int lx1 = 1;
     const std::string mesh_file1
@@ -118,7 +118,7 @@ TEST(MfemUtil, pointLocator1)
 TEST(MfemUtil, pointLocator2)
 {
     std::string input_dir
-            = "../input/unitSquareQu/";
+            = "../tests/input/unitSquareQu/";
 
     int lx1 = 1;
     const std::string mesh_file1 = input_dir+"mesh_lx"+std::to_string(lx1);

@@ -1,0 +1,7 @@
+<map id="sparseHeat::TemporalBlockMatrixAssembler" name="sparseHeat::TemporalBlockMatrixAssembler">
+<area shape="rect" id="node1" title=" " alt="" coords="5,104,188,145"/>
+<area shape="rect" id="node2" href="$classsparseHeat_1_1TemporalGradientMatrixAssembler.html" title="Assembler for the temporal gradient matrix." alt="" coords="238,5,437,47"/>
+<area shape="rect" id="node3" href="$classsparseHeat_1_1TemporalInitialMatrixAssembler.html" title="Assembler for the temporal canonical matrix." alt="" coords="247,71,428,112"/>
+<area shape="rect" id="node4" href="$classsparseHeat_1_1TemporalMassMatrixAssembler.html" title="Assembler for the temporal mass matrix." alt="" coords="246,136,429,177"/>
+<area shape="rect" id="node5" href="$classsparseHeat_1_1TemporalStiffnessMatrixAssembler.html" title="Assembler for the temporal stiffness matrix." alt="" coords="236,201,439,243"/>
+</map>

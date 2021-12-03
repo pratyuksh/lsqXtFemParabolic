@@ -33,7 +33,7 @@ if (($ENV{USER} MATCHES "pratyuksh"))
     
     if (CMAKE_BUILD_TYPE STREQUAL "Debug") # Debug mode
         message ("CXX_DEBUG flags debug:\t" ${CMAKE_CXX_FLAGS_DEBUG})
-        add_compile_definitions(MYVERBOSE)
+        # add_compile_definitions(MYVERBOSE)
     endif (CMAKE_BUILD_TYPE STREQUAL "Debug")
 
     if (CMAKE_BUILD_TYPE STREQUAL "Release") # Release mode
@@ -90,7 +90,7 @@ elseif (($ENV{USER} MATCHES "prbansal"))
     
     if (CMAKE_BUILD_TYPE STREQUAL "Debug") # Debug mode
         message ("CXX_DEBUG flags debug:\t" ${CMAKE_CXX_FLAGS_DEBUG})
-        add_compile_definitions(MYVERBOSE)
+        # add_compile_definitions(MYVERBOSE)
     endif (CMAKE_BUILD_TYPE STREQUAL "Debug")
 
     if (CMAKE_BUILD_TYPE STREQUAL "Release") # Release mode
@@ -192,25 +192,39 @@ target_link_libraries(Pardiso PRIVATE linear_algebra)
 ## Heat ##
 ##########
 
-# Heat; serial
-add_library(HeatObj OBJECT)
-target_link_libraries(HeatObj PRIVATE Core)
+# Heat library
+add_library(LibHeat OBJECT)
+target_link_libraries(LibHeat PRIVATE Core)
 
-add_executable(Heat)
-target_link_libraries(Heat PRIVATE Core)
-target_link_libraries(Heat PRIVATE HeatObj)
-target_link_libraries(Heat PRIVATE MyMfem)
-target_link_libraries(Heat PRIVATE Pardiso)
+# SparseHeat library
+add_library(LibSparseHeat OBJECT)
+target_link_libraries(LibSparseHeat PRIVATE Core)
+
+# Heat, serial
+add_executable(heat)
+target_link_libraries(heat PRIVATE Core)
+target_link_libraries(heat PRIVATE LibHeat)
+target_link_libraries(heat PRIVATE MyMfem)
+target_link_libraries(heat PRIVATE Pardiso)
+
+# SparseHeat, serial
+add_executable(sparse_heat)
+target_link_libraries(sparse_heat PRIVATE Core)
+target_link_libraries(sparse_heat PRIVATE LibHeat)
+target_link_libraries(sparse_heat PRIVATE LibSparseHeat)
+target_link_libraries(sparse_heat PRIVATE MyMfem)
+target_link_libraries(sparse_heat PRIVATE Pardiso)
+
 
 ############
 ## MLMCMC ##
 ############
 
-# add_library(mlmcmc OBJECT)
-# target_link_libraries(mlmcmc PRIVATE Core)
+# add_library(LibMlmcmc OBJECT)
+# target_link_libraries(LibMlmcmc PRIVATE Core)
 
-# add_library(mlmcmc_mpi OBJECT)
-# target_link_libraries(mlmcmc_mpi PRIVATE Core)
+# add_library(LibMlmcmcMpi OBJECT)
+# target_link_libraries(LibMlmcmcMpi PRIVATE Core)
 
 ###############
 ## MCMC Heat ##
@@ -219,19 +233,19 @@ target_link_libraries(Heat PRIVATE Pardiso)
 # serial
 # add_executable(mcmc_heat)
 # target_link_libraries(mcmc_heat PRIVATE Core)
-# target_link_libraries(mcmc_heat PRIVATE HeatObj)
+# target_link_libraries(mcmc_heat PRIVATE LibHeat)
 # target_link_libraries(mcmc_heat PRIVATE MyMfem)
 # target_link_libraries(mcmc_heat PRIVATE Pardiso)
-# target_link_libraries(mcmc_heat PRIVATE mlmcmc)
+# target_link_libraries(mcmc_heat PRIVATE LibMlmcmc)
 
 # parallel
 # add_executable(mcmc_heat_mpi)
 # target_link_libraries(mcmc_heat_mpi PRIVATE Core)
-# target_link_libraries(mcmc_heat_mpi PRIVATE HeatObj)
+# target_link_libraries(mcmc_heat_mpi PRIVATE LibHeat)
 # target_link_libraries(mcmc_heat_mpi PRIVATE MyMfem)
 # target_link_libraries(mcmc_heat_mpi PRIVATE Pardiso)
-# target_link_libraries(mcmc_heat_mpi PRIVATE mlmcmc)
-# target_link_libraries(mcmc_heat_mpi PRIVATE mlmcmc_mpi)
+# target_link_libraries(mcmc_heat_mpi PRIVATE LibMlmcmc)
+# target_link_libraries(mcmc_heat_mpi PRIVATE LibMlmcmcMpi)
 # target_link_libraries(mcmc_heat_mpi PRIVATE "${MPI_C_LIB}" "${MPI_CXX_LIB}")
 
 
@@ -242,19 +256,19 @@ target_link_libraries(Heat PRIVATE Pardiso)
 # serial
 # add_executable(mlmcmc_heat)
 # target_link_libraries(mlmcmc_heat PRIVATE Core)
-# target_link_libraries(mlmcmc_heat PRIVATE HeatObj)
+# target_link_libraries(mlmcmc_heat PRIVATE LibHeat)
 # target_link_libraries(mlmcmc_heat PRIVATE MyMfem)
 # target_link_libraries(mlmcmc_heat PRIVATE Pardiso)
-# target_link_libraries(mlmcmc_heat PRIVATE mlmcmc)
+# target_link_libraries(mlmcmc_heat PRIVATE LibMlmcmc)
 
 # parallel
 # add_executable(mlmcmc_heat_mpi)
 # target_link_libraries(mlmcmc_heat_mpi PRIVATE Core)
-# target_link_libraries(mlmcmc_heat_mpi PRIVATE HeatObj)
+# target_link_libraries(mlmcmc_heat_mpi PRIVATE LibHeat)
 # target_link_libraries(mlmcmc_heat_mpi PRIVATE MyMfem)
 # target_link_libraries(mlmcmc_heat_mpi PRIVATE Pardiso)
-# target_link_libraries(mlmcmc_heat_mpi PRIVATE mlmcmc)
-# target_link_libraries(mlmcmc_heat_mpi PRIVATE mlmcmc_mpi)
+# target_link_libraries(mlmcmc_heat_mpi PRIVATE LibMlmcmc)
+# target_link_libraries(mlmcmc_heat_mpi PRIVATE LibMlmcmcMpi)
 # target_link_libraries(mlmcmc_heat_mpi PRIVATE "${MPI_C_LIB}" "${MPI_CXX_LIB}")
 
 #############
@@ -265,7 +279,8 @@ target_link_libraries(Heat PRIVATE Pardiso)
 add_executable(unit_tests)
 
 target_link_libraries(unit_tests PRIVATE Core)
-target_link_libraries(unit_tests PRIVATE HeatObj)
+target_link_libraries(unit_tests PRIVATE LibHeat)
+target_link_libraries(unit_tests PRIVATE LibSparseHeat)
 target_link_libraries(unit_tests PRIVATE MyMfem)
 target_link_libraries(unit_tests PRIVATE Pardiso)
 target_link_libraries(unit_tests PRIVATE GTest)

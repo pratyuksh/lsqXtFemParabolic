@@ -13,7 +13,8 @@
     }
 
 // Constructor
-PardisoSolver :: PardisoSolver (int mtype) : m_mtype(mtype) 
+PardisoSolver :: PardisoSolver (int mtype)
+    : m_mtype(mtype)
 {
     m_verbose = 0;
     m_solver = 0;
@@ -22,7 +23,9 @@ PardisoSolver :: PardisoSolver (int mtype) : m_mtype(mtype)
 // Destructor
 PardisoSolver :: ~PardisoSolver ()
 {
-    if (!m_finalized) { finalize(); }
+    if (!m_finalized) {
+        finalize();
+    }
 }
 
 #ifdef LIB_PARDISO
@@ -154,17 +157,17 @@ void PardisoSolver :: solve(double *b, double *x)
             &m_idum, &m_nrhs, m_iparm, &m_verbose,
             b, x, &m_error, m_dparm);
     PARDISO_ERROR(m_error, "\nERROR during solve: ")
-#ifdef MYVERBOSE
-    double normb, normr;
-    double *y = static_cast<double *>
-            (calloc(static_cast<size_t>(m_sizeA),
-                    sizeof(double)));
-    pardiso_residual (&m_mtype, &m_sizeA,
-                      m_dataA, m_rowPtrA, m_colIdA,
-                      b, x, y, &normb, &normr);
-    PARDISO_PRINT(normr/normb, "Relative residual norm: ")
-    free(y);
-#endif
+//#ifndef NDEBUG
+//    double normb, normr;
+//    double *y = static_cast<double *>
+//            (calloc(static_cast<size_t>(m_sizeA),
+//                    sizeof(double)));
+//    pardiso_residual (&m_mtype, &m_sizeA,
+//                      m_dataA, m_rowPtrA, m_colIdA,
+//                      b, x, y, &normb, &normr);
+//    PARDISO_PRINT(normr/normb, "Relative residual norm: ")
+//    free(y);
+//#endif
 }
 
 #else

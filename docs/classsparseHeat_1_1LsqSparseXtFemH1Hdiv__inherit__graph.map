@@ -1,0 +1,4 @@
+<map id="sparseHeat::LsqSparseXtFemH1Hdiv" name="sparseHeat::LsqSparseXtFemH1Hdiv">
+<area shape="rect" id="node1" title="Least&#45;squares sparse space&#45;time FEM for the heat equation, with H1 discretisation in time and Hdiv di..." alt="" coords="5,80,204,121"/>
+<area shape="rect" id="node2" href="$classsparseHeat_1_1LsqSparseXtFem.html" title="Base class for Least&#45;squares sparse space&#45;time FE discretisation of the heat equation." alt="" coords="5,5,204,32"/>
+</map>

@@ -4,6 +4,6 @@
 <area shape="rect" id="node3" href="$classheat_1_1StiffnessIntegrator.html" title="Stiffness Integrator in space; (Q grad(u), Q grad(v))" alt="" coords="231,56,394,83"/>
 <area shape="rect" id="node4" href="$classheat_1_1VectorFEGradientIntegrator.html" title="VectorFE Gradient Integrator; (grad(u), v) Uses, for example, Raviart&#45;Thomas spaces." alt="" coords="205,107,420,133"/>
 <area shape="rect" id="node5" href="$classheat_1_1VectorFEStiffnessIntegrator.html" title="VectorFE Stiffness Integrator; (div(u), div(v)) Uses, for example, Raviart&#45;Thomas spaces." alt="" coords="204,157,421,184"/>
-<area shape="rect" id="node6" href="$classheat_1_1VectorGradientIntegrator.html" title="Vector Gradient Integrator; (grad(u), v)" alt="" coords="214,208,411,235"/>
-<area shape="rect" id="node7" href="$classheat_1_1VectorStiffnessIntegrator.html" title="Vector Stiffness Integrator; (div(u), div(v))" alt="" coords="213,259,413,285"/>
+<area shape="rect" id="node6" href="$classheat_1_1VectorGradientIntegrator.html" title="mfem::Vector Gradient Integrator; (grad(u), v)" alt="" coords="214,208,411,235"/>
+<area shape="rect" id="node7" href="$classheat_1_1VectorStiffnessIntegrator.html" title="mfem::Vector Stiffness Integrator; (div(u), div(v))" alt="" coords="213,259,413,285"/>
 </map>

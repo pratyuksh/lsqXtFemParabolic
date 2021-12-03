@@ -71,29 +71,32 @@ $(function() {
 <div class="contents">
 <a href="heat_2utilities_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="heat_2utilities_8hpp.html">utilities.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// tVdofs gives the indices for reading the space-time solution uXtSol</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// for the space-time element required.</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// Assumes that uSol size is preset.</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="heat_2utilities_8hpp.html#a7be2192da12d45ad7a79fdbb623d8e42">    7</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="heat_2utilities_8cpp.html#a7be2192da12d45ad7a79fdbb623d8e42">buildXSolFG</a>(<span class="keyword">const</span> Vector&amp; uXtSol, <span class="keyword">const</span> Vector&amp; tShape,</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;                 Array&lt;int&gt; tVdofs, Vector&amp; uSol)</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">int</span> tNdofs = tShape.Size();</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">int</span> xdimV = uSol.Size();</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    uSol = 0.0;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j=0; j&lt;tNdofs; j++){</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordtype">int</span> shift = tVdofs[j]*xdimV;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> k=0; k&lt;xdimV; k++) {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            uSol(k) += tShape(j)*uXtSol(k + shift);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        }</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    }</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// End of file</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using namespace </span>mfem;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// tVdofs gives the indices for reading the space-time solution uXtSol</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// for the space-time element required.</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">// Assumes that uSol size is preset.</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="heat_2utilities_8cpp.html#a7be2192da12d45ad7a79fdbb623d8e42">    8</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="heat_2utilities_8cpp.html#a7be2192da12d45ad7a79fdbb623d8e42">buildXSolFG</a>(<span class="keyword">const</span> Vector&amp; uXtSol,</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;                 <span class="keyword">const</span> Vector&amp; tShape,</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;                 Array&lt;int&gt; tVdofs,</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;                 Vector&amp; uSol)</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">int</span> tNdofs = tShape.Size();</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">int</span> xdimV = uSol.Size();</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    uSol = 0.0;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j=0; j&lt;tNdofs; j++){</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordtype">int</span> shift = tVdofs[j]*xdimV;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> k=0; k&lt;xdimV; k++) {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            uSol(k) += tShape(j)*uXtSol(k + shift);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        }</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    }</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// End of file</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aheat_2utilities_8hpp_html"><div class="ttname"><a href="heat_2utilities_8hpp.html">utilities.hpp</a></div></div>
-<div class="ttc" id="aheat_2utilities_8cpp_html_a7be2192da12d45ad7a79fdbb623d8e42"><div class="ttname"><a href="heat_2utilities_8cpp.html#a7be2192da12d45ad7a79fdbb623d8e42">buildXSolFG</a></div><div class="ttdeci">void buildXSolFG(const Vector &amp;uXtSol, const Vector &amp;tShape, Array&lt; int &gt; tVdofs, Vector &amp;uSol)</div><div class="ttdoc">Builds the solution in a space-time element.</div><div class="ttdef"><b>Definition:</b> <a href="heat_2utilities_8cpp_source.html#l00007">heat/utilities.cpp:7</a></div></div>
+<div class="ttc" id="aheat_2utilities_8cpp_html_a7be2192da12d45ad7a79fdbb623d8e42"><div class="ttname"><a href="heat_2utilities_8cpp.html#a7be2192da12d45ad7a79fdbb623d8e42">buildXSolFG</a></div><div class="ttdeci">void buildXSolFG(const Vector &amp;uXtSol, const Vector &amp;tShape, Array&lt; int &gt; tVdofs, Vector &amp;uSol)</div><div class="ttdef"><b>Definition:</b> <a href="heat_2utilities_8cpp_source.html#l00008">heat/utilities.cpp:8</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
