@@ -43,6 +43,13 @@ public:
      */
     mfem::Vector evalErrorInNaturalNorm (const SolutionHandler&) const;
 
+    /**
+     * @brief Evaluates error in the least-squares norm
+     * @param solution handler
+     * @return discrete solution error in least-squares norm
+     */
+    mfem::Vector evalErrorInLeastSquaresNorm (const SolutionHandler&) const;
+
 private:
     void evalTemporalBasisVals
     (const mfem::Array<double> &temporalMeshSizes,
@@ -102,6 +109,8 @@ private:
 
     mutable std::unique_ptr<SpatialErrorOfSolution>
     m_spatialErrorOfSolutionInNaturalNorm;
+    mutable std::unique_ptr<SpatialErrorOfSolution>
+    m_spatialErrorOfSolutionInLeastSquaresNorm;
 };
 
 }

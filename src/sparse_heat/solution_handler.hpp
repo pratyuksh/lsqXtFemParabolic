@@ -19,7 +19,11 @@ public:
      std::shared_ptr<mymfem::NestedFEHierarchy>&
      spatialNestedFEHierarchyHeatFlux);
 
+    mfem::Vector getTemperatureDataAtInitialTime() const;
+
     mfem::Vector getTemperatureDataAtEndTime() const;
+
+    mfem::Vector getHeatFluxDataAtInitialTime() const;
 
     mfem::Vector getHeatFluxDataAtEndTime() const;
 

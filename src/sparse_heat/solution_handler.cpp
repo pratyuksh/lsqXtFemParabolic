@@ -38,34 +38,55 @@ sparseHeat::SolutionHandler
 }
 
 Vector sparseHeat::SolutionHandler
+:: getTemperatureDataAtInitialTime() const
+{
+    auto temperatureData = getTemperatureData();
+
+    int sizeSpatialFinest = m_spatialFESizesTemperature[m_numLevels-1];
+    Vector temperatureAtInitialTime(sizeSpatialFinest);
+    temperatureAtInitialTime = temperatureData.GetData();
+
+    return temperatureAtInitialTime;
+}
+
+Vector sparseHeat::SolutionHandler
 :: getTemperatureDataAtEndTime() const
 {
-     auto temperatureData = getTemperatureData();
+    auto temperatureData = getTemperatureData();
 
-     int sizeTemporalCoarsest = m_temporalHierarchicalFESizes[0];
-     int sizeSpatialFinest = m_spatialFESizesTemperature[m_numLevels-1];
+    int sizeTemporalCoarsest = m_temporalHierarchicalFESizes[0];
+    int sizeSpatialFinest = m_spatialFESizesTemperature[m_numLevels-1];
 
-     int shift = (sizeTemporalCoarsest-1)*sizeSpatialFinest;
-     Vector temperatureAtEndTime(temperatureData.GetData() + shift,
-                                 sizeSpatialFinest);
-//     std::cout << sizeTemporalCoarsest << "\t"
-//               << sizeSpatialFinest << "\t"
-//               << shift << std::endl;
+    int offsets = (sizeTemporalCoarsest-1)*sizeSpatialFinest;
+    Vector temperatureAtEndTime(temperatureData.GetData() + offsets,
+                                sizeSpatialFinest);
 
-     return temperatureAtEndTime;
+    return temperatureAtEndTime;
+}
+
+Vector sparseHeat::SolutionHandler
+:: getHeatFluxDataAtInitialTime() const
+{
+    auto heatFluxData = getHeatFluxData();
+
+    int sizeSpatialFinest = m_spatialFESizesHeatFlux[m_numLevels-1];
+    Vector heatFluxAtInitialTime(sizeSpatialFinest);
+    heatFluxAtInitialTime = heatFluxData.GetData();
+
+    return heatFluxAtInitialTime;
 }
 
 Vector sparseHeat::SolutionHandler
 :: getHeatFluxDataAtEndTime() const
 {
-     auto heatFluxData = getHeatFluxData();
+    auto heatFluxData = getHeatFluxData();
 
-     int sizeTemporalCoarsest = m_temporalHierarchicalFESizes[0];
-     int sizeSpatialFinest = m_spatialFESizesHeatFlux[m_numLevels-1];
+    int sizeTemporalCoarsest = m_temporalHierarchicalFESizes[0];
+    int sizeSpatialFinest = m_spatialFESizesHeatFlux[m_numLevels-1];
 
-     int shift = (sizeTemporalCoarsest-1)*sizeSpatialFinest;
-     Vector heatFluxAtEndTime(heatFluxData.GetData() + shift,
-                              sizeSpatialFinest);
+    int offsets = (sizeTemporalCoarsest-1)*sizeSpatialFinest;
+    Vector heatFluxAtEndTime(heatFluxData.GetData() + offsets,
+                             sizeSpatialFinest);
 
-     return heatFluxAtEndTime;
+    return heatFluxAtEndTime;
 }
