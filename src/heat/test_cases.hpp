@@ -12,7 +12,8 @@ enum {Dummy,
       UnitSquareTest4,
       PeriodicUnitSquareTest1,
       LShapedTest1,
-      LShapedTest2};
+      LShapedTest2,
+      LShapedTest3};
 
 namespace heat {
 
@@ -704,6 +705,78 @@ private:
 
     double m_gamma = 2./3.;
     mfem::Vector m_singularCorner;
+};
+
+/**
+ * Template specialization for an L-shaped domain, with Test3;
+ * Zero initial conditions;
+ * Homogeneous Dirichlet boundary;
+ * Constant source 1
+ */
+template<>
+class TestCase <LShapedTest3>
+        : public TestCases
+{
+public:
+    explicit TestCase (const nlohmann::json& config)
+        : m_config(config) {
+        m_dim = 2;
+    }
+
+    double temperatureSol(const mfem::Vector&,
+                          const double) const override;
+
+    mfem::Vector heatFluxSol(const mfem::Vector&,
+                             const double) const override;
+
+    mfem::Vector temperatureSpatialGradientSol
+    (const mfem::Vector&, const double) const override;
+
+    double temperatureTemporalGradientSol
+        (const mfem::Vector&, const double) const override;
+
+    double source(const mfem::Vector&,
+                  const double) const override;
+
+    void setBdryDirichlet(mfem::Array<int>&) const override;
+
+    double medium(const mfem::Vector&) const override {
+        return 1;
+    }
+
+    mfem::DenseMatrix mediumTensor(const mfem::Vector&) const override
+    {
+        mfem::DenseMatrix med(m_dim);
+        med(0,0) = med(1,1) = 1;
+        med(0,1) = med(1,0) = 0;
+        return med;
+    }
+
+    double laplacian
+    (const mfem::Vector& x, const double t) const override {
+        return temperatureTemporalGradientSol(x,t)
+                - source(x, t);
+    }
+
+    double initTemperature(const mfem::Vector& x) const override {
+        return temperatureSol(x,0);
+    }
+
+    mfem::Vector initHeatFlux(const mfem::Vector& x) const override {
+        return heatFluxSol(x,0);
+    }
+
+    double bdryTemperature(const mfem::Vector& x,
+                           const double t) const override {
+        return temperatureSol(x, t);
+    }
+
+    void setPerturbation(double) const override {}
+
+    void setPerturbations(const mfem::Vector&) const override {}
+
+private:
+    const nlohmann::json& m_config;
 };
 
 }

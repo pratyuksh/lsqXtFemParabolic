@@ -44,6 +44,10 @@ heat::makeTestCase(const nlohmann::json& config)
         return std::make_shared
                 <heat::TestCase<LShapedTest2>> (config);
     }
+    else if (problem_type == "lShaped_test3") {
+        return std::make_shared
+                <heat::TestCase<LShapedTest3>> (config);
+    }
 
     throw std::runtime_error(fmt::format(
         "Unknown problem type for Heat equation. "

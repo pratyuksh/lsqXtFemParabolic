@@ -490,7 +490,7 @@ void heat::TestCase <LShapedTest1>
     bdr_marker = 1;
 }
 
-// LShapedTest1, Singular solution
+// LShapedTest2, Singular solution
 // Zero ICs
 // Homogeneous Dirichlet BCs
 // Non-zero source
@@ -594,5 +594,43 @@ void heat::TestCase <LShapedTest2>
     bdr_marker = 1;
 }
 
+
+// LShapedTest3, Singular solution
+// Zero ICs
+// Homogeneous Dirichlet BCs
+// Constant source 1
+double heat::TestCase <LShapedTest3>
+:: temperatureSol(const Vector& x, const double t) const {
+    return 0;
+}
+
+Vector heat::TestCase <LShapedTest3>
+:: heatFluxSol (const Vector& x, const double t) const {
+    return temperatureSpatialGradientSol(x, t);
+}
+
+Vector heat::TestCase <LShapedTest3>
+:: temperatureSpatialGradientSol (const Vector& x, const double t) const
+{
+    Vector dudx(m_dim);
+    dudx = 0.;
+    return dudx;
+}
+
+double heat::TestCase <LShapedTest3>
+:: temperatureTemporalGradientSol
+(const Vector& x, const double t) const {
+    return 0;
+}
+
+double heat::TestCase <LShapedTest3>
+:: source (const Vector& x, const double t) const {
+    return 1;
+}
+
+void heat::TestCase <LShapedTest3>
+:: setBdryDirichlet(Array<int>& bdr_marker) const {
+    bdr_marker = 1;
+}
 
 // End of file
