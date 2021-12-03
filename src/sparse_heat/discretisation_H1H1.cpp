@@ -48,7 +48,7 @@ void sparseHeat::LsqSparseXtFemH1H1
     for (int i=0; i<m_numLevels; i++)
     {
         auto xH1Space = std::make_shared<FiniteElementSpace>
-                (meshes[i].get(), xH1Coll);
+                (meshes[i].get(), xH1Coll, m_xDim);
         m_spatialNestedFEHierarchyHeatFlux->addFESpace(xH1Space);
     }
 }
@@ -86,36 +86,36 @@ void sparseHeat::LsqSparseXtFemH1H1
 void sparseHeat::LsqSparseXtFemH1H1
 :: assembleSpatialGradient()
 {
-//    heat::MediumTensorCoeff mediumCoeff(m_testCase);
+    heat::MediumTensorCoeff mediumCoeff(m_testCase);
 
-//    auto spatialVectorGradientBilinearForm
-//            = std::make_unique<mymfem::BlockMixedBilinearForm>
-//            (m_spatialNestedFEHierarchyTemperature,
-//             m_spatialNestedFEHierarchyHeatFlux);
-//    std::shared_ptr<mymfem::BlockMixedBilinearFormIntegrator>
-//            spatialVectorGradientIntegator
-//            = std::make_shared
-//            <sparseHeat::SpatialVectorFEGradientIntegrator>(mediumCoeff);
-//    spatialVectorGradientBilinearForm->addDomainIntegrator
-//            (spatialVectorGradientIntegator);
-//    spatialVectorGradientBilinearForm->assemble();
-//    m_spatialGradient = spatialVectorGradientBilinearForm->getBlockMatrix();
+    auto spatialVectorGradientBilinearForm
+            = std::make_unique<mymfem::BlockMixedBilinearForm>
+            (m_spatialNestedFEHierarchyTemperature,
+             m_spatialNestedFEHierarchyHeatFlux);
+    std::shared_ptr<mymfem::BlockMixedBilinearFormIntegrator>
+            spatialVectorGradientIntegator
+            = std::make_shared
+            <sparseHeat::SpatialVectorGradientIntegrator>(mediumCoeff);
+    spatialVectorGradientBilinearForm->addDomainIntegrator
+            (spatialVectorGradientIntegator);
+    spatialVectorGradientBilinearForm->assemble();
+    m_spatialGradient = spatialVectorGradientBilinearForm->getBlockMatrix();
 }
 
 void sparseHeat::LsqSparseXtFemH1H1
 :: assembleSpatialDivergence()
 {
-//    auto spatialVectorDivergenceBilinearForm
-//            = std::make_unique<mymfem::BlockMixedBilinearForm>
-//            (m_spatialNestedFEHierarchyHeatFlux,
-//             m_spatialNestedFEHierarchyTemperature);
-//    std::shared_ptr<mymfem::BlockMixedBilinearFormIntegrator>
-//            spatialVectorDivergenceIntegator
-//            = std::make_shared<sparseHeat::SpatialVectorFEDivergenceIntegrator>();
-//    spatialVectorDivergenceBilinearForm->addDomainIntegrator
-//            (spatialVectorDivergenceIntegator);
-//    spatialVectorDivergenceBilinearForm->assemble();
-//    m_spatialDivergence = spatialVectorDivergenceBilinearForm->getBlockMatrix();
+    auto spatialVectorDivergenceBilinearForm
+            = std::make_unique<mymfem::BlockMixedBilinearForm>
+            (m_spatialNestedFEHierarchyHeatFlux,
+             m_spatialNestedFEHierarchyTemperature);
+    std::shared_ptr<mymfem::BlockMixedBilinearFormIntegrator>
+            spatialVectorDivergenceIntegator
+            = std::make_shared<sparseHeat::SpatialVectorDivergenceIntegrator>();
+    spatialVectorDivergenceBilinearForm->addDomainIntegrator
+            (spatialVectorDivergenceIntegator);
+    spatialVectorDivergenceBilinearForm->assemble();
+    m_spatialDivergence = spatialVectorDivergenceBilinearForm->getBlockMatrix();
 }
 
 void sparseHeat::LsqSparseXtFemH1H1
@@ -124,13 +124,13 @@ void sparseHeat::LsqSparseXtFemH1H1
  const std::shared_ptr<FiniteElementSpace>& spatialFes,
  Vector& b) const
 {
-//    LinearForm sourceForm(spatialFes.get());
-//    heat::SourceCoeff sourceCoeff(m_testCase);
-//    sourceCoeff.SetTime(t);
-//    sourceForm.AddDomainIntegrator
-//            (new heat::VectorFEDivergenceLFIntegrator(sourceCoeff, -1));
-//    sourceForm.Assemble();
-//    b = sourceForm.GetData();
+    LinearForm sourceForm(spatialFes.get());
+    heat::SourceCoeff sourceCoeff(m_testCase);
+    sourceCoeff.SetTime(t);
+    sourceForm.AddDomainIntegrator
+            (new heat::VectorDivergenceLFIntegrator(sourceCoeff, -1));
+    sourceForm.Assemble();
+    b = sourceForm.GetData();
 }
 
 // End of file

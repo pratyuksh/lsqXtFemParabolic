@@ -221,13 +221,94 @@ class SpatialVectorStiffnessIntegrator
 public:
     explicit SpatialVectorStiffnessIntegrator() {}
 
-    //! Assembles the vectorFE stiffness integrator on an element
+    //! Assembles the vector stiffness integrator on an element
     void assembleElementMatrix
     (const mfem::FiniteElement &, mfem::ElementTransformation &,
      mfem::DenseMatrix &) override;
 
-    //! Assembles the vectorFE stiffness integrator between two nested mesh elements
+    //! Assembles the vector stiffness integrator between two nested mesh elements
     void assembleElementMatrix
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override;
+};
+
+/**
+ * @brief Vector Gradient Integrator; (grad(u), v)
+ */
+class SpatialVectorGradientIntegrator
+        : public mymfem::BlockMixedBilinearFormIntegrator
+{
+public:
+    explicit SpatialVectorGradientIntegrator() {}
+
+    //! Constructor with material coefficent matrix passed as a pointer
+    explicit SpatialVectorGradientIntegrator(mfem::MatrixCoefficient *M)
+        : m_matrixCoeff(M) {}
+
+    //! Constructor with material coefficent matrix passed by reference
+    explicit SpatialVectorGradientIntegrator(mfem::MatrixCoefficient& M)
+        : m_matrixCoeff(&M) {}
+
+    //! Constructor with scalar material coefficient passed as a pointer
+    explicit SpatialVectorGradientIntegrator(mfem::Coefficient *q)
+        : m_scalarCoeff(q) {}
+
+    //! Constructor with scalar material coefficient passed by reference
+    explicit SpatialVectorGradientIntegrator(mfem::Coefficient& q)
+        : m_scalarCoeff(&q) {}
+
+    //! Assembles the mixed scalar-vector gradient integrator on an element
+    void assembleElementMatrix
+    (const mfem::FiniteElement &, const mfem::FiniteElement &,
+     mfem::ElementTransformation &, mfem::DenseMatrix &) override;
+
+    //! Assembles the mixed scalar-vector gradient integrator between two nested mesh elements
+    void assembleElementMatrix
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override;
+
+    void assembleElementMatrix2
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override;
+
+private:
+    void assembleBlock(const int dim,
+                       const int testNdofs,
+                       const int trialNdofs,
+                       const mfem::Vector& shape,
+                       const mfem::DenseMatrix& dshape,
+                       mfem::DenseMatrix& outMat) const;
+
+private:
+    mfem::MatrixCoefficient *m_matrixCoeff = nullptr;
+    mfem::Coefficient *m_scalarCoeff = nullptr;
+};
+
+
+/**
+ * @brief Vector Divergence Integrator; (div(u), v)
+ */
+class SpatialVectorDivergenceIntegrator
+        : public mymfem::BlockMixedBilinearFormIntegrator
+{
+public:
+    explicit SpatialVectorDivergenceIntegrator() {}
+
+    //! Assembles the mixed scalar-vector divergence integrator on an element
+    void assembleElementMatrix
+    (const mfem::FiniteElement &, const mfem::FiniteElement &,
+     mfem::ElementTransformation &, mfem::DenseMatrix &) override;
+
+    //! Assembles the mixed scalar-vector divergence integrator between two nested mesh elements
+    void assembleElementMatrix
+    (const mfem::FiniteElement &, mfem::ElementTransformation &,
+     const mfem::FiniteElement &, mfem::ElementTransformation &,
+     mfem::DenseMatrix &) override;
+
+    void assembleElementMatrix2
     (const mfem::FiniteElement &, mfem::ElementTransformation &,
      const mfem::FiniteElement &, mfem::ElementTransformation &,
      mfem::DenseMatrix &) override;

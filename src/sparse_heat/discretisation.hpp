@@ -148,7 +148,8 @@ protected:
     int m_deg;
 
     double m_endTime;
-    int m_minTemporalLevel, m_maxTemporalLevel, m_numLevels;
+    int m_numLevels;
+    int m_minTemporalLevel, m_maxTemporalLevel;
 
     int m_xDim;
     mfem::Array<mfem::FiniteElementCollection*> m_xFecs;

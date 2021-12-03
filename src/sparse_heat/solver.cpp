@@ -118,7 +118,14 @@ void sparseHeat::Solver
                  m_spatialMeshHierarchy);
     }
     else if (m_discType == "H1H1") {
-        // TODO
+        m_disc = std::make_shared<sparseHeat::LsqSparseXtFemH1H1>
+                (m_config, m_testCase,
+                 m_numLevels, m_minTemporalLevel,
+                 m_spatialMeshHierarchy);
+    }
+    else {
+        std::cerr << "Unknown discretisation type!\n";
+        abort();
     }
 }
 

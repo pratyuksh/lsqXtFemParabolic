@@ -406,7 +406,7 @@ void sparseHeat::SpatialVectorFEDivergenceIntegrator
     int trialNdofsFine = trialFeFine.GetDof();
 
     Vector testShapeCoarse(testNdofsCoarse);
-    Vector testDivshapeFine(trialNdofsFine);
+    Vector trialDivshapeFine(trialNdofsFine);
     Vector coords(dim);
     elmat.SetSize(testNdofsCoarse, trialNdofsFine);
 
@@ -421,7 +421,7 @@ void sparseHeat::SpatialVectorFEDivergenceIntegrator
     {
         const IntegrationPoint &ipFine = irFine->IntPoint(i);
         trialElTransFine.SetIntPoint(&ipFine);
-        trialFeFine.CalcDivShape(ipFine, testDivshapeFine);
+        trialFeFine.CalcDivShape(ipFine, trialDivshapeFine);
 
         IntegrationPoint ipCoarse;
         trialElTransFine.Transform(ipFine, coords);
@@ -429,7 +429,7 @@ void sparseHeat::SpatialVectorFEDivergenceIntegrator
         testFeCoarse.CalcShape(ipCoarse, testShapeCoarse);
 
         double weight = ipFine.weight;
-        AddMult_a_VWt(weight, testShapeCoarse, testDivshapeFine, elmat);
+        AddMult_a_VWt(weight, testShapeCoarse, trialDivshapeFine, elmat);
     }
 }
 
