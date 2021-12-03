@@ -83,15 +83,16 @@ Inheritance diagram for heat::TestCases:</div>
 <div class="dyncontent">
 <div class="center"><img src="classheat_1_1TestCases__inherit__graph.png" border="0" usemap="#heat_1_1TestCases_inherit__map" alt="Inheritance graph"/></div>
 <map name="heat_1_1TestCases_inherit__map" id="heat_1_1TestCases_inherit__map">
-<area shape="rect" title="Abstract Base class for test cases of the heat equation." alt="" coords="5,199,124,225"/>
+<area shape="rect" title="Abstract Base class for test cases of the heat equation." alt="" coords="5,216,124,243"/>
 <area shape="rect" href="classheat_1_1TestCase_3_01Dummy_01_4.html" title=" " alt="" coords="191,5,372,32"/>
 <area shape="rect" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html" title=" " alt="" coords="172,56,391,83"/>
 <area shape="rect" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html" title=" " alt="" coords="172,107,391,133"/>
-<area shape="rect" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html" title=" " alt="" coords="196,158,367,199"/>
-<area shape="rect" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html" title=" " alt="" coords="187,223,375,265"/>
-<area shape="rect" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html" title=" " alt="" coords="187,289,375,330"/>
-<area shape="rect" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html" title=" " alt="" coords="187,354,375,395"/>
-<area shape="rect" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html" title=" " alt="" coords="187,419,375,461"/>
+<area shape="rect" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html" title=" " alt="" coords="172,157,391,184"/>
+<area shape="rect" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html" title=" " alt="" coords="196,209,367,250"/>
+<area shape="rect" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html" title=" " alt="" coords="187,274,375,315"/>
+<area shape="rect" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html" title=" " alt="" coords="187,339,375,381"/>
+<area shape="rect" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html" title=" " alt="" coords="187,405,375,446"/>
+<area shape="rect" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html" title=" " alt="" coords="187,470,375,511"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -103,44 +104,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae92eada8405a18b88a2559a8e3e7d10a"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#ae92eada8405a18b88a2559a8e3e7d10a">~TestCases</a> ()=default</td></tr>
 <tr class="memdesc:ae92eada8405a18b88a2559a8e3e7d10a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor.  <a href="classheat_1_1TestCases.html#ae92eada8405a18b88a2559a8e3e7d10a">More...</a><br /></td></tr>
 <tr class="separator:ae92eada8405a18b88a2559a8e3e7d10a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<<<<<<< HEAD
-<tr class="memitem:aff60a8ac763f0c49b8108f88fed14c27"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#aff60a8ac763f0c49b8108f88fed14c27">medium</a> (const Vector &amp;) const =0</td></tr>
-<tr class="memdesc:aff60a8ac763f0c49b8108f88fed14c27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the scalar material coefficient.  <a href="classheat_1_1TestCases.html#aff60a8ac763f0c49b8108f88fed14c27">More...</a><br /></td></tr>
-<tr class="separator:aff60a8ac763f0c49b8108f88fed14c27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad7d473f3fde3f9f8be335199e60e7ab"><td class="memItemLeft" align="right" valign="top">virtual DenseMatrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#aad7d473f3fde3f9f8be335199e60e7ab">mediumTensor</a> (const Vector &amp;) const =0</td></tr>
-<tr class="memdesc:aad7d473f3fde3f9f8be335199e60e7ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the matrix material coefficient.  <a href="classheat_1_1TestCases.html#aad7d473f3fde3f9f8be335199e60e7ab">More...</a><br /></td></tr>
-<tr class="separator:aad7d473f3fde3f9f8be335199e60e7ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c4d3c60f78aaac086fe2d35e8c3e7bb"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#a0c4d3c60f78aaac086fe2d35e8c3e7bb">temperatureSol</a> (const Vector &amp;, const double) const =0</td></tr>
-<tr class="memdesc:a0c4d3c60f78aaac086fe2d35e8c3e7bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Temperature solution.  <a href="classheat_1_1TestCases.html#a0c4d3c60f78aaac086fe2d35e8c3e7bb">More...</a><br /></td></tr>
-<tr class="separator:a0c4d3c60f78aaac086fe2d35e8c3e7bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43b76a89e875dd69c4b4ab169e173123"><td class="memItemLeft" align="right" valign="top">virtual Vector&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#a43b76a89e875dd69c4b4ab169e173123">heatFluxSol</a> (const Vector &amp;, const double) const =0</td></tr>
-<tr class="memdesc:a43b76a89e875dd69c4b4ab169e173123"><td class="mdescLeft">&#160;</td><td class="mdescRight">Heat flux solution.  <a href="classheat_1_1TestCases.html#a43b76a89e875dd69c4b4ab169e173123">More...</a><br /></td></tr>
-<tr class="separator:a43b76a89e875dd69c4b4ab169e173123"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4bab70aa8647b7619e4a4d0b1184588e"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#a4bab70aa8647b7619e4a4d0b1184588e">temperatureTimeGradientSol</a> (const Vector &amp;, const double) const =0</td></tr>
-<tr class="memdesc:a4bab70aa8647b7619e4a4d0b1184588e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Temperature gradient with respect to time.  <a href="classheat_1_1TestCases.html#a4bab70aa8647b7619e4a4d0b1184588e">More...</a><br /></td></tr>
-<tr class="separator:a4bab70aa8647b7619e4a4d0b1184588e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af414f31c5d5b1d2e9b9464c5dd04628a"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#af414f31c5d5b1d2e9b9464c5dd04628a">laplacian</a> (const Vector &amp;, const double) const =0</td></tr>
-<tr class="separator:af414f31c5d5b1d2e9b9464c5dd04628a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad51960bc8ae189826c9f2c6dcb2d5aec"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#ad51960bc8ae189826c9f2c6dcb2d5aec">initTemperature</a> (const Vector &amp;) const =0</td></tr>
-<tr class="memdesc:ad51960bc8ae189826c9f2c6dcb2d5aec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initial temperature.  <a href="classheat_1_1TestCases.html#ad51960bc8ae189826c9f2c6dcb2d5aec">More...</a><br /></td></tr>
-<tr class="separator:ad51960bc8ae189826c9f2c6dcb2d5aec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b81b467e9d04b2b52b52158ebaf3a3e"><td class="memItemLeft" align="right" valign="top">virtual Vector&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#a5b81b467e9d04b2b52b52158ebaf3a3e">initHeatFlux</a> (const Vector &amp;) const =0</td></tr>
-<tr class="memdesc:a5b81b467e9d04b2b52b52158ebaf3a3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initial heat flux.  <a href="classheat_1_1TestCases.html#a5b81b467e9d04b2b52b52158ebaf3a3e">More...</a><br /></td></tr>
-<tr class="separator:a5b81b467e9d04b2b52b52158ebaf3a3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af78151f28925eaea549ddad2ad312ae7"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#af78151f28925eaea549ddad2ad312ae7">bdryTemperature</a> (const Vector &amp;, const double) const =0</td></tr>
-<tr class="memdesc:af78151f28925eaea549ddad2ad312ae7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Temperature at the boundary of spatial domain.  <a href="classheat_1_1TestCases.html#af78151f28925eaea549ddad2ad312ae7">More...</a><br /></td></tr>
-<tr class="separator:af78151f28925eaea549ddad2ad312ae7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aedb99ab56fae9469ea9eac75a89a1eab"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#aedb99ab56fae9469ea9eac75a89a1eab">source</a> (const Vector &amp;, const double) const =0</td></tr>
-<tr class="memdesc:aedb99ab56fae9469ea9eac75a89a1eab"><td class="mdescLeft">&#160;</td><td class="mdescRight">source term in the heat equation  <a href="classheat_1_1TestCases.html#aedb99ab56fae9469ea9eac75a89a1eab">More...</a><br /></td></tr>
-<tr class="separator:aedb99ab56fae9469ea9eac75a89a1eab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7645962f9c776d2938d009d567ea057e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#a7645962f9c776d2938d009d567ea057e">setBdryDirichlet</a> (Array&lt; int &gt; &amp;) const =0</td></tr>
-<tr class="memdesc:a7645962f9c776d2938d009d567ea057e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the Dirichlet boundary.  <a href="classheat_1_1TestCases.html#a7645962f9c776d2938d009d567ea057e">More...</a><br /></td></tr>
-<tr class="separator:a7645962f9c776d2938d009d567ea057e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad3cf9c60c95cafd50fdb837bc0e8741"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#aad3cf9c60c95cafd50fdb837bc0e8741">setPerturbation</a> (double w) const</td></tr>
-<tr class="separator:aad3cf9c60c95cafd50fdb837bc0e8741"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24ec41fba8b8f0f8c1a6ad7cea06c415"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#a24ec41fba8b8f0f8c1a6ad7cea06c415">setPerturbations</a> (const Vector &amp;w) const</td></tr>
-<tr class="separator:a24ec41fba8b8f0f8c1a6ad7cea06c415"><td class="memSeparator" colspan="2">&#160;</td></tr>
-=======
 <tr class="memitem:a638f9b501234aefa7d8ee98d01cb139b"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#a638f9b501234aefa7d8ee98d01cb139b">medium</a> (const mfem::Vector &amp;) const =0</td></tr>
 <tr class="memdesc:a638f9b501234aefa7d8ee98d01cb139b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the scalar material coefficient.  <a href="classheat_1_1TestCases.html#a638f9b501234aefa7d8ee98d01cb139b">More...</a><br /></td></tr>
 <tr class="separator:a638f9b501234aefa7d8ee98d01cb139b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -176,35 +139,29 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac890e74bb0379045f176cbafaa9163b7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#ac890e74bb0379045f176cbafaa9163b7">setBdryDirichlet</a> (mfem::Array&lt; int &gt; &amp;) const =0</td></tr>
 <tr class="memdesc:ac890e74bb0379045f176cbafaa9163b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the Dirichlet boundary.  <a href="classheat_1_1TestCases.html#ac890e74bb0379045f176cbafaa9163b7">More...</a><br /></td></tr>
 <tr class="separator:ac890e74bb0379045f176cbafaa9163b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b307ecfb9f43dc6608067d69ecad461"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#a1b307ecfb9f43dc6608067d69ecad461">setPerturbation</a> (double) const =0</td></tr>
-<tr class="separator:a1b307ecfb9f43dc6608067d69ecad461"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab008606e9aa0f68d968c37490e13a268"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#ab008606e9aa0f68d968c37490e13a268">setPerturbations</a> (const mfem::Vector &amp;) const =0</td></tr>
-<tr class="separator:ab008606e9aa0f68d968c37490e13a268"><td class="memSeparator" colspan="2">&#160;</td></tr>
->>>>>>> sparse-dev
+<tr class="memitem:aad3cf9c60c95cafd50fdb837bc0e8741"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#aad3cf9c60c95cafd50fdb837bc0e8741">setPerturbation</a> (double w) const</td></tr>
+<tr class="separator:aad3cf9c60c95cafd50fdb837bc0e8741"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3512051e69451452511c463621185a06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#a3512051e69451452511c463621185a06">setPerturbations</a> (const mfem::Vector &amp;w) const</td></tr>
+<tr class="separator:a3512051e69451452511c463621185a06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a761fffcb5e1bcb24af88d0d4ad0da5ab"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#a761fffcb5e1bcb24af88d0d4ad0da5ab">getDim</a> () const</td></tr>
 <tr class="memdesc:a761fffcb5e1bcb24af88d0d4ad0da5ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of spatial dimensions.  <a href="classheat_1_1TestCases.html#a761fffcb5e1bcb24af88d0d4ad0da5ab">More...</a><br /></td></tr>
 <tr class="separator:a761fffcb5e1bcb24af88d0d4ad0da5ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<<<<<<< HEAD
 <tr class="memitem:afdd6c82da39e40c1f6c93d9e5e45440d"><td class="memItemLeft" align="right" valign="top">const nlohmann::json &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#afdd6c82da39e40c1f6c93d9e5e45440d">m_config</a></td></tr>
 <tr class="separator:afdd6c82da39e40c1f6c93d9e5e45440d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93a7c62a6fc0293300b31c0c0e0d803f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#a93a7c62a6fc0293300b31c0c0e0d803f">m_dim</a></td></tr>
 <tr class="separator:a93a7c62a6fc0293300b31c0c0e0d803f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12dcd36602a2e766281af21aecb62cd5"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#a12dcd36602a2e766281af21aecb62cd5">m_rvar</a> = 0</td></tr>
 <tr class="separator:a12dcd36602a2e766281af21aecb62cd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a539018fd7333be805f2e0907beeeb006"><td class="memItemLeft" align="right" valign="top">Vector&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#a539018fd7333be805f2e0907beeeb006">m_rvars</a></td></tr>
-<tr class="separator:a539018fd7333be805f2e0907beeeb006"><td class="memSeparator" colspan="2">&#160;</td></tr>
-=======
-<tr class="memitem:a93a7c62a6fc0293300b31c0c0e0d803f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#a93a7c62a6fc0293300b31c0c0e0d803f">m_dim</a></td></tr>
-<tr class="separator:a93a7c62a6fc0293300b31c0c0e0d803f"><td class="memSeparator" colspan="2">&#160;</td></tr>
->>>>>>> sparse-dev
+<tr class="memitem:a05ddb061d0b138225aff85bb48158ada"><td class="memItemLeft" align="right" valign="top">mfem::Vector&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#a05ddb061d0b138225aff85bb48158ada">m_rvars</a></td></tr>
+<tr class="separator:a05ddb061d0b138225aff85bb48158ada"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Abstract Base class for test cases of the heat equation. </p>
 
-<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00022">22</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00023">23</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a10447ae5b38a05fdb10816e72ce34dc8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a10447ae5b38a05fdb10816e72ce34dc8">&#9670;&nbsp;</a></span>TestCases()</h2>
@@ -301,7 +258,7 @@ Protected Attributes</h2></td></tr>
 <p>Temperature at the boundary of spatial domain. </p>
 <dl class="section return"><dt>Returns</dt><dd>value of temperature at a given point on the spatial boundary </dd></dl>
 
-<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#a519a543d62ff830db8c561df4f4194e5">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#a335661023e42c5754651de0d26ee7f10">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#aadbb590512a37f56f79edf832049823c">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#a47ef5faa20a78527b4d1fb15d5a69ace">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#a143087ff518a5fe41f7e1bcd9436e94b">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#a4923229a58122621fa62968016931748">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#a65ae738392ed4ddbe46e3ba04f0bf032">heat::TestCase&lt; UnitSquareTest1 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#a57b901d17c57aaae65992b630a059202">heat::TestCase&lt; Dummy &gt;</a>.</p>
+<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html#a2e89f0beb22fd209f5ec4f924fdd00d7">heat::TestCase&lt; LShapedTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#a519a543d62ff830db8c561df4f4194e5">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#a335661023e42c5754651de0d26ee7f10">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#aadbb590512a37f56f79edf832049823c">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#a47ef5faa20a78527b4d1fb15d5a69ace">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#a143087ff518a5fe41f7e1bcd9436e94b">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#a4923229a58122621fa62968016931748">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#a65ae738392ed4ddbe46e3ba04f0bf032">heat::TestCase&lt; UnitSquareTest1 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#a57b901d17c57aaae65992b630a059202">heat::TestCase&lt; Dummy &gt;</a>.</p>
 
 </div>
 </div>
@@ -330,11 +287,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Returns the number of spatial dimensions. </p>
 
-<<<<<<< HEAD
-<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00107">107</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
-=======
-<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00108">108</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
->>>>>>> sparse-dev
+<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00117">117</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
 
 </div>
 </div>
@@ -375,7 +328,7 @@ Protected Attributes</h2></td></tr>
 <p>Heat flux solution. </p>
 <dl class="section return"><dt>Returns</dt><dd>heat flux value at a given point in space-time </dd></dl>
 
-<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#aa71e4b2e630a4d9ccafe1490d6300802">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#a9aaa5d8691e15585a6ad9dd48aae272d">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#aedb068d9901c657bdc3281e25e9abf8b">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#a06a3ff4141e2a99c490d8ae2961a98ca">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#a4439497f2f1ae2efd1c76641e6a280fb">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#af04a18a941b4357eafeb4dbcb397617a">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#ae57d56712964f56061f206edf29c6b6d">heat::TestCase&lt; UnitSquareTest1 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#a209afb1bb3b21026c32ae58efe6455e2">heat::TestCase&lt; Dummy &gt;</a>.</p>
+<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html#a16353692fda26029738ec2bfc12dde44">heat::TestCase&lt; LShapedTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#aa71e4b2e630a4d9ccafe1490d6300802">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#a9aaa5d8691e15585a6ad9dd48aae272d">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#aedb068d9901c657bdc3281e25e9abf8b">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#a06a3ff4141e2a99c490d8ae2961a98ca">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#a4439497f2f1ae2efd1c76641e6a280fb">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#af04a18a941b4357eafeb4dbcb397617a">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#ae57d56712964f56061f206edf29c6b6d">heat::TestCase&lt; UnitSquareTest1 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#a209afb1bb3b21026c32ae58efe6455e2">heat::TestCase&lt; Dummy &gt;</a>.</p>
 
 </div>
 </div>
@@ -406,7 +359,7 @@ Protected Attributes</h2></td></tr>
 <p>Initial heat flux. </p>
 <dl class="section return"><dt>Returns</dt><dd>value of heat flux vector at a given point in space </dd></dl>
 
-<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#a431af5c53a8b905bc08bb07998ab8282">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#a90ac72cb8781d6070318927805c970f3">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#a1f3089baf27c1737c2beecf961e01890">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#acf1948ba26add4dd9ec36f6f2c5fa629">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#a390470ae46baa3c8163947292e92a8ab">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#a69c0289eb545b1c805d2e57b450c4b1e">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#a3647264d491ff1c7677c3f64700d9767">heat::TestCase&lt; UnitSquareTest1 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#a45306bc60473ee4825f04171c2b67f2d">heat::TestCase&lt; Dummy &gt;</a>.</p>
+<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html#a4358ab85abb66ddcc41c0400dd75cc4a">heat::TestCase&lt; LShapedTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#a431af5c53a8b905bc08bb07998ab8282">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#a90ac72cb8781d6070318927805c970f3">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#a1f3089baf27c1737c2beecf961e01890">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#acf1948ba26add4dd9ec36f6f2c5fa629">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#a390470ae46baa3c8163947292e92a8ab">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#a69c0289eb545b1c805d2e57b450c4b1e">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#a3647264d491ff1c7677c3f64700d9767">heat::TestCase&lt; UnitSquareTest1 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#a45306bc60473ee4825f04171c2b67f2d">heat::TestCase&lt; Dummy &gt;</a>.</p>
 
 </div>
 </div>
@@ -437,7 +390,7 @@ Protected Attributes</h2></td></tr>
 <p>Initial temperature. </p>
 <dl class="section return"><dt>Returns</dt><dd>value of initial temperature at a given point in space </dd></dl>
 
-<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#a60a62c417311db6d028ed19e9b7d25fe">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#a50e8c305a487416bbae24eec47ddeb1e">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#a1c606e0e33e93c965d356d647fcefabc">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#a2986a5f389db98f22d80f5290fd92e41">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#a765b3e0476633817b0a010dc738c73e6">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#a31f656f691a6d715ad1223bc4be28309">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#a3d8676337948ee04c261e8f208df609a">heat::TestCase&lt; UnitSquareTest1 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#af657a086dbad312d187930ab24837d9f">heat::TestCase&lt; Dummy &gt;</a>.</p>
+<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html#a52d577c95239f903a85a1c3b60542b68">heat::TestCase&lt; LShapedTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#a60a62c417311db6d028ed19e9b7d25fe">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#a50e8c305a487416bbae24eec47ddeb1e">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#a1c606e0e33e93c965d356d647fcefabc">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#a2986a5f389db98f22d80f5290fd92e41">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#a765b3e0476633817b0a010dc738c73e6">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#a31f656f691a6d715ad1223bc4be28309">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#a3d8676337948ee04c261e8f208df609a">heat::TestCase&lt; UnitSquareTest1 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#af657a086dbad312d187930ab24837d9f">heat::TestCase&lt; Dummy &gt;</a>.</p>
 
 </div>
 </div>
@@ -475,7 +428,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#aa7321dbc4ce0e58d7abd200e6640ae8e">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#a3642450605ee052386f034c73624b28e">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#a49b3a3a90d9c207c250b8e168156c7f7">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#a0f11deb12244b85d81f133ddd71120db">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#acda3163865d1b72dd330e29fe5c2f1cc">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#ac21e9171fdf34be6eef40f36dd38de4a">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#aa944ae93064e1f45074bc5bc8c0ed27d">heat::TestCase&lt; UnitSquareTest1 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#ab4ddb3b3996f59e7363cb3a30a035930">heat::TestCase&lt; Dummy &gt;</a>.</p>
+<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html#a5b35eb415b7169651dab95f8804717fb">heat::TestCase&lt; LShapedTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#aa7321dbc4ce0e58d7abd200e6640ae8e">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#a3642450605ee052386f034c73624b28e">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#a49b3a3a90d9c207c250b8e168156c7f7">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#a0f11deb12244b85d81f133ddd71120db">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#acda3163865d1b72dd330e29fe5c2f1cc">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#ac21e9171fdf34be6eef40f36dd38de4a">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#aa944ae93064e1f45074bc5bc8c0ed27d">heat::TestCase&lt; UnitSquareTest1 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#ab4ddb3b3996f59e7363cb3a30a035930">heat::TestCase&lt; Dummy &gt;</a>.</p>
 
 </div>
 </div>
@@ -506,7 +459,7 @@ Protected Attributes</h2></td></tr>
 <p>Defines the scalar material coefficient. </p>
 <dl class="section return"><dt>Returns</dt><dd>material coefficient at a given physical point </dd></dl>
 
-<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#a300bcd002db819a0192d612d19bf24af">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#aa2534089c37e5df6e13258f2248650af">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#ab6fb4261c1f213f64feb3ea0d26ca079">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#aff7a30cd86500e7ae69e5d21a319c634">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#ac8beb8cd997082f5c40feb42d18eb3ac">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#af4984d18f93b295566a263656434525c">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#ab1792b64aafd5531fbee16baa940f5f6">heat::TestCase&lt; UnitSquareTest1 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#a03affcf27f5fbc816cf2ecd762e6f01c">heat::TestCase&lt; Dummy &gt;</a>.</p>
+<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#a300bcd002db819a0192d612d19bf24af">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html#a806ab8951c2c5f0ebf54b1a71a9f9991">heat::TestCase&lt; LShapedTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#aa2534089c37e5df6e13258f2248650af">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#ab6fb4261c1f213f64feb3ea0d26ca079">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#aff7a30cd86500e7ae69e5d21a319c634">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#ac8beb8cd997082f5c40feb42d18eb3ac">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#af4984d18f93b295566a263656434525c">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#ab1792b64aafd5531fbee16baa940f5f6">heat::TestCase&lt; UnitSquareTest1 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#a03affcf27f5fbc816cf2ecd762e6f01c">heat::TestCase&lt; Dummy &gt;</a>.</p>
 
 </div>
 </div>
@@ -537,7 +490,7 @@ Protected Attributes</h2></td></tr>
 <p>Defines the matrix material coefficient. </p>
 <dl class="section return"><dt>Returns</dt><dd>material coefficient at a given physical point </dd></dl>
 
-<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#a3041f99ca4164c8ddaeae106660ffaff">heat::TestCase&lt; Dummy &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#a4c008a37531c4181e9f8ba35079115e8">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#a6a4962ba6631417c3cac29e739995243">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#a1b177d317d263b3d15500e0f2a6d5554">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#a1b88e46986a0926aa9e2762f6d0cf995">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#a1b532e76cbc23e3650e8c9a771ad1a87">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#aa6a6bec9fa430be304feae8e04b57a38">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#abbe74071a3347a0af0f2a2e5c753d5f6">heat::TestCase&lt; UnitSquareTest1 &gt;</a>.</p>
+<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#a3041f99ca4164c8ddaeae106660ffaff">heat::TestCase&lt; Dummy &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html#a70554709cbc672716cdbc7a2eef88273">heat::TestCase&lt; LShapedTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#a4c008a37531c4181e9f8ba35079115e8">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#a6a4962ba6631417c3cac29e739995243">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#a1b177d317d263b3d15500e0f2a6d5554">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#a1b88e46986a0926aa9e2762f6d0cf995">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#a1b532e76cbc23e3650e8c9a771ad1a87">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#aa6a6bec9fa430be304feae8e04b57a38">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#abbe74071a3347a0af0f2a2e5c753d5f6">heat::TestCase&lt; UnitSquareTest1 &gt;</a>.</p>
 
 </div>
 </div>
@@ -567,7 +520,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Sets the Dirichlet boundary. </p>
 
-<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#a3b61382400ab2b5c959a8615fcc1dbd9">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#a4b2eba36eb3d3af7c0ab86fe6e4a238c">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#a56af3a353be5565976f9c84b92b62cac">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#ac626ae0c636718d085d1baa2e2b768b0">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#a74bd01d9b983d5ea160b740355b73790">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#a1dcd3bf0bd5ee5cf9f82f7d9358eba9f">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#a320803ad95d490e30abc768e03a84fe9">heat::TestCase&lt; UnitSquareTest1 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#aab605728002259ed057ff6da8b1ad06a">heat::TestCase&lt; Dummy &gt;</a>.</p>
+<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html#a4900cd7a57316600d2074020290b2234">heat::TestCase&lt; LShapedTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#a3b61382400ab2b5c959a8615fcc1dbd9">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#a4b2eba36eb3d3af7c0ab86fe6e4a238c">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#a56af3a353be5565976f9c84b92b62cac">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#ac626ae0c636718d085d1baa2e2b768b0">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#a74bd01d9b983d5ea160b740355b73790">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#a1dcd3bf0bd5ee5cf9f82f7d9358eba9f">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#a320803ad95d490e30abc768e03a84fe9">heat::TestCase&lt; UnitSquareTest1 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#aab605728002259ed057ff6da8b1ad06a">heat::TestCase&lt; Dummy &gt;</a>.</p>
 
 </div>
 </div>
@@ -595,21 +548,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<<<<<<< HEAD
-<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00098">98</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00108">108</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a24ec41fba8b8f0f8c1a6ad7cea06c415"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a24ec41fba8b8f0f8c1a6ad7cea06c415">&#9670;&nbsp;</a></span>setPerturbations()</h2>
-=======
-<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#a3dcc8729ea5e7a05b42ccafba1c0270c">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#a504817131639fc311aeb0b019c3f7686">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#a52964c6d9dc89551c8dbced4dcbbfd31">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#a365e71d3ae5dcf0cee0a5b7f4995bd1d">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#ae60564c1db9bcf28e0ebc2c674b669ad">heat::TestCase&lt; Dummy &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#a3dd8e200b8536a9a12af0deac9af387e">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#a01305a5715d02dd7208f09f262b69ec2">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#a8f48f895c49b83fe9c5a849ff551e96a">heat::TestCase&lt; UnitSquareTest1 &gt;</a>.</p>
-
-</div>
-</div>
-<a id="ab008606e9aa0f68d968c37490e13a268"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab008606e9aa0f68d968c37490e13a268">&#9670;&nbsp;</a></span>setPerturbations()</h2>
->>>>>>> sparse-dev
+<a id="a3512051e69451452511c463621185a06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3512051e69451452511c463621185a06">&#9670;&nbsp;</a></span>setPerturbations()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -620,13 +564,8 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">void heat::TestCases::setPerturbations </td>
           <td>(</td>
-<<<<<<< HEAD
-          <td class="paramtype">const Vector &amp;&#160;</td>
-          <td class="paramname"><em>w</em></td><td>)</td>
-=======
           <td class="paramtype">const mfem::Vector &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
->>>>>>> sparse-dev
+          <td class="paramname"><em>w</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -637,11 +576,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<<<<<<< HEAD
-<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00102">102</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
-=======
-<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#a8d8ebbcea770218465800db6dbc2aed8">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#a057e28872209c93ecfc26beedc13025a">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#a7b08f83e813473c36e628e37b8eb8260">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#a8c1eeb0952affa98c6714ac9e5b9d800">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#a608f91df0e1ac327f7b5ff25e426dd05">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#a8fb913b9148e8eb85f6526fd0c2a4acb">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#a0db82df3830c98cc09e1b1f73af8822b">heat::TestCase&lt; UnitSquareTest1 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#ae17a0c5e3b97b309d1556e695ba859e5">heat::TestCase&lt; Dummy &gt;</a>.</p>
->>>>>>> sparse-dev
+<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00112">112</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
 
 </div>
 </div>
@@ -682,7 +617,7 @@ Protected Attributes</h2></td></tr>
 <p>source term in the heat equation </p>
 <dl class="section return"><dt>Returns</dt><dd>value of source at a given point in space-time </dd></dl>
 
-<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#ae4bfc7f2ad33a49b43531be45ebf3a0b">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#a70a3c24c98070aecff812afba9b29062">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#a96389bcf8183ce1e5411d0da0fe2023d">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#a32eb83a9e73c5264125824c1ef479e7d">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#a080e093cef5bf3cd59568ce5e5b976d5">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#af05299ec2fc114fcaba8ea50852143e1">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#aebfc8dce85e98ac7f5c5beeb597c557d">heat::TestCase&lt; UnitSquareTest1 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#afbdbc2bde57644ff0e17a1a3af0cc7b1">heat::TestCase&lt; Dummy &gt;</a>.</p>
+<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html#ab7f2fc0e30c163f9a8ed9003dc2e608f">heat::TestCase&lt; LShapedTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#ae4bfc7f2ad33a49b43531be45ebf3a0b">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#a70a3c24c98070aecff812afba9b29062">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#a96389bcf8183ce1e5411d0da0fe2023d">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#a32eb83a9e73c5264125824c1ef479e7d">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#a080e093cef5bf3cd59568ce5e5b976d5">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#af05299ec2fc114fcaba8ea50852143e1">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#aebfc8dce85e98ac7f5c5beeb597c557d">heat::TestCase&lt; UnitSquareTest1 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#afbdbc2bde57644ff0e17a1a3af0cc7b1">heat::TestCase&lt; Dummy &gt;</a>.</p>
 
 </div>
 </div>
@@ -723,7 +658,7 @@ Protected Attributes</h2></td></tr>
 <p>Temperature solution. </p>
 <dl class="section return"><dt>Returns</dt><dd>temperature value at a given point in space-time </dd></dl>
 
-<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#aa04df64bd70f5d5194967c1b4d66146c">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#a8fda3c28ba7d9a22fe83016c53cfee85">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#ac0e6edf0ea5a65f29d9f3bd53aa53b16">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#a76e2bf7d267d1328fb328e10e3361bc5">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#addcb0736feb166bc4ca0fc50f1186d6d">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#ab5e4deb3dafa4f234396d449c5a43b58">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#a2a2cbce142b27c00348616f5bd24ee94">heat::TestCase&lt; UnitSquareTest1 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#a4c8174d4b6745b57d1acf8a39131a8fc">heat::TestCase&lt; Dummy &gt;</a>.</p>
+<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html#a642fb6e8be79d16affdfdeda6f80879c">heat::TestCase&lt; LShapedTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#aa04df64bd70f5d5194967c1b4d66146c">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#a8fda3c28ba7d9a22fe83016c53cfee85">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#ac0e6edf0ea5a65f29d9f3bd53aa53b16">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#a76e2bf7d267d1328fb328e10e3361bc5">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#addcb0736feb166bc4ca0fc50f1186d6d">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#ab5e4deb3dafa4f234396d449c5a43b58">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#a2a2cbce142b27c00348616f5bd24ee94">heat::TestCase&lt; UnitSquareTest1 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#a4c8174d4b6745b57d1acf8a39131a8fc">heat::TestCase&lt; Dummy &gt;</a>.</p>
 
 </div>
 </div>
@@ -764,7 +699,7 @@ Protected Attributes</h2></td></tr>
 <p>Temperature gradient with respect to time. </p>
 <dl class="section return"><dt>Returns</dt><dd>value of temperature time-gradient at a given point in space-time </dd></dl>
 
-<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#afd6d45c395913b381457383c00c33a71">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#aaa73dacf8ace84f97f00890e940a9950">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#a4685ed5fec88cca8bff1776cd571a488">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#aaf1d891f9a606b21ecfa9ce49b632553">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#a3803ebbf474e2cdd6cffec00fc11c68d">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#ac32f0222a5cdeee6cdf16733912d086a">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#ae597eb928ca7c138a9e6de06cd2cc649">heat::TestCase&lt; UnitSquareTest1 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#ad62f002e55e5ce79c2978df183be06eb">heat::TestCase&lt; Dummy &gt;</a>.</p>
+<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html#ae7ab9d761ec3835d330c2491a56ef2e6">heat::TestCase&lt; LShapedTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#afd6d45c395913b381457383c00c33a71">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#aaa73dacf8ace84f97f00890e940a9950">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#a4685ed5fec88cca8bff1776cd571a488">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#aaf1d891f9a606b21ecfa9ce49b632553">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#a3803ebbf474e2cdd6cffec00fc11c68d">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#ac32f0222a5cdeee6cdf16733912d086a">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#ae597eb928ca7c138a9e6de06cd2cc649">heat::TestCase&lt; UnitSquareTest1 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#ad62f002e55e5ce79c2978df183be06eb">heat::TestCase&lt; Dummy &gt;</a>.</p>
 
 </div>
 </div>
@@ -805,32 +740,7 @@ Protected Attributes</h2></td></tr>
 <p>Temperature gradient with respect to time. </p>
 <dl class="section return"><dt>Returns</dt><dd>value of temperature time-gradient at a given point in space-time </dd></dl>
 
-<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#a1bd75acabf01b0cf18bf0054d8ff0d37">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#a4098c64526cdbdff4a93064aa792a8fc">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#a83c8696d6c35ff62faa7632732674b29">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#a8de06e72da304cec62efc97c20cde616">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#a31d1018032bf0efc24118b229b7f312d">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#a0ddbf473d6b1642d7b62ad0104468661">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#afd785dd5dee7ec0edfd7503f9c196c55">heat::TestCase&lt; UnitSquareTest1 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#a0079a87176a3fbbb251c07d1c97f0d41">heat::TestCase&lt; Dummy &gt;</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a93a7c62a6fc0293300b31c0c0e0d803f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a93a7c62a6fc0293300b31c0c0e0d803f">&#9670;&nbsp;</a></span>m_dim</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int heat::TestCases::m_dim</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00113">113</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
+<p>Implemented in <a class="el" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html#ab1db05c44f922d92a87b5d6d48ad4572">heat::TestCase&lt; LShapedTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html#a1bd75acabf01b0cf18bf0054d8ff0d37">heat::TestCase&lt; LShapedTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html#a4098c64526cdbdff4a93064aa792a8fc">heat::TestCase&lt; LShapedTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html#a83c8696d6c35ff62faa7632732674b29">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html#a8de06e72da304cec62efc97c20cde616">heat::TestCase&lt; UnitSquareTest4 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html#a31d1018032bf0efc24118b229b7f312d">heat::TestCase&lt; UnitSquareTest3 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html#a0ddbf473d6b1642d7b62ad0104468661">heat::TestCase&lt; UnitSquareTest2 &gt;</a>, <a class="el" href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html#afd785dd5dee7ec0edfd7503f9c196c55">heat::TestCase&lt; UnitSquareTest1 &gt;</a>, and <a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#a0079a87176a3fbbb251c07d1c97f0d41">heat::TestCase&lt; Dummy &gt;</a>.</p>
 
 </div>
 </div>
@@ -855,7 +765,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00112">112</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00122">122</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
 
 </div>
 </div>
@@ -879,7 +789,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00113">113</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00123">123</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
 
 </div>
 </div>
@@ -903,12 +813,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00115">115</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00125">125</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a539018fd7333be805f2e0907beeeb006"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a539018fd7333be805f2e0907beeeb006">&#9670;&nbsp;</a></span>m_rvars</h2>
+<a id="a05ddb061d0b138225aff85bb48158ada"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05ddb061d0b138225aff85bb48158ada">&#9670;&nbsp;</a></span>m_rvars</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -917,7 +827,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Vector heat::TestCases::m_rvars</td>
+          <td class="memname">mfem::Vector heat::TestCases::m_rvars</td>
         </tr>
       </table>
   </td>
@@ -927,7 +837,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00116">116</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00126">126</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
 
 </div>
 </div>
