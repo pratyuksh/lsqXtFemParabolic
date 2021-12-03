@@ -19,6 +19,7 @@ runSolver(sparseHeat::Solver& solver,
     auto disc = solver.getDiscretisation();
 
     observer.set(testCase, disc);
+    observer.visualizeSolutionAtEndTime(*solutionHandler);
     auto solutionError = observer.evalError(*solutionHandler);
 
     double htMax = solver.getMeshwidthOfFinestTemporalMesh();
