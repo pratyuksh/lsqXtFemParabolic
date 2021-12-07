@@ -13,12 +13,12 @@ using namespace mymfem;
 
 /**
  * @brief Tests the construction of parent and child hierarchy
- * between two nested meshes.
+ * between two nested meshes in 2d.
  */
-TEST(NestedMeshHierarchy, singleLevel)
+TEST(NestedMeshHierarchy, singleLevel2d)
 {
     std::string input_dir
-            = "../tests/input/nested_hierarchy/";
+            = "../tests/input/nested_hierarchy/2d/";
 
     const std::string meshFile1 = input_dir+"mesh_lx0";
     const std::string meshFile2 = input_dir+"mesh_lx1";
@@ -92,12 +92,12 @@ TEST(NestedMeshHierarchy, singleLevel)
 
 /**
  * @brief Tests the construction of parent and child hierarchy
- * across multiple levels
+ * across multiple levels in 2d.
  */
-TEST(NestedMeshHierarchy, multiLevel)
+TEST(NestedMeshHierarchy, multiLevel2d)
 {
     std::string input_dir
-            = "../tests/input/nested_hierarchy/";
+            = "../tests/input/nested_hierarchy/2d/";
 
     const std::string meshFile1 = input_dir+"mesh_lx0";
     const std::string meshFile2 = input_dir+"mesh_lx1";
@@ -162,12 +162,12 @@ TEST(NestedMeshHierarchy, multiLevel)
 }
 
 /**
- * @brief Tests the construction of nested FE hierarchy
+ * @brief Tests the construction of nested FE hierarchy in 2d.
  */
-TEST(NestedFEHierarchy, build)
+TEST(NestedFEHierarchy, build2d)
 {
     std::string input_dir
-            = "../tests/input/nested_hierarchy/";
+            = "../tests/input/nested_hierarchy/2d/";
 
     const std::string meshFile1 = input_dir+"mesh_lx0";
     const std::string meshFile2 = input_dir+"mesh_lx1";
@@ -217,4 +217,134 @@ TEST(NestedFEHierarchy, build)
     ASSERT_EQ(numFEDims[0], mesh1->GetNV());
     ASSERT_EQ(numFEDims[1], mesh2->GetNV());
     ASSERT_EQ(numFEDims[2], mesh3->GetNV());
+}
+
+/**
+ * @brief Tests the construction of parent and child hierarchy
+ * between two nested meshes in 3d.
+ */
+TEST(NestedMeshHierarchy, singleLevel3d)
+{
+    std::string input_dir
+            = "../tests/input/nested_hierarchy/3d/";
+
+    const std::string meshFile1 = input_dir+"mesh_lx0";
+    const std::string meshFile2 = input_dir+"mesh_lx1";
+    const std::string meshFile3 = input_dir+"mesh_lx2";
+
+    auto mesh1 = std::make_shared<Mesh>(meshFile1.c_str());
+    auto mesh2 = std::make_shared<Mesh>(meshFile2.c_str());
+    auto mesh3 = std::make_shared<Mesh>(meshFile3.c_str());
+
+    ASSERT_EQ(mesh1->GetNE(), 1);
+    ASSERT_EQ(mesh2->GetNE(), 2);
+    ASSERT_EQ(mesh3->GetNE(), 3);
+
+    std::unique_ptr<NestedMeshHierarchy> meshHierarchy
+            = std::make_unique<NestedMeshHierarchy>();
+    meshHierarchy->addMesh(mesh1);
+    meshHierarchy->addMesh(mesh2);
+    meshHierarchy->addMesh(mesh3);
+
+    meshHierarchy->buildHierarchicalTranformations();
+
+    auto hierarchicalTransformations = meshHierarchy->getTransformations();
+
+    auto trueHierarchicalTransformationBetweenMeshes12
+            = std::make_unique<HierarchicalMeshTransformationTable>(mesh1->GetNE());
+    // children of the element 0 in coarse mesh
+    trueHierarchicalTransformationBetweenMeshes12->add(0, 0);
+    trueHierarchicalTransformationBetweenMeshes12->add(0, 1);
+
+    for (int i=0; i<mesh1->GetNE(); i++) {
+        auto buf = (*hierarchicalTransformations[0])(i);
+        auto trueBuf = (*trueHierarchicalTransformationBetweenMeshes12)(i);
+        ASSERT_EQ(buf, trueBuf);
+    }
+
+    auto trueHierarchicalTransformationBetweenMeshes23
+            = std::make_unique<HierarchicalMeshTransformationTable>(mesh2->GetNE());
+    // children of the element 0 in coarse mesh
+    trueHierarchicalTransformationBetweenMeshes23->add(0, 1);
+    trueHierarchicalTransformationBetweenMeshes23->add(0, 2);
+
+    // children of the element 1 in coarse mesh
+    trueHierarchicalTransformationBetweenMeshes23->add(1, 0);
+
+    for (int i=0; i<mesh2->GetNE(); i++) {
+        auto buf = (*hierarchicalTransformations[1])(i);
+        auto trueBuf = (*trueHierarchicalTransformationBetweenMeshes23)(i);
+        ASSERT_EQ(buf, trueBuf);
+    }
+}
+
+/**
+ * @brief Tests the construction of parent and child hierarchy
+ * across multiple levels in 3d.
+ */
+TEST(NestedMeshHierarchy, multiLevel3d)
+{
+    std::string input_dir
+            = "../tests/input/nested_hierarchy/3d/";
+
+    const std::string meshFile1 = input_dir+"mesh_lx0";
+    const std::string meshFile2 = input_dir+"mesh_lx1";
+    const std::string meshFile3 = input_dir+"mesh_lx2";
+
+    auto mesh1 = std::make_shared<Mesh>(meshFile1.c_str());
+    auto mesh2 = std::make_shared<Mesh>(meshFile2.c_str());
+    auto mesh3 = std::make_shared<Mesh>(meshFile3.c_str());
+
+    ASSERT_EQ(mesh1->GetNE(), 1);
+    ASSERT_EQ(mesh2->GetNE(), 2);
+    ASSERT_EQ(mesh3->GetNE(), 3);
+
+    std::unique_ptr<NestedMeshHierarchy> meshHierarchy
+            = std::make_unique<NestedMeshHierarchy>();
+    meshHierarchy->addMesh(mesh1);
+    meshHierarchy->addMesh(mesh2);
+    meshHierarchy->addMesh(mesh3);
+
+    meshHierarchy->buildHierarchicalTranformations();
+
+    auto hierarchicalTransformations
+            = meshHierarchy->getTransformations();
+
+    // generate hierarchy across multiple levels
+
+    // ground truth
+    std::unique_ptr<NestedMeshHierarchy> trueMeshHierarchy
+            = std::make_unique<NestedMeshHierarchy>();
+    trueMeshHierarchy->addMesh(mesh1);
+    trueMeshHierarchy->addMesh(mesh3);
+
+    trueMeshHierarchy->buildHierarchicalTranformations();
+
+    auto trueHierarchicalTransformations
+            = trueMeshHierarchy->getTransformations();
+    trueHierarchicalTransformations[0]->print();
+
+    {
+        auto hierarchicalTransformationMeshes13
+                = buildMultiLevelMeshHierarchy(hierarchicalTransformations);
+
+        for (int i=0; i<mesh1->GetNE(); i++) {
+            auto buf = (*hierarchicalTransformationMeshes13)(i);
+            auto trueBuf = (*trueHierarchicalTransformations[0])(i);
+            ASSERT_EQ(buf, trueBuf);
+        }
+    }
+
+    {
+        auto hierarchicalTransformationMeshes13
+                = buildMultiLevelMeshHierarchy
+                (hierarchicalTransformations[0],
+                hierarchicalTransformations[1]);
+
+        for (int i=0; i<mesh1->GetNE(); i++) {
+            auto buf = (*hierarchicalTransformationMeshes13)(i);
+            auto trueBuf = (*trueHierarchicalTransformations[0])(i);
+            ASSERT_EQ(buf, trueBuf);
+        }
+    }
 }

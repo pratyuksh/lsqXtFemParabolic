@@ -19,7 +19,7 @@ using namespace mymfem;
 TEST(SolutionHandler, dataSizes)
 {
     std::string input_dir
-            = "../tests/input/nested_hierarchy/";
+            = "../tests/input/nested_hierarchy/2d/";
 
     const std::string meshFile1 = input_dir+"mesh_lx0";
     const std::string meshFile2 = input_dir+"mesh_lx1";
