@@ -7,6 +7,83 @@
 #include <iostream>
 
 using namespace mfem;
+namespace fs = std::filesystem;
+
+namespace sparseHeat
+{
+
+void writeErrorConvergenceDataToJsonFile
+(const nlohmann::json& config,
+ Array<int> &numDofs,
+ Array<double> &meshSizes,
+ Array<Vector> &solutionError)
+{
+    assert(numDofs.Size() == meshSizes.Size());
+
+    std::string problemType = config["problem_type"];
+
+    std::string baseOutDir = "../output";
+    if (config.contains("base_out_dir")) {
+        baseOutDir = config["base_out_dir"];
+    }
+
+    std::string subOutDir = "spars_heat/"+problemType;
+    if (config.contains("sub_out_dir")) {
+        subOutDir = config["sub_out_dir"];
+    }
+
+    std::string outDir = baseOutDir+"/"+subOutDir+"/";
+    fs::create_directories(outDir);
+
+    int deg = config["deg"];
+
+    std::string discrType = "H1Hdiv";
+    if (config.contains("discretisation_type")) {
+        discrType = config["discretisation_type"];
+    }
+
+    std::string errorType = "natural";
+    if (config.contains("error_type")) {
+        errorType = config["error_type"];
+    }
+
+    std::string outfile = outDir+"convgError"
+            +"_"+discrType
+            +"_"+problemType
+            +"_"+errorType
+            +"_deg"+std::to_string(deg)
+            +".json";;
+    std::cout << outfile << std::endl;
+
+    // set data names
+    std::vector<std::string> solutionErrorNames;
+    if (errorType == "natural") {
+            solutionErrorNames.push_back("uL2H1");
+            solutionErrorNames.push_back("qL2L2");
+            solutionErrorNames.push_back("UDiv");
+        }
+    else if (errorType == "lsq") {
+        solutionErrorNames.push_back("pde");
+        solutionErrorNames.push_back("flux");
+        solutionErrorNames.push_back("ic");
+    }
+
+    auto json = nlohmann::json{};
+    for (int i=0; i<numDofs.Size(); i++) {
+        json["ndofs"][i] = numDofs[i];
+        json["h_max"][i] = meshSizes[i];
+        for (int j=0; j<solutionError[i].Size(); j++) {
+            json[solutionErrorNames[j]][i] = (solutionError[i])(j);
+        }
+    }
+
+    auto file = std::ofstream(outfile);
+    assert(file.good());
+    file << json.dump(2);
+    file.close();
+}
+
+}
 
 
 std::tuple<int, double, double, Vector>
@@ -144,6 +221,16 @@ void runMultipleSimulationsToTestConvergence (const nlohmann::json config,
     for (int i=0; i<maxNumLevels-minNumLevels+1; i++) {
         solutionError[i].Print();
     }
+
+    Array<double> meshSizes(numDofs.Size());
+    for (int i=0; i<maxNumLevels-minNumLevels+1; i++) {
+        meshSizes[i] = hxMax[i] > htMax[i] ? hxMax[i] : htMax[i];
+    }
+
+    sparseHeat::writeErrorConvergenceDataToJsonFile(config,
+                                                    numDofs,
+                                                    meshSizes,
+                                                    solutionError);
 }
 
 
