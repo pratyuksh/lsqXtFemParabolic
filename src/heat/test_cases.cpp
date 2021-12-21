@@ -594,7 +594,6 @@ void heat::TestCase <LShapedTest2>
     bdr_marker = 1;
 }
 
-
 // LShapedTest3, Singular solution
 // Zero ICs
 // Homogeneous Dirichlet BCs
@@ -630,6 +629,58 @@ double heat::TestCase <LShapedTest3>
 
 void heat::TestCase <LShapedTest3>
 :: setBdryDirichlet(Array<int>& bdr_marker) const {
+    bdr_marker = 1;
+}
+
+// UnitCubeTest1, Smooth solution
+// Non-zero ICs
+// Homogeneous Dirichlet BCs
+// Non-zero source
+double heat::TestCase <UnitCubeTest1>
+:: temperatureSol(const Vector& x, const double t) const
+{
+    double temperature
+            = sin(M_PI*x(0))*sin(M_PI*x(1))*sin(M_PI*x(2))*cos(M_PI*t);
+    return temperature;
+}
+
+Vector heat::TestCase <UnitCubeTest1>
+:: heatFluxSol (const Vector& x, const double t) const
+{
+    return temperatureSpatialGradientSol(x, t);
+}
+
+Vector heat::TestCase <UnitCubeTest1>
+:: temperatureSpatialGradientSol (const Vector& x, const double t) const
+{
+    Vector dudx(m_dim);
+    dudx(0) = M_PI*cos(M_PI*x(0))*sin(M_PI*x(1))*sin(M_PI*x(2));
+    dudx(1) = M_PI*sin(M_PI*x(0))*cos(M_PI*x(1))*sin(M_PI*x(2));
+    dudx(2) = M_PI*sin(M_PI*x(0))*sin(M_PI*x(1))*cos(M_PI*x(2));
+    dudx *= cos(M_PI*t);
+    return dudx;
+}
+
+double heat::TestCase <UnitCubeTest1>
+:: temperatureTemporalGradientSol
+(const Vector& x, const double t) const
+{
+    double dudt = sin(M_PI*x(0))*sin(M_PI*x(1))*sin(M_PI*x(2))
+            *(-M_PI)*sin(M_PI*t);
+    return dudt;
+}
+
+double heat::TestCase <UnitCubeTest1>
+:: source (const Vector& x, const double t) const
+{
+    double f = M_PI*sin(M_PI*x(0))*sin(M_PI*x(1))*sin(M_PI*x(2));
+    f *= (3*M_PI*cos(M_PI*t) - sin(M_PI*t));
+    return f;
+}
+
+void heat::TestCase <UnitCubeTest1>
+:: setBdryDirichlet(Array<int>& bdr_marker) const
+{
     bdr_marker = 1;
 }
 

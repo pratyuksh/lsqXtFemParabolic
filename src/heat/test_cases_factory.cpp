@@ -48,6 +48,10 @@ heat::makeTestCase(const nlohmann::json& config)
         return std::make_shared
                 <heat::TestCase<LShapedTest3>> (config);
     }
+    else if (problem_type == "unitCube_test1") {
+        return std::make_shared
+                <heat::TestCase<UnitCubeTest1>> (config);
+    }
 
     throw std::runtime_error(fmt::format(
         "Unknown problem type for Heat equation. "

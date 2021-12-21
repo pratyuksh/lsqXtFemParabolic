@@ -13,7 +13,8 @@ enum {Dummy,
       PeriodicUnitSquareTest1,
       LShapedTest1,
       LShapedTest2,
-      LShapedTest3};
+      LShapedTest3,
+      UnitCubeTest1};
 
 namespace heat {
 
@@ -71,9 +72,6 @@ public:
      */
     virtual double temperatureTemporalGradientSol
     (const mfem::Vector&, const double) const = 0;
-
-    virtual double laplacian
-    (const mfem::Vector&, const double) const = 0;
     
     /**
      * @brief Initial temperature
@@ -104,6 +102,11 @@ public:
     
     //! Sets the Dirichlet boundary
     virtual void setBdryDirichlet(mfem::Array<int>&) const = 0;
+
+    double laplacian
+    (const mfem::Vector& x, const double t) const {
+        return temperatureTemporalGradientSol(x,t) - source(x, t);
+    }
 
     void setPerturbation(double w) const {
         m_rvar = w;
@@ -180,11 +183,6 @@ public:
         return med;
     }
 
-    double laplacian
-    (const mfem::Vector& x, const double t) const override {
-        return temperatureTemporalGradientSol(x,t) - source(x, t);
-    }
-
     double initTemperature(const mfem::Vector& x) const override {
         return temperatureSol(x,0);
     }
@@ -194,7 +192,7 @@ public:
     }
 
     double bdryTemperature(const mfem::Vector& x,
-                            const double t) const override {
+                           const double t) const override {
         return temperatureSol(x, t);
     }
 };
@@ -236,11 +234,6 @@ public:
     double medium(const mfem::Vector&) const override;
 
     mfem::DenseMatrix mediumTensor(const mfem::Vector&) const override;
-
-    double laplacian
-    (const mfem::Vector& x, const double t) const override {
-        return temperatureTemporalGradientSol(x,t) - source(x, t);
-    }
 
     double initTemperature(const mfem::Vector& x) const override {
         return temperatureSol(x,0);
@@ -301,12 +294,6 @@ public:
         return med;
     }
 
-    double laplacian
-    (const mfem::Vector& x, const double t) const override {
-        return temperatureTemporalGradientSol(x,t)
-                - source(x, t);
-    }
-
     double initTemperature(const mfem::Vector& x) const override {
         return temperatureSol(x,0);
     }
@@ -357,12 +344,6 @@ public:
                   const double) const override;
 
     void setBdryDirichlet(mfem::Array<int>&) const override;
-
-    double laplacian
-    (const mfem::Vector& x, const double t) const override {
-        return temperatureTemporalGradientSol(x,t)
-                - source(x, t);
-    }
 
     double initTemperature(const mfem::Vector& x) const override {
         return temperatureSol(x,0);
@@ -417,12 +398,6 @@ public:
 
     void setBdryDirichlet(mfem::Array<int>&) const override;
 
-    double laplacian
-    (const mfem::Vector& x, const double t) const override {
-        return temperatureTemporalGradientSol(x,t)
-                - source(x, t);
-    }
-
     double initTemperature(const mfem::Vector& x) const override {
         return temperatureSol(x,0);
     }
@@ -476,12 +451,6 @@ public:
 
     double source(const mfem::Vector&,
                   const double) const override;
-
-    double laplacian
-    (const mfem::Vector& x, const double t) const override {
-        return temperatureTemporalGradientSol(x,t)
-                - source(x, t);
-    }
 
     double initTemperature(const mfem::Vector& x) const override {
         return temperatureSol(x,0);
@@ -547,12 +516,6 @@ public:
         med(0,0) = med(1,1) = 1;
         med(0,1) = med(1,0) = 0;
         return med;
-    }
-
-    double laplacian
-    (const mfem::Vector& x, const double t) const override {
-        return temperatureTemporalGradientSol(x,t)
-                - source(x, t);
     }
 
     double initTemperature(const mfem::Vector& x) const override {
@@ -624,12 +587,6 @@ public:
         return med;
     }
 
-    double laplacian
-    (const mfem::Vector& x, const double t) const override {
-        return temperatureTemporalGradientSol(x,t)
-                - source(x, t);
-    }
-
     double initTemperature(const mfem::Vector& x) const override {
         return temperatureSol(x,0);
     }
@@ -697,10 +654,63 @@ public:
         return med;
     }
 
-    double laplacian
-    (const mfem::Vector& x, const double t) const override {
-        return temperatureTemporalGradientSol(x,t)
-                - source(x, t);
+    double initTemperature(const mfem::Vector& x) const override {
+        return temperatureSol(x,0);
+    }
+
+    mfem::Vector initHeatFlux(const mfem::Vector& x) const override {
+        return heatFluxSol(x,0);
+    }
+
+    double bdryTemperature(const mfem::Vector& x,
+                           const double t) const override {
+        return temperatureSol(x, t);
+    }
+};
+
+/**
+ * Template specialization for a unit-cube domain, with Test1;
+ * Non-zero initial conditions;
+ * Homogeneous Dirichlet boundary;
+ * Non-zero forcing/source
+ */
+template<>
+class TestCase <UnitCubeTest1>
+        : public TestCases
+{
+public:
+    explicit TestCase (const nlohmann::json& config)
+        : TestCases(config) {
+        m_dim = 3;
+    }
+
+    double temperatureSol(const mfem::Vector&,
+                          const double) const override;
+
+    mfem::Vector heatFluxSol(const mfem::Vector&,
+                             const double) const override;
+
+    mfem::Vector temperatureSpatialGradientSol
+    (const mfem::Vector&, const double) const override;
+
+    double temperatureTemporalGradientSol
+        (const mfem::Vector&, const double) const override;
+
+    double source(const mfem::Vector&,
+                  const double) const override;
+
+    void setBdryDirichlet(mfem::Array<int>&) const override;
+
+    double medium(const mfem::Vector&) const override {
+        return 1;
+    }
+
+    mfem::DenseMatrix mediumTensor(const mfem::Vector&) const override
+    {
+        mfem::DenseMatrix med(m_dim);
+        med = 0.;
+        med(0,0) = med(1,1) = med(2,2) = 1;
+        return med;
     }
 
     double initTemperature(const mfem::Vector& x) const override {
