@@ -34,7 +34,7 @@ TEST(SparseHeatObserver, evalErrorUnitSquareTest3)
     // config and test case
     std::string configFile
             = "../config_files/unit_tests/"
-              "sparse_heat_observer/sparseHeat_square_test3.json";
+              "sparse_heat_observer/sparseHeat_unitSquare_test3.json";
     auto config = getGlobalConfig(configFile);
     auto testCase = heat::makeTestCase(config);
 
