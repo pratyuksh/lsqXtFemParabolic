@@ -24,10 +24,10 @@ mymfem::BaseObserver
 }
 
 mymfem::BaseObserver
-:: BaseObserver (const nlohmann::json& config, int lx)
+:: BaseObserver (const nlohmann::json& config, int spatialLevel)
     : BaseObserver(config)
 {
-    m_meshNameSuffix = "_lx"+std::to_string(lx);
+    m_meshNameSuffix = "_lx"+std::to_string(spatialLevel);
 }
 
 //! Uses GLVis, refer to examples in MFEM documentation.

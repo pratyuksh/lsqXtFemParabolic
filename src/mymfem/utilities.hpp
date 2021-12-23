@@ -6,7 +6,11 @@
 #include <memory>
 
 
-//! Deletes memory allocated to SparseMatrix mat
+//! Deletes allocated memory and sets pointer to nullptr
+template<typename T>
+void reset (T* &obj);
+
+//! Deletes memory allocated to SparseMatrix
 void clear (mfem::SparseMatrix* &mat);
 
 //! Defines a function f(x) = 0
