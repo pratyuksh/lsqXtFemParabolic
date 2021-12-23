@@ -1,10 +1,10 @@
 #include "includes.hpp"
 #include "core/config.hpp"
-#include "core/utilities.hpp"
 #include "sparse_heat/solver.hpp"
 #include "sparse_heat/observer.hpp"
 
 #include <iostream>
+#include <filesystem>
 
 using namespace mfem;
 namespace fs = std::filesystem;
@@ -27,7 +27,7 @@ void writeErrorConvergenceDataToJsonFile
         baseOutDir = config["base_out_dir"];
     }
 
-    std::string subOutDir = "spars_heat/"+problemType;
+    std::string subOutDir = "sparse_heat/"+problemType;
     if (config.contains("sub_out_dir")) {
         subOutDir = config["sub_out_dir"];
     }
