@@ -94,10 +94,10 @@ $(function() {
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<a class="code" href="classmymfem_1_1BaseObserver.html#a3d5c34b388fb8e5bc1090937ae073338">mymfem::BaseObserver</a></div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classmymfem_1_1BaseObserver.html#ae289be510a5bfdd70ef528f6b6f806c6">   27</a></span>&#160;<a class="code" href="classmymfem_1_1BaseObserver.html#a3d5c34b388fb8e5bc1090937ae073338">:: BaseObserver</a> (<span class="keyword">const</span> nlohmann::json&amp; config, <span class="keywordtype">int</span> lx)</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classmymfem_1_1BaseObserver.html#ae289be510a5bfdd70ef528f6b6f806c6">   27</a></span>&#160;<a class="code" href="classmymfem_1_1BaseObserver.html#a3d5c34b388fb8e5bc1090937ae073338">:: BaseObserver</a> (<span class="keyword">const</span> nlohmann::json&amp; config, <span class="keywordtype">int</span> spatialLevel)</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    : <a class="code" href="classmymfem_1_1BaseObserver.html">BaseObserver</a>(config)</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="classmymfem_1_1BaseObserver.html#a7176c2bebf9d5ab6e2e2dfae14203258">m_meshNameSuffix</a> = <span class="stringliteral">&quot;_lx&quot;</span>+std::to_string(lx);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="classmymfem_1_1BaseObserver.html#a7176c2bebf9d5ab6e2e2dfae14203258">m_meshNameSuffix</a> = <span class="stringliteral">&quot;_lx&quot;</span>+std::to_string(spatialLevel);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmymfem_1_1BaseObserver.html#adbe813805d90911e018c75a47f00681a">mymfem::BaseObserver</a></div>

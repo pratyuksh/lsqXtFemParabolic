@@ -223,7 +223,7 @@ $(function() {
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                            = xEssDofs[k] + j*xNumDofs + shift;</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                }</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            }</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            m_essDofs.Append(myEssDofs);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            m_essentialDofs.Append(myEssDofs);</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment">//            myEssDofs.Print();</span></div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment">//            std::cout &lt;&lt; &quot;\n\n&quot;;</span></div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        }</div>
@@ -773,8 +773,8 @@ $(function() {
 <div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classsparseHeat_1_1LsqSparseXtFem.html#a49b90a99a4061a681ee2224731c4b776">sparseHeat::LsqSparseXtFem</a></div>
 <div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;<a class="code" href="classsparseHeat_1_1LsqSparseXtFem.html#a49b90a99a4061a681ee2224731c4b776">:: applyBCs</a>(SparseMatrix &amp;A)<span class="keyword"> const</span></div>
 <div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> k=0; k&lt;m_essDofs.Size(); k++) {</div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;        A.EliminateRowCol(m_essDofs[k]);</div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> k=0; k&lt;m_essentialDofs.Size(); k++) {</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;        A.EliminateRowCol(m_essentialDofs[k]);</div>
 <div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;    }</div>
 <div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;}</div>
 <div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160; </div>
@@ -782,7 +782,7 @@ $(function() {
 <div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;<a class="code" href="classsparseHeat_1_1LsqSparseXtFem.html#a49b90a99a4061a681ee2224731c4b776">:: applyBCs</a>(BlockVector &amp;B)<span class="keyword"> const</span></div>
 <div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;<span class="keyword"></span>{</div>
 <div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;    <span class="keyword">auto</span>&amp; b = B.GetBlock(0);</div>
-<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;    b.SetSubVector(m_essDofs, 0.);</div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;    b.SetSubVector(m_essentialDofs, 0.);</div>
 <div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;}</div>
 <div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160; </div>
 <div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;<span class="comment">// End of file</span></div>

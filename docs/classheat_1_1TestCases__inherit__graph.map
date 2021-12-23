@@ -1,12 +1,13 @@
 <map id="heat::TestCases" name="heat::TestCases">
-<area shape="rect" id="node1" title="Abstract Base class for test cases of the heat equation." alt="" coords="5,216,124,243"/>
+<area shape="rect" id="node1" title="Abstract Base class for test cases of the heat equation." alt="" coords="5,249,124,276"/>
 <area shape="rect" id="node2" href="$classheat_1_1TestCase_3_01Dummy_01_4.html" title=" " alt="" coords="191,5,372,32"/>
 <area shape="rect" id="node3" href="$classheat_1_1TestCase_3_01LShapedTest1_01_4.html" title=" " alt="" coords="172,56,391,83"/>
 <area shape="rect" id="node4" href="$classheat_1_1TestCase_3_01LShapedTest2_01_4.html" title=" " alt="" coords="172,107,391,133"/>
 <area shape="rect" id="node5" href="$classheat_1_1TestCase_3_01LShapedTest3_01_4.html" title=" " alt="" coords="172,157,391,184"/>
 <area shape="rect" id="node6" href="$classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html" title=" " alt="" coords="196,209,367,250"/>
-<area shape="rect" id="node7" href="$classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html" title=" " alt="" coords="187,274,375,315"/>
-<area shape="rect" id="node8" href="$classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html" title=" " alt="" coords="187,339,375,381"/>
-<area shape="rect" id="node9" href="$classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html" title=" " alt="" coords="187,405,375,446"/>
-<area shape="rect" id="node10" href="$classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html" title=" " alt="" coords="187,470,375,511"/>
+<area shape="rect" id="node7" href="$classheat_1_1TestCase_3_01UnitCubeTest1_01_4.html" title=" " alt="" coords="192,274,371,315"/>
+<area shape="rect" id="node8" href="$classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html" title=" " alt="" coords="187,339,375,381"/>
+<area shape="rect" id="node9" href="$classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html" title=" " alt="" coords="187,405,375,446"/>
+<area shape="rect" id="node10" href="$classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html" title=" " alt="" coords="187,470,375,511"/>
+<area shape="rect" id="node11" href="$classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html" title=" " alt="" coords="187,535,375,577"/>
 </map>

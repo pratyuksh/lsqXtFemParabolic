@@ -83,7 +83,7 @@ Inheritance diagram for heat::LsqXtFemH1H1:</div>
 <div class="center"><img src="classheat_1_1LsqXtFemH1H1__inherit__graph.png" border="0" usemap="#heat_1_1LsqXtFemH1H1_inherit__map" alt="Inheritance graph"/></div>
 <map name="heat_1_1LsqXtFemH1H1_inherit__map" id="heat_1_1LsqXtFemH1H1_inherit__map">
 <area shape="rect" title="Least&#45;squares space&#45;time FEM for the heat equation, with H1 discretisation in both time and space." alt="" coords="5,80,155,107"/>
-<area shape="rect" href="classheat_1_1LsqXtFEM.html" title="Base class for Least&#45;squares space&#45;time FE discretisation of the heat equation." alt="" coords="21,5,139,32"/>
+<area shape="rect" href="classheat_1_1LsqXtFem.html" title="Base class for Least&#45;squares space&#45;time FE discretisation of the heat equation." alt="" coords="23,5,137,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -92,7 +92,7 @@ Collaboration diagram for heat::LsqXtFemH1H1:</div>
 <div class="center"><img src="classheat_1_1LsqXtFemH1H1__coll__graph.png" border="0" usemap="#heat_1_1LsqXtFemH1H1_coll__map" alt="Collaboration graph"/></div>
 <map name="heat_1_1LsqXtFemH1H1_coll__map" id="heat_1_1LsqXtFemH1H1_coll__map">
 <area shape="rect" title="Least&#45;squares space&#45;time FEM for the heat equation, with H1 discretisation in both time and space." alt="" coords="5,80,155,107"/>
-<area shape="rect" href="classheat_1_1LsqXtFEM.html" title="Base class for Least&#45;squares space&#45;time FE discretisation of the heat equation." alt="" coords="21,5,139,32"/>
+<area shape="rect" href="classheat_1_1LsqXtFem.html" title="Base class for Least&#45;squares space&#45;time FE discretisation of the heat equation." alt="" coords="23,5,137,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -100,178 +100,227 @@ Collaboration diagram for heat::LsqXtFemH1H1:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:acb420aaffad1c190168d0a10cb0feb1f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFemH1H1.html#acb420aaffad1c190168d0a10cb0feb1f">LsqXtFemH1H1</a> (const nlohmann::json &amp;config, std::shared_ptr&lt; <a class="el" href="classheat_1_1TestCases.html">heat::TestCases</a> &gt; &amp;testCase)</td></tr>
 <tr class="separator:acb420aaffad1c190168d0a10cb0feb1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a083cccfdf6cf588391da9a6d233c690f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFemH1H1.html#a083cccfdf6cf588391da9a6d233c690f">set</a> (std::shared_ptr&lt; mfem::Mesh &gt; &amp;, std::shared_ptr&lt; mfem::Mesh &gt; &amp;) override</td></tr>
-<tr class="memdesc:a083cccfdf6cf588391da9a6d233c690f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the FE space and boundary conditions.  <a href="classheat_1_1LsqXtFemH1H1.html#a083cccfdf6cf588391da9a6d233c690f">More...</a><br /></td></tr>
-<tr class="separator:a083cccfdf6cf588391da9a6d233c690f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afee510f4b88bcb0e3f5adf5f6b36f92b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFemH1H1.html#afee510f4b88bcb0e3f5adf5f6b36f92b">assembleSystemMediumIndependent</a> () override</td></tr>
-<tr class="separator:afee510f4b88bcb0e3f5adf5f6b36f92b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a7ccae076c5b2cb0c2b4a64e079ae1e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFemH1H1.html#a0a7ccae076c5b2cb0c2b4a64e079ae1e">assembleSystemMediumDependent</a> () override</td></tr>
-<tr class="separator:a0a7ccae076c5b2cb0c2b4a64e079ae1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07d4bf1b31407710785c11e2af2993ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFemH1H1.html#a07d4bf1b31407710785c11e2af2993ef">assembleProjector</a> () override</td></tr>
-<tr class="memdesc:a07d4bf1b31407710785c11e2af2993ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the L2-projection operator.  <a href="classheat_1_1LsqXtFemH1H1.html#a07d4bf1b31407710785c11e2af2993ef">More...</a><br /></td></tr>
-<tr class="separator:a07d4bf1b31407710785c11e2af2993ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classheat_1_1LsqXtFEM"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classheat_1_1LsqXtFEM')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classheat_1_1LsqXtFEM.html">heat::LsqXtFEM</a></td></tr>
-<tr class="memitem:ae9a6fd387867f18a214a0bdbd63b9f09 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ae9a6fd387867f18a214a0bdbd63b9f09">LsqXtFEM</a> (const nlohmann::json &amp;, std::shared_ptr&lt; <a class="el" href="classheat_1_1TestCases.html">heat::TestCases</a> &gt; &amp;)</td></tr>
-<tr class="memdesc:ae9a6fd387867f18a214a0bdbd63b9f09 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with config and test case as arguments.  <a href="classheat_1_1LsqXtFEM.html#ae9a6fd387867f18a214a0bdbd63b9f09">More...</a><br /></td></tr>
-<tr class="separator:ae9a6fd387867f18a214a0bdbd63b9f09 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5623ddecee88a79b8c2eecb26c0bb79e inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a5623ddecee88a79b8c2eecb26c0bb79e">~LsqXtFEM</a> ()</td></tr>
-<tr class="memdesc:a5623ddecee88a79b8c2eecb26c0bb79e inherit pub_methods_classheat_1_1LsqXtFEM"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor.  <a href="classheat_1_1LsqXtFEM.html#a5623ddecee88a79b8c2eecb26c0bb79e">More...</a><br /></td></tr>
-<tr class="separator:a5623ddecee88a79b8c2eecb26c0bb79e inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21feb5e665319f8c856be8c10729f16e inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a21feb5e665319f8c856be8c10729f16e">reset</a> ()</td></tr>
-<tr class="memdesc:a21feb5e665319f8c856be8c10729f16e inherit pub_methods_classheat_1_1LsqXtFEM"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases all the memory allocated by this class.  <a href="classheat_1_1LsqXtFEM.html#a21feb5e665319f8c856be8c10729f16e">More...</a><br /></td></tr>
-<tr class="separator:a21feb5e665319f8c856be8c10729f16e inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5aca416f0c692587cda8b60bc1a6a872 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a5aca416f0c692587cda8b60bc1a6a872">assembleSystem</a> ()</td></tr>
-<tr class="memdesc:a5aca416f0c692587cda8b60bc1a6a872 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the blocks of the linear system matrix.  <a href="classheat_1_1LsqXtFEM.html#a5aca416f0c692587cda8b60bc1a6a872">More...</a><br /></td></tr>
-<tr class="separator:a5aca416f0c692587cda8b60bc1a6a872 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac36d3e4e84ae6a5f37c95ffb2508189f inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ac36d3e4e84ae6a5f37c95ffb2508189f">buildSystemOp</a> ()</td></tr>
-<tr class="separator:ac36d3e4e84ae6a5f37c95ffb2508189f inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a245cb10b43cc04d8855acd2304256863 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a245cb10b43cc04d8855acd2304256863">buildSystemMatrix</a> ()</td></tr>
-<tr class="separator:a245cb10b43cc04d8855acd2304256863 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f7872927eab528c0253c34a93113d5b inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a0f7872927eab528c0253c34a93113d5b">buildSystemMatrixUpperTriangle</a> ()</td></tr>
-<tr class="separator:a0f7872927eab528c0253c34a93113d5b inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a871b4c1043dafd0d7aa08d57d95e79df inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a871b4c1043dafd0d7aa08d57d95e79df">assembleRhs</a> (mfem::BlockVector *) const</td></tr>
-<tr class="memdesc:a871b4c1043dafd0d7aa08d57d95e79df inherit pub_methods_classheat_1_1LsqXtFEM"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the target right-hand side.  <a href="classheat_1_1LsqXtFEM.html#a871b4c1043dafd0d7aa08d57d95e79df">More...</a><br /></td></tr>
-<tr class="separator:a871b4c1043dafd0d7aa08d57d95e79df inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3646af2689a2681f5d701678bd34f7a0 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a3646af2689a2681f5d701678bd34f7a0">buildProjectorMatrix</a> ()</td></tr>
-<tr class="memdesc:a3646af2689a2681f5d701678bd34f7a0 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds the L2-projection matrix.  <a href="classheat_1_1LsqXtFEM.html#a3646af2689a2681f5d701678bd34f7a0">More...</a><br /></td></tr>
-<tr class="separator:a3646af2689a2681f5d701678bd34f7a0 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4726640ad89ec68c147340bc449c9b10 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a4726640ad89ec68c147340bc449c9b10">assembleProjectionRhs</a> (mfem::BlockVector *) const</td></tr>
-<tr class="memdesc:a4726640ad89ec68c147340bc449c9b10 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the target right-hand side for L2-projection.  <a href="classheat_1_1LsqXtFEM.html#a4726640ad89ec68c147340bc449c9b10">More...</a><br /></td></tr>
-<tr class="separator:a4726640ad89ec68c147340bc449c9b10 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5bb9d4cff496eb919faf021a79dcef7a inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classheat_1_1TestCases.html">heat::TestCases</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a5bb9d4cff496eb919faf021a79dcef7a">getTestCase</a> () const</td></tr>
-<tr class="memdesc:a5bb9d4cff496eb919faf021a79dcef7a inherit pub_methods_classheat_1_1LsqXtFEM"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the test case.  <a href="classheat_1_1LsqXtFEM.html#a5bb9d4cff496eb919faf021a79dcef7a">More...</a><br /></td></tr>
-<tr class="separator:a5bb9d4cff496eb919faf021a79dcef7a inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a070bb0bbd60ef80b94ea876105770424 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::Mesh *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a070bb0bbd60ef80b94ea876105770424">getTMesh</a> () const</td></tr>
-<tr class="memdesc:a070bb0bbd60ef80b94ea876105770424 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the temporal mesh.  <a href="classheat_1_1LsqXtFEM.html#a070bb0bbd60ef80b94ea876105770424">More...</a><br /></td></tr>
-<tr class="separator:a070bb0bbd60ef80b94ea876105770424 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e004ef1eeed97bba0cc362977e87062 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::Mesh *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a8e004ef1eeed97bba0cc362977e87062">getXMesh</a> () const</td></tr>
-<tr class="memdesc:a8e004ef1eeed97bba0cc362977e87062 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the spatial mesh.  <a href="classheat_1_1LsqXtFEM.html#a8e004ef1eeed97bba0cc362977e87062">More...</a><br /></td></tr>
-<tr class="separator:a8e004ef1eeed97bba0cc362977e87062 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21cf638d7301448f7822e5d1d8ae12a3 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::FiniteElementCollection *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a21cf638d7301448f7822e5d1d8ae12a3">getTFec</a> () const</td></tr>
-<tr class="memdesc:a21cf638d7301448f7822e5d1d8ae12a3 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the temporal FE collection.  <a href="classheat_1_1LsqXtFEM.html#a21cf638d7301448f7822e5d1d8ae12a3">More...</a><br /></td></tr>
-<tr class="separator:a21cf638d7301448f7822e5d1d8ae12a3 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e5e296292dd2ebc2626341c5b293acd inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; mfem::FiniteElementCollection * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a4e5e296292dd2ebc2626341c5b293acd">getXFecs</a> () const</td></tr>
-<tr class="memdesc:a4e5e296292dd2ebc2626341c5b293acd inherit pub_methods_classheat_1_1LsqXtFEM"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the spatial FE collections.  <a href="classheat_1_1LsqXtFEM.html#a4e5e296292dd2ebc2626341c5b293acd">More...</a><br /></td></tr>
-<tr class="separator:a4e5e296292dd2ebc2626341c5b293acd inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5fab4e9e4b8607253aadde38180ce04d inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::FiniteElementSpace *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a5fab4e9e4b8607253aadde38180ce04d">getTFespace</a> () const</td></tr>
-<tr class="memdesc:a5fab4e9e4b8607253aadde38180ce04d inherit pub_methods_classheat_1_1LsqXtFEM"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the temporal FE space.  <a href="classheat_1_1LsqXtFEM.html#a5fab4e9e4b8607253aadde38180ce04d">More...</a><br /></td></tr>
-<tr class="separator:a5fab4e9e4b8607253aadde38180ce04d inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac290ce542953b1671e0ee1f29ff275bf inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; mfem::FiniteElementSpace * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ac290ce542953b1671e0ee1f29ff275bf">getXFespaces</a> () const</td></tr>
-<tr class="memdesc:ac290ce542953b1671e0ee1f29ff275bf inherit pub_methods_classheat_1_1LsqXtFEM"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the spatial FE spaces.  <a href="classheat_1_1LsqXtFEM.html#ac290ce542953b1671e0ee1f29ff275bf">More...</a><br /></td></tr>
-<tr class="separator:ac290ce542953b1671e0ee1f29ff275bf inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a096be78e5756323519e79717a70d141f inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::BlockOperator *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a096be78e5756323519e79717a70d141f">getHeatOp</a> () const</td></tr>
-<tr class="memdesc:a096be78e5756323519e79717a70d141f inherit pub_methods_classheat_1_1LsqXtFEM"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the system operator.  <a href="classheat_1_1LsqXtFEM.html#a096be78e5756323519e79717a70d141f">More...</a><br /></td></tr>
-<tr class="separator:a096be78e5756323519e79717a70d141f inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8781641cb8f30335cb05f4307927f62f inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a8781641cb8f30335cb05f4307927f62f">getBlockOffsets</a> () const</td></tr>
-<tr class="separator:a8781641cb8f30335cb05f4307927f62f inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1eefce18cdbf833e09d44aa4767559ac inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a1eefce18cdbf833e09d44aa4767559ac">getHeatMat</a> () const</td></tr>
-<tr class="memdesc:a1eefce18cdbf833e09d44aa4767559ac inherit pub_methods_classheat_1_1LsqXtFEM"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the monolithic system matrix.  <a href="classheat_1_1LsqXtFEM.html#a1eefce18cdbf833e09d44aa4767559ac">More...</a><br /></td></tr>
-<tr class="separator:a1eefce18cdbf833e09d44aa4767559ac inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac28efd66cac7149783e0e00cb716d5e3 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ac28efd66cac7149783e0e00cb716d5e3">getHeatProjectionMat</a> () const</td></tr>
-<tr class="memdesc:ac28efd66cac7149783e0e00cb716d5e3 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the projection matrix.  <a href="classheat_1_1LsqXtFEM.html#ac28efd66cac7149783e0e00cb716d5e3">More...</a><br /></td></tr>
-<tr class="separator:ac28efd66cac7149783e0e00cb716d5e3 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbe9568f731c37b5593b43b996c29b7e inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#abbe9568f731c37b5593b43b996c29b7e">print</a> () const</td></tr>
-<tr class="memdesc:abbe9568f731c37b5593b43b996c29b7e inherit pub_methods_classheat_1_1LsqXtFEM"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints some info.  <a href="classheat_1_1LsqXtFEM.html#abbe9568f731c37b5593b43b996c29b7e">More...</a><br /></td></tr>
-<tr class="separator:abbe9568f731c37b5593b43b996c29b7e inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a584dbc588c0673d11b497ae59e1c4645 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a584dbc588c0673d11b497ae59e1c4645">getSystemBlock11</a> () const</td></tr>
-<tr class="separator:a584dbc588c0673d11b497ae59e1c4645 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25f7851312e272baa236362c7fcea7c1 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a25f7851312e272baa236362c7fcea7c1">getSystemBlock12</a> () const</td></tr>
-<tr class="separator:a25f7851312e272baa236362c7fcea7c1 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7379d9df1324e807172ed4a59090cdb7 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a7379d9df1324e807172ed4a59090cdb7">getSystemBlock21</a> () const</td></tr>
-<tr class="separator:a7379d9df1324e807172ed4a59090cdb7 inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29383640fd293ddc987c576e491f232d inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a29383640fd293ddc987c576e491f232d">getSystemBlock22</a> () const</td></tr>
-<tr class="separator:a29383640fd293ddc987c576e491f232d inherit pub_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4033f2aba6defb5184dfe55783cce3d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFemH1H1.html#a4033f2aba6defb5184dfe55783cce3d3">setSpatialFeSpaceForHeatFlux</a> (std::shared_ptr&lt; mfem::Mesh &gt; &amp;) override</td></tr>
+<tr class="separator:a4033f2aba6defb5184dfe55783cce3d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5db940eb1c9b4cf81b8ff841b7896364"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFemH1H1.html#a5db940eb1c9b4cf81b8ff841b7896364">assembleSpatialMassForHeatFlux</a> () override</td></tr>
+<tr class="separator:a5db940eb1c9b4cf81b8ff841b7896364"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa63469b71476b1eac868c62e897f5e37"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFemH1H1.html#aa63469b71476b1eac868c62e897f5e37">assembleSpatialStiffnessForHeatFlux</a> () override</td></tr>
+<tr class="separator:aa63469b71476b1eac868c62e897f5e37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af75d62359488a6e5594995e8c2c23a46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFemH1H1.html#af75d62359488a6e5594995e8c2c23a46">assembleSpatialGradient</a> () override</td></tr>
+<tr class="separator:af75d62359488a6e5594995e8c2c23a46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a722854cc4510f142095c68f37c297574"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFemH1H1.html#a722854cc4510f142095c68f37c297574">assembleSpatialDivergence</a> () override</td></tr>
+<tr class="separator:a722854cc4510f142095c68f37c297574"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classheat_1_1LsqXtFem"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classheat_1_1LsqXtFem')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classheat_1_1LsqXtFem.html">heat::LsqXtFem</a></td></tr>
+<tr class="memitem:a6890c7dcb0e27df0f784d4c11b7adc35 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a6890c7dcb0e27df0f784d4c11b7adc35">LsqXtFem</a> (const nlohmann::json &amp;, std::shared_ptr&lt; <a class="el" href="classheat_1_1TestCases.html">heat::TestCases</a> &gt; &amp;)</td></tr>
+<tr class="memdesc:a6890c7dcb0e27df0f784d4c11b7adc35 inherit pub_methods_classheat_1_1LsqXtFem"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with config and test case as arguments.  <a href="classheat_1_1LsqXtFem.html#a6890c7dcb0e27df0f784d4c11b7adc35">More...</a><br /></td></tr>
+<tr class="separator:a6890c7dcb0e27df0f784d4c11b7adc35 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f7afd8b188acc5cc91012f37fca9691 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a6f7afd8b188acc5cc91012f37fca9691">~LsqXtFem</a> ()</td></tr>
+<tr class="memdesc:a6f7afd8b188acc5cc91012f37fca9691 inherit pub_methods_classheat_1_1LsqXtFem"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor.  <a href="classheat_1_1LsqXtFem.html#a6f7afd8b188acc5cc91012f37fca9691">More...</a><br /></td></tr>
+<tr class="separator:a6f7afd8b188acc5cc91012f37fca9691 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad089704094ce42105ef3b308ac50a4a0 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ad089704094ce42105ef3b308ac50a4a0">reset</a> (bool firstPass=true)</td></tr>
+<tr class="memdesc:ad089704094ce42105ef3b308ac50a4a0 inherit pub_methods_classheat_1_1LsqXtFem"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases all the memory allocated by this class.  <a href="classheat_1_1LsqXtFem.html#ad089704094ce42105ef3b308ac50a4a0">More...</a><br /></td></tr>
+<tr class="separator:ad089704094ce42105ef3b308ac50a4a0 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37303e4af735c4f8905317f22b604000 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a37303e4af735c4f8905317f22b604000">resetFeSpaces</a> ()</td></tr>
+<tr class="separator:a37303e4af735c4f8905317f22b604000 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0191d451246e500684df184e8e690d48 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a0191d451246e500684df184e8e690d48">resetSystemOperators</a> ()</td></tr>
+<tr class="separator:a0191d451246e500684df184e8e690d48 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae747be59c58c2bb4917e4ce15dd35793 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ae747be59c58c2bb4917e4ce15dd35793">resetSystemBlocks</a> ()</td></tr>
+<tr class="separator:ae747be59c58c2bb4917e4ce15dd35793 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ea143e08849d2e40337a5d0c7dfc807 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a1ea143e08849d2e40337a5d0c7dfc807">resetMediumIndependentSystemBlocks</a> ()</td></tr>
+<tr class="separator:a1ea143e08849d2e40337a5d0c7dfc807 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5321a162746b7bf9b5dbd96db3338642 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a5321a162746b7bf9b5dbd96db3338642">resetMediumDependentSystemBlocks</a> ()</td></tr>
+<tr class="separator:a5321a162746b7bf9b5dbd96db3338642 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a3f54d3043e98238d65ad622d007247 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a5a3f54d3043e98238d65ad622d007247">resetSystemSubMatrices</a> ()</td></tr>
+<tr class="separator:a5a3f54d3043e98238d65ad622d007247 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf10cfa03bf00d4e3684ae161bab0fe6 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#adf10cfa03bf00d4e3684ae161bab0fe6">resetMediumIndependentSystemSubMatrices</a> ()</td></tr>
+<tr class="separator:adf10cfa03bf00d4e3684ae161bab0fe6 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59b4428883a33128b49080f9ea5713e7 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a59b4428883a33128b49080f9ea5713e7">resetMediumDependentSystemSubMatrices</a> ()</td></tr>
+<tr class="separator:a59b4428883a33128b49080f9ea5713e7 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa04d5ec03c7c476ae1752d290385dc58 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#aa04d5ec03c7c476ae1752d290385dc58">resetFeSpacesAndBlockOffsetsAndSpatialBoundaryDofs</a> (std::shared_ptr&lt; mfem::Mesh &gt; &amp;, std::shared_ptr&lt; mfem::Mesh &gt; &amp;)</td></tr>
+<tr class="memdesc:aa04d5ec03c7c476ae1752d290385dc58 inherit pub_methods_classheat_1_1LsqXtFem"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the FE space and boundary conditions.  <a href="classheat_1_1LsqXtFem.html#aa04d5ec03c7c476ae1752d290385dc58">More...</a><br /></td></tr>
+<tr class="separator:aa04d5ec03c7c476ae1752d290385dc58 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a896994a14b3e0e151614ca7d8dd49658 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a896994a14b3e0e151614ca7d8dd49658">setFeSpacesAndBlockOffsetsAndSpatialBoundaryDofs</a> (std::shared_ptr&lt; mfem::Mesh &gt; &amp;, std::shared_ptr&lt; mfem::Mesh &gt; &amp;)</td></tr>
+<tr class="separator:a896994a14b3e0e151614ca7d8dd49658 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93e849bbe0dc91faf9b1267e2a75b7de inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a93e849bbe0dc91faf9b1267e2a75b7de">setFeSpaces</a> (std::shared_ptr&lt; mfem::Mesh &gt; &amp;, std::shared_ptr&lt; mfem::Mesh &gt; &amp;)</td></tr>
+<tr class="separator:a93e849bbe0dc91faf9b1267e2a75b7de inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fa0713ccc1eacd3cbc1b52da07df393 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a5fa0713ccc1eacd3cbc1b52da07df393">setSpatialFeSpaceForTemperature</a> (std::shared_ptr&lt; mfem::Mesh &gt; &amp;)</td></tr>
+<tr class="separator:a5fa0713ccc1eacd3cbc1b52da07df393 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a611514f66c103cb7e86a2d73f55a08de inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a611514f66c103cb7e86a2d73f55a08de">setBlockOffsets</a> ()</td></tr>
+<tr class="memdesc:a611514f66c103cb7e86a2d73f55a08de inherit pub_methods_classheat_1_1LsqXtFem"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the block offsets for the block-structured system.  <a href="classheat_1_1LsqXtFem.html#a611514f66c103cb7e86a2d73f55a08de">More...</a><br /></td></tr>
+<tr class="separator:a611514f66c103cb7e86a2d73f55a08de inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f573279fc79cc69278249e9e2be4b5d inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a8f573279fc79cc69278249e9e2be4b5d">setSpatialBoundaryDofs</a> ()</td></tr>
+<tr class="separator:a8f573279fc79cc69278249e9e2be4b5d inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d7acf075e2ff6512e41902632feebee inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a9d7acf075e2ff6512e41902632feebee">reassembleSystemSubMatrices</a> ()</td></tr>
+<tr class="memdesc:a9d7acf075e2ff6512e41902632feebee inherit pub_methods_classheat_1_1LsqXtFem"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the sub-matrices in the discretisation.  <a href="classheat_1_1LsqXtFem.html#a9d7acf075e2ff6512e41902632feebee">More...</a><br /></td></tr>
+<tr class="separator:a9d7acf075e2ff6512e41902632feebee inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9472af2d48a0c30d4e2c3d6dfb10cda inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ac9472af2d48a0c30d4e2c3d6dfb10cda">assembleSystemSubMatrices</a> ()</td></tr>
+<tr class="separator:ac9472af2d48a0c30d4e2c3d6dfb10cda inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78ab6a8503faf76768b3b26f79b35ed0 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a78ab6a8503faf76768b3b26f79b35ed0">assembleMaterialIndependentSystemSubMatrices</a> ()</td></tr>
+<tr class="separator:a78ab6a8503faf76768b3b26f79b35ed0 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1eb56ec28becc21e518610c8774f11fe inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a1eb56ec28becc21e518610c8774f11fe">assembleMaterialDependentSystemSubMatrices</a> ()</td></tr>
+<tr class="separator:a1eb56ec28becc21e518610c8774f11fe inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb6fd9fb4e3ab2b15a60674e4f95edb4 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#abb6fd9fb4e3ab2b15a60674e4f95edb4">rebuildSystemOperator</a> ()</td></tr>
+<tr class="memdesc:abb6fd9fb4e3ab2b15a60674e4f95edb4 inherit pub_methods_classheat_1_1LsqXtFem"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the blocks of the linear system matrix.  <a href="classheat_1_1LsqXtFem.html#abb6fd9fb4e3ab2b15a60674e4f95edb4">More...</a><br /></td></tr>
+<tr class="separator:abb6fd9fb4e3ab2b15a60674e4f95edb4 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77f0e993e204f171cc25521e08a9389c inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a77f0e993e204f171cc25521e08a9389c">buildSystemOperator</a> ()</td></tr>
+<tr class="separator:a77f0e993e204f171cc25521e08a9389c inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13eed6256ee3af14a0950dca0facacff inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a13eed6256ee3af14a0950dca0facacff">rebuildSystemMatrix</a> ()</td></tr>
+<tr class="separator:a13eed6256ee3af14a0950dca0facacff inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16769a8e8ceb76f27d239da21261fd1a inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a16769a8e8ceb76f27d239da21261fd1a">buildSystemMatrix</a> ()</td></tr>
+<tr class="separator:a16769a8e8ceb76f27d239da21261fd1a inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c71f07a287f9a35ece1f1c3399b5ed7 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a1c71f07a287f9a35ece1f1c3399b5ed7">rebuildUpperTriangleOfSystemMatrix</a> ()</td></tr>
+<tr class="separator:a1c71f07a287f9a35ece1f1c3399b5ed7 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab0b6f599d3af6fcad33980a27632bfe inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#aab0b6f599d3af6fcad33980a27632bfe">buildUpperTriangleOfSystemMatrix</a> ()</td></tr>
+<tr class="separator:aab0b6f599d3af6fcad33980a27632bfe inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a475df40782e42c06721b84912c00461c inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a475df40782e42c06721b84912c00461c">assembleRhs</a> (mfem::BlockVector *) const</td></tr>
+<tr class="memdesc:a475df40782e42c06721b84912c00461c inherit pub_methods_classheat_1_1LsqXtFem"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the target right-hand side.  <a href="classheat_1_1LsqXtFem.html#a475df40782e42c06721b84912c00461c">More...</a><br /></td></tr>
+<tr class="separator:a475df40782e42c06721b84912c00461c inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae44dd8c00a0cac380d01d79a189ff9f7 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classheat_1_1TestCases.html">heat::TestCases</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ae44dd8c00a0cac380d01d79a189ff9f7">getTestCase</a> () const</td></tr>
+<tr class="memdesc:ae44dd8c00a0cac380d01d79a189ff9f7 inherit pub_methods_classheat_1_1LsqXtFem"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the test case.  <a href="classheat_1_1LsqXtFem.html#ae44dd8c00a0cac380d01d79a189ff9f7">More...</a><br /></td></tr>
+<tr class="separator:ae44dd8c00a0cac380d01d79a189ff9f7 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a820692c03cc4a75540d8b52e9d2733e0 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::Mesh *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a820692c03cc4a75540d8b52e9d2733e0">getTemporalMesh</a> () const</td></tr>
+<tr class="memdesc:a820692c03cc4a75540d8b52e9d2733e0 inherit pub_methods_classheat_1_1LsqXtFem"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the temporal mesh.  <a href="classheat_1_1LsqXtFem.html#a820692c03cc4a75540d8b52e9d2733e0">More...</a><br /></td></tr>
+<tr class="separator:a820692c03cc4a75540d8b52e9d2733e0 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab07956d80e1416a16d5ba8c91a1cadd9 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::Mesh *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ab07956d80e1416a16d5ba8c91a1cadd9">getSpatialMesh</a> () const</td></tr>
+<tr class="memdesc:ab07956d80e1416a16d5ba8c91a1cadd9 inherit pub_methods_classheat_1_1LsqXtFem"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the spatial mesh.  <a href="classheat_1_1LsqXtFem.html#ab07956d80e1416a16d5ba8c91a1cadd9">More...</a><br /></td></tr>
+<tr class="separator:ab07956d80e1416a16d5ba8c91a1cadd9 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d4293078390cc77504176964f901d71 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::FiniteElementCollection *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a7d4293078390cc77504176964f901d71">getTemporalFeCollection</a> () const</td></tr>
+<tr class="memdesc:a7d4293078390cc77504176964f901d71 inherit pub_methods_classheat_1_1LsqXtFem"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the temporal FE collection.  <a href="classheat_1_1LsqXtFem.html#a7d4293078390cc77504176964f901d71">More...</a><br /></td></tr>
+<tr class="separator:a7d4293078390cc77504176964f901d71 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab54a2cb3b1ee50ca7d3ec09bd4a333a0 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; mfem::FiniteElementCollection * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ab54a2cb3b1ee50ca7d3ec09bd4a333a0">getSpatialFeCollections</a> () const</td></tr>
+<tr class="memdesc:ab54a2cb3b1ee50ca7d3ec09bd4a333a0 inherit pub_methods_classheat_1_1LsqXtFem"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the spatial FE collections.  <a href="classheat_1_1LsqXtFem.html#ab54a2cb3b1ee50ca7d3ec09bd4a333a0">More...</a><br /></td></tr>
+<tr class="separator:ab54a2cb3b1ee50ca7d3ec09bd4a333a0 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16cf0948fbadfd3d4cd445e1649f040f inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::FiniteElementSpace *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a16cf0948fbadfd3d4cd445e1649f040f">getTemporalFeSpace</a> () const</td></tr>
+<tr class="memdesc:a16cf0948fbadfd3d4cd445e1649f040f inherit pub_methods_classheat_1_1LsqXtFem"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the temporal FE space.  <a href="classheat_1_1LsqXtFem.html#a16cf0948fbadfd3d4cd445e1649f040f">More...</a><br /></td></tr>
+<tr class="separator:a16cf0948fbadfd3d4cd445e1649f040f inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3398ba5d9636992b6014cbf7ecdccaa inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; mfem::FiniteElementSpace * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ab3398ba5d9636992b6014cbf7ecdccaa">getSpatialFeSpaces</a> () const</td></tr>
+<tr class="memdesc:ab3398ba5d9636992b6014cbf7ecdccaa inherit pub_methods_classheat_1_1LsqXtFem"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the spatial FE spaces.  <a href="classheat_1_1LsqXtFem.html#ab3398ba5d9636992b6014cbf7ecdccaa">More...</a><br /></td></tr>
+<tr class="separator:ab3398ba5d9636992b6014cbf7ecdccaa inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64c9299dcd5ce07ab9deb5a6008387d8 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::BlockOperator *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a64c9299dcd5ce07ab9deb5a6008387d8">getSystemOperator</a> () const</td></tr>
+<tr class="memdesc:a64c9299dcd5ce07ab9deb5a6008387d8 inherit pub_methods_classheat_1_1LsqXtFem"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the system operator.  <a href="classheat_1_1LsqXtFem.html#a64c9299dcd5ce07ab9deb5a6008387d8">More...</a><br /></td></tr>
+<tr class="separator:a64c9299dcd5ce07ab9deb5a6008387d8 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade96b9927ec0857b972654d18c9b3630 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ade96b9927ec0857b972654d18c9b3630">getBlockOffsets</a> () const</td></tr>
+<tr class="separator:ade96b9927ec0857b972654d18c9b3630 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8589bcb431cb00947cbe61ec6ea874c inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ae8589bcb431cb00947cbe61ec6ea874c">getSystemMatrix</a> () const</td></tr>
+<tr class="memdesc:ae8589bcb431cb00947cbe61ec6ea874c inherit pub_methods_classheat_1_1LsqXtFem"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the monolithic system matrix.  <a href="classheat_1_1LsqXtFem.html#ae8589bcb431cb00947cbe61ec6ea874c">More...</a><br /></td></tr>
+<tr class="separator:ae8589bcb431cb00947cbe61ec6ea874c inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41287269e34865a76d784edc0923f75d inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a41287269e34865a76d784edc0923f75d">print</a> () const</td></tr>
+<tr class="memdesc:a41287269e34865a76d784edc0923f75d inherit pub_methods_classheat_1_1LsqXtFem"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints some info.  <a href="classheat_1_1LsqXtFem.html#a41287269e34865a76d784edc0923f75d">More...</a><br /></td></tr>
+<tr class="separator:a41287269e34865a76d784edc0923f75d inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a865f1af5476793401130a040cc20ff04 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a865f1af5476793401130a040cc20ff04">getSystemBlock11</a> () const</td></tr>
+<tr class="separator:a865f1af5476793401130a040cc20ff04 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b71ea82511b93e689dfdcf3c3390e80 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a7b71ea82511b93e689dfdcf3c3390e80">getSystemBlock12</a> () const</td></tr>
+<tr class="separator:a7b71ea82511b93e689dfdcf3c3390e80 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bfe073b09e771000a216c4d493abffd inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a5bfe073b09e771000a216c4d493abffd">getSystemBlock21</a> () const</td></tr>
+<tr class="separator:a5bfe073b09e771000a216c4d493abffd inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e1338c507b98bcef99a9a59fd3d89b7 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a9e1338c507b98bcef99a9a59fd3d89b7">getSystemBlock22</a> () const</td></tr>
+<tr class="separator:a9e1338c507b98bcef99a9a59fd3d89b7 inherit pub_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pro_methods_classheat_1_1LsqXtFEM"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classheat_1_1LsqXtFEM')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classheat_1_1LsqXtFEM.html">heat::LsqXtFEM</a></td></tr>
-<tr class="memitem:aefb3fdf337d92837b2351854ded6deb6 inherit pro_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#aefb3fdf337d92837b2351854ded6deb6">assembleICs</a> (mfem::Vector &amp;) const</td></tr>
-<tr class="memdesc:aefb3fdf337d92837b2351854ded6deb6 inherit pro_methods_classheat_1_1LsqXtFEM"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the initial conditions.  <a href="classheat_1_1LsqXtFEM.html#aefb3fdf337d92837b2351854ded6deb6">More...</a><br /></td></tr>
-<tr class="separator:aefb3fdf337d92837b2351854ded6deb6 inherit pro_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3c499884011ffead7b0f6ba5e35d57c inherit pro_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#af3c499884011ffead7b0f6ba5e35d57c">assembleICsXProjection</a> (mfem::Vector &amp;) const</td></tr>
-<tr class="separator:af3c499884011ffead7b0f6ba5e35d57c inherit pro_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e45a4ccf64a88f4866b766800222db8 inherit pro_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a6e45a4ccf64a88f4866b766800222db8">assembleSourceTGradXProjection</a> (mfem::Vector &amp;) const</td></tr>
-<tr class="separator:a6e45a4ccf64a88f4866b766800222db8 inherit pro_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e7f549728df289380e7ad682cf330ad inherit pro_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a7e7f549728df289380e7ad682cf330ad">assembleSourceXProjection</a> (mfem::Vector &amp;, double) const</td></tr>
-<tr class="separator:a7e7f549728df289380e7ad682cf330ad inherit pro_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af28c6d85e1e58b6dfcd4252d2e414852 inherit pro_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#af28c6d85e1e58b6dfcd4252d2e414852">assembleSourceTProjectionXDiv</a> (mfem::Vector &amp;) const</td></tr>
-<tr class="separator:af28c6d85e1e58b6dfcd4252d2e414852 inherit pro_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7181fa9c2d465f8922e5595f4fbc4365 inherit pro_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a7181fa9c2d465f8922e5595f4fbc4365">addVector</a> (const mfem::Array&lt; int &gt; &amp;, const mfem::Vector &amp;, mfem::Vector &amp;) const</td></tr>
-<tr class="separator:a7181fa9c2d465f8922e5595f4fbc4365 inherit pro_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7ff3b50f34523e7ca56bc9c189a5066 inherit pro_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ad7ff3b50f34523e7ca56bc9c189a5066">applyBCs</a> (mfem::SparseMatrix &amp;) const</td></tr>
-<tr class="memdesc:ad7ff3b50f34523e7ca56bc9c189a5066 inherit pro_methods_classheat_1_1LsqXtFEM"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies boundary conditions on a matrix.  <a href="classheat_1_1LsqXtFEM.html#ad7ff3b50f34523e7ca56bc9c189a5066">More...</a><br /></td></tr>
-<tr class="separator:ad7ff3b50f34523e7ca56bc9c189a5066 inherit pro_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61e64a85483d6088275d2727e215c379 inherit pro_methods_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a61e64a85483d6088275d2727e215c379">applyBCs</a> (mfem::BlockVector &amp;) const</td></tr>
-<tr class="memdesc:a61e64a85483d6088275d2727e215c379 inherit pro_methods_classheat_1_1LsqXtFEM"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies boundary conditions on a vector.  <a href="classheat_1_1LsqXtFEM.html#a61e64a85483d6088275d2727e215c379">More...</a><br /></td></tr>
-<tr class="separator:a61e64a85483d6088275d2727e215c379 inherit pro_methods_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_attribs_classheat_1_1LsqXtFEM"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classheat_1_1LsqXtFEM')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classheat_1_1LsqXtFEM.html">heat::LsqXtFEM</a></td></tr>
-<tr class="memitem:a8eba36b8022e71e7e8d87030b6c21305 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">const nlohmann::json &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a8eba36b8022e71e7e8d87030b6c21305">m_config</a></td></tr>
-<tr class="separator:a8eba36b8022e71e7e8d87030b6c21305 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb4197ca853db89fd4cef45746773a17 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#afb4197ca853db89fd4cef45746773a17">m_xndim</a></td></tr>
-<tr class="separator:afb4197ca853db89fd4cef45746773a17 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04bece334cc1289174e362b1dc9e6ecf inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a04bece334cc1289174e362b1dc9e6ecf">m_deg</a></td></tr>
-<tr class="separator:a04bece334cc1289174e362b1dc9e6ecf inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1534eda3091387f6f041c9bc4d191ec8 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classheat_1_1TestCases.html">heat::TestCases</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a1534eda3091387f6f041c9bc4d191ec8">m_testCase</a></td></tr>
-<tr class="separator:a1534eda3091387f6f041c9bc4d191ec8 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad20cea1944d1ed12f06b9bd1032b9272 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::FiniteElementCollection *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ad20cea1944d1ed12f06b9bd1032b9272">m_tFec</a> = nullptr</td></tr>
-<tr class="separator:ad20cea1944d1ed12f06b9bd1032b9272 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a864316f70a2e736bd3c947c7558f722d inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::FiniteElementSpace *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a864316f70a2e736bd3c947c7558f722d">m_tFespace</a> = nullptr</td></tr>
-<tr class="separator:a864316f70a2e736bd3c947c7558f722d inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af29acf2314ff6cda45527dd4af3ec200 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; mfem::FiniteElementCollection * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#af29acf2314ff6cda45527dd4af3ec200">m_xFecs</a></td></tr>
-<tr class="separator:af29acf2314ff6cda45527dd4af3ec200 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f7beea238995d58ae80649ab65396ab inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; mfem::FiniteElementSpace * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a7f7beea238995d58ae80649ab65396ab">m_xFespaces</a></td></tr>
-<tr class="separator:a7f7beea238995d58ae80649ab65396ab inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad429370bde285a4dff5d3a51681b4cf1 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ad429370bde285a4dff5d3a51681b4cf1">m_block_offsets</a></td></tr>
-<tr class="separator:ad429370bde285a4dff5d3a51681b4cf1 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01493b5dab178326a158e35a08d1c02a inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a01493b5dab178326a158e35a08d1c02a">m_tMass</a> = nullptr</td></tr>
-<tr class="separator:a01493b5dab178326a158e35a08d1c02a inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc4804399a25b04228b5aba1484edcf8 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#acc4804399a25b04228b5aba1484edcf8">m_tStiff</a> = nullptr</td></tr>
-<tr class="separator:acc4804399a25b04228b5aba1484edcf8 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7441b6d3271f38f62e043239b358e04c inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a7441b6d3271f38f62e043239b358e04c">m_tGrad</a> = nullptr</td></tr>
-<tr class="separator:a7441b6d3271f38f62e043239b358e04c inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43d546489ad443d82450cd4bbaa30a42 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a43d546489ad443d82450cd4bbaa30a42">m_xMass1</a> = nullptr</td></tr>
-<tr class="separator:a43d546489ad443d82450cd4bbaa30a42 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a907eb5ae8d6212842d81bc37868dae2c inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a907eb5ae8d6212842d81bc37868dae2c">m_xMass2</a> = nullptr</td></tr>
-<tr class="separator:a907eb5ae8d6212842d81bc37868dae2c inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf56419f1612abb344e728e1e8c2f99f inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#adf56419f1612abb344e728e1e8c2f99f">m_xStiff1</a> = nullptr</td></tr>
-<tr class="separator:adf56419f1612abb344e728e1e8c2f99f inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afba9a83b1c90a417222573f5916692bf inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#afba9a83b1c90a417222573f5916692bf">m_xStiff2</a> = nullptr</td></tr>
-<tr class="separator:afba9a83b1c90a417222573f5916692bf inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a8e6c2bc7d978c045f401cc9dc43d2b inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a7a8e6c2bc7d978c045f401cc9dc43d2b">m_xGrad</a> = nullptr</td></tr>
-<tr class="separator:a7a8e6c2bc7d978c045f401cc9dc43d2b inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ad609199338187ad529997febd3ac64 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a4ad609199338187ad529997febd3ac64">m_xDiv</a> = nullptr</td></tr>
-<tr class="separator:a4ad609199338187ad529997febd3ac64 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8032e61454ea34d2167b90dc3ea75295 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a8032e61454ea34d2167b90dc3ea75295">m_block00</a> = nullptr</td></tr>
-<tr class="separator:a8032e61454ea34d2167b90dc3ea75295 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3e1e2636b47bfceac018178f1f0eb77 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ad3e1e2636b47bfceac018178f1f0eb77">m_block01</a> = nullptr</td></tr>
-<tr class="separator:ad3e1e2636b47bfceac018178f1f0eb77 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e9f6c6311f107302846c954e2986b08 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a0e9f6c6311f107302846c954e2986b08">m_block10</a> = nullptr</td></tr>
-<tr class="separator:a0e9f6c6311f107302846c954e2986b08 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15a9dccdd38467cd0fc5e6cb4211b2b1 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a15a9dccdd38467cd0fc5e6cb4211b2b1">m_block11</a> = nullptr</td></tr>
-<tr class="separator:a15a9dccdd38467cd0fc5e6cb4211b2b1 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a14120a913addd9a8217074fe6eb8e609 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::BlockOperator *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a14120a913addd9a8217074fe6eb8e609">m_heatOp</a> = nullptr</td></tr>
-<tr class="separator:a14120a913addd9a8217074fe6eb8e609 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2542cb6ded13eaf3bae2ce952f61287d inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a2542cb6ded13eaf3bae2ce952f61287d">m_heatMat</a> = nullptr</td></tr>
-<tr class="separator:a2542cb6ded13eaf3bae2ce952f61287d inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4bf7086e8b9c8493d3c579c7b09d6877 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a4bf7086e8b9c8493d3c579c7b09d6877">m_heatProjMat</a> = nullptr</td></tr>
-<tr class="separator:a4bf7086e8b9c8493d3c579c7b09d6877 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace66dae234490ade663677e77b7a7d09 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#ace66dae234490ade663677e77b7a7d09">m_xEssBdrMarker</a></td></tr>
-<tr class="separator:ace66dae234490ade663677e77b7a7d09 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf9c1f45782ae9d40cb634bd0c7889b2 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#acf9c1f45782ae9d40cb634bd0c7889b2">m_xEssTdofList</a></td></tr>
-<tr class="separator:acf9c1f45782ae9d40cb634bd0c7889b2 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab3cb253f4ba5d3741f2822fd9eb7f88 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#aab3cb253f4ba5d3741f2822fd9eb7f88">m_essTdofList</a></td></tr>
-<tr class="separator:aab3cb253f4ba5d3741f2822fd9eb7f88 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a470e465fe1686f45cbdd3322ad4abc86 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a470e465fe1686f45cbdd3322ad4abc86">m_firstPass</a> = true</td></tr>
-<tr class="separator:a470e465fe1686f45cbdd3322ad4abc86 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a535aea9ddf991d23c324f28a2a376432 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a535aea9ddf991d23c324f28a2a376432">m_block00MedIdp</a> = nullptr</td></tr>
-<tr class="separator:a535aea9ddf991d23c324f28a2a376432 inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1747857ba186d9e719b9b312fd74471f inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFEM.html#a1747857ba186d9e719b9b312fd74471f">m_block01MedIdp</a> = nullptr</td></tr>
-<tr class="separator:a1747857ba186d9e719b9b312fd74471f inherit pro_attribs_classheat_1_1LsqXtFEM"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_classheat_1_1LsqXtFem"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classheat_1_1LsqXtFem')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classheat_1_1LsqXtFem.html">heat::LsqXtFem</a></td></tr>
+<tr class="memitem:a5b0ecc368b24a868deef675b55871767 inherit pro_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a5b0ecc368b24a868deef675b55871767">assembleTemporalInitial</a> ()</td></tr>
+<tr class="separator:a5b0ecc368b24a868deef675b55871767 inherit pro_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b812267b6168a65ec0758ea9d1c7657 inherit pro_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a4b812267b6168a65ec0758ea9d1c7657">assembleTemporalMass</a> ()</td></tr>
+<tr class="separator:a4b812267b6168a65ec0758ea9d1c7657 inherit pro_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a247ede99e02bd24090ba7ce628bac08e inherit pro_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a247ede99e02bd24090ba7ce628bac08e">assembleTemporalStiffness</a> ()</td></tr>
+<tr class="separator:a247ede99e02bd24090ba7ce628bac08e inherit pro_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a729c4229c80542512730d57bc0d0c5bc inherit pro_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a729c4229c80542512730d57bc0d0c5bc">assembleTemporalGradient</a> ()</td></tr>
+<tr class="separator:a729c4229c80542512730d57bc0d0c5bc inherit pro_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a469d95bec3da0c9c2f950f2d1e703899 inherit pro_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a469d95bec3da0c9c2f950f2d1e703899">assembleSpatialMassForTemperature</a> ()</td></tr>
+<tr class="separator:a469d95bec3da0c9c2f950f2d1e703899 inherit pro_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af161865f1f70841cf2a394552deadbf8 inherit pro_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#af161865f1f70841cf2a394552deadbf8">assembleSpatialStiffnessForTemperature</a> ()</td></tr>
+<tr class="separator:af161865f1f70841cf2a394552deadbf8 inherit pro_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a4795686030080997d57cefd80b9a79 inherit pro_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a3a4795686030080997d57cefd80b9a79">assembleICs</a> (mfem::Vector &amp;) const</td></tr>
+<tr class="separator:a3a4795686030080997d57cefd80b9a79 inherit pro_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab044669485037879257d6057fe79c120 inherit pro_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ab044669485037879257d6057fe79c120">assembleSpatialICs</a> (mfem::Vector &amp;) const</td></tr>
+<tr class="separator:ab044669485037879257d6057fe79c120 inherit pro_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6889df4f4f9d41b0d50b700217708cf8 inherit pro_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a6889df4f4f9d41b0d50b700217708cf8">assembleSource</a> (mfem::BlockVector &amp;) const</td></tr>
+<tr class="separator:a6889df4f4f9d41b0d50b700217708cf8 inherit pro_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51941fe0bdb6df678ed1dbfe692acd9c inherit pro_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a51941fe0bdb6df678ed1dbfe692acd9c">assembleSourceWithTemporalGradientOfTemperatureBasis</a> (mfem::Vector &amp;) const</td></tr>
+<tr class="separator:a51941fe0bdb6df678ed1dbfe692acd9c inherit pro_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a57f8fef80a70b6bbf85fbb75ebe757 inherit pro_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a1a57f8fef80a70b6bbf85fbb75ebe757">assembleSpatialSourceWithTemperatureBasis</a> (mfem::Vector &amp;, double) const</td></tr>
+<tr class="separator:a1a57f8fef80a70b6bbf85fbb75ebe757 inherit pro_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca20b77ea787fecc5a4093957118af01 inherit pro_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#aca20b77ea787fecc5a4093957118af01">assembleSourceWithSpatialDivergenceOfHeatFluxBasis</a> (mfem::Vector &amp;) const</td></tr>
+<tr class="separator:aca20b77ea787fecc5a4093957118af01 inherit pro_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a636691705a1488f8f556b43b9e5f70a8 inherit pro_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a636691705a1488f8f556b43b9e5f70a8">addVector</a> (const mfem::Array&lt; int &gt; &amp;, const mfem::Vector &amp;, mfem::Vector &amp;) const</td></tr>
+<tr class="separator:a636691705a1488f8f556b43b9e5f70a8 inherit pro_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73f871a09f8ee59bb67fb6d17f4ab4f5 inherit pro_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a73f871a09f8ee59bb67fb6d17f4ab4f5">applyBCs</a> (mfem::SparseMatrix &amp;) const</td></tr>
+<tr class="memdesc:a73f871a09f8ee59bb67fb6d17f4ab4f5 inherit pro_methods_classheat_1_1LsqXtFem"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies boundary conditions on a matrix.  <a href="classheat_1_1LsqXtFem.html#a73f871a09f8ee59bb67fb6d17f4ab4f5">More...</a><br /></td></tr>
+<tr class="separator:a73f871a09f8ee59bb67fb6d17f4ab4f5 inherit pro_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95b3c051949fb6d606b561c1a1c37108 inherit pro_methods_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a95b3c051949fb6d606b561c1a1c37108">applyBCs</a> (mfem::BlockVector &amp;) const</td></tr>
+<tr class="memdesc:a95b3c051949fb6d606b561c1a1c37108 inherit pro_methods_classheat_1_1LsqXtFem"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies boundary conditions on a vector.  <a href="classheat_1_1LsqXtFem.html#a95b3c051949fb6d606b561c1a1c37108">More...</a><br /></td></tr>
+<tr class="separator:a95b3c051949fb6d606b561c1a1c37108 inherit pro_methods_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classheat_1_1LsqXtFem"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classheat_1_1LsqXtFem')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classheat_1_1LsqXtFem.html">heat::LsqXtFem</a></td></tr>
+<tr class="memitem:a6a4f3e34a9f8e93b82491ae78f87ca00 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">const nlohmann::json &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a6a4f3e34a9f8e93b82491ae78f87ca00">m_config</a></td></tr>
+<tr class="separator:a6a4f3e34a9f8e93b82491ae78f87ca00 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaeb4fb30e00d202d57e34c7d05a5bf11 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#aaeb4fb30e00d202d57e34c7d05a5bf11">m_xDim</a></td></tr>
+<tr class="separator:aaeb4fb30e00d202d57e34c7d05a5bf11 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0661a875f06c85636569b8fb30fe4b2f inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a0661a875f06c85636569b8fb30fe4b2f">m_deg</a></td></tr>
+<tr class="separator:a0661a875f06c85636569b8fb30fe4b2f inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e8b2606fe1902e5a3ad70a9558c701e inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classheat_1_1TestCases.html">heat::TestCases</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a1e8b2606fe1902e5a3ad70a9558c701e">m_testCase</a></td></tr>
+<tr class="separator:a1e8b2606fe1902e5a3ad70a9558c701e inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99fe89a596dd98fc433ae7ec7b831d32 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::FiniteElementCollection *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a99fe89a596dd98fc433ae7ec7b831d32">m_temporalFeCollection</a> = nullptr</td></tr>
+<tr class="separator:a99fe89a596dd98fc433ae7ec7b831d32 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bbb7dde6478dc943386e6ed49530476 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::FiniteElementSpace *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a7bbb7dde6478dc943386e6ed49530476">m_temporalFeSpace</a> = nullptr</td></tr>
+<tr class="separator:a7bbb7dde6478dc943386e6ed49530476 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb04f7272fd499570f4bbc4e6a6c4420 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; mfem::FiniteElementCollection * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#abb04f7272fd499570f4bbc4e6a6c4420">m_spatialFeCollections</a></td></tr>
+<tr class="separator:abb04f7272fd499570f4bbc4e6a6c4420 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac3c01f4f641f56bd7ee4c683d122715 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; mfem::FiniteElementSpace * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#aac3c01f4f641f56bd7ee4c683d122715">m_spatialFeSpaces</a></td></tr>
+<tr class="separator:aac3c01f4f641f56bd7ee4c683d122715 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa297adc6490ca76073c6f5b9f1705afd inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#aa297adc6490ca76073c6f5b9f1705afd">m_blockOffsets</a></td></tr>
+<tr class="separator:aa297adc6490ca76073c6f5b9f1705afd inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af546d33e72b4ce8c143c31f848e7618f inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#af546d33e72b4ce8c143c31f848e7618f">m_temporalMass</a> = nullptr</td></tr>
+<tr class="separator:af546d33e72b4ce8c143c31f848e7618f inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a731ba94d906a516006b1eb82d394f087 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a731ba94d906a516006b1eb82d394f087">m_temporalStiffness</a> = nullptr</td></tr>
+<tr class="separator:a731ba94d906a516006b1eb82d394f087 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85826dab21fe926d0ea0e82d568b086c inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a85826dab21fe926d0ea0e82d568b086c">m_temporalGradient</a> = nullptr</td></tr>
+<tr class="separator:a85826dab21fe926d0ea0e82d568b086c inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a621d30b076927d8ed9c99b95be468da1 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a621d30b076927d8ed9c99b95be468da1">m_temporalInitial</a> = nullptr</td></tr>
+<tr class="separator:a621d30b076927d8ed9c99b95be468da1 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada5b0dbb0f23ce1afc1a3156f013873f inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ada5b0dbb0f23ce1afc1a3156f013873f">m_spatialMass1</a> = nullptr</td></tr>
+<tr class="separator:ada5b0dbb0f23ce1afc1a3156f013873f inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0d1adf325eddd97de91e25590229a05 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ad0d1adf325eddd97de91e25590229a05">m_spatialMass2</a> = nullptr</td></tr>
+<tr class="separator:ad0d1adf325eddd97de91e25590229a05 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac016bf536bf09ef7dfcb2fa696af9ed3 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ac016bf536bf09ef7dfcb2fa696af9ed3">m_spatialStiffness1</a> = nullptr</td></tr>
+<tr class="separator:ac016bf536bf09ef7dfcb2fa696af9ed3 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b511e94bf1dd10a57fcb280232e0a98 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a8b511e94bf1dd10a57fcb280232e0a98">m_spatialStiffness2</a> = nullptr</td></tr>
+<tr class="separator:a8b511e94bf1dd10a57fcb280232e0a98 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afedff27a62a4eae48cbd0ad7582218b0 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#afedff27a62a4eae48cbd0ad7582218b0">m_spatialGradient</a> = nullptr</td></tr>
+<tr class="separator:afedff27a62a4eae48cbd0ad7582218b0 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab45d5e055c74fc54b0418e4422f6c912 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ab45d5e055c74fc54b0418e4422f6c912">m_spatialDivergence</a> = nullptr</td></tr>
+<tr class="separator:ab45d5e055c74fc54b0418e4422f6c912 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19dabebd97b384b9ec7096e71e833c1e inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a19dabebd97b384b9ec7096e71e833c1e">m_systemBlock11</a> = nullptr</td></tr>
+<tr class="separator:a19dabebd97b384b9ec7096e71e833c1e inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae15fedf5fc697173fdd510ff615dfbf4 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ae15fedf5fc697173fdd510ff615dfbf4">m_systemBlock12</a> = nullptr</td></tr>
+<tr class="separator:ae15fedf5fc697173fdd510ff615dfbf4 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4dbb0d8e03ad8cb9030a61a00b68ebd inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#af4dbb0d8e03ad8cb9030a61a00b68ebd">m_systemBlock21</a> = nullptr</td></tr>
+<tr class="separator:af4dbb0d8e03ad8cb9030a61a00b68ebd inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae95fb1dae97a01f32e696627ca98b640 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ae95fb1dae97a01f32e696627ca98b640">m_systemBlock22</a> = nullptr</td></tr>
+<tr class="separator:ae95fb1dae97a01f32e696627ca98b640 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a765febb8d99b84426fddef4a09e25c51 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::BlockOperator *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a765febb8d99b84426fddef4a09e25c51">m_systemOperator</a> = nullptr</td></tr>
+<tr class="separator:a765febb8d99b84426fddef4a09e25c51 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c6c0d71e7fefc41223678d35496332e inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a9c6c0d71e7fefc41223678d35496332e">m_systemMatrix</a> = nullptr</td></tr>
+<tr class="separator:a9c6c0d71e7fefc41223678d35496332e inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab294cec29843f1e1c0ed5c9260bc4560 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ab294cec29843f1e1c0ed5c9260bc4560">m_spatialEssentialBoundaryMarker</a></td></tr>
+<tr class="separator:ab294cec29843f1e1c0ed5c9260bc4560 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78e28d217299bf1fc3163cfd4a3882f0 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a78e28d217299bf1fc3163cfd4a3882f0">m_spatialEssentialDofs</a></td></tr>
+<tr class="separator:a78e28d217299bf1fc3163cfd4a3882f0 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0e446540add5fcd6892e511aee46986 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ae0e446540add5fcd6892e511aee46986">m_essentialDofs</a></td></tr>
+<tr class="separator:ae0e446540add5fcd6892e511aee46986 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ae632a8286d1e21ac3e78e087ca8312 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a1ae632a8286d1e21ac3e78e087ca8312">m_firstPassOfAssembleSystemSubMatrices</a> = true</td></tr>
+<tr class="separator:a1ae632a8286d1e21ac3e78e087ca8312 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3e087c8fd7422e7a1b7d7b27a7ddfc7 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ac3e087c8fd7422e7a1b7d7b27a7ddfc7">m_firstPassOfAssembleSystemBlocks</a> = true</td></tr>
+<tr class="separator:ac3e087c8fd7422e7a1b7d7b27a7ddfc7 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bc2d6730f0d27e0799df6d59fecce81 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a9bc2d6730f0d27e0799df6d59fecce81">m_materialIndependentSystemBlock11</a> = nullptr</td></tr>
+<tr class="separator:a9bc2d6730f0d27e0799df6d59fecce81 inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13b28f04062c63cfc5820450594dd8ac inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a13b28f04062c63cfc5820450594dd8ac">m_materialIndependentSystemBlock12</a> = nullptr</td></tr>
+<tr class="separator:a13b28f04062c63cfc5820450594dd8ac inherit pro_attribs_classheat_1_1LsqXtFem"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Least-squares space-time FEM for the heat equation, with H1 discretisation in both time and space. </p>
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00259">259</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00285">285</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="acb420aaffad1c190168d0a10cb0feb1f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acb420aaffad1c190168d0a10cb0feb1f">&#9670;&nbsp;</a></span>LsqXtFemH1H1()</h2>
@@ -307,13 +356,13 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00262">262</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00288">288</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a07d4bf1b31407710785c11e2af2993ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07d4bf1b31407710785c11e2af2993ef">&#9670;&nbsp;</a></span>assembleProjector()</h2>
+<a id="a722854cc4510f142095c68f37c297574"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a722854cc4510f142095c68f37c297574">&#9670;&nbsp;</a></span>assembleSpatialDivergence()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -322,7 +371,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void heat::LsqXtFemH1H1::assembleProjector </td>
+          <td class="memname">void heat::LsqXtFemH1H1::assembleSpatialDivergence </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -335,16 +384,14 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Assembles the L2-projection operator. </p>
+<p>Implements <a class="el" href="classheat_1_1LsqXtFem.html#a24e0029acf1723ef16a3a62134be3cb2">heat::LsqXtFem</a>.</p>
 
-<p>Reimplemented from <a class="el" href="classheat_1_1LsqXtFEM.html#a36a96243398215bd36bf488beb8754b1">heat::LsqXtFEM</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation__H1H1_8cpp_source.html#l00254">254</a> of file <a class="el" href="heat_2discretisation__H1H1_8cpp_source.html">heat/discretisation_H1H1.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation__H1H1_8cpp_source.html#l00143">143</a> of file <a class="el" href="heat_2discretisation__H1H1_8cpp_source.html">heat/discretisation_H1H1.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a0a7ccae076c5b2cb0c2b4a64e079ae1e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a7ccae076c5b2cb0c2b4a64e079ae1e">&#9670;&nbsp;</a></span>assembleSystemMediumDependent()</h2>
+<a id="af75d62359488a6e5594995e8c2c23a46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af75d62359488a6e5594995e8c2c23a46">&#9670;&nbsp;</a></span>assembleSpatialGradient()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -353,7 +400,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void heat::LsqXtFemH1H1::assembleSystemMediumDependent </td>
+          <td class="memname">void heat::LsqXtFemH1H1::assembleSpatialGradient </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -365,16 +412,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Assembles the operators in the discretisation that depend on the material properties </p>
 
-<p>Reimplemented from <a class="el" href="classheat_1_1LsqXtFEM.html#a129121e4a21173bf31de7c9637209486">heat::LsqXtFEM</a>.</p>
+<p>Implements <a class="el" href="classheat_1_1LsqXtFem.html#a5a68468984472571fc468904419313d0">heat::LsqXtFem</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation__H1H1_8cpp_source.html#l00190">190</a> of file <a class="el" href="heat_2discretisation__H1H1_8cpp_source.html">heat/discretisation_H1H1.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation__H1H1_8cpp_source.html#l00127">127</a> of file <a class="el" href="heat_2discretisation__H1H1_8cpp_source.html">heat/discretisation_H1H1.cpp</a>.</p>
 
 </div>
 </div>
-<a id="afee510f4b88bcb0e3f5adf5f6b36f92b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afee510f4b88bcb0e3f5adf5f6b36f92b">&#9670;&nbsp;</a></span>assembleSystemMediumIndependent()</h2>
+<a id="a5db940eb1c9b4cf81b8ff841b7896364"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5db940eb1c9b4cf81b8ff841b7896364">&#9670;&nbsp;</a></span>assembleSpatialMassForHeatFlux()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -383,7 +429,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void heat::LsqXtFemH1H1::assembleSystemMediumIndependent </td>
+          <td class="memname">void heat::LsqXtFemH1H1::assembleSpatialMassForHeatFlux </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -395,16 +441,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Assembles the operators in the discretisation that are independent of the material properties </p>
 
-<p>Reimplemented from <a class="el" href="classheat_1_1LsqXtFEM.html#a73ae25ec842334bacea37a158a6f1459">heat::LsqXtFEM</a>.</p>
+<p>Implements <a class="el" href="classheat_1_1LsqXtFem.html#a18f2bbbc01a5e0fc1069e54c464de111">heat::LsqXtFem</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation__H1H1_8cpp_source.html#l00086">86</a> of file <a class="el" href="heat_2discretisation__H1H1_8cpp_source.html">heat/discretisation_H1H1.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation__H1H1_8cpp_source.html#l00101">101</a> of file <a class="el" href="heat_2discretisation__H1H1_8cpp_source.html">heat/discretisation_H1H1.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a083cccfdf6cf588391da9a6d233c690f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a083cccfdf6cf588391da9a6d233c690f">&#9670;&nbsp;</a></span>set()</h2>
+<a id="aa63469b71476b1eac868c62e897f5e37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa63469b71476b1eac868c62e897f5e37">&#9670;&nbsp;</a></span>assembleSpatialStiffnessForHeatFlux()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -413,21 +458,40 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void heat::LsqXtFemH1H1::set </td>
+          <td class="memname">void heat::LsqXtFemH1H1::assembleSpatialStiffnessForHeatFlux </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="classheat_1_1LsqXtFem.html#ac4c13aa5d2c5034bb09e40ecedd66988">heat::LsqXtFem</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation__H1H1_8cpp_source.html#l00114">114</a> of file <a class="el" href="heat_2discretisation__H1H1_8cpp_source.html">heat/discretisation_H1H1.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a4033f2aba6defb5184dfe55783cce3d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4033f2aba6defb5184dfe55783cce3d3">&#9670;&nbsp;</a></span>setSpatialFeSpaceForHeatFlux()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void heat::LsqXtFemH1H1::setSpatialFeSpaceForHeatFlux </td>
           <td>(</td>
           <td class="paramtype">std::shared_ptr&lt; mfem::Mesh &gt; &amp;&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">std::shared_ptr&lt; mfem::Mesh &gt; &amp;&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -437,11 +501,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Sets the FE space and boundary conditions. </p>
+<p>Implements <a class="el" href="classheat_1_1LsqXtFem.html#a60ed464ee3bc1d94cd88019cfdda030f">heat::LsqXtFem</a>.</p>
 
-<p>Reimplemented from <a class="el" href="classheat_1_1LsqXtFEM.html#aec4caae035ced62e2e382832573b7af2">heat::LsqXtFEM</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation__H1H1_8cpp_source.html#l00010">10</a> of file <a class="el" href="heat_2discretisation__H1H1_8cpp_source.html">heat/discretisation_H1H1.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation__H1H1_8cpp_source.html#l00087">87</a> of file <a class="el" href="heat_2discretisation__H1H1_8cpp_source.html">heat/discretisation_H1H1.cpp</a>.</p>
 
 </div>
 </div>

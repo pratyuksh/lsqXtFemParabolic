@@ -665,57 +665,109 @@ $(function() {
 <div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;    bdr_marker = 1;</div>
 <div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;}</div>
 <div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160; </div>
-<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160; </div>
-<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;<span class="comment">// LShapedTest3, Singular solution</span></div>
-<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;<span class="comment">// Zero ICs</span></div>
-<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;<span class="comment">// Homogeneous Dirichlet BCs</span></div>
-<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;<span class="comment">// Constant source 1</span></div>
-<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;<span class="keywordtype">double</span> <a class="code" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html">heat::TestCase &lt;LShapedTest3&gt;</a></div>
-<div class="line"><a name="l00603"></a><span class="lineno"><a class="line" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html#a642fb6e8be79d16affdfdeda6f80879c">  603</a></span>&#160;:: temperatureSol(<span class="keyword">const</span> Vector&amp; x, <span class="keyword">const</span> <span class="keywordtype">double</span> t)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;}</div>
-<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160; </div>
-<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;Vector <a class="code" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html">heat::TestCase &lt;LShapedTest3&gt;</a></div>
-<div class="line"><a name="l00608"></a><span class="lineno"><a class="line" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html#a16353692fda26029738ec2bfc12dde44">  608</a></span>&#160;:: heatFluxSol (<span class="keyword">const</span> Vector&amp; x, <span class="keyword">const</span> <span class="keywordtype">double</span> t)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;    <span class="keywordflow">return</span> temperatureSpatialGradientSol(x, t);</div>
-<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;}</div>
-<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160; </div>
-<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;Vector <a class="code" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html">heat::TestCase &lt;LShapedTest3&gt;</a></div>
-<div class="line"><a name="l00613"></a><span class="lineno"><a class="line" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html#ae7ab9d761ec3835d330c2491a56ef2e6">  613</a></span>&#160;:: temperatureSpatialGradientSol (<span class="keyword">const</span> Vector&amp; x, <span class="keyword">const</span> <span class="keywordtype">double</span> t)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;    Vector dudx(m_dim);</div>
-<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;    dudx = 0.;</div>
-<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;    <span class="keywordflow">return</span> dudx;</div>
-<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;}</div>
-<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160; </div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;<span class="keywordtype">double</span> <a class="code" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html">heat::TestCase &lt;LShapedTest3&gt;</a></div>
-<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;:: temperatureTemporalGradientSol</div>
-<div class="line"><a name="l00622"></a><span class="lineno"><a class="line" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html#ab1db05c44f922d92a87b5d6d48ad4572">  622</a></span>&#160;(<span class="keyword">const</span> Vector&amp; x, <span class="keyword">const</span> <span class="keywordtype">double</span> t) <span class="keyword">const</span> {</div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;}</div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160; </div>
-<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;<span class="keywordtype">double</span> <a class="code" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html">heat::TestCase &lt;LShapedTest3&gt;</a></div>
-<div class="line"><a name="l00627"></a><span class="lineno"><a class="line" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html#ab7f2fc0e30c163f9a8ed9003dc2e608f">  627</a></span>&#160;:: source (<span class="keyword">const</span> Vector&amp; x, <span class="keyword">const</span> <span class="keywordtype">double</span> t)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;    <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;}</div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160; </div>
-<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html">heat::TestCase &lt;LShapedTest3&gt;</a></div>
-<div class="line"><a name="l00632"></a><span class="lineno"><a class="line" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html#a4900cd7a57316600d2074020290b2234">  632</a></span>&#160;:: setBdryDirichlet(Array&lt;int&gt;&amp; bdr_marker)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;    bdr_marker = 1;</div>
-<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;}</div>
-<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160; </div>
-<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;<span class="comment">// End of file</span></div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;<span class="comment">// LShapedTest3, Singular solution</span></div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;<span class="comment">// Zero ICs</span></div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;<span class="comment">// Homogeneous Dirichlet BCs</span></div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;<span class="comment">// Constant source 1</span></div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;<span class="keywordtype">double</span> <a class="code" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html">heat::TestCase &lt;LShapedTest3&gt;</a></div>
+<div class="line"><a name="l00602"></a><span class="lineno"><a class="line" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html#a642fb6e8be79d16affdfdeda6f80879c">  602</a></span>&#160;:: temperatureSol(<span class="keyword">const</span> Vector&amp; x, <span class="keyword">const</span> <span class="keywordtype">double</span> t)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;}</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160; </div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;Vector <a class="code" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html">heat::TestCase &lt;LShapedTest3&gt;</a></div>
+<div class="line"><a name="l00607"></a><span class="lineno"><a class="line" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html#a16353692fda26029738ec2bfc12dde44">  607</a></span>&#160;:: heatFluxSol (<span class="keyword">const</span> Vector&amp; x, <span class="keyword">const</span> <span class="keywordtype">double</span> t)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;    <span class="keywordflow">return</span> temperatureSpatialGradientSol(x, t);</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;}</div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160; </div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;Vector <a class="code" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html">heat::TestCase &lt;LShapedTest3&gt;</a></div>
+<div class="line"><a name="l00612"></a><span class="lineno"><a class="line" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html#ae7ab9d761ec3835d330c2491a56ef2e6">  612</a></span>&#160;:: temperatureSpatialGradientSol (<span class="keyword">const</span> Vector&amp; x, <span class="keyword">const</span> <span class="keywordtype">double</span> t)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;    Vector dudx(m_dim);</div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;    dudx = 0.;</div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;    <span class="keywordflow">return</span> dudx;</div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;}</div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160; </div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;<span class="keywordtype">double</span> <a class="code" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html">heat::TestCase &lt;LShapedTest3&gt;</a></div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;:: temperatureTemporalGradientSol</div>
+<div class="line"><a name="l00621"></a><span class="lineno"><a class="line" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html#ab1db05c44f922d92a87b5d6d48ad4572">  621</a></span>&#160;(<span class="keyword">const</span> Vector&amp; x, <span class="keyword">const</span> <span class="keywordtype">double</span> t) <span class="keyword">const</span> {</div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;}</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160; </div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;<span class="keywordtype">double</span> <a class="code" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html">heat::TestCase &lt;LShapedTest3&gt;</a></div>
+<div class="line"><a name="l00626"></a><span class="lineno"><a class="line" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html#ab7f2fc0e30c163f9a8ed9003dc2e608f">  626</a></span>&#160;:: source (<span class="keyword">const</span> Vector&amp; x, <span class="keyword">const</span> <span class="keywordtype">double</span> t)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;}</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160; </div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html">heat::TestCase &lt;LShapedTest3&gt;</a></div>
+<div class="line"><a name="l00631"></a><span class="lineno"><a class="line" href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html#a4900cd7a57316600d2074020290b2234">  631</a></span>&#160;:: setBdryDirichlet(Array&lt;int&gt;&amp; bdr_marker)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;    bdr_marker = 1;</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;}</div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160; </div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;<span class="comment">// UnitCubeTest1, Smooth solution</span></div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;<span class="comment">// Non-zero ICs</span></div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;<span class="comment">// Homogeneous Dirichlet BCs</span></div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;<span class="comment">// Non-zero source</span></div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;<span class="keywordtype">double</span> <a class="code" href="classheat_1_1TestCase_3_01UnitCubeTest1_01_4.html">heat::TestCase &lt;UnitCubeTest1&gt;</a></div>
+<div class="line"><a name="l00640"></a><span class="lineno"><a class="line" href="classheat_1_1TestCase_3_01UnitCubeTest1_01_4.html#a8275fb05f2471174d7499fed97c3a9b7">  640</a></span>&#160;:: temperatureSol(<span class="keyword">const</span> Vector&amp; x, <span class="keyword">const</span> <span class="keywordtype">double</span> t)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;    <span class="keywordtype">double</span> temperature</div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;            = sin(M_PI*x(0))*sin(M_PI*x(1))*sin(M_PI*x(2))*cos(M_PI*t);</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;    <span class="keywordflow">return</span> temperature;</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;}</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160; </div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;Vector <a class="code" href="classheat_1_1TestCase_3_01UnitCubeTest1_01_4.html">heat::TestCase &lt;UnitCubeTest1&gt;</a></div>
+<div class="line"><a name="l00648"></a><span class="lineno"><a class="line" href="classheat_1_1TestCase_3_01UnitCubeTest1_01_4.html#ad88b937425086f17a178fe1df933b018">  648</a></span>&#160;:: heatFluxSol (<span class="keyword">const</span> Vector&amp; x, <span class="keyword">const</span> <span class="keywordtype">double</span> t)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;    <span class="keywordflow">return</span> temperatureSpatialGradientSol(x, t);</div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;}</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160; </div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;Vector <a class="code" href="classheat_1_1TestCase_3_01UnitCubeTest1_01_4.html">heat::TestCase &lt;UnitCubeTest1&gt;</a></div>
+<div class="line"><a name="l00654"></a><span class="lineno"><a class="line" href="classheat_1_1TestCase_3_01UnitCubeTest1_01_4.html#a5f00681acbdc86d7cfc746ca98f09e07">  654</a></span>&#160;:: temperatureSpatialGradientSol (<span class="keyword">const</span> Vector&amp; x, <span class="keyword">const</span> <span class="keywordtype">double</span> t)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;    Vector dudx(m_dim);</div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;    dudx(0) = M_PI*cos(M_PI*x(0))*sin(M_PI*x(1))*sin(M_PI*x(2));</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;    dudx(1) = M_PI*sin(M_PI*x(0))*cos(M_PI*x(1))*sin(M_PI*x(2));</div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;    dudx(2) = M_PI*sin(M_PI*x(0))*sin(M_PI*x(1))*cos(M_PI*x(2));</div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;    dudx *= cos(M_PI*t);</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;    <span class="keywordflow">return</span> dudx;</div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;}</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160; </div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;<span class="keywordtype">double</span> <a class="code" href="classheat_1_1TestCase_3_01UnitCubeTest1_01_4.html">heat::TestCase &lt;UnitCubeTest1&gt;</a></div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;:: temperatureTemporalGradientSol</div>
+<div class="line"><a name="l00666"></a><span class="lineno"><a class="line" href="classheat_1_1TestCase_3_01UnitCubeTest1_01_4.html#acbeebb92d2b6479a15aee32c0005bff5">  666</a></span>&#160;(<span class="keyword">const</span> Vector&amp; x, <span class="keyword">const</span> <span class="keywordtype">double</span> t) <span class="keyword">const</span></div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;{</div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;    <span class="keywordtype">double</span> dudt = sin(M_PI*x(0))*sin(M_PI*x(1))*sin(M_PI*x(2))</div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;            *(-M_PI)*sin(M_PI*t);</div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;    <span class="keywordflow">return</span> dudt;</div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;}</div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160; </div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;<span class="keywordtype">double</span> <a class="code" href="classheat_1_1TestCase_3_01UnitCubeTest1_01_4.html">heat::TestCase &lt;UnitCubeTest1&gt;</a></div>
+<div class="line"><a name="l00674"></a><span class="lineno"><a class="line" href="classheat_1_1TestCase_3_01UnitCubeTest1_01_4.html#ae7a6c4f5c03cd0254cfc782eff7e1d42">  674</a></span>&#160;:: source (<span class="keyword">const</span> Vector&amp; x, <span class="keyword">const</span> <span class="keywordtype">double</span> t)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;    <span class="keywordtype">double</span> f = M_PI*sin(M_PI*x(0))*sin(M_PI*x(1))*sin(M_PI*x(2));</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;    f *= (3*M_PI*cos(M_PI*t) - sin(M_PI*t));</div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;    <span class="keywordflow">return</span> f;</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;}</div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160; </div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classheat_1_1TestCase_3_01UnitCubeTest1_01_4.html">heat::TestCase &lt;UnitCubeTest1&gt;</a></div>
+<div class="line"><a name="l00682"></a><span class="lineno"><a class="line" href="classheat_1_1TestCase_3_01UnitCubeTest1_01_4.html#a1efb91a8a7bf5c8f1952cd0fc631345c">  682</a></span>&#160;:: setBdryDirichlet(Array&lt;int&gt;&amp; bdr_marker)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;    bdr_marker = 1;</div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;}</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160; </div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;<span class="comment">// End of file</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassheat_1_1TestCase_3_01LShapedTest2_01_4_html"><div class="ttname"><a href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html">heat::TestCase&lt; LShapedTest2 &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="test__cases_8hpp_source.html#l00587">test_cases.hpp:587</a></div></div>
-<div class="ttc" id="aclassheat_1_1TestCase_3_01UnitSquareTest1_01_4_html"><div class="ttname"><a href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html">heat::TestCase&lt; UnitSquareTest1 &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="test__cases_8hpp_source.html#l00210">test_cases.hpp:210</a></div></div>
-<div class="ttc" id="aclassheat_1_1TestCase_3_01UnitSquareTest4_01_4_html"><div class="ttname"><a href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html">heat::TestCase&lt; UnitSquareTest4 &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="test__cases_8hpp_source.html#l00392">test_cases.hpp:392</a></div></div>
-<div class="ttc" id="aclassheat_1_1TestCase_3_01LShapedTest1_01_4_html"><div class="ttname"><a href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html">heat::TestCase&lt; LShapedTest1 &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="test__cases_8hpp_source.html#l00512">test_cases.hpp:512</a></div></div>
+<div class="ttc" id="aclassheat_1_1TestCase_3_01LShapedTest2_01_4_html"><div class="ttname"><a href="classheat_1_1TestCase_3_01LShapedTest2_01_4.html">heat::TestCase&lt; LShapedTest2 &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="test__cases_8hpp_source.html#l00550">test_cases.hpp:550</a></div></div>
+<div class="ttc" id="aclassheat_1_1TestCase_3_01UnitCubeTest1_01_4_html"><div class="ttname"><a href="classheat_1_1TestCase_3_01UnitCubeTest1_01_4.html">heat::TestCase&lt; UnitCubeTest1 &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="test__cases_8hpp_source.html#l00678">test_cases.hpp:678</a></div></div>
+<div class="ttc" id="aclassheat_1_1TestCase_3_01UnitSquareTest1_01_4_html"><div class="ttname"><a href="classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html">heat::TestCase&lt; UnitSquareTest1 &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="test__cases_8hpp_source.html#l00208">test_cases.hpp:208</a></div></div>
+<div class="ttc" id="aclassheat_1_1TestCase_3_01UnitSquareTest4_01_4_html"><div class="ttname"><a href="classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html">heat::TestCase&lt; UnitSquareTest4 &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="test__cases_8hpp_source.html#l00373">test_cases.hpp:373</a></div></div>
+<div class="ttc" id="aclassheat_1_1TestCase_3_01LShapedTest1_01_4_html"><div class="ttname"><a href="classheat_1_1TestCase_3_01LShapedTest1_01_4.html">heat::TestCase&lt; LShapedTest1 &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="test__cases_8hpp_source.html#l00481">test_cases.hpp:481</a></div></div>
 <div class="ttc" id="atest__cases_8hpp_html"><div class="ttname"><a href="test__cases_8hpp.html">test_cases.hpp</a></div></div>
-<div class="ttc" id="aclassheat_1_1TestCase_3_01UnitSquareTest3_01_4_html"><div class="ttname"><a href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html">heat::TestCase&lt; UnitSquareTest3 &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="test__cases_8hpp_source.html#l00331">test_cases.hpp:331</a></div></div>
-<div class="ttc" id="aclassheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4_html"><div class="ttname"><a href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="test__cases_8hpp_source.html#l00452">test_cases.hpp:452</a></div></div>
-<div class="ttc" id="aclassheat_1_1TestCase_3_01UnitSquareTest2_01_4_html"><div class="ttname"><a href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html">heat::TestCase&lt; UnitSquareTest2 &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="test__cases_8hpp_source.html#l00266">test_cases.hpp:266</a></div></div>
-<div class="ttc" id="aclassheat_1_1TestCase_3_01LShapedTest3_01_4_html"><div class="ttname"><a href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html">heat::TestCase&lt; LShapedTest3 &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="test__cases_8hpp_source.html#l00662">test_cases.hpp:662</a></div></div>
-<div class="ttc" id="aclassheat_1_1TestCase_3_01Dummy_01_4_html"><div class="ttname"><a href="classheat_1_1TestCase_3_01Dummy_01_4.html">heat::TestCase&lt; Dummy &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="test__cases_8hpp_source.html#l00144">test_cases.hpp:144</a></div></div>
+<div class="ttc" id="aclassheat_1_1TestCase_3_01UnitSquareTest3_01_4_html"><div class="ttname"><a href="classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html">heat::TestCase&lt; UnitSquareTest3 &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="test__cases_8hpp_source.html#l00318">test_cases.hpp:318</a></div></div>
+<div class="ttc" id="aclassheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4_html"><div class="ttname"><a href="classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html">heat::TestCase&lt; PeriodicUnitSquareTest1 &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="test__cases_8hpp_source.html#l00427">test_cases.hpp:427</a></div></div>
+<div class="ttc" id="aclassheat_1_1TestCase_3_01UnitSquareTest2_01_4_html"><div class="ttname"><a href="classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html">heat::TestCase&lt; UnitSquareTest2 &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="test__cases_8hpp_source.html#l00259">test_cases.hpp:259</a></div></div>
+<div class="ttc" id="aclassheat_1_1TestCase_3_01LShapedTest3_01_4_html"><div class="ttname"><a href="classheat_1_1TestCase_3_01LShapedTest3_01_4.html">heat::TestCase&lt; LShapedTest3 &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="test__cases_8hpp_source.html#l00619">test_cases.hpp:619</a></div></div>
+<div class="ttc" id="aclassheat_1_1TestCase_3_01Dummy_01_4_html"><div class="ttname"><a href="classheat_1_1TestCase_3_01Dummy_01_4.html">heat::TestCase&lt; Dummy &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="test__cases_8hpp_source.html#l00147">test_cases.hpp:147</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

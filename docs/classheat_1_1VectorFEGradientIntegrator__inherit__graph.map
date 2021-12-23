@@ -1,4 +1,0 @@
-<map id="heat::VectorFEGradientIntegrator" name="heat::VectorFEGradientIntegrator">
-<area shape="rect" id="node1" title="VectorFE Gradient Integrator; (grad(u), v) Uses, for example, Raviart&#45;Thomas spaces." alt="" coords="5,80,220,107"/>
-<area shape="rect" id="node2" title=" " alt="" coords="37,5,188,32"/>
-</map>

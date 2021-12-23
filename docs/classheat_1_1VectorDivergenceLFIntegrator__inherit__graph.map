@@ -1,4 +1,0 @@
-<map id="heat::VectorDivergenceLFIntegrator" name="heat::VectorDivergenceLFIntegrator">
-<area shape="rect" id="node1" title="mfem::Vector Divergence LF Integrator; (f, div(v))" alt="" coords="5,80,235,107"/>
-<area shape="rect" id="node2" title=" " alt="" coords="29,5,211,32"/>
-</map>

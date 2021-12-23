@@ -121,8 +121,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3041f99ca4164c8ddaeae106660ffaff"><td class="memItemLeft" align="right" valign="top">mfem::DenseMatrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#a3041f99ca4164c8ddaeae106660ffaff">mediumTensor</a> (const mfem::Vector &amp;x) const override</td></tr>
 <tr class="memdesc:a3041f99ca4164c8ddaeae106660ffaff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the matrix material coefficient.  <a href="classheat_1_1TestCase_3_01Dummy_01_4.html#a3041f99ca4164c8ddaeae106660ffaff">More...</a><br /></td></tr>
 <tr class="separator:a3041f99ca4164c8ddaeae106660ffaff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4ddb3b3996f59e7363cb3a30a035930"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#ab4ddb3b3996f59e7363cb3a30a035930">laplacian</a> (const mfem::Vector &amp;x, const double t) const override</td></tr>
-<tr class="separator:ab4ddb3b3996f59e7363cb3a30a035930"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af657a086dbad312d187930ab24837d9f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCase_3_01Dummy_01_4.html#af657a086dbad312d187930ab24837d9f">initTemperature</a> (const mfem::Vector &amp;x) const override</td></tr>
 <tr class="memdesc:af657a086dbad312d187930ab24837d9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initial temperature.  <a href="classheat_1_1TestCase_3_01Dummy_01_4.html#af657a086dbad312d187930ab24837d9f">More...</a><br /></td></tr>
 <tr class="separator:af657a086dbad312d187930ab24837d9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -139,6 +137,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae92eada8405a18b88a2559a8e3e7d10a inherit pub_methods_classheat_1_1TestCases"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#ae92eada8405a18b88a2559a8e3e7d10a">~TestCases</a> ()=default</td></tr>
 <tr class="memdesc:ae92eada8405a18b88a2559a8e3e7d10a inherit pub_methods_classheat_1_1TestCases"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor.  <a href="classheat_1_1TestCases.html#ae92eada8405a18b88a2559a8e3e7d10a">More...</a><br /></td></tr>
 <tr class="separator:ae92eada8405a18b88a2559a8e3e7d10a inherit pub_methods_classheat_1_1TestCases"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8153f3da4610b7a510027114750cdf7 inherit pub_methods_classheat_1_1TestCases"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#ae8153f3da4610b7a510027114750cdf7">laplacian</a> (const mfem::Vector &amp;x, const double t) const</td></tr>
+<tr class="separator:ae8153f3da4610b7a510027114750cdf7 inherit pub_methods_classheat_1_1TestCases"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad3cf9c60c95cafd50fdb837bc0e8741 inherit pub_methods_classheat_1_1TestCases"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#aad3cf9c60c95cafd50fdb837bc0e8741">setPerturbation</a> (double w) const</td></tr>
 <tr class="separator:aad3cf9c60c95cafd50fdb837bc0e8741 inherit pub_methods_classheat_1_1TestCases"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3512051e69451452511c463621185a06 inherit pub_methods_classheat_1_1TestCases"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1TestCases.html#a3512051e69451452511c463621185a06">setPerturbations</a> (const mfem::Vector &amp;w) const</td></tr>
@@ -162,7 +162,7 @@ Additional Inherited Members</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Template specialization for a dummy test case; value 1 everywhere, except boundary; Homogeneous Dirichlet boundary; No source/forcing </p>
 
-<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00144">144</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00147">147</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a49df900cd520142ba58045ae8470d5be"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a49df900cd520142ba58045ae8470d5be">&#9670;&nbsp;</a></span>TestCase()</h2>
@@ -188,7 +188,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00148">148</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00151">151</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
 
 </div>
 </div>
@@ -232,7 +232,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classheat_1_1TestCases.html#ab3546e472024bc83dc43da8136ced96b">heat::TestCases</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00196">196</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00194">194</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
 
 </div>
 </div>
@@ -308,7 +308,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classheat_1_1TestCases.html#accbc5fb1dc40c4eebb170397f2868609">heat::TestCases</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00192">192</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00190">190</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
 
 </div>
 </div>
@@ -341,47 +341,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classheat_1_1TestCases.html#acb10aae91b4d43e8cec053ef4ea71d3b">heat::TestCases</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00188">188</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
-
-</div>
-</div>
-<a id="ab4ddb3b3996f59e7363cb3a30a035930"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab4ddb3b3996f59e7363cb3a30a035930">&#9670;&nbsp;</a></span>laplacian()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">double <a class="el" href="classheat_1_1TestCase.html">heat::TestCase</a>&lt; <a class="el" href="test__cases_8hpp.html#a06fc87d81c62e9abb8790b6e5713c55ba2105c4f0f4e237ae06a0943acd0ef542">Dummy</a> &gt;::laplacian </td>
-          <td>(</td>
-          <td class="paramtype">const mfem::Vector &amp;&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const double&#160;</td>
-          <td class="paramname"><em>t</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="classheat_1_1TestCases.html#affee6cece08e9d05b175e96c383ba58f">heat::TestCases</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00184">184</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00186">186</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
 
 </div>
 </div>
@@ -414,7 +374,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classheat_1_1TestCases.html#a638f9b501234aefa7d8ee98d01cb139b">heat::TestCases</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00170">170</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00173">173</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
 
 </div>
 </div>
@@ -447,7 +407,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classheat_1_1TestCases.html#a2b22a42b68fb99c6676ca8f087385d3c">heat::TestCases</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00174">174</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__cases_8hpp_source.html#l00177">177</a> of file <a class="el" href="test__cases_8hpp_source.html">test_cases.hpp</a>.</p>
 
 </div>
 </div>

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['mediumscalarcoeff_448',['MediumScalarCoeff',['../classheat_1_1MediumScalarCoeff.html',1,'heat']]],
-  ['mediumtensorcoeff_449',['MediumTensorCoeff',['../classheat_1_1MediumTensorCoeff.html',1,'heat']]]
+  ['nestedfehierarchy_419',['NestedFEHierarchy',['../structmymfem_1_1NestedFEHierarchy.html',1,'mymfem']]],
+  ['nestedmeshhierarchy_420',['NestedMeshHierarchy',['../structmymfem_1_1NestedMeshHierarchy.html',1,'mymfem']]]
 ];

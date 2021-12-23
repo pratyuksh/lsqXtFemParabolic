@@ -103,40 +103,28 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aeb13b53f5a1869b9f147657d140fca70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac328745ad4a4cb4f5b112d6d0376e478"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Observer.html#ac328745ad4a4cb4f5b112d6d0376e478">Observer</a> (const nlohmann::json &amp;, int)</td></tr>
 <tr class="separator:ac328745ad4a4cb4f5b112d6d0376e478"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94dbe5f7ccd86a87e009678f3800aaac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Observer.html#a94dbe5f7ccd86a87e009678f3800aaac">set</a> (std::shared_ptr&lt; <a class="el" href="classheat_1_1TestCases.html">heat::TestCases</a> &gt; &amp;testCase, std::shared_ptr&lt; <a class="el" href="classheat_1_1LsqXtFEM.html">heat::LsqXtFEM</a> &gt; &amp;discr)</td></tr>
-<tr class="memdesc:a94dbe5f7ccd86a87e009678f3800aaac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the test case and discretisation.  <a href="classheat_1_1Observer.html#a94dbe5f7ccd86a87e009678f3800aaac">More...</a><br /></td></tr>
-<tr class="separator:a94dbe5f7ccd86a87e009678f3800aaac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e99c01cc725ecbb86293556c903877b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Observer.html#a2e99c01cc725ecbb86293556c903877b">set</a> (std::shared_ptr&lt; <a class="el" href="classheat_1_1TestCases.html">heat::TestCases</a> &gt; &amp;testCase, std::shared_ptr&lt; <a class="el" href="classheat_1_1LsqXtFem.html">heat::LsqXtFem</a> &gt; &amp;disc)</td></tr>
+<tr class="memdesc:a2e99c01cc725ecbb86293556c903877b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the test case and discretisation.  <a href="classheat_1_1Observer.html#a2e99c01cc725ecbb86293556c903877b">More...</a><br /></td></tr>
+<tr class="separator:a2e99c01cc725ecbb86293556c903877b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6666b5d6db770e959c1772e94af1d39b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Observer.html#a6666b5d6db770e959c1772e94af1d39b">visualizeSolutionAtEndTime</a> (const <a class="el" href="classheat_1_1SolutionHandler.html">SolutionHandler</a> &amp;)</td></tr>
+<tr class="separator:a6666b5d6db770e959c1772e94af1d39b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f6ad7dd3d61453c5d57a82c8e87e9a9"><td class="memItemLeft" align="right" valign="top">mfem::Vector&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Observer.html#a1f6ad7dd3d61453c5d57a82c8e87e9a9">evalError</a> (const <a class="el" href="classheat_1_1SolutionHandler.html">SolutionHandler</a> &amp;)</td></tr>
+<tr class="separator:a1f6ad7dd3d61453c5d57a82c8e87e9a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a296c8ae38ee6bd18d9e2fc7c23fbae2c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Observer.html#a296c8ae38ee6bd18d9e2fc7c23fbae2c">dumpSol</a> (std::shared_ptr&lt; mfem::GridFunction &gt; &amp;, std::shared_ptr&lt; mfem::GridFunction &gt; &amp;) const</td></tr>
 <tr class="memdesc:a296c8ae38ee6bd18d9e2fc7c23fbae2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the solution to output file.  <a href="classheat_1_1Observer.html#a296c8ae38ee6bd18d9e2fc7c23fbae2c">More...</a><br /></td></tr>
 <tr class="separator:a296c8ae38ee6bd18d9e2fc7c23fbae2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acda482278e0a924f13afac2a7238c46f"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Observer.html#acda482278e0a924f13afac2a7238c46f">evalXH1Error</a> (std::shared_ptr&lt; mfem::GridFunction &gt; &amp;u, double t) const</td></tr>
-<tr class="memdesc:acda482278e0a924f13afac2a7238c46f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates L2 and H1 error of temperature at a given time t.  <a href="classheat_1_1Observer.html#acda482278e0a924f13afac2a7238c46f">More...</a><br /></td></tr>
-<tr class="separator:acda482278e0a924f13afac2a7238c46f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52e23d94fa343c885eb225963d9d8ae9"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Observer.html#a52e23d94fa343c885eb225963d9d8ae9">evalXtL2H1Error</a> (mfem::Vector &amp;u) const</td></tr>
-<tr class="memdesc:a52e23d94fa343c885eb225963d9d8ae9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates L2L2 and L2H1 error of temperature.  <a href="classheat_1_1Observer.html#a52e23d94fa343c885eb225963d9d8ae9">More...</a><br /></td></tr>
-<tr class="separator:a52e23d94fa343c885eb225963d9d8ae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1cff457c39be311d1780edd499c4854"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Observer.html#af1cff457c39be311d1780edd499c4854">evalXLsqError</a> (std::shared_ptr&lt; mfem::GridFunction &gt; &amp;u, std::shared_ptr&lt; mfem::GridFunction &gt; &amp;dudt, std::shared_ptr&lt; mfem::GridFunction &gt; &amp;q, double t) const</td></tr>
-<tr class="memdesc:af1cff457c39be311d1780edd499c4854"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates least-squares error at a given time t.  <a href="classheat_1_1Observer.html#af1cff457c39be311d1780edd499c4854">More...</a><br /></td></tr>
-<tr class="separator:af1cff457c39be311d1780edd499c4854"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac309f6384ca3365b39ebf9a13c6fb7d7"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Observer.html#ac309f6384ca3365b39ebf9a13c6fb7d7">evalXtLsqError</a> (mfem::Vector &amp;u, mfem::Vector &amp;q) const</td></tr>
-<tr class="memdesc:ac309f6384ca3365b39ebf9a13c6fb7d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates least-squares error.  <a href="classheat_1_1Observer.html#ac309f6384ca3365b39ebf9a13c6fb7d7">More...</a><br /></td></tr>
-<tr class="separator:ac309f6384ca3365b39ebf9a13c6fb7d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f140961c3e53ddbb32529b9f38acf7b"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double, double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Observer.html#a4f140961c3e53ddbb32529b9f38acf7b">evalXError</a> (std::shared_ptr&lt; mfem::GridFunction &gt; &amp;u, std::shared_ptr&lt; mfem::GridFunction &gt; &amp;dudt, std::shared_ptr&lt; mfem::GridFunction &gt; &amp;q, double t) const</td></tr>
-<tr class="memdesc:a4f140961c3e53ddbb32529b9f38acf7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates error in the natural norm at a given time t.  <a href="classheat_1_1Observer.html#a4f140961c3e53ddbb32529b9f38acf7b">More...</a><br /></td></tr>
-<tr class="separator:a4f140961c3e53ddbb32529b9f38acf7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57ca2ec49f9f537e3883c30b70317e3b"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Observer.html#a57ca2ec49f9f537e3883c30b70317e3b">evalXtError</a> (mfem::Vector &amp;, mfem::Vector &amp;) const</td></tr>
-<tr class="memdesc:a57ca2ec49f9f537e3883c30b70317e3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates error in the natural norm.  <a href="classheat_1_1Observer.html#a57ca2ec49f9f537e3883c30b70317e3b">More...</a><br /></td></tr>
-<tr class="separator:a57ca2ec49f9f537e3883c30b70317e3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a567860f465092f532c1da7bf54cea63d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Observer.html#a567860f465092f532c1da7bf54cea63d">evalObs</a> (mfem::Vector &amp;) const</td></tr>
-<tr class="separator:a567860f465092f532c1da7bf54cea63d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d16e3d4cf38fd654685c575ed937c8e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Observer.html#a4d16e3d4cf38fd654685c575ed937c8e">evalObs</a> (std::shared_ptr&lt; mfem::GridFunction &gt; &amp;) const</td></tr>
-<tr class="separator:a4d16e3d4cf38fd654685c575ed937c8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2b7f26a4413e7925f59bb0ea739fafc"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Observer.html#ab2b7f26a4413e7925f59bb0ea739fafc">evalQoi</a> (mfem::Vector &amp;) const</td></tr>
-<tr class="separator:ab2b7f26a4413e7925f59bb0ea739fafc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61541ccefc043d739d2850df04bb710d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Observer.html#a61541ccefc043d739d2850df04bb710d">evalQoi</a> (std::shared_ptr&lt; mfem::GridFunction &gt; &amp;) const</td></tr>
-<tr class="separator:a61541ccefc043d739d2850df04bb710d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b7dbd40c26e1d083fd0238be99140d9"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Observer.html#a8b7dbd40c26e1d083fd0238be99140d9">evalXtQoi</a> (mfem::Vector &amp;) const</td></tr>
-<tr class="separator:a8b7dbd40c26e1d083fd0238be99140d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8503f609b0b92ca75d858c0765b2b23a"><td class="memItemLeft" align="right" valign="top">mfem::Vector&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Observer.html#a8503f609b0b92ca75d858c0765b2b23a">evalErrorInNaturalNorm</a> (const <a class="el" href="classheat_1_1SolutionHandler.html">heat::SolutionHandler</a> &amp;solutionHandler) const</td></tr>
+<tr class="memdesc:a8503f609b0b92ca75d858c0765b2b23a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates error in the natural norm.  <a href="classheat_1_1Observer.html#a8503f609b0b92ca75d858c0765b2b23a">More...</a><br /></td></tr>
+<tr class="separator:a8503f609b0b92ca75d858c0765b2b23a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03478dcd4c1d5010cd86fcb1ad0a1920"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double, double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Observer.html#a03478dcd4c1d5010cd86fcb1ad0a1920">evalSpatialErrorOfSolutionInNaturalNorm</a> (std::shared_ptr&lt; mfem::GridFunction &gt; &amp;u, std::shared_ptr&lt; mfem::GridFunction &gt; &amp;dudt, std::shared_ptr&lt; mfem::GridFunction &gt; &amp;q, double t) const</td></tr>
+<tr class="memdesc:a03478dcd4c1d5010cd86fcb1ad0a1920"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates error in the natural norm at a given time t.  <a href="classheat_1_1Observer.html#a03478dcd4c1d5010cd86fcb1ad0a1920">More...</a><br /></td></tr>
+<tr class="separator:a03478dcd4c1d5010cd86fcb1ad0a1920"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09c308a72874a6c1ee12b57689e7020c"><td class="memItemLeft" align="right" valign="top">mfem::Vector&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Observer.html#a09c308a72874a6c1ee12b57689e7020c">evalErrorInLeastSquaresNorm</a> (const <a class="el" href="classheat_1_1SolutionHandler.html">heat::SolutionHandler</a> &amp;solutionHandler) const</td></tr>
+<tr class="memdesc:a09c308a72874a6c1ee12b57689e7020c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates least-squares error.  <a href="classheat_1_1Observer.html#a09c308a72874a6c1ee12b57689e7020c">More...</a><br /></td></tr>
+<tr class="separator:a09c308a72874a6c1ee12b57689e7020c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a685e4ee671f3ba75abe540f3b3cb54c3"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1Observer.html#a685e4ee671f3ba75abe540f3b3cb54c3">evalSpatialErrorOfSolutionInLeastSquaresNorm</a> (std::shared_ptr&lt; mfem::GridFunction &gt; &amp;u, std::shared_ptr&lt; mfem::GridFunction &gt; &amp;dudt, std::shared_ptr&lt; mfem::GridFunction &gt; &amp;q, double t) const</td></tr>
+<tr class="memdesc:a685e4ee671f3ba75abe540f3b3cb54c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates least-squares error at a given time t.  <a href="classheat_1_1Observer.html#a685e4ee671f3ba75abe540f3b3cb54c3">More...</a><br /></td></tr>
+<tr class="separator:a685e4ee671f3ba75abe540f3b3cb54c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classmymfem_1_1BaseObserver"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classmymfem_1_1BaseObserver')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classmymfem_1_1BaseObserver.html">mymfem::BaseObserver</a></td></tr>
 <tr class="memitem:a3d5c34b388fb8e5bc1090937ae073338 inherit pub_methods_classmymfem_1_1BaseObserver"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmymfem_1_1BaseObserver.html#a3d5c34b388fb8e5bc1090937ae073338">BaseObserver</a> ()</td></tr>
 <tr class="memdesc:a3d5c34b388fb8e5bc1090937ae073338 inherit pub_methods_classmymfem_1_1BaseObserver"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="classmymfem_1_1BaseObserver.html#a3d5c34b388fb8e5bc1090937ae073338">More...</a><br /></td></tr>
@@ -189,7 +177,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><p><a class="el" href="classheat_1_1Observer.html" title="Observer for the Heat equation.">Observer</a> for the Heat equation. </p>
 <p>Provides functions to visualize solutions, compute error and write output to files. </p>
 
-<p class="definition">Definition at line <a class="el" href="heat_2observer_8hpp_source.html#l00025">25</a> of file <a class="el" href="heat_2observer_8hpp_source.html">heat/observer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2observer_8hpp_source.html#l00026">26</a> of file <a class="el" href="heat_2observer_8hpp_source.html">heat/observer.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aeb13b53f5a1869b9f147657d140fca70"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aeb13b53f5a1869b9f147657d140fca70">&#9670;&nbsp;</a></span>Observer() <span class="overload">[1/2]</span></h2>
@@ -216,7 +204,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Default Constructor. </p>
 
-<p class="definition">Definition at line <a class="el" href="heat_2observer_8hpp_source.html#l00029">29</a> of file <a class="el" href="heat_2observer_8hpp_source.html">heat/observer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2observer_8hpp_source.html#l00030">30</a> of file <a class="el" href="heat_2observer_8hpp_source.html">heat/observer.hpp</a>.</p>
 
 </div>
 </div>
@@ -236,7 +224,7 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>lx</em>&#160;</td>
+          <td class="paramname"><em>spatialLevel</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -247,7 +235,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Constructor with config JSO and spatial mesh discretisation level as arguments </p>
 
-<p class="definition">Definition at line <a class="el" href="heat_2observer_8cpp_source.html#l00021">21</a> of file <a class="el" href="heat_2observer_8cpp_source.html">heat/observer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2observer_8cpp_source.html#l00016">16</a> of file <a class="el" href="heat_2observer_8cpp_source.html">heat/observer.cpp</a>.</p>
 
 </div>
 </div>
@@ -280,184 +268,98 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Writes the solution to output file. </p>
 
-<p class="definition">Definition at line <a class="el" href="heat_2observer_8cpp_source.html#l00087">87</a> of file <a class="el" href="heat_2observer_8cpp_source.html">heat/observer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2observer_8cpp_source.html#l00109">109</a> of file <a class="el" href="heat_2observer_8cpp_source.html">heat/observer.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a567860f465092f532c1da7bf54cea63d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a567860f465092f532c1da7bf54cea63d">&#9670;&nbsp;</a></span>evalObs() <span class="overload">[1/2]</span></h2>
+<a id="a1f6ad7dd3d61453c5d57a82c8e87e9a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f6ad7dd3d61453c5d57a82c8e87e9a9">&#9670;&nbsp;</a></span>evalError()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double heat::Observer::evalObs </td>
+          <td class="memname">Vector heat::Observer::evalError </td>
           <td>(</td>
-          <td class="paramtype">mfem::Vector &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="classheat_1_1SolutionHandler.html">SolutionHandler</a> &amp;&#160;</td>
+          <td class="paramname"><em>solutionHandler</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="heat_2observer_8cpp_source.html#l00133">133</a> of file <a class="el" href="heat_2observer_8cpp_source.html">heat/observer.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a09c308a72874a6c1ee12b57689e7020c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09c308a72874a6c1ee12b57689e7020c">&#9670;&nbsp;</a></span>evalErrorInLeastSquaresNorm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector heat::Observer::evalErrorInLeastSquaresNorm </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classheat_1_1SolutionHandler.html">heat::SolutionHandler</a> &amp;&#160;</td>
+          <td class="paramname"><em>solutionHandler</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="a4d16e3d4cf38fd654685c575ed937c8e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d16e3d4cf38fd654685c575ed937c8e">&#9670;&nbsp;</a></span>evalObs() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double heat::Observer::evalObs </td>
-          <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; mfem::GridFunction &gt; &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ab2b7f26a4413e7925f59bb0ea739fafc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab2b7f26a4413e7925f59bb0ea739fafc">&#9670;&nbsp;</a></span>evalQoi() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double heat::Observer::evalQoi </td>
-          <td>(</td>
-          <td class="paramtype">mfem::Vector &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a61541ccefc043d739d2850df04bb710d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61541ccefc043d739d2850df04bb710d">&#9670;&nbsp;</a></span>evalQoi() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double heat::Observer::evalQoi </td>
-          <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; mfem::GridFunction &gt; &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a4f140961c3e53ddbb32529b9f38acf7b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4f140961c3e53ddbb32529b9f38acf7b">&#9670;&nbsp;</a></span>evalXError()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::tuple&lt; double, double, double, double, double, double &gt; heat::Observer::evalXError </td>
-          <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; mfem::GridFunction &gt; &amp;&#160;</td>
-          <td class="paramname"><em>u</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::shared_ptr&lt; mfem::GridFunction &gt; &amp;&#160;</td>
-          <td class="paramname"><em>dudt</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::shared_ptr&lt; mfem::GridFunction &gt; &amp;&#160;</td>
-          <td class="paramname"><em>q</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>t</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Evaluates error in the natural norm at a given time t. </p>
+<p>Evaluates least-squares error. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">u</td><td>temperature solution </td></tr>
-    <tr><td class="paramname">dudt</td><td>time-gradient of temperature solution </td></tr>
     <tr><td class="paramname">q</td><td>heat flux solution </td></tr>
-    <tr><td class="paramname">t</td><td>time </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>least-squares error split as PDE and flux error </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="heat_2observer_8cpp_source.html#l00370">370</a> of file <a class="el" href="heat_2observer_8cpp_source.html">heat/observer.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a8503f609b0b92ca75d858c0765b2b23a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8503f609b0b92ca75d858c0765b2b23a">&#9670;&nbsp;</a></span>evalErrorInNaturalNorm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector heat::Observer::evalErrorInNaturalNorm </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classheat_1_1SolutionHandler.html">heat::SolutionHandler</a> &amp;&#160;</td>
+          <td class="paramname"><em>solutionHandler</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Evaluates error in the natural norm. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>temperature solution </td></tr>
+    <tr><td class="paramname">q</td><td>heat flux solution </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>error in natural norm for discrete and reference solutions </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="heat_2observer_8cpp_source.html#l00378">378</a> of file <a class="el" href="heat_2observer_8cpp_source.html">heat/observer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2observer_8cpp_source.html#l00150">150</a> of file <a class="el" href="heat_2observer_8cpp_source.html">heat/observer.cpp</a>.</p>
 
 </div>
 </div>
-<a id="acda482278e0a924f13afac2a7238c46f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acda482278e0a924f13afac2a7238c46f">&#9670;&nbsp;</a></span>evalXH1Error()</h2>
+<a id="a685e4ee671f3ba75abe540f3b3cb54c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a685e4ee671f3ba75abe540f3b3cb54c3">&#9670;&nbsp;</a></span>evalSpatialErrorOfSolutionInLeastSquaresNorm()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::tuple&lt; double, double, double, double &gt; heat::Observer::evalXH1Error </td>
-          <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; mfem::GridFunction &gt; &amp;&#160;</td>
-          <td class="paramname"><em>u</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>t</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Evaluates L2 and H1 error of temperature at a given time t. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">u</td><td>temperature solution </td></tr>
-    <tr><td class="paramname">t</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>L2-error and H1-error of u and reference solution </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="heat_2observer_8cpp_source.html#l00112">112</a> of file <a class="el" href="heat_2observer_8cpp_source.html">heat/observer.cpp</a>.</p>
-
-</div>
-</div>
-<a id="af1cff457c39be311d1780edd499c4854"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1cff457c39be311d1780edd499c4854">&#9670;&nbsp;</a></span>evalXLsqError()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::tuple&lt; double, double &gt; heat::Observer::evalXLsqError </td>
+          <td class="memname">std::tuple&lt; double, double &gt; heat::Observer::evalSpatialErrorOfSolutionInLeastSquaresNorm </td>
           <td>(</td>
           <td class="paramtype">std::shared_ptr&lt; mfem::GridFunction &gt; &amp;&#160;</td>
           <td class="paramname"><em>u</em>, </td>
@@ -500,96 +402,39 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>least-squares error split as PDE and flux error </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="heat_2observer_8cpp_source.html#l00218">218</a> of file <a class="el" href="heat_2observer_8cpp_source.html">heat/observer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2observer_8cpp_source.html#l00487">487</a> of file <a class="el" href="heat_2observer_8cpp_source.html">heat/observer.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a57ca2ec49f9f537e3883c30b70317e3b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a57ca2ec49f9f537e3883c30b70317e3b">&#9670;&nbsp;</a></span>evalXtError()</h2>
+<a id="a03478dcd4c1d5010cd86fcb1ad0a1920"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03478dcd4c1d5010cd86fcb1ad0a1920">&#9670;&nbsp;</a></span>evalSpatialErrorOfSolutionInNaturalNorm()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::tuple&lt; double, double, double &gt; heat::Observer::evalXtError </td>
+          <td class="memname">std::tuple&lt; double, double, double, double, double, double &gt; heat::Observer::evalSpatialErrorOfSolutionInNaturalNorm </td>
           <td>(</td>
-          <td class="paramtype">mfem::Vector &amp;&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">mfem::Vector &amp;&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Evaluates error in the natural norm. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">u</td><td>temperature solution </td></tr>
-    <tr><td class="paramname">q</td><td>heat flux solution </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>error in natural norm for discrete and reference solutions </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="heat_2observer_8cpp_source.html#l00461">461</a> of file <a class="el" href="heat_2observer_8cpp_source.html">heat/observer.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a52e23d94fa343c885eb225963d9d8ae9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a52e23d94fa343c885eb225963d9d8ae9">&#9670;&nbsp;</a></span>evalXtL2H1Error()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::tuple&lt; double, double, double, double &gt; heat::Observer::evalXtL2H1Error </td>
-          <td>(</td>
-          <td class="paramtype">mfem::Vector &amp;&#160;</td>
-          <td class="paramname"><em>u</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Evaluates L2L2 and L2H1 error of temperature. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">u</td><td>Temperature solution coefficients </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>L2L2-error and L2H1-error of u and reference solution </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="heat_2observer_8cpp_source.html#l00142">142</a> of file <a class="el" href="heat_2observer_8cpp_source.html">heat/observer.cpp</a>.</p>
-
-</div>
-</div>
-<a id="ac309f6384ca3365b39ebf9a13c6fb7d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac309f6384ca3365b39ebf9a13c6fb7d7">&#9670;&nbsp;</a></span>evalXtLsqError()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::tuple&lt; double, double, double &gt; heat::Observer::evalXtLsqError </td>
-          <td>(</td>
-          <td class="paramtype">mfem::Vector &amp;&#160;</td>
+          <td class="paramtype">std::shared_ptr&lt; mfem::GridFunction &gt; &amp;&#160;</td>
           <td class="paramname"><em>u</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">mfem::Vector &amp;&#160;</td>
-          <td class="paramname"><em>q</em>&#160;</td>
+          <td class="paramtype">std::shared_ptr&lt; mfem::GridFunction &gt; &amp;&#160;</td>
+          <td class="paramname"><em>dudt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; mfem::GridFunction &gt; &amp;&#160;</td>
+          <td class="paramname"><em>q</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -599,42 +444,24 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Evaluates least-squares error. </p>
+<p>Evaluates error in the natural norm at a given time t. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">u</td><td>temperature solution </td></tr>
+    <tr><td class="paramname">dudt</td><td>time-gradient of temperature solution </td></tr>
     <tr><td class="paramname">q</td><td>heat flux solution </td></tr>
+    <tr><td class="paramname">t</td><td>time </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>least-squares error split as PDE and flux error </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>error in natural norm for discrete and reference solutions </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="heat_2observer_8cpp_source.html#l00274">274</a> of file <a class="el" href="heat_2observer_8cpp_source.html">heat/observer.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a8b7dbd40c26e1d083fd0238be99140d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8b7dbd40c26e1d083fd0238be99140d9">&#9670;&nbsp;</a></span>evalXtQoi()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double heat::Observer::evalXtQoi </td>
-          <td>(</td>
-          <td class="paramtype">mfem::Vector &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="heat_2observer_8cpp_source.html#l00638">638</a> of file <a class="el" href="heat_2observer_8cpp_source.html">heat/observer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2observer_8cpp_source.html#l00269">269</a> of file <a class="el" href="heat_2observer_8cpp_source.html">heat/observer.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a94dbe5f7ccd86a87e009678f3800aaac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a94dbe5f7ccd86a87e009678f3800aaac">&#9670;&nbsp;</a></span>set()</h2>
+<a id="a2e99c01cc725ecbb86293556c903877b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e99c01cc725ecbb86293556c903877b">&#9670;&nbsp;</a></span>set()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -648,8 +475,8 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classheat_1_1LsqXtFEM.html">heat::LsqXtFEM</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>discr</em>&#160;</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classheat_1_1LsqXtFem.html">heat::LsqXtFem</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>disc</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -661,7 +488,27 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Sets the test case and discretisation. </p>
 
-<p class="definition">Definition at line <a class="el" href="heat_2observer_8cpp_source.html#l00039">39</a> of file <a class="el" href="heat_2observer_8cpp_source.html">heat/observer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2observer_8cpp_source.html#l00044">44</a> of file <a class="el" href="heat_2observer_8cpp_source.html">heat/observer.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a6666b5d6db770e959c1772e94af1d39b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6666b5d6db770e959c1772e94af1d39b">&#9670;&nbsp;</a></span>visualizeSolutionAtEndTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void heat::Observer::visualizeSolutionAtEndTime </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classheat_1_1SolutionHandler.html">SolutionHandler</a> &amp;&#160;</td>
+          <td class="paramname"><em>solutionHandler</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="heat_2observer_8cpp_source.html#l00084">84</a> of file <a class="el" href="heat_2observer_8cpp_source.html">heat/observer.cpp</a>.</p>
 
 </div>
 </div>

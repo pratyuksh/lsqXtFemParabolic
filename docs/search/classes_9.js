@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['pardisosolver_453',['PardisoSolver',['../classPardisoSolver.html',1,'']]],
-  ['pointlocator_454',['PointLocator',['../classmymfem_1_1PointLocator.html',1,'mymfem']]]
+  ['qoifunctional_424',['QoIFunctional',['../classheat_1_1QoIFunctional.html',1,'heat']]],
+  ['qoilfintegrator_425',['QoILFIntegrator',['../classheat_1_1QoILFIntegrator.html',1,'heat']]],
+  ['qoixtfunctional_426',['QoIXtFunctional',['../classheat_1_1QoIXtFunctional.html',1,'heat']]]
 ];
