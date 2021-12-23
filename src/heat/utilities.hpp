@@ -11,7 +11,7 @@
  * @param tVdofs Indices of the dofs in temporal dimension
  * @param uSol coefficients of the discrete spatial solution at time t
  */
-void buildXSolFG(const mfem::Vector& uXtSol,
+void buildSolutionAtSpecifiedTime(const mfem::Vector& uXtSol,
                  const mfem::Vector& tShape,
                  mfem::Array<int> tVdofs,
                  mfem::Vector& uSol);

@@ -11,7 +11,8 @@
 #include "test_cases.hpp"
 #include "coefficients.hpp"
 #include "discretisation.hpp"
-#include "functionals.hpp"
+#include "solution_handler.hpp"
+//#include "functionals.hpp"
 
 
 namespace heat {
@@ -34,52 +35,23 @@ public:
 
     //! Sets the test case and discretisation
     void set (std::shared_ptr<heat::TestCases>& testCase,
-              std::shared_ptr<heat::LsqXtFEM>& discr);
+              std::shared_ptr<heat::LsqXtFem>& disc);
+
+    void visualizeSolutionAtEndTime(const SolutionHandler&);
+
+    mfem::Vector evalError(const SolutionHandler&);
     
     //! Writes the solution to output file
     void dumpSol (std::shared_ptr<mfem::GridFunction>&,
                   std::shared_ptr<mfem::GridFunction>&) const;
-    
-    /**
-     * @brief Evaluates L2 and H1 error of temperature at a given time t
-     * @param u temperature solution
-     * @param t
-     * @return L2-error and H1-error of u and reference solution
-     */
-    std::tuple <double, double, double, double>
-    evalXH1Error (std::shared_ptr<mfem::GridFunction>& u,
-                   double t) const;
 
     /**
-     * @brief Evaluates L2L2 and L2H1 error of temperature
-     * @param u Temperature solution coefficients
-     * @return L2L2-error and L2H1-error of u and reference solution
-     */
-    std::tuple <double, double, double, double>
-    evalXtL2H1Error (mfem::Vector& u) const;
-
-    /**
-     * @brief Evaluates least-squares error at a given time t
-     * @param u temperature solution
-     * @param dudt time-gradient of temperature solution
-     * @param q heat flux solution
-     * @param t time
-     * @return least-squares error split as PDE and flux error
-     */
-    std::tuple <double, double>
-    evalXLsqError (std::shared_ptr<mfem::GridFunction>& u,
-                   std::shared_ptr<mfem::GridFunction>& dudt,
-                   std::shared_ptr<mfem::GridFunction>& q,
-                   double t) const;
-
-    /**
-     * @brief Evaluates least-squares error
+     * @brief Evaluates error in the natural norm
      * @param u temperature solution
      * @param q heat flux solution
-     * @return least-squares error split as PDE and flux error
+     * @return error in natural norm for discrete and reference solutions
      */
-    std::tuple <double, double, double>
-    evalXtLsqError (mfem::Vector& u, mfem::Vector& q) const;
+    mfem::Vector evalErrorInNaturalNorm (const heat::SolutionHandler& solutionHandler) const;
 
     /**
      * @brief Evaluates error in the natural norm at a given time t
@@ -91,61 +63,69 @@ public:
      */
     std::tuple
     <double, double, double, double, double, double>
-    evalXError (std::shared_ptr<mfem::GridFunction>& u,
-                std::shared_ptr<mfem::GridFunction>& dudt,
-                std::shared_ptr<mfem::GridFunction>& q,
-                double t) const;
+    evalSpatialErrorOfSolutionInNaturalNorm
+    (std::shared_ptr<mfem::GridFunction>& u,
+     std::shared_ptr<mfem::GridFunction>& dudt,
+     std::shared_ptr<mfem::GridFunction>& q,
+     double t) const;
 
     /**
-     * @brief Evaluates error in the natural norm
+     * @brief Evaluates least-squares error
      * @param u temperature solution
      * @param q heat flux solution
-     * @return error in natural norm for discrete and reference solutions
+     * @return least-squares error split as PDE and flux error
      */
-    std::tuple <double, double, double>
-    evalXtError (mfem::Vector&, mfem::Vector&) const;
+    mfem::Vector evalErrorInLeastSquaresNorm (const heat::SolutionHandler& solutionHandler) const;
 
-    double evalObs(mfem::Vector&) const;
-    double evalObs(std::shared_ptr <mfem::GridFunction>&) const;
+    /**
+     * @brief Evaluates least-squares error at a given time t
+     * @param u temperature solution
+     * @param dudt time-gradient of temperature solution
+     * @param q heat flux solution
+     * @param t time
+     * @return least-squares error split as PDE and flux error
+     */
+    std::tuple <double, double>
+    evalSpatialErrorOfSolutionInLeastSquaresNorm
+    (std::shared_ptr<mfem::GridFunction>& u,
+     std::shared_ptr<mfem::GridFunction>& dudt,
+     std::shared_ptr<mfem::GridFunction>& q,
+     double t) const;
 
-    double evalQoi(mfem::Vector&) const;
-    double evalQoi(std::shared_ptr <mfem::GridFunction>&) const;
-
-    double evalXtQoi(mfem::Vector&) const;
-    
 private:
-    bool m_boolError;
+    int m_temporalLevel;
+    int m_spatialLevel;
+
+    double m_endTime;
+
+    bool m_boolEvalError;
+    std::string m_errorType;
+
     std::string m_solNamePrefix;
     std::string m_solNameSuffix;
 
-    int m_xndim;
+    int m_xDim;
     std::shared_ptr<heat::TestCases> m_testCase;
-    std::shared_ptr<heat::LsqXtFEM> m_discr;
+    std::shared_ptr<heat::LsqXtFem> m_disc;
 
-    mutable std::unique_ptr<heat::MediumTensorCoeff> m_medCoeff;
+    mutable std::unique_ptr<heat::MediumTensorCoeff> m_materialCoeff;
 
-    mutable std::unique_ptr<heat::ExactTemperatureCoeff> m_uECoeff;
-    mutable std::unique_ptr<heat::ExactHeatFluxCoeff> m_qECoeff;
+    mutable std::unique_ptr<heat::ExactTemperatureCoeff> m_exactTemperatureCoeff;
+    mutable std::unique_ptr<heat::ExactHeatFluxCoeff> m_exactHeatFluxCoeff;
 
-    mutable std::unique_ptr
-    <heat::ExactTemperatureSpatialGradCoeff> m_dudxECoeff;
-    mutable std::unique_ptr
-    <heat::ExactTemperatureTemporalGradCoeff> m_dudtECoeff;
+    mutable std::unique_ptr<heat::ExactTemperatureSpatialGradCoeff>
+    m_exactSpatialGradientOfTemperatureCoeff;
+    mutable std::unique_ptr<heat::ExactTemperatureTemporalGradCoeff>
+    m_exactTemporalGradientOfTemperatureCoeff;
 
     mutable std::unique_ptr<heat::SourceCoeff> m_sourceCoeff;
-    //mutable std::unique_ptr
-    //<heat::LaplacianCoeff> m_laplacianCoeff;
 
-    mfem::FiniteElementSpace* m_tVspace = nullptr;
-    mfem::FiniteElementSpace* m_xV1space = nullptr;
-    mfem::FiniteElementSpace* m_xV2space = nullptr;
+    mfem::FiniteElementSpace* m_temporalFeSpace = nullptr;
+    mfem::FiniteElementSpace* m_spatialFeSpaceForTemperature = nullptr;
+    mfem::FiniteElementSpace* m_spatialFeSpaceForHeatFlux = nullptr;
 
-    mutable std::unique_ptr<mfem::GridFunction> m_uE;
-    mutable std::unique_ptr<mfem::GridFunction> m_qE;
-
-    mutable std::unique_ptr<QoIFunctional> m_obsFn;
-    mutable std::unique_ptr<QoIFunctional> m_qoiFn;
-    mutable std::unique_ptr<QoIXtFunctional> m_qoiXtFn;
+    mutable std::unique_ptr<mfem::GridFunction> m_exactTemperature;
+    mutable std::unique_ptr<mfem::GridFunction> m_exactHeatFlux;
 };
 
 }
