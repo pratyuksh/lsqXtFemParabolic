@@ -1,7 +1,8 @@
 #include "solver.hpp"
+#include "utilities.hpp"
 
 #include <iostream>
-#include "utilities.hpp"
+#include <chrono>
 
 using namespace mfem;
 
@@ -129,7 +130,6 @@ void sparseHeat::Solver
     }
 }
 
-// Runs the solver
 void sparseHeat::Solver
 :: run()
 {
@@ -137,6 +137,15 @@ void sparseHeat::Solver
     assembleSystem();
     assembleRhs();
     solve();
+}
+
+std::pair<double, int> sparseHeat::Solver
+:: runAndMeasurePerformanceMetrics()
+{
+    initialize ();
+    assembleSystem();
+    assembleRhs();
+    return solveAndMeasurePerformanceMetrics();
 }
 
 void sparseHeat::Solver
@@ -172,7 +181,8 @@ void sparseHeat::Solver
         m_systemMat = m_disc->getSystemMatrix();
     }
     else if (m_linearSolver == "cg") {
-        // TODO
+        m_disc->buildSystemMatrix();
+        m_systemMat = m_disc->getSystemMatrix();
     }
 }
 
@@ -196,11 +206,25 @@ void sparseHeat::Solver
     solve(wrapRhs, wrapU);
 }
 
-void sparseHeat::Solver
+std::pair<double, int> sparseHeat::Solver
+:: solveAndMeasurePerformanceMetrics()
+{
+    // wrap rhs BlockVector as vector
+    Vector wrapRhs(m_rhs->GetData(), m_rhs->Size());
+
+    // wrap solution BlockVector as vector
+    auto U = m_solutionHandler->getData();
+    Vector wrapU(U->GetData(), U->Size());
+
+    return solve(wrapRhs, wrapU);
+}
+
+std::pair<double, int> sparseHeat::Solver
 :: solve(const Vector& rhs, Vector& u)
 {
+    int memoryUsage = 0;
 
-//    int memoryUsage = 0;
+    auto start = std::chrono::high_resolution_clock::now();
     if (m_linearSolver == "pardiso")
     {
         setPardisoSolver();
@@ -211,12 +235,27 @@ void sparseHeat::Solver
                                     m_systemMat->GetData());
         m_pardisoSolver->factorize();
         m_pardisoSolver->solve(rhs.GetData(), u.GetData());
-//        memoryUsage = m_pardisoSolver->getMemoryUsage();
+        memoryUsage = m_pardisoSolver->getMemoryUsage();
         finalizePardisoSolver();
     }
     else if (m_linearSolver == "cg") {
-        // TODO
+        int verbose = m_config["cg_verbose"];
+        int maxIter = m_config["cg_maxIter"];
+        double relTol = m_config["cg_relTol"];
+        double absTol = m_config["cg_absTol"];
+
+        auto M = new GSSmoother(*m_systemMat);
+        u = 0.;
+        PCG(*m_systemMat, *M, rhs, u, verbose, maxIter, relTol, absTol);
+        delete M;
     }
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast
+            <std::chrono::milliseconds>(end - start);
+    double elapsedTime
+            = (static_cast<double>(duration.count()))/1000;
+
+    return {elapsedTime, memoryUsage};
 }
 
 void sparseHeat::Solver

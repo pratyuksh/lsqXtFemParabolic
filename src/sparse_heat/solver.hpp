@@ -20,7 +20,6 @@ namespace sparseHeat{
 class Solver
 {
 public:
-    //! Constructor with config JSON, test case and space-time mesh info
     Solver (const nlohmann::json& config,
             std::shared_ptr<heat::TestCases>& testCase,
             std::string meshDir,
@@ -29,7 +28,6 @@ public:
             const int minTemporalLevel,
             const bool loadInitMesh=false);
 
-    //! Default constructor
     ~ Solver ();
 
     void setConfigParams();
@@ -38,8 +36,8 @@ public:
 
     void setDiscretisation();
 
-    //! Initializes, assembles and then solves
     void run();
+    std::pair<double, int> runAndMeasurePerformanceMetrics();
 
     void initialize();
 
@@ -47,7 +45,8 @@ public:
     void assembleRhs();
 
     void solve();
-    void solve(const mfem::Vector&, mfem::Vector&);
+    std::pair<double, int> solveAndMeasurePerformanceMetrics ();
+    std::pair<double, int> solve (const mfem::Vector&, mfem::Vector&);
     void setPardisoSolver();
     void finalizePardisoSolver();
 

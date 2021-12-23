@@ -83,6 +83,64 @@ void writeErrorConvergenceDataToJsonFile
     file.close();
 }
 
+void writePerformanceMetricsDataToJsonFile
+(const nlohmann::json& config,
+ Array<int> &numDofs,
+ Array<double> &meshSizes,
+ Array<double> &elapsedTime,
+ Array<int> &memoryUsage)
+{
+    assert(numDofs.Size() == meshSizes.Size());
+
+    std::string problemType = config["problem_type"];
+
+    std::string baseOutDir = "../output";
+    if (config.contains("base_out_dir")) {
+        baseOutDir = config["base_out_dir"];
+    }
+
+    std::string subOutDir = "sparse_heat/"+problemType;
+    if (config.contains("sub_out_dir")) {
+        subOutDir = config["sub_out_dir"];
+    }
+
+    std::string outDir = baseOutDir+"/"+subOutDir+"/";
+    fs::create_directories(outDir);
+
+    int deg = config["deg"];
+
+    std::string discrType = "H1Hdiv";
+    if (config.contains("discretisation_type")) {
+        discrType = config["discretisation_type"];
+    }
+
+    std::string errorType = "natural";
+    if (config.contains("error_type")) {
+        errorType = config["error_type"];
+    }
+
+    std::string outfile = outDir+"metrics"
+            +"_"+discrType
+            +"_"+problemType
+            +"_"+errorType
+            +"_deg"+std::to_string(deg)
+            +".json";;
+    std::cout << outfile << std::endl;
+
+    auto json = nlohmann::json{};
+    for (int i=0; i<numDofs.Size(); i++) {
+        json["ndofs"][i] = numDofs[i];
+        json["h_max"][i] = meshSizes[i];
+        json["elapsed_time"][i] = elapsedTime[i];
+        json["memory_usage"][i] = memoryUsage[i];
+    }
+
+    auto file = std::ofstream(outfile);
+    assert(file.good());
+    file << json.dump(2);
+    file.close();
+}
+
 }
 
 
@@ -103,6 +161,21 @@ runSolver(sparseHeat::Solver& solver,
     double hxMax = solver.getMeshwidthOfFinestSpatialMesh();
 
     return {solver.getNumDofs(), htMax, hxMax, solutionError};
+}
+
+std::tuple<int, double, double, double, int>
+runSolverAndMeasurePerformanceMetrics(sparseHeat::Solver& solver)
+{
+    double elapsedTime;
+    int memoryUsage;
+    std::tie(elapsedTime, memoryUsage)
+            = solver.runAndMeasurePerformanceMetrics();
+
+    double htMax = solver.getMeshwidthOfFinestTemporalMesh();
+    double hxMax = solver.getMeshwidthOfFinestSpatialMesh();
+
+    return {solver.getNumDofs(), htMax, hxMax,
+                elapsedTime, memoryUsage};
 }
 
 
@@ -233,6 +306,98 @@ void runMultipleSimulationsToTestConvergence (const nlohmann::json config,
                                                     solutionError);
 }
 
+void runMultipleSimulationsToMeasurePerformanceMetrics
+(const nlohmann::json config,
+ std::string baseMeshDir,
+ bool loadInitMesh=false)
+{
+    int deg = config["deg"];
+    assert(deg == 1);
+
+    auto testCase = heat::makeTestCase(config);
+
+    std::string subMeshDir = config["mesh_dir"];
+    const std::string meshDir = baseMeshDir+subMeshDir;
+
+    int minNumLevels = 1;
+    if (config.contains("min_num_levels")) {
+        minNumLevels = config["min_num_levels"];
+    }
+
+    int maxNumLevels = 1;
+    if (config.contains("max_num_levels")) {
+        maxNumLevels = config["max_num_levels"];
+    }
+
+    int minSpatialLevel = 1;
+    if (config.contains("min_spatial_level")) {
+        minSpatialLevel = config["min_spatial_level"];
+    }
+
+    int minTemporalLevel = 1;
+    if (config.contains("min_temporal_level")) {
+        minTemporalLevel = config["min_temporal_level"];
+    }
+
+    int numReps = 6;
+    if (config.contains("num_repetitions")) {
+        numReps = config["num_repetitions"];
+    }
+
+    Array<int> numDofs(maxNumLevels-minNumLevels+1);
+    Array<double> htMax(numDofs.Size());
+    Array<double> hxMax(numDofs.Size());
+    Array<double> elapsedTime(numDofs.Size());
+    Array<int> memoryUsage(numDofs.Size());
+
+    int count = 0;
+    for (int numLevels = minNumLevels;
+         numLevels <= maxNumLevels; numLevels++)
+    {
+        double localElapsedTime;
+        elapsedTime[count] = 0;
+        for (int i=0; i<numReps; i++)
+        {
+            sparseHeat::Solver solver(config,
+                                      testCase,
+                                      meshDir,
+                                      numLevels,
+                                      minSpatialLevel,
+                                      minTemporalLevel,
+                                      loadInitMesh);
+
+            std::tie(numDofs[count], htMax[count], hxMax[count],
+                     localElapsedTime, memoryUsage[count])
+                    = runSolverAndMeasurePerformanceMetrics(solver);
+            if (i > 0) {
+                elapsedTime[count] += localElapsedTime;
+            }
+        }
+        elapsedTime[count] /= (numReps-1);
+
+        count++;
+    }
+
+    std::cout << "\nTemporal mesh sizes: "; htMax.Print();
+    std::cout << "Spatial mesh sizes: "; hxMax.Print();
+    std::cout << "#Dofs: "; numDofs.Print();
+    std::cout << "Elapsed time:\n";
+    elapsedTime.Print();
+    std::cout << "\nMemory usage:\n";
+    memoryUsage.Print();
+
+    Array<double> meshSizes(numDofs.Size());
+    for (int i=0; i<maxNumLevels-minNumLevels+1; i++) {
+        meshSizes[i] = hxMax[i] > htMax[i] ? hxMax[i] : htMax[i];
+    }
+
+    sparseHeat::writePerformanceMetricsDataToJsonFile(config,
+                                                      numDofs,
+                                                      meshSizes,
+                                                      elapsedTime,
+                                                      memoryUsage);
+}
+
 
 int main(int argc, char *argv[])
 {   
@@ -268,6 +433,12 @@ int main(int argc, char *argv[])
         runMultipleSimulationsToTestConvergence(std::move(config),
                                                 std::move(baseMeshDir),
                                                 loadInitMesh);
+    }
+    else if (run == "measure") {
+        runMultipleSimulationsToMeasurePerformanceMetrics
+                (std::move(config),
+                 std::move(baseMeshDir),
+                 loadInitMesh);
     }
 
     return 0;
