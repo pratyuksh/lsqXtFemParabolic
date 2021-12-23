@@ -7,7 +7,6 @@
 using namespace mfem;
 
 
-// Constructor with config JSON, test case and space-time mesh info
 heat::Solver
 :: Solver (const nlohmann::json& config,
            std::shared_ptr<heat::TestCases>& testCase,
@@ -27,7 +26,6 @@ heat::Solver
     setDiscretisation();
 }
 
-// Constructor with config JSON, test case and spatial mesh info
 heat::Solver
 :: Solver (const nlohmann::json& config,
            std::shared_ptr<heat::TestCases>& testCase,
@@ -161,7 +159,6 @@ std::pair<double, int> heat::Solver
     return solveAndMeasurePerformanceMetrics();
 }
 
-// Initializes the solver
 void heat::Solver
 :: initialize ()
 {
@@ -231,7 +228,7 @@ std::pair<double, int> heat::Solver
 std::pair<double, int> heat::Solver
 :: solve (const mfem::Vector& rhs, mfem::Vector& u)
 {
-    int memUsage = 0;
+    int memoryUsage = 0;
 
     auto start = std::chrono::high_resolution_clock::now();
     if (m_linearSolver == "pardiso")
@@ -243,7 +240,7 @@ std::pair<double, int> heat::Solver
                                     m_systemMat->GetData());
         m_pardisoSolver->factorize();
         m_pardisoSolver->solve(rhs.GetData(), u.GetData());
-        memUsage = m_pardisoSolver->getMemoryUsage();
+        memoryUsage = m_pardisoSolver->getMemoryUsage();
         finalizePardisoSolver();
     }
     else if (m_linearSolver == "cg")
@@ -264,7 +261,7 @@ std::pair<double, int> heat::Solver
     double elapsedTime
             = (static_cast<double>(duration.count()))/1000;
 
-    return {elapsedTime, memUsage};
+    return {elapsedTime, memoryUsage};
 }
 
 void heat::Solver

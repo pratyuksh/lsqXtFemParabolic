@@ -24,13 +24,11 @@ namespace heat{
 class Solver
 {
 public:
-    //! Constructor with config JSON, test case and space-time mesh info
     Solver (const nlohmann::json& config,
             std::shared_ptr<heat::TestCases>& testCase,
             std::string meshDir, int spatialLevel, int temporalLevel,
             bool loadInitMesh=false);
 
-    //! Constructor with config JSON and spatial mesh info
     Solver (const nlohmann::json& config,
             std::shared_ptr<heat::TestCases>& testCase,
             std::string meshDir, int spatialLevel,
@@ -47,7 +45,6 @@ public:
     //! Sets perturbation in the test case
     void setPerturbation(double);
 
-    //! Runs the solver
     void run();
     std::pair<double, int> runAndMeasurePerformanceMetrics();
 
@@ -82,7 +79,6 @@ public:
         return m_solutionHandler;
     }
 
-    //! Returns the sizes of temporal and spatial mesh
     std::pair<double, double> getMeshwidths() const
     {
         double ddum;

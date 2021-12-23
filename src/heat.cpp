@@ -282,7 +282,10 @@ void runMultipleSimulationsToMeasurePerformanceMetrics
     std::string subMeshDir = config["mesh_dir"];
     std::string meshDir = baseMeshDir+subMeshDir;
 
-    int numReps = config["num_repetitions"];
+    int numReps = 6;
+    if (config.contains("num_repetitions")) {
+        numReps = config["num_repetitions"];
+    }
 
     auto testCase = heat::makeTestCase(config);
 
