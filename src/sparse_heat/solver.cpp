@@ -39,9 +39,9 @@ void sparseHeat::Solver
     m_endTime = m_config["end_time"];
 
     m_meshElemType = "tri";
-//    if (m_config.contains("mesh_elem_type")) {
-//        m_meshElemType = m_config["mesh_elem_type"];
-//    }
+    if (m_config.contains("mesh_elem_type")) {
+        m_meshElemType = m_config["mesh_elem_type"];
+    }
 
     m_discType = "H1Hdiv";
     if (m_config.contains("discretisation_type")) {

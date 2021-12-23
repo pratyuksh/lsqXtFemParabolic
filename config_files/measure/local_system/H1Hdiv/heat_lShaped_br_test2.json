@@ -3,7 +3,8 @@
     
     "problem_type": "lShaped_test2",
     
-    "run": "convergenceFG",
+    "run": "measure",
+    "num_repetitions": 2,
     
     "end_time": 1,
     
@@ -14,11 +15,17 @@
     "min_level_x": 1,
     "max_level_x": 4,
     
-    "mesh_dir": "lShaped/gr/weight3E-1",
+    "mesh_dir": "lShaped/br/deg1",
     
-    "eval_error": true,
+    "linear_solver": "cg",
+    "cg_verbose": 0,
+    "cg_maxIter": 1000,
+    "cg_relTol": 1E-8,
+    "cg_absTol": 0,
+    
+    "eval_error": false,
     "error_type": "natural",
     
     "base_out_dir": "../output",
-    "sub_out_dir": "heat/lShaped_test2/gr"
+    "sub_out_dir": "heat/lShaped_test2/br"
 }

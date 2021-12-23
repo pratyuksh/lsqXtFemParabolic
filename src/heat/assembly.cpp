@@ -5,7 +5,7 @@ using namespace mfem;
 
 
 // Gradient Integrator in time, dim = 1
-void heat::GradientIntegrator
+void heat::TemporalGradientIntegrator
 :: AssembleElementMatrix (const FiniteElement &fe,
                           ElementTransformation &Trans,
                           DenseMatrix &elmat)
@@ -53,7 +53,7 @@ void heat::GradientIntegrator
 
 
 // Stiffness Integrator
-void heat::StiffnessIntegrator
+void heat::SpatialStiffnessIntegrator
 :: AssembleElementMatrix (const FiniteElement &fe,
                           ElementTransformation &Trans,
                           DenseMatrix &elmat)
@@ -108,7 +108,7 @@ void heat::StiffnessIntegrator
 
 // VectorFE Stiffness Integrator
 // Uses, for example, Raviart-Thomas space
-void heat::VectorFEStiffnessIntegrator
+void heat::SpatialVectorFEStiffnessIntegrator
 :: AssembleElementMatrix (const FiniteElement &fe,
                           ElementTransformation &Trans,
                           DenseMatrix &elmat)
@@ -144,7 +144,7 @@ void heat::VectorFEStiffnessIntegrator
 
 // VectorFE Gradient Integrator
 // Uses, for example, Raviart-Thomas space
-void heat::VectorFEGradientIntegrator
+void heat::SpatialVectorFEGradientIntegrator
 :: AssembleElementMatrix2 (const FiniteElement &trial_fe,
                            const FiniteElement &test_fe,
                            ElementTransformation &Trans,
@@ -203,7 +203,7 @@ void heat::VectorFEGradientIntegrator
 
 // VectorFE Divergence LF Integrator
 // Uses, for example, Raviart-Thomas space
-void heat::VectorFEDivergenceLFIntegrator
+void heat::SpatialVectorFEDivergenceLFIntegrator
 :: AssembleRHSElementVect (const FiniteElement &fe,
                            ElementTransformation &Trans,
                            Vector &elvect)
@@ -240,7 +240,7 @@ void heat::VectorFEDivergenceLFIntegrator
 
 
 // Vector Stiffness Integrator
-void heat::VectorStiffnessIntegrator
+void heat::SpatialVectorStiffnessIntegrator
 :: AssembleElementMatrix (const FiniteElement &fe,
                           ElementTransformation &Trans,
                           DenseMatrix &elmat)
@@ -279,7 +279,7 @@ void heat::VectorStiffnessIntegrator
 
 
 // Vector Gradient Integrator
-void heat::VectorGradientIntegrator
+void heat::SpatialVectorGradientIntegrator
 :: AssembleElementMatrix2 (const FiniteElement &trial_fe,
                            const FiniteElement &test_fe,
                            ElementTransformation &Trans,
@@ -337,7 +337,7 @@ void heat::VectorGradientIntegrator
     }
 }
 
-void heat::VectorGradientIntegrator
+void heat::SpatialVectorGradientIntegrator
 :: AssembleBlock(const int dim,
                  const int test_ndofs,
                  const int trial_ndofs,
@@ -356,7 +356,7 @@ void heat::VectorGradientIntegrator
 
 
 // Vector Divergence LF Integrator
-void heat::VectorDivergenceLFIntegrator
+void heat::SpatialVectorDivergenceLFIntegrator
 :: AssembleRHSElementVect (const FiniteElement &fe,
                            ElementTransformation &Trans,
                            Vector &elvect)

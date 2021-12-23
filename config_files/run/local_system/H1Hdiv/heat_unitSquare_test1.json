@@ -1,27 +1,29 @@
 {
     "host": "local",
     
-    "problem_type": "unitSquare_test3",
+    "problem_type": "unitSquare_test1",
     
-    "run": "convergence",
+    "run": "simulation",
     
     "load_init_mesh": true,
     "init_mesh_level": 0,
     
-    "end_time": 1,
+    "end_time": 0.1,
     
     "discretisation_type": "H1Hdiv",
     
     "deg": 1,
-    "min_level_t": 1,
-    "min_level_x": 1,
-    "max_level_x": 4,
+    "level_t": 4,
+    "level_x": 4,
     
     "mesh_dir": "unitSquare",
     
     "eval_error": true,
-    "error_type": "natural",
+    "error_type": "lsq",
+    
+    "visualization": true,
+    "dump_output": false,
     
     "base_out_dir": "../output",
-    "sub_out_dir": "heat/unitSquare_test3"
+    "sub_out_dir": "heat/unitSquare_test1"
 }

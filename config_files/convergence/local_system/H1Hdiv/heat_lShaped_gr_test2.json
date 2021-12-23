@@ -3,7 +3,7 @@
     
     "problem_type": "lShaped_test2",
     
-    "run": "convergenceFG",
+    "run": "convergence",
     
     "end_time": 1,
     

@@ -3,7 +3,7 @@
     
     "problem_type": "periodic_unitSquare_test1",
     
-    "run": "runFG",
+    "run": "simulation",
     "load_init_mesh": true,
     "init_mesh_level": 2,
     

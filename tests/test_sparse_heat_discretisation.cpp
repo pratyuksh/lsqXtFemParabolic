@@ -18,7 +18,8 @@ TEST(SparseDiscretisation, buildH1Hdiv)
 {
     // config and test case
     std::string configFile
-            = "../config_files/unit_tests/sparse_heat_discretisation/sparseHeat_dummy.json";
+            = "../config_files/unit_tests/"
+              "sparse_heat_discretisation/sparseHeat_dummy.json";
     auto config = getGlobalConfig(configFile);
     auto testCase = heat::makeTestCase(config);
 
@@ -120,10 +121,10 @@ TEST(SparseDiscretisation, singleLevelH1HdivUnitSquareTest1)
     // config files for full and sparse versions
     std::string heatConfigFile
             = "../config_files/unit_tests/"
-              "sparse_heat_discretisation/heat_square_test1.json";
+              "sparse_heat_discretisation/heat_unitSquare_test1.json";
     std::string sparseHeatConfigFile
             = "../config_files/unit_tests/"
-              "sparse_heat_discretisation/sparseHeat_square_test1.json";
+              "sparse_heat_discretisation/sparseHeat_unitSquare_test1.json";
     auto heatConfig = getGlobalConfig(heatConfigFile);
     auto sparseHeatConfig = getGlobalConfig(sparseHeatConfigFile);
 
@@ -191,17 +192,18 @@ TEST(SparseDiscretisation, singleLevelH1HdivUnitSquareTest1)
     sparseXtDisc->assembleRhs(rhs);
 
     // full system assembly
-    std::unique_ptr<heat::LsqXtFEM> fullXtDisc
+    std::unique_ptr<heat::LsqXtFem> fullXtDisc
             = std::make_unique<heat::LsqXtFemH1Hdiv>
             (heatConfig, testCase);
-    fullXtDisc->set(temporalMesh, spatialMesh);
-    fullXtDisc->assembleSystem();
+    fullXtDisc->setFeSpacesAndBlockOffsetsAndSpatialBoundaryDofs
+            (temporalMesh, spatialMesh);
+    fullXtDisc->assembleSystemSubMatrices();
     fullXtDisc->buildSystemMatrix();
     auto trueSystemBlock11 = fullXtDisc->getSystemBlock11();
     auto trueSystemBlock12 = fullXtDisc->getSystemBlock12();
     auto trueSystemBlock21 = fullXtDisc->getSystemBlock21();
     auto trueSystemBlock22 = fullXtDisc->getSystemBlock22();
-    auto trueSystemMat = fullXtDisc->getHeatMat();
+    auto trueSystemMat = fullXtDisc->getSystemMatrix();
 
     // full rhs assembly
     auto trueRhs = std::make_shared<BlockVector>(dataOffsets);
@@ -241,10 +243,10 @@ TEST(SparseDiscretisation, singleLevelH1HdivUnitSquareTest3)
     // config files for full and sparse versions
     std::string heatConfigFile
             = "../config_files/unit_tests/"
-              "sparse_heat_discretisation/heat_square_test3.json";
+              "sparse_heat_discretisation/heat_unitSquare_test3.json";
     std::string sparseHeatConfigFile
             = "../config_files/unit_tests/"
-              "sparse_heat_discretisation/sparseHeat_square_test3.json";
+              "sparse_heat_discretisation/sparseHeat_unitSquare_test3.json";
     auto heatConfig = getGlobalConfig(heatConfigFile);
     auto sparseHeatConfig = getGlobalConfig(sparseHeatConfigFile);
 
@@ -312,17 +314,18 @@ TEST(SparseDiscretisation, singleLevelH1HdivUnitSquareTest3)
     sparseXtDisc->assembleRhs(rhs);
 
     // full system assembly
-    std::unique_ptr<heat::LsqXtFEM> fullXtDisc
+    std::unique_ptr<heat::LsqXtFem> fullXtDisc
             = std::make_unique<heat::LsqXtFemH1Hdiv>
             (heatConfig, testCase);
-    fullXtDisc->set(temporalMesh, spatialMesh);
-    fullXtDisc->assembleSystem();
+    fullXtDisc->setFeSpacesAndBlockOffsetsAndSpatialBoundaryDofs
+            (temporalMesh, spatialMesh);
+    fullXtDisc->assembleSystemSubMatrices();
     fullXtDisc->buildSystemMatrix();
     auto trueSystemBlock11 = fullXtDisc->getSystemBlock11();
     auto trueSystemBlock12 = fullXtDisc->getSystemBlock12();
     auto trueSystemBlock21 = fullXtDisc->getSystemBlock21();
     auto trueSystemBlock22 = fullXtDisc->getSystemBlock22();
-    auto trueSystemMat = fullXtDisc->getHeatMat();
+    auto trueSystemMat = fullXtDisc->getSystemMatrix();
 
     // full rhs assembly
     auto trueRhs = std::make_shared<BlockVector>(dataOffsets);
@@ -461,10 +464,10 @@ TEST(SparseDiscretisation, singleLevelH1H1UnitSquareTest1)
     // config files for full and sparse versions
     std::string heatConfigFile
             = "../config_files/unit_tests/"
-              "sparse_heat_discretisation/heat_square_test1.json";
+              "sparse_heat_discretisation/heat_unitSquare_test1.json";
     std::string sparseHeatConfigFile
             = "../config_files/unit_tests/"
-              "sparse_heat_discretisation/sparseHeat_square_test1.json";
+              "sparse_heat_discretisation/sparseHeat_unitSquare_test1.json";
     auto heatConfig = getGlobalConfig(heatConfigFile);
     auto sparseHeatConfig = getGlobalConfig(sparseHeatConfigFile);
 
@@ -532,17 +535,18 @@ TEST(SparseDiscretisation, singleLevelH1H1UnitSquareTest1)
     sparseXtDisc->assembleRhs(rhs);
 
     // full system assembly
-    std::unique_ptr<heat::LsqXtFEM> fullXtDisc
+    std::unique_ptr<heat::LsqXtFem> fullXtDisc
             = std::make_unique<heat::LsqXtFemH1H1>
             (heatConfig, testCase);
-    fullXtDisc->set(temporalMesh, spatialMesh);
-    fullXtDisc->assembleSystem();
+    fullXtDisc->setFeSpacesAndBlockOffsetsAndSpatialBoundaryDofs
+            (temporalMesh, spatialMesh);
+    fullXtDisc->assembleSystemSubMatrices();
     fullXtDisc->buildSystemMatrix();
     auto trueSystemBlock11 = fullXtDisc->getSystemBlock11();
     auto trueSystemBlock12 = fullXtDisc->getSystemBlock12();
     auto trueSystemBlock21 = fullXtDisc->getSystemBlock21();
     auto trueSystemBlock22 = fullXtDisc->getSystemBlock22();
-    auto trueSystemMat = fullXtDisc->getHeatMat();
+    auto trueSystemMat = fullXtDisc->getSystemMatrix();
 
     // full rhs assembly
     auto trueRhs = std::make_shared<BlockVector>(dataOffsets);

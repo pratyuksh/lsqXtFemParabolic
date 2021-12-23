@@ -9,8 +9,9 @@ using namespace mfem;
 
 
 // Constructor
-heat::LsqXtFEM :: LsqXtFEM (const nlohmann::json& config,
-                            std::shared_ptr<heat::TestCases>& testCase)
+heat::LsqXtFem
+:: LsqXtFem (const nlohmann::json& config,
+             std::shared_ptr<heat::TestCases>& testCase)
     : m_config (config),
       m_testCase(testCase)
 {
@@ -18,137 +19,668 @@ heat::LsqXtFEM :: LsqXtFEM (const nlohmann::json& config,
 }
 
 // Destructor
-heat::LsqXtFEM :: ~LsqXtFEM()
+heat::LsqXtFem :: ~LsqXtFem()
 {
     reset();
 }
 
 // Releases all the memory allocated by this class
-void heat::LsqXtFEM :: reset()
+void heat::LsqXtFem
+:: reset(bool firstPass)
 {
-    m_firstPass = true;
+    m_firstPassOfAssembleSystemSubMatrices = firstPass;
+    m_firstPassOfAssembleSystemBlocks = firstPass;
 
-    if (m_tFec) { delete m_tFec; }
-    if (m_tFespace) { delete m_tFespace; }
+    resetFeSpaces();
+    resetSystemOperators();
+    resetSystemBlocks();
+    resetSystemSubMatrices();
+}
 
-    for (int i=0; i<m_xFecs.Size(); i++)
-    {
-        if (m_xFecs[i]) { delete m_xFecs[i]; }
-        if (m_xFespaces[i]) { delete m_xFespaces[i]; }
+void heat::LsqXtFem
+:: resetFeSpaces()
+{
+    if (m_temporalFeCollection) {
+        delete m_temporalFeCollection;
+        m_temporalFeCollection = nullptr;
+    }
+    if (m_temporalFeSpace) {
+        delete m_temporalFeSpace;
+        m_temporalFeSpace = nullptr;
     }
 
-    if (m_heatOp) { delete m_heatOp; }
-    if (m_heatMat) { delete m_heatMat; }
-    if (m_heatProjMat) { delete m_heatProjMat; }
+    for (int i=0; i<m_spatialFeCollections.Size(); i++)
+    {
+        if (m_spatialFeCollections[i]) {
+            delete m_spatialFeCollections[i];
+            m_spatialFeCollections[i] = nullptr;
+        }
+        if (m_spatialFeSpaces[i]) {
+            delete m_spatialFeSpaces[i];
+            m_spatialFeSpaces[i] = nullptr;
+        }
+    }
+    m_spatialFeCollections.DeleteAll();
+}
 
-    if (m_tMass) { clear(m_tMass); }
-    if (m_tStiff) { clear(m_tStiff); }
-    if (m_tGrad) { clear(m_tGrad); }
+void heat::LsqXtFem
+:: resetSystemOperators()
+{
+    if (m_systemOperator) {
+        delete m_systemOperator;
+        m_systemOperator = nullptr;
+    }
+    if (m_systemMatrix) {
+        delete m_systemMatrix;
+        m_systemMatrix = nullptr;
+    }
+}
 
-    if (m_xMass1) { clear(m_xMass1); }
-    if (m_xMass2) { clear(m_xMass2); }
-    if (m_xStiff1) { clear(m_xStiff1); }
-    if (m_xStiff2) { clear(m_xStiff2); }
-    if (m_xGrad) { clear(m_xGrad); }
-    if (m_xDiv) { clear(m_xDiv); }
+void heat::LsqXtFem
+:: resetSystemBlocks()
+{
+    resetMediumIndependentSystemBlocks();
+    resetMediumDependentSystemBlocks();
+}
 
-    if (m_block00) { clear(m_block00); }
-    if (m_block01) { clear(m_block01); }
-    if (m_block10) { clear(m_block10); }
-    if (m_block11) { clear(m_block11); }
+void heat::LsqXtFem
+:: resetMediumIndependentSystemBlocks()
+{
+    if (m_systemBlock22) {
+        clear(m_systemBlock22);
+    }
 
-    if (m_block00MedIdp) { clear(m_block00MedIdp); }
-    if (m_block01MedIdp) { clear(m_block01MedIdp); }
+    if (m_materialIndependentSystemBlock11) {
+        clear(m_materialIndependentSystemBlock11);
+    }
+    if (m_materialIndependentSystemBlock12) {
+        clear(m_materialIndependentSystemBlock12);
+    }
+}
+
+void heat::LsqXtFem
+:: resetMediumDependentSystemBlocks()
+{
+    if (m_systemBlock11) {
+        clear(m_systemBlock11);
+    }
+    if (m_systemBlock12) {
+        clear(m_systemBlock12);
+    }
+    if (m_systemBlock21) {
+        clear(m_systemBlock21);
+    }
+}
+
+void heat::LsqXtFem
+:: resetSystemSubMatrices()
+{
+    resetMediumIndependentSystemSubMatrices();
+    resetMediumDependentSystemSubMatrices();
+}
+
+void heat::LsqXtFem
+:: resetMediumIndependentSystemSubMatrices()
+{
+    if (m_temporalInitial) {
+        clear(m_temporalInitial);
+    }
+    if (m_temporalMass) {
+        clear(m_temporalMass);
+    }
+    if (m_temporalStiffness) {
+        clear(m_temporalStiffness);
+    }
+    if (m_temporalGradient) {
+        clear(m_temporalGradient);
+    }
+
+    if (m_spatialMass1) {
+        clear(m_spatialMass1);
+    }
+    if (m_spatialMass2) {
+        clear(m_spatialMass2);
+    }
+    if (m_spatialStiffness2) {
+        clear(m_spatialStiffness2);
+    }
+    if (m_spatialDivergence) {
+        clear(m_spatialDivergence);
+    }
+}
+
+void heat::LsqXtFem
+:: resetMediumDependentSystemSubMatrices()
+{
+    if (m_spatialStiffness1) {
+        clear(m_spatialStiffness1);
+    }
+    if (m_spatialGradient) {
+        clear(m_spatialGradient);
+    }
+}
+
+void heat::LsqXtFem
+:: resetFeSpacesAndBlockOffsetsAndSpatialBoundaryDofs
+(std::shared_ptr<Mesh> &temporalMesh, std::shared_ptr<Mesh> &spatialMesh)
+{
+    resetFeSpaces();
+    setFeSpacesAndBlockOffsetsAndSpatialBoundaryDofs(temporalMesh,
+                                                     spatialMesh);
+}
+
+void heat::LsqXtFem
+:: setFeSpacesAndBlockOffsetsAndSpatialBoundaryDofs
+(std::shared_ptr<Mesh> &temporalMesh, std::shared_ptr<Mesh> &spatialMesh)
+{
+    setFeSpaces(temporalMesh, spatialMesh);
+    setBlockOffsets();
+    setSpatialBoundaryDofs();
+}
+
+void heat::LsqXtFem
+:: setFeSpaces(std::shared_ptr<Mesh> &temporalMesh,
+               std::shared_ptr<Mesh> &spatialMesh)
+{
+    // temporal FE space
+    m_temporalFeCollection = new H1_FECollection(m_deg, 1,
+                                 BasisType::GaussLobatto);
+    m_temporalFeSpace = new FiniteElementSpace(temporalMesh.get(),
+                                        m_temporalFeCollection);
+
+    // spatial FE spaces
+    setSpatialFeSpaceForTemperature(spatialMesh);
+    setSpatialFeSpaceForHeatFlux(spatialMesh);
+}
+
+void heat::LsqXtFem
+:: setSpatialFeSpaceForTemperature(std::shared_ptr<Mesh> &spatialMesh)
+{
+    m_xDim = spatialMesh->Dimension();
+    FiniteElementCollection *xH1Coll
+            = new H1_FECollection(m_deg, m_xDim,
+                                  BasisType::GaussLobatto);
+    auto spatialFeSpaceForTemperature
+            = new FiniteElementSpace(spatialMesh.get(), xH1Coll);
+
+    m_spatialFeCollections.Append(xH1Coll);
+    m_spatialFeSpaces.Append(spatialFeSpaceForTemperature);
+}
+
+void heat::LsqXtFem
+:: setBlockOffsets()
+{
+    int tFeSpaceSize = m_temporalFeSpace->GetTrueVSize();
+    int xFeSpaceSizeForTemperature = m_spatialFeSpaces[0]->GetTrueVSize();
+    int xFeSpaceSizeForHeatFlux = m_spatialFeSpaces[1]->GetTrueVSize();
+
+    m_blockOffsets.SetSize(3);
+    m_blockOffsets[0] = 0;
+    m_blockOffsets[1] = xFeSpaceSizeForTemperature*tFeSpaceSize;
+    m_blockOffsets[2] = xFeSpaceSizeForHeatFlux*tFeSpaceSize;
+    m_blockOffsets.PartialSum();
+#ifndef NDEBUG
+    std::cout << "\tBlock offsets:" << "\t";
+    m_blockOffsets.Print();
+#endif
+}
+
+void heat::LsqXtFem
+:: setSpatialBoundaryDofs()
+{
+    auto spatialMesh = m_spatialFeSpaces[0]->GetMesh();
+    int tFeSpaceSize = m_temporalFeSpace->GetTrueVSize();
+    int xFeSpaceSize = m_spatialFeSpaces[0]->GetTrueVSize();
+
+    if (spatialMesh->bdr_attributes.Size())
+    {
+        m_spatialEssentialBoundaryMarker.SetSize
+                (spatialMesh->bdr_attributes.Max());
+        m_testCase->setBdryDirichlet(m_spatialEssentialBoundaryMarker);
+
+        m_spatialFeSpaces[0]->GetEssentialTrueDofs
+                (m_spatialEssentialBoundaryMarker, m_spatialEssentialDofs);
+
+        int numSpatialEssentialDofs = m_spatialEssentialDofs.Size();
+        m_essentialDofs.SetSize(numSpatialEssentialDofs*tFeSpaceSize);
+        for (int j=0; j<tFeSpaceSize; j++)
+            for (int i=0; i<numSpatialEssentialDofs; i++)
+                m_essentialDofs[i + j*numSpatialEssentialDofs]
+                        = j*xFeSpaceSize
+                        + m_spatialEssentialDofs[i];
+    }
+}
+
+void heat::LsqXtFem
+:: reassembleSystemSubMatrices()
+{
+    if (m_firstPassOfAssembleSystemSubMatrices) {
+        assembleMaterialIndependentSystemSubMatrices();
+    }
+
+    resetMediumDependentSystemSubMatrices();
+    assembleMaterialDependentSystemSubMatrices();
+
+    if (m_firstPassOfAssembleSystemSubMatrices) {
+        m_firstPassOfAssembleSystemSubMatrices = false;
+    }
+}
+
+void heat::LsqXtFem
+:: assembleSystemSubMatrices()
+{
+    assembleMaterialIndependentSystemSubMatrices();
+    assembleMaterialDependentSystemSubMatrices();
+}
+
+void heat::LsqXtFem
+:: assembleMaterialIndependentSystemSubMatrices()
+{
+    assembleTemporalInitial();
+    assembleTemporalMass();
+    assembleTemporalStiffness();
+    assembleTemporalGradient();
+
+    assembleSpatialMassForTemperature();
+    assembleSpatialMassForHeatFlux();
+    assembleSpatialStiffnessForHeatFlux();
+    assembleSpatialDivergence();
+}
+
+void heat::LsqXtFem
+:: assembleMaterialDependentSystemSubMatrices()
+{
+    assembleSpatialStiffnessForTemperature();
+    assembleSpatialGradient();
+}
+
+void heat::LsqXtFem
+:: assembleTemporalInitial()
+{
+    Vector tCanonicalBasis(m_temporalFeSpace->GetVSize());
+    tCanonicalBasis = 0.0;
+    tCanonicalBasis(0) = 1;
+    m_temporalInitial = new SparseMatrix(tCanonicalBasis);
+}
+
+void heat::LsqXtFem
+:: assembleTemporalMass()
+{
+    BilinearForm *temporalMassForm = new BilinearForm(m_temporalFeSpace);
+    temporalMassForm->AddDomainIntegrator(new MassIntegrator);
+    temporalMassForm->Assemble();
+    temporalMassForm->Finalize();
+    m_temporalMass = temporalMassForm->LoseMat();
+    delete temporalMassForm;
+}
+
+void heat::LsqXtFem
+:: assembleTemporalStiffness()
+{
+    BilinearForm *temporalStiffnessForm = new BilinearForm(m_temporalFeSpace);
+    temporalStiffnessForm->AddDomainIntegrator(new DiffusionIntegrator);
+    temporalStiffnessForm->Assemble();
+    temporalStiffnessForm->Finalize();
+    m_temporalStiffness = temporalStiffnessForm->LoseMat();
+    delete temporalStiffnessForm;
+}
+
+void heat::LsqXtFem
+:: assembleTemporalGradient()
+{
+    BilinearForm *temporalGradientForm
+            = new BilinearForm(m_temporalFeSpace);
+    temporalGradientForm->AddDomainIntegrator
+            (new heat::TemporalGradientIntegrator);
+    temporalGradientForm->Assemble();
+    temporalGradientForm->Finalize();
+    m_temporalGradient = temporalGradientForm->LoseMat();
+    delete temporalGradientForm;
+}
+
+void heat::LsqXtFem
+:: assembleSpatialMassForTemperature()
+{
+    BilinearForm *spatialMassForm
+            = new BilinearForm(m_spatialFeSpaces[0]);
+    spatialMassForm->AddDomainIntegrator(new MassIntegrator);
+    spatialMassForm->Assemble();
+    spatialMassForm->Finalize();
+    m_spatialMass1 = spatialMassForm->LoseMat();
+    delete spatialMassForm;
+}
+
+void heat::LsqXtFem
+:: assembleSpatialStiffnessForTemperature()
+{
+    heat::MediumTensorCoeff mediumCoeff(m_testCase);
+
+    BilinearForm *spatialStiffnessForm
+            = new BilinearForm(m_spatialFeSpaces[0]);
+    spatialStiffnessForm->AddDomainIntegrator
+            (new heat::SpatialStiffnessIntegrator(&mediumCoeff));
+    spatialStiffnessForm->Assemble();
+    spatialStiffnessForm->Finalize();
+    m_spatialStiffness1 = spatialStiffnessForm->LoseMat();
+    delete spatialStiffnessForm;
 }
 
 // Assembles the blocks of the linear system matrix
-void heat::LsqXtFEM :: assembleSystem()
+/*void heat::LsqXtFem
+:: assembleSystem()
 {   
-    if (m_firstPass) {
+    if (m_firstPassOfAssembleSystemBlocks) {
         assembleSystemMediumIndependent();
-        m_firstPass = false;
+        m_firstPassOfAssembleSystemBlocks = false;
     }
     assembleSystemMediumDependent();
-}
+}*/
 
 // Builds the linear system matrix from the blocks as an MFEM operator
-void heat::LsqXtFEM :: buildSystemOp()
+void heat::LsqXtFem
+:: rebuildSystemOperator()
 {
-    if (m_heatOp) {
-        delete m_heatOp;
-        m_heatOp = nullptr;
-    }
-    m_heatOp = new BlockOperator(m_block_offsets);
-    m_heatOp->SetBlock(0,0, m_block00);
-    m_heatOp->SetBlock(0,1, m_block01);
-    m_heatOp->SetBlock(1,0, m_block10);
-    m_heatOp->SetBlock(1,1, m_block11);
+    resetSystemOperators();
+
+    rebuildSystemBlocks();
+
+    m_systemOperator = new BlockOperator(m_blockOffsets);
+    m_systemOperator->SetBlock(0,0, m_systemBlock11);
+    m_systemOperator->SetBlock(0,1, m_systemBlock12);
+    m_systemOperator->SetBlock(1,0, m_systemBlock21);
+    m_systemOperator->SetBlock(1,1, m_systemBlock22);
 }
+
+void heat::LsqXtFem
+:: buildSystemOperator()
+{
+    buildSystemBlocks();
+
+    m_systemOperator = new BlockOperator(m_blockOffsets);
+    m_systemOperator->SetBlock(0,0, m_systemBlock11);
+    m_systemOperator->SetBlock(0,1, m_systemBlock12);
+    m_systemOperator->SetBlock(1,0, m_systemBlock21);
+    m_systemOperator->SetBlock(1,1, m_systemBlock22);
+}
+
+/*void heat::LsqXtFem
+:: buildSystemOperator()
+{
+    if (m_systemOperator) {
+        delete m_systemOperator;
+        m_systemOperator = nullptr;
+    }
+
+    m_systemOperator = new BlockOperator(m_blockOffsets);
+    m_systemOperator->SetBlock(0,0, m_systemBlock11);
+    m_systemOperator->SetBlock(0,1, m_systemBlock12);
+    m_systemOperator->SetBlock(1,0, m_systemBlock21);
+    m_systemOperator->SetBlock(1,1, m_systemBlock22);
+}*/
 
 // Builds the linear system matrix from the blocks as a monolithic matrix
-void heat::LsqXtFEM :: buildSystemMatrix()
+void heat::LsqXtFem
+:: rebuildSystemMatrix()
 {
-    BlockMatrix *heatBlockMat
-            = new BlockMatrix(m_block_offsets);
-    heatBlockMat->SetBlock(0,0, m_block00);
-    heatBlockMat->SetBlock(0,1, m_block01);
-    heatBlockMat->SetBlock(1,0, m_block10);
-    heatBlockMat->SetBlock(1,1, m_block11);
+    resetSystemOperators();
 
-    if (m_heatMat) { clear(m_heatMat); }
-    m_heatMat = heatBlockMat->CreateMonolithic();
-    delete heatBlockMat;
+    rebuildSystemBlocks();
 
-    applyBCs(*m_heatMat);
+    auto systemBlockMatrix
+            = new BlockMatrix(m_blockOffsets);
+    systemBlockMatrix->SetBlock(0,0, m_systemBlock11);
+    systemBlockMatrix->SetBlock(0,1, m_systemBlock12);
+    systemBlockMatrix->SetBlock(1,0, m_systemBlock21);
+    systemBlockMatrix->SetBlock(1,1, m_systemBlock22);
 
-    if (!m_heatMat->ColumnsAreSorted()) {
-        m_heatMat->SortColumnIndices();
+    m_systemMatrix = systemBlockMatrix->CreateMonolithic();
+    if (!m_systemMatrix->ColumnsAreSorted()) {
+        m_systemMatrix->SortColumnIndices();
     }
+    delete systemBlockMatrix;
+
+    applyBCs(*m_systemMatrix);
 }
+
+void heat::LsqXtFem
+:: buildSystemMatrix()
+{
+    buildSystemBlocks();
+
+    auto systemBlockMatrix
+            = new BlockMatrix(m_blockOffsets);
+    systemBlockMatrix->SetBlock(0,0, m_systemBlock11);
+    systemBlockMatrix->SetBlock(0,1, m_systemBlock12);
+    systemBlockMatrix->SetBlock(1,0, m_systemBlock21);
+    systemBlockMatrix->SetBlock(1,1, m_systemBlock22);
+
+    m_systemMatrix = systemBlockMatrix->CreateMonolithic();
+    if (!m_systemMatrix->ColumnsAreSorted()) {
+        m_systemMatrix->SortColumnIndices();
+    }
+    delete systemBlockMatrix;
+
+    applyBCs(*m_systemMatrix);
+}
+
+/*void heat::LsqXtFem
+:: buildSystemMatrix()
+{
+    auto systemBlockMatrix
+            = new BlockMatrix(m_blockOffsets);
+    systemBlockMatrix->SetBlock(0,0, m_systemBlock11);
+    systemBlockMatrix->SetBlock(0,1, m_systemBlock12);
+    systemBlockMatrix->SetBlock(1,0, m_systemBlock21);
+    systemBlockMatrix->SetBlock(1,1, m_systemBlock22);
+
+    if (m_systemMatrix) {
+        clear(m_systemMatrix);
+    }
+    m_systemMatrix = systemBlockMatrix->CreateMonolithic();
+    if (!m_systemMatrix->ColumnsAreSorted()) {
+        m_systemMatrix->SortColumnIndices();
+    }
+    delete systemBlockMatrix;
+
+    applyBCs(*m_systemMatrix);
+}*/
 
 // Builds system matrix from heatOp
 // stores only the upper triangle
-void heat::LsqXtFEM :: buildSystemMatrixUpperTriangle()
+void heat::LsqXtFem
+:: rebuildUpperTriangleOfSystemMatrix()
 {
-    BlockMatrix *heatBlockMat
-            = new BlockMatrix(m_block_offsets);
-    heatBlockMat->SetBlock(0,0, m_block00);
-    heatBlockMat->SetBlock(0,1, m_block01);
-    heatBlockMat->SetBlock(1,0, m_block10);
-    heatBlockMat->SetBlock(1,1, m_block11);
+    resetSystemOperators();
 
-    SparseMatrix *heatMatBuf = heatBlockMat->CreateMonolithic();
-    delete heatBlockMat;
+    rebuildSystemBlocks();
 
-    applyBCs(*heatMatBuf);
-    if (m_heatMat) { clear(m_heatMat); }
-    m_heatMat = &getUpperTriangle(*heatMatBuf);
-    delete heatMatBuf;
+    auto systemBlockMatrix
+            = new BlockMatrix(m_blockOffsets);
+    systemBlockMatrix->SetBlock(0,0, m_systemBlock11);
+    systemBlockMatrix->SetBlock(0,1, m_systemBlock12);
+    systemBlockMatrix->SetBlock(1,0, m_systemBlock21);
+    systemBlockMatrix->SetBlock(1,1, m_systemBlock22);
 
-    if (!m_heatMat->ColumnsAreSorted()) {
-        m_heatMat->SortColumnIndices();
+    auto systemMatrixBuf = systemBlockMatrix->CreateMonolithic();
+    delete systemBlockMatrix;
+
+    applyBCs(*systemMatrixBuf);
+
+    m_systemMatrix = &getUpperTriangle(*systemMatrixBuf);
+    if (!m_systemMatrix->ColumnsAreSorted()) {
+        m_systemMatrix->SortColumnIndices();
+    }
+    delete systemMatrixBuf;
+}
+
+void heat::LsqXtFem
+:: buildUpperTriangleOfSystemMatrix()
+{
+    buildSystemBlocks();
+
+    auto systemBlockMatrix
+            = new BlockMatrix(m_blockOffsets);
+    systemBlockMatrix->SetBlock(0,0, m_systemBlock11);
+    systemBlockMatrix->SetBlock(0,1, m_systemBlock12);
+    systemBlockMatrix->SetBlock(1,0, m_systemBlock21);
+    systemBlockMatrix->SetBlock(1,1, m_systemBlock22);
+
+    auto systemMatrixBuf = systemBlockMatrix->CreateMonolithic();
+    delete systemBlockMatrix;
+
+    applyBCs(*systemMatrixBuf);
+
+    m_systemMatrix = &getUpperTriangle(*systemMatrixBuf);
+    if (!m_systemMatrix->ColumnsAreSorted()) {
+        m_systemMatrix->SortColumnIndices();
+    }
+    delete systemMatrixBuf;
+}
+
+/*void heat::LsqXtFem
+:: buildUpperTriangleOfSystemMatrix()
+{
+    auto systemBlockMatrix
+            = new BlockMatrix(m_blockOffsets);
+    systemBlockMatrix->SetBlock(0,0, m_systemBlock11);
+    systemBlockMatrix->SetBlock(0,1, m_systemBlock12);
+    systemBlockMatrix->SetBlock(1,0, m_systemBlock21);
+    systemBlockMatrix->SetBlock(1,1, m_systemBlock22);
+
+    auto systemMatrixBuf = systemBlockMatrix->CreateMonolithic();
+    delete systemBlockMatrix;
+
+    applyBCs(*systemMatrixBuf);
+
+    if (m_systemMatrix) {
+        clear(m_systemMatrix);
+    }
+    m_systemMatrix = &getUpperTriangle(*systemMatrixBuf);
+    if (!m_systemMatrix->ColumnsAreSorted()) {
+        m_systemMatrix->SortColumnIndices();
+    }
+    delete systemMatrixBuf;
+}*/
+
+void heat::LsqXtFem
+:: rebuildSystemBlocks()
+{
+    if (m_firstPassOfAssembleSystemBlocks) {
+        buildSystemBlock22();
+    }
+
+    resetMediumDependentSystemBlocks();
+    rebuildSystemBlock11();
+    rebuildSystemBlock12AndBlock21();
+
+    if (m_firstPassOfAssembleSystemBlocks) {
+        m_firstPassOfAssembleSystemBlocks = false;
     }
 }
 
+void heat::LsqXtFem
+:: buildSystemBlocks()
+{
+    buildSystemBlock22();
+    buildSystemBlock11();
+    buildSystemBlock12AndBlock21();
+}
+
+void heat::LsqXtFem
+:: buildSystemBlock22()
+{
+    auto tmp = Add(*m_spatialMass2, *m_spatialStiffness2);
+    m_systemBlock22 = OuterProduct(*m_temporalMass, *tmp);
+    delete tmp;
+}
+
+void heat::LsqXtFem
+:: rebuildSystemBlock11()
+{
+    if (m_firstPassOfAssembleSystemBlocks) {
+        buildMediumIndependentSystemBlock11();
+    }
+    buildMediumDependentSystemBlock11();
+}
+
+void heat::LsqXtFem
+:: buildSystemBlock11()
+{
+    buildMediumIndependentSystemBlock11();
+    buildMediumDependentSystemBlock11();
+}
+
+void heat::LsqXtFem
+:: buildMediumIndependentSystemBlock11()
+{
+    auto tmp = Add(*m_temporalInitial, *m_temporalStiffness);
+    m_materialIndependentSystemBlock11
+            = OuterProduct(*tmp, *m_spatialMass1);
+    delete tmp;
+}
+
+void heat::LsqXtFem
+:: buildMediumDependentSystemBlock11()
+{
+    auto tmp = OuterProduct(*m_temporalMass, *m_spatialStiffness1);
+    m_systemBlock11 = Add(*m_materialIndependentSystemBlock11, *tmp);
+    delete tmp;
+}
+
+void heat::LsqXtFem
+:: rebuildSystemBlock12AndBlock21()
+{
+    if (m_firstPassOfAssembleSystemBlocks) {
+        buildMediumIndependentSystemBlock12();
+    }
+    buildMediumDependentSystemBlock12();
+    m_systemBlock21 = Transpose(*m_systemBlock12);
+}
+
+void heat::LsqXtFem
+:: buildSystemBlock12AndBlock21()
+{
+    buildMediumIndependentSystemBlock12();
+    buildMediumDependentSystemBlock12();
+    m_systemBlock21 = Transpose(*m_systemBlock12);
+}
+
+void heat::LsqXtFem
+:: buildMediumIndependentSystemBlock12()
+{
+    auto tmp = Transpose(*m_temporalGradient);
+    m_materialIndependentSystemBlock12
+            = OuterProduct(*tmp, *m_spatialDivergence);
+    delete tmp;
+}
+
+void heat::LsqXtFem
+:: buildMediumDependentSystemBlock12()
+{
+    auto tmp2 = Transpose(*m_spatialGradient);
+    auto tmp1 = OuterProduct(*m_temporalMass, *tmp2);
+    m_systemBlock12 = Add(-1, *tmp1,
+                          -1, *m_materialIndependentSystemBlock12);
+    delete tmp1;
+    delete tmp2;
+}
+
 // Assembles rhs
-void heat::LsqXtFEM :: assembleRhs(BlockVector* B) const
+void heat::LsqXtFem
+:: assembleRhs(BlockVector* B) const
 {    
-    Vector &B0 = B->GetBlock(0);
-    assembleICs(B0);
-    assembleSourceTGradXProjection(B0);
-
-    Vector &B1 = B->GetBlock(1);
-    assembleSourceTProjectionXDiv(B1);
-
+    assembleICs(B->GetBlock(0));
+    assembleSource(*B);
     applyBCs(*B);
 }
 
 // Assembles initial conditions
-void heat::LsqXtFEM :: assembleICs(Vector& b) const
+void heat::LsqXtFem
+:: assembleICs(Vector& b) const
 {
-    int xdimV = m_xFespaces[0]->GetTrueVSize();
+    int xdimV = m_spatialFeSpaces[0]->GetTrueVSize();
     Vector bx(xdimV);
-    assembleICsXProjection(bx);
+    assembleSpatialICs(bx);
 
     Array<int> vdofs;
     const FiniteElement *fe = nullptr;
@@ -156,10 +688,10 @@ void heat::LsqXtFEM :: assembleICs(Vector& b) const
 
     int n=0; // only for element (0, dt)
     {
-        m_tFespace->GetElementVDofs (n, vdofs);
+        m_temporalFeSpace->GetElementVDofs (n, vdofs);
         assert(vdofs[0] == 0);
 
-        fe = m_tFespace->GetFE(n);
+        fe = m_temporalFeSpace->GetFE(n);
         int tNdofs = fe->GetDof();
         shape.SetSize(tNdofs);
         elvec.SetSize(tNdofs*xdimV);
@@ -177,10 +709,10 @@ void heat::LsqXtFEM :: assembleICs(Vector& b) const
     }
 }
 
-void heat::LsqXtFEM
-:: assembleICsXProjection(Vector& b) const
+void heat::LsqXtFem
+:: assembleSpatialICs(Vector& b) const
 {
-    LinearForm ics_form(m_xFespaces[0]);
+    LinearForm ics_form(m_spatialFeSpaces[0]);
     heat::InitialTemperatureCoeff f(m_testCase);
     ics_form.AddDomainIntegrator
             (new DomainLFIntegrator(f));
@@ -188,12 +720,19 @@ void heat::LsqXtFEM
     b = ics_form.GetData();
 }
 
-// Assembles source
-void heat::LsqXtFEM
-:: assembleSourceTGradXProjection(Vector &b) const
+void heat::LsqXtFem
+:: assembleSource(BlockVector& B) const
 {
-    int Nt = m_tFespace->GetNE();
-    int xdimV = m_xFespaces[0]->GetTrueVSize();
+    assembleSourceWithTemporalGradientOfTemperatureBasis(B.GetBlock(0));
+    assembleSourceWithSpatialDivergenceOfHeatFluxBasis(B.GetBlock(1));
+}
+
+// Assembles source
+void heat::LsqXtFem
+:: assembleSourceWithTemporalGradientOfTemperatureBasis(Vector &b) const
+{
+    int Nt = m_temporalFeSpace->GetNE();
+    int xdimV = m_spatialFeSpaces[0]->GetTrueVSize();
     Vector bx(xdimV);
 
     Array<int> vdofs;
@@ -204,11 +743,11 @@ void heat::LsqXtFEM
 
     for (int n=0; n<Nt; n++)
     {
-        m_tFespace->GetElementVDofs (n, vdofs);
-        trans = m_tFespace->GetElementTransformation(n);
+        m_temporalFeSpace->GetElementVDofs (n, vdofs);
+        trans = m_temporalFeSpace->GetElementTransformation(n);
 
         // compute elvec
-        fe = m_tFespace->GetFE(n);
+        fe = m_temporalFeSpace->GetFE(n);
         int tNdofs = fe->GetDof();
         dshape.SetSize(tNdofs, 1); // time dimension is 1d
         elvec.SetSize(tNdofs*xdimV);
@@ -226,7 +765,7 @@ void heat::LsqXtFEM
 
             Vector t;
             trans->Transform(ip, t);
-            assembleSourceXProjection(bx, t(0));
+            assembleSpatialSourceWithTemperatureBasis(bx, t(0));
 
             // elvec += w*shape*bx
             double w = ip.weight*trans->Weight();
@@ -241,11 +780,10 @@ void heat::LsqXtFEM
     }
 }
 
-void heat::LsqXtFEM
-:: assembleSourceXProjection(Vector& b,
-                               double t) const
+void heat::LsqXtFem
+:: assembleSpatialSourceWithTemperatureBasis(Vector& b, double t) const
 {
-    LinearForm source_form(m_xFespaces[0]);
+    LinearForm source_form(m_spatialFeSpaces[0]);
     heat::SourceCoeff f(m_testCase);
     f.SetTime(t);
     source_form.AddDomainIntegrator
@@ -254,11 +792,11 @@ void heat::LsqXtFEM
     b = source_form.GetData();
 }
 
-void heat::LsqXtFEM
-:: assembleSourceTProjectionXDiv(Vector& b) const
+void heat::LsqXtFem
+:: assembleSourceWithSpatialDivergenceOfHeatFluxBasis(Vector& b) const
 {
-    int Nt = m_tFespace->GetNE();
-    int xdimR = m_xFespaces[1]->GetTrueVSize();
+    int Nt = m_temporalFeSpace->GetNE();
+    int xdimR = m_spatialFeSpaces[1]->GetTrueVSize();
     Vector bx(xdimR);
 
     Array<int> vdofs;
@@ -268,11 +806,11 @@ void heat::LsqXtFEM
 
     for (int n=0; n<Nt; n++)
     {
-        m_tFespace->GetElementVDofs (n, vdofs);
-        trans = m_tFespace->GetElementTransformation(n);
+        m_temporalFeSpace->GetElementVDofs (n, vdofs);
+        trans = m_temporalFeSpace->GetElementTransformation(n);
 
         // compute elvec
-        fe = m_tFespace->GetFE(n);
+        fe = m_temporalFeSpace->GetFE(n);
         int tNdofs = fe->GetDof();
         shape.SetSize(tNdofs);
         elvec.SetSize(tNdofs*xdimR);
@@ -290,7 +828,8 @@ void heat::LsqXtFEM
 
             Vector t;
             trans->Transform(ip, t);
-            assembleSourceXDiv(bx, t(0));
+            assembleSpatialSourceWithSpatialDivergenceOfHeatFluxBasis
+                    (bx, t(0));
 
             // elvec += w*shape*bx
             double w = ip.weight*trans->Weight();
@@ -306,7 +845,7 @@ void heat::LsqXtFEM
 }
 
 // Adds elvec to b
-void heat::LsqXtFEM
+void heat::LsqXtFem
 :: addVector(const Array<int> &vdofs, const Vector& elvec,
              Vector& b) const
 {
@@ -337,99 +876,18 @@ void heat::LsqXtFEM
 }
 
 // Applies BCs to SparseMatrix
-void heat::LsqXtFEM :: applyBCs(SparseMatrix& A) const
+void heat::LsqXtFem :: applyBCs(SparseMatrix& A) const
 {
-    for (int k=0; k<m_essTdofList.Size(); k++) {
-        A.EliminateRowCol(m_essTdofList[k]);
+    for (int k=0; k<m_essentialDofs.Size(); k++) {
+        A.EliminateRowCol(m_essentialDofs[k]);
     }
 }
 
 // Applies BCs to BlockVector
-void heat::LsqXtFEM :: applyBCs(BlockVector& B) const
+void heat::LsqXtFem :: applyBCs(BlockVector& B) const
 {
     Vector& B0 = B.GetBlock(0);
-    B0.SetSubVector(m_essTdofList, 0.0);
-}
-
-
-// Builds projection matrix
-// stores only the upper triangle
-void heat::LsqXtFEM :: buildProjectorMatrix()
-{
-    BlockMatrix *heatProjBlockMat
-            = new BlockMatrix(m_block_offsets);
-    heatProjBlockMat->SetBlock(0,0, m_block00);
-    heatProjBlockMat->SetBlock(1,1, m_block11);
-
-    SparseMatrix *heatProjMatBuf = heatProjBlockMat->CreateMonolithic();
-    applyBCs(*heatProjMatBuf);
-    m_heatProjMat = &getUpperTriangle(*heatProjMatBuf);
-    delete heatProjBlockMat;
-    delete heatProjMatBuf;
-
-    if (!m_heatProjMat->ColumnsAreSorted()) {
-        m_heatProjMat->SortColumnIndices();
-    }
-}
-
-// Assembles projection rhs
-void heat::LsqXtFEM
-:: assembleProjectionRhs(BlockVector* B) const
-{
-    int Nt = m_tFespace->GetNE();
-    int xdimV = m_xFespaces[0]->GetTrueVSize();
-    int xdimR = m_xFespaces[1]->GetTrueVSize();
-    Vector bx1(xdimV), bx2(xdimR);
-
-    Array<int> vdofs;
-    ElementTransformation *trans = nullptr;
-    const FiniteElement *fe = nullptr;
-    Vector elvec1, elvec2, shape;
-
-    for (int n=0; n<Nt; n++)
-    {
-        m_tFespace->GetElementVDofs (n, vdofs);
-        trans = m_tFespace->GetElementTransformation(n);
-
-        // compute elvec
-        fe = m_tFespace->GetFE(n);
-        int tNdofs = fe->GetDof();
-        shape.SetSize(tNdofs);
-        elvec1.SetSize(tNdofs*xdimV);
-        elvec2.SetSize(tNdofs*xdimR);
-
-        int order = 2*fe->GetOrder()+1;
-        const IntegrationRule *ir
-                = &IntRules.Get(fe->GetGeomType(), order);
-
-        elvec1 = 0.0;
-        elvec2 = 0.0;
-        for (int i = 0; i < ir->GetNPoints(); i++)
-        {
-            const IntegrationPoint &ip = ir->IntPoint(i);
-            trans->SetIntPoint(&ip);
-            fe->CalcShape(ip, shape);
-
-            Vector t;
-            trans->Transform(ip, t);
-            assembleXProjectionRhs(bx1, bx2, t(0));
-
-            // elvec += w*shape*bx
-            double w = ip.weight*trans->Weight();
-            for (int j=0; j<tNdofs; j++){
-                double coeff = w*shape(j);
-                for (int k=0; k<xdimV; k++) {
-                    elvec1(k + j*xdimV) += coeff*bx1(k);
-                }
-                for (int k=0; k<xdimR; k++) {
-                    elvec2(k + j*xdimR) += coeff*bx2(k);
-                }
-            }
-        }
-        addVector(vdofs, elvec1, B->GetBlock(0));
-        addVector(vdofs, elvec2, B->GetBlock(1));
-    }
-    applyBCs(*B);
+    B0.SetSubVector(m_essentialDofs, 0.0);
 }
 
 // End of file

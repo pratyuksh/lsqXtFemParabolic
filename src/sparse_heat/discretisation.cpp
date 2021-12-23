@@ -152,7 +152,7 @@ void sparseHeat::LsqSparseXtFem
                             = xEssDofs[k] + j*xNumDofs + shift;
                 }
             }
-            m_essDofs.Append(myEssDofs);
+            m_essentialDofs.Append(myEssDofs);
 //            myEssDofs.Print();
 //            std::cout << "\n\n";
         }
@@ -702,8 +702,8 @@ void sparseHeat::LsqSparseXtFem
 void sparseHeat::LsqSparseXtFem
 :: applyBCs(SparseMatrix &A) const
 {
-    for (int k=0; k<m_essDofs.Size(); k++) {
-        A.EliminateRowCol(m_essDofs[k]);
+    for (int k=0; k<m_essentialDofs.Size(); k++) {
+        A.EliminateRowCol(m_essentialDofs[k]);
     }
 }
 
@@ -711,7 +711,7 @@ void sparseHeat::LsqSparseXtFem
 :: applyBCs(BlockVector &B) const
 {
     auto& b = B.GetBlock(0);
-    b.SetSubVector(m_essDofs, 0.);
+    b.SetSubVector(m_essentialDofs, 0.);
 }
 
 // End of file

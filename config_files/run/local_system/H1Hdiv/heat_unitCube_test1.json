@@ -1,0 +1,36 @@
+{
+    "host": "local",
+    
+    "problem_type": "unitCube_test1",
+    
+    "run": "simulation",
+    
+    "load_init_mesh": true,
+    "init_mesh_level": 0,
+    "mesh_elem_type": "tet",
+    
+    "end_time": 1,
+    
+    "discretisation_type": "H1Hdiv",
+    
+    "deg": 2,
+    "level_t": 4,
+    "level_x": 4,
+    
+    "mesh_dir": "unitCube",
+    
+    "linear_solver": "cg",
+    "cg_verbose": 0,
+    "cg_maxIter": 10000,
+    "cg_absTol": 0,
+    "cg_relTol": 1E-8,
+    
+    "eval_error": true,
+    "error_type": "natural",
+    
+    "visualization": true,
+    "dump_output": false,
+    
+    "base_out_dir": "../output",
+    "sub_out_dir": "heat/unitCube_test1"
+}

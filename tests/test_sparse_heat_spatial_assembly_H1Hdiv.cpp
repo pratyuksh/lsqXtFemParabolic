@@ -161,7 +161,7 @@ TEST(SparseSpatialAssembly, vectorFEStiffnessMatrix)
     {
         BilinearForm stiffnessBf(fes1.get());
         stiffnessBf.AddDomainIntegrator
-                (new heat::VectorFEStiffnessIntegrator{});
+                (new heat::SpatialVectorFEStiffnessIntegrator{});
         stiffnessBf.Assemble();
         auto trueBlockStiffness00 = stiffnessBf.LoseMat();
         trueBlockStiffness00->
@@ -171,7 +171,7 @@ TEST(SparseSpatialAssembly, vectorFEStiffnessMatrix)
     {
         BilinearForm stiffnessBf(fes2.get());
         stiffnessBf.AddDomainIntegrator
-                (new heat::VectorFEStiffnessIntegrator{});
+                (new heat::SpatialVectorFEStiffnessIntegrator{});
         stiffnessBf.Assemble();
         auto trueBlockStiffness11 = stiffnessBf.LoseMat();
         trueBlockStiffness11->
@@ -181,7 +181,7 @@ TEST(SparseSpatialAssembly, vectorFEStiffnessMatrix)
     {
         BilinearForm stiffnessBf(fes3.get());
         stiffnessBf.AddDomainIntegrator
-                (new heat::VectorFEStiffnessIntegrator{});
+                (new heat::SpatialVectorFEStiffnessIntegrator{});
         stiffnessBf.Assemble();
         auto trueBlockStiffness22 = stiffnessBf.LoseMat();
         trueBlockStiffness22->
@@ -283,7 +283,7 @@ TEST(SparseSpatialAssembly, vectorFEGradientMatrix)
         MixedBilinearForm gradientBf(fes1H1.get(),
                                      fes1RT.get());
         gradientBf.AddDomainIntegrator
-                (new heat::VectorFEGradientIntegrator{});
+                (new heat::SpatialVectorFEGradientIntegrator{});
         gradientBf.Assemble();
         auto trueBlockGradient00 = gradientBf.LoseMat();
         trueBlockGradient00->
@@ -294,7 +294,7 @@ TEST(SparseSpatialAssembly, vectorFEGradientMatrix)
         MixedBilinearForm gradientBf(fes2H1.get(),
                                      fes2RT.get());
         gradientBf.AddDomainIntegrator
-                (new heat::VectorFEGradientIntegrator{});
+                (new heat::SpatialVectorFEGradientIntegrator{});
         gradientBf.Assemble();
         auto trueBlockGradient11 = gradientBf.LoseMat();
         trueBlockGradient11->
@@ -305,7 +305,7 @@ TEST(SparseSpatialAssembly, vectorFEGradientMatrix)
         MixedBilinearForm gradientBf(fes3H1.get(),
                                      fes3RT.get());
         gradientBf.AddDomainIntegrator
-                (new heat::VectorFEGradientIntegrator{});
+                (new heat::SpatialVectorFEGradientIntegrator{});
         gradientBf.Assemble();
         auto trueBlockGradient22 = gradientBf.LoseMat();
         trueBlockGradient22->

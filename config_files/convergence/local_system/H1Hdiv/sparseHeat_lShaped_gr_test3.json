@@ -1,0 +1,24 @@
+{
+    "host": "local",
+    
+    "problem_type": "lShaped_test3",
+    
+    "run": "convergence",
+    "end_time": 1,
+    
+    "deg": 1,
+    
+    "min_num_levels": 2,
+    "max_num_levels": 5,
+    
+    "min_spatial_level": 1,
+    "min_temporal_level": 2,
+    
+    "mesh_dir": "lShaped/gr/weight3E-1",
+    
+    "eval_error": true,
+    "error_type": "lsq",
+    
+    "base_out_dir": "../output",
+    "sub_out_dir": "sparse_heat/lShaped_test3/gr"
+}

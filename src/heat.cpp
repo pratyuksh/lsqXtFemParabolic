@@ -1,139 +1,343 @@
 #include "includes.hpp"
 #include "core/config.hpp"
-#include "core/utilities.hpp"
 #include "heat/solver.hpp"
+#include "heat/observer.hpp"
 
 #include <iostream>
-#include <Eigen/Core>
-#include <chrono>
+#include <filesystem>
 
+using namespace mfem;
+namespace fs = std::filesystem;
 
-void runFG (const nlohmann::json& config,
-            std::string baseMeshDir, bool loadInitMesh=false)
+namespace heat
 {
-    const int lt = config["level_t"];
-    const int lx = config["level_x"];
+
+void writeErrorConvergenceDataToJsonFile
+(const nlohmann::json& config,
+ Array<int> &numDofs,
+ Array<double> &meshSizes,
+ Array<Vector> &solutionError)
+{
+    assert(numDofs.Size() == meshSizes.Size());
+
+    std::string problemType = config["problem_type"];
+
+    std::string baseOutDir = "../output";
+    if (config.contains("base_out_dir")) {
+        baseOutDir = config["base_out_dir"];
+    }
+
+    std::string subOutDir = "heat/"+problemType;
+    if (config.contains("sub_out_dir")) {
+        subOutDir = config["sub_out_dir"];
+    }
+
+    std::string outDir = baseOutDir+"/"+subOutDir+"/";
+    fs::create_directories(outDir);
+
+    int deg = config["deg"];
+
+    std::string discrType = "H1Hdiv";
+    if (config.contains("discretisation_type")) {
+        discrType = config["discretisation_type"];
+    }
+
+    std::string errorType = "natural";
+    if (config.contains("error_type")) {
+        errorType = config["error_type"];
+    }
+
+    std::string outfile = outDir+"convgError"
+            +"_"+discrType
+            +"_"+problemType
+            +"_"+errorType
+            +"_deg"+std::to_string(deg)
+            +".json";;
+    std::cout << outfile << std::endl;
+
+    // set data names
+    std::vector<std::string> solutionErrorNames;
+    if (errorType == "natural") {
+            solutionErrorNames.push_back("uL2H1");
+            solutionErrorNames.push_back("qL2L2");
+            solutionErrorNames.push_back("UDiv");
+        }
+    else if (errorType == "lsq") {
+        solutionErrorNames.push_back("pde");
+        solutionErrorNames.push_back("flux");
+        solutionErrorNames.push_back("ic");
+    }
+
+    auto json = nlohmann::json{};
+    for (int i=0; i<numDofs.Size(); i++) {
+        json["ndofs"][i] = numDofs[i];
+        json["h_max"][i] = meshSizes[i];
+        for (int j=0; j<solutionError[i].Size(); j++) {
+            json[solutionErrorNames[j]][i] = (solutionError[i])(j);
+        }
+    }
+
+    auto file = std::ofstream(outfile);
+    assert(file.good());
+    file << json.dump(2);
+    file.close();
+}
+
+void writePerformanceMetricsDataToJsonFile
+(const nlohmann::json& config,
+ Array<int> &numDofs,
+ Array<double> &meshSizes,
+ Array<double> &elapsedTime,
+ Array<int> &memoryUsage)
+{
+    assert(numDofs.Size() == meshSizes.Size());
+
+    std::string problemType = config["problem_type"];
+
+    std::string baseOutDir = "../output";
+    if (config.contains("base_out_dir")) {
+        baseOutDir = config["base_out_dir"];
+    }
+
+    std::string subOutDir = "heat/"+problemType;
+    if (config.contains("sub_out_dir")) {
+        subOutDir = config["sub_out_dir"];
+    }
+
+    std::string outDir = baseOutDir+"/"+subOutDir+"/";
+    fs::create_directories(outDir);
+
+    int deg = config["deg"];
+
+    std::string discrType = "H1Hdiv";
+    if (config.contains("discretisation_type")) {
+        discrType = config["discretisation_type"];
+    }
+
+    std::string errorType = "natural";
+    if (config.contains("error_type")) {
+        errorType = config["error_type"];
+    }
+
+    std::string outfile = outDir+"metrics"
+            +"_"+discrType
+            +"_"+problemType
+            +"_"+errorType
+            +"_deg"+std::to_string(deg)
+            +".json";;
+    std::cout << outfile << std::endl;
+
+    auto json = nlohmann::json{};
+    for (int i=0; i<numDofs.Size(); i++) {
+        json["ndofs"][i] = numDofs[i];
+        json["h_max"][i] = meshSizes[i];
+        json["elapsed_time"][i] = elapsedTime[i];
+        json["memory_usage"][i] = memoryUsage[i];
+    }
+
+    auto file = std::ofstream(outfile);
+    assert(file.good());
+    file << json.dump(2);
+    file.close();
+}
+
+}
+
+
+std::tuple<int, double, double, Vector>
+runSolver(heat::Solver& solver,
+          heat::Observer& observer)
+{
+    solver.run();
+    auto solutionHandler = solver.getSolutionHandler();
+    auto testCase = solver.getTestCase();
+    auto disc = solver.getDiscretisation();
+
+    observer.set(testCase, disc);
+    observer.visualizeSolutionAtEndTime(*solutionHandler);
+    auto solutionError = observer.evalError(*solutionHandler);
+
+    double htMax, hxMax;
+    std::tie(htMax, hxMax) = solver.getMeshwidths();
+
+    return {solver.getNumDofs(), htMax, hxMax, solutionError};
+}
+
+std::tuple<int, double, double, double, int>
+runSolverAndMeasurePerformanceMetrics(heat::Solver& solver)
+{
+    double elapsedTime;
+    int memoryUsage;
+    std::tie(elapsedTime, memoryUsage)
+            = solver.runAndMeasurePerformanceMetrics();
+
+    double htMax, hxMax;
+    std::tie(htMax, hxMax) = solver.getMeshwidths();
+
+    return {solver.getNumDofs(), htMax, hxMax,
+                elapsedTime, memoryUsage};
+}
+
+void runOneSimulation (const nlohmann::json config,
+                       std::string baseMeshDir,
+                       bool loadInitMesh=false)
+{
+    const int temporalLevel = config["level_t"];
+    const int spatialLevel = config["level_x"];
     std::string subMeshDir = config["mesh_dir"];
     const std::string meshDir = baseMeshDir+subMeshDir;
 
     auto testCase = heat::makeTestCase(config);
-    heat::Solver heatSolverFG(config, testCase,
-                              meshDir, lx, lt, loadInitMesh);
 
-    int ndofs;
+    heat::Solver solver(config,
+                        testCase,
+                        meshDir,
+                        spatialLevel,
+                        temporalLevel,
+                        loadInitMesh);
+
+    heat::Observer observer(config, spatialLevel);
+
+    int numDofs;
     double htMax, hxMax;
-    Eigen::VectorXd errSol;
-    std::tie (ndofs, htMax, hxMax, errSol) = heatSolverFG();
-    std::cout << "\n\nError: "
-              << errSol.transpose() << std::endl;
+    Vector solutionError;
+//    std::tie (numDofs, htMax, hxMax, solutionError) = solver();
+    std::tie (numDofs, htMax, hxMax, solutionError)
+            = runSolver(solver, observer);
+
+    std::cout << "\n\nSolution Error: ";
+    solutionError.Print();
     std::cout << "tMesh size: " << htMax << std::endl;
     std::cout << "xMesh size: " << hxMax << std::endl;
-    std::cout << "#Dofs: " << ndofs << std::endl;
+    std::cout << "#Dofs: " << numDofs << std::endl;
 }
 
-void convergenceFG (const nlohmann::json& config,
-                    std::string baseMeshDir, bool loadInitMesh=false)
+void runMultipleSimulationsToTestConvergence (const nlohmann::json config,
+                                              std::string baseMeshDir,
+                                              bool loadInitMesh=false)
 {
-    const int Lt0 = config["min_level_t"];
-    const int Lx0 = config["min_level_x"];
-    const int Lx = config["max_level_x"];
+    int minTemporalLevel = config["min_level_t"];
+    int minSpatialLevel = config["min_level_x"];
+    int maxSpatialLevel = config["max_level_x"];
     std::string subMeshDir = config["mesh_dir"];
-    const std::string meshDir = baseMeshDir+subMeshDir;
+    std::string meshDir = baseMeshDir+subMeshDir;
 
-    int num_levels = Lx-Lx0+1;
-    Eigen::VectorXd h_max(num_levels);
-    Eigen::VectorXi ndofs(num_levels);
-    Eigen::MatrixXd errSol(2,num_levels);
-    errSol.setZero();
+    auto testCase = heat::makeTestCase(config);
 
-    heat::Solver *heatSolverFG = nullptr;
+    int numLevels = maxSpatialLevel-minSpatialLevel+1;
+    Array<double> hMax(numLevels);
+    Array<int> numDofs(numLevels);
+    Array<Vector> solutionError(numLevels);
+
     double htMax, hxMax;
-    Eigen::VectorXd errSolBuf;
-    for (int k=0; k<num_levels; k++)
+    Vector errSolBuf;
+    for (int k=0; k<numLevels; k++)
     {
-        int lt = Lt0+k;
-        int lx = Lx0+k;
-        heatSolverFG = new heat::Solver(config, meshDir,
-                                        lx, lt, loadInitMesh);
-        std::tie (ndofs(k), htMax,
-                  hxMax, errSolBuf) = (*heatSolverFG)();
-        if(k == 0) {
-            errSol.resize(errSolBuf.size(), num_levels);
-        }
-        errSol.col(k) = errSolBuf;
-        std::cout << "\nLevels: " << lt << ", "
-                  << lx << std::endl;
+        int temporalLevel = minTemporalLevel+k;
+        int spatialLevel = minSpatialLevel+k;
+
+        heat::Solver solver (config,
+                             testCase,
+                             meshDir,
+                             spatialLevel,
+                             temporalLevel,
+                             loadInitMesh);
+
+        heat::Observer observer (config, spatialLevel);
+
+        std::tie (numDofs[k], htMax, hxMax, solutionError[k])
+                = runSolver(solver, observer);
+
+        std::cout << "\nLevels: "
+                  << temporalLevel << ", "
+                  << spatialLevel << std::endl;
         std::cout << "tMesh size: " << htMax << std::endl;
         std::cout << "xMesh size: " << hxMax << std::endl;
-        std::cout << "#Dofs: " << ndofs(k) << std::endl;
-        std::cout << "Error: "
-                  << errSolBuf.transpose() << std::endl;
-        delete heatSolverFG;
+        std::cout << "#Dofs: " << numDofs[k] << std::endl;
+        std::cout << "Error: ";
+        solutionError[k].Print();
 
-        h_max(k) = (hxMax >= htMax ? hxMax : htMax);
+        hMax[k] = (hxMax >= htMax ? hxMax : htMax);
     }
-    std::cout << "\n\nError:\n"
-              << errSol.transpose() << std::endl;
-    std::cout << "\n#Dofs: "
-              << ndofs.transpose() << std::endl;
+    std::cout << "\n\nError:\n";
+    for (int i=0; i<numLevels; i++) {
+        solutionError[i].Print();
+    }
+    std::cout << "\n#Dofs:\n";
+    numDofs.Print();
 
     // write convergence results to json file
-    writeErrorConvergenceJsonFile ("heat", "FG",
-                                   config, h_max, ndofs, errSol);
+    heat::writeErrorConvergenceDataToJsonFile(config, numDofs,
+                                              hMax, solutionError);
 }
 
-void measureMetricsFG (const nlohmann::json& config,
-                       std::string baseMeshDir, bool loadInitMesh=false)
+void runMultipleSimulationsToMeasurePerformanceMetrics
+(const nlohmann::json config,
+ std::string baseMeshDir,
+ bool loadInitMesh=false)
 {
-    const int Lt0 = config["min_level_t"];
-    const int Lx0 = config["min_level_x"];
-    const int Lx = config["max_level_x"];
+    int minTemporalLevel = config["min_level_t"];
+    int minSpatialLevel = config["min_level_x"];
+    int maxSpatialLevel = config["max_level_x"];
     std::string subMeshDir = config["mesh_dir"];
-    const std::string meshDir = baseMeshDir+subMeshDir;
+    std::string meshDir = baseMeshDir+subMeshDir;
 
-    int numReps = 1;
-    if (config.contains("num_reps")) {
-        numReps = config["num_reps"];
-    }
+    int numReps = config["num_repetitions"];
 
-    int num_levels = Lx-Lx0+1;
-    Eigen::VectorXd h_max(num_levels);
-    Eigen::VectorXi ndofs(num_levels);
-    Eigen::VectorXd elapsedTime(num_levels);
-    Eigen::VectorXi memUsage(num_levels);
+    auto testCase = heat::makeTestCase(config);
 
-    heat::Solver *solver = nullptr;
-    double htMax, hxMax;
-    for (int k=0; k<num_levels; k++)
+    int numLevels = maxSpatialLevel-minSpatialLevel+1;
+    Array<double> hMax(numLevels);
+    Array<int> numDofs(numLevels);
+    Array<double> elapsedTime(numLevels);
+    Array<int> memoryUsage(numLevels);
+
+    double htMax=1, hxMax=1;
+    for (int k=0; k<numLevels; k++)
     {
-        int lt = Lt0+k;
-        int lx = Lx0+k;
-        solver = new heat::Solver(config, meshDir, lx, lt, loadInitMesh);
+        int temporalLevel = minTemporalLevel+k;
+        int spatialLevel = minSpatialLevel+k;
 
-        std::tie (ndofs(k), htMax, hxMax,
-                  elapsedTime(k), memUsage(k)) = solver->measure(numReps);
-        std::cout << "\nLevels: " << lt << ", "
-                  << lx << std::endl;
+        double localElapsedTime;
+        elapsedTime[k] = 0;
+        for (int i=0; i<numReps; i++)
+        {
+            heat::Solver solver (config,
+                                 testCase,
+                                 meshDir,
+                                 spatialLevel,
+                                 temporalLevel,
+                                 loadInitMesh);
+
+            std::tie (numDofs[k], htMax, hxMax,
+                      localElapsedTime, memoryUsage[k])
+                    = runSolverAndMeasurePerformanceMetrics(solver);
+            if (i > 0) {
+                elapsedTime[k] += localElapsedTime;
+            }
+        }
+        elapsedTime[k] /= (numReps-1);
+
+        std::cout << "\nLevels: "
+                  << temporalLevel << ", "
+                  << spatialLevel << std::endl;
         std::cout << "tMesh size: " << htMax << std::endl;
         std::cout << "xMesh size: " << hxMax << std::endl;
-        std::cout << "#Dofs: " << ndofs(k) << std::endl;
-        std::cout << "Solve time: " << elapsedTime(k) << " seconds" << std::endl;
-        std::cout << "Memory usage: " << memUsage(k) << " kB\n" << std::endl;
-        delete solver;
+        std::cout << "#Dofs: " << numDofs[k] << std::endl;
+        std::cout << "Elapsed time: " << elapsedTime[k] << std::endl;
+        std::cout << "Memory usage: " << memoryUsage[k] << std::endl;
 
-        h_max(k) = (hxMax >= htMax ? hxMax : htMax);
+        hMax[k] = (hxMax >= htMax ? hxMax : htMax);
     }
-    std::cout << "\n\n#Dofs: "
-              << ndofs.transpose() << std::endl;
-    std::cout << "\nSolve time (s):\n"
-              << elapsedTime.transpose() << std::endl;
-    std::cout << "\nMemory usage (kB):\n"
-              << memUsage.transpose() << std::endl;
+    std::cout << "\n\nElapsed time:\n";
+    elapsedTime.Print();
+    std::cout << "\nMemory usage:\n";
+    memoryUsage.Print();
+    std::cout << "\n#Dofs:\n";
+    numDofs.Print();
 
-
-    // write time measurement results to json file
-    writeMetricsJsonFile("heat", "FG",
-                         config, h_max, ndofs, elapsedTime, memUsage);
+    heat::writePerformanceMetricsDataToJsonFile
+            (config, numDofs, hMax, elapsedTime, memoryUsage);
 }
 
 
@@ -162,14 +366,19 @@ int main(int argc, char *argv[])
         }
     }
 
-    if (run == "runFG") {
-        runFG(config, baseMeshDir, loadInitMesh);
+    if (run == "simulation") {
+        runOneSimulation(std::move(config),
+                         std::move(baseMeshDir),
+                         loadInitMesh);
     }
-    else if (run == "convergenceFG") {
-        convergenceFG(config, baseMeshDir, loadInitMesh);
+    else if (run == "convergence") {
+        runMultipleSimulationsToTestConvergence(std::move(config),
+                                                std::move(baseMeshDir),
+                                                loadInitMesh);
     }
-    else if (run == "measureFG") {
-        measureMetricsFG(config, baseMeshDir, loadInitMesh);
+    else if (run == "measure") {
+        runMultipleSimulationsToMeasurePerformanceMetrics
+                (std::move(config), std::move(baseMeshDir), loadInitMesh);
     }
 
     return 0;

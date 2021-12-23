@@ -3,16 +3,16 @@
     
     "problem_type": "lShaped_test2",
     
-    "run": "convergenceFG",
-    
+    "run": "convergence",
     "end_time": 1,
     
-    "discretisation_type": "H1H1",
-    
     "deg": 1,
-    "min_level_t": 2,
-    "min_level_x": 1,
-    "max_level_x": 4,
+    
+    "min_num_levels": 2,
+    "max_num_levels": 5,
+    
+    "min_spatial_level": 1,
+    "min_temporal_level": 2,
     
     "mesh_dir": "lShaped/br/deg1",
     
@@ -20,5 +20,5 @@
     "error_type": "natural",
     
     "base_out_dir": "../output",
-    "sub_out_dir": "heat/lShaped_test2/br"
+    "sub_out_dir": "sparse_heat/lShaped_test2/br"
 }

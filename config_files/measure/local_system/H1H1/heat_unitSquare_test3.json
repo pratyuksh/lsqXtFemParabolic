@@ -1,25 +1,28 @@
 {
     "host": "local",
     
-    "problem_type": "lShaped_test2",
+    "problem_type": "unitSquare_test3",
     
-    "run": "measureFG",
-    "num_reps": 11,
+    "run": "measure",
+    "num_repetitions": 6,
+    
+    "load_init_mesh": true,
+    "init_mesh_level": 0,
     
     "end_time": 1,
     
     "discretisation_type": "H1H1",
     
     "deg": 1,
-    "min_level_t": 2,
+    "min_level_t": 1,
     "min_level_x": 1,
     "max_level_x": 4,
     
-    "mesh_dir": "lShaped/br/deg1",
+    "mesh_dir": "unitSquare",
     
     "eval_error": false,
     "error_type": "natural",
     
     "base_out_dir": "../output",
-    "sub_out_dir": "heat/lShaped_test2/br"
+    "sub_out_dir": "heat/unitSquare_test3"
 }

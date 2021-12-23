@@ -3,14 +3,15 @@
     
     "problem_type": "unitSquare_test3",
     
-    "run": "convergenceFG",
+    "run": "measure",
+    "num_repetitions": 6,
     
     "load_init_mesh": true,
     "init_mesh_level": 0,
     
     "end_time": 1,
     
-    "discretisation_type": "H1H1",
+    "discretisation_type": "H1Hdiv",
     
     "deg": 1,
     "min_level_t": 1,
@@ -19,7 +20,7 @@
     
     "mesh_dir": "unitSquare",
     
-    "eval_error": true,
+    "eval_error": false,
     "error_type": "natural",
     
     "base_out_dir": "../output",

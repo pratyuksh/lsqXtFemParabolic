@@ -156,7 +156,7 @@ protected:
     std::shared_ptr<mymfem::NestedFEHierarchy> m_spatialNestedFEHierarchyTemperature;
     std::shared_ptr<mymfem::NestedFEHierarchy> m_spatialNestedFEHierarchyHeatFlux;
 
-    mfem::Array<int> m_essDofs;
+    mfem::Array<int> m_essentialDofs;
 
     std::shared_ptr<mfem::BlockMatrix> m_temporalMass;
     std::shared_ptr<mfem::BlockMatrix> m_temporalStiffness;

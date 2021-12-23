@@ -9,11 +9,11 @@ namespace heat {
 /**
  * @brief Gradient Integrator in time; (du/dt, v)
  */
-class GradientIntegrator
+class TemporalGradientIntegrator
         : public mfem::BilinearFormIntegrator
 {
 public:
-    GradientIntegrator() {}
+    TemporalGradientIntegrator() {}
 
     //! Assembles the Gradient integrator on a given temporal mesh element
     void AssembleElementMatrix
@@ -36,26 +36,26 @@ private:
 /**
  * @brief Stiffness Integrator in space; (Q grad(u), Q grad(v))
  */
-class StiffnessIntegrator
+class SpatialStiffnessIntegrator
         : public mfem::BilinearFormIntegrator
 {
 public:
-    StiffnessIntegrator() {}
+    SpatialStiffnessIntegrator() {}
 
     //! Constructor with material coefficent matrix passed as a pointer
-    StiffnessIntegrator(mfem::MatrixCoefficient *M_)
+    SpatialStiffnessIntegrator(mfem::MatrixCoefficient *M_)
         : M(M_) {}
 
     //! Constructor with material coefficent matrix passed by reference
-    StiffnessIntegrator(mfem::MatrixCoefficient& M_)
+    SpatialStiffnessIntegrator(mfem::MatrixCoefficient& M_)
         : M(&M_) {}
 
     //! Constructor with scalar material coefficient passed as a pointer
-    StiffnessIntegrator(mfem::Coefficient *q_)
+    SpatialStiffnessIntegrator(mfem::Coefficient *q_)
         : q(q_) {}
 
     //! Constructor with scalar material coefficient passed by reference
-    StiffnessIntegrator(mfem::Coefficient& q_)
+    SpatialStiffnessIntegrator(mfem::Coefficient& q_)
         : q(&q_) {}
 
     //! Assembles the Stiffness integrator on a given spatial mesh element
@@ -78,14 +78,14 @@ private:
 };
 
 /**
- * @brief VectorFE Stiffness Integrator; (div(u), div(v))
+ * @brief VectorFE Stiffness Integrator in space; (div(u), div(v))
  * Uses, for example, Raviart-Thomas spaces.
  */
-class VectorFEStiffnessIntegrator
+class SpatialVectorFEStiffnessIntegrator
         : public mfem::BilinearFormIntegrator
 {
 public:
-    VectorFEStiffnessIntegrator() {}
+    SpatialVectorFEStiffnessIntegrator() {}
 
     //! Assembles the VectorFE Stiffness integrator on a given spatial mesh element
     void AssembleElementMatrix
@@ -105,29 +105,29 @@ private:
 };
 
 /**
- * @brief VectorFE Gradient Integrator; (grad(u), v)
+ * @brief VectorFE Gradient Integrator in space; (grad(u), v)
  * Uses, for example, Raviart-Thomas spaces.
  */
-class VectorFEGradientIntegrator
+class SpatialVectorFEGradientIntegrator
         : public mfem::BilinearFormIntegrator
 {
 public:
-    VectorFEGradientIntegrator() {}
+    SpatialVectorFEGradientIntegrator() {}
 
     //! Constructor with material coefficent matrix passed as a pointer
-    VectorFEGradientIntegrator(mfem::MatrixCoefficient *M_)
+    SpatialVectorFEGradientIntegrator(mfem::MatrixCoefficient *M_)
         : M(M_) {}
 
     //! Constructor with material coefficent matrix passed by reference
-    VectorFEGradientIntegrator(mfem::MatrixCoefficient& M_)
+    SpatialVectorFEGradientIntegrator(mfem::MatrixCoefficient& M_)
         : M(&M_) {}
 
     //! Constructor with material coefficent scalar passed as a pointer
-    VectorFEGradientIntegrator(mfem::Coefficient *q_)
+    SpatialVectorFEGradientIntegrator(mfem::Coefficient *q_)
         : q(q_) {}
 
     //! Constructor with material coefficent scalar passed by reference
-    VectorFEGradientIntegrator(mfem::Coefficient& q_)
+    SpatialVectorFEGradientIntegrator(mfem::Coefficient& q_)
         : q(&q_) {}
 
     void AssembleElementMatrix
@@ -151,15 +151,15 @@ private:
 };
 
 /**
- * @brief VectorFE Divergence LF Integrator; (f, div(v))
+ * @brief VectorFE Divergence LF Integrator in space; (f, div(v))
  * Uses, for example, Raviart-Thomas spaces.
  */
-class VectorFEDivergenceLFIntegrator
+class SpatialVectorFEDivergenceLFIntegrator
         : public mfem::LinearFormIntegrator
 {
 public:
     //! Constructor with a coefficient and a scalar passed as arguments
-    VectorFEDivergenceLFIntegrator(mfem::Coefficient& f, double a)
+    SpatialVectorFEDivergenceLFIntegrator(mfem::Coefficient& f, double a)
         : F(f), m_coeff(a) {}
 
     //! Assembles the VectorFE linear form integrator on a given spatial mesh element
@@ -176,13 +176,13 @@ private:
 };
 
 /**
- * @brief mfem::Vector Stiffness Integrator; (div(u), div(v))
+ * @brief Vector Stiffness Integrator in space; (div(u), div(v))
  */
-class VectorStiffnessIntegrator
+class SpatialVectorStiffnessIntegrator
         : public mfem::BilinearFormIntegrator
 {
 public:
-    VectorStiffnessIntegrator() {}
+    SpatialVectorStiffnessIntegrator() {}
 
     //! Assembles the mfem::Vector Stiffness integrator on a given spatial mesh element
     void AssembleElementMatrix
@@ -203,28 +203,28 @@ private:
 };
 
 /**
- * @brief mfem::Vector Gradient Integrator; (grad(u), v)
+ * @brief Vector Gradient Integrator in space; (grad(u), v)
  */
-class VectorGradientIntegrator
+class SpatialVectorGradientIntegrator
         : public mfem::BilinearFormIntegrator
 {
 public:
-    VectorGradientIntegrator() {}
+    SpatialVectorGradientIntegrator() {}
 
     //! Constructor with material coefficent matrix passed as a pointer
-    VectorGradientIntegrator(mfem::MatrixCoefficient *M_)
+    SpatialVectorGradientIntegrator(mfem::MatrixCoefficient *M_)
         : M(M_) {}
 
     //! Constructor with material coefficent matrix passed by reference
-    VectorGradientIntegrator(mfem::MatrixCoefficient& M_)
+    SpatialVectorGradientIntegrator(mfem::MatrixCoefficient& M_)
         : M(&M_) {}
 
     //! Constructor with material coefficent scalar passed as a pointer
-    VectorGradientIntegrator(mfem::Coefficient *q_)
+    SpatialVectorGradientIntegrator(mfem::Coefficient *q_)
         : q(q_) {}
 
     //! Constructor with material coefficent scalar passed by reference
-    VectorGradientIntegrator(mfem::Coefficient& q_)
+    SpatialVectorGradientIntegrator(mfem::Coefficient& q_)
         : q(&q_) {}
 
     void AssembleElementMatrix
@@ -256,14 +256,14 @@ private:
 };
 
 /**
- * @brief mfem::Vector Divergence LF Integrator; (f, div(v))
+ * @brief Vector Divergence LF Integrator in space; (f, div(v))
  */
-class VectorDivergenceLFIntegrator
+class SpatialVectorDivergenceLFIntegrator
         : public mfem::LinearFormIntegrator
 {
 public:
     //! Constructor with a coefficient and a scalar passed as arguments
-    VectorDivergenceLFIntegrator(mfem::Coefficient& f, double a)
+    SpatialVectorDivergenceLFIntegrator(mfem::Coefficient& f, double a)
         : F(f), m_coeff(a) {}
 
     //! Assembles the mfem::Vector linear form integrator on a given spatial mesh element

@@ -7,138 +7,124 @@
 using namespace mfem;
 
 
-// Constructor with config JSON
-heat::Solver :: Solver (const nlohmann::json& config)
-    : m_config(config)
-{
-    m_endTime = config["end_time"];
-
-    m_boolError = false;
-    if (config.contains("eval_error")) {
-        m_boolError = config["eval_error"];
-    }
-
-    m_errorType = "H1";
-    if (config.contains("error_type")) {
-        m_errorType = config["error_type"];
-    }
-
-    m_xDiscrType = "H1Hdiv";
-    if (config.contains("discretisation_type")) {
-        m_xDiscrType = config["discretisation_type"];
-    }
-
-    m_linearSolver = "pardiso";
-    if (config.contains("linear_solver")) {
-        m_linearSolver = config["linear_solver"];
-    }
-}
-
-// Constructor with config JSON and test case
-heat::Solver :: Solver (const nlohmann::json& config,
-                        std::shared_ptr<heat::TestCases>&
-                        testCase)
-    : Solver (config)
-{
-    m_testCase = testCase;
-}
-
-// Constructor with config JSON and space-time mesh info
-heat::Solver :: Solver (const nlohmann::json& config,
-                        std::string mesh_dir,
-                        const int lx,
-                        const int lt,
-                        const bool load_init_mesh)
-    : Solver (config)
-{
-    set(mesh_dir, lx, lt, load_init_mesh);
-}
-
 // Constructor with config JSON, test case and space-time mesh info
-heat::Solver :: Solver (const nlohmann::json& config,
-                        std::shared_ptr<heat::TestCases>& testCase,
-                        std::string mesh_dir,
-                        const int lx,
-                        const int lt,
-                        const bool load_init_mesh)
-    : Solver (config)
+heat::Solver
+:: Solver (const nlohmann::json& config,
+           std::shared_ptr<heat::TestCases>& testCase,
+           std::string meshDir,
+           int spatialLevel,
+           int temporalLevel,
+           bool loadInitMesh)
+    : m_config (config),
+      m_testCase(testCase),
+      m_meshDir (meshDir),
+      m_spatialLevel (spatialLevel),
+      m_temporalLevel (temporalLevel),
+      m_loadInitMesh (loadInitMesh)
 {
-    m_testCase = testCase;
-    set(mesh_dir, lx, lt, load_init_mesh);
+    setConfigParams();
+    setMeshes();
+    setDiscretisation();
 }
 
-// Constructor with config JSON and spatial mesh info
-heat::Solver :: Solver (const nlohmann::json& config,
-                        std::string mesh_dir,
-                        const int lx,
-                        const bool load_init_mesh)
-    : Solver (config)
-{
-    set(mesh_dir, lx, -2, load_init_mesh);
-}
+// Constructor with config JSON, test case and spatial mesh info
+heat::Solver
+:: Solver (const nlohmann::json& config,
+           std::shared_ptr<heat::TestCases>& testCase,
+           std::string meshDir,
+           int spatialLevel,
+           bool loadInitMesh)
+    : Solver(config, testCase, meshDir, spatialLevel, -2, loadInitMesh) {}
 
-// Default constructor
-heat::Solver :: ~ Solver ()
-{
-    finalize();
-}
+heat::Solver :: ~ Solver () {}
 
-// Sets auxiliary variables, meshes, discretization and observer
 void heat::Solver
-:: set (std::string mesh_dir,
-        const int lx,
-        const int lt,
-        const bool load_init_mesh)
+:: setConfigParams()
 {
-    set(mesh_dir, load_init_mesh);
-#ifndef NDEBUG
-    std::cout << "\nRun Heat solver ..." << std::endl;
-#endif
-    set(lx, lt);
-}
-
-// Sets mesh related auxiliary variables
-void heat::Solver
-:: set (std::string mesh_dir,
-        const bool load_init_mesh)
-{
-    m_loadInitMesh = load_init_mesh;
-    m_meshDir = mesh_dir;
-
-    m_lx0 = 0;
-    if (m_loadInitMesh) {
-        if (m_config.contains("init_mesh_level")) {
-            m_lx0 = m_config["init_mesh_level"];
-        }
-    }
+    m_endTime = m_config["end_time"];
 
     m_meshElemType = "tri";
     if (m_config.contains("mesh_elem_type")) {
         m_meshElemType = m_config["mesh_elem_type"];
     }
+
+    m_initSpatialLevel = 0;
+    if (m_loadInitMesh) {
+        if (m_config.contains("init_mesh_level")) {
+            m_initSpatialLevel = m_config["init_mesh_level"];
+        }
+    }
+
+    m_discType = "H1Hdiv";
+    if (m_config.contains("discretisation_type")) {
+        m_discType = m_config["discretisation_type"];
+    }
+
+    m_linearSolver = "pardiso";
+    if (m_config.contains("linear_solver")) {
+        m_linearSolver = m_config["linear_solver"];
+    }
+
+    m_boolError = false;
+    if (m_config.contains("eval_error")) {
+        m_boolError = m_config["eval_error"];
+    }
+
+    m_errorType = "natural";
+    if (m_config.contains("error_type")) {
+        m_errorType = m_config["error_type"];
+    }
 }
 
-// Sets meshes, discretization and observer
-void heat::Solver :: set(int lx, int lt)
+void heat::Solver
+:: setMeshes()
 {
-    m_firstPass = true;
-
-    // test case
-    if (!m_testCase) {
-        m_testCase = heat::makeTestCase(m_config);
+    // mesh in space
+    if (m_loadInitMesh) { // load initial mesh and refine
+        int numRefinements = m_spatialLevel - m_initSpatialLevel;
+        const std::string meshFile
+                        = m_meshDir+"/"+m_meshElemType
+                +"_mesh_l"
+                +std::to_string(m_initSpatialLevel)+".mesh";
+#ifndef NDEBUG
+        std::cout << "  Initial mesh file: " << meshFile << std::endl;
+        std::cout << "  Number of uniform refinements: "
+                  << numRefinements << std::endl;
+#endif
+        m_spatialMesh = std::make_shared<Mesh>(meshFile.c_str());
+        for (int k=0; k<numRefinements; k++) {
+            m_spatialMesh->UniformRefinement();
+        }
+    }
+    else {
+        const std::string meshFile =
+                m_meshDir+"/mesh_l"+std::to_string(m_spatialLevel)+".mesh";
+#ifndef NDEBUG
+        std::cout << "  Mesh file: "
+                  << meshFile << std::endl;
+#endif
+        m_spatialMesh = std::make_shared<Mesh>(meshFile.c_str());
     }
 
-    // meshes
-    setMeshes(lx, lt);
+    // mesh in time
+    if (m_temporalLevel == -2) { // set time-level acc. to spatial-level
+        double hxMin, hxMax, ddum;
+        m_spatialMesh->GetCharacteristics(hxMin, hxMax, ddum, ddum);
+        m_temporalLevel = int(std::ceil(-std::log2(hxMax/m_endTime)));
+    }
+    int Nt = static_cast<int>(std::pow(2, m_temporalLevel));
+    m_temporalMesh = std::make_shared<Mesh>(Nt, m_endTime);
+}
 
-    // space-time discretisation
-    m_discr.reset();
-    if (m_xDiscrType == "H1Hdiv") {
-        m_discr = std::make_shared<heat::LsqXtFemH1Hdiv>
+void heat::Solver
+:: setDiscretisation()
+{
+    if (m_discType == "H1Hdiv") {
+        m_disc = std::make_shared<heat::LsqXtFemH1Hdiv>
                 (m_config, m_testCase);
     }
-    else if (m_xDiscrType == "H1H1") {
-        m_discr = std::make_shared<heat::LsqXtFemH1H1>
+    else if (m_discType == "H1H1") {
+        m_disc = std::make_shared<heat::LsqXtFemH1H1>
                 (m_config, m_testCase);
     }
     else {
@@ -146,299 +132,119 @@ void heat::Solver :: set(int lx, int lt)
         abort();
     }
 
-    m_discr->set(m_tMesh, m_xMesh);
-    m_blockOffsets = m_discr->getBlockOffsets();
-
-    // observer
-    m_observer.reset();
-    m_observer = std::make_shared<heat::Observer>
-            (m_config, lx);
-    m_observer->set(m_testCase, m_discr);
+    //m_discr->setFESpacesAndSpatialBoundaryDofs(m_tMesh, m_xMesh);
+    m_disc->setFeSpacesAndBlockOffsetsAndSpatialBoundaryDofs
+            (m_temporalMesh, m_spatialMesh);
+    m_blockOffsets = m_disc->getBlockOffsets();
 }
 
-// Sets meshes
 void heat::Solver
-:: setMeshes(int lx, int lt)
-{
-    // mesh in space
-    m_xMesh.reset();
-    if (m_loadInitMesh) { // load initial mesh and refine
-        int num_refinements = lx - m_lx0;
-        const std::string mesh_file
-                        = m_meshDir+"/"+m_meshElemType
-                +"_mesh_l"
-                +std::to_string(m_lx0)+".mesh";
-#ifndef NDEBUG
-        std::cout << "  Initial mesh file: " << mesh_file << std::endl;
-        std::cout << "  Number of uniform refinements: "
-                  << num_refinements << std::endl;
-#endif
-        m_xMesh = std::make_shared<Mesh>(mesh_file.c_str());
-        for (int k=0; k<num_refinements; k++) {
-            m_xMesh->UniformRefinement();
-        }
-    }
-    else {
-        const std::string mesh_file =
-                m_meshDir+"/mesh_l"+std::to_string(lx)+".mesh";
-#ifndef NDEBUG
-        std::cout << "  Mesh file: "
-                  << mesh_file << std::endl;
-#endif
-        m_xMesh = std::make_shared<Mesh>(mesh_file.c_str());
-    }
-
-    // mesh in time
-    m_tMesh.reset();
-    if (lt == -2) {
-        double hx_min, hx_max, kappax_min, kappax_max;
-        m_xMesh->GetCharacteristics(hx_min, hx_max,
-                                    kappax_min, kappax_max);
-
-        // set time-level acc. to spatial-level
-        lt = int(std::ceil(-std::log2(hx_max/m_endTime)));
-    }
-    int Nt = static_cast<int>(std::pow(2,lt));
-    m_tMesh = std::make_shared<Mesh>(Nt, m_endTime);
-}
-
-// Sets perturbation in the test case
-void heat::Solver :: setPerturbation(double omega)
-{
+:: setPerturbation(double omega) {
     m_testCase->setPerturbation(omega);
 }
 
-// Initializes and then runs the solver,
-// used for the full-tensor version
-std::tuple<int, double, double, Eigen::VectorXd> heat::Solver
-:: operator() ()
-{
-    // run solver
-    run();
-
-    // visualization at end time
-    auto u = getTemperatureSolAtEndTime(m_W.get());
-    (*m_observer)(u);
-
-    // compute error
-    auto errSol = computeError(m_W.get());
-
-    // max meshwidth in space and time
-    double ht_max, hx_max=-1;
-    std::tie(ht_max, hx_max) = getMeshChars();
-
-    return {std::move(getNdofs()),
-                std::move(ht_max), std::move(hx_max),
-                std::move(errSol) };
-}
-
-// Runs the solver, computes the solution error,
-// used for the sparse-grids handler
-/*void heat::Solver
-:: operator()(std::unique_ptr<BlockVector>& W)
-{
-    // MFEM solution variables
-    W = std::make_unique<BlockVector>(m_blockOffsets);
-
-    // MFEM rhs variables
-    m_B = std::make_unique<BlockVector>(m_blockOffsets);
-
-    // initialize
-    init ();
-
-    // solve
-    solve (W.get(), m_B.get());
-
-    // visualization at end time
-    auto u = getTemperatureSolAtEndTime(W.get());
-    (*m_observer)(u);
-}*/
-
-// Runs the solver
 void heat::Solver
 :: run()
 {
-    if (m_firstPass) {
-        // MFEM solution variables
-        m_W.reset();
-        m_W = std::make_unique<BlockVector>(m_blockOffsets);
-
-        // MFEM rhs variables
-        m_B.reset();
-        m_B = std::make_unique<BlockVector>(m_blockOffsets);
-    }
-
-    // initialize
-    init ();
-
-    // solve
-    solve (m_W.get(), m_B.get());
+    initialize ();
+    assembleSystem();
+    assembleRhs();
+    solve ();
 }
 
-// Measures the time of the solver runs
-std::tuple<int, double, double, double, int> heat::Solver
-:: measure(int numReps)
+std::pair<double, int> heat::Solver
+:: runAndMeasurePerformanceMetrics()
 {
-    // MFEM solution variables
-    m_W.reset();
-    m_W = std::make_unique<BlockVector>(m_blockOffsets);
-
-    // MFEM rhs variables
-    m_B.reset();
-    m_B = std::make_unique<BlockVector>(m_blockOffsets);
-
-    // build and solve linear system
-    double elapsedTime = 0;
-    int memUsage;
-    for (int i=0; i<numReps; i++) {
-        init ();
-        double elapsedTimeBuf;
-        std::tie(elapsedTimeBuf, memUsage) = solve (m_W.get(), m_B.get());
-        if (numReps > 0) {
-            elapsedTime += elapsedTimeBuf;
-        }
-        finalize();
-    }
-    elapsedTime /= (numReps-1);
-
-    // max meshwidth in space and time
-    double ht_max, hx_max=-1;
-    std::tie(ht_max, hx_max) = getMeshChars();
-
-    return {std::move(getNdofs()),
-                std::move(ht_max), std::move(hx_max),
-                std::move(elapsedTime), std::move(memUsage)};
-}
-
-// Runs the solver
-// and evaluates the flux observation functional
-double heat::Solver
-:: computeObs()
-{
-    run();
-    //auto u = get_temperatureSol_at_endTime(m_W.get());
-    //(*m_observer)(u);
-    setTemperatureSolAtEndTime();
-    //set_fluxSol_at_endTime();
-    return std::move(getObs());
-}
-
-// Runs the solver
-// and evaluates the flux quantity of interest
-double heat::Solver
-:: computeQoi()
-{
-    run();
-    //auto u = get_temperatureSol_at_endTime(m_W.get());
-    //(*m_observer)(u);
-    setTemperatureSolAtEndTime();
-    //set_fluxSol_at_endTime();
-    return std::move(getQoi());
-}
-
-double heat::Solver
-:: computeXtQoi()
-{
-    run();
-    return std::move(getXtQoi());
-}
-
-// Evaluates the flux observation functional
-double heat::Solver
-:: getObs()
-{
-    auto fluxObs = m_observer->evalObs(m_temperature);
-    return std::move(fluxObs);
-}
-
-// Evaluates the quantity of interest functional
-double heat::Solver
-:: getQoi()
-{
-    auto fluxQoi = m_observer->evalQoi(m_temperature);
-    return std::move(fluxQoi);
-}
-
-double heat::Solver
-:: getXtQoi()
-{
-    auto fluxQoi = m_observer->evalXtQoi(m_W->GetBlock(0));
-    return std::move(fluxQoi);
+    initialize ();
+    assembleSystem();
+    assembleRhs();
+    return solveAndMeasurePerformanceMetrics();
 }
 
 // Initializes the solver
 void heat::Solver
-:: init ()
+:: initialize ()
 {
-    assembleRhs();
-    assembleSystem();
+    // solution data handler
+    auto temporalFeSpace = m_disc->getTemporalFeSpace();
+    auto spatialFeSpaces = m_disc->getSpatialFeSpaces();
+    m_solutionHandler
+            = std::make_shared<heat::SolutionHandler>
+            (temporalFeSpace, spatialFeSpaces);
+
+    // variable to store rhs data
+    m_rhs = std::make_unique<BlockVector>(m_blockOffsets);
 }
 
-// Assembles the right-hand side
-void heat::Solver
-:: assembleRhs()
-{
-    if (m_firstPass) {
-        (*m_B) = 0.0;
-        m_discr->assembleRhs(m_B.get());
-        m_firstPass = false;
-    }
-}
-
-// Assembles the system
 void heat::Solver
 :: assembleSystem()
 {
-    m_discr->assembleSystem();
+//    m_discr->assembleSystem();
+    m_disc->assembleSystemSubMatrices();
 
     if (m_linearSolver == "pardiso")
     {
-        //m_discr->build_system_matrix();
-        m_discr->buildSystemMatrixUpperTriangle();
-        m_heatMat = m_discr->getHeatMat();  
+//        m_discr->buildSystemMatrix();
+        m_disc->buildUpperTriangleOfSystemMatrix();
+        m_systemMat = m_disc->getSystemMatrix();
     }
     else if (m_linearSolver == "cg")
     {
-        m_discr->buildSystemMatrix();
-        m_heatMat = m_discr->getHeatMat();
+        m_disc->buildSystemMatrix();
+        m_systemMat = m_disc->getSystemMatrix();
     }
-   // std::cout << "Num rows: " << m_heatMat->NumRows()
-   //           << "\t" << m_heatMat->NumRows() << std::endl;
 }
 
-// Solves the linear system resulting from the discretisation
-std::pair<double, int> heat::Solver
-:: solve (BlockVector *W,
-          BlockVector *B)
+void heat::Solver
+:: assembleRhs()
 {
-    if (!m_pardisoFinalized) {
-#ifndef NDEBUG
-        std::cout << "\nRelease old Pardiso memory in Solve"
-                  << std::endl;
-#endif
-        m_pardisoSolver->finalize();
-        m_pardisoFinalized = true;
-    }
+    (*m_rhs) = 0.0;
+    m_disc->assembleRhs(m_rhs.get());
+}
 
+void heat::Solver
+:: solve()
+{
+    // wrap rhs BlockVector as vector
+    Vector wrapRhs(m_rhs->GetData(), m_rhs->Size());
+
+    // wrap solution BlockVector as vector
+    auto U = m_solutionHandler->getData();
+    Vector wrapU(U->GetData(), U->Size());
+
+    solve(wrapRhs, wrapU);
+}
+
+std::pair<double, int> heat::Solver
+:: solveAndMeasurePerformanceMetrics()
+{
+    // wrap rhs BlockVector as vector
+    Vector wrapRhs(m_rhs->GetData(), m_rhs->Size());
+
+    // wrap solution BlockVector as vector
+    auto U = m_solutionHandler->getData();
+    Vector wrapU(U->GetData(), U->Size());
+
+    return solve(wrapRhs, wrapU);
+}
+
+std::pair<double, int> heat::Solver
+:: solve (const mfem::Vector& rhs, mfem::Vector& u)
+{
     int memUsage = 0;
 
     auto start = std::chrono::high_resolution_clock::now();
     if (m_linearSolver == "pardiso")
     {
-        // set Pardiso solver
-        //int mtype = 1; // real structurally symmetric
-        int mtype = 2; // real symmetric positive definite
-        //int mtype = -2; // real symmetric indefinite
-        m_pardisoSolver.reset();
-        m_pardisoSolver = std::make_unique<PardisoSolver>(mtype);
-        m_pardisoSolver->initialize(m_heatMat->Size(),
-                                    m_heatMat->GetI(),
-                                    m_heatMat->GetJ(),
-                                    m_heatMat->GetData());
+        setPardisoSolver();
+        m_pardisoSolver->initialize(m_systemMat->Size(),
+                                    m_systemMat->GetI(),
+                                    m_systemMat->GetJ(),
+                                    m_systemMat->GetData());
         m_pardisoSolver->factorize();
-        m_pardisoSolver->solve(B->GetData(), W->GetData());
-        m_pardisoFinalized = false;
+        m_pardisoSolver->solve(rhs.GetData(), u.GetData());
         memUsage = m_pardisoSolver->getMemoryUsage();
+        finalizePardisoSolver();
     }
     else if (m_linearSolver == "cg")
     {
@@ -447,9 +253,9 @@ std::pair<double, int> heat::Solver
         double relTol = m_config["cg_relTol"];
         double absTol = m_config["cg_absTol"];
 
-        GSSmoother *M = new GSSmoother(*m_heatMat);
-        (*W) = 0;
-        PCG(*m_heatMat, *M, *B, *W, verbose, maxIter, relTol, absTol);
+        auto M = new GSSmoother(*m_systemMat);
+        u = 0.;
+        PCG(*m_systemMat, *M, rhs, u, verbose, maxIter, relTol, absTol);
         delete M;
     }
     auto end = std::chrono::high_resolution_clock::now();
@@ -461,286 +267,19 @@ std::pair<double, int> heat::Solver
     return {elapsedTime, memUsage};
 }
 
-// Releases allocated memory
 void heat::Solver
-:: finalize() const
+:: setPardisoSolver()
 {
-    if (!m_pardisoFinalized) {
-#ifndef NDEBUG
-        std::cout << "\nRelease Pardiso Memory" << std::endl;
-#endif
-        m_pardisoSolver->finalize();
-        m_pardisoFinalized = true;
-    }
+//    int mtype = 1; // real structurally symmetric
+        int mtype = 2; // real symmetric positive definite
+//        int mtype = -2; // real symmetric indefinite
+    m_pardisoSolver
+            = std::make_unique<PardisoSolver>(mtype);
 }
 
-// Computes the solution error
-Eigen::VectorXd heat::Solver
-:: computeError(BlockVector *W) const
-{
-    Eigen::VectorXd errSol(2);
-    errSol.setZero();
-
-    if (m_boolError)
-    {
-        if (m_errorType=="H1") {
-#ifndef NDEBUG
-            std::cout << "  Computing H1 error "
-                         "at end time..."
-                      << std::endl;
-#endif
-            auto u = getTemperatureSolAtEndTime(W);
-
-            double erruL2, uEL2, erruH1, uEH1;
-            std::tie (erruL2, uEL2, erruH1, uEH1)
-                    = m_observer->evalXH1Error(u, m_endTime);
-#ifndef NDEBUG
-            std::cout << "\ttemperature L2 error: "
-                      << erruL2 << "\t" << uEL2 << std::endl;
-            std::cout << "\ttemperature H1 error: "
-                      << erruH1 << "\t" << uEH1 << std::endl;
-#endif
-            errSol(0) = erruL2/uEL2;
-            errSol(1) = erruH1/uEH1;
-        }
-        else if (m_errorType == "L2H1") {
-#ifndef NDEBUG
-            std::cout << "  Computing L2H1 "
-                         "space-time error..."
-                      << std::endl;
-#endif
-            double erruL2L2, uEL2L2, erruL2H1, uEL2H1;
-            std::tie (erruL2L2, uEL2L2, erruL2H1, uEL2H1)
-                    = m_observer->evalXtL2H1Error
-                    (W->GetBlock(0));
-#ifndef NDEBUG
-            std::cout << "\ttemperature L2L2 error: "
-                      << erruL2L2 << "\t"
-                      << uEL2L2 << std::endl;
-            std::cout << "\ttemperature L2H1 error: "
-                 << erruL2H1 << "\t"
-                 << uEL2H1 << std::endl;
-#endif
-            errSol(0) = erruL2L2/uEL2L2;
-            errSol(1) = erruL2H1/uEL2H1;
-        }
-        else if (m_errorType == "lsq") {
-#ifndef NDEBUG
-            std::cout << "  Computing space-time "
-                         "least-squares error..."
-                      << std::endl;
-#endif
-            double errPde, errFlux, errIc;
-            std::tie (errPde, errFlux, errIc)
-                    = m_observer->evalXtLsqError
-                    (W->GetBlock(0), W->GetBlock(1));
-#ifndef NDEBUG
-            std::cout << "\tLsq Pde error: "
-                      << errPde << std::endl;
-            std::cout << "\tLsq Flux error: "
-                      << errFlux << std::endl;
-            std::cout << "\tLsq Ic error: "
-                      << errIc << std::endl;
-#endif
-            errSol.resize(3);
-            errSol(0) = errPde;
-            errSol(1) = errFlux;
-            errSol(2) = errIc;
-        }
-        else if (m_errorType == "natural") {
-#ifndef NDEBUG
-            std::cout << "  Computing error "
-                         "in natural norm..."
-                      << std::endl;
-#endif
-            double erruL2H1, errqL2L2, errUDiv;
-            std::tie (erruL2H1, errqL2L2, errUDiv)
-                    = m_observer->evalXtError
-                    (W->GetBlock(0), W->GetBlock(1));
-#ifndef NDEBUG
-            std::cout << "\tu L2H1 error: "
-                      << erruL2H1 << std::endl;
-            std::cout << "\tq L2L2 error: "
-                      << errqL2L2 << std::endl;
-            std::cout << "\tDivergence error: "
-                      << errUDiv << std::endl;
-#endif
-            errSol.resize(3);
-            errSol(0) = erruL2H1;
-            errSol(1) = errqL2L2;
-            errSol(2) = errUDiv;
-        }
-        else {
-            std::cout << "Unknown error type!\n";
-            abort();
-        }
-    }
-
-    return errSol;
-}
-
-// Evaluates the temperature solution at end time
-std::shared_ptr <GridFunction> heat::Solver
-:: getTemperatureSolAtEndTime(BlockVector *W) const
-{
-    // auxiliary variables
-    FiniteElementSpace* tFespace
-                = m_discr->getTFespace();
-    Array<FiniteElementSpace*> xFespaces
-            = m_discr->getXFespaces();
-
-    // dofs for the time element (T-h, T)
-    Array<int> tVdofs;
-    const FiniteElement *tFe
-            = tFespace->GetFE(m_tMesh->GetNE()-1);
-    tFespace->GetElementVDofs(m_tMesh->GetNE()-1, tVdofs);
-
-    Vector tShape(tVdofs.Size());
-    IntegrationPoint ip;
-    ip.Set1w(1.0, 1.0);
-    tFe->CalcShape(ip, tShape);
-
-    // temperature solution at T
-    Vector uSol;
-    std::shared_ptr <GridFunction> u
-            = std::make_shared<GridFunction>(xFespaces[0]);
-    u->GetTrueDofs(uSol);
-    buildXSolFG(W->GetBlock(0), tShape, tVdofs, uSol);
-
-    return u;
-}
-
-// Evaluates the flux solution vector at end time
-std::shared_ptr <GridFunction> heat::Solver
-:: getFluxSolAtEndTime(BlockVector *W) const
-{
-    // auxiliary variables for visualization
-    // and error computation at time T
-    FiniteElementSpace* tFespace
-                = m_discr->getTFespace();
-    Array<FiniteElementSpace*> xFespaces
-            = m_discr->getXFespaces();
-
-    // dofs for the time element (T-h, T)
-    Array<int> tVdofs;
-    const FiniteElement *tFe
-            = tFespace->GetFE(m_tMesh->GetNE()-1);
-    tFespace->GetElementVDofs(m_tMesh->GetNE()-1, tVdofs);
-
-    Vector tShape(tVdofs.Size());
-    IntegrationPoint ip;
-    ip.Set1w(1.0, 1.0);
-    tFe->CalcShape(ip, tShape);
-
-    // flux solution at T
-    Vector qSol;
-    std::shared_ptr <GridFunction> q
-            = std::make_shared<GridFunction>(xFespaces[1]);
-    q->GetTrueDofs(qSol);
-    buildXSolFG(W->GetBlock(1), tShape, tVdofs, qSol);
-
-    return q;
-}
-
-// Sets the temperature solution at end time
 void heat::Solver
-:: setTemperatureSolAtEndTime()
-{
-    m_temperature = getTemperatureSolAtEndTime(m_W.get());
-}
-
-// Sets the flux solution vector end time
-void heat::Solver
-:: setFluxSolAtEndTime()
-{
-    m_flux = getFluxSolAtEndTime(m_W.get());
-}
-
-// Initializes and computes the L2-projection
-// Used for the full-tensor version
-std::tuple<int, double, double, Eigen::VectorXd> heat::Solver
-:: projection ()
-{
-    // MFEM solution variables
-    m_W = std::make_unique<BlockVector>(m_blockOffsets);
-
-    // MFEM rhs variables
-    m_B = std::make_unique<BlockVector>(m_blockOffsets);
-
-    // initialize_projection
-    initProjection();
-
-    // solve
-    solve (m_W.get(), m_B.get());
-
-    // visualization at end time
-    auto u = getTemperatureSolAtEndTime(m_W.get());
-    (*m_observer)(u);
-
-    // compute error
-    auto errSol = computeError(m_W.get());
-
-    // max meshwidth in space and time
-    double htMax, hxMax;
-    std::tie(htMax, hxMax) = getMeshChars();
-
-    return {std::move(getNdofs()),
-                std::move(htMax), std::move(hxMax),
-                std::move(errSol) };
-}
-
-/*void heat::Solver
-:: projection (std::unique_ptr<BlockVector>& W)
-{
-    // MFEM solution variables
-    W = std::make_unique<BlockVector>(m_blockOffsets);
-
-    // MFEM rhs variables
-    m_B = std::make_unique<BlockVector>(m_blockOffsets);
-
-    // initialize projection
-    initProjection();
-
-    // compute projection
-    solve (W.get(), m_B.get());
-}*/
-
-// Initializes projection
-void heat::Solver
-:: initProjection()
-{
-    assembleProjectionRhs();
-    assembleProjectionSystem();
-}
-
-// Assembles projection right-hand side
-void heat::Solver
-:: assembleProjectionRhs()
-{
-    if (m_firstPass) {
-        (*m_B) = 0.0;
-        m_discr->assembleProjectionRhs(m_B.get());
-        m_firstPass = false;
-    }
-}
-
-// Assembles the system matrix for projection
-void heat::Solver
-:: assembleProjectionSystem()
-{
-    m_discr->assembleProjector();
-    m_discr->buildProjectorMatrix();
-    m_heatProjMat = m_discr->getHeatProjectionMat();
-
-    // set Pardiso solver
-    int mtype = 2; // real symmetric positive definite
-    m_pardisoSolver = std::make_unique<PardisoSolver>(mtype);
-    m_pardisoSolver->initialize(m_heatProjMat->Size(),
-                                m_heatProjMat->GetI(),
-                                m_heatProjMat->GetJ(),
-                                m_heatProjMat->GetData());
-    m_pardisoSolver->factorize();
-    m_pardisoFinalized = false;
+:: finalizePardisoSolver() {
+    m_pardisoSolver->finalize();
 }
 
 // End of file

@@ -4,6 +4,13 @@
 using namespace mfem;
 
 
+// Deletes allocated memory and sets pointer to nullptr
+template<typename T>
+void reset(T* &obj) {
+    delete obj;
+    obj = nullptr;
+}
+
 // free matrix memory and set pointer to null
 void clear (SparseMatrix* &mat) {
     delete mat;

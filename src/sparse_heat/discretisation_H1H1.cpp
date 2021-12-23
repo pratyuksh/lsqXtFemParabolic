@@ -128,7 +128,7 @@ void sparseHeat::LsqSparseXtFemH1H1
     heat::SourceCoeff sourceCoeff(m_testCase);
     sourceCoeff.SetTime(t);
     sourceForm.AddDomainIntegrator
-            (new heat::VectorDivergenceLFIntegrator(sourceCoeff, -1));
+            (new heat::SpatialVectorDivergenceLFIntegrator(sourceCoeff, -1));
     sourceForm.Assemble();
     b = sourceForm.GetData();
 }
