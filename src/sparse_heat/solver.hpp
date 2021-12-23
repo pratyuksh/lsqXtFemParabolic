@@ -101,9 +101,6 @@ private:
     mfem::SparseMatrix *m_systemMat = nullptr;
 //    mfem::BlockOperator *m_systemOp = nullptr;
 
-    std::shared_ptr <mfem::GridFunction> m_temperatureAtEndTime;
-    std::shared_ptr <mfem::GridFunction> m_heatFluxAtEndTime;
-
 #ifdef PARDISO_HPP
     std::unique_ptr<PardisoSolver> m_pardisoSolver;
 #endif
