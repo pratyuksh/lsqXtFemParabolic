@@ -11,7 +11,6 @@ include ("cmake/GetJSON.cmake")
 include("cmake/warning_flags.cmake")
 include("cmake/clang_tidy.cmake")
 
-# local system: nora
 if (($ENV{USER} MATCHES "pratyuksh"))
     
     message ("\n\n\t---------------------\t")
