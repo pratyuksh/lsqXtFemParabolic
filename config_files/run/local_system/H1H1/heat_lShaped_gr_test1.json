@@ -3,7 +3,7 @@
     
     "problem_type": "lShaped_test1",
     
-    "run": "runFG",
+    "run": "simulation",
     
     "end_time": 1,
     

@@ -3,7 +3,7 @@
     
     "problem_type": "unitSquare_test3",
     
-    "run": "runFG",
+    "run": "simulation",
     
     "load_init_mesh": true,
     "init_mesh_level": 0,

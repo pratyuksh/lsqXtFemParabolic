@@ -3,7 +3,7 @@
     
     "problem_type": "unitSquare_test1",
     
-    "run": "runFG",
+    "run": "simulation",
     "end_time": 0.1,
     
     "deg": 3,

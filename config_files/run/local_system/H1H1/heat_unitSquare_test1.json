@@ -3,14 +3,14 @@
     
     "problem_type": "unitSquare_test1",
     
-    "run": "runFG",
+    "run": "simulation",
     
     "load_init_mesh": true,
     "init_mesh_level": 0,
     
     "end_time": 0.1,
     
-    "discretisation_type": "H1Hdiv",
+    "discretisation_type": "H1H1",
     
     "deg": 1,
     "level_t": 4,
