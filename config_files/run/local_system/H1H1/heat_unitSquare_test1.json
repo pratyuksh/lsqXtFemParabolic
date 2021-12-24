@@ -13,8 +13,8 @@
     "discretisation_type": "H1H1",
     
     "deg": 1,
-    "level_t": 4,
-    "level_x": 4,
+    "temporal_level": 4,
+    "spatial_level": 4,
     
     "mesh_dir": "unitSquare",
     

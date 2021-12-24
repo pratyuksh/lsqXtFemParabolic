@@ -14,14 +14,21 @@
     "discretisation_type": "H1Hdiv",
     
     "deg": 1,
-    "min_level_t": 1,
-    "min_level_x": 1,
-    "max_level_x": 4,
+    
+    "min_temporal_level": 1,
+    "min_spatial_level": 1,
+    "max_spatial_level": 5,
     
     "mesh_dir": "unitSquare",
     
     "eval_error": false,
     "error_type": "natural",
+    
+    "linear_solver": "pardiso",
+    "cg_verbose": 0,
+    "cg_max_iterations": 10000,
+    "cg_absolute_tolerance": 0,
+    "cg_relative_tolerance": 1E-8,
     
     "base_out_dir": "../output",
     "sub_out_dir": "heat/unitSquare_test3"

@@ -10,8 +10,8 @@
     "end_time": 1,
     
     "deg": 3,
-    "level_t": 5,
-    "level_x": 5,
+    "temporal_level": 5,
+    "spatial_level": 5,
     "mesh_dir": "periodic_unitSquare",
     
     "eval_error": false,

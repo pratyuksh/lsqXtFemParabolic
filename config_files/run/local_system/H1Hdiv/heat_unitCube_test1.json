@@ -14,16 +14,16 @@
     "discretisation_type": "H1Hdiv",
     
     "deg": 2,
-    "level_t": 4,
-    "level_x": 4,
+    "temporal_level": 4,
+    "spatial_level": 4,
     
     "mesh_dir": "unitCube",
     
     "linear_solver": "cg",
     "cg_verbose": 0,
-    "cg_maxIter": 10000,
-    "cg_absTol": 0,
-    "cg_relTol": 1E-8,
+    "cg_max_iterations": 10000,
+    "cg_absolute_tolerance": 0,
+    "cg_relative_tolerance": 1E-8,
     
     "eval_error": true,
     "error_type": "natural",

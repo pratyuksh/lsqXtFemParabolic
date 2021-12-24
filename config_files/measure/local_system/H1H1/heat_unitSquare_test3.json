@@ -14,9 +14,9 @@
     "discretisation_type": "H1H1",
     
     "deg": 1,
-    "min_level_t": 1,
-    "min_level_x": 1,
-    "max_level_x": 4,
+    "min_temporal_level": 1,
+    "min_spatial_level": 1,
+    "max_spatial_level": 4,
     
     "mesh_dir": "unitSquare",
     

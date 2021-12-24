@@ -13,7 +13,7 @@
     "deg": 1,
     
     "min_num_levels": 2,
-    "max_num_levels": 6,
+    "max_num_levels": 5,
     
     "min_spatial_level": 1,
     "min_temporal_level": 1,
@@ -22,7 +22,13 @@
     "init_mesh_level": 0,
     "mesh_dir": "unitSquare",
     
-    "eval_error": true,
+    "linear_solver": "pardiso",
+    "cg_verbose": 0,
+    "cg_max_iterations": 10000,
+    "cg_absolute_tolerance": 0,
+    "cg_relative_tolerance": 1E-8,
+    
+    "eval_error": false,
     "error_type": "natural",
     
     "base_out_dir": "../output",

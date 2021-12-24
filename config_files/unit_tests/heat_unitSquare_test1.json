@@ -7,8 +7,8 @@
     "end_time": 0.1,
     
     "deg": 3,
-    "level_t": 4,
-    "level_x": 4,
+    "temporal_level": 4,
+    "spatial_level": 4,
     "mesh_dir": "unitSquare",
     
     "eval_error": false,
