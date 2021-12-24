@@ -93,10 +93,8 @@ Inheritance diagram for heat::LsqXtFem:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a6890c7dcb0e27df0f784d4c11b7adc35"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a6890c7dcb0e27df0f784d4c11b7adc35">LsqXtFem</a> (const nlohmann::json &amp;, std::shared_ptr&lt; <a class="el" href="classheat_1_1TestCases.html">heat::TestCases</a> &gt; &amp;)</td></tr>
-<tr class="memdesc:a6890c7dcb0e27df0f784d4c11b7adc35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with config and test case as arguments.  <a href="classheat_1_1LsqXtFem.html#a6890c7dcb0e27df0f784d4c11b7adc35">More...</a><br /></td></tr>
 <tr class="separator:a6890c7dcb0e27df0f784d4c11b7adc35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f7afd8b188acc5cc91012f37fca9691"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a6f7afd8b188acc5cc91012f37fca9691">~LsqXtFem</a> ()</td></tr>
-<tr class="memdesc:a6f7afd8b188acc5cc91012f37fca9691"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor.  <a href="classheat_1_1LsqXtFem.html#a6f7afd8b188acc5cc91012f37fca9691">More...</a><br /></td></tr>
 <tr class="separator:a6f7afd8b188acc5cc91012f37fca9691"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad089704094ce42105ef3b308ac50a4a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ad089704094ce42105ef3b308ac50a4a0">reset</a> (bool firstPass=true)</td></tr>
 <tr class="memdesc:ad089704094ce42105ef3b308ac50a4a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases all the memory allocated by this class.  <a href="classheat_1_1LsqXtFem.html#ad089704094ce42105ef3b308ac50a4a0">More...</a><br /></td></tr>
@@ -118,7 +116,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a59b4428883a33128b49080f9ea5713e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a59b4428883a33128b49080f9ea5713e7">resetMediumDependentSystemSubMatrices</a> ()</td></tr>
 <tr class="separator:a59b4428883a33128b49080f9ea5713e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa04d5ec03c7c476ae1752d290385dc58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#aa04d5ec03c7c476ae1752d290385dc58">resetFeSpacesAndBlockOffsetsAndSpatialBoundaryDofs</a> (std::shared_ptr&lt; mfem::Mesh &gt; &amp;, std::shared_ptr&lt; mfem::Mesh &gt; &amp;)</td></tr>
-<tr class="memdesc:aa04d5ec03c7c476ae1752d290385dc58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the FE space and boundary conditions.  <a href="classheat_1_1LsqXtFem.html#aa04d5ec03c7c476ae1752d290385dc58">More...</a><br /></td></tr>
+<tr class="memdesc:aa04d5ec03c7c476ae1752d290385dc58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the FE spaces, block offsets and boundary conditions.  <a href="classheat_1_1LsqXtFem.html#aa04d5ec03c7c476ae1752d290385dc58">More...</a><br /></td></tr>
 <tr class="separator:aa04d5ec03c7c476ae1752d290385dc58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a896994a14b3e0e151614ca7d8dd49658"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a896994a14b3e0e151614ca7d8dd49658">setFeSpacesAndBlockOffsetsAndSpatialBoundaryDofs</a> (std::shared_ptr&lt; mfem::Mesh &gt; &amp;, std::shared_ptr&lt; mfem::Mesh &gt; &amp;)</td></tr>
 <tr class="separator:a896994a14b3e0e151614ca7d8dd49658"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,7 +141,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1eb56ec28becc21e518610c8774f11fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a1eb56ec28becc21e518610c8774f11fe">assembleMaterialDependentSystemSubMatrices</a> ()</td></tr>
 <tr class="separator:a1eb56ec28becc21e518610c8774f11fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb6fd9fb4e3ab2b15a60674e4f95edb4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#abb6fd9fb4e3ab2b15a60674e4f95edb4">rebuildSystemOperator</a> ()</td></tr>
-<tr class="memdesc:abb6fd9fb4e3ab2b15a60674e4f95edb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the blocks of the linear system matrix.  <a href="classheat_1_1LsqXtFem.html#abb6fd9fb4e3ab2b15a60674e4f95edb4">More...</a><br /></td></tr>
 <tr class="separator:abb6fd9fb4e3ab2b15a60674e4f95edb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77f0e993e204f171cc25521e08a9389c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a77f0e993e204f171cc25521e08a9389c">buildSystemOperator</a> ()</td></tr>
 <tr class="separator:a77f0e993e204f171cc25521e08a9389c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -156,36 +153,26 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aab0b6f599d3af6fcad33980a27632bfe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#aab0b6f599d3af6fcad33980a27632bfe">buildUpperTriangleOfSystemMatrix</a> ()</td></tr>
 <tr class="separator:aab0b6f599d3af6fcad33980a27632bfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a475df40782e42c06721b84912c00461c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a475df40782e42c06721b84912c00461c">assembleRhs</a> (mfem::BlockVector *) const</td></tr>
-<tr class="memdesc:a475df40782e42c06721b84912c00461c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assembles the target right-hand side.  <a href="classheat_1_1LsqXtFem.html#a475df40782e42c06721b84912c00461c">More...</a><br /></td></tr>
 <tr class="separator:a475df40782e42c06721b84912c00461c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae44dd8c00a0cac380d01d79a189ff9f7"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classheat_1_1TestCases.html">heat::TestCases</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ae44dd8c00a0cac380d01d79a189ff9f7">getTestCase</a> () const</td></tr>
-<tr class="memdesc:ae44dd8c00a0cac380d01d79a189ff9f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the test case.  <a href="classheat_1_1LsqXtFem.html#ae44dd8c00a0cac380d01d79a189ff9f7">More...</a><br /></td></tr>
 <tr class="separator:ae44dd8c00a0cac380d01d79a189ff9f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a820692c03cc4a75540d8b52e9d2733e0"><td class="memItemLeft" align="right" valign="top">mfem::Mesh *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a820692c03cc4a75540d8b52e9d2733e0">getTemporalMesh</a> () const</td></tr>
-<tr class="memdesc:a820692c03cc4a75540d8b52e9d2733e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the temporal mesh.  <a href="classheat_1_1LsqXtFem.html#a820692c03cc4a75540d8b52e9d2733e0">More...</a><br /></td></tr>
 <tr class="separator:a820692c03cc4a75540d8b52e9d2733e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab07956d80e1416a16d5ba8c91a1cadd9"><td class="memItemLeft" align="right" valign="top">mfem::Mesh *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ab07956d80e1416a16d5ba8c91a1cadd9">getSpatialMesh</a> () const</td></tr>
-<tr class="memdesc:ab07956d80e1416a16d5ba8c91a1cadd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the spatial mesh.  <a href="classheat_1_1LsqXtFem.html#ab07956d80e1416a16d5ba8c91a1cadd9">More...</a><br /></td></tr>
 <tr class="separator:ab07956d80e1416a16d5ba8c91a1cadd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d4293078390cc77504176964f901d71"><td class="memItemLeft" align="right" valign="top">mfem::FiniteElementCollection *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a7d4293078390cc77504176964f901d71">getTemporalFeCollection</a> () const</td></tr>
-<tr class="memdesc:a7d4293078390cc77504176964f901d71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the temporal FE collection.  <a href="classheat_1_1LsqXtFem.html#a7d4293078390cc77504176964f901d71">More...</a><br /></td></tr>
 <tr class="separator:a7d4293078390cc77504176964f901d71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab54a2cb3b1ee50ca7d3ec09bd4a333a0"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; mfem::FiniteElementCollection * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ab54a2cb3b1ee50ca7d3ec09bd4a333a0">getSpatialFeCollections</a> () const</td></tr>
-<tr class="memdesc:ab54a2cb3b1ee50ca7d3ec09bd4a333a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the spatial FE collections.  <a href="classheat_1_1LsqXtFem.html#ab54a2cb3b1ee50ca7d3ec09bd4a333a0">More...</a><br /></td></tr>
 <tr class="separator:ab54a2cb3b1ee50ca7d3ec09bd4a333a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16cf0948fbadfd3d4cd445e1649f040f"><td class="memItemLeft" align="right" valign="top">mfem::FiniteElementSpace *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a16cf0948fbadfd3d4cd445e1649f040f">getTemporalFeSpace</a> () const</td></tr>
-<tr class="memdesc:a16cf0948fbadfd3d4cd445e1649f040f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the temporal FE space.  <a href="classheat_1_1LsqXtFem.html#a16cf0948fbadfd3d4cd445e1649f040f">More...</a><br /></td></tr>
 <tr class="separator:a16cf0948fbadfd3d4cd445e1649f040f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3398ba5d9636992b6014cbf7ecdccaa"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; mfem::FiniteElementSpace * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ab3398ba5d9636992b6014cbf7ecdccaa">getSpatialFeSpaces</a> () const</td></tr>
-<tr class="memdesc:ab3398ba5d9636992b6014cbf7ecdccaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the spatial FE spaces.  <a href="classheat_1_1LsqXtFem.html#ab3398ba5d9636992b6014cbf7ecdccaa">More...</a><br /></td></tr>
 <tr class="separator:ab3398ba5d9636992b6014cbf7ecdccaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64c9299dcd5ce07ab9deb5a6008387d8"><td class="memItemLeft" align="right" valign="top">mfem::BlockOperator *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a64c9299dcd5ce07ab9deb5a6008387d8">getSystemOperator</a> () const</td></tr>
-<tr class="memdesc:a64c9299dcd5ce07ab9deb5a6008387d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the system operator.  <a href="classheat_1_1LsqXtFem.html#a64c9299dcd5ce07ab9deb5a6008387d8">More...</a><br /></td></tr>
 <tr class="separator:a64c9299dcd5ce07ab9deb5a6008387d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade96b9927ec0857b972654d18c9b3630"><td class="memItemLeft" align="right" valign="top">mfem::Array&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ade96b9927ec0857b972654d18c9b3630">getBlockOffsets</a> () const</td></tr>
 <tr class="separator:ade96b9927ec0857b972654d18c9b3630"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8589bcb431cb00947cbe61ec6ea874c"><td class="memItemLeft" align="right" valign="top">mfem::SparseMatrix *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#ae8589bcb431cb00947cbe61ec6ea874c">getSystemMatrix</a> () const</td></tr>
-<tr class="memdesc:ae8589bcb431cb00947cbe61ec6ea874c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the monolithic system matrix.  <a href="classheat_1_1LsqXtFem.html#ae8589bcb431cb00947cbe61ec6ea874c">More...</a><br /></td></tr>
 <tr class="separator:ae8589bcb431cb00947cbe61ec6ea874c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41287269e34865a76d784edc0923f75d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a41287269e34865a76d784edc0923f75d">print</a> () const</td></tr>
 <tr class="memdesc:a41287269e34865a76d784edc0923f75d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints some info.  <a href="classheat_1_1LsqXtFem.html#a41287269e34865a76d784edc0923f75d">More...</a><br /></td></tr>
@@ -238,10 +225,10 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a636691705a1488f8f556b43b9e5f70a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a636691705a1488f8f556b43b9e5f70a8">addVector</a> (const mfem::Array&lt; int &gt; &amp;, const mfem::Vector &amp;, mfem::Vector &amp;) const</td></tr>
 <tr class="separator:a636691705a1488f8f556b43b9e5f70a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73f871a09f8ee59bb67fb6d17f4ab4f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a73f871a09f8ee59bb67fb6d17f4ab4f5">applyBCs</a> (mfem::SparseMatrix &amp;) const</td></tr>
-<tr class="memdesc:a73f871a09f8ee59bb67fb6d17f4ab4f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies boundary conditions on a matrix.  <a href="classheat_1_1LsqXtFem.html#a73f871a09f8ee59bb67fb6d17f4ab4f5">More...</a><br /></td></tr>
+<tr class="memdesc:a73f871a09f8ee59bb67fb6d17f4ab4f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies boundary conditions to a SparseMatrix.  <a href="classheat_1_1LsqXtFem.html#a73f871a09f8ee59bb67fb6d17f4ab4f5">More...</a><br /></td></tr>
 <tr class="separator:a73f871a09f8ee59bb67fb6d17f4ab4f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95b3c051949fb6d606b561c1a1c37108"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classheat_1_1LsqXtFem.html#a95b3c051949fb6d606b561c1a1c37108">applyBCs</a> (mfem::BlockVector &amp;) const</td></tr>
-<tr class="memdesc:a95b3c051949fb6d606b561c1a1c37108"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies boundary conditions on a vector.  <a href="classheat_1_1LsqXtFem.html#a95b3c051949fb6d606b561c1a1c37108">More...</a><br /></td></tr>
+<tr class="memdesc:a95b3c051949fb6d606b561c1a1c37108"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies boundary conditions to a BlockVector.  <a href="classheat_1_1LsqXtFem.html#a95b3c051949fb6d606b561c1a1c37108">More...</a><br /></td></tr>
 <tr class="separator:a95b3c051949fb6d606b561c1a1c37108"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
@@ -342,9 +329,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructor with config and test case as arguments. </p>
-
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00013">13</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00012">12</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -363,9 +348,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Default destructor. </p>
-
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00022">22</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00020">20</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -410,7 +393,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00849">849</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00772">772</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -438,7 +421,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Applies boundary conditions on a vector. </p>
+<p>Applies boundary conditions to a BlockVector. </p>
 
 </div>
 </div>
@@ -466,7 +449,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Applies boundary conditions on a matrix. </p>
+<p>Applies boundary conditions to a SparseMatrix. </p>
 
 </div>
 </div>
@@ -494,7 +477,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00679">679</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00603">603</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -513,7 +496,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00291">291</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00289">289</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -532,7 +515,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00277">277</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00275">275</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -552,9 +535,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Assembles the target right-hand side. </p>
-
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00670">670</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00594">594</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -582,7 +563,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00724">724</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00648">648</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -610,7 +591,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00796">796</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00719">719</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -638,7 +619,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00732">732</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00655">655</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -720,7 +701,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00713">713</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00637">637</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -774,7 +755,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00342">342</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00340">340</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -848,7 +829,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00784">784</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00707">707</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -902,7 +883,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00354">354</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00352">352</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -921,7 +902,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00270">270</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00268">268</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -948,7 +929,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00329">329</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00327">327</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -975,7 +956,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00298">298</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00296">296</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -1002,7 +983,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00307">307</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00305">305</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -1029,7 +1010,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00318">318</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00316">316</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -1048,7 +1029,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00446">446</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00418">418</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -1067,7 +1048,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00395">395</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00382">382</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -1086,7 +1067,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00517">517</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00467">467</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -1112,9 +1093,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the block offsets in the system operator, which has a block-structure </p>
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00207">207</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00178">178</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -1141,9 +1121,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Return the spatial FE collections. </p>
-
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00186">186</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00162">162</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -1170,9 +1148,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the spatial FE spaces. </p>
-
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00196">196</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00170">170</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -1199,9 +1175,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the spatial mesh. </p>
-
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00175">175</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00153">153</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -1228,7 +1202,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00222">222</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00192">192</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -1255,7 +1229,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00226">226</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00196">196</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -1282,7 +1256,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00230">230</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00200">200</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -1309,7 +1283,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00234">234</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00204">204</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -1336,9 +1310,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the monolithic system matrix. </p>
-
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00212">212</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00182">182</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -1365,9 +1337,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the system operator. </p>
-
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00201">201</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00174">174</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -1394,9 +1364,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the temporal FE collection. </p>
-
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00180">180</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00157">157</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -1423,9 +1391,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the temporal FE space. </p>
-
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00191">191</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00166">166</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -1452,9 +1418,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the temporal mesh. </p>
-
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00170">170</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00149">149</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -1481,9 +1445,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the test case. </p>
-
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00165">165</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00145">145</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -1512,7 +1474,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Prints some info. </p>
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00217">217</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00187">187</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -1533,7 +1495,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Assembles the sub-matrices in the discretisation. </p>
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00255">255</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00253">253</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -1553,7 +1515,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Builds the linear system matrix from the blocks as a monolithic matrix </p>
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00423">423</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00395">395</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -1571,11 +1533,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Assembles the blocks of the linear system matrix. </p>
 <p>Builds the linear system matrix from the blocks as an MFEM operator </p>
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00381">381</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00368">368</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -1595,7 +1555,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Builds the upper-triangle linear system matrix from the blocks as a monolithic matrix </p>
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00491">491</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00441">441</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -1617,7 +1577,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Releases all the memory allocated by this class. </p>
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00029">29</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00027">27</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -1636,7 +1596,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00041">41</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00039">39</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -1666,10 +1626,9 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the FE space and boundary conditions. </p>
-<p>Sets the FE spaces, block offsets and boundary conditions </p>
+<p>Sets the FE spaces, block offsets and boundary conditions. </p>
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00165">165</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00163">163</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -1688,7 +1647,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00102">102</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00100">100</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -1707,7 +1666,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00153">153</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00151">151</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -1726,7 +1685,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00087">87</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00085">85</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -1745,7 +1704,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00123">123</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00121">121</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -1764,7 +1723,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00080">80</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00078">78</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -1783,7 +1742,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00067">67</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00065">65</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -1802,7 +1761,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00116">116</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00114">114</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -1823,7 +1782,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Sets the block offsets for the block-structured system. </p>
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00211">211</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00209">209</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -1854,7 +1813,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Sets temporal and spatial FE spaces for temperature and heat flux </p>
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00182">182</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00180">180</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -1884,7 +1843,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00174">174</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00172">172</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -1903,7 +1862,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00229">229</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00227">227</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -1951,7 +1910,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00197">197</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8cpp_source.html#l00195">195</a> of file <a class="el" href="heat_2discretisation_8cpp_source.html">heat/discretisation.cpp</a>.</p>
 
 </div>
 </div>
@@ -1976,7 +1935,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00249">249</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00219">219</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2000,7 +1959,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00239">239</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00209">209</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2024,7 +1983,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00241">241</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00211">211</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2048,7 +2007,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00273">273</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00243">243</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2072,7 +2031,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00276">276</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00246">246</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2096,7 +2055,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00275">275</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00245">245</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2120,7 +2079,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00277">277</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00247">247</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2144,7 +2103,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00278">278</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00248">248</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2168,7 +2127,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00261">261</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00231">231</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2192,7 +2151,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00271">271</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00241">241</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2216,7 +2175,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00272">272</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00242">242</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2240,7 +2199,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00247">247</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00217">217</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2264,7 +2223,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00248">248</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00218">218</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2288,7 +2247,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00260">260</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00230">230</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2312,7 +2271,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00256">256</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00226">226</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2336,7 +2295,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00257">257</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00227">227</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2360,7 +2319,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00258">258</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00228">228</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2384,7 +2343,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00259">259</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00229">229</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2408,7 +2367,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00263">263</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00233">233</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2432,7 +2391,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00264">264</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00234">234</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2456,7 +2415,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00265">265</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00235">235</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2480,7 +2439,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00266">266</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00236">236</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2504,7 +2463,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00269">269</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00239">239</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2528,7 +2487,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00268">268</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00238">238</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2552,7 +2511,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00244">244</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00214">214</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2576,7 +2535,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00245">245</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00215">215</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2600,7 +2559,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00253">253</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00223">223</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2624,7 +2583,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00254">254</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00224">224</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2648,7 +2607,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00251">251</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00221">221</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2672,7 +2631,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00252">252</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00222">222</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2696,7 +2655,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00242">242</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00212">212</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>
@@ -2720,7 +2679,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00241">241</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="heat_2discretisation_8hpp_source.html#l00211">211</a> of file <a class="el" href="heat_2discretisation_8hpp_source.html">heat/discretisation.hpp</a>.</p>
 
 </div>
 </div>

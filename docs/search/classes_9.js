@@ -1,6 +1,21 @@
 var searchData=
 [
-  ['qoifunctional_424',['QoIFunctional',['../classheat_1_1QoIFunctional.html',1,'heat']]],
-  ['qoilfintegrator_425',['QoILFIntegrator',['../classheat_1_1QoILFIntegrator.html',1,'heat']]],
-  ['qoixtfunctional_426',['QoIXtFunctional',['../classheat_1_1QoIXtFunctional.html',1,'heat']]]
+  ['solutionhandler_418',['SolutionHandler',['../classheat_1_1SolutionHandler.html',1,'heat::SolutionHandler'],['../classsparseHeat_1_1SolutionHandler.html',1,'sparseHeat::SolutionHandler']]],
+  ['solver_419',['Solver',['../classheat_1_1Solver.html',1,'heat::Solver'],['../classsparseHeat_1_1Solver.html',1,'sparseHeat::Solver']]],
+  ['sourcecoeff_420',['SourceCoeff',['../classheat_1_1SourceCoeff.html',1,'heat']]],
+  ['spatialerrorofsolution_421',['SpatialErrorOfSolution',['../classsparseHeat_1_1SpatialErrorOfSolution.html',1,'sparseHeat']]],
+  ['spatialerrorofsolutioninleastsquaresnorm_422',['SpatialErrorOfSolutionInLeastSquaresNorm',['../classsparseHeat_1_1SpatialErrorOfSolutionInLeastSquaresNorm.html',1,'sparseHeat']]],
+  ['spatialerrorofsolutioninnaturalnorm_423',['SpatialErrorOfSolutionInNaturalNorm',['../classsparseHeat_1_1SpatialErrorOfSolutionInNaturalNorm.html',1,'sparseHeat']]],
+  ['spatialmassintegrator_424',['SpatialMassIntegrator',['../classsparseHeat_1_1SpatialMassIntegrator.html',1,'sparseHeat']]],
+  ['spatialstiffnessintegrator_425',['SpatialStiffnessIntegrator',['../classheat_1_1SpatialStiffnessIntegrator.html',1,'heat::SpatialStiffnessIntegrator'],['../classsparseHeat_1_1SpatialStiffnessIntegrator.html',1,'sparseHeat::SpatialStiffnessIntegrator']]],
+  ['spatialvectordivergenceintegrator_426',['SpatialVectorDivergenceIntegrator',['../classsparseHeat_1_1SpatialVectorDivergenceIntegrator.html',1,'sparseHeat']]],
+  ['spatialvectordivergencelfintegrator_427',['SpatialVectorDivergenceLFIntegrator',['../classheat_1_1SpatialVectorDivergenceLFIntegrator.html',1,'heat']]],
+  ['spatialvectorfedivergenceintegrator_428',['SpatialVectorFEDivergenceIntegrator',['../classsparseHeat_1_1SpatialVectorFEDivergenceIntegrator.html',1,'sparseHeat']]],
+  ['spatialvectorfedivergencelfintegrator_429',['SpatialVectorFEDivergenceLFIntegrator',['../classheat_1_1SpatialVectorFEDivergenceLFIntegrator.html',1,'heat']]],
+  ['spatialvectorfegradientintegrator_430',['SpatialVectorFEGradientIntegrator',['../classheat_1_1SpatialVectorFEGradientIntegrator.html',1,'heat::SpatialVectorFEGradientIntegrator'],['../classsparseHeat_1_1SpatialVectorFEGradientIntegrator.html',1,'sparseHeat::SpatialVectorFEGradientIntegrator']]],
+  ['spatialvectorfemassintegrator_431',['SpatialVectorFEMassIntegrator',['../classsparseHeat_1_1SpatialVectorFEMassIntegrator.html',1,'sparseHeat']]],
+  ['spatialvectorfestiffnessintegrator_432',['SpatialVectorFEStiffnessIntegrator',['../classheat_1_1SpatialVectorFEStiffnessIntegrator.html',1,'heat::SpatialVectorFEStiffnessIntegrator'],['../classsparseHeat_1_1SpatialVectorFEStiffnessIntegrator.html',1,'sparseHeat::SpatialVectorFEStiffnessIntegrator']]],
+  ['spatialvectorgradientintegrator_433',['SpatialVectorGradientIntegrator',['../classheat_1_1SpatialVectorGradientIntegrator.html',1,'heat::SpatialVectorGradientIntegrator'],['../classsparseHeat_1_1SpatialVectorGradientIntegrator.html',1,'sparseHeat::SpatialVectorGradientIntegrator']]],
+  ['spatialvectormassintegrator_434',['SpatialVectorMassIntegrator',['../classsparseHeat_1_1SpatialVectorMassIntegrator.html',1,'sparseHeat']]],
+  ['spatialvectorstiffnessintegrator_435',['SpatialVectorStiffnessIntegrator',['../classheat_1_1SpatialVectorStiffnessIntegrator.html',1,'heat::SpatialVectorStiffnessIntegrator'],['../classsparseHeat_1_1SpatialVectorStiffnessIntegrator.html',1,'sparseHeat::SpatialVectorStiffnessIntegrator']]]
 ];

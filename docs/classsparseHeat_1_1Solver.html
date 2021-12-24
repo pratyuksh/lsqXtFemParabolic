@@ -81,10 +81,8 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a39a95620341cf0d5ffe4dbfd95396653"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsparseHeat_1_1Solver.html#a39a95620341cf0d5ffe4dbfd95396653">Solver</a> (const nlohmann::json &amp;config, std::shared_ptr&lt; <a class="el" href="classheat_1_1TestCases.html">heat::TestCases</a> &gt; &amp;testCase, std::string meshDir, const int numLevels, const int minSpatialLevel, const int minTemporalLevel, const bool loadInitMesh=false)</td></tr>
-<tr class="memdesc:a39a95620341cf0d5ffe4dbfd95396653"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with config JSON, test case and space-time mesh info.  <a href="classsparseHeat_1_1Solver.html#a39a95620341cf0d5ffe4dbfd95396653">More...</a><br /></td></tr>
 <tr class="separator:a39a95620341cf0d5ffe4dbfd95396653"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6bcfa6d522c40da50e4b4f55805b0922"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsparseHeat_1_1Solver.html#a6bcfa6d522c40da50e4b4f55805b0922">~ Solver</a> ()</td></tr>
-<tr class="memdesc:a6bcfa6d522c40da50e4b4f55805b0922"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="classsparseHeat_1_1Solver.html#a6bcfa6d522c40da50e4b4f55805b0922">More...</a><br /></td></tr>
 <tr class="separator:a6bcfa6d522c40da50e4b4f55805b0922"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaddf3d5a20a803f6c6d9b815d7e4f9eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsparseHeat_1_1Solver.html#aaddf3d5a20a803f6c6d9b815d7e4f9eb">setConfigParams</a> ()</td></tr>
 <tr class="separator:aaddf3d5a20a803f6c6d9b815d7e4f9eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -93,8 +91,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a583cfd82592d0a0c4d2f6a325a000f1b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsparseHeat_1_1Solver.html#a583cfd82592d0a0c4d2f6a325a000f1b">setDiscretisation</a> ()</td></tr>
 <tr class="separator:a583cfd82592d0a0c4d2f6a325a000f1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af45f3d201c37f68fb544fd7bd87c4757"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsparseHeat_1_1Solver.html#af45f3d201c37f68fb544fd7bd87c4757">run</a> ()</td></tr>
-<tr class="memdesc:af45f3d201c37f68fb544fd7bd87c4757"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes, assembles and then solves.  <a href="classsparseHeat_1_1Solver.html#af45f3d201c37f68fb544fd7bd87c4757">More...</a><br /></td></tr>
 <tr class="separator:af45f3d201c37f68fb544fd7bd87c4757"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab884380621b0051c98cb1e290c2ff2af"><td class="memItemLeft" align="right" valign="top">std::pair&lt; mfem::Vector, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsparseHeat_1_1Solver.html#ab884380621b0051c98cb1e290c2ff2af">runAndMeasurePerformanceMetrics</a> ()</td></tr>
+<tr class="separator:ab884380621b0051c98cb1e290c2ff2af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89a5fee7e309312eab39056f1fa40625"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsparseHeat_1_1Solver.html#a89a5fee7e309312eab39056f1fa40625">initialize</a> ()</td></tr>
 <tr class="separator:a89a5fee7e309312eab39056f1fa40625"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f1f4850d64f18bab77feb7f5cece11b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsparseHeat_1_1Solver.html#a2f1f4850d64f18bab77feb7f5cece11b">assembleSystem</a> ()</td></tr>
@@ -103,8 +102,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:afc6497d5bc3e04462027b582788b6b3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a374ae9db13a4caa1d44170dd7e90c72a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsparseHeat_1_1Solver.html#a374ae9db13a4caa1d44170dd7e90c72a">solve</a> ()</td></tr>
 <tr class="separator:a374ae9db13a4caa1d44170dd7e90c72a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64876d3f68673875a1415641dcfe26df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsparseHeat_1_1Solver.html#a64876d3f68673875a1415641dcfe26df">solve</a> (const mfem::Vector &amp;, mfem::Vector &amp;)</td></tr>
-<tr class="separator:a64876d3f68673875a1415641dcfe26df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b558eefc1a74d0e1f7201b83421c681"><td class="memItemLeft" align="right" valign="top">std::pair&lt; double, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsparseHeat_1_1Solver.html#a4b558eefc1a74d0e1f7201b83421c681">solveAndMeasurePerformanceMetrics</a> ()</td></tr>
+<tr class="separator:a4b558eefc1a74d0e1f7201b83421c681"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a857c8659ddea50b6d2ea45ac27b7ad5b"><td class="memItemLeft" align="right" valign="top">std::pair&lt; double, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsparseHeat_1_1Solver.html#a857c8659ddea50b6d2ea45ac27b7ad5b">solve</a> (const mfem::Vector &amp;, mfem::Vector &amp;)</td></tr>
+<tr class="separator:a857c8659ddea50b6d2ea45ac27b7ad5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04881e00a5f1e9dc25435122bac7c0ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsparseHeat_1_1Solver.html#a04881e00a5f1e9dc25435122bac7c0ac">setPardisoSolver</a> ()</td></tr>
 <tr class="separator:a04881e00a5f1e9dc25435122bac7c0ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a5918d2162e9b2bd883872be5df2fc8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsparseHeat_1_1Solver.html#a9a5918d2162e9b2bd883872be5df2fc8">finalizePardisoSolver</a> ()</td></tr>
@@ -183,9 +184,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructor with config JSON, test case and space-time mesh info. </p>
-
-<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00010">10</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00011">11</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -203,8 +202,6 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Default constructor. </p>
 
 </div>
 </div>
@@ -224,7 +221,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00180">180</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00212">212</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -243,7 +240,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00165">165</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00196">196</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -262,7 +259,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00233">233</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00302">302</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -289,7 +286,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8hpp_source.html#l00068">68</a> of file <a class="el" href="sparse__heat_2solver_8hpp_source.html">sparse_heat/solver.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8hpp_source.html#l00067">67</a> of file <a class="el" href="sparse__heat_2solver_8hpp_source.html">sparse_heat/solver.hpp</a>.</p>
 
 </div>
 </div>
@@ -308,7 +305,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00243">243</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00312">312</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -327,7 +324,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00238">238</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00307">307</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -354,7 +351,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8hpp_source.html#l00059">59</a> of file <a class="el" href="sparse__heat_2solver_8hpp_source.html">sparse_heat/solver.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8hpp_source.html#l00058">58</a> of file <a class="el" href="sparse__heat_2solver_8hpp_source.html">sparse_heat/solver.hpp</a>.</p>
 
 </div>
 </div>
@@ -381,7 +378,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8hpp_source.html#l00072">72</a> of file <a class="el" href="sparse__heat_2solver_8hpp_source.html">sparse_heat/solver.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8hpp_source.html#l00071">71</a> of file <a class="el" href="sparse__heat_2solver_8hpp_source.html">sparse_heat/solver.hpp</a>.</p>
 
 </div>
 </div>
@@ -408,7 +405,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8hpp_source.html#l00064">64</a> of file <a class="el" href="sparse__heat_2solver_8hpp_source.html">sparse_heat/solver.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8hpp_source.html#l00063">63</a> of file <a class="el" href="sparse__heat_2solver_8hpp_source.html">sparse_heat/solver.hpp</a>.</p>
 
 </div>
 </div>
@@ -427,7 +424,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00143">143</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00174">174</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -446,9 +443,26 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initializes, assembles and then solves. </p>
+<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00129">129</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00134">134</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
+</div>
+</div>
+<a id="ab884380621b0051c98cb1e290c2ff2af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab884380621b0051c98cb1e290c2ff2af">&#9670;&nbsp;</a></span>runAndMeasurePerformanceMetrics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt; Vector, int &gt; sparseHeat::Solver::runAndMeasurePerformanceMetrics </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00138">138</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -467,7 +481,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00037">37</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00038">38</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -486,7 +500,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00112">112</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00108">108</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -505,7 +519,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00058">58</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00054">54</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -524,7 +538,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00223">223</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00292">292</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -543,18 +557,18 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00187">187</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00219">219</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a64876d3f68673875a1415641dcfe26df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64876d3f68673875a1415641dcfe26df">&#9670;&nbsp;</a></span>solve() <span class="overload">[2/2]</span></h2>
+<a id="a857c8659ddea50b6d2ea45ac27b7ad5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a857c8659ddea50b6d2ea45ac27b7ad5b">&#9670;&nbsp;</a></span>solve() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sparseHeat::Solver::solve </td>
+          <td class="memname">std::pair&lt;double, int&gt; sparseHeat::Solver::solve </td>
           <td>(</td>
           <td class="paramtype">const mfem::Vector &amp;&#160;</td>
           <td class="paramname">, </td>
@@ -572,6 +586,25 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4b558eefc1a74d0e1f7201b83421c681"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b558eefc1a74d0e1f7201b83421c681">&#9670;&nbsp;</a></span>solveAndMeasurePerformanceMetrics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt; double, int &gt; sparseHeat::Solver::solveAndMeasurePerformanceMetrics </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sparse__heat_2solver_8cpp_source.html#l00232">232</a> of file <a class="el" href="sparse__heat_2solver_8cpp_source.html">sparse_heat/solver.cpp</a>.</p>
 
 </div>
 </div>

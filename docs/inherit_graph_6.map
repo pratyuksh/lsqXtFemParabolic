@@ -1,3 +1,9 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classheat_1_1QoIXtFunctional.html" title="Quantity of interest xt&#45;functional; (x^a, fluxQ)" alt="" coords="5,5,155,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,163,156,189"/>
+<area shape="rect" id="node2" href="$classheat_1_1SpatialStiffnessIntegrator.html" title="Stiffness Integrator in space; (Q grad(u), Q grad(v))" alt="" coords="209,5,411,32"/>
+<area shape="rect" id="node3" href="$classheat_1_1SpatialVectorFEGradientIntegrator.html" title="VectorFE Gradient Integrator in space; (grad(u), v) Uses, for example, Raviart&#45;Thomas spaces." alt="" coords="211,57,409,98"/>
+<area shape="rect" id="node4" href="$classheat_1_1SpatialVectorFEStiffnessIntegrator.html" title="VectorFE Stiffness Integrator in space; (div(u), div(v)) Uses, for example, Raviart&#45;Thomas spaces." alt="" coords="209,122,411,163"/>
+<area shape="rect" id="node5" href="$classheat_1_1SpatialVectorGradientIntegrator.html" title="Vector Gradient Integrator in space; (grad(u), v)" alt="" coords="219,187,401,229"/>
+<area shape="rect" id="node6" href="$classheat_1_1SpatialVectorStiffnessIntegrator.html" title="Vector Stiffness Integrator in space; (div(u), div(v))" alt="" coords="217,253,403,294"/>
+<area shape="rect" id="node7" href="$classheat_1_1TemporalGradientIntegrator.html" title="Gradient Integrator in time; (du/dt, v)" alt="" coords="204,319,416,345"/>
 </map>

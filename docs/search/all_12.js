@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['unitcubetest1_381',['UnitCubeTest1',['../test__cases_8hpp.html#a06fc87d81c62e9abb8790b6e5713c55baa343c5582172d4c596d8ce91e9c94aec',1,'test_cases.hpp']]],
-  ['unitsquaretest1_382',['UnitSquareTest1',['../test__cases_8hpp.html#a06fc87d81c62e9abb8790b6e5713c55baa66ed0e2b4eeefab8cce69e07880ba72',1,'test_cases.hpp']]],
-  ['unitsquaretest2_383',['UnitSquareTest2',['../test__cases_8hpp.html#a06fc87d81c62e9abb8790b6e5713c55baa4c7186e35fdef91d8819f0626e72f40',1,'test_cases.hpp']]],
-  ['unitsquaretest3_384',['UnitSquareTest3',['../test__cases_8hpp.html#a06fc87d81c62e9abb8790b6e5713c55ba33f08ae62cab22b393459a8a2877594b',1,'test_cases.hpp']]],
-  ['unitsquaretest4_385',['UnitSquareTest4',['../test__cases_8hpp.html#a06fc87d81c62e9abb8790b6e5713c55ba9093d1c7be075cfce76daa5b20b0df21',1,'test_cases.hpp']]]
+  ['visualize_382',['visualize',['../classmymfem_1_1BaseObserver.html#adbe813805d90911e018c75a47f00681a',1,'mymfem::BaseObserver::visualize(std::shared_ptr&lt; mfem::GridFunction &gt; &amp;u) const'],['../classmymfem_1_1BaseObserver.html#aa0c0495c20fd10a99993e50c55cfa6a4',1,'mymfem::BaseObserver::visualize(mfem::GridFunction &amp;) const']]],
+  ['visualizesolutionatendtime_383',['visualizeSolutionAtEndTime',['../classheat_1_1Observer.html#a6666b5d6db770e959c1772e94af1d39b',1,'heat::Observer::visualizeSolutionAtEndTime()'],['../classsparseHeat_1_1Observer.html#a0f4ecdbd2c8b3112181e9361492a2020',1,'sparseHeat::Observer::visualizeSolutionAtEndTime()']]]
 ];

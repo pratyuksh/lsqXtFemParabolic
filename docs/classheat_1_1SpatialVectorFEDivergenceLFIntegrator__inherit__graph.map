@@ -1,4 +1,4 @@
 <map id="heat::SpatialVectorFEDivergenceLFIntegrator" name="heat::SpatialVectorFEDivergenceLFIntegrator">
 <area shape="rect" id="node1" title="VectorFE Divergence LF Integrator in space; (f, div(v)) Uses, for example, Raviart&#45;Thomas spaces." alt="" coords="5,80,221,121"/>
-<area shape="rect" id="node2" title=" " alt="" coords="42,5,185,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="22,5,205,32"/>
 </map>

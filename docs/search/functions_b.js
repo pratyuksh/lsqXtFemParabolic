@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['nestedfehierarchy_680',['NestedFEHierarchy',['../structmymfem_1_1NestedFEHierarchy.html#a6baad3f4e33ba3afec7fe75f512c82b3',1,'mymfem::NestedFEHierarchy']]],
-  ['nestedmeshhierarchy_681',['NestedMeshHierarchy',['../structmymfem_1_1NestedMeshHierarchy.html#a22da0e6287f9592a25db2312561ebc34',1,'mymfem::NestedMeshHierarchy']]]
+  ['nestedfehierarchy_668',['NestedFEHierarchy',['../structmymfem_1_1NestedFEHierarchy.html#a6baad3f4e33ba3afec7fe75f512c82b3',1,'mymfem::NestedFEHierarchy']]],
+  ['nestedmeshhierarchy_669',['NestedMeshHierarchy',['../structmymfem_1_1NestedMeshHierarchy.html#a22da0e6287f9592a25db2312561ebc34',1,'mymfem::NestedMeshHierarchy']]]
 ];

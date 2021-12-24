@@ -1,9 +1,13 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="5,163,156,189"/>
-<area shape="rect" id="node2" href="$classheat_1_1SpatialStiffnessIntegrator.html" title="Stiffness Integrator in space; (Q grad(u), Q grad(v))" alt="" coords="209,5,411,32"/>
-<area shape="rect" id="node3" href="$classheat_1_1SpatialVectorFEGradientIntegrator.html" title="VectorFE Gradient Integrator in space; (grad(u), v) Uses, for example, Raviart&#45;Thomas spaces." alt="" coords="211,57,409,98"/>
-<area shape="rect" id="node4" href="$classheat_1_1SpatialVectorFEStiffnessIntegrator.html" title="VectorFE Stiffness Integrator in space; (div(u), div(v)) Uses, for example, Raviart&#45;Thomas spaces." alt="" coords="209,122,411,163"/>
-<area shape="rect" id="node5" href="$classheat_1_1SpatialVectorGradientIntegrator.html" title="Vector Gradient Integrator in space; (grad(u), v)" alt="" coords="219,187,401,229"/>
-<area shape="rect" id="node6" href="$classheat_1_1SpatialVectorStiffnessIntegrator.html" title="Vector Stiffness Integrator in space; (div(u), div(v))" alt="" coords="217,253,403,294"/>
-<area shape="rect" id="node7" href="$classheat_1_1TemporalGradientIntegrator.html" title="Gradient Integrator in time; (du/dt, v)" alt="" coords="204,319,416,345"/>
+<area shape="rect" id="node1" href="$classheat_1_1TestCases.html" title="Abstract Base class for test cases of the heat equation." alt="" coords="5,249,124,276"/>
+<area shape="rect" id="node2" href="$classheat_1_1TestCase_3_01Dummy_01_4.html" title=" " alt="" coords="191,5,372,32"/>
+<area shape="rect" id="node3" href="$classheat_1_1TestCase_3_01LShapedTest1_01_4.html" title=" " alt="" coords="172,56,391,83"/>
+<area shape="rect" id="node4" href="$classheat_1_1TestCase_3_01LShapedTest2_01_4.html" title=" " alt="" coords="172,107,391,133"/>
+<area shape="rect" id="node5" href="$classheat_1_1TestCase_3_01LShapedTest3_01_4.html" title=" " alt="" coords="172,157,391,184"/>
+<area shape="rect" id="node6" href="$classheat_1_1TestCase_3_01PeriodicUnitSquareTest1_01_4.html" title=" " alt="" coords="196,209,367,250"/>
+<area shape="rect" id="node7" href="$classheat_1_1TestCase_3_01UnitCubeTest1_01_4.html" title=" " alt="" coords="192,274,371,315"/>
+<area shape="rect" id="node8" href="$classheat_1_1TestCase_3_01UnitSquareTest1_01_4.html" title=" " alt="" coords="187,339,375,381"/>
+<area shape="rect" id="node9" href="$classheat_1_1TestCase_3_01UnitSquareTest2_01_4.html" title=" " alt="" coords="187,405,375,446"/>
+<area shape="rect" id="node10" href="$classheat_1_1TestCase_3_01UnitSquareTest3_01_4.html" title=" " alt="" coords="187,470,375,511"/>
+<area shape="rect" id="node11" href="$classheat_1_1TestCase_3_01UnitSquareTest4_01_4.html" title=" " alt="" coords="187,535,375,577"/>
 </map>
