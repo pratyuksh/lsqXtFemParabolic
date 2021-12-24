@@ -40,9 +40,9 @@ if (($ENV{USER} MATCHES "pratyuksh"))
     endif (CMAKE_BUILD_TYPE STREQUAL "Release")
     
     # MPI libraries
-    set(MPI_INC_DIR "/usr/include/openmpi/")
-    set(MPI_C_LIB "/usr/lib/openmpi/lib/libmpi.so")
-    set(MPI_CXX_LIB "/usr/lib/openmpi/lib/libmpi_cxx.so")
+    # set(MPI_INC_DIR "/usr/include/openmpi/")
+    # set(MPI_C_LIB "/usr/lib/openmpi/lib/libmpi.so")
+    # set(MPI_CXX_LIB "/usr/lib/openmpi/lib/libmpi_cxx.so")
 
     # external libraries
     set(PROJECT_LIB_DIR "$ENV{HOME}/Documents/softwares")
@@ -74,7 +74,7 @@ elseif (($ENV{USER} MATCHES "prbansal"))
     MESSAGE(    "\tBuild on Euler cluster\t")
     MESSAGE(    "\t----------------------\t\n\n")
     
-    option(USE_LIB_PARDISO "Use Pardiso library" OFF)
+    option(USE_LIB_PARDISO "Use Pardiso library" ON)
     
     # Manage dependencies
     include ("cmake/GetGTest_euler.cmake")
@@ -97,9 +97,9 @@ elseif (($ENV{USER} MATCHES "prbansal"))
     endif (CMAKE_BUILD_TYPE STREQUAL "Release")
     
     # MPI libraries
-    set(MPI_INC_DIR "/cluster/apps/gcc-8.2.0/openmpi-4.0.2-vvr7fdofwljfy4qgkkhao36r5qx44hni/include")
-    set(MPI_C_LIB "/cluster/apps/gcc-8.2.0/openmpi-4.0.2-vvr7fdofwljfy4qgkkhao36r5qx44hni/lib/libmpi.so")
-    set(MPI_CXX_LIB "/cluster/apps/gcc-8.2.0/openmpi-4.0.2-vvr7fdofwljfy4qgkkhao36r5qx44hni/lib/libmpi_cxx.so")
+    # set(MPI_INC_DIR "/cluster/apps/gcc-8.2.0/openmpi-4.0.2-vvr7fdofwljfy4qgkkhao36r5qx44hni/include")
+    # set(MPI_C_LIB "/cluster/apps/gcc-8.2.0/openmpi-4.0.2-vvr7fdofwljfy4qgkkhao36r5qx44hni/lib/libmpi.so")
+    # set(MPI_CXX_LIB "/cluster/apps/gcc-8.2.0/openmpi-4.0.2-vvr7fdofwljfy4qgkkhao36r5qx44hni/lib/libmpi_cxx.so")
     
     # external libraries
     set(PROJECT_LIB_DIR "$ENV{HOME}/Documents/libraries")
@@ -130,10 +130,10 @@ elseif (($ENV{USER} MATCHES "prbansal"))
 
 endif()
 
-message ("\nMPI Libraries:")
-MESSAGE(${MPI_INC_DIR})
-MESSAGE(${MPI_C_LIB})
-MESSAGE(${MPI_CXX_LIB})
+# message ("\nMPI Libraries:")
+# message (${MPI_INC_DIR})
+# message (${MPI_C_LIB})
+# message (${MPI_CXX_LIB})
 
 message ("\nInclude directories:")
 message ("MFEM_DIR: " ${MFEM_DIR})
@@ -141,8 +141,10 @@ message ("MFEM_DIR: " ${MFEM_DIR})
 message ("\nLink libraries:")
 message ("MFEM_LIB_DIR: " ${MFEM_LIB_DIR})
 
-include_directories(${MPI_INC_DIR}
-                    ${MFEM_DIR}
+# include_directories(${MPI_INC_DIR}
+#                     ${MFEM_DIR}
+#                     ${EIGEN_INC_DIR})
+include_directories(${MFEM_DIR}
                     ${EIGEN_INC_DIR})
 
 link_directories(${MFEM_LIB_DIR})
