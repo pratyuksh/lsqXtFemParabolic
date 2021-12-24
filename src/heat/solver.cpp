@@ -150,13 +150,40 @@ void heat::Solver
     solve ();
 }
 
-std::pair<double, int> heat::Solver
+std::pair<Vector, int> heat::Solver
 :: runAndMeasurePerformanceMetrics()
 {
+    Vector elapsedTime(4);
+
+    auto start = std::chrono::high_resolution_clock::now();
     initialize ();
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast
+            <std::chrono::milliseconds>(end - start);
+    elapsedTime(0)
+            = (static_cast<double>(duration.count()))/1000;
+
+    start = std::chrono::high_resolution_clock::now();
     assembleSystem();
+    end = std::chrono::high_resolution_clock::now();
+    duration = std::chrono::duration_cast
+                <std::chrono::milliseconds>(end - start);
+    elapsedTime(1)
+                = (static_cast<double>(duration.count()))/1000;
+
+    start = std::chrono::high_resolution_clock::now();
     assembleRhs();
-    return solveAndMeasurePerformanceMetrics();
+    end = std::chrono::high_resolution_clock::now();
+    duration = std::chrono::duration_cast
+                <std::chrono::milliseconds>(end - start);
+    elapsedTime(2)
+                = (static_cast<double>(duration.count()))/1000;
+
+    int memoryUsage;
+    std::tie(elapsedTime(3), memoryUsage)
+            = solveAndMeasurePerformanceMetrics();
+
+    return {elapsedTime, memoryUsage};
 }
 
 void heat::Solver
@@ -245,14 +272,21 @@ std::pair<double, int> heat::Solver
     }
     else if (m_linearSolver == "cg")
     {
-        int verbose = m_config["cg_verbose"];
-        int maxIter = m_config["cg_maxIter"];
-        double relTol = m_config["cg_relTol"];
-        double absTol = m_config["cg_absTol"];
+        int verbose, maxIters;
+        double absTol, relTol;
+
+        READ_CONFIG_PARAM_OR_SET_TO_DEFAULT
+                (m_config, "cg_verbose", verbose, 0);
+        READ_CONFIG_PARAM_OR_SET_TO_DEFAULT
+                (m_config, "cg_max_iterations", maxIters, 1000);
+        READ_CONFIG_PARAM_OR_SET_TO_DEFAULT
+                (m_config, "cg_absolute_tolerance", absTol, 0);
+        READ_CONFIG_PARAM_OR_SET_TO_DEFAULT
+                (m_config, "cg_relative_tolerance", relTol, 1E-8);
 
         auto M = new GSSmoother(*m_systemMat);
         u = 0.;
-        PCG(*m_systemMat, *M, rhs, u, verbose, maxIter, relTol, absTol);
+        PCG(*m_systemMat, *M, rhs, u, verbose, maxIters, relTol, absTol);
         delete M;
     }
     auto end = std::chrono::high_resolution_clock::now();

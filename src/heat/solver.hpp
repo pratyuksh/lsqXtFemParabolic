@@ -46,7 +46,7 @@ public:
     void setPerturbation(double);
 
     void run();
-    std::pair<double, int> runAndMeasurePerformanceMetrics();
+    std::pair<mfem::Vector, int> runAndMeasurePerformanceMetrics();
 
     void initialize ();
 

@@ -37,7 +37,7 @@ public:
     void setDiscretisation();
 
     void run();
-    std::pair<double, int> runAndMeasurePerformanceMetrics();
+    std::pair<mfem::Vector, int> runAndMeasurePerformanceMetrics();
 
     void initialize();
 

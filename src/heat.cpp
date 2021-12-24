@@ -18,34 +18,32 @@ void writeErrorConvergenceDataToJsonFile
  Array<double> &meshSizes,
  Array<Vector> &solutionError)
 {
-    assert(numDofs.Size() == meshSizes.Size());
+    std::string problemType;
+    std::string baseOutDir, subOutDir;
 
-    std::string problemType = config["problem_type"];
+    int deg;
+    std::string discrType, errorType;
 
-    std::string baseOutDir = "../output";
-    if (config.contains("base_out_dir")) {
-        baseOutDir = config["base_out_dir"];
-    }
+    READ_CONFIG_PARAM(config, "problem_type", problemType);
 
-    std::string subOutDir = "heat/"+problemType;
-    if (config.contains("sub_out_dir")) {
-        subOutDir = config["sub_out_dir"];
-    }
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config,
+                                        "base_out_dir",
+                                        baseOutDir,
+                                        "../output");
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config,
+                                        "sub_out_dir",
+                                        subOutDir,
+                                        "heat/"+problemType);
+
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "deg", deg, 1);
+
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "discretisation_type",
+                                        discrType, "H1Hdiv");
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "error_type",
+                                        errorType, "natural");
 
     std::string outDir = baseOutDir+"/"+subOutDir+"/";
     fs::create_directories(outDir);
-
-    int deg = config["deg"];
-
-    std::string discrType = "H1Hdiv";
-    if (config.contains("discretisation_type")) {
-        discrType = config["discretisation_type"];
-    }
-
-    std::string errorType = "natural";
-    if (config.contains("error_type")) {
-        errorType = config["error_type"];
-    }
 
     std::string outfile = outDir+"convgError"
             +"_"+discrType
@@ -87,37 +85,38 @@ void writePerformanceMetricsDataToJsonFile
 (const nlohmann::json& config,
  Array<int> &numDofs,
  Array<double> &meshSizes,
- Array<double> &elapsedTime,
+ Array<Vector> &elapsedTime,
  Array<int> &memoryUsage)
 {
     assert(numDofs.Size() == meshSizes.Size());
+    assert(elapsedTime[0].Size() == 4);
 
-    std::string problemType = config["problem_type"];
+    std::string problemType;
+    std::string baseOutDir, subOutDir;
 
-    std::string baseOutDir = "../output";
-    if (config.contains("base_out_dir")) {
-        baseOutDir = config["base_out_dir"];
-    }
+    int deg;
+    std::string discrType, errorType;
 
-    std::string subOutDir = "heat/"+problemType;
-    if (config.contains("sub_out_dir")) {
-        subOutDir = config["sub_out_dir"];
-    }
+    READ_CONFIG_PARAM(config, "problem_type", problemType);
+
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config,
+                                        "base_out_dir",
+                                        baseOutDir,
+                                        "../output");
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config,
+                                        "sub_out_dir",
+                                        subOutDir,
+                                        "heat/"+problemType);
+
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "deg", deg, 1);
+
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "discretisation_type",
+                                        discrType, "H1Hdiv");
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "error_type",
+                                        errorType, "natural");
 
     std::string outDir = baseOutDir+"/"+subOutDir+"/";
     fs::create_directories(outDir);
-
-    int deg = config["deg"];
-
-    std::string discrType = "H1Hdiv";
-    if (config.contains("discretisation_type")) {
-        discrType = config["discretisation_type"];
-    }
-
-    std::string errorType = "natural";
-    if (config.contains("error_type")) {
-        errorType = config["error_type"];
-    }
 
     std::string outfile = outDir+"metrics"
             +"_"+discrType
@@ -131,7 +130,12 @@ void writePerformanceMetricsDataToJsonFile
     for (int i=0; i<numDofs.Size(); i++) {
         json["ndofs"][i] = numDofs[i];
         json["h_max"][i] = meshSizes[i];
-        json["elapsed_time"][i] = elapsedTime[i];
+
+        json["elapsed_time_for_initialization"][i] = elapsedTime[i].Elem(0);
+        json["elapsed_time_for_system_assembly"][i] = elapsedTime[i].Elem(1);
+        json["elapsed_time_for_rhs_assembly"][i] = elapsedTime[i].Elem(2);
+        json["elapsed_time_for_linear_solve"][i] = elapsedTime[i].Elem(3);
+
         json["memory_usage"][i] = memoryUsage[i];
     }
 
@@ -163,10 +167,10 @@ runSolver(heat::Solver& solver,
     return {solver.getNumDofs(), htMax, hxMax, solutionError};
 }
 
-std::tuple<int, double, double, double, int>
+std::tuple<int, double, double, Vector, int>
 runSolverAndMeasurePerformanceMetrics(heat::Solver& solver)
 {
-    double elapsedTime;
+    Vector elapsedTime;
     int memoryUsage;
     std::tie(elapsedTime, memoryUsage)
             = solver.runAndMeasurePerformanceMetrics();
@@ -182,10 +186,13 @@ void runOneSimulation (const nlohmann::json config,
                        std::string baseMeshDir,
                        bool loadInitMesh=false)
 {
-    const int temporalLevel = config["level_t"];
-    const int spatialLevel = config["level_x"];
-    std::string subMeshDir = config["mesh_dir"];
-    const std::string meshDir = baseMeshDir+subMeshDir;
+    int temporalLevel, spatialLevel;
+    std::string subMeshDir;
+
+    READ_CONFIG_PARAM(config, "temporal_level", temporalLevel);
+    READ_CONFIG_PARAM(config, "spatial_level", spatialLevel);
+    READ_CONFIG_PARAM(config, "mesh_dir", subMeshDir);
+    std::string meshDir = baseMeshDir+subMeshDir;
 
     auto testCase = heat::makeTestCase(config);
 
@@ -216,10 +223,13 @@ void runMultipleSimulationsToTestConvergence (const nlohmann::json config,
                                               std::string baseMeshDir,
                                               bool loadInitMesh=false)
 {
-    int minTemporalLevel = config["min_level_t"];
-    int minSpatialLevel = config["min_level_x"];
-    int maxSpatialLevel = config["max_level_x"];
-    std::string subMeshDir = config["mesh_dir"];
+    int minTemporalLevel, minSpatialLevel, maxSpatialLevel;
+    std::string subMeshDir;
+
+    READ_CONFIG_PARAM(config, "min_temporal_level", minTemporalLevel);
+    READ_CONFIG_PARAM(config, "min_spatial_level", minSpatialLevel);
+    READ_CONFIG_PARAM(config, "max_spatial_level", maxSpatialLevel);
+    READ_CONFIG_PARAM(config, "mesh_dir", subMeshDir);
     std::string meshDir = baseMeshDir+subMeshDir;
 
     auto testCase = heat::makeTestCase(config);
@@ -276,23 +286,24 @@ void runMultipleSimulationsToMeasurePerformanceMetrics
  std::string baseMeshDir,
  bool loadInitMesh=false)
 {
-    int minTemporalLevel = config["min_level_t"];
-    int minSpatialLevel = config["min_level_x"];
-    int maxSpatialLevel = config["max_level_x"];
-    std::string subMeshDir = config["mesh_dir"];
-    std::string meshDir = baseMeshDir+subMeshDir;
+    int minTemporalLevel, minSpatialLevel, maxSpatialLevel;
+    std::string subMeshDir;
+    int numReps;
 
-    int numReps = 6;
-    if (config.contains("num_repetitions")) {
-        numReps = config["num_repetitions"];
-    }
+    READ_CONFIG_PARAM(config, "min_temporal_level", minTemporalLevel);
+    READ_CONFIG_PARAM(config, "min_spatial_level", minSpatialLevel);
+    READ_CONFIG_PARAM(config, "max_spatial_level", maxSpatialLevel);
+    READ_CONFIG_PARAM(config, "mesh_dir", subMeshDir);
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT
+            (config, "num_repetitions", numReps, 6);
+    std::string meshDir = baseMeshDir+subMeshDir;
 
     auto testCase = heat::makeTestCase(config);
 
     int numLevels = maxSpatialLevel-minSpatialLevel+1;
     Array<double> hMax(numLevels);
     Array<int> numDofs(numLevels);
-    Array<double> elapsedTime(numLevels);
+    Array<Vector> elapsedTime(numLevels);
     Array<int> memoryUsage(numLevels);
 
     double htMax=1, hxMax=1;
@@ -301,8 +312,7 @@ void runMultipleSimulationsToMeasurePerformanceMetrics
         int temporalLevel = minTemporalLevel+k;
         int spatialLevel = minSpatialLevel+k;
 
-        double localElapsedTime;
-        elapsedTime[k] = 0;
+        Vector localElapsedTime;
         for (int i=0; i<numReps; i++)
         {
             heat::Solver solver (config,
@@ -315,7 +325,11 @@ void runMultipleSimulationsToMeasurePerformanceMetrics
             std::tie (numDofs[k], htMax, hxMax,
                       localElapsedTime, memoryUsage[k])
                     = runSolverAndMeasurePerformanceMetrics(solver);
-            if (i > 0) {
+            if (i == 0) {
+                elapsedTime[k].SetSize(localElapsedTime.Size());
+                elapsedTime[k] = 0.;
+            }
+            else {
                 elapsedTime[k] += localElapsedTime;
             }
         }
@@ -327,13 +341,16 @@ void runMultipleSimulationsToMeasurePerformanceMetrics
         std::cout << "tMesh size: " << htMax << std::endl;
         std::cout << "xMesh size: " << hxMax << std::endl;
         std::cout << "#Dofs: " << numDofs[k] << std::endl;
-        std::cout << "Elapsed time: " << elapsedTime[k] << std::endl;
+        std::cout << "Elapsed time: ";
+        elapsedTime[k].Print();
         std::cout << "Memory usage: " << memoryUsage[k] << std::endl;
 
         hMax[k] = (hxMax >= htMax ? hxMax : htMax);
     }
-    std::cout << "\n\nElapsed time:\n";
-    elapsedTime.Print();
+    std::cout << "Elapsed time:\n";
+    for (int i=0; i<numLevels; i++) {
+        elapsedTime[i].Print();
+    }
     std::cout << "\nMemory usage:\n";
     memoryUsage.Print();
     std::cout << "\n#Dofs:\n";
@@ -346,21 +363,21 @@ void runMultipleSimulationsToMeasurePerformanceMetrics
 
 int main(int argc, char *argv[])
 {   
-    // Read config json
     auto config = getGlobalConfig(argc, argv);
-    const std::string host = config["host"];
-    const std::string run = config["run"];
+
+    std::string host, run;
+    bool loadInitMesh;
+
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "host", host, "local");
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "run", run, "simulation");
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT
+            (config, "load_init_mesh", loadInitMesh, false);
+
     std::string baseMeshDir;
-
-    // check if an initial mesh needs to be loaded
-    bool loadInitMesh = false;
-    if (config.contains("load_init_mesh")) {
-        loadInitMesh = config["load_init_mesh"];
-    }
-
     if (loadInitMesh) {
         baseMeshDir.assign("../meshes/");
-    } else {
+    }
+    else {
         if (host == "local") {
             baseMeshDir.assign(localBaseMeshDir);
         }

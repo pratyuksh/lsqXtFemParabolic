@@ -3,6 +3,32 @@
 
 #include <nlohmann/json.hpp>
 
+#define READ_CONFIG_PARAM(config, key, param) \
+    {                                         \
+        if (config.contains(key)) {           \
+            param = config[key];              \
+        }                                     \
+        else {                                \
+            std::cout << "Key not found: "    \
+                      << key << std::endl;    \
+            abort();                          \
+        }                                     \
+    }
+
+#define READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config,         \
+                                            key,            \
+                                            param,          \
+                                            defaultValue)   \
+    {                                                       \
+        if (config.contains(key)) {                         \
+            param = config[key];                            \
+        }                                                   \
+        else {                                              \
+            param = defaultValue;                           \
+        }                                                   \
+    }
+
+
 /**
  * @brief Generates a JSON config object.
  * @param argc number of arguments
