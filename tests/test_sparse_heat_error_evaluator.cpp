@@ -38,22 +38,17 @@ TEST(SparseHeatObserver, evalErrorUnitSquareTest3)
     auto config = getGlobalConfig(configFile);
     auto testCase = heat::makeTestCase(config);
 
-    int deg = config["deg"];
-    ASSERT_EQ(deg, 1);
+    int deg;
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "deg", deg, 1);
+    assert(deg == 1);
 
-    int numLevels = 1;
-    if (config.contains("num_levels")) {
-        numLevels = config["num_levels"];
-    }
-    int minSpatialLevel = 1;
-    if (config.contains("min_spatial_level")) {
-        minSpatialLevel = config["min_spatial_level"];
-    }
-
-    int minTemporalLevel = 1;
-    if (config.contains("min_temporal_level")) {
-        minTemporalLevel = config["min_temporal_level"];
-    }
+    int numLevels, minSpatialLevel, minTemporalLevel;
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "num_levels",
+                                        numLevels, 1);
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "min_spatial_level",
+                                        minSpatialLevel, 1);
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "min_temporal_level",
+                                        minTemporalLevel, 1);
 
     std::string meshDir = "../tests/input/sparse_heat_observer";
     bool loadInitMesh = true;

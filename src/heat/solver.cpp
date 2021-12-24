@@ -39,46 +39,28 @@ heat::Solver :: ~ Solver () {}
 void heat::Solver
 :: setConfigParams()
 {
-    m_endTime = m_config["end_time"];
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(m_config, "end_time",
+                                        m_endTime, 1);
 
-    m_meshElemType = "tri";
-    if (m_config.contains("mesh_elem_type")) {
-        m_meshElemType = m_config["mesh_elem_type"];
-    }
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(m_config, "mesh_elem_type",
+                                        m_meshElemType, "tri");
 
-    m_initSpatialLevel = 0;
-    if (m_loadInitMesh) {
-        if (m_config.contains("init_mesh_level")) {
-            m_initSpatialLevel = m_config["init_mesh_level"];
-        }
-    }
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(m_config, "init_mesh_level",
+                                        m_initSpatialLevel, 0);
 
-    m_discType = "H1Hdiv";
-    if (m_config.contains("discretisation_type")) {
-        m_discType = m_config["discretisation_type"];
-    }
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(m_config, "discretisation_type",
+                                        m_discType, "H1Hdiv");
 
-    m_linearSolver = "pardiso";
-    if (m_config.contains("linear_solver")) {
-        m_linearSolver = m_config["linear_solver"];
-    }
-
-    m_boolError = false;
-    if (m_config.contains("eval_error")) {
-        m_boolError = m_config["eval_error"];
-    }
-
-    m_errorType = "natural";
-    if (m_config.contains("error_type")) {
-        m_errorType = m_config["error_type"];
-    }
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(m_config, "linear_solver",
+                                        m_linearSolver, "pardiso");
 }
 
 void heat::Solver
 :: setMeshes()
 {
     // mesh in space
-    if (m_loadInitMesh) { // load initial mesh and refine
+    if (m_loadInitMesh) // load initial mesh and refine
+    {
         int numRefinements = m_spatialLevel - m_initSpatialLevel;
         const std::string meshFile
                         = m_meshDir+"/"+m_meshElemType
@@ -94,7 +76,8 @@ void heat::Solver
             m_spatialMesh->UniformRefinement();
         }
     }
-    else {
+    else
+    {
         const std::string meshFile =
                 m_meshDir+"/mesh_l"+std::to_string(m_spatialLevel)+".mesh";
 #ifndef NDEBUG

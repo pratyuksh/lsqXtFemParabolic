@@ -13,7 +13,8 @@
 namespace sparseHeat {
 
 /**
- * @brief Base class for Least-squares sparse space-time FE discretisation of the heat equation
+ * @brief Base class for Least-squares sparse space-time FE
+ * discretisation of the heat equation
  */
 class LsqSparseXtFem
 {
@@ -32,14 +33,11 @@ public:
                     const int minTemporalLevel,
                     std::shared_ptr<mymfem::NestedMeshHierarchy>&);
 
-    //! Default destructor
     virtual ~LsqSparseXtFem ();
 
-    //! Sets nested hierarchies of FE spaces and spatial boundary dofs
     void setNestedFEHierarchyAndSpatialBoundaryDofs
     (std::shared_ptr<mymfem::NestedMeshHierarchy>&);
 
-    //! Sets nested hierarchies of FE spaces
     void setNestedFEHierarchy
     (std::shared_ptr<mymfem::NestedMeshHierarchy>&);
 
@@ -49,7 +47,6 @@ public:
     virtual void setNestedFEHierarchyForHeatFlux
     (std::shared_ptr<mymfem::NestedMeshHierarchy>&) = 0;
 
-    //! Sets the spatial boundary dofs
     void setSpatialBoundaryDofs();
 
     //! Assembles the sub-matrices in the discretisation
@@ -91,16 +88,19 @@ private:
     void assembleICs(mfem::Vector& b) const;
 
     void assembleSource(std::shared_ptr<mfem::BlockVector>& B) const;
-    void assembleSourceWithTemporalGradientOfTemperatureBasis(mfem::Vector& b) const;
+    void assembleSourceWithTemporalGradientOfTemperatureBasis
+    (mfem::Vector& b) const;
     void assembleSourceWithTemporalGradientOfTemperatureBasisAtGivenTime
     (double t,
      const std::shared_ptr<mfem::FiniteElementSpace>&,
      mfem::Vector&) const;
 
-    void assembleSourceWithSpatialDivergenceOfHeatFluxBasis(mfem::Vector& b) const;
+    void assembleSourceWithSpatialDivergenceOfHeatFluxBasis
+    (mfem::Vector& b) const;
 
 protected:
-    virtual void assembleSourceWithSpatialDivergenceOfHeatFluxBasisAtGivenTime
+    virtual
+    void assembleSourceWithSpatialDivergenceOfHeatFluxBasisAtGivenTime
     (double t,
      const std::shared_ptr<mfem::FiniteElementSpace>&,
      mfem::Vector&) const = 0;
@@ -153,8 +153,10 @@ protected:
 
     int m_xDim;
     mfem::Array<mfem::FiniteElementCollection*> m_xFecs;
-    std::shared_ptr<mymfem::NestedFEHierarchy> m_spatialNestedFEHierarchyTemperature;
-    std::shared_ptr<mymfem::NestedFEHierarchy> m_spatialNestedFEHierarchyHeatFlux;
+    std::shared_ptr<mymfem::NestedFEHierarchy>
+    m_spatialNestedFEHierarchyTemperature;
+    std::shared_ptr<mymfem::NestedFEHierarchy>
+    m_spatialNestedFEHierarchyHeatFlux;
 
     mfem::Array<int> m_essentialDofs;
 
@@ -163,8 +165,10 @@ protected:
     std::shared_ptr<mfem::BlockMatrix> m_temporalGradient;
     std::shared_ptr<mfem::BlockMatrix> m_temporalInitial;
 
-    std::shared_ptr<mfem::BlockMatrix> m_spatialMass1, m_spatialMass2;
-    std::shared_ptr<mfem::BlockMatrix> m_spatialStiffness1, m_spatialStiffness2;
+    std::shared_ptr<mfem::BlockMatrix> m_spatialMass1;
+    std::shared_ptr<mfem::BlockMatrix> m_spatialMass2;
+    std::shared_ptr<mfem::BlockMatrix> m_spatialStiffness1;
+    std::shared_ptr<mfem::BlockMatrix> m_spatialStiffness2;
     std::shared_ptr<mfem::BlockMatrix> m_spatialGradient;
     std::shared_ptr<mfem::BlockMatrix> m_spatialDivergence;
 

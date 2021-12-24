@@ -8,17 +8,15 @@
 using namespace mfem;
 
 
-// Constructor
 heat::LsqXtFem
 :: LsqXtFem (const nlohmann::json& config,
              std::shared_ptr<heat::TestCases>& testCase)
     : m_config (config),
       m_testCase(testCase)
 {
-    m_deg = config["deg"];
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "deg", m_deg, 1);
 }
 
-// Destructor
 heat::LsqXtFem :: ~LsqXtFem()
 {
     reset();
@@ -365,17 +363,6 @@ void heat::LsqXtFem
     delete spatialStiffnessForm;
 }
 
-// Assembles the blocks of the linear system matrix
-/*void heat::LsqXtFem
-:: assembleSystem()
-{   
-    if (m_firstPassOfAssembleSystemBlocks) {
-        assembleSystemMediumIndependent();
-        m_firstPassOfAssembleSystemBlocks = false;
-    }
-    assembleSystemMediumDependent();
-}*/
-
 // Builds the linear system matrix from the blocks as an MFEM operator
 void heat::LsqXtFem
 :: rebuildSystemOperator()
@@ -402,21 +389,6 @@ void heat::LsqXtFem
     m_systemOperator->SetBlock(1,0, m_systemBlock21);
     m_systemOperator->SetBlock(1,1, m_systemBlock22);
 }
-
-/*void heat::LsqXtFem
-:: buildSystemOperator()
-{
-    if (m_systemOperator) {
-        delete m_systemOperator;
-        m_systemOperator = nullptr;
-    }
-
-    m_systemOperator = new BlockOperator(m_blockOffsets);
-    m_systemOperator->SetBlock(0,0, m_systemBlock11);
-    m_systemOperator->SetBlock(0,1, m_systemBlock12);
-    m_systemOperator->SetBlock(1,0, m_systemBlock21);
-    m_systemOperator->SetBlock(1,1, m_systemBlock22);
-}*/
 
 // Builds the linear system matrix from the blocks as a monolithic matrix
 void heat::LsqXtFem
@@ -463,29 +435,7 @@ void heat::LsqXtFem
     applyBCs(*m_systemMatrix);
 }
 
-/*void heat::LsqXtFem
-:: buildSystemMatrix()
-{
-    auto systemBlockMatrix
-            = new BlockMatrix(m_blockOffsets);
-    systemBlockMatrix->SetBlock(0,0, m_systemBlock11);
-    systemBlockMatrix->SetBlock(0,1, m_systemBlock12);
-    systemBlockMatrix->SetBlock(1,0, m_systemBlock21);
-    systemBlockMatrix->SetBlock(1,1, m_systemBlock22);
-
-    if (m_systemMatrix) {
-        clear(m_systemMatrix);
-    }
-    m_systemMatrix = systemBlockMatrix->CreateMonolithic();
-    if (!m_systemMatrix->ColumnsAreSorted()) {
-        m_systemMatrix->SortColumnIndices();
-    }
-    delete systemBlockMatrix;
-
-    applyBCs(*m_systemMatrix);
-}*/
-
-// Builds system matrix from heatOp
+// Builds system matrix from the system operator
 // stores only the upper triangle
 void heat::LsqXtFem
 :: rebuildUpperTriangleOfSystemMatrix()
@@ -536,31 +486,6 @@ void heat::LsqXtFem
     }
     delete systemMatrixBuf;
 }
-
-/*void heat::LsqXtFem
-:: buildUpperTriangleOfSystemMatrix()
-{
-    auto systemBlockMatrix
-            = new BlockMatrix(m_blockOffsets);
-    systemBlockMatrix->SetBlock(0,0, m_systemBlock11);
-    systemBlockMatrix->SetBlock(0,1, m_systemBlock12);
-    systemBlockMatrix->SetBlock(1,0, m_systemBlock21);
-    systemBlockMatrix->SetBlock(1,1, m_systemBlock22);
-
-    auto systemMatrixBuf = systemBlockMatrix->CreateMonolithic();
-    delete systemBlockMatrix;
-
-    applyBCs(*systemMatrixBuf);
-
-    if (m_systemMatrix) {
-        clear(m_systemMatrix);
-    }
-    m_systemMatrix = &getUpperTriangle(*systemMatrixBuf);
-    if (!m_systemMatrix->ColumnsAreSorted()) {
-        m_systemMatrix->SortColumnIndices();
-    }
-    delete systemMatrixBuf;
-}*/
 
 void heat::LsqXtFem
 :: rebuildSystemBlocks()
@@ -665,7 +590,6 @@ void heat::LsqXtFem
     delete tmp2;
 }
 
-// Assembles rhs
 void heat::LsqXtFem
 :: assembleRhs(BlockVector* B) const
 {    
@@ -727,7 +651,6 @@ void heat::LsqXtFem
     assembleSourceWithSpatialDivergenceOfHeatFluxBasis(B.GetBlock(1));
 }
 
-// Assembles source
 void heat::LsqXtFem
 :: assembleSourceWithTemporalGradientOfTemperatureBasis(Vector &b) const
 {
@@ -844,7 +767,7 @@ void heat::LsqXtFem
     }
 }
 
-// Adds elvec to b
+// Adds a local elvec to the global vector b
 void heat::LsqXtFem
 :: addVector(const Array<int> &vdofs, const Vector& elvec,
              Vector& b) const

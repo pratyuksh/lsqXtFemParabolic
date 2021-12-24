@@ -276,7 +276,6 @@ void runMultipleSimulationsToTestConvergence (const nlohmann::json config,
     std::cout << "\n#Dofs:\n";
     numDofs.Print();
 
-    // write convergence results to json file
     heat::writeErrorConvergenceDataToJsonFile(config, numDofs,
                                               hMax, solutionError);
 }

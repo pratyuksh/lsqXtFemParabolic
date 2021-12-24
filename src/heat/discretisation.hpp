@@ -18,10 +18,8 @@ namespace heat {
 class LsqXtFem
 {
 public:
-    //! Constructor with config and test case as arguments
     LsqXtFem (const nlohmann::json&, std::shared_ptr<heat::TestCases>&);
 
-    //! Default destructor
     ~LsqXtFem ();
 
     //! Releases all the memory allocated by this class
@@ -38,10 +36,6 @@ public:
     void resetMediumIndependentSystemSubMatrices();
     void resetMediumDependentSystemSubMatrices();
     
-    //! Sets the FE space and boundary conditions
-//    virtual void setFESpacesAndSpatialBoundaryDofs
-//    (std::shared_ptr<mfem::Mesh>&, std::shared_ptr<mfem::Mesh>&) = 0;
-
     //! Sets the FE spaces, block offsets and boundary conditions
     void resetFeSpacesAndBlockOffsetsAndSpatialBoundaryDofs
         (std::shared_ptr<mfem::Mesh>&, std::shared_ptr<mfem::Mesh>&);
@@ -88,18 +82,6 @@ protected:
 
 public:
 
-    //! Assembles the blocks of the linear system matrix
-    /*void assembleSystem();
-
-    //! Assembles the operators in the discretisation
-    //! that are independent of the material properties
-    virtual void assembleSystemMediumIndependent() = 0;
-
-    //! Assembles the operators in the discretisation
-    //! that depend on the material properties
-    virtual void assembleSystemMediumDependent() = 0;
-    */
-
     //! Builds the linear system matrix from the blocks
     //! as an MFEM operator
     void rebuildSystemOperator();
@@ -133,7 +115,6 @@ private:
     void buildMediumDependentSystemBlock12();
 
 public:
-    //! Assembles the target right-hand side
     void assembleRhs(mfem::BlockVector *) const;
 
 protected:
@@ -154,61 +135,50 @@ protected:
     void addVector(const mfem::Array<int> &,
                    const mfem::Vector&, mfem::Vector&) const;
 
-    //! Applies boundary conditions on a matrix
+    //! Applies boundary conditions to a SparseMatrix
     void applyBCs(mfem::SparseMatrix&) const;
 
-    //! Applies boundary conditions on a vector
+    //! Applies boundary conditions to a BlockVector
     void applyBCs(mfem::BlockVector&) const;
 
 public:
-    //! Returns the test case
     std::shared_ptr<heat::TestCases> getTestCase() const {
         return m_testCase;
     }
     
-    //! Returns the temporal mesh
     mfem::Mesh* getTemporalMesh() const {
         return m_temporalFeSpace->GetMesh();
     }
     
-    //! Returns the spatial mesh
     mfem::Mesh* getSpatialMesh() const {
         return m_spatialFeSpaces[0]->GetMesh();
     }
 
-    //! Returns the temporal FE collection
     mfem::FiniteElementCollection* getTemporalFeCollection() const {
         return m_temporalFeCollection;
     }
 
-    //! Return the spatial FE collections
     mfem::Array<mfem::FiniteElementCollection*>
     getSpatialFeCollections() const {
         return m_spatialFeCollections;
     }
     
-    //! Returns the temporal FE space
     mfem::FiniteElementSpace* getTemporalFeSpace() const {
         return m_temporalFeSpace;
     }
     
-    //! Returns the spatial FE spaces
     mfem::Array<mfem::FiniteElementSpace*> getSpatialFeSpaces() const {
         return m_spatialFeSpaces;
     }
 
-    //! Returns the system operator
     mfem::BlockOperator* getSystemOperator() const {
         return m_systemOperator;
     }
 
-    //! Returns the block offsets in the system operator,
-    //! which has a block-structure
     mfem::Array<int> getBlockOffsets() const {
         return m_blockOffsets;
     }
 
-    //! Returns the monolithic system matrix
     mfem::SparseMatrix* getSystemMatrix() const {
         return m_systemMatrix;
     }
@@ -289,12 +259,6 @@ public:
                   std::shared_ptr<heat::TestCases>& testCase)
         : LsqXtFem(config, testCase) {}
 
-//    void setFESpacesAndSpatialBoundaryDofs(std::shared_ptr<mfem::Mesh>&,
-//             std::shared_ptr<mfem::Mesh>&) override;
-
-//    void assembleSystemMediumIndependent() override;
-//    void assembleSystemMediumDependent() override;
-
     void setSpatialFeSpaceForHeatFlux
         (std::shared_ptr<mfem::Mesh>&) override;
 
@@ -318,12 +282,6 @@ public:
     LsqXtFemH1Hdiv (const nlohmann::json& config,
                         std::shared_ptr<heat::TestCases>& testCase)
         : LsqXtFem(config, testCase) {}
-
-//    void setFESpacesAndSpatialBoundaryDofs(std::shared_ptr<mfem::Mesh>&,
-//             std::shared_ptr<mfem::Mesh>&) override;
-
-//    void assembleSystemMediumIndependent() override;
-//    void assembleSystemMediumDependent() override;
 
     void setSpatialFeSpaceForHeatFlux
         (std::shared_ptr<mfem::Mesh>&) override;

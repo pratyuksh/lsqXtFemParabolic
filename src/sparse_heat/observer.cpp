@@ -16,20 +16,14 @@ sparseHeat::Observer
 {
     m_maxTemporalLevel = m_minTemporalLevel + m_numLevels - 1;
 
-    m_endTime = 1;
-    if (config.contains("end_time")) {
-        m_endTime = config["end_time"];
-    }
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "end_time",
+                                        m_endTime, 1.);
 
-    m_boolEvalError = false;
-    if (config.contains("eval_error")) {
-        m_boolEvalError = config["eval_error"];
-    }
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "eval_error",
+                                        m_boolEvalError, false);
 
-    m_errorType = "natural";
-    if (config.contains("error_type")) {
-        m_errorType = config["error_type"];
-    }
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "error_type",
+                                        m_errorType, "natural");
 }
 
 void sparseHeat::Observer

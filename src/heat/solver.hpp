@@ -117,9 +117,6 @@ private:
     std::shared_ptr<mfem::Mesh> m_spatialMesh;
 
     std::shared_ptr<heat::LsqXtFem> m_disc;
-
-    bool m_boolError;
-    std::string m_errorType;
     
     mfem::Array<int> m_blockOffsets;
 

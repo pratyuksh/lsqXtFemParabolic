@@ -10,5 +10,4 @@ target_sources(LibHeat
   PRIVATE ${CMAKE_CURRENT_LIST_DIR}/solution_handler.cpp
   PRIVATE ${CMAKE_CURRENT_LIST_DIR}/observer.cpp
   PRIVATE ${CMAKE_CURRENT_LIST_DIR}/solver.cpp
-  PRIVATE ${CMAKE_CURRENT_LIST_DIR}/functionals.cpp
 )

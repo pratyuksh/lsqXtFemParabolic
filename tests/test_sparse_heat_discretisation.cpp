@@ -12,7 +12,8 @@
 using namespace mfem;
 
 /**
- * @brief Dry run of the least-squares sparse space-time H1-Hdiv discretisation
+ * @brief Dry run of the least-squares sparse space-time
+ * H1-Hdiv discretisation
  */
 TEST(SparseDiscretisation, buildH1Hdiv)
 {
@@ -23,7 +24,8 @@ TEST(SparseDiscretisation, buildH1Hdiv)
     auto config = getGlobalConfig(configFile);
     auto testCase = heat::makeTestCase(config);
 
-    int deg = config["deg"];
+    int deg;
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "deg", deg, 1);
     ASSERT_EQ(deg, 1);
 
     // spatial mesh hierarchy
@@ -47,14 +49,11 @@ TEST(SparseDiscretisation, buildH1Hdiv)
     spatialMeshHierarchy->finalize();
 
     // temporal hierarchy info
-    int minTemporalLevel = 1;
-    if (config.contains("min_temporal_level")) {
-        minTemporalLevel = config["min_temporal_level"];
-    }
-    int numLevels = 1;
-    if (config.contains("num_levels")) {
-        numLevels = config["num_levels"];
-    }
+    int numLevels, minTemporalLevel;
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "num_levels",
+                                        numLevels, 1);
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "min_temporal_level",
+                                        minTemporalLevel, 1);
     int maxTemporalLevel = minTemporalLevel + numLevels - 1;
     ASSERT_EQ(minTemporalLevel, 1);
     ASSERT_EQ(numLevels, 3);
@@ -130,12 +129,14 @@ TEST(SparseDiscretisation, singleLevelH1HdivUnitSquareTest1)
 
     auto testCase = heat::makeTestCase(heatConfig);
 
-    int deg = heatConfig["deg"];
+    int deg;
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(heatConfig, "deg", deg, 1);
     ASSERT_EQ(deg, 1);
 
     int numLevels = 1;
-    int spatialLevel = heatConfig["spatial_level"];
-    int temporalLevel = heatConfig["temporal_level"];
+    int temporalLevel, spatialLevel;
+    READ_CONFIG_PARAM(heatConfig, "temporal_level", temporalLevel);
+    READ_CONFIG_PARAM(heatConfig, "spatial_level", spatialLevel);
     ASSERT_EQ(numLevels, sparseHeatConfig["num_levels"]);
     ASSERT_EQ(spatialLevel, sparseHeatConfig["min_spatial_level"]);
     ASSERT_EQ(temporalLevel, sparseHeatConfig["min_temporal_level"]);
@@ -155,7 +156,9 @@ TEST(SparseDiscretisation, singleLevelH1HdivUnitSquareTest1)
     spatialMeshHierarchy->finalize();
 
     // temporal mesh
-    double endTime = heatConfig["end_time"];
+    double endTime;
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(heatConfig, "end_time",
+                                        endTime, 1);
     int Nt = static_cast<int>(std::pow(2, temporalLevel));
     auto temporalMesh = std::make_shared<Mesh>(Nt, endTime);
 
@@ -252,12 +255,14 @@ TEST(SparseDiscretisation, singleLevelH1HdivUnitSquareTest3)
 
     auto testCase = heat::makeTestCase(heatConfig);
 
-    int deg = heatConfig["deg"];
+    int deg;
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(heatConfig, "deg", deg, 1);
     ASSERT_EQ(deg, 1);
 
     int numLevels = 1;
-    int spatialLevel = heatConfig["spatial_level"];
-    int temporalLevel = heatConfig["temporal_level"];
+    int temporalLevel, spatialLevel;
+    READ_CONFIG_PARAM(heatConfig, "temporal_level", temporalLevel);
+    READ_CONFIG_PARAM(heatConfig, "spatial_level", spatialLevel);
     ASSERT_EQ(numLevels, sparseHeatConfig["num_levels"]);
     ASSERT_EQ(spatialLevel, sparseHeatConfig["min_spatial_level"]);
     ASSERT_EQ(temporalLevel, sparseHeatConfig["min_temporal_level"]);
@@ -277,7 +282,9 @@ TEST(SparseDiscretisation, singleLevelH1HdivUnitSquareTest3)
     spatialMeshHierarchy->finalize();
 
     // temporal mesh
-    double endTime = heatConfig["end_time"];
+    double endTime;
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(heatConfig, "end_time",
+                                        endTime, 1);
     int Nt = static_cast<int>(std::pow(2, temporalLevel));
     auto temporalMesh = std::make_shared<Mesh>(Nt, endTime);
 
@@ -366,7 +373,8 @@ TEST(SparseDiscretisation, buildH1H1)
     auto config = getGlobalConfig(configFile);
     auto testCase = heat::makeTestCase(config);
 
-    int deg = config["deg"];
+    int deg;
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "deg", deg, 1);
     ASSERT_EQ(deg, 1);
 
     // spatial mesh hierarchy
@@ -390,14 +398,11 @@ TEST(SparseDiscretisation, buildH1H1)
     spatialMeshHierarchy->finalize();
 
     // temporal hierarchy info
-    int minTemporalLevel = 1;
-    if (config.contains("min_temporal_level")) {
-        minTemporalLevel = config["min_temporal_level"];
-    }
-    int numLevels = 1;
-    if (config.contains("num_levels")) {
-        numLevels = config["num_levels"];
-    }
+    int numLevels, minTemporalLevel;
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "num_levels",
+                                        numLevels, 1);
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "min_temporal_level",
+                                        minTemporalLevel, 1);
     int maxTemporalLevel = minTemporalLevel + numLevels - 1;
     ASSERT_EQ(minTemporalLevel, 1);
     ASSERT_EQ(numLevels, 3);
@@ -473,12 +478,14 @@ TEST(SparseDiscretisation, singleLevelH1H1UnitSquareTest1)
 
     auto testCase = heat::makeTestCase(heatConfig);
 
-    int deg = heatConfig["deg"];
+    int deg;
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(heatConfig, "deg", deg, 1);
     ASSERT_EQ(deg, 1);
 
     int numLevels = 1;
-    int spatialLevel = heatConfig["spatial_level"];
-    int temporalLevel = heatConfig["temporal_level"];
+    int temporalLevel, spatialLevel;
+    READ_CONFIG_PARAM(heatConfig, "temporal_level", temporalLevel);
+    READ_CONFIG_PARAM(heatConfig, "spatial_level", spatialLevel);
     ASSERT_EQ(numLevels, sparseHeatConfig["num_levels"]);
     ASSERT_EQ(spatialLevel, sparseHeatConfig["min_spatial_level"]);
     ASSERT_EQ(temporalLevel, sparseHeatConfig["min_temporal_level"]);
@@ -498,7 +505,9 @@ TEST(SparseDiscretisation, singleLevelH1H1UnitSquareTest1)
     spatialMeshHierarchy->finalize();
 
     // temporal mesh
-    double endTime = heatConfig["end_time"];
+    double endTime;
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(heatConfig, "end_time",
+                                        endTime, 1);
     int Nt = static_cast<int>(std::pow(2, temporalLevel));
     auto temporalMesh = std::make_shared<Mesh>(Nt, endTime);
 

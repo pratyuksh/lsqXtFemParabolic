@@ -17,20 +17,15 @@ sparseHeat::LsqSparseXtFem
       m_numLevels (numLevels),
       m_minTemporalLevel (minTemporalLevel)
 {
-    m_deg = 1;
-    if (config.contains("deg")) {
-        m_deg = config["deg"];
-        if (m_deg > 1) {
-            std::cerr << "The sparse implementation has only been implemented "
-                         "for polynomial degree 1." << std::endl;
-            abort();
-        }
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "deg", m_deg, 1);
+    if (m_deg > 1) {
+        std::cerr << "The sparse implementation has only been implemented "
+                     "for polynomial degree 1." << std::endl;
+        abort();
     }
 
-    m_endTime = 1.;
-    if (config.contains("end_time")) {
-        m_endTime = config["end_time"];
-    }
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(m_config, "end_time",
+                                        m_endTime, 1);
 
     m_maxTemporalLevel = m_minTemporalLevel + m_numLevels - 1;
 }

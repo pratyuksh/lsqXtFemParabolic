@@ -2,9 +2,10 @@
 
 using namespace mfem;
 
-// tVdofs gives the indices for reading the space-time solution uXtSol
-// for the space-time element required.
-// Assumes that uSol size is preset.
+// temporalVdofs gives the indices
+// for reading the space-time solution,
+// for the desired space-time element.
+// Assumes that spatialSolution size is preset.
 void buildSolutionAtSpecifiedTime(const Vector& spaceTimeSolution,
                                   const Vector& temporalShape,
                                   Array<int> temporalVdofs,
@@ -18,7 +19,8 @@ void buildSolutionAtSpecifiedTime(const Vector& spaceTimeSolution,
     {
         int shift = temporalVdofs[j]*spatialNumDofs;
         for (int k=0; k<spatialNumDofs; k++) {
-            spatialSolution(k) += temporalShape(j)*spaceTimeSolution(k + shift);
+            spatialSolution(k)
+                    += temporalShape(j)*spaceTimeSolution(k + shift);
         }
     }
 }

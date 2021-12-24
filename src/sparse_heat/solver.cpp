@@ -37,22 +37,17 @@ sparseHeat::Solver
 void sparseHeat::Solver
 :: setConfigParams()
 {
-    m_endTime = m_config["end_time"];
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(m_config, "end_time",
+                                        m_endTime, 1);
 
-    m_meshElemType = "tri";
-    if (m_config.contains("mesh_elem_type")) {
-        m_meshElemType = m_config["mesh_elem_type"];
-    }
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(m_config, "mesh_elem_type",
+                                        m_meshElemType, "tri");
 
-    m_discType = "H1Hdiv";
-    if (m_config.contains("discretisation_type")) {
-        m_discType = m_config["discretisation_type"];
-    }
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(m_config, "discretisation_type",
+                                        m_discType, "H1Hdiv");
 
-    m_linearSolver = "pardiso";
-    if (m_config.contains("linear_solver")) {
-        m_linearSolver = m_config["linear_solver"];
-    }
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(m_config, "linear_solver",
+                                        m_linearSolver, "pardiso");
 }
 
 void sparseHeat::Solver

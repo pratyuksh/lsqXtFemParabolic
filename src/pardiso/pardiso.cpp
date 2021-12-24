@@ -12,7 +12,6 @@
         std::cout << msg << val << std::endl;   \
     }
 
-// Constructor
 PardisoSolver :: PardisoSolver (int mtype)
     : m_mtype(mtype)
 {
@@ -20,7 +19,6 @@ PardisoSolver :: PardisoSolver (int mtype)
     m_solver = 0;
 }
 
-// Destructor
 PardisoSolver :: ~PardisoSolver ()
 {
     if (!m_finalized) {
@@ -30,7 +28,6 @@ PardisoSolver :: ~PardisoSolver ()
 
 #ifdef LIB_PARDISO
 
-// Initialize Pardiso solver
 void PardisoSolver :: initialize(int sizeA,
                                  int *rowPtrA,
                                  int *colIdA,
@@ -42,8 +39,8 @@ void PardisoSolver :: initialize(int sizeA,
     m_dataA = dataA;
     m_nnz = m_rowPtrA[m_sizeA];
 
-    /// Setup Pardiso control parameters
-    /// initialize internal address pointers
+    // Setup Pardiso control parameters
+    // initialize internal address pointers
     char *var;
     m_error = 0;
 
@@ -95,7 +92,6 @@ void PardisoSolver :: initialize(int sizeA,
     m_finalized = false;
 }
 
-// Finalizes the PARDISO solver
 void PardisoSolver :: finalize()
 {
     // Shift matrix index to C++ 0-based index
@@ -116,7 +112,6 @@ void PardisoSolver :: finalize()
     m_finalized = true;
 }
 
-// Factorizes the system matrix
 void PardisoSolver :: factorize()
 {
     m_error = 0;
@@ -172,7 +167,6 @@ void PardisoSolver :: solve(double *b, double *x)
 
 #else
 
-// Initialize Pardiso solver
 void PardisoSolver :: initialize(int sizeA,
                                  int *rowPtrA,
                                  int *colIdA,
@@ -218,7 +212,6 @@ void PardisoSolver :: initialize(int sizeA,
     m_finalized = false;
 }
 
-// Finalizes the PARDISO solver
 void PardisoSolver :: finalize()
 {
     // Release internal memory
@@ -233,7 +226,6 @@ void PardisoSolver :: finalize()
     m_finalized = true;
 }
 
-// Factorizes the system matrix
 void PardisoSolver :: factorize()
 {
     m_error = 0;
@@ -281,6 +273,5 @@ void PardisoSolver :: solve(double *b, double *x)
 
 #undef PARDISO_ERROR
 #undef PARDISO_PRINT
-
 
 // End of file

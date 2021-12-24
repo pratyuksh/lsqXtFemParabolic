@@ -16,30 +16,26 @@ heat::Observer
 :: Observer (const nlohmann::json& config, int spatialLevel)
     : BaseObserver (config, spatialLevel)
 {
-    m_endTime = 1;
-    if (config.contains("end_time")) {
-        m_endTime = config["end_time"];
-    }
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "end_time",
+                                        m_endTime, 1.);
 
-    m_boolEvalError = false;
-    if (config.contains("eval_error")) {
-        m_boolEvalError = config["eval_error"];
-    }
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "eval_error",
+                                        m_boolEvalError, false);
 
-    m_errorType = "natural";
-    if (config.contains("error_type")) {
-        m_errorType = config["error_type"];
-    }
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "error_type",
+                                        m_errorType, "natural");
     
-    std::string problem_type = config["problem_type"];
-    m_outputDir = "../output/heat_"+problem_type+"/";
+    std::string problemType;
+    READ_CONFIG_PARAM(config, "problem_type", problemType);
+
+    m_outputDir = "../output/heat_"+problemType+"/";
     if (m_boolDumpOut) {
         fs::create_directories(m_outputDir);
     }
     m_solNameSuffix = "_lx"+std::to_string(spatialLevel);
 }
 
-// Sets the test case, discretisation, etc.
+// Sets the test case, discretisation and solution coefficients
 void heat::Observer
 :: set (std::shared_ptr<heat::TestCases>& testCase,
         std::shared_ptr<heat::LsqXtFem>& disc)

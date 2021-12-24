@@ -1,26 +1,18 @@
 #include "base_observer.hpp"
 
-#include <fstream>
 #include <iostream>
-#include <filesystem>
 
 using namespace mfem;
-namespace fs = std::filesystem;
 
 
-//! Uses config to set class variables.
 mymfem::BaseObserver
 :: BaseObserver (const nlohmann::json& config)
 {
-    m_boolVisualize = false;
-    if (config.contains("visualization")) {
-        m_boolVisualize = config["visualization"];
-    }
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "visualization",
+                                        m_boolVisualize, false);
 
-    m_boolDumpOut = false;
-    if (config.contains("dump_output")) {
-        m_boolDumpOut = config["dump_output"];
-    }
+    READ_CONFIG_PARAM_OR_SET_TO_DEFAULT(config, "dump_output",
+                                        m_boolDumpOut, false);
 }
 
 mymfem::BaseObserver
@@ -59,7 +51,6 @@ void mymfem::BaseObserver
     }
 }
 
-//! Writes the mesh to a file.
 void mymfem::BaseObserver
 :: dumpMesh (std::shared_ptr<Mesh>& mesh) const
 {
