@@ -1,5 +1,7 @@
 #include "observer.hpp"
 
+#include <fmt/format.h>
+
 #include "spatial_error_evaluator.hpp"
 #include "utilities.hpp"
 
@@ -127,11 +129,22 @@ Vector sparseHeat::Observer
 {
     Vector solutionError;
 
-    if (m_errorType == "natural") {
-        solutionError = evalErrorInNaturalNorm(solutionHandler);
+    if (m_boolEvalError) {
+        if (m_errorType == "natural") {
+            solutionError = evalErrorInNaturalNorm(solutionHandler);
+        }
+        else if (m_errorType == "lsq") {
+            solutionError = evalErrorInLeastSquaresNorm(solutionHandler);
+        }
+        else {
+            throw std::runtime_error(fmt::format(
+                "Unknown error computation type for sparse heat solver. "
+                "[{}]", m_errorType));
+        }
     }
-    else if (m_errorType == "lsq") {
-        solutionError = evalErrorInLeastSquaresNorm(solutionHandler);
+    else {
+        solutionError.SetSize(1);
+        solutionError = 0.;
     }
 
     return solutionError;
