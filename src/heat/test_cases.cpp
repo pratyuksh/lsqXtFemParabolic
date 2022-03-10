@@ -684,4 +684,42 @@ void heat::TestCase <UnitCubeTest1>
     bdr_marker = 1;
 }
 
+// FicherCubeTest1, Singular solution
+// Zero ICs
+// Homogeneous Dirichlet BCs
+// Constant source 1
+double heat::TestCase <FicheraCubeTest1>
+:: temperatureSol(const Vector& x, const double t) const {
+    return 0;
+}
+
+Vector heat::TestCase <FicheraCubeTest1>
+:: heatFluxSol (const Vector& x, const double t) const {
+    return temperatureSpatialGradientSol(x, t);
+}
+
+Vector heat::TestCase <FicheraCubeTest1>
+:: temperatureSpatialGradientSol (const Vector& x, const double t) const
+{
+    Vector dudx(m_dim);
+    dudx = 0.;
+    return dudx;
+}
+
+double heat::TestCase <FicheraCubeTest1>
+:: temperatureTemporalGradientSol
+(const Vector& x, const double t) const {
+    return 0;
+}
+
+double heat::TestCase <FicheraCubeTest1>
+:: source (const Vector& x, const double t) const {
+    return 1;
+}
+
+void heat::TestCase <FicheraCubeTest1>
+:: setBdryDirichlet(Array<int>& bdr_marker) const {
+    bdr_marker = 1;
+}
+
 // End of file
